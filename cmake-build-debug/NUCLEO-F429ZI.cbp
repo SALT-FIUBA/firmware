@@ -36,6 +36,27 @@
 					<Add directory="/Users/nando/NUCLEO-F429ZI/qpc/ports/arm-cm/qk/gnu"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/qpc/bsp"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/qpc/blinky"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/qpc/salt"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/qpc/salt/aes"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/qpc/salt/anIn"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/qpc/salt/conmgr"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/qpc/salt/epoch"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/qpc/salt/gps"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/qpc/salt/modcmd"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/qpc/salt/modmgr"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/qpc/salt/modpwr"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/qpc/salt/rtime"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/qpc/salt/serial"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/qpc/salt/parser/sim900"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/qpc/salt/mTime"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/qpc/salt/sim808"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/qpc/salt/mqttProt"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/qpc/salt/date"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/qpc/salt/logic"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/qpc/salt/ledPanel"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/qpc/salt/parser/saltCmd"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/qpc/salt/ihm"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/qpc/salt/relayControl"/>
 					<Add directory="/usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1"/>
 					<Add directory="/usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/arm-none-eabi"/>
 					<Add directory="/usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/backward"/>
@@ -69,6 +90,27 @@
 					<Add directory="/Users/nando/NUCLEO-F429ZI/qpc/ports/arm-cm/qk/gnu"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/qpc/bsp"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/qpc/blinky"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/qpc/salt"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/qpc/salt/aes"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/qpc/salt/anIn"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/qpc/salt/conmgr"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/qpc/salt/epoch"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/qpc/salt/gps"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/qpc/salt/modcmd"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/qpc/salt/modmgr"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/qpc/salt/modpwr"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/qpc/salt/rtime"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/qpc/salt/serial"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/qpc/salt/parser/sim900"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/qpc/salt/mTime"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/qpc/salt/sim808"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/qpc/salt/mqttProt"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/qpc/salt/date"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/qpc/salt/logic"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/qpc/salt/ledPanel"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/qpc/salt/parser/saltCmd"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/qpc/salt/ihm"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/qpc/salt/relayControl"/>
 					<Add directory="/usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1"/>
 					<Add directory="/usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/arm-none-eabi"/>
 					<Add directory="/usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/backward"/>
@@ -420,6 +462,81 @@
 			<Option target="NUCLEO-F429ZI.elf"/>
 		</Unit>
 		<Unit filename="/Users/nando/NUCLEO-F429ZI/qpc/ports/arm-cm/qk/gnu/qk_port.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/qpc/salt/aes/aes.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/qpc/salt/aes/aes.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/qpc/salt/conmgr/conmgr.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/qpc/salt/conmgr/conmgr.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/qpc/salt/date/date.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/qpc/salt/date/date.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/qpc/salt/epoch/epoch.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/qpc/salt/epoch/epoch.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/qpc/salt/ihm/buzzer.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/qpc/salt/ihm/buzzer.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/qpc/salt/ledPanel/ledPanel.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/qpc/salt/ledPanel/ledPanel.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/qpc/salt/logic/logic.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/qpc/salt/logic/logic.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/qpc/salt/modcmd/modcmdSim900.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/qpc/salt/modmgr/modmgr.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/qpc/salt/modmgr/modmgr.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/qpc/salt/modpwr/modpwr.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/qpc/salt/modpwr/modpwr.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/qpc/salt/mqttProt/mqttProt.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/qpc/salt/mqttProt/mqttProt.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/qpc/salt/parser/sim900/sim900parser.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/qpc/salt/parser/sim900/sim900parser.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/qpc/salt/relayControl/relay.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/qpc/salt/relayControl/relay.h">
 			<Option target="NUCLEO-F429ZI.elf"/>
 		</Unit>
 		<Unit filename="/Users/nando/NUCLEO-F429ZI/qpc/src/qf/qep_hsm.c">

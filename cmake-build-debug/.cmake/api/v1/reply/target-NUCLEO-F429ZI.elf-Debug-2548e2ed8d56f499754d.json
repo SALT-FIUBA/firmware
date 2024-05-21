@@ -28,25 +28,25 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 95,
+				"line" : 131,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 91,
+				"line" : 127,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 92,
+				"line" : 128,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 93,
+				"line" : 129,
 				"parent" : 0
 			},
 			{
@@ -76,7 +76,7 @@
 			{
 				"command" : 3,
 				"file" : 0,
-				"line" : 70,
+				"line" : 90,
 				"parent" : 0
 			},
 			{
@@ -184,6 +184,90 @@
 				{
 					"backtrace" : 10,
 					"path" : "/Users/nando/NUCLEO-F429ZI/qpc/blinky"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/qpc/salt"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/qpc/salt/aes"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/qpc/salt/anIn"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/qpc/salt/conmgr"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/qpc/salt/epoch"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/qpc/salt/gps"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/qpc/salt/modcmd"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/qpc/salt/modmgr"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/qpc/salt/modpwr"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/qpc/salt/rtime"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/qpc/salt/serial"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/qpc/salt/parser/sim900"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/qpc/salt/mTime"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/qpc/salt/sim808"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/qpc/salt/mqttProt"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/qpc/salt/date"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/qpc/salt/logic"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/qpc/salt/ledPanel"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/qpc/salt/parser/saltCmd"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/qpc/salt/ihm"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/qpc/salt/relayControl"
 				}
 			],
 			"language" : "C",
@@ -243,7 +327,20 @@
 				111,
 				112,
 				113,
-				114
+				114,
+				115,
+				116,
+				117,
+				118,
+				119,
+				120,
+				121,
+				122,
+				123,
+				124,
+				125,
+				126,
+				127
 			]
 		},
 		{
@@ -349,6 +446,90 @@
 				{
 					"backtrace" : 10,
 					"path" : "/Users/nando/NUCLEO-F429ZI/qpc/blinky"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/qpc/salt"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/qpc/salt/aes"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/qpc/salt/anIn"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/qpc/salt/conmgr"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/qpc/salt/epoch"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/qpc/salt/gps"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/qpc/salt/modcmd"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/qpc/salt/modmgr"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/qpc/salt/modpwr"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/qpc/salt/rtime"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/qpc/salt/serial"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/qpc/salt/parser/sim900"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/qpc/salt/mTime"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/qpc/salt/sim808"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/qpc/salt/mqttProt"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/qpc/salt/date"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/qpc/salt/logic"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/qpc/salt/ledPanel"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/qpc/salt/parser/saltCmd"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/qpc/salt/ihm"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/qpc/salt/relayControl"
 				}
 			],
 			"language" : "ASM",
@@ -533,7 +714,20 @@
 				111,
 				112,
 				113,
-				114
+				114,
+				115,
+				116,
+				117,
+				118,
+				119,
+				120,
+				121,
+				122,
+				123,
+				124,
+				125,
+				126,
+				127
 			]
 		},
 		{
@@ -544,7 +738,7 @@
 				21,
 				43,
 				77,
-				115
+				128
 			]
 		}
 	],
@@ -1093,6 +1287,84 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "qpc/ports/arm-cm/qk/gnu/qk_port.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "qpc/salt/aes/aes.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "qpc/salt/conmgr/conmgr.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "qpc/salt/date/date.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "qpc/salt/epoch/epoch.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "qpc/salt/ihm/buzzer.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "qpc/salt/ledPanel/ledPanel.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "qpc/salt/logic/logic.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "qpc/salt/modcmd/modcmdSim900.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "qpc/salt/modmgr/modmgr.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "qpc/salt/modpwr/modpwr.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "qpc/salt/mqttProt/mqttProt.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "qpc/salt/parser/sim900/sim900parser.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "qpc/salt/relayControl/relay.c",
 			"sourceGroupIndex" : 1
 		},
 		{

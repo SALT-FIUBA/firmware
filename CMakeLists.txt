@@ -63,7 +63,27 @@ include_directories(
         qpc/bsp
         qpc/blinky
 
-        # create qpc/bsp/STM32F4XX_Nucleo_144.h ?
+        qpc/salt
+        qpc/salt/aes
+        qpc/salt/anIn
+        qpc/salt/conmgr
+        qpc/salt/epoch
+        qpc/salt/gps
+        qpc/salt/modcmd
+        qpc/salt/modmgr
+        qpc/salt/modpwr
+        qpc/salt/rtime
+        qpc/salt/serial
+        qpc/salt/parser/sim900
+        qpc/salt/mTime
+        qpc/salt/sim808
+        qpc/salt/mqttProt
+        qpc/salt/date
+        qpc/salt/logic
+        qpc/salt/ledPanel
+        qpc/salt/parser/saltCmd
+        qpc/salt/ihm
+        qpc/salt/relayControl
 
 )
 
@@ -81,8 +101,24 @@ file(
         "qpc/ports/arm-cm/qk/gnu/qk_port.c"
 
         "qpc/blinky/blinky.c"
+
         "qpc/bsp/bsp.c"
         "qpc/bsp/stm32f4xx_nucleo_144.c"
+
+
+        "qpc/salt/aes/aes.c"
+        "qpc/salt/conmgr/conmgr.c"
+        "qpc/salt/epoch/epoch.c"
+        "qpc/salt/modmgr/modmgr.c"
+        "qpc/salt/modcmd/modcmdSim900.c"
+        "qpc/salt/modpwr/modpwr.c"
+        "qpc/salt/parser/sim900/sim900parser.c"
+        "qpc/salt/mqttProt/mqttProt.c"
+        "qpc/salt/date/date.c"
+        "qpc/salt/logic/logic.c"
+        "qpc/salt/ledPanel/ledPanel.c"
+        "qpc/salt/ihm/buzzer.c"
+        "qpc/salt/relayControl/relay.c"
 
 )
 

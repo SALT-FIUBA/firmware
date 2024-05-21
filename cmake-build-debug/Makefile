@@ -953,6 +953,318 @@ qpc/ports/arm-cm/qk/gnu/qk_port.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/qpc/ports/arm-cm/qk/gnu/qk_port.c.s
 .PHONY : qpc/ports/arm-cm/qk/gnu/qk_port.c.s
 
+qpc/salt/aes/aes.obj: qpc/salt/aes/aes.c.obj
+.PHONY : qpc/salt/aes/aes.obj
+
+# target to build an object file
+qpc/salt/aes/aes.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/qpc/salt/aes/aes.c.obj
+.PHONY : qpc/salt/aes/aes.c.obj
+
+qpc/salt/aes/aes.i: qpc/salt/aes/aes.c.i
+.PHONY : qpc/salt/aes/aes.i
+
+# target to preprocess a source file
+qpc/salt/aes/aes.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/qpc/salt/aes/aes.c.i
+.PHONY : qpc/salt/aes/aes.c.i
+
+qpc/salt/aes/aes.s: qpc/salt/aes/aes.c.s
+.PHONY : qpc/salt/aes/aes.s
+
+# target to generate assembly for a file
+qpc/salt/aes/aes.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/qpc/salt/aes/aes.c.s
+.PHONY : qpc/salt/aes/aes.c.s
+
+qpc/salt/conmgr/conmgr.obj: qpc/salt/conmgr/conmgr.c.obj
+.PHONY : qpc/salt/conmgr/conmgr.obj
+
+# target to build an object file
+qpc/salt/conmgr/conmgr.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/qpc/salt/conmgr/conmgr.c.obj
+.PHONY : qpc/salt/conmgr/conmgr.c.obj
+
+qpc/salt/conmgr/conmgr.i: qpc/salt/conmgr/conmgr.c.i
+.PHONY : qpc/salt/conmgr/conmgr.i
+
+# target to preprocess a source file
+qpc/salt/conmgr/conmgr.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/qpc/salt/conmgr/conmgr.c.i
+.PHONY : qpc/salt/conmgr/conmgr.c.i
+
+qpc/salt/conmgr/conmgr.s: qpc/salt/conmgr/conmgr.c.s
+.PHONY : qpc/salt/conmgr/conmgr.s
+
+# target to generate assembly for a file
+qpc/salt/conmgr/conmgr.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/qpc/salt/conmgr/conmgr.c.s
+.PHONY : qpc/salt/conmgr/conmgr.c.s
+
+qpc/salt/date/date.obj: qpc/salt/date/date.c.obj
+.PHONY : qpc/salt/date/date.obj
+
+# target to build an object file
+qpc/salt/date/date.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/qpc/salt/date/date.c.obj
+.PHONY : qpc/salt/date/date.c.obj
+
+qpc/salt/date/date.i: qpc/salt/date/date.c.i
+.PHONY : qpc/salt/date/date.i
+
+# target to preprocess a source file
+qpc/salt/date/date.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/qpc/salt/date/date.c.i
+.PHONY : qpc/salt/date/date.c.i
+
+qpc/salt/date/date.s: qpc/salt/date/date.c.s
+.PHONY : qpc/salt/date/date.s
+
+# target to generate assembly for a file
+qpc/salt/date/date.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/qpc/salt/date/date.c.s
+.PHONY : qpc/salt/date/date.c.s
+
+qpc/salt/epoch/epoch.obj: qpc/salt/epoch/epoch.c.obj
+.PHONY : qpc/salt/epoch/epoch.obj
+
+# target to build an object file
+qpc/salt/epoch/epoch.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/qpc/salt/epoch/epoch.c.obj
+.PHONY : qpc/salt/epoch/epoch.c.obj
+
+qpc/salt/epoch/epoch.i: qpc/salt/epoch/epoch.c.i
+.PHONY : qpc/salt/epoch/epoch.i
+
+# target to preprocess a source file
+qpc/salt/epoch/epoch.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/qpc/salt/epoch/epoch.c.i
+.PHONY : qpc/salt/epoch/epoch.c.i
+
+qpc/salt/epoch/epoch.s: qpc/salt/epoch/epoch.c.s
+.PHONY : qpc/salt/epoch/epoch.s
+
+# target to generate assembly for a file
+qpc/salt/epoch/epoch.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/qpc/salt/epoch/epoch.c.s
+.PHONY : qpc/salt/epoch/epoch.c.s
+
+qpc/salt/ihm/buzzer.obj: qpc/salt/ihm/buzzer.c.obj
+.PHONY : qpc/salt/ihm/buzzer.obj
+
+# target to build an object file
+qpc/salt/ihm/buzzer.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/qpc/salt/ihm/buzzer.c.obj
+.PHONY : qpc/salt/ihm/buzzer.c.obj
+
+qpc/salt/ihm/buzzer.i: qpc/salt/ihm/buzzer.c.i
+.PHONY : qpc/salt/ihm/buzzer.i
+
+# target to preprocess a source file
+qpc/salt/ihm/buzzer.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/qpc/salt/ihm/buzzer.c.i
+.PHONY : qpc/salt/ihm/buzzer.c.i
+
+qpc/salt/ihm/buzzer.s: qpc/salt/ihm/buzzer.c.s
+.PHONY : qpc/salt/ihm/buzzer.s
+
+# target to generate assembly for a file
+qpc/salt/ihm/buzzer.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/qpc/salt/ihm/buzzer.c.s
+.PHONY : qpc/salt/ihm/buzzer.c.s
+
+qpc/salt/ledPanel/ledPanel.obj: qpc/salt/ledPanel/ledPanel.c.obj
+.PHONY : qpc/salt/ledPanel/ledPanel.obj
+
+# target to build an object file
+qpc/salt/ledPanel/ledPanel.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/qpc/salt/ledPanel/ledPanel.c.obj
+.PHONY : qpc/salt/ledPanel/ledPanel.c.obj
+
+qpc/salt/ledPanel/ledPanel.i: qpc/salt/ledPanel/ledPanel.c.i
+.PHONY : qpc/salt/ledPanel/ledPanel.i
+
+# target to preprocess a source file
+qpc/salt/ledPanel/ledPanel.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/qpc/salt/ledPanel/ledPanel.c.i
+.PHONY : qpc/salt/ledPanel/ledPanel.c.i
+
+qpc/salt/ledPanel/ledPanel.s: qpc/salt/ledPanel/ledPanel.c.s
+.PHONY : qpc/salt/ledPanel/ledPanel.s
+
+# target to generate assembly for a file
+qpc/salt/ledPanel/ledPanel.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/qpc/salt/ledPanel/ledPanel.c.s
+.PHONY : qpc/salt/ledPanel/ledPanel.c.s
+
+qpc/salt/logic/logic.obj: qpc/salt/logic/logic.c.obj
+.PHONY : qpc/salt/logic/logic.obj
+
+# target to build an object file
+qpc/salt/logic/logic.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/qpc/salt/logic/logic.c.obj
+.PHONY : qpc/salt/logic/logic.c.obj
+
+qpc/salt/logic/logic.i: qpc/salt/logic/logic.c.i
+.PHONY : qpc/salt/logic/logic.i
+
+# target to preprocess a source file
+qpc/salt/logic/logic.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/qpc/salt/logic/logic.c.i
+.PHONY : qpc/salt/logic/logic.c.i
+
+qpc/salt/logic/logic.s: qpc/salt/logic/logic.c.s
+.PHONY : qpc/salt/logic/logic.s
+
+# target to generate assembly for a file
+qpc/salt/logic/logic.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/qpc/salt/logic/logic.c.s
+.PHONY : qpc/salt/logic/logic.c.s
+
+qpc/salt/modcmd/modcmdSim900.obj: qpc/salt/modcmd/modcmdSim900.c.obj
+.PHONY : qpc/salt/modcmd/modcmdSim900.obj
+
+# target to build an object file
+qpc/salt/modcmd/modcmdSim900.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/qpc/salt/modcmd/modcmdSim900.c.obj
+.PHONY : qpc/salt/modcmd/modcmdSim900.c.obj
+
+qpc/salt/modcmd/modcmdSim900.i: qpc/salt/modcmd/modcmdSim900.c.i
+.PHONY : qpc/salt/modcmd/modcmdSim900.i
+
+# target to preprocess a source file
+qpc/salt/modcmd/modcmdSim900.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/qpc/salt/modcmd/modcmdSim900.c.i
+.PHONY : qpc/salt/modcmd/modcmdSim900.c.i
+
+qpc/salt/modcmd/modcmdSim900.s: qpc/salt/modcmd/modcmdSim900.c.s
+.PHONY : qpc/salt/modcmd/modcmdSim900.s
+
+# target to generate assembly for a file
+qpc/salt/modcmd/modcmdSim900.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/qpc/salt/modcmd/modcmdSim900.c.s
+.PHONY : qpc/salt/modcmd/modcmdSim900.c.s
+
+qpc/salt/modmgr/modmgr.obj: qpc/salt/modmgr/modmgr.c.obj
+.PHONY : qpc/salt/modmgr/modmgr.obj
+
+# target to build an object file
+qpc/salt/modmgr/modmgr.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/qpc/salt/modmgr/modmgr.c.obj
+.PHONY : qpc/salt/modmgr/modmgr.c.obj
+
+qpc/salt/modmgr/modmgr.i: qpc/salt/modmgr/modmgr.c.i
+.PHONY : qpc/salt/modmgr/modmgr.i
+
+# target to preprocess a source file
+qpc/salt/modmgr/modmgr.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/qpc/salt/modmgr/modmgr.c.i
+.PHONY : qpc/salt/modmgr/modmgr.c.i
+
+qpc/salt/modmgr/modmgr.s: qpc/salt/modmgr/modmgr.c.s
+.PHONY : qpc/salt/modmgr/modmgr.s
+
+# target to generate assembly for a file
+qpc/salt/modmgr/modmgr.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/qpc/salt/modmgr/modmgr.c.s
+.PHONY : qpc/salt/modmgr/modmgr.c.s
+
+qpc/salt/modpwr/modpwr.obj: qpc/salt/modpwr/modpwr.c.obj
+.PHONY : qpc/salt/modpwr/modpwr.obj
+
+# target to build an object file
+qpc/salt/modpwr/modpwr.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/qpc/salt/modpwr/modpwr.c.obj
+.PHONY : qpc/salt/modpwr/modpwr.c.obj
+
+qpc/salt/modpwr/modpwr.i: qpc/salt/modpwr/modpwr.c.i
+.PHONY : qpc/salt/modpwr/modpwr.i
+
+# target to preprocess a source file
+qpc/salt/modpwr/modpwr.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/qpc/salt/modpwr/modpwr.c.i
+.PHONY : qpc/salt/modpwr/modpwr.c.i
+
+qpc/salt/modpwr/modpwr.s: qpc/salt/modpwr/modpwr.c.s
+.PHONY : qpc/salt/modpwr/modpwr.s
+
+# target to generate assembly for a file
+qpc/salt/modpwr/modpwr.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/qpc/salt/modpwr/modpwr.c.s
+.PHONY : qpc/salt/modpwr/modpwr.c.s
+
+qpc/salt/mqttProt/mqttProt.obj: qpc/salt/mqttProt/mqttProt.c.obj
+.PHONY : qpc/salt/mqttProt/mqttProt.obj
+
+# target to build an object file
+qpc/salt/mqttProt/mqttProt.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/qpc/salt/mqttProt/mqttProt.c.obj
+.PHONY : qpc/salt/mqttProt/mqttProt.c.obj
+
+qpc/salt/mqttProt/mqttProt.i: qpc/salt/mqttProt/mqttProt.c.i
+.PHONY : qpc/salt/mqttProt/mqttProt.i
+
+# target to preprocess a source file
+qpc/salt/mqttProt/mqttProt.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/qpc/salt/mqttProt/mqttProt.c.i
+.PHONY : qpc/salt/mqttProt/mqttProt.c.i
+
+qpc/salt/mqttProt/mqttProt.s: qpc/salt/mqttProt/mqttProt.c.s
+.PHONY : qpc/salt/mqttProt/mqttProt.s
+
+# target to generate assembly for a file
+qpc/salt/mqttProt/mqttProt.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/qpc/salt/mqttProt/mqttProt.c.s
+.PHONY : qpc/salt/mqttProt/mqttProt.c.s
+
+qpc/salt/parser/sim900/sim900parser.obj: qpc/salt/parser/sim900/sim900parser.c.obj
+.PHONY : qpc/salt/parser/sim900/sim900parser.obj
+
+# target to build an object file
+qpc/salt/parser/sim900/sim900parser.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/qpc/salt/parser/sim900/sim900parser.c.obj
+.PHONY : qpc/salt/parser/sim900/sim900parser.c.obj
+
+qpc/salt/parser/sim900/sim900parser.i: qpc/salt/parser/sim900/sim900parser.c.i
+.PHONY : qpc/salt/parser/sim900/sim900parser.i
+
+# target to preprocess a source file
+qpc/salt/parser/sim900/sim900parser.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/qpc/salt/parser/sim900/sim900parser.c.i
+.PHONY : qpc/salt/parser/sim900/sim900parser.c.i
+
+qpc/salt/parser/sim900/sim900parser.s: qpc/salt/parser/sim900/sim900parser.c.s
+.PHONY : qpc/salt/parser/sim900/sim900parser.s
+
+# target to generate assembly for a file
+qpc/salt/parser/sim900/sim900parser.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/qpc/salt/parser/sim900/sim900parser.c.s
+.PHONY : qpc/salt/parser/sim900/sim900parser.c.s
+
+qpc/salt/relayControl/relay.obj: qpc/salt/relayControl/relay.c.obj
+.PHONY : qpc/salt/relayControl/relay.obj
+
+# target to build an object file
+qpc/salt/relayControl/relay.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/qpc/salt/relayControl/relay.c.obj
+.PHONY : qpc/salt/relayControl/relay.c.obj
+
+qpc/salt/relayControl/relay.i: qpc/salt/relayControl/relay.c.i
+.PHONY : qpc/salt/relayControl/relay.i
+
+# target to preprocess a source file
+qpc/salt/relayControl/relay.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/qpc/salt/relayControl/relay.c.i
+.PHONY : qpc/salt/relayControl/relay.c.i
+
+qpc/salt/relayControl/relay.s: qpc/salt/relayControl/relay.c.s
+.PHONY : qpc/salt/relayControl/relay.s
+
+# target to generate assembly for a file
+qpc/salt/relayControl/relay.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/qpc/salt/relayControl/relay.c.s
+.PHONY : qpc/salt/relayControl/relay.c.s
+
 qpc/src/qf/qep_hsm.obj: qpc/src/qf/qep_hsm.c.obj
 .PHONY : qpc/src/qf/qep_hsm.obj
 
@@ -1377,6 +1689,45 @@ help:
 	@echo "... qpc/ports/arm-cm/qk/gnu/qk_port.obj"
 	@echo "... qpc/ports/arm-cm/qk/gnu/qk_port.i"
 	@echo "... qpc/ports/arm-cm/qk/gnu/qk_port.s"
+	@echo "... qpc/salt/aes/aes.obj"
+	@echo "... qpc/salt/aes/aes.i"
+	@echo "... qpc/salt/aes/aes.s"
+	@echo "... qpc/salt/conmgr/conmgr.obj"
+	@echo "... qpc/salt/conmgr/conmgr.i"
+	@echo "... qpc/salt/conmgr/conmgr.s"
+	@echo "... qpc/salt/date/date.obj"
+	@echo "... qpc/salt/date/date.i"
+	@echo "... qpc/salt/date/date.s"
+	@echo "... qpc/salt/epoch/epoch.obj"
+	@echo "... qpc/salt/epoch/epoch.i"
+	@echo "... qpc/salt/epoch/epoch.s"
+	@echo "... qpc/salt/ihm/buzzer.obj"
+	@echo "... qpc/salt/ihm/buzzer.i"
+	@echo "... qpc/salt/ihm/buzzer.s"
+	@echo "... qpc/salt/ledPanel/ledPanel.obj"
+	@echo "... qpc/salt/ledPanel/ledPanel.i"
+	@echo "... qpc/salt/ledPanel/ledPanel.s"
+	@echo "... qpc/salt/logic/logic.obj"
+	@echo "... qpc/salt/logic/logic.i"
+	@echo "... qpc/salt/logic/logic.s"
+	@echo "... qpc/salt/modcmd/modcmdSim900.obj"
+	@echo "... qpc/salt/modcmd/modcmdSim900.i"
+	@echo "... qpc/salt/modcmd/modcmdSim900.s"
+	@echo "... qpc/salt/modmgr/modmgr.obj"
+	@echo "... qpc/salt/modmgr/modmgr.i"
+	@echo "... qpc/salt/modmgr/modmgr.s"
+	@echo "... qpc/salt/modpwr/modpwr.obj"
+	@echo "... qpc/salt/modpwr/modpwr.i"
+	@echo "... qpc/salt/modpwr/modpwr.s"
+	@echo "... qpc/salt/mqttProt/mqttProt.obj"
+	@echo "... qpc/salt/mqttProt/mqttProt.i"
+	@echo "... qpc/salt/mqttProt/mqttProt.s"
+	@echo "... qpc/salt/parser/sim900/sim900parser.obj"
+	@echo "... qpc/salt/parser/sim900/sim900parser.i"
+	@echo "... qpc/salt/parser/sim900/sim900parser.s"
+	@echo "... qpc/salt/relayControl/relay.obj"
+	@echo "... qpc/salt/relayControl/relay.i"
+	@echo "... qpc/salt/relayControl/relay.s"
 	@echo "... qpc/src/qf/qep_hsm.obj"
 	@echo "... qpc/src/qf/qep_hsm.i"
 	@echo "... qpc/src/qf/qep_hsm.s"
