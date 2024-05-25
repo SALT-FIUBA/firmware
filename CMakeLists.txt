@@ -64,26 +64,46 @@ include_directories(
         qpc/blinky
 
         qpc/salt
-        qpc/salt/aes
-        qpc/salt/anIn
-        qpc/salt/conmgr
-        qpc/salt/epoch
-        qpc/salt/gps
-        qpc/salt/modcmd
-        qpc/salt/modmgr
-        qpc/salt/modpwr
-        qpc/salt/rtime
-        qpc/salt/serial
+        qpc/salt/peripherals/aes
+        qpc/salt/peripherals/anIn
+
+        qpc/salt/utilities/rtime
+        qpc/salt/utilities/epoch
+        qpc/salt/utilities/date
+
+        qpc/salt/peripherals/gps
+        qpc/salt/peripherals/ihm
+        qpc/salt/peripherals/ledPanel
+        qpc/salt/peripherals/emaFilter
+        qpc/salt/peripherals/teloc
+        qpc/salt/peripherals/relayControl
+
+        qpc/salt/utilities/serial
+        qpc/salt/utilities/parser/saltCmd
+
+        qpc/salt/peripherals/pulseCounter
+
+        qpc/salt/state-machines/logic
+
+        qpc/salt/utilities/parser
+
+        qpc/salt/peripherals/sim808
+
         qpc/salt/parser/sim900
+        qpc/third-party/ssp/src
         qpc/salt/mTime
-        qpc/salt/sim808
-        qpc/salt/mqttProt
-        qpc/salt/date
-        qpc/salt/logic
-        qpc/salt/ledPanel
+
+        qpc/salt/conmgr
+        qpc/salt/modmgr
+        qpc/salt/modcmd
+        qpc/salt/modpwr
+
+        qpc/salt/utilities/publisher
+
+        qpc/salt/state-machines/mqttProt
+
+        qpc/third-party/MQTT-C/include
         qpc/salt/parser/saltCmd
-        qpc/salt/ihm
-        qpc/salt/relayControl
 
 )
 
@@ -106,19 +126,28 @@ file(
         "qpc/bsp/stm32f4xx_nucleo_144.c"
 
 
-        "qpc/salt/aes/aes.c"
-        "qpc/salt/conmgr/conmgr.c"
-        "qpc/salt/epoch/epoch.c"
-        "qpc/salt/modmgr/modmgr.c"
-        "qpc/salt/modcmd/modcmdSim900.c"
-        "qpc/salt/modpwr/modpwr.c"
-        "qpc/salt/parser/sim900/sim900parser.c"
-        "qpc/salt/mqttProt/mqttProt.c"
-        "qpc/salt/date/date.c"
-        "qpc/salt/logic/logic.c"
-        "qpc/salt/ledPanel/ledPanel.c"
-        "qpc/salt/ihm/buzzer.c"
-        "qpc/salt/relayControl/relay.c"
+        "qpc/salt/peripherals/aes/aes.c"
+        "qpc/salt/utilities/epoch/epoch.c"
+        "qpc/salt/utilities/date/date.c"
+
+        "qpc/salt/peripherals/ihm/buzzer.c"
+        "qpc/salt/peripherals/ledPanel/ledPanel.c"
+        "qpc/salt/peripherals/emaFilter/emaFilter.c"
+        "qpc/salt/peripherals/relayControl/relay.c"
+        "qpc/salt/peripherals/pulseCounter/pulseCounter.c"
+
+        "qpc/salt/utilities/mTime/mTime.c"
+
+
+        # "qpc/salt/parser/sim900/sim900parser.c"
+
+
+        # "qpc/salt/conmgr/conmgr.c"
+       # "qpc/salt/modmgr/modmgr.c"
+       # "qpc/salt/modcmd/modcmdSim900.c"
+       # "qpc/salt/modpwr/modpwr.c"
+       # "qpc/salt/mqttProt/mqttProt.c"
+       # "qpc/salt/logic/logic.c"
 
 )
 

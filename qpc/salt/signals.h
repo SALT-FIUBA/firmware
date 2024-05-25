@@ -95,7 +95,7 @@ enum Signals
     evVel,
     evVelHasler,
     evVelExternal,
-    evVelGPS,
+    evVelGPS
 };
 typedef enum Signals Signals;
 
