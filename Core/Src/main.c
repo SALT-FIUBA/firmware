@@ -22,6 +22,7 @@
 #include "usart.h"
 #include "usb_otg.h"
 #include "gpio.h"
+#include "rkhevt.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -57,6 +58,13 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+#include "rkh.h"
+#include "blinky.h"
+#include "bsp.h"
+
+
+#define QSTO_SIZE           4
+static RKH_EVT_T *qsto[QSTO_SIZE];
 
 /* USER CODE END 0 */
 
@@ -64,7 +72,7 @@ void SystemClock_Config(void);
   * @brief  The application entry point.
   * @retval int
   */
-int main(void)
+int main(int argc, char *argv[])
 {
   /* USER CODE BEGIN 1 */
 //
@@ -92,6 +100,16 @@ int main(void)
   MX_USART3_UART_Init();
   MX_USB_OTG_FS_PCD_Init();
   /* USER CODE BEGIN 2 */
+
+    bsp_init(argc, argv);
+
+    RKH_SMA_ACTIVATE(blinky, qsto, QSTO_SIZE, 0, 0);
+    rkh_fwk_enter();
+
+    //  Trazer -> RKH_TRC_CLOSE();
+    return 0;
+
+
 //
   /* USER CODE END 2 */
 

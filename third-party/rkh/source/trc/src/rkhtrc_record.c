@@ -110,7 +110,7 @@ rkh_trc_begin(RKH_TE_ID_T eid)
     rkh_trc_u8((rui8_t)(nseq)); /* Insert the sequence number */
     ++nseq;
 #endif
-    RKH_TRC_TSTAMP();   /* Insert the timestamp */
+    //  Trazer ->   RKH_TRC_TSTAMP();   /* Insert the timestamp */
 }
 
 void
@@ -184,7 +184,7 @@ rkh_trc_obj(RKH_TE_ID_T tre, rui8_t *obj, const char *obj_name)
         RKH_TRC_SYM(obj);
         RKH_TRC_STR(obj_name);
     RKH_TRC_END_WOFIL()
-    RKH_TRC_FLUSH();
+    //  Trazer ->   RKH_TRC_FLUSH();
 }
 
 void
@@ -194,7 +194,7 @@ rkh_trc_sig(RKH_SIG_T sig, const char *sig_name)
         RKH_TRC_SIG(sig);
         RKH_TRC_STR(sig_name);
     RKH_TRC_END_WOFIL()
-    RKH_TRC_FLUSH();
+    // Trazer ->   RKH_TRC_FLUSH();
 }
 
 void
@@ -204,7 +204,7 @@ rkh_trc_ao(void *ao)
         RKH_TRC_SYM(ao);
         RKH_TRC_STR(RKH_GET_AO_NAME((RKH_SMA_T *)ao));
     RKH_TRC_END_WOFIL()
-    RKH_TRC_FLUSH();
+    // Trazer ->   RKH_TRC_FLUSH();
 }
 
 void
@@ -218,7 +218,8 @@ rkh_trc_state(void *ao, rui8_t *state)
         RKH_TRC_SYM(state);
         RKH_TRC_STR(RKH_GET_VERTEX_NAME(state));
     RKH_TRC_END_WOFIL()
-    RKH_TRC_FLUSH();
+
+    // Trazer ->    RKH_TRC_FLUSH();
 }
 
 #if RKH_CFG_TRC_USER_TRACE_EN == RKH_ENABLED

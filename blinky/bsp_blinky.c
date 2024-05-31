@@ -57,6 +57,7 @@
 #include "blinky.h"
 #include "bsp.h"
 #include "rkh.h"
+#include "stm32f4xx_nucleo_144.h"
 
 //  #include "trace_io_cfg.h"
 
@@ -112,7 +113,7 @@ bsp_init(int argc, char *argv[])
     RKH_FILTER_OFF_SMA(blinky);
     RKH_FILTER_OFF_ALL_SIGNALS();
 
-    RKH_TRC_OPEN();
+    // Trazer ->   RKH_TRC_OPEN();
 }
 
 void
