@@ -54,6 +54,8 @@
 #ifndef __RKHPLAT_H__
 #define __RKHPLAT_H__
 
+#define __STM32__
+
 /* ----------------------------- Include files ----------------------------- */
 #if defined(__NO_OFFICIAL_PORT__)
     #include "rkhport.h"

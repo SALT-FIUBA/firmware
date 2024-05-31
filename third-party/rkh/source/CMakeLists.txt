@@ -1,12 +1,3 @@
-if (DEV_BUILD)
-    # The RKH framework port for Linux platform requires pthread library
-    set(CMAKE_THREAD_PREFER_PTHREAD ON)
-    set(THREADS_PREFER_PTHREAD_FLAG ON)
-    find_package(Threads REQUIRED)
-    if (NOT Threads_FOUND)
-        message(FATAL_ERROR "Threads package is not found")
-    endif()
-endif()
 
 add_library(rkh STATIC)
 add_library(rkh:rkh ALIAS rkh)
@@ -31,16 +22,18 @@ target_sources(rkh PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/tmr/src/rkhtmr.c
     ${CMAKE_CURRENT_SOURCE_DIR}/trc/src/rkhtrc_filter.c
     ${CMAKE_CURRENT_SOURCE_DIR}/trc/src/rkhtrc_record.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/trc/src/rkhtrc_stream.c)
+    ${CMAKE_CURRENT_SOURCE_DIR}/trc/src/rkhtrc_stream.c
+)
 
 # Platform dependent source files used by demo applications
 target_sources(rkh PRIVATE 
-    $<$<BOOL:${DEV_BUILD}>:
-    ${CMAKE_CURRENT_SOURCE_DIR}/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c>)
+    #   $<$<BOOL:${DEV_BUILD}>:
+    ${CMAKE_CURRENT_SOURCE_DIR}/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c
+)
 
 # Global includes. Used by all targets
 target_include_directories(rkh_interface INTERFACE
-    $<BUILD_INTERFACE:$<$<BOOL:${DEV_BUILD}>:${CMAKE_CURRENT_SOURCE_DIR}/portable/80x86/linux_st/gnu>>
+    #   $<BUILD_INTERFACE:$<$<BOOL:${DEV_BUILD}>:${CMAKE_CURRENT_SOURCE_DIR}/portable/arm-cortex/rkhs/arm_cm4f/stm32>>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/fwk/inc>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/mempool/inc>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/queue/inc>
@@ -56,12 +49,8 @@ target_compile_definitions(rkh_interface
 
 # Link required libraries
 target_link_libraries(rkh PUBLIC rkh_interface)
-target_link_libraries(rkh PRIVATE $<$<BOOL:${DEV_BUILD}>:Threads::Threads>)
+#   target_link_libraries(rkh PRIVATE $<$<BOOL:${DEV_BUILD}>:Threads::Threads>)
 
-if (DEV_BUILD) 
-    add_subdirectory(../demo/libbsp ${CMAKE_CURRENT_BINARY_DIR}/bsp)
-    target_link_libraries(rkh PUBLIC bsp)
-endif()
 
 # Introduce variables:
 # * CMAKE_INSTALL_LIBDIR
@@ -128,8 +117,8 @@ if (NOT_SUBPROJECT)
     #   * Source/foo/Bar.hpp -> <prefix>/include/foo/Bar.hpp
     #   * Source/foo/Baz.hpp -> <prefix>/include/foo/Baz.hpp
     install(
-       DIRECTORY 
-       portable/80x86/linux_st/gnu/
+       DIRECTORY
+        portable/arm-cortex/rkhs/arm_cm4f/stm32/
        fwk/inc/
        mempool/inc/
        queue/inc/
@@ -137,8 +126,8 @@ if (NOT_SUBPROJECT)
        sma/inc/
        tmr/inc/
        trc/inc/
-       $<$<BOOL:${DEV_BUILD}>:../demo/libbsp/platform/80x86/linux/>
-       $<$<BOOL:${DEV_BUILD}>:../demo/libbsp/common/>
+       #    $<$<BOOL:${DEV_BUILD}>:../demo/libbsp/platform/80x86/linux/>
+       #    $<$<BOOL:${DEV_BUILD}>:../demo/libbsp/common/>
        DESTINATION ${RKH_PREFIX}/${CMAKE_INSTALL_INCLUDEDIR}
        FILES_MATCHING PATTERN "*.h"
     )

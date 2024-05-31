@@ -50,24 +50,26 @@ else ()
 endif ()
 
 include_directories(
-
         Core/Inc
         Drivers/STM32F4xx_HAL_Driver/Inc
         Drivers/STM32F4xx_HAL_Driver/Inc/Legacy
         Drivers/CMSIS/Device/ST/STM32F4xx/Include
         Drivers/CMSIS/Include
 
-        qpc/include
-        qpc/ports/arm-cm/qk/gnu
+        bsp
+        blinky
 
-        qpc/bsp
-        qpc/blinky
+       third-party/rkh/source/fwk/inc
+       third-party/rkh/source/mempool/inc
+       third-party/rkh/source/queue/inc
+       third-party/rkh/source/sm/inc
+       third-party/rkh/source/sma/inc
+       third-party/rkh/source/tmr/inc
+       third-party/rkh/source/trc/inc
 
-        # create qpc/bsp/STM32F4XX_Nucleo_144.h ?
+      third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32
 
 )
-
-add_definitions(-DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx)
 
 file(
         GLOB_RECURSE
@@ -75,16 +77,41 @@ file(
         "Core/*.*"
         "Drivers/*.*"
 
-        "qpc/src/qk/qk.c"
-        "qpc/src/qf/*.c"
+       "third-party/rkh/source/fwk/src/rkhfwk_bittbl.c"
+       "third-party/rkh/source/fwk/src/rkhfwk_dynevt.c"
+       "third-party/rkh/source/fwk/src/rkhfwk_evtpool.c"
+       "third-party/rkh/source/fwk/src/rkhfwk_pubsub.c"
+       "third-party/rkh/source/fwk/src/rkhfwk_rdygrp.c"
+       "third-party/rkh/source/fwk/src/rkhfwk_sched.c"
+       "third-party/rkh/source/fwk/src/rkhfwk_version.c"
+       "third-party/rkh/source/mempool/src/rkhmempool.c"
+       "third-party/rkh/source/queue/src/rkhqueue.c"
+       "third-party/rkh/source/sm/src/rkhsm.c"
+       "third-party/rkh/source/sma/src/rkhsma.c"
+       "third-party/rkh/source/sma/src/rkhsma_prio.c"
+       "third-party/rkh/source/sma/src/rkhsma_sync.c"
+       "third-party/rkh/source/tmr/src/rkhtmr.c"
+       "third-party/rkh/source/trc/src/rkhtrc_filter.c"
+       "third-party/rkh/source/trc/src/rkhtrc_record.c"
+       "third-party/rkh/source/trc/src/rkhtrc_stream.c"
 
-        "qpc/ports/arm-cm/qk/gnu/qk_port.c"
+       "third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c"
 
-        "qpc/blinky/blinky.c"
-        "qpc/bsp/bsp.c"
-        "qpc/bsp/stm32f4xx_nucleo_144.c"
+        "bsp/stm32f4xx_nucleo_144.c"
+
+        "blinky/blinky.c"
+        "blinky/bsp_blinky.c"
 
 )
+
+add_definitions(
+        -DDEBUG
+        -DUSE_HAL_DRIVER
+        -DSTM32F429xx
+        -DRKH_PLATFORM="__STM32__"
+        -DRKH_CONF_FILE="blinky/rkhcfg.h"
+)
+
 
 set(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/STM32F429ZITX_FLASH.ld)
 

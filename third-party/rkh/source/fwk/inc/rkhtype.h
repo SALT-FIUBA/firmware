@@ -55,6 +55,8 @@
 #ifndef __RKHTYPE_H__
 #define __RKHTYPE_H__
 
+#define __STM32__
+
 /* ----------------------------- Include files ----------------------------- */
 #if defined(__NO_OFFICIAL_PORT__)
     #include "rkht.h"

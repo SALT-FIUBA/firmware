@@ -1,6 +1,7 @@
 /**
   ******************************************************************************
-  * @file    stm32f4xx.h * @author  MCD Application Team
+  * @file    stm32f4xx.h
+  * @author  MCD Application Team
   * @brief   CMSIS STM32F4xx Device Peripheral Access Layer Header File.
   *            
   *          The file is the unique include file that the application programmer
