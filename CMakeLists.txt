@@ -101,6 +101,7 @@ file(
 
         "blinky/blinky.c"
         "blinky/bsp_blinky.c"
+        "blinky/hook.c"
 
 )
 

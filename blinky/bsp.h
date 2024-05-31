@@ -29,7 +29,7 @@ extern "C" {
 /* -------------------------- Function prototypes -------------------------- */
 void bsp_ledOn(void);
 void bsp_ledOff(void);
-void bsp_init(int argc, char * argv[]);
+void bsp_init(void);
 
 /* -------------------- External C language linkage end -------------------- */
 #ifdef __cplusplus

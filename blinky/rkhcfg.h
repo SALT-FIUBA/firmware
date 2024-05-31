@@ -73,7 +73,7 @@
  *  macro RKH_ALLEGE(), that still evaluates the test condition, but does
  *  not report assertion failures when the #RKH_CFG_FWK_ASSERT_EN is enabled.
  */
-#define RKH_CFG_FWK_ASSERT_EN           RKH_ENABLED
+#define RKH_CFG_FWK_ASSERT_EN           RKH_DISABLED //    RKH_ENABLED
 
 /**
  *  \brief

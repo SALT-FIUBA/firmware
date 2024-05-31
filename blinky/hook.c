@@ -24,121 +24,64 @@
  *  with RKH, see copying.txt file.
  *
  *  Contact information:
- *  RKH site: http://vortexmakes.com/que-es/
- *  RKH GitHub: https://github.com/vortexmakes/RKH
- *  RKH Sourceforge: https://sourceforge.net/projects/rkh-reactivesys/
- *  e-mail: lf@vortexmakes.com
+ *  RKH web site:   http://sourceforge.net/projects/rkh-reactivesys/
+ *  e-mail:         francuccilea@gmail.com
  *  ---------------------------------------------------------------------------
  */
 
 /**
- *  \file       bsp_blinky.c
- *  \brief      BSP for 80x86 OS Linux
+ *  \file       hook.c
+ *  \brief      RKH hooks functions for DemoQE128-S08
  *
  *  \ingroup    bsp
  */
 
 /* -------------------------- Development history -------------------------- */
 /*
- *  2017.04.14  LeFr  v2.4.05  Initial version
+ *  2017.04.14  DaBa  v2.4.05  Initial version
  */
 
 /* -------------------------------- Authors -------------------------------- */
 /*
- *  LeFr  Leandro Francucci  lf@vortexmakes.com
- *  DaBa  Dario Baliña       dariosb@gmail.com
- *  CaMa  Carlos Mancón      manconci@gmail.com
+ *  LeFr  Leandro Francucci  francuccilea@gmail.com
+ *  DaBa  Dario Bali�a       dariosb@gmail.com
  */
-
 /* --------------------------------- Notes --------------------------------- */
 /* ----------------------------- Include files ----------------------------- */
-#include <stdio.h>
-
-#include "blinky.h"
-#include "bsp.h"
 #include "rkh.h"
-#include "stm32f4xx_nucleo_144.h"
-
-//  #include "trace_io_cfg.h"
+#include "bsp.h"
 
 RKH_THIS_MODULE
 
 /* ----------------------------- Local macros ------------------------------ */
 /* ------------------------------- Constants ------------------------------- */
-#define ESC         0x1B
-
 /* ---------------------------- Local data types --------------------------- */
 /* ---------------------------- Global variables --------------------------- */
 /* ---------------------------- Local variables ---------------------------- */
-static RKH_ROM_STATIC_EVENT(evTerm, TERMINATE);
-
 /* ----------------------- Local function prototypes ----------------------- */
 /* ---------------------------- Local functions ---------------------------- */
-static void
-printBanner(void)
-{
-    printf("Blinky: a very simple state machine example.\n\n");
-    printf("RKH version      = %s\n", RKH_RELEASE);
-    printf("Port version     = %s\n", rkhport_get_version());
-    printf("Port description = %s\n\n", rkhport_get_desc());
-    printf("Description: \n\n"
-           "The goal of this demo application is to explain how to \n"
-           "represent a \"flat\" state machine and how to use the timer \n"
-           "services using the RKH framework. To do that is proposed a \n"
-           "very simple demo that use one state machine and one timer, \n"
-           "which is shown and explained in the reference manual section \n"
-           "\"Examples\". "
-           "This is the 'hello world' of RKH programming!.\n\n\n");
-
-    printf("1.- Press ESC to quit \n\n\n");
-}
-
 /* ---------------------------- Global functions --------------------------- */
 void
-bsp_init(void)
-{
-
-    printBanner();
-
-    // Trazer ->  trace_io_setConfig(argc, argv);
-
-    rkh_fwk_init();
-
-    RKH_FILTER_ON_GROUP(RKH_TRC_ALL_GROUPS);
-    RKH_FILTER_ON_EVENT(RKH_TRC_ALL_EVENTS);
-    RKH_FILTER_OFF_EVENT(RKH_TE_TMR_TOUT);
-    RKH_FILTER_OFF_EVENT(RKH_TE_SM_STATE);
-    RKH_FILTER_OFF_SMA(blinky);
-    RKH_FILTER_OFF_ALL_SIGNALS();
-
-    // Trazer ->   RKH_TRC_OPEN();
-}
-
-void
-bsp_keyParser(int c)
-{
-    if (c == ESC)
-    {
-        RKH_SMA_POST_FIFO(blinky, &evTerm, 0);
-        //  rkhport_fwk_stop();
-    }
-}
-
-void
-bsp_timeTick(void)
+rkh_hook_start(void)
 {
 }
 
 void
-bsp_ledOn(void)
+rkh_hook_exit(void)
 {
-    printf("LED ON\n");
+    //  Trazer ->   RKH_TRC_FLUSH();
 }
 
 void
-bsp_ledOff(void)
+rkh_hook_timetick(void)
 {
-    printf("LED OFF\n");
+}
+
+void
+rkh_hook_idle(void)
+{
+    RKH_ENA_INTERRUPT();
+    //  Trazer ->   RKH_TRC_FLUSH();
 }
 
 /* ------------------------------ File footer ------------------------------ */

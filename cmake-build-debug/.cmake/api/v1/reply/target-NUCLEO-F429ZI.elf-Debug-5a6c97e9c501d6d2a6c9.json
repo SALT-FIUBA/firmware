@@ -28,13 +28,7 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 122,
-				"parent" : 0
-			},
-			{
-				"command" : 1,
-				"file" : 0,
-				"line" : 118,
+				"line" : 123,
 				"parent" : 0
 			},
 			{
@@ -47,6 +41,12 @@
 				"command" : 1,
 				"file" : 0,
 				"line" : 120,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 121,
 				"parent" : 0
 			},
 			{
@@ -76,7 +76,7 @@
 			{
 				"command" : 3,
 				"file" : 0,
-				"line" : 107,
+				"line" : 108,
 				"parent" : 0
 			},
 			{
@@ -279,7 +279,8 @@
 				132,
 				133,
 				134,
-				135
+				135,
+				136
 			]
 		},
 		{
@@ -506,7 +507,7 @@
 				38,
 				60,
 				94,
-				136
+				137
 			]
 		},
 		{
@@ -633,7 +634,8 @@
 				132,
 				133,
 				134,
-				135
+				135,
+				136
 			]
 		}
 	],
@@ -1255,6 +1257,12 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "blinky/bsp_blinky.c",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "blinky/hook.c",
 			"sourceGroupIndex" : 2
 		},
 		{

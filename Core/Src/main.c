@@ -72,7 +72,7 @@ static RKH_EVT_T *qsto[QSTO_SIZE];
   * @brief  The application entry point.
   * @retval int
   */
-int main(int argc, char *argv[])
+int main(void)
 {
   /* USER CODE BEGIN 1 */
 //
@@ -101,12 +101,15 @@ int main(int argc, char *argv[])
   MX_USB_OTG_FS_PCD_Init();
   /* USER CODE BEGIN 2 */
 
-    bsp_init(argc, argv);
+   bsp_init();
 
-    RKH_SMA_ACTIVATE(blinky, qsto, QSTO_SIZE, 0, 0);
-    rkh_fwk_enter();
+   RKH_SMA_ACTIVATE(blinky, qsto, QSTO_SIZE, 0, 0);
+   rkh_fwk_enter();
 
-    //  Trazer -> RKH_TRC_CLOSE();
+    /*
+     * Trazer -> RKH_TRC_CLOSE();
+     */
+
     return 0;
 
 

@@ -19,7 +19,6 @@
 #include "bsp.h"
 #include "stm32f4xx_nucleo_144.h"
 
-//  #include "rkhsm.h"
 /* ----------------------------- Local macros ------------------------------ */
 #define LedOffTime      RKH_TIME_SEC(2)
 #define LedOnTime       RKH_TIME_SEC(2)
@@ -106,6 +105,8 @@ nLedOn(Blinky *const me)
     RKH_TMR_ONESHOT(&me->timer.tmr, RKH_UPCAST(RKH_SMA_T, me), LedOnTime);
     //
     BSP_LED_On(LED1);
+    BSP_LED_On(LED2);
+    BSP_LED_On(LED3);
     //
     bsp_ledOn();
     ++me->cnt;
@@ -117,6 +118,8 @@ nLedOff(Blinky *const me)
     RKH_TMR_ONESHOT(&me->timer.tmr, RKH_UPCAST(RKH_SMA_T, me), LedOffTime);
     //
     BSP_LED_Off(LED1);
+    BSP_LED_Off(LED2);
+    BSP_LED_Off(LED3);
     //
     bsp_ledOff();
 }
