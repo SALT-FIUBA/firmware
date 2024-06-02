@@ -8,98 +8,145 @@ Estructura de datos propuesta en base a los siguientes archivos:
 
 + [publisher.c](https://github.com/nahueespinosa/salt-firmware/blob/master/salt/publisher/publisher.c)
 
++ [saltCmd.h](https://github.com/nahueespinosa/salt-firmware/blob/6ace7d5886d3d5555b6e407cb1322ef2c9facf9d/salt/parser/saltCmd/saltCmd.h)
 
 ```json
 
-
-typedef struct LogicCfg LogicCfg;
-struct LogicCfg
 {
-    rui16_t publishTime;    /* in secs */
-};
+  "SALT_CMD_TYPE": [
+    "SALT_CMD_TYPE_CMD",
+    "SALT_CMD_TYPE_CONFIG",
+    "SALT_CMD_TYPE_COUNT",
+    "SALT_CMD_TYPE_NULL"
+  ],
+  "SALT_CMD_ORDER": [
+    "SALT_CMD_ORDER_STOP",
+    "SALT_CMD_ORDER_DRIFT",
+    "SALT_CMD_ORDER_ISOLATED",
+    "SALT_CMD_ORDER_AUTOMATIC",
+    "SALT_CMD_ORDER_COUNT",
+    "SALT_CMD_ORDER_NULL"
+  ],
+  "SALT_PARAMETER": [
+    "SALT_PARAMETER_CMD_TIMEOUT",
+    "SALT_PARAMETER_VEL_CT_ON",
+    "SALT_PARAMETER_VEL_CT_OFF",
+    "SALT_PARAMETER_VEL_FE_ON",
+    "SALT_PARAMETER_TIME_FE_HOLD",
+    "SALT_PARAMETER_TIME_BLINK_ENABLE",
+    "SALT_PARAMETER_TIME_BLINK_DISABLE",
+    "SALT_PARAMETER_PERIOD_BLINK",
+    "SALT_PARAMETER_PUBLISH_PERIOD",
+    "SALT_PARAMETER_COUNT",
+    "SALT_PARAMETER_NULL"
+  ],
+  "SaltCmd": {
+    "type": "SALT_CMD_TYPE",
+    "cmd": "SALT_CMD_ORDER",
+    "parameter": "SALT_PARAMETER",
+    "parameterValueString": "string",
+    "parameterValueStringSize": "number",
+    "parameterValueDouble": "number",
+    "parameterValueBool": "boolean"
+  },
+  "LogicCfg": {
+    "publishTime": "number"
+  },
+  "VEL_SOURCE": [
+    "VEL_SOURCE_TELOC",
+    "VEL_SOURCE_EXTERNAL",
+    "VEL_SOURCE_GPS",
+    "VEL_SOURCE_COUNT",
+    "VEL_SOURCE_NULL"
+  ],
+  "VelEvt": {
+    "evt": "RKH_EVT_T",
+    "vel": "number",
+    "source": "VEL_SOURCE"
+  },
+  "CmdEvt": {
+    "evt": "RKH_EVT_T",
+    "cmd": {
+      "type": "SALT_CMD_TYPE",
+      "cmd": "SALT_CMD_ORDER",
+      "parameter": "SALT_PARAMETER",
+      "parameterValueString": "string",
+      "parameterValueStringSize": "number",
+      "parameterValueDouble": "number",
+      "parameterValueBool": "boolean"
+    }
+  },
+  "FailSubsystemData": {
+    "port": "number",
+    "name": "string",
+    "serial_number": "string",
+    "ct_on": "boolean",
+    "fe_on": "boolean"
+  },
+  "SpeedData": {
+    "value": "number",
+    "source": "VEL_SOURCE"
+  },
+  "SaltData": {
+    "alMode": "boolean",
+    "currentCmd": "SALT_CMD_ORDER",
+    "failSubsystem": [
+      {
+        "port": "number",
+        "name": "string",
+        "serial_number": "string",
+        "ct_on": "boolean",
+        "fe_on": "boolean"
+      }
+    ]
+  },
+  "Configuration": {
+    "velCtOn": "number",
+    "velCtOff": "number",
+    "velFeOn": "number",
+    "timeFeHold": "number",
+    "cmdTimeout": "number",
+    "timeBlinkEnable": "number",
+    "timeBlinkDisable": "number",
+    "blinkPeriod": "number",
+    "publishPeriod": "number"
+  },
+  "LogicData": {
+    "saltData": {
+      "alMode": "boolean",
+      "currentCmd": "SALT_CMD_ORDER",
+      "failSubsystem": [
+        {
+          "port": "number",
+          "name": "string",
+          "serial_number": "string",
+          "ct_on": "boolean",
+          "fe_on": "boolean"
+        }
+      ]
+    },
+    "speedData": {
+      "value": "number",
+      "source": "VEL_SOURCE"
+    },
+    "configuration": {
+      "velCtOn": "number",
+      "velCtOff": "number",
+      "velFeOn": "number",
+      "timeFeHold": "number",
+      "cmdTimeout": "number",
+      "timeBlinkEnable": "number",
+      "timeBlinkDisable": "number",
+      "blinkPeriod": "number",
+      "publishPeriod": "number"
+    }
+  }
+}
 
-typedef enum VEL_SOURCE {
-    VEL_SOURCE_TELOC,
-    VEL_SOURCE_EXTERNAL,
-    VEL_SOURCE_GPS,
-    VEL_SOURCE_COUNT,
-    VEL_SOURCE_NULL,
-}VEL_SOURCE;
-
-typedef struct VelEvt VelEvt;
-struct VelEvt
-{
-    RKH_EVT_T evt;
-    float vel;
-    VEL_SOURCE source;
-};
-
-typedef struct CmdEvt CmdEvt;
-struct CmdEvt
-{
-    RKH_EVT_T evt;
-    SaltCmd cmd;
-};
-
-
-typedef struct FailSubsystemData {
-
-  int port;
-  char *name;
-  char *serial_number;
-  rbool_t ct_on;
-  rbool_t fe_on;
-
-} FailSubsystem;
-
-typedef struct SpeedData {
-
-    float value;
-    VEL_SOURCE source;
-
-
-} SpeedData;
-
-typedef struct SaltData {
-
-    rbool_t alMode;
-    SALT_CMD_ORDER currentCmd;
-
-    FailSubsystemData failSubsystem[];
-
-} SaltData;
-
-
-typedef struct Configuration {
-
-    double velCtOn;
-    double velCtOff;
-    double velFeOn;
-    double timeFeHold;
-    rui16_t cmdTimeout;
-
-    double timeBlinkEnable;
-    double timeBlinkDisable;
-    rui8_t blinkPeriod;
-
-    rui16_t publishPeriod;
-
-
-} Configuration;
-
-typedef struct LogicData
-{
-    SaltData saltData;
-
-    SpeedData speedData; // it could be a list of SpeedData with all the sources
-
-    Configuration configuration;
-
-} LogicData;
 ```
 
 
-### paginaas a desarrollar
+### paginas a desarrollar
 
 - [ ] MQTT Client integration from Device service
 - [ ] POST /device/status<br>data class StatusRequest
