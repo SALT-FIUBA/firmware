@@ -30,6 +30,7 @@ extern "C" {
 void bsp_ledOn(void);
 void bsp_ledOff(void);
 void bsp_init(void);
+void bsp_timeTick(void);
 
 /* -------------------- External C language linkage end -------------------- */
 #ifdef __cplusplus

@@ -27,10 +27,14 @@
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN TD */
 
+typedef void(* SystickCb)(void);
+
 /* USER CODE END TD */
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+
+static SystickCb userSysticCb = NULL;
 
 /* USER CODE END PD */
 
@@ -199,5 +203,9 @@ void SysTick_Handler(void)
 /******************************************************************************/
 
 /* USER CODE BEGIN 1 */
-
+void
+Systick_setCallback(SystickCb cb)
+{
+    userSysticCb = cb;
+}
 /* USER CODE END 1 */

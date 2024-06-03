@@ -46,7 +46,7 @@
 /* -------------------------------- Authors -------------------------------- */
 /*
  *  LeFr  Leandro Francucci  lf@vortexmakes.com
- *  DaBa  Dario Baliña       dariosb@gmail.com
+ *  DaBa  Dario Baliï¿½a       dariosb@gmail.com
  */
 
 /* --------------------------------- Notes --------------------------------- */
@@ -54,7 +54,7 @@
 #include "rkh.h"
 #include "rkhfwk_dynevt.h"
 #include "arm_cm4.h"
-#include "bsp.h"
+#include "bsp_blinky.h"
 
 /* ----------------------------- Local macros ------------------------------ */
 /* ------------------------------- Constants ------------------------------- */

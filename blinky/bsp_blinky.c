@@ -55,9 +55,7 @@
 #include <stdio.h>
 
 #include "blinky.h"
-#include "bsp.h"
 #include "rkh.h"
-#include "stm32f4xx_nucleo_144.h"
 
 //  #include "trace_io_cfg.h"
 
@@ -71,6 +69,10 @@ RKH_THIS_MODULE
 /* ---------------------------- Global variables --------------------------- */
 /* ---------------------------- Local variables ---------------------------- */
 static RKH_ROM_STATIC_EVENT(evTerm, TERMINATE);
+
+static RKH_TS_T tstamp;
+
+
 
 /* ----------------------- Local function prototypes ----------------------- */
 /* ---------------------------- Local functions ---------------------------- */
@@ -104,14 +106,21 @@ bsp_init(void)
 
     rkh_fwk_init();
 
-    RKH_FILTER_ON_GROUP(RKH_TRC_ALL_GROUPS);
-    RKH_FILTER_ON_EVENT(RKH_TRC_ALL_EVENTS);
-    RKH_FILTER_OFF_EVENT(RKH_TE_TMR_TOUT);
-    RKH_FILTER_OFF_EVENT(RKH_TE_SM_STATE);
-    RKH_FILTER_OFF_SMA(blinky);
-    RKH_FILTER_OFF_ALL_SIGNALS();
+    /*
+     * Trazer stuff
+     */
+   // RKH_FILTER_ON_GROUP(RKH_TRC_ALL_GROUPS);
+   // RKH_FILTER_ON_EVENT(RKH_TRC_ALL_EVENTS);
+   // RKH_FILTER_OFF_EVENT(RKH_TE_TMR_TOUT);
+   // RKH_FILTER_OFF_EVENT(RKH_TE_SM_STATE);
+   // RKH_FILTER_OFF_SMA(blinky);
+   // RKH_FILTER_OFF_ALL_SIGNALS();
 
     // Trazer ->   RKH_TRC_OPEN();
+
+    // added from spora-firmware
+    //    RKH_ENA_INTERRUPT();
+    //
 }
 
 void
@@ -127,6 +136,9 @@ bsp_keyParser(int c)
 void
 bsp_timeTick(void)
 {
+    ++tstamp;
+    //  mTime_tick();
+    //  tplfsm_timer_isr();
 }
 
 void

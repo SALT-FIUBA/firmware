@@ -49,21 +49,43 @@
 /* --------------------------------- Notes --------------------------------- */
 /* ----------------------------- Include files ----------------------------- */
 #include "rkh.h"
-#include "bsp.h"
+#include "bsp_blinky.h"
+#include "stm32f4xx_it.h"
+
 
 RKH_THIS_MODULE
 
 /* ----------------------------- Local macros ------------------------------ */
 /* ------------------------------- Constants ------------------------------- */
+#define BSP_TICK_RATE_MS    (1000/RKH_CFG_FWK_TICK_RATE_HZ)
+
 /* ---------------------------- Local data types --------------------------- */
 /* ---------------------------- Global variables --------------------------- */
 /* ---------------------------- Local variables ---------------------------- */
+
+static ruint tickCounter;
+
 /* ----------------------- Local function prototypes ----------------------- */
+static void SystickHook(void);
+
 /* ---------------------------- Local functions ---------------------------- */
+static void
+SystickHook(void)
+{
+    if(tickCounter && (--tickCounter == 0))
+    {
+        tickCounter = BSP_TICK_RATE_MS;
+        RKH_TIM_TICK(&rkhtick);
+    }
+}
+
 /* ---------------------------- Global functions --------------------------- */
 void
 rkh_hook_start(void)
 {
+    tickCounter = BSP_TICK_RATE_MS;
+    Systick_setCallback(SystickHook);
+    //  RKH_TR_FWK_ACTOR(&rkhtick, "rkhtick");
 }
 
 void
@@ -75,6 +97,7 @@ rkh_hook_exit(void)
 void
 rkh_hook_timetick(void)
 {
+    bsp_timeTick();
 }
 
 void

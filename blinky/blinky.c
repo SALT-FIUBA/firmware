@@ -16,7 +16,7 @@
 #include "priority.h"
 #include "signal.h"
 #include "event.h"
-#include "bsp.h"
+#include "bsp_blinky.h"
 #include "stm32f4xx_nucleo_144.h"
 
 /* ----------------------------- Local macros ------------------------------ */

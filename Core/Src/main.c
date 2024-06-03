@@ -17,12 +17,13 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
+#include <stdio.h>
 #include "main.h"
 #include "eth.h"
 #include "usart.h"
 #include "usb_otg.h"
 #include "gpio.h"
-#include "rkhevt.h"
+#include "rkh.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -60,7 +61,7 @@ void SystemClock_Config(void);
 /* USER CODE BEGIN 0 */
 #include "rkh.h"
 #include "blinky.h"
-#include "bsp.h"
+#include "bsp_blinky.h"
 
 
 #define QSTO_SIZE           4
@@ -75,23 +76,22 @@ static RKH_EVT_T *qsto[QSTO_SIZE];
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-//
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
 
+
+  printf("init \n");
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-//
   /* USER CODE END Init */
 
   /* Configure the system clock */
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-//
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -101,10 +101,10 @@ int main(void)
   MX_USB_OTG_FS_PCD_Init();
   /* USER CODE BEGIN 2 */
 
-   bsp_init();
+  bsp_init();
 
-   RKH_SMA_ACTIVATE(blinky, qsto, QSTO_SIZE, 0, 0);
-   rkh_fwk_enter();
+  RKH_SMA_ACTIVATE(blinky, qsto, QSTO_SIZE, 0, 0);
+  rkh_fwk_enter();
 
     /*
      * Trazer -> RKH_TRC_CLOSE();
@@ -113,18 +113,14 @@ int main(void)
     return 0;
 
 
-//
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-//    while (1)
-//    {
     /* USER CODE END WHILE */
-
     /* USER CODE BEGIN 3 */
-//    }
   /* USER CODE END 3 */
+
 }
 
 /**

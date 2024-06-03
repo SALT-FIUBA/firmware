@@ -57,6 +57,10 @@ void PendSV_Handler(void);
 void SysTick_Handler(void);
 /* USER CODE BEGIN EFP */
 
+typedef void(* SystickCb)(void);
+
+void Systick_setCallback(SystickCb cb);
+
 /* USER CODE END EFP */
 
 #ifdef __cplusplus
