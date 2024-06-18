@@ -53,15 +53,27 @@
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
-/* USER CODE BEGIN PFP */
 
+/* USER CODE BEGIN PFP */
+#ifdef __GNUC__
+#define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
+#else
+#define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)
+#endif
+
+PUTCHAR_PROTOTYPE
+{
+    HAL_UART_Transmit(&huart3, (uint8_t *)&ch, 1, HAL_MAX_DELAY);
+    return ch;
+}
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 #include "rkh.h"
 #include "blinky.h"
-#include "bsp_blinky.h"
+#include "bsp/bsp_blinky.h"
+#include "mTime.h"
 
 
 #define QSTO_SIZE           4
@@ -81,7 +93,7 @@ int main(void)
   /* MCU Configuration--------------------------------------------------------*/
 
 
-  printf("init \n");
+  printf("main \n");
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
 
@@ -102,6 +114,8 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
   bsp_init();
+
+  mTime_init();
 
   RKH_SMA_ACTIVATE(blinky, qsto, QSTO_SIZE, 0, 0);
   rkh_fwk_enter();

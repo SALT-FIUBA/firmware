@@ -75,5 +75,5 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/blinky.c.obj: \
  /Users/nando/NUCLEO-F429ZI/blinky/priority.h \
  /Users/nando/NUCLEO-F429ZI/blinky/signal.h \
  /Users/nando/NUCLEO-F429ZI/blinky/event.h \
- /Users/nando/NUCLEO-F429ZI/blinky/bsp_blinky.h \
+ /Users/nando/NUCLEO-F429ZI/blinky/bsp/bsp_blinky.h \
  /Users/nando/NUCLEO-F429ZI/bsp/stm32f4xx_nucleo_144.h

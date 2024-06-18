@@ -271,7 +271,9 @@
  *	If the #RKH_CFG_SMA_TRC_SNDR_EN and #RKH_CFG_TRC_EN are set to 1,
  *	when posting an event the RKH inserts a pointer to the sender object.
  */
-#define RKH_CFG_SMA_TRC_SNDR_EN         RKH_DISABLED
+//  #define RKH_CFG_SMA_TRC_SNDR_EN         RKH_DISABLED
+
+#define RKH_CFG_SMA_TRC_SNDR_EN         RKH_ENABLED
 
 /**
  *	If the #RKH_CFG_SMA_INIT_EVT_EN is set to 1 then an initial event could
@@ -407,7 +409,7 @@
  *	If the #RKH_CFG_TRC_EN is set to 1 then RKH will include the trace
  *	facility.
  */
-#define RKH_CFG_TRC_EN                  RKH_ENABLED
+#define RKH_CFG_TRC_EN                  RKH_DISABLED
 
 /**
  *	If the #RKH_CFG_TRC_RTFIL_EN is set to 1 then RKH will include

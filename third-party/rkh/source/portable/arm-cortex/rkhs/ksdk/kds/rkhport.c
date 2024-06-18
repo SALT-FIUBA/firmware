@@ -53,7 +53,7 @@
 /* ----------------------------- Include files ----------------------------- */
 #include "rkh.h"
 #include "rkhfwk_dynevt.h"
-#include "bsp_blinky.h"
+#include "bsp/bsp_blinky.h"
 
 /* ----------------------------- Local macros ------------------------------ */
 /* ------------------------------- Constants ------------------------------- */

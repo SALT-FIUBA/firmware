@@ -24,14 +24,16 @@
  *  with RKH, see copying.txt file.
  *
  *  Contact information:
- *  RKH web site:   http://sourceforge.net/projects/rkh-reactivesys/
- *  e-mail:         francuccilea@gmail.com
+ *  RKH site: http://vortexmakes.com/que-es/
+ *  RKH GitHub: https://github.com/vortexmakes/RKH
+ *  RKH Sourceforge: https://sourceforge.net/projects/rkh-reactivesys/
+ *  e-mail: lf@vortexmakes.com
  *  ---------------------------------------------------------------------------
  */
 
 /**
- *  \file       hook.c
- *  \brief      RKH hooks functions for DemoQE128-S08
+ *  \file       assert.c
+ *  \brief      RKH assert function for STM32
  *
  *  \ingroup    bsp
  */
@@ -43,68 +45,40 @@
 
 /* -------------------------------- Authors -------------------------------- */
 /*
- *  LeFr  Leandro Francucci  francuccilea@gmail.com
- *  DaBa  Dario Bali�a       dariosb@gmail.com
+ *  LeFr  Leandro Francucci  lf@vortexmakes.com
+ *  DaBa  Dario Bali�a       db@vortexmakes.com
  */
 /* --------------------------------- Notes --------------------------------- */
 /* ----------------------------- Include files ----------------------------- */
-#include "rkh.h"
-#include "bsp_blinky.h"
-#include "stm32f4xx_it.h"
+#include <stdio.h>
 
+#include "rkh.h"
 
 RKH_THIS_MODULE
 
 /* ----------------------------- Local macros ------------------------------ */
-/* ------------------------------- Constants ------------------------------- */
-#define BSP_TICK_RATE_MS    (1000/RKH_CFG_FWK_TICK_RATE_HZ)
+#ifdef DEBUG
+#define reset_now()		__asm volatile	("	bkpt 0x00FF\n" )
+#else
+#define reset_now()		NVIC_SystemReset()
+#endif
 
+/* ------------------------------- Constants ------------------------------- */
 /* ---------------------------- Local data types --------------------------- */
 /* ---------------------------- Global variables --------------------------- */
 /* ---------------------------- Local variables ---------------------------- */
-
-static ruint tickCounter;
-
 /* ----------------------- Local function prototypes ----------------------- */
-static void SystickHook(void);
-
 /* ---------------------------- Local functions ---------------------------- */
-static void
-SystickHook(void)
-{
-    if(tickCounter && (--tickCounter == 0))
-    {
-        tickCounter = BSP_TICK_RATE_MS;
-        RKH_TIM_TICK(&rkhtick);
-    }
-}
-
 /* ---------------------------- Global functions --------------------------- */
 void
-rkh_hook_start(void)
+rkh_assert(RKHROM char * const file, int line)
 {
-    tickCounter = BSP_TICK_RATE_MS;
-    Systick_setCallback(SystickHook);
-    //  RKH_TR_FWK_ACTOR(&rkhtick, "rkhtick");
-}
-
-void
-rkh_hook_exit(void)
-{
-    //  Trazer ->   RKH_TRC_FLUSH();
-}
-
-void
-rkh_hook_timetick(void)
-{
-    bsp_timeTick();
-}
-
-void
-rkh_hook_idle(void)
-{
-    RKH_ENA_INTERRUPT();
-    //  Trazer ->   RKH_TRC_FLUSH();
+    fprintf(stderr,    "RKH_ASSERT: [%d] line from %s "
+                       "file\n", line, file);
+    RKH_DIS_INTERRUPT();
+    RKH_TR_FWK_ASSERT((RKHROM char *)file, __LINE__);
+    rkh_fwk_exit();
+    reset_now();
 }
 
 /* ------------------------------ File footer ------------------------------ */

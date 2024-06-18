@@ -52,6 +52,7 @@
 
 /* --------------------------------- Notes --------------------------------- */
 /* ----------------------------- Include files ----------------------------- */
+#include <stdio.h>
 #include "rkhfwk_module.h"
 #include "rkhitl.h"
 #include "rkhfwk_sched.h"
@@ -105,6 +106,7 @@ rkh_fwk_init(void)
 void 
 rkh_fwk_enter(void)
 {
+
     rui8_t prio;
     RKH_SMA_T *sma;
     RKH_EVT_T *e;

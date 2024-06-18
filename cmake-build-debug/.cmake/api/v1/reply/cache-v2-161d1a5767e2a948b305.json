@@ -259,7 +259,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/nando/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/241.17011.124/CLion.app/Contents/bin/cmake/mac/x64/bin/cmake"
+			"value" : "/Users/nando/Applications/CLion.app/Contents/bin/cmake/mac/x64/bin/cmake"
 		},
 		{
 			"name" : "CMAKE_CPACK_COMMAND",
@@ -271,7 +271,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/nando/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/241.17011.124/CLion.app/Contents/bin/cmake/mac/x64/bin/cpack"
+			"value" : "/Users/nando/Applications/CLion.app/Contents/bin/cmake/mac/x64/bin/cpack"
 		},
 		{
 			"name" : "CMAKE_CTEST_COMMAND",
@@ -283,7 +283,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/nando/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/241.17011.124/CLion.app/Contents/bin/cmake/mac/x64/bin/ctest"
+			"value" : "/Users/nando/Applications/CLion.app/Contents/bin/cmake/mac/x64/bin/ctest"
 		},
 		{
 			"name" : "CMAKE_CXX_COMPILER_AR",
@@ -1007,7 +1007,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/nando/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/241.17011.124/CLion.app/Contents/bin/cmake/mac/x64/share/cmake-3.28"
+			"value" : "/Users/nando/Applications/CLion.app/Contents/bin/cmake/mac/x64/share/cmake-3.28"
 		},
 		{
 			"name" : "CMAKE_SHARED_LINKER_FLAGS",

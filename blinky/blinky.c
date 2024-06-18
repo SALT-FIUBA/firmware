@@ -16,7 +16,7 @@
 #include "priority.h"
 #include "signal.h"
 #include "event.h"
-#include "bsp_blinky.h"
+#include "bsp/bsp_blinky.h"
 #include "stm32f4xx_nucleo_144.h"
 
 /* ----------------------------- Local macros ------------------------------ */
@@ -41,12 +41,12 @@ static void nLedOff(Blinky *const me);
 /* ........................ States and pseudostates ........................ */
 RKH_CREATE_BASIC_STATE(ledOn, nLedOn, NULL, RKH_ROOT, NULL);
 RKH_CREATE_TRANS_TABLE(ledOn)
-RKH_TRREG(evTout, NULL, NULL, &ledOff),
+    RKH_TRREG(evTout, NULL, NULL, &ledOff),
 RKH_END_TRANS_TABLE
 
 RKH_CREATE_BASIC_STATE(ledOff, nLedOff, NULL, RKH_ROOT, NULL);
 RKH_CREATE_TRANS_TABLE(ledOff)
-RKH_TRREG(evTout, NULL, NULL, &ledOn),
+    RKH_TRREG(evTout, NULL, NULL, &ledOn),
 RKH_END_TRANS_TABLE
 
 /* ............................. Active object ............................. */
@@ -59,7 +59,15 @@ struct Blinky
     /* 'blinky' */
 };
 
-RKH_SMA_CREATE(Blinky, blinky, BlinkyPrio, HCAL, &ledOn, init, NULL);
+RKH_SMA_CREATE(
+        Blinky,
+        blinky,
+        BlinkyPrio,
+        HCAL,
+        &ledOn,
+        init,
+        NULL
+);
 RKH_SMA_DEF_PTR(blinky);
 
 /* ------------------------------- Constants ------------------------------- */
@@ -72,42 +80,32 @@ RKH_SMA_DEF_PTR(blinky);
 static void
 init(Blinky *const me, RKH_EVT_T *pe)
 {
-    RKH_TR_FWK_AO(me);
-    RKH_TR_FWK_QUEUE(&RKH_UPCAST(RKH_SMA_T, me)->equeue);
-    RKH_TR_FWK_STATE(me, &ledOn);
-    RKH_TR_FWK_STATE(me, &ledOff);
-    RKH_TR_FWK_OBJ_NAME(&me->timer.tmr, "Blinky::timer");
-    RKH_TR_FWK_SIG(evTout);
-/**
- *  \brief
- *  This number divides interrupts into "aware" and "unware" interrupts, which
- *  are never disabled, and "aware" interrupts, which are disabled in the RKH
- *  critical section.
- *  For example, an interrupt priority number lower than
- *  RKH_CFG_FWK_AWARE_ISR_PRIO indicates an "unware" interrupt, whereas an
- *  interrupt priority number equal or higher than RKH_CFG_FWK_AWARE_ISR_PRIO
- *  indicates an "aware" interrupt.
- *
- *  \type       Integer
- *  \range      [1..255]
- *  \default    0
- */
-#define RKH_CFG_FWK_AWARE_ISR_PRIO      0
-    RKH_SET_STATIC_EVENT(&me->timer, evTout);
-    RKH_TMR_INIT(&me->timer.tmr, RKH_UPCAST(RKH_EVT_T, &me->timer), NULL);
-    me->cnt = 0;
+   RKH_TR_FWK_AO(me);
+   RKH_TR_FWK_QUEUE(&RKH_UPCAST(RKH_SMA_T, me)->equeue);
+   RKH_TR_FWK_STATE(me, &ledOn);
+   RKH_TR_FWK_STATE(me, &ledOff);
+   RKH_TR_FWK_OBJ_NAME(&me->timer.tmr, "Blinky::timer");
+   RKH_TR_FWK_SIG(evTout);
+
+   RKH_SET_STATIC_EVENT(&me->timer, evTout);
+   RKH_TMR_INIT(&me->timer.tmr, RKH_UPCAST(RKH_EVT_T, &me->timer), NULL);
+   me->cnt = 0;
 }
 
 /* ............................. Entry actions ............................. */
 static void
 nLedOn(Blinky *const me)
 {
-    RKH_TMR_ONESHOT(&me->timer.tmr, RKH_UPCAST(RKH_SMA_T, me), LedOnTime);
+    RKH_TMR_ONESHOT(
+            &me->timer.tmr,
+            RKH_UPCAST(RKH_SMA_T, me),
+            LedOnTime
+    );
     //
     BSP_LED_On(LED1);
     BSP_LED_On(LED2);
     BSP_LED_On(LED3);
-    //
+
     bsp_ledOn();
     ++me->cnt;
 }
@@ -115,12 +113,16 @@ nLedOn(Blinky *const me)
 static void
 nLedOff(Blinky *const me)
 {
-    RKH_TMR_ONESHOT(&me->timer.tmr, RKH_UPCAST(RKH_SMA_T, me), LedOffTime);
+    RKH_TMR_ONESHOT(
+            &me->timer.tmr,
+            RKH_UPCAST(RKH_SMA_T, me),
+            LedOffTime
+    );
     //
     BSP_LED_Off(LED1);
     BSP_LED_Off(LED2);
     BSP_LED_Off(LED3);
-    //
+
     bsp_ledOff();
 }
 

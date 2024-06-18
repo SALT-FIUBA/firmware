@@ -54,7 +54,7 @@
 #include "rkh.h"
 #include "rkhfwk_dynevt.h"
 #include "arm_cm4.h"
-#include "bsp_blinky.h"
+#include "bsp/bsp_blinky.h"
 
 /* ----------------------------- Local macros ------------------------------ */
 /* ------------------------------- Constants ------------------------------- */

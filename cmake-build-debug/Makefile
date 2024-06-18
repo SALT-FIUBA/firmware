@@ -48,10 +48,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = "/Users/nando/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/241.17011.124/CLion.app/Contents/bin/cmake/mac/x64/bin/cmake"
+CMAKE_COMMAND = /Users/nando/Applications/CLion.app/Contents/bin/cmake/mac/x64/bin/cmake
 
 # The command to remove a file.
-RM = "/Users/nando/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/241.17011.124/CLion.app/Contents/bin/cmake/mac/x64/bin/cmake" -E rm -f
+RM = /Users/nando/Applications/CLion.app/Contents/bin/cmake/mac/x64/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -68,7 +68,7 @@ CMAKE_BINARY_DIR = /Users/nando/NUCLEO-F429ZI/cmake-build-debug
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "No interactive CMake dialog available..."
-	"/Users/nando/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/241.17011.124/CLion.app/Contents/bin/cmake/mac/x64/bin/cmake" -E echo No\ interactive\ CMake\ dialog\ available.
+	/Users/nando/Applications/CLion.app/Contents/bin/cmake/mac/x64/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -78,7 +78,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake to regenerate build system..."
-	"/Users/nando/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/241.17011.124/CLion.app/Contents/bin/cmake/mac/x64/bin/cmake" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/Users/nando/Applications/CLion.app/Contents/bin/cmake/mac/x64/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -881,53 +881,77 @@ blinky/blinky.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/blinky.c.s
 .PHONY : blinky/blinky.c.s
 
-blinky/bsp_blinky.obj: blinky/bsp_blinky.c.obj
-.PHONY : blinky/bsp_blinky.obj
+blinky/bsp/assert.obj: blinky/bsp/assert.c.obj
+.PHONY : blinky/bsp/assert.obj
 
 # target to build an object file
-blinky/bsp_blinky.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp_blinky.c.obj
-.PHONY : blinky/bsp_blinky.c.obj
+blinky/bsp/assert.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp/assert.c.obj
+.PHONY : blinky/bsp/assert.c.obj
 
-blinky/bsp_blinky.i: blinky/bsp_blinky.c.i
-.PHONY : blinky/bsp_blinky.i
+blinky/bsp/assert.i: blinky/bsp/assert.c.i
+.PHONY : blinky/bsp/assert.i
 
 # target to preprocess a source file
-blinky/bsp_blinky.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp_blinky.c.i
-.PHONY : blinky/bsp_blinky.c.i
+blinky/bsp/assert.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp/assert.c.i
+.PHONY : blinky/bsp/assert.c.i
 
-blinky/bsp_blinky.s: blinky/bsp_blinky.c.s
-.PHONY : blinky/bsp_blinky.s
+blinky/bsp/assert.s: blinky/bsp/assert.c.s
+.PHONY : blinky/bsp/assert.s
 
 # target to generate assembly for a file
-blinky/bsp_blinky.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp_blinky.c.s
-.PHONY : blinky/bsp_blinky.c.s
+blinky/bsp/assert.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp/assert.c.s
+.PHONY : blinky/bsp/assert.c.s
 
-blinky/hook.obj: blinky/hook.c.obj
-.PHONY : blinky/hook.obj
+blinky/bsp/bsp_blinky.obj: blinky/bsp/bsp_blinky.c.obj
+.PHONY : blinky/bsp/bsp_blinky.obj
 
 # target to build an object file
-blinky/hook.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/hook.c.obj
-.PHONY : blinky/hook.c.obj
+blinky/bsp/bsp_blinky.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp/bsp_blinky.c.obj
+.PHONY : blinky/bsp/bsp_blinky.c.obj
 
-blinky/hook.i: blinky/hook.c.i
-.PHONY : blinky/hook.i
+blinky/bsp/bsp_blinky.i: blinky/bsp/bsp_blinky.c.i
+.PHONY : blinky/bsp/bsp_blinky.i
 
 # target to preprocess a source file
-blinky/hook.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/hook.c.i
-.PHONY : blinky/hook.c.i
+blinky/bsp/bsp_blinky.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp/bsp_blinky.c.i
+.PHONY : blinky/bsp/bsp_blinky.c.i
 
-blinky/hook.s: blinky/hook.c.s
-.PHONY : blinky/hook.s
+blinky/bsp/bsp_blinky.s: blinky/bsp/bsp_blinky.c.s
+.PHONY : blinky/bsp/bsp_blinky.s
 
 # target to generate assembly for a file
-blinky/hook.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/hook.c.s
-.PHONY : blinky/hook.c.s
+blinky/bsp/bsp_blinky.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp/bsp_blinky.c.s
+.PHONY : blinky/bsp/bsp_blinky.c.s
+
+blinky/bsp/hook.obj: blinky/bsp/hook.c.obj
+.PHONY : blinky/bsp/hook.obj
+
+# target to build an object file
+blinky/bsp/hook.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp/hook.c.obj
+.PHONY : blinky/bsp/hook.c.obj
+
+blinky/bsp/hook.i: blinky/bsp/hook.c.i
+.PHONY : blinky/bsp/hook.i
+
+# target to preprocess a source file
+blinky/bsp/hook.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp/hook.c.i
+.PHONY : blinky/bsp/hook.c.i
+
+blinky/bsp/hook.s: blinky/bsp/hook.c.s
+.PHONY : blinky/bsp/hook.s
+
+# target to generate assembly for a file
+blinky/bsp/hook.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp/hook.c.s
+.PHONY : blinky/bsp/hook.c.s
 
 bsp/stm32f4xx_nucleo_144.obj: bsp/stm32f4xx_nucleo_144.c.obj
 .PHONY : bsp/stm32f4xx_nucleo_144.obj
@@ -952,6 +976,54 @@ bsp/stm32f4xx_nucleo_144.s: bsp/stm32f4xx_nucleo_144.c.s
 bsp/stm32f4xx_nucleo_144.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/bsp/stm32f4xx_nucleo_144.c.s
 .PHONY : bsp/stm32f4xx_nucleo_144.c.s
+
+mTime/mTime.obj: mTime/mTime.c.obj
+.PHONY : mTime/mTime.obj
+
+# target to build an object file
+mTime/mTime.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTime.c.obj
+.PHONY : mTime/mTime.c.obj
+
+mTime/mTime.i: mTime/mTime.c.i
+.PHONY : mTime/mTime.i
+
+# target to preprocess a source file
+mTime/mTime.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTime.c.i
+.PHONY : mTime/mTime.c.i
+
+mTime/mTime.s: mTime/mTime.c.s
+.PHONY : mTime/mTime.s
+
+# target to generate assembly for a file
+mTime/mTime.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTime.c.s
+.PHONY : mTime/mTime.c.s
+
+mTime/mTimeTbl.obj: mTime/mTimeTbl.c.obj
+.PHONY : mTime/mTimeTbl.obj
+
+# target to build an object file
+mTime/mTimeTbl.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTimeTbl.c.obj
+.PHONY : mTime/mTimeTbl.c.obj
+
+mTime/mTimeTbl.i: mTime/mTimeTbl.c.i
+.PHONY : mTime/mTimeTbl.i
+
+# target to preprocess a source file
+mTime/mTimeTbl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTimeTbl.c.i
+.PHONY : mTime/mTimeTbl.c.i
+
+mTime/mTimeTbl.s: mTime/mTimeTbl.c.s
+.PHONY : mTime/mTimeTbl.s
+
+# target to generate assembly for a file
+mTime/mTimeTbl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTimeTbl.c.s
+.PHONY : mTime/mTimeTbl.c.s
 
 third-party/rkh/source/fwk/src/rkhfwk_bittbl.obj: third-party/rkh/source/fwk/src/rkhfwk_bittbl.c.obj
 .PHONY : third-party/rkh/source/fwk/src/rkhfwk_bittbl.obj
@@ -1488,15 +1560,24 @@ help:
 	@echo "... blinky/blinky.obj"
 	@echo "... blinky/blinky.i"
 	@echo "... blinky/blinky.s"
-	@echo "... blinky/bsp_blinky.obj"
-	@echo "... blinky/bsp_blinky.i"
-	@echo "... blinky/bsp_blinky.s"
-	@echo "... blinky/hook.obj"
-	@echo "... blinky/hook.i"
-	@echo "... blinky/hook.s"
+	@echo "... blinky/bsp/assert.obj"
+	@echo "... blinky/bsp/assert.i"
+	@echo "... blinky/bsp/assert.s"
+	@echo "... blinky/bsp/bsp_blinky.obj"
+	@echo "... blinky/bsp/bsp_blinky.i"
+	@echo "... blinky/bsp/bsp_blinky.s"
+	@echo "... blinky/bsp/hook.obj"
+	@echo "... blinky/bsp/hook.i"
+	@echo "... blinky/bsp/hook.s"
 	@echo "... bsp/stm32f4xx_nucleo_144.obj"
 	@echo "... bsp/stm32f4xx_nucleo_144.i"
 	@echo "... bsp/stm32f4xx_nucleo_144.s"
+	@echo "... mTime/mTime.obj"
+	@echo "... mTime/mTime.i"
+	@echo "... mTime/mTime.s"
+	@echo "... mTime/mTimeTbl.obj"
+	@echo "... mTime/mTimeTbl.i"
+	@echo "... mTime/mTimeTbl.s"
 	@echo "... third-party/rkh/source/fwk/src/rkhfwk_bittbl.obj"
 	@echo "... third-party/rkh/source/fwk/src/rkhfwk_bittbl.i"
 	@echo "... third-party/rkh/source/fwk/src/rkhfwk_bittbl.s"

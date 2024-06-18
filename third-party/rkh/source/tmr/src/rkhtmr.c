@@ -50,6 +50,7 @@
 
 /* --------------------------------- Notes --------------------------------- */
 /* ----------------------------- Include files ----------------------------- */
+#include <stdio.h>
 #include "rkhtmr.h"
 #include "rkhassert.h"
 #include "rkhfwk_hook.h"
@@ -131,6 +132,8 @@ rkh_tmr_tick(const void *const sender)
 rkh_tmr_tick(void)
 #endif
 {
+    printf("rkh_tmr_tick \n");
+
     RKH_TMR_T *t, *tprev;
     RKH_SR_ALLOC();
 
@@ -176,6 +179,8 @@ rkh_tmr_init_(RKH_TMR_T *t, const RKH_EVT_T *e)
 rkh_tmr_init_(RKH_TMR_T * t, const RKH_EVT_T * e, RKH_THK_T thk)
 #endif
 {
+    printf("rkh tmr init \n");
+
     RKH_SR_ALLOC();
     RKH_REQUIRE(t != CPTIM(0) && e != CCE(0));
 

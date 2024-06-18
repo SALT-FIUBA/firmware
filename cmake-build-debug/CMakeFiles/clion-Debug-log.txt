@@ -1,4 +1,4 @@
-"/Users/nando/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/241.17011.124/CLion.app/Contents/bin/cmake/mac/x64/bin/cmake" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" -S /Users/nando/NUCLEO-F429ZI -B /Users/nando/NUCLEO-F429ZI/cmake-build-debug
+/Users/nando/Applications/CLion.app/Contents/bin/cmake/mac/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" -S /Users/nando/NUCLEO-F429ZI -B /Users/nando/NUCLEO-F429ZI/cmake-build-debug
 CMake Deprecation Warning:
   Support for "Extra Generators" like
 

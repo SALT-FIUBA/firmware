@@ -14,6 +14,9 @@ set(CMAKE_ASM_COMPILER_ID "GNU")
 
 # Preprocessor definitions for this target.
 set(CMAKE_TARGET_DEFINITIONS_ASM
+  "ARM_MATH_CM4"
+  "ARM_MATH_MATRIX_CHECK"
+  "ARM_MATH_ROUNDING"
   "DEBUG"
   "RKH_CONF_FILE=\"blinky/rkhcfg.h\""
   "RKH_PLATFORM=\"__STM32__\""
@@ -38,6 +41,7 @@ set(CMAKE_ASM_TARGET_INCLUDE_PATH
   "/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/tmr/inc"
   "/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/inc"
   "/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32"
+  "/Users/nando/NUCLEO-F429ZI/mTime"
   )
 
 # The set of dependency files which are needed:
@@ -73,9 +77,12 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj.d"
   "/Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c.obj.d"
   "/Users/nando/NUCLEO-F429ZI/blinky/blinky.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/blinky.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/blinky.c.obj.d"
-  "/Users/nando/NUCLEO-F429ZI/blinky/bsp_blinky.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp_blinky.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp_blinky.c.obj.d"
-  "/Users/nando/NUCLEO-F429ZI/blinky/hook.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/hook.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/hook.c.obj.d"
+  "/Users/nando/NUCLEO-F429ZI/blinky/bsp/assert.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp/assert.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp/assert.c.obj.d"
+  "/Users/nando/NUCLEO-F429ZI/blinky/bsp/bsp_blinky.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp/bsp_blinky.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp/bsp_blinky.c.obj.d"
+  "/Users/nando/NUCLEO-F429ZI/blinky/bsp/hook.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp/hook.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp/hook.c.obj.d"
   "/Users/nando/NUCLEO-F429ZI/bsp/stm32f4xx_nucleo_144.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/bsp/stm32f4xx_nucleo_144.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/bsp/stm32f4xx_nucleo_144.c.obj.d"
+  "/Users/nando/NUCLEO-F429ZI/mTime/mTime.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTime.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTime.c.obj.d"
+  "/Users/nando/NUCLEO-F429ZI/mTime/mTimeTbl.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTimeTbl.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTimeTbl.c.obj.d"
   "/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/src/rkhfwk_bittbl.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_bittbl.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_bittbl.c.obj.d"
   "/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/src/rkhfwk_dynevt.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_dynevt.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_dynevt.c.obj.d"
   "/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/src/rkhfwk_evtpool.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_evtpool.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_evtpool.c.obj.d"

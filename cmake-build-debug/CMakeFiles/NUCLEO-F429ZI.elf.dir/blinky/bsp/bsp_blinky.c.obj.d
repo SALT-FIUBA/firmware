@@ -1,5 +1,5 @@
-CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp_blinky.c.obj: \
- /Users/nando/NUCLEO-F429ZI/blinky/bsp_blinky.c \
+CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp/bsp_blinky.c.obj: \
+ /Users/nando/NUCLEO-F429ZI/blinky/bsp/bsp_blinky.c \
  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/stdio.h \
  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/_ansi.h \
  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/newlib.h \

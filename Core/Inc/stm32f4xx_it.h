@@ -32,6 +32,7 @@
 
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
+typedef void(* SystickCb)(void);
 
 /* USER CODE END ET */
 
@@ -55,10 +56,8 @@ void SVC_Handler(void);
 void DebugMon_Handler(void);
 void PendSV_Handler(void);
 void SysTick_Handler(void);
+
 /* USER CODE BEGIN EFP */
-
-typedef void(* SystickCb)(void);
-
 void Systick_setCallback(SystickCb cb);
 
 /* USER CODE END EFP */
