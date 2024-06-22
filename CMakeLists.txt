@@ -83,7 +83,7 @@ include_directories(
 
         Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32
 
-        BSP-NUCLEO-144
+        Drivers/BSP-Nucleo-144
 
         reactive-framework/blinky
         reactive-framework/blinky/bsp
@@ -92,13 +92,31 @@ include_directories(
         reactive-framework/salt/utilities/date
         reactive-framework/salt/utilities/epoch
 
-        reactive-framework/salt/state-machines/signals
-
-        reactive-framework/salt/state-machines/mqttProt
-
-        reactive-framework/salt/stm32
-
         Middlewares/Third_Party/MQTT-C/include
+
+        reactive-framework/salt
+        reactive-framework/salt/configuration
+        reactive-framework/salt/bsp
+
+        reactive-framework/salt/state-machines/mqtt-protocol
+        reactive-framework/salt/state-machines/connector-manager
+        reactive-framework/salt/state-machines/module-manager
+        reactive-framework/salt/state-machines/logic
+
+        reactive-framework/salt/peripherals/module-command
+        reactive-framework/salt/peripherals/module-power
+        reactive-framework/salt/peripherals/serial
+        reactive-framework/salt/peripherals/gps
+        reactive-framework/salt/peripherals/sim808
+        reactive-framework/salt/peripherals/ledPanel
+        reactive-framework/salt/peripherals/ihm
+        reactive-framework/salt/peripherals/relay-control
+        reactive-framework/salt/peripherals/analog-inputs
+
+        reactive-framework/salt/utilities/emaFilter
+        reactive-framework/salt/utilities/parser/sim900
+        reactive-framework/salt/utilities/parser/salt-command
+
 )
 
 
@@ -108,7 +126,7 @@ add_definitions(
         -DSTM32F429xx
         -DRKH_PLATFORM="__STM32__"
         -DRKH_CONF_FILE="reactive-framework/blinky/rkhcfg.h"
-        -DMQTTC_PAL_FILE="reactive-framework/salt/stm32/stm32_mqtt_pal.h"
+        -DMQTTC_PAL_FILE="reactive-framework/salt/stm32_mqtt_pal.h"
 )
 
 file(

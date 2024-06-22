@@ -76,4 +76,4 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/blinky/blinky.c.obj: \
  /Users/nando/NUCLEO-F429ZI/reactive-framework/blinky/signal.h \
  /Users/nando/NUCLEO-F429ZI/reactive-framework/blinky/event.h \
  /Users/nando/NUCLEO-F429ZI/reactive-framework/blinky/bsp/bsp_blinky.h \
- /Users/nando/NUCLEO-F429ZI/BSP-NUCLEO-144/stm32f4xx_nucleo_144.h
+ /Users/nando/NUCLEO-F429ZI/Drivers/BSP-Nucleo-144/stm32f4xx_nucleo_144.h

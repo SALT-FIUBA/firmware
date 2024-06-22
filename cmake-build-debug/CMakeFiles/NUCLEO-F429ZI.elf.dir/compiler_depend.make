@@ -574,6 +574,47 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/usb_otg.c.obj: /Users/nando/NUCLEO-F42
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h \
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h
 
+CMakeFiles/NUCLEO-F429ZI.elf.dir/Drivers/BSP-Nucleo-144/stm32f4xx_nucleo_144.c.obj: /Users/nando/NUCLEO-F429ZI/Drivers/BSP-Nucleo-144/stm32f4xx_nucleo_144.c \
+  /Users/nando/NUCLEO-F429ZI/Core/Inc/stm32f4xx_hal_conf.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/BSP-Nucleo-144/stm32f4xx_nucleo_144.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f429xx.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/cmsis_compiler.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/cmsis_gcc.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/cmsis_version.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/core_cm4.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/mpu_armv7.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_eth.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/_newlib_version.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/machine/_default_types.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/stdint.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_intsup.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_stdint.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/features.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h
+
 CMakeFiles/NUCLEO-F429ZI.elf.dir/Drivers/BSP/Components/lan8742/lan8742.c.obj: /Users/nando/NUCLEO-F429ZI/Drivers/BSP/Components/lan8742/lan8742.c \
   /Users/nando/NUCLEO-F429ZI/Drivers/BSP/Components/lan8742/lan8742.h \
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/_newlib_version.h \
@@ -9035,12 +9076,50 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/LwIP/src/netif/zepif.c.
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/MQTT-C/src/mqtt.c.obj: /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/MQTT-C/src/mqtt.c \
+  /Users/nando/NUCLEO-F429ZI/Core/Inc/main.h \
+  /Users/nando/NUCLEO-F429ZI/Core/Inc/stm32f4xx_hal_conf.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f429xx.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/cmsis_compiler.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/cmsis_gcc.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/cmsis_version.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/core_cm4.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/mpu_armv7.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_eth.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h \
+  /Users/nando/NUCLEO-F429ZI/LWIP/Target/lwipopts.h \
   /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/lwip/arch.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/lwip/debug.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/lwip/def.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/lwip/opt.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/lwip/sockets.h \
   /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/system/arch/cc.h \
   /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/system/arch/cpu.h \
   /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/MQTT-C/include/mqtt-c.h \
   /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/MQTT-C/include/mqtt_pal.h \
   /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/MQTT-C/include/mqtt_sync.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/stm32_mqtt_pal.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/epoch/epoch.h \
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/_ansi.h \
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/_newlib_version.h \
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/alloca.h \
@@ -9060,6 +9139,8 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/MQTT-C/src/mqtt.c.obj: 
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/stdint.h \
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/stdio.h \
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/stdlib.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/string.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/strings.h \
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_intsup.h \
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_locale.h \
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_pthreadtypes.h \
@@ -9076,6 +9157,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/MQTT-C/src/mqtt.c.obj: 
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/sched.h \
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/select.h \
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/stdio.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/string.h \
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/syslimits.h \
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/time.h \
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/timespec.h \
@@ -9088,12 +9170,50 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/MQTT-C/src/mqtt.c.obj: 
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/MQTT-C/src/mqtt_org.c.obj: /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/MQTT-C/src/mqtt_org.c \
+  /Users/nando/NUCLEO-F429ZI/Core/Inc/main.h \
+  /Users/nando/NUCLEO-F429ZI/Core/Inc/stm32f4xx_hal_conf.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f429xx.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/cmsis_compiler.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/cmsis_gcc.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/cmsis_version.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/core_cm4.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/mpu_armv7.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_eth.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h \
+  /Users/nando/NUCLEO-F429ZI/LWIP/Target/lwipopts.h \
   /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/lwip/arch.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/lwip/debug.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/lwip/def.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/lwip/opt.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/lwip/sockets.h \
   /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/system/arch/cc.h \
   /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/system/arch/cpu.h \
   /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/MQTT-C/include/mqtt-c.h \
   /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/MQTT-C/include/mqtt_pal.h \
   /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/MQTT-C/include/mqtt_sync.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/stm32_mqtt_pal.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/epoch/epoch.h \
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/_ansi.h \
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/_newlib_version.h \
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/alloca.h \
@@ -9113,6 +9233,8 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/MQTT-C/src/mqtt_org.c.o
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/stdint.h \
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/stdio.h \
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/stdlib.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/string.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/strings.h \
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_intsup.h \
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_locale.h \
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_pthreadtypes.h \
@@ -9129,6 +9251,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/MQTT-C/src/mqtt_org.c.o
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/sched.h \
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/select.h \
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/stdio.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/string.h \
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/syslimits.h \
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/time.h \
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/timespec.h \
@@ -9141,12 +9264,50 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/MQTT-C/src/mqtt_org.c.o
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/MQTT-C/src/mqtt_pal.c.obj: /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/MQTT-C/src/mqtt_pal.c \
+  /Users/nando/NUCLEO-F429ZI/Core/Inc/main.h \
+  /Users/nando/NUCLEO-F429ZI/Core/Inc/stm32f4xx_hal_conf.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f429xx.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/cmsis_compiler.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/cmsis_gcc.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/cmsis_version.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/core_cm4.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/mpu_armv7.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_eth.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h \
+  /Users/nando/NUCLEO-F429ZI/LWIP/Target/lwipopts.h \
   /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/lwip/arch.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/lwip/debug.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/lwip/def.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/lwip/opt.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/lwip/sockets.h \
   /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/system/arch/cc.h \
   /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/system/arch/cpu.h \
   /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/MQTT-C/include/mqtt-c.h \
   /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/MQTT-C/include/mqtt_pal.h \
   /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/MQTT-C/include/mqtt_sync.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/stm32_mqtt_pal.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/epoch/epoch.h \
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/_ansi.h \
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/_newlib_version.h \
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/alloca.h \
@@ -9166,6 +9327,8 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/MQTT-C/src/mqtt_pal.c.o
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/stdint.h \
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/stdio.h \
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/stdlib.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/string.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/strings.h \
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_intsup.h \
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_locale.h \
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_pthreadtypes.h \
@@ -9182,6 +9345,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/MQTT-C/src/mqtt_pal.c.o
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/sched.h \
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/select.h \
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/stdio.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/string.h \
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/syslimits.h \
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/time.h \
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/timespec.h \
@@ -10257,8 +10421,8 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/rkh/source/trc/src/rkht
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/blinky/blinky.c.obj: /Users/nando/NUCLEO-F429ZI/reactive-framework/blinky/blinky.c \
-  /Users/nando/NUCLEO-F429ZI/BSP-NUCLEO-144/stm32f4xx_nucleo_144.h \
   /Users/nando/NUCLEO-F429ZI/Core/Inc/stm32f4xx_hal_conf.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/BSP-Nucleo-144/stm32f4xx_nucleo_144.h \
   /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f429xx.h \
   /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h \
   /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h \
@@ -10618,7 +10782,8 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/blinky/bsp/hook.c.obj: /User
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h \
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h
 
-CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/state-machines/mqttProt/mqttProt.c.obj: /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/state-machines/mqttProt/mqttProt.c \
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/configuration/saltCfg.c.obj: /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/configuration/saltCfg.c \
+  /Users/nando/NUCLEO-F429ZI/Core/Inc/main.h \
   /Users/nando/NUCLEO-F429ZI/Core/Inc/stm32f4xx_hal_conf.h \
   /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f429xx.h \
   /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h \
@@ -10649,7 +10814,12 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/state-machines/mqttProt
   /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h \
   /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
   /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h \
+  /Users/nando/NUCLEO-F429ZI/LWIP/Target/lwipopts.h \
   /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/lwip/arch.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/lwip/debug.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/lwip/def.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/lwip/opt.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/lwip/sockets.h \
   /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/system/arch/cc.h \
   /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/system/arch/cpu.h \
   /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/MQTT-C/include/mqtt-c.h \
@@ -10685,9 +10855,8 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/state-machines/mqttProt
   /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_record.h \
   /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_stream.h \
   /Users/nando/NUCLEO-F429ZI/reactive-framework/blinky/rkhcfg.h \
-  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/state-machines/mqttProt/mqttProt.h \
-  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/state-machines/signals/signals.h \
-  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/date/date.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/state-machines/mqtt-protocol/mqttProt.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/stm32_mqtt_pal.h \
   /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/epoch/epoch.h \
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/_ansi.h \
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/_newlib_version.h \
@@ -10735,6 +10904,801 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/state-machines/mqttProt
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include-fixed/limits.h \
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include-fixed/syslimits.h \
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stdarg.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stdbool.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/peripherals/analog-inputs/anIn.c.obj: /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/analog-inputs/anIn.c \
+  /Users/nando/NUCLEO-F429ZI/Core/Inc/stm32f4xx_hal_conf.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f429xx.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/cmsis_compiler.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/cmsis_gcc.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/cmsis_version.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/core_cm4.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/mpu_armv7.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_eth.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkht.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkh.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhassert.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhdef.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhevt.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_bittbl.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_cast.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_dynevt.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_evtpool.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_hook.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_module.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_sched.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_version.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhitl.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhplat.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhtype.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/mempool/inc/rkhmempool.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/queue/inc/rkhqueue.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/sm/inc/rkhsm.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/sma/inc/rkhsma.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/sma/inc/rkhsma_prio.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/tmr/inc/rkhtmr.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_define.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_filter.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_out.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_record.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_stream.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/blinky/rkhcfg.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/analog-inputs/anIn.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/emaFilter/emaFilter.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/_newlib_version.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/machine/_default_types.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/stdint.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_intsup.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_stdint.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/features.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stdbool.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/peripherals/ihm/buzzer.c.obj: /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/ihm/buzzer.c \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/ihm/buzzer.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stdbool.h
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/peripherals/ledPanel/ledPanel.c.obj: /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/ledPanel/ledPanel.c \
+  /Users/nando/NUCLEO-F429ZI/Core/Inc/stm32f4xx_hal_conf.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f429xx.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/cmsis_compiler.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/cmsis_gcc.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/cmsis_version.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/core_cm4.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/mpu_armv7.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_eth.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkht.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkh.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhassert.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhdef.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhevt.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_bittbl.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_cast.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_dynevt.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_evtpool.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_hook.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_module.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_sched.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_version.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhitl.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhplat.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhtype.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/mempool/inc/rkhmempool.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/queue/inc/rkhqueue.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/sm/inc/rkhsm.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/sma/inc/rkhsma.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/sma/inc/rkhsma_prio.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/tmr/inc/rkhtmr.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_define.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_filter.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_out.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_record.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_stream.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/blinky/rkhcfg.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/ledPanel/as1116.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/ledPanel/ledPanel.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/_newlib_version.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/machine/_default_types.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/stdint.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_intsup.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_stdint.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/features.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stdbool.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/peripherals/module-power/modpwr.c.obj: /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/module-power/modpwr.c \
+  /Users/nando/NUCLEO-F429ZI/Core/Inc/stm32f4xx_hal_conf.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f429xx.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/cmsis_compiler.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/cmsis_gcc.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/cmsis_version.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/core_cm4.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/mpu_armv7.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_eth.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkht.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkh.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhassert.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhdef.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhevt.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_bittbl.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_cast.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_dynevt.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_evtpool.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_hook.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_module.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_sched.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_version.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhitl.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhplat.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhtype.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/mempool/inc/rkhmempool.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/queue/inc/rkhqueue.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/sm/inc/rkhsm.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/sma/inc/rkhsma.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/sma/inc/rkhsma_prio.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/tmr/inc/rkhtmr.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_define.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_filter.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_out.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_record.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_stream.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/blinky/rkhcfg.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/module-power/modpwr.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/sim808/sim808.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/mTime/mTimeCfg.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/_newlib_version.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/machine/_default_types.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/stdint.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_intsup.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_stdint.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/features.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stdbool.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/peripherals/relay-control/relay.c.obj: /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/relay-control/relay.c \
+  /Users/nando/NUCLEO-F429ZI/Core/Inc/stm32f4xx_hal_conf.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f429xx.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/cmsis_compiler.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/cmsis_gcc.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/cmsis_version.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/core_cm4.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/mpu_armv7.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_eth.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkht.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkh.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhassert.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhdef.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhevt.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_bittbl.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_cast.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_dynevt.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_evtpool.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_hook.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_module.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_sched.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_version.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhitl.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhplat.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhtype.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/mempool/inc/rkhmempool.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/queue/inc/rkhqueue.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/sm/inc/rkhsm.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/sma/inc/rkhsma.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/sma/inc/rkhsma_prio.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/tmr/inc/rkhtmr.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_define.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_filter.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_out.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_record.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_stream.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/blinky/rkhcfg.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/relay-control/relay.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/_newlib_version.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/machine/_default_types.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/stdint.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_intsup.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_stdint.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/features.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stdbool.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/peripherals/serial/serial.c.obj: /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/serial/serial.c \
+  /Users/nando/NUCLEO-F429ZI/Core/Inc/stm32f4xx_hal_conf.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f429xx.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/cmsis_compiler.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/cmsis_gcc.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/cmsis_version.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/core_cm4.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/mpu_armv7.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_eth.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkht.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkh.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhassert.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhdef.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhevt.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_bittbl.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_cast.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_dynevt.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_evtpool.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_hook.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_module.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_sched.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_version.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhitl.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhplat.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhtype.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/mempool/inc/rkhmempool.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/queue/inc/rkhqueue.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/sm/inc/rkhsm.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/sma/inc/rkhsma.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/sma/inc/rkhsma_prio.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/tmr/inc/rkhtmr.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_define.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_filter.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_out.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_record.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_stream.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/blinky/rkhcfg.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/serial/serial.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/_newlib_version.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/machine/_default_types.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/stdint.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_intsup.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_stdint.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/features.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stdbool.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/peripherals/sim808/sim808.c.obj: /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/sim808/sim808.c \
+  /Users/nando/NUCLEO-F429ZI/Core/Inc/stm32f4xx_hal_conf.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f429xx.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/cmsis_compiler.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/cmsis_gcc.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/cmsis_version.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/core_cm4.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/mpu_armv7.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_eth.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkht.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkh.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhassert.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhdef.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhevt.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_bittbl.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_cast.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_dynevt.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_evtpool.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_hook.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_module.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_sched.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_version.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhitl.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhplat.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhtype.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/mempool/inc/rkhmempool.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/queue/inc/rkhqueue.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/sm/inc/rkhsm.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/sma/inc/rkhsma.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/sma/inc/rkhsma_prio.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/tmr/inc/rkhtmr.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_define.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_filter.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_out.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_record.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_stream.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/blinky/rkhcfg.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/serial/serial.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/sim808/sim808.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/_newlib_version.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/machine/_default_types.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/stdint.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_intsup.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_stdint.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/features.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stdbool.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/state-machines/connector-manager/conmgr.c.obj: /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/state-machines/connector-manager/conmgr.c \
+  /Users/nando/NUCLEO-F429ZI/Core/Inc/main.h \
+  /Users/nando/NUCLEO-F429ZI/Core/Inc/stm32f4xx_hal_conf.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f429xx.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/cmsis_compiler.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/cmsis_gcc.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/cmsis_version.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/core_cm4.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/mpu_armv7.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_eth.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h \
+  /Users/nando/NUCLEO-F429ZI/LWIP/Target/lwipopts.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/lwip/arch.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/lwip/debug.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/lwip/def.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/lwip/opt.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/lwip/sockets.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/system/arch/cc.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/system/arch/cpu.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/MQTT-C/include/mqtt-c.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/MQTT-C/include/mqtt_pal.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/MQTT-C/include/mqtt_sync.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkht.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkh.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhassert.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhdef.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhevt.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_bittbl.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_cast.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_dynevt.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_evtpool.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_hook.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_module.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_sched.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_version.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhitl.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhplat.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhtype.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/mempool/inc/rkhmempool.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/queue/inc/rkhqueue.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/sm/inc/rkhsm.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/sma/inc/rkhsma.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/sma/inc/rkhsma_prio.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/tmr/inc/rkhtmr.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_define.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_filter.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_out.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_record.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_stream.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/blinky/rkhcfg.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/bsp/bsp.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/configuration/saltCfg.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/gps/gps.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/module-command/modcmd.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/module-power/modpwr.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/signals.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/state-machines/connector-manager/conmgr.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/state-machines/logic/logic.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/state-machines/module-manager/modMgr.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/state-machines/mqtt-protocol/mqttProt.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/stm32_mqtt_pal.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/epoch/epoch.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/parser/salt-command/saltCmd.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/rtime/rtime.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/_ansi.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/_newlib_version.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/alloca.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/ctype.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/inttypes.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/limits.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/machine/_default_types.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/machine/_endian.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/machine/_time.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/machine/_types.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/machine/endian.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/machine/ieeefp.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/machine/stdlib.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/machine/time.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/machine/types.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/newlib.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/stdint.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/stdio.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/stdlib.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/string.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/strings.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_intsup.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_locale.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_pthreadtypes.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_sigset.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_stdint.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_timespec.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_timeval.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_types.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/cdefs.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/config.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/features.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/lock.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/reent.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/sched.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/select.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/stdio.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/string.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/syslimits.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/time.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/timespec.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/types.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/time.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include-fixed/limits.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include-fixed/syslimits.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stdarg.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stdbool.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/state-machines/logic/logic.c.obj: /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/state-machines/logic/logic.c \
+  /Users/nando/NUCLEO-F429ZI/Core/Inc/main.h \
+  /Users/nando/NUCLEO-F429ZI/Core/Inc/stm32f4xx_hal_conf.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f429xx.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/cmsis_compiler.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/cmsis_gcc.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/cmsis_version.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/core_cm4.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/mpu_armv7.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_eth.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h \
+  /Users/nando/NUCLEO-F429ZI/LWIP/Target/lwipopts.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/lwip/arch.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/lwip/debug.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/lwip/def.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/lwip/opt.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/lwip/sockets.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/system/arch/cc.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/system/arch/cpu.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/MQTT-C/include/mqtt-c.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/MQTT-C/include/mqtt_pal.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/MQTT-C/include/mqtt_sync.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkht.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkh.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhassert.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhdef.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhevt.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_bittbl.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_cast.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_dynevt.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_evtpool.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_hook.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_module.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_sched.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_version.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhitl.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhplat.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhtype.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/mempool/inc/rkhmempool.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/queue/inc/rkhqueue.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/sm/inc/rkhsm.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/sma/inc/rkhsma.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/sma/inc/rkhsma_prio.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/tmr/inc/rkhtmr.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_define.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_filter.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_out.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_record.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_stream.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/blinky/rkhcfg.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/bsp/bsp.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/gps/gps.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/ihm/buzzer.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/ledPanel/ledPanel.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/module-command/modcmd.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/relay-control/relay.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/signals.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/state-machines/connector-manager/conmgr.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/state-machines/logic/logic.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/state-machines/module-manager/modMgr.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/state-machines/mqtt-protocol/mqttProt.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/stm32_mqtt_pal.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/epoch/epoch.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/parser/salt-command/saltCmd.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/_ansi.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/_newlib_version.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/alloca.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/ctype.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/inttypes.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/limits.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/machine/_default_types.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/machine/_endian.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/machine/_time.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/machine/_types.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/machine/endian.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/machine/ieeefp.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/machine/stdlib.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/machine/time.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/machine/types.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/newlib.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/stdint.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/stdio.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/stdlib.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/string.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/strings.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_intsup.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_locale.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_pthreadtypes.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_sigset.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_stdint.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_timespec.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_timeval.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_types.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/cdefs.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/config.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/features.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/lock.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/reent.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/sched.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/select.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/stdio.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/string.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/syslimits.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/time.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/timespec.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/types.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/time.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include-fixed/limits.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include-fixed/syslimits.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stdarg.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stdbool.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/state-machines/module-manager/modmgr.c.obj: /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/state-machines/module-manager/modmgr.c \
+  /Users/nando/NUCLEO-F429ZI/Core/Inc/stm32f4xx_hal_conf.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f429xx.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/cmsis_compiler.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/cmsis_gcc.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/cmsis_version.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/core_cm4.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/mpu_armv7.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_eth.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
+  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkht.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkh.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhassert.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhdef.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhevt.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_bittbl.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_cast.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_dynevt.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_evtpool.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_hook.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_module.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_sched.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_version.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhitl.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhplat.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhtype.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/mempool/inc/rkhmempool.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/queue/inc/rkhqueue.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/sm/inc/rkhsm.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/sma/inc/rkhsma.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/sma/inc/rkhsma_prio.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/tmr/inc/rkhtmr.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_define.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_filter.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_out.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_record.h \
+  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_stream.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/blinky/rkhcfg.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/bsp/bsp.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/gps/gps.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/module-command/modcmd.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/serial/serial.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/signals.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/state-machines/connector-manager/conmgr.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/state-machines/module-manager/modMgr.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/state-machines/module-manager/modmgr.h \
+  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/epoch/epoch.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/_newlib_version.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/machine/_default_types.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/stdint.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_intsup.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_stdint.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/features.h \
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stdbool.h \
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h \
   /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h
@@ -10982,11 +11946,35 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/rtime/rtime.c
 
 /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/epoch/epoch.c:
 
-/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/epoch/epoch.h:
-
 /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/date/date.h:
 
-/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/state-machines/signals/signals.h:
+/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/state-machines/module-manager/modmgr.c:
+
+/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/state-machines/logic/logic.c:
+
+/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/state-machines/module-manager/modMgr.h:
+
+/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/state-machines/logic/logic.h:
+
+/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/gps/gps.h:
+
+/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/state-machines/connector-manager/conmgr.c:
+
+/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/serial/serial.h:
+
+/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/state-machines/module-manager/modmgr.h:
+
+/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/ledPanel/as1116.h:
+
+/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/ledPanel/ledPanel.c:
+
+/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/ihm/buzzer.h:
+
+/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/ihm/buzzer.c:
+
+/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/analog-inputs/anIn.h:
+
+/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/configuration/saltCfg.c:
 
 /Users/nando/NUCLEO-F429ZI/reactive-framework/blinky/bsp/bsp_blinky.c:
 
@@ -11004,6 +11992,8 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/rtime/rtime.c
 
 /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/src/rkhfwk_version.c:
 
+/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/ledPanel/ledPanel.h:
+
 /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_rdygrp.h:
 
 /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_pubsub.h:
@@ -11014,11 +12004,15 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/rtime/rtime.c
 
 /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/MQTT-C/src/mqtt_org.c:
 
+/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/epoch/epoch.h:
+
+/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/stm32_mqtt_pal.h:
+
 /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/MQTT-C/include/mqtt_sync.h:
 
-/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/state-machines/mqttProt/mqttProt.c:
-
 /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/MQTT-C/include/mqtt_pal.h:
+
+/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/module-power/modpwr.h:
 
 /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/MQTT-C/include/mqtt-c.h:
 
@@ -11042,7 +12036,11 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/rtime/rtime.c
 
 /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/netif/lowpan6_common.h:
 
+/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/serial/serial.c:
+
 /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/netif/lowpan6_common.c:
+
+/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/emaFilter/emaFilter.h:
 
 /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/netif/lowpan6_ble.h:
 
@@ -11088,6 +12086,8 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/rtime/rtime.c
 
 /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/core/ipv6/ip6_frag.c:
 
+/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/configuration/saltCfg.h:
+
 /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/core/ipv6/ip6.c:
 
 /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/core/ipv6/inet6.c:
@@ -11095,8 +12095,6 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/rtime/rtime.c
 /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/core/ipv6/dhcp6.c:
 
 /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/core/ipv4/ip4_frag.c:
-
-/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/state-machines/mqttProt/mqttProt.h:
 
 /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/core/ipv4/ip4.c:
 
@@ -11126,8 +12124,6 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/rtime/rtime.c
 
 /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/lwip/dns.h:
 
-/Users/nando/NUCLEO-F429ZI/BSP-NUCLEO-144/stm32f4xx_nucleo_144.h:
-
 /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/netif/ppp/eap.c:
 
 /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/core/tcp_out.c:
@@ -11147,6 +12143,8 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/rtime/rtime.c
 /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/core/altcp_tcp.c:
 
 /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/core/altcp.c:
+
+/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/sim808/sim808.c:
 
 /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/core/ipv6/ip6_addr.c:
 
@@ -11171,10 +12169,6 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/rtime/rtime.c
 /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/api/netifapi.c:
 
 /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/api/netdb.c:
-
-/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/lwip/ip_addr.h:
-
-/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/lwip/sys.h:
 
 /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/system/arch/cc.h:
 
@@ -11206,6 +12200,8 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/rtime/rtime.c
 
 /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c:
 
+/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/parser/salt-command/saltCmd.h:
+
 /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c:
 
 /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/core/altcp_alloc.c:
@@ -11230,11 +12226,17 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/rtime/rtime.c
 
 /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c:
 
+/Users/nando/NUCLEO-F429ZI/Drivers/BSP-Nucleo-144/stm32f4xx_nucleo_144.c:
+
 /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/src/rkhfwk_dynevt.c:
 
 /Users/nando/NUCLEO-F429ZI/LWIP/App/lwip.c:
 
 /Users/nando/NUCLEO-F429ZI/Core/Src/usb_otg.c:
+
+/usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_timespec.h:
+
+/Users/nando/NUCLEO-F429ZI/Drivers/BSP-Nucleo-144/stm32f4xx_nucleo_144.h:
 
 /Users/nando/NUCLEO-F429ZI/Core/Src/system_stm32f4xx.c:
 
@@ -11268,10 +12270,6 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/rtime/rtime.c
 
 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/time.h:
 
-/Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h:
-
-/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/api/if_api.c:
-
 /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/rtime/rtime.h:
 
 /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/lwip/dhcp.h:
@@ -11286,9 +12284,9 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/rtime/rtime.c
 
 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/config.h:
 
-/usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/cdefs.h:
+/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/module-command/modcmd.h:
 
-/usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_timespec.h:
+/usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/cdefs.h:
 
 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_sigset.h:
 
@@ -11305,6 +12303,8 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/rtime/rtime.c
 /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h:
 
 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/newlib.h:
+
+/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/signals.h:
 
 /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/core/udp.c:
 
@@ -11337,6 +12337,8 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/rtime/rtime.c
 /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/mTime/mTime.h:
 
 /Users/nando/NUCLEO-F429ZI/Drivers/BSP/Components/lan8742/lan8742.h:
+
+/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/sim808/sim808.h:
 
 /Users/nando/NUCLEO-F429ZI/reactive-framework/blinky/bsp/bsp_blinky.h:
 
@@ -11384,6 +12386,8 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/rtime/rtime.c
 
 /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/sma/inc/rkhsma_prio.h:
 
+/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/bsp/bsp.h:
+
 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/select.h:
 
 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_types.h:
@@ -11409,6 +12413,10 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/rtime/rtime.c
 /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_filter.h:
 
 /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_module.h:
+
+/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/api/if_api.c:
+
+/Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h:
 
 /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/lwip/prot/ip.h:
 
@@ -11453,6 +12461,8 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/rtime/rtime.c
 /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/lwip/altcp.h:
 
 /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/lwip/udp.h:
+
+/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/module-power/modpwr.c:
 
 /Users/nando/NUCLEO-F429ZI/reactive-framework/blinky/bsp/assert.c:
 
@@ -11508,6 +12518,10 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/rtime/rtime.c
 
 /Users/nando/NUCLEO-F429ZI/Core/Src/gpio.c:
 
+/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/lwip/sys.h:
+
+/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/lwip/ip_addr.h:
+
 /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/lwip/ip6_addr.h:
 
 /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/sma/src/rkhsma.c:
@@ -11556,6 +12570,8 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/rtime/rtime.c
 
 /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhdef.h:
 
+/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/relay-control/relay.c:
+
 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include-fixed/syslimits.h:
 
 /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/lwip/priv/nd6_priv.h:
@@ -11572,9 +12588,13 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/rtime/rtime.c
 
 /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/lwip/prot/udp.h:
 
+/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/analog-inputs/anIn.c:
+
 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h:
 
 /Users/nando/NUCLEO-F429ZI/LWIP/App/lwip.h:
+
+/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/state-machines/connector-manager/conmgr.h:
 
 /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/lwip/prot/ieee.h:
 
@@ -11608,6 +12628,8 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/rtime/rtime.c
 
 /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_bittbl.h:
 
+/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/state-machines/mqtt-protocol/mqttProt.h:
+
 /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/system/arch/cpu.h:
 
 /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h:
@@ -11621,6 +12643,8 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/rtime/rtime.c
 /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/core/ipv6/icmp6.c:
 
 /Users/nando/NUCLEO-F429ZI/Core/Inc/gpio.h:
+
+/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/relay-control/relay.h:
 
 /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/netif/ppp/pppapi.c:
 

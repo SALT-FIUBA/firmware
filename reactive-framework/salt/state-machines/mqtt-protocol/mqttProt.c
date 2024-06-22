@@ -29,7 +29,7 @@
 #include "date.h"
 
 //  #include "conmgr.h"
-//  #include "BSP-NUCLEO-144.h"
+//  #include "BSP-Nucleo-144.h"
 
 /* ----------------------------- Local macros ------------------------------ */
 /* ......................... Declares active object ........................ */

@@ -51,7 +51,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/MQTT-C/src/mqtt_pal.c.o
  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/limits.h \
  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/syslimits.h \
  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/ctype.h \
- /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/stm32/stm32_mqtt_pal.h \
+ /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/stm32_mqtt_pal.h \
  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/string.h \
  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/strings.h \
  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/string.h \

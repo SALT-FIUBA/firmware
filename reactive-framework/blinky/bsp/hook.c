@@ -33,7 +33,7 @@
  *  \file       hook.c
  *  \brief      RKH hooks functions for DemoQE128-S08
  *
- *  \ingroup    BSP-NUCLEO-144
+ *  \ingroup    BSP-Nucleo-144
  */
 
 /* -------------------------- Development history -------------------------- */

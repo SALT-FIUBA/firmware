@@ -28,25 +28,25 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 153,
+				"line" : 171,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 149,
+				"line" : 167,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 150,
+				"line" : 168,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 151,
+				"line" : 169,
 				"parent" : 0
 			},
 			{
@@ -76,7 +76,7 @@
 			{
 				"command" : 3,
 				"file" : 0,
-				"line" : 105,
+				"line" : 123,
 				"parent" : 0
 			},
 			{
@@ -140,7 +140,7 @@
 				},
 				{
 					"backtrace" : 9,
-					"define" : "MQTTC_PAL_FILE=\"reactive-framework/salt/stm32/stm32_mqtt_pal.h\""
+					"define" : "MQTTC_PAL_FILE=\"reactive-framework/salt/stm32_mqtt_pal.h\""
 				},
 				{
 					"backtrace" : 9,
@@ -283,7 +283,7 @@
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/BSP-NUCLEO-144"
+					"path" : "/Users/nando/NUCLEO-F429ZI/Drivers/BSP-Nucleo-144"
 				},
 				{
 					"backtrace" : 10,
@@ -311,19 +311,83 @@
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/state-machines/signals"
-				},
-				{
-					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/state-machines/mqttProt"
-				},
-				{
-					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/stm32"
-				},
-				{
-					"backtrace" : 10,
 					"path" : "/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/MQTT-C/include"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/configuration"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/bsp"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/state-machines/mqtt-protocol"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/state-machines/connector-manager"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/state-machines/module-manager"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/state-machines/logic"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/module-command"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/module-power"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/serial"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/gps"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/sim808"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/ledPanel"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/ihm"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/relay-control"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/analog-inputs"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/emaFilter"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/parser/sim900"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/parser/salt-command"
 				}
 			],
 			"language" : "C",
@@ -347,8 +411,7 @@
 				30,
 				31,
 				33,
-				95,
-				96,
+				35,
 				97,
 				98,
 				99,
@@ -368,9 +431,9 @@
 				113,
 				114,
 				115,
+				116,
 				117,
-				120,
-				121,
+				119,
 				122,
 				123,
 				124,
@@ -416,8 +479,8 @@
 				164,
 				165,
 				166,
-				318,
-				319,
+				167,
+				168,
 				320,
 				321,
 				322,
@@ -449,8 +512,8 @@
 				348,
 				349,
 				350,
-				359,
-				360,
+				351,
+				352,
 				361,
 				362,
 				363,
@@ -470,15 +533,33 @@
 				377,
 				378,
 				379,
+				380,
 				381,
-				382,
+				383,
 				384,
-				389,
+				386,
+				391,
 				393,
 				395,
-				397,
-				400,
-				401
+				398,
+				402,
+				405,
+				406,
+				408,
+				410,
+				412,
+				415,
+				417,
+				419,
+				421,
+				424,
+				426,
+				428,
+				430,
+				433,
+				435,
+				437,
+				439
 			]
 		},
 		{
@@ -540,7 +621,7 @@
 				},
 				{
 					"backtrace" : 9,
-					"define" : "MQTTC_PAL_FILE=\"reactive-framework/salt/stm32/stm32_mqtt_pal.h\""
+					"define" : "MQTTC_PAL_FILE=\"reactive-framework/salt/stm32_mqtt_pal.h\""
 				},
 				{
 					"backtrace" : 9,
@@ -683,7 +764,7 @@
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/BSP-NUCLEO-144"
+					"path" : "/Users/nando/NUCLEO-F429ZI/Drivers/BSP-Nucleo-144"
 				},
 				{
 					"backtrace" : 10,
@@ -711,19 +792,83 @@
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/state-machines/signals"
-				},
-				{
-					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/state-machines/mqttProt"
-				},
-				{
-					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/stm32"
-				},
-				{
-					"backtrace" : 10,
 					"path" : "/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/MQTT-C/include"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/configuration"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/bsp"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/state-machines/mqtt-protocol"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/state-machines/connector-manager"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/state-machines/module-manager"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/state-machines/logic"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/module-command"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/module-power"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/serial"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/gps"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/sim808"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/ledPanel"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/ihm"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/relay-control"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/analog-inputs"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/emaFilter"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/parser/sim900"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/parser/salt-command"
 				}
 			],
 			"language" : "ASM",
@@ -810,10 +955,10 @@
 				21,
 				22,
 				32,
-				38,
-				60,
-				94,
-				403
+				40,
+				62,
+				96,
+				441
 			]
 		},
 		{
@@ -827,11 +972,10 @@
 				11,
 				12,
 				34,
-				35,
 				36,
 				37,
+				38,
 				39,
-				40,
 				41,
 				42,
 				43,
@@ -851,8 +995,8 @@
 				57,
 				58,
 				59,
+				60,
 				61,
-				62,
 				63,
 				64,
 				65,
@@ -884,11 +1028,11 @@
 				91,
 				92,
 				93,
-				116,
+				94,
+				95,
 				118,
-				119,
-				167,
-				168,
+				120,
+				121,
 				169,
 				170,
 				171,
@@ -1038,28 +1182,50 @@
 				315,
 				316,
 				317,
-				351,
-				352,
+				318,
+				319,
 				353,
 				354,
 				355,
 				356,
 				357,
 				358,
-				380,
-				383,
+				359,
+				360,
+				382,
 				385,
-				386,
 				387,
 				388,
+				389,
 				390,
-				391,
 				392,
 				394,
 				396,
-				398,
+				397,
 				399,
-				402
+				400,
+				401,
+				403,
+				404,
+				407,
+				409,
+				411,
+				413,
+				414,
+				416,
+				418,
+				420,
+				422,
+				423,
+				425,
+				427,
+				429,
+				431,
+				432,
+				434,
+				436,
+				438,
+				440
 			]
 		},
 		{
@@ -1076,8 +1242,7 @@
 				30,
 				31,
 				33,
-				95,
-				96,
+				35,
 				97,
 				98,
 				99,
@@ -1097,9 +1262,9 @@
 				113,
 				114,
 				115,
+				116,
 				117,
-				120,
-				121,
+				119,
 				122,
 				123,
 				124,
@@ -1145,8 +1310,8 @@
 				164,
 				165,
 				166,
-				318,
-				319,
+				167,
+				168,
 				320,
 				321,
 				322,
@@ -1178,8 +1343,8 @@
 				348,
 				349,
 				350,
-				359,
-				360,
+				351,
+				352,
 				361,
 				362,
 				363,
@@ -1199,15 +1364,33 @@
 				377,
 				378,
 				379,
+				380,
 				381,
-				382,
+				383,
 				384,
-				389,
+				386,
+				391,
 				393,
 				395,
-				397,
-				400,
-				401
+				398,
+				402,
+				405,
+				406,
+				408,
+				410,
+				412,
+				415,
+				417,
+				419,
+				421,
+				424,
+				426,
+				428,
+				430,
+				433,
+				435,
+				437,
+				439
 			]
 		}
 	],
@@ -1387,6 +1570,17 @@
 			"compileGroupIndex" : 1,
 			"path" : "Core/Startup/startup_stm32f429zitx.s",
 			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Drivers/BSP-Nucleo-144/stm32f4xx_nucleo_144.c",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Drivers/BSP-Nucleo-144/stm32f4xx_nucleo_144.h",
+			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 1,
@@ -3298,22 +3492,180 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "reactive-framework/salt/state-machines/mqttProt/mqttProt.c",
+			"path" : "reactive-framework/salt/bsp/bsp.c",
 			"sourceGroupIndex" : 2
 		},
 		{
 			"backtrace" : 1,
-			"path" : "reactive-framework/salt/state-machines/mqttProt/mqttProt.h",
+			"path" : "reactive-framework/salt/bsp/bsp.h",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 1,
-			"path" : "reactive-framework/salt/state-machines/signals/signals.h",
+			"compileGroupIndex" : 0,
+			"path" : "reactive-framework/salt/configuration/saltCfg.c",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "reactive-framework/salt/configuration/saltCfg.h",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 1,
-			"path" : "reactive-framework/salt/stm32/stm32_mqtt_pal.h",
+			"compileGroupIndex" : 0,
+			"path" : "reactive-framework/salt/peripherals/analog-inputs/anIn.c",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "reactive-framework/salt/peripherals/analog-inputs/anIn.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "reactive-framework/salt/peripherals/gps/gps.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "reactive-framework/salt/peripherals/ihm/buzzer.c",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "reactive-framework/salt/peripherals/ihm/buzzer.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "reactive-framework/salt/peripherals/ihm/onSwitch.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "reactive-framework/salt/peripherals/ledPanel/as1116.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "reactive-framework/salt/peripherals/ledPanel/ledPanel.c",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "reactive-framework/salt/peripherals/ledPanel/ledPanel.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "reactive-framework/salt/peripherals/module-command/modcmd.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "reactive-framework/salt/peripherals/module-command/modcmdSim900.c",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "reactive-framework/salt/peripherals/module-power/modpwr.c",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "reactive-framework/salt/peripherals/module-power/modpwr.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "reactive-framework/salt/peripherals/relay-control/relay.c",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "reactive-framework/salt/peripherals/relay-control/relay.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "reactive-framework/salt/peripherals/serial/serial.c",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "reactive-framework/salt/peripherals/serial/serial.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "reactive-framework/salt/peripherals/sim808/sim808.c",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "reactive-framework/salt/peripherals/sim808/sim808.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "reactive-framework/salt/signals.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "reactive-framework/salt/state-machines/connector-manager/conmgr.c",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "reactive-framework/salt/state-machines/connector-manager/conmgr.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "reactive-framework/salt/state-machines/logic/logic.c",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "reactive-framework/salt/state-machines/logic/logic.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "reactive-framework/salt/state-machines/module-manager/modmgr.c",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "reactive-framework/salt/state-machines/module-manager/modmgr.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "reactive-framework/salt/state-machines/mqtt-protocol/mqttProt.c",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "reactive-framework/salt/state-machines/mqtt-protocol/mqttProt.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "reactive-framework/salt/stm32_mqtt_pal.h",
 			"sourceGroupIndex" : 1
 		},
 		{
@@ -3325,6 +3677,17 @@
 		{
 			"backtrace" : 1,
 			"path" : "reactive-framework/salt/utilities/date/date.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "reactive-framework/salt/utilities/emaFilter/emaFilter.c",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "reactive-framework/salt/utilities/emaFilter/emaFilter.h",
 			"sourceGroupIndex" : 1
 		},
 		{
@@ -3359,6 +3722,33 @@
 			"compileGroupIndex" : 0,
 			"path" : "reactive-framework/salt/utilities/mTime/mTimeTbl.c",
 			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "reactive-framework/salt/utilities/parser/jsmn.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "reactive-framework/salt/utilities/parser/salt-command/saltCmd.c",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "reactive-framework/salt/utilities/parser/salt-command/saltCmd.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "reactive-framework/salt/utilities/parser/sim900/sim900parser.c",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "reactive-framework/salt/utilities/parser/sim900/sim900parser.h",
+			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 1,

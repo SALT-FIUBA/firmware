@@ -35,7 +35,7 @@
  *  \file       bsp_blinky.c
  *  \brief      BSP for 80x86 OS Linux
  *
- *  \ingroup    BSP-NUCLEO-144
+ *  \ingroup    BSP-Nucleo-144
  */
 
 /* -------------------------- Development history -------------------------- */

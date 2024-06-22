@@ -35,7 +35,7 @@
  *  \file       assert.c
  *  \brief      RKH assert function for STM32
  *
- *  \ingroup    BSP-NUCLEO-144
+ *  \ingroup    BSP-Nucleo-144
  */
 
 /* -------------------------- Development history -------------------------- */
