@@ -36,7 +36,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_sched.c.o
  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/stdint.h \
  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_intsup.h \
  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stdbool.h \
- /Users/nando/NUCLEO-F429ZI/blinky/rkhcfg.h \
+ /Users/nando/NUCLEO-F429ZI/reactive-framework/blinky/rkhcfg.h \
  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/rkhdef.h \
  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/rkhitl.h \
  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/rkhplat.h \

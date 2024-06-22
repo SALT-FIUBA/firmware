@@ -49,7 +49,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_dynevt.c.
  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/../../portable/arm-cortex/rkhs/arm_cm4f/stm32/rkht.h \
  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stdbool.h \
  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/queue/inc/rkhqueue.h \
- /Users/nando/NUCLEO-F429ZI/blinky/rkhcfg.h \
+ /Users/nando/NUCLEO-F429ZI/reactive-framework/blinky/rkhcfg.h \
  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/rkhdef.h \
  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/mempool/inc/rkhmempool.h \
  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/sma/inc/rkhsma_prio.h \

@@ -19,9 +19,9 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_C_STANDARD 11)
 
 #Uncomment for hardware floating point
-add_compile_definitions(ARM_MATH_CM4;ARM_MATH_MATRIX_CHECK;ARM_MATH_ROUNDING)
-add_compile_options(-mfloat-abi=hard -mfpu=fpv4-sp-d16)
-add_link_options(-mfloat-abi=hard -mfpu=fpv4-sp-d16)
+#add_compile_definitions(ARM_MATH_CM4;ARM_MATH_MATRIX_CHECK;ARM_MATH_ROUNDING)
+#add_compile_options(-mfloat-abi=hard -mfpu=fpv4-sp-d16)
+#add_link_options(-mfloat-abi=hard -mfpu=fpv4-sp-d16)
 
 #Uncomment for software floating point
 #add_compile_options(-mfloat-abi=soft)
@@ -54,72 +54,85 @@ include_directories(
         Drivers/STM32F4xx_HAL_Driver/Inc
         Drivers/STM32F4xx_HAL_Driver/Inc/Legacy
         Drivers/CMSIS/Device/ST/STM32F4xx/Include
-        Drivers/CMSIS/Include
+        Drivers/CMSIS/Include LWIP/App LWIP/Target
 
-        bsp
-        blinky
+        Middlewares/Third_Party/LwIP/src/include
+        Middlewares/Third_Party/LwIP/system
 
-       third-party/rkh/source/fwk/inc
-       third-party/rkh/source/mempool/inc
-       third-party/rkh/source/queue/inc
-       third-party/rkh/source/sm/inc
-       third-party/rkh/source/sma/inc
-       third-party/rkh/source/tmr/inc
-       third-party/rkh/source/trc/inc
+        Drivers/BSP/Components/lan8742
+        Middlewares/Third_Party/LwIP/src/include/netif/ppp
+        Middlewares/Third_Party/LwIP/src/include/lwip
+        Middlewares/Third_Party/LwIP/src/include/lwip/apps
+        Middlewares/Third_Party/LwIP/src/include/lwip/priv
+        Middlewares/Third_Party/LwIP/src/include/lwip/prot
+        Middlewares/Third_Party/LwIP/src/include/netif
+        Middlewares/Third_Party/LwIP/src/include/compat/posix
+        Middlewares/Third_Party/LwIP/src/include/compat/posix/arpa
+        Middlewares/Third_Party/LwIP/src/include/compat/posix/net
+        Middlewares/Third_Party/LwIP/src/include/compat/posix/sys
+        Middlewares/Third_Party/LwIP/src/include/compat/stdc
+        Middlewares/Third_Party/LwIP/system/arch
 
-      third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32
+        third-party/rkh/source/fwk/inc
+        third-party/rkh/source/mempool/inc
+        third-party/rkh/source/queue/inc
+        third-party/rkh/source/sm/inc
+        third-party/rkh/source/sma/inc
+        third-party/rkh/source/tmr/inc
+        third-party/rkh/source/trc/inc
 
-        mTime
+        third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32
 
+        BSP-NUCLEO-144
+
+        third-party/MQTT-C/include
+
+        reactive-framework/blinky
+        reactive-framework/blinky/bsp
+        reactive-framework/salt/utilities/rtime
+        reactive-framework/salt/utilities/mTime
+        reactive-framework/salt/utilities/date
+        reactive-framework/salt/utilities/epoch
+
+        reactive-framework/salt/state-machines/signals
+
+        reactive-framework/salt/state-machines/mqttProt
+
+        reactive-framework/stm32
 )
+
+add_definitions(-DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx)
 
 file(
-        GLOB_RECURSE
-        SOURCES
+        GLOB_RECURSE SOURCES
         "Core/*.*"
+        "Middlewares/*.*"
+        "LWIP/*.*"
         "Drivers/*.*"
 
-       "third-party/rkh/source/fwk/src/rkhfwk_bittbl.c"
-       "third-party/rkh/source/fwk/src/rkhfwk_dynevt.c"
-       "third-party/rkh/source/fwk/src/rkhfwk_evtpool.c"
-       "third-party/rkh/source/fwk/src/rkhfwk_pubsub.c"
-       "third-party/rkh/source/fwk/src/rkhfwk_rdygrp.c"
-       "third-party/rkh/source/fwk/src/rkhfwk_sched.c"
-       "third-party/rkh/source/fwk/src/rkhfwk_version.c"
-       "third-party/rkh/source/mempool/src/rkhmempool.c"
-       "third-party/rkh/source/queue/src/rkhqueue.c"
-       "third-party/rkh/source/sm/src/rkhsm.c"
-       "third-party/rkh/source/sma/src/rkhsma.c"
-       "third-party/rkh/source/sma/src/rkhsma_prio.c"
-       "third-party/rkh/source/sma/src/rkhsma_sync.c"
-       "third-party/rkh/source/tmr/src/rkhtmr.c"
-       "third-party/rkh/source/trc/src/rkhtrc_filter.c"
-       "third-party/rkh/source/trc/src/rkhtrc_record.c"
-       "third-party/rkh/source/trc/src/rkhtrc_stream.c"
+        "third-party/rkh/source/fwk/src/rkhfwk_bittbl.c"
+        "third-party/rkh/source/fwk/src/rkhfwk_dynevt.c"
+        "third-party/rkh/source/fwk/src/rkhfwk_evtpool.c"
+        "third-party/rkh/source/fwk/src/rkhfwk_pubsub.c"
+        "third-party/rkh/source/fwk/src/rkhfwk_rdygrp.c"
+        "third-party/rkh/source/fwk/src/rkhfwk_sched.c"
+        "third-party/rkh/source/fwk/src/rkhfwk_version.c"
+        "third-party/rkh/source/mempool/src/rkhmempool.c"
+        "third-party/rkh/source/queue/src/rkhqueue.c"
+        "third-party/rkh/source/sm/src/rkhsm.c"
+        "third-party/rkh/source/sma/src/rkhsma.c"
+        "third-party/rkh/source/sma/src/rkhsma_prio.c"
+        "third-party/rkh/source/sma/src/rkhsma_sync.c"
+        "third-party/rkh/source/tmr/src/rkhtmr.c"
+        "third-party/rkh/source/trc/src/rkhtrc_filter.c"
+        "third-party/rkh/source/trc/src/rkhtrc_record.c"
+        "third-party/rkh/source/trc/src/rkhtrc_stream.c"
 
-       "third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c"
+        "third-party/MQTT-C/src/mqtt.c"
+        "third-party/MQTT-C/src/mqtt_pal.c"
 
-        "bsp/stm32f4xx_nucleo_144.c"
-
-        "blinky/blinky.c"
-        "blinky/bsp/bsp_blinky.c"
-
-        "blinky/bsp/assert.c"
-        "blinky/bsp/hook.c"
-
-        "mTime/mTime.c"
-        "mTime/mTimeTbl.c"
-
+        "reactive-framework/*.*"
 )
-
-add_definitions(
-        -DDEBUG
-        -DUSE_HAL_DRIVER
-        -DSTM32F429xx
-        -DRKH_PLATFORM="__STM32__"
-        -DRKH_CONF_FILE="blinky/rkhcfg.h"
-)
-
 
 set(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/STM32F429ZITX_FLASH.ld)
 

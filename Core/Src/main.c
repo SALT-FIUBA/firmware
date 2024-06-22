@@ -17,13 +17,11 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
-#include <stdio.h>
 #include "main.h"
-#include "eth.h"
+#include "lwip.h"
 #include "usart.h"
 #include "usb_otg.h"
 #include "gpio.h"
-#include "rkh.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -53,7 +51,6 @@
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
-
 /* USER CODE BEGIN PFP */
 #ifdef __GNUC__
 #define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
@@ -92,8 +89,6 @@ int main(void)
 
   /* MCU Configuration--------------------------------------------------------*/
 
-
-  printf("main \n");
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
 
@@ -108,9 +103,9 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_ETH_Init();
   MX_USART3_UART_Init();
   MX_USB_OTG_FS_PCD_Init();
+  MX_LWIP_Init();
   /* USER CODE BEGIN 2 */
 
   bsp_init();
@@ -132,9 +127,9 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
     /* USER CODE END WHILE */
+
     /* USER CODE BEGIN 3 */
   /* USER CODE END 3 */
-
 }
 
 /**

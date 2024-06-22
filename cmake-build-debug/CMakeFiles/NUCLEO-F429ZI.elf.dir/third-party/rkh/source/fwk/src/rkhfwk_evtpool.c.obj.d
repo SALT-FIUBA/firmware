@@ -1,7 +1,7 @@
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_evtpool.c.obj: \
  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/src/rkhfwk_evtpool.c \
  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/rkhassert.h \
- /Users/nando/NUCLEO-F429ZI/blinky/rkhcfg.h \
+ /Users/nando/NUCLEO-F429ZI/reactive-framework/blinky/rkhcfg.h \
  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/rkhdef.h \
  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/rkhfwk_module.h \
  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/rkhtype.h \

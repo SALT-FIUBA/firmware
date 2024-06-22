@@ -1,7 +1,7 @@
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/queue/src/rkhqueue.c.obj: \
  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/queue/src/rkhqueue.c \
  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/queue/inc/rkhqueue.h \
- /Users/nando/NUCLEO-F429ZI/blinky/rkhcfg.h \
+ /Users/nando/NUCLEO-F429ZI/reactive-framework/blinky/rkhcfg.h \
  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/rkhdef.h \
  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/rkhtype.h \
  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/../../portable/arm-cortex/rkhs/arm_cm4f/stm32/rkht.h \

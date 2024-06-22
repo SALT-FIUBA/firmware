@@ -58,7 +58,7 @@
  *      @{
  *          \addtogroup apiBSPHook Hooks
  *          @{
- *          \brief The hook functions allows to bsp/port developer to extend
+ *          \brief The hook functions allows to BSP-NUCLEO-144/port developer to extend
  *                 the functionality of the framework.
  *
  *                 A RKH port cannot and should not define all the functions 
