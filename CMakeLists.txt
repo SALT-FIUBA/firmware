@@ -73,19 +73,17 @@ include_directories(
         Middlewares/Third_Party/LwIP/src/include/compat/stdc
         Middlewares/Third_Party/LwIP/system/arch
 
-        third-party/rkh/source/fwk/inc
-        third-party/rkh/source/mempool/inc
-        third-party/rkh/source/queue/inc
-        third-party/rkh/source/sm/inc
-        third-party/rkh/source/sma/inc
-        third-party/rkh/source/tmr/inc
-        third-party/rkh/source/trc/inc
+        Middlewares/Third_Party/rkh/source/fwk/inc
+        Middlewares/Third_Party/rkh/source/mempool/inc
+        Middlewares/Third_Party/rkh/source/queue/inc
+        Middlewares/Third_Party/rkh/source/sm/inc
+        Middlewares/Third_Party/rkh/source/sma/inc
+        Middlewares/Third_Party/rkh/source/tmr/inc
+        Middlewares/Third_Party/rkh/source/trc/inc
 
-        third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32
+        Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32
 
         BSP-NUCLEO-144
-
-        third-party/MQTT-C/include
 
         reactive-framework/blinky
         reactive-framework/blinky/bsp
@@ -98,38 +96,50 @@ include_directories(
 
         reactive-framework/salt/state-machines/mqttProt
 
-        reactive-framework/stm32
+        reactive-framework/salt/stm32
+
+        Middlewares/Third_Party/MQTT-C/include
 )
 
-add_definitions(-DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx)
+
+add_definitions(
+        -DDEBUG
+        -DUSE_HAL_DRIVER
+        -DSTM32F429xx
+        -DRKH_PLATFORM="__STM32__"
+        -DRKH_CONF_FILE="reactive-framework/blinky/rkhcfg.h"
+        -DMQTTC_PAL_FILE="reactive-framework/salt/stm32/stm32_mqtt_pal.h"
+)
 
 file(
         GLOB_RECURSE SOURCES
         "Core/*.*"
-        "Middlewares/*.*"
         "LWIP/*.*"
         "Drivers/*.*"
 
-        "third-party/rkh/source/fwk/src/rkhfwk_bittbl.c"
-        "third-party/rkh/source/fwk/src/rkhfwk_dynevt.c"
-        "third-party/rkh/source/fwk/src/rkhfwk_evtpool.c"
-        "third-party/rkh/source/fwk/src/rkhfwk_pubsub.c"
-        "third-party/rkh/source/fwk/src/rkhfwk_rdygrp.c"
-        "third-party/rkh/source/fwk/src/rkhfwk_sched.c"
-        "third-party/rkh/source/fwk/src/rkhfwk_version.c"
-        "third-party/rkh/source/mempool/src/rkhmempool.c"
-        "third-party/rkh/source/queue/src/rkhqueue.c"
-        "third-party/rkh/source/sm/src/rkhsm.c"
-        "third-party/rkh/source/sma/src/rkhsma.c"
-        "third-party/rkh/source/sma/src/rkhsma_prio.c"
-        "third-party/rkh/source/sma/src/rkhsma_sync.c"
-        "third-party/rkh/source/tmr/src/rkhtmr.c"
-        "third-party/rkh/source/trc/src/rkhtrc_filter.c"
-        "third-party/rkh/source/trc/src/rkhtrc_record.c"
-        "third-party/rkh/source/trc/src/rkhtrc_stream.c"
+        "Middlewares/Third_Party/LwIP/*.*"
 
-        "third-party/MQTT-C/src/mqtt.c"
-        "third-party/MQTT-C/src/mqtt_pal.c"
+        "Middlewares/Third_Party/rkh/source/fwk/src/rkhfwk_bittbl.c"
+        "Middlewares/Third_Party/rkh/source/fwk/src/rkhfwk_dynevt.c"
+        "Middlewares/Third_Party/rkh/source/fwk/src/rkhfwk_evtpool.c"
+        "Middlewares/Third_Party/rkh/source/fwk/src/rkhfwk_pubsub.c"
+        "Middlewares/Third_Party/rkh/source/fwk/src/rkhfwk_rdygrp.c"
+        "Middlewares/Third_Party/rkh/source/fwk/src/rkhfwk_sched.c"
+        "Middlewares/Third_Party/rkh/source/fwk/src/rkhfwk_version.c"
+        "Middlewares/Third_Party/rkh/source/mempool/src/rkhmempool.c"
+        "Middlewares/Third_Party/rkh/source/queue/src/rkhqueue.c"
+        "Middlewares/Third_Party/rkh/source/sm/src/rkhsm.c"
+        "Middlewares/Third_Party/rkh/source/sma/src/rkhsma.c"
+        "Middlewares/Third_Party/rkh/source/sma/src/rkhsma_prio.c"
+        "Middlewares/Third_Party/rkh/source/sma/src/rkhsma_sync.c"
+        "Middlewares/Third_Party/rkh/source/tmr/src/rkhtmr.c"
+        "Middlewares/Third_Party/rkh/source/trc/src/rkhtrc_filter.c"
+        "Middlewares/Third_Party/rkh/source/trc/src/rkhtrc_record.c"
+        "Middlewares/Third_Party/rkh/source/trc/src/rkhtrc_stream.c"
+
+        "Middlewares/Third_Party/MQTT-C/src/mqtt.c"
+        "Middlewares/Third_Party/MQTT-C/src/mqtt_pal.c"
+        "Middlewares/Third_Party/MQTT-C/src/mqtt_org.c"
 
         "reactive-framework/*.*"
 )

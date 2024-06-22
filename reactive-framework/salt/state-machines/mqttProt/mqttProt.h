@@ -22,7 +22,7 @@
 
 /* ----------------------------- Include files ----------------------------- */
 #include "rkh.h"
-#include "mqtt.h"
+#include "mqtt-c.h"
 
 /* ---------------------- External C language linkage ---------------------- */
 #ifdef __cplusplus

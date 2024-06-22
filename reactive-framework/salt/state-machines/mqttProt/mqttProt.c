@@ -24,7 +24,7 @@
 #include "rkhtmr.h"
 #include "signals.h"
 #include "mqttProt.h"
-#include "mqtt.h"
+#include "mqtt-c.h"
 #include "epoch.h"
 #include "date.h"
 

@@ -27,6 +27,9 @@
 					<Add option="-DDEBUG"/>
 					<Add option="-DUSE_HAL_DRIVER"/>
 					<Add option="-DSTM32F429xx"/>
+					<Add option="-DRKH_PLATFORM=&quot;__STM32__&quot;"/>
+					<Add option="-DRKH_CONF_FILE=&quot;reactive-framework/blinky/rkhcfg.h&quot;"/>
+					<Add option="-DMQTTC_PAL_FILE=&quot;reactive-framework/salt/stm32/stm32_mqtt_pal.h&quot;"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/Core/Inc"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy"/>
@@ -49,16 +52,15 @@
 					<Add directory="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/compat/posix/sys"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/compat/stdc"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/system/arch"/>
-					<Add directory="/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc"/>
-					<Add directory="/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/mempool/inc"/>
-					<Add directory="/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/queue/inc"/>
-					<Add directory="/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/sm/inc"/>
-					<Add directory="/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/sma/inc"/>
-					<Add directory="/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/tmr/inc"/>
-					<Add directory="/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/inc"/>
-					<Add directory="/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/mempool/inc"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/queue/inc"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/sm/inc"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/sma/inc"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/tmr/inc"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/BSP-NUCLEO-144"/>
-					<Add directory="/Users/nando/NUCLEO-F429ZI/third-party/MQTT-C/include"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/blinky"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/blinky/bsp"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/rtime"/>
@@ -67,7 +69,8 @@
 					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/epoch"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/state-machines/signals"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/state-machines/mqttProt"/>
-					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/stm32"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/stm32"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/MQTT-C/include"/>
 					<Add directory="/usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1"/>
 					<Add directory="/usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/arm-none-eabi"/>
 					<Add directory="/usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/backward"/>
@@ -92,6 +95,9 @@
 					<Add option="-DDEBUG"/>
 					<Add option="-DUSE_HAL_DRIVER"/>
 					<Add option="-DSTM32F429xx"/>
+					<Add option="-DRKH_PLATFORM=&quot;__STM32__&quot;"/>
+					<Add option="-DRKH_CONF_FILE=&quot;reactive-framework/blinky/rkhcfg.h&quot;"/>
+					<Add option="-DMQTTC_PAL_FILE=&quot;reactive-framework/salt/stm32/stm32_mqtt_pal.h&quot;"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/Core/Inc"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy"/>
@@ -114,16 +120,15 @@
 					<Add directory="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/compat/posix/sys"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/compat/stdc"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/system/arch"/>
-					<Add directory="/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc"/>
-					<Add directory="/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/mempool/inc"/>
-					<Add directory="/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/queue/inc"/>
-					<Add directory="/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/sm/inc"/>
-					<Add directory="/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/sma/inc"/>
-					<Add directory="/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/tmr/inc"/>
-					<Add directory="/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/inc"/>
-					<Add directory="/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/mempool/inc"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/queue/inc"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/sm/inc"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/sma/inc"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/tmr/inc"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/BSP-NUCLEO-144"/>
-					<Add directory="/Users/nando/NUCLEO-F429ZI/third-party/MQTT-C/include"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/blinky"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/blinky/bsp"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/rtime"/>
@@ -132,7 +137,8 @@
 					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/epoch"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/state-machines/signals"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/state-machines/mqttProt"/>
-					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/stm32"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/stm32"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/MQTT-C/include"/>
 					<Add directory="/usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1"/>
 					<Add directory="/usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/arm-none-eabi"/>
 					<Add directory="/usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/backward"/>
@@ -1245,6 +1251,66 @@
 		<Unit filename="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/system/arch/sys_arch.h">
 			<Option target="NUCLEO-F429ZI.elf"/>
 		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/MQTT-C/src/mqtt.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/MQTT-C/src/mqtt_org.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/MQTT-C/src/mqtt_pal.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/src/rkhfwk_bittbl.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/src/rkhfwk_dynevt.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/src/rkhfwk_evtpool.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/src/rkhfwk_pubsub.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/src/rkhfwk_rdygrp.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/src/rkhfwk_sched.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/src/rkhfwk_version.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/mempool/src/rkhmempool.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/queue/src/rkhqueue.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/sm/src/rkhsm.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/sma/src/rkhsma.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/sma/src/rkhsma_prio.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/sma/src/rkhsma_sync.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/tmr/src/rkhtmr.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/src/rkhtrc_filter.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/src/rkhtrc_record.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/src/rkhtrc_stream.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
 		<Unit filename="/Users/nando/NUCLEO-F429ZI/STM32F429ZITX_FLASH.ld">
 			<Option target="NUCLEO-F429ZI.elf"/>
 		</Unit>
@@ -1287,6 +1353,9 @@
 		<Unit filename="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/state-machines/signals/signals.h">
 			<Option target="NUCLEO-F429ZI.elf"/>
 		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/stm32/stm32_mqtt_pal.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
 		<Unit filename="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/date/date.c">
 			<Option target="NUCLEO-F429ZI.elf"/>
 		</Unit>
@@ -1315,66 +1384,6 @@
 			<Option target="NUCLEO-F429ZI.elf"/>
 		</Unit>
 		<Unit filename="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/rtime/rtime.h">
-			<Option target="NUCLEO-F429ZI.elf"/>
-		</Unit>
-		<Unit filename="/Users/nando/NUCLEO-F429ZI/reactive-framework/stm32/mqtt_pal_stm32.h">
-			<Option target="NUCLEO-F429ZI.elf"/>
-		</Unit>
-		<Unit filename="/Users/nando/NUCLEO-F429ZI/third-party/MQTT-C/src/mqtt.c">
-			<Option target="NUCLEO-F429ZI.elf"/>
-		</Unit>
-		<Unit filename="/Users/nando/NUCLEO-F429ZI/third-party/MQTT-C/src/mqtt_pal.c">
-			<Option target="NUCLEO-F429ZI.elf"/>
-		</Unit>
-		<Unit filename="/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/src/rkhfwk_bittbl.c">
-			<Option target="NUCLEO-F429ZI.elf"/>
-		</Unit>
-		<Unit filename="/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/src/rkhfwk_dynevt.c">
-			<Option target="NUCLEO-F429ZI.elf"/>
-		</Unit>
-		<Unit filename="/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/src/rkhfwk_evtpool.c">
-			<Option target="NUCLEO-F429ZI.elf"/>
-		</Unit>
-		<Unit filename="/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/src/rkhfwk_pubsub.c">
-			<Option target="NUCLEO-F429ZI.elf"/>
-		</Unit>
-		<Unit filename="/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/src/rkhfwk_rdygrp.c">
-			<Option target="NUCLEO-F429ZI.elf"/>
-		</Unit>
-		<Unit filename="/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/src/rkhfwk_sched.c">
-			<Option target="NUCLEO-F429ZI.elf"/>
-		</Unit>
-		<Unit filename="/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/src/rkhfwk_version.c">
-			<Option target="NUCLEO-F429ZI.elf"/>
-		</Unit>
-		<Unit filename="/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/mempool/src/rkhmempool.c">
-			<Option target="NUCLEO-F429ZI.elf"/>
-		</Unit>
-		<Unit filename="/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/queue/src/rkhqueue.c">
-			<Option target="NUCLEO-F429ZI.elf"/>
-		</Unit>
-		<Unit filename="/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/sm/src/rkhsm.c">
-			<Option target="NUCLEO-F429ZI.elf"/>
-		</Unit>
-		<Unit filename="/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/sma/src/rkhsma.c">
-			<Option target="NUCLEO-F429ZI.elf"/>
-		</Unit>
-		<Unit filename="/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/sma/src/rkhsma_prio.c">
-			<Option target="NUCLEO-F429ZI.elf"/>
-		</Unit>
-		<Unit filename="/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/sma/src/rkhsma_sync.c">
-			<Option target="NUCLEO-F429ZI.elf"/>
-		</Unit>
-		<Unit filename="/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/tmr/src/rkhtmr.c">
-			<Option target="NUCLEO-F429ZI.elf"/>
-		</Unit>
-		<Unit filename="/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/src/rkhtrc_filter.c">
-			<Option target="NUCLEO-F429ZI.elf"/>
-		</Unit>
-		<Unit filename="/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/src/rkhtrc_record.c">
-			<Option target="NUCLEO-F429ZI.elf"/>
-		</Unit>
-		<Unit filename="/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/src/rkhtrc_stream.c">
 			<Option target="NUCLEO-F429ZI.elf"/>
 		</Unit>
 		<Unit filename="/Users/nando/NUCLEO-F429ZI/CMakeLists.txt">
