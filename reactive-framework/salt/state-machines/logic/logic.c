@@ -369,7 +369,7 @@ dispatch(RKH_SMA_T *me, void *arg)
 }
 
 static void
-setVelDisplay(Logic *me, VelEvt *velEvt, bool_t on)
+setVelDisplay(Logic *me, VelEvt *velEvt, bool on)
 {
     if(on){
         if(velEvt != NULL && velEvt->vel >= 0){

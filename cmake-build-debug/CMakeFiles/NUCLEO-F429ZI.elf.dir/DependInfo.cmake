@@ -79,6 +79,7 @@ set(CMAKE_ASM_TARGET_INCLUDE_PATH
   "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/relay-control"
   "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/analog-inputs"
   "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/emaFilter"
+  "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/parser"
   "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/parser/sim900"
   "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/parser/salt-command"
   "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/src"

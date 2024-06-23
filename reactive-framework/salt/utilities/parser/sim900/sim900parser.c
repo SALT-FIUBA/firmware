@@ -1166,7 +1166,7 @@ void recCmdFlush(){
 
     *recCmdNext = '\0';
 
-    char * a = recCmdBuf
+    char * a = recCmdBuf;
 
     RKH_TRC_USR_BEGIN(USR_TRACE_IN)
         RKH_TUSR_STR(recCmdBuf);

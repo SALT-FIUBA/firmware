@@ -46,8 +46,10 @@ anInAdcStart(int channel)
 {
     uint8_t lpcAdcChannel = SAPI_ADC_CH_OFFSET - chMap[channel];
 
-    Chip_ADC_EnableChannel(LPC_ADC0, lpcAdcChannel, ENABLE);
-    Chip_ADC_SetStartMode(LPC_ADC0, ADC_START_NOW, ADC_TRIGGERMODE_RISING);
+    // TODO: migrate to stm32a
+
+    //    Chip_ADC_EnableChannel(LPC_ADC0, lpcAdcChannel, ENABLE);
+   //    Chip_ADC_SetStartMode(LPC_ADC0, ADC_START_NOW, ADC_TRIGGERMODE_RISING);
 }
 
 static uint16_t
@@ -56,13 +58,15 @@ anInAdcRead(int channel)
     uint8_t lpcAdcChannel = SAPI_ADC_CH_OFFSET - chMap[channel];
     uint16_t analogValue = 0;
 
-    while(Chip_ADC_ReadStatus(LPC_ADC0, lpcAdcChannel, ADC_DR_DONE_STAT) != SET){
+    // TODO: migrate to stm32a
 
-    }
+   //    while(Chip_ADC_ReadStatus(LPC_ADC0, lpcAdcChannel, ADC_DR_DONE_STAT) != SET){
 
-    Chip_ADC_ReadValue( LPC_ADC0, lpcAdcChannel, &analogValue );
+   //    }
 
-    Chip_ADC_EnableChannel( LPC_ADC0, lpcAdcChannel, DISABLE );
+   //    Chip_ADC_ReadValue( LPC_ADC0, lpcAdcChannel, &analogValue );
+
+   //    Chip_ADC_EnableChannel( LPC_ADC0, lpcAdcChannel, DISABLE );
 
     return analogValue;
 }
@@ -82,7 +86,12 @@ anInInit(onAnInCb_t cb)
 {
     onAnInCb = cb;
 
-    adcConfig(ADC_ENABLE);
+    /*
+     * @brief:  enable/disable the ADC and DAC peripheral
+     * @param:  ADC_ENABLE, ADC_DISABLE
+     * @return: none
+    */
+    //   adcConfig(ADC_ENABLE);
 
     currChannel = anIn0;
     anInAdcStart(currChannel);

@@ -31,6 +31,7 @@
 #include "anIn.h"
 #include "epoch.h"
 #include "rtime.h"
+#include "stm32f4xx_nucleo_144.h"
 
 RKH_THIS_MODULE
 
@@ -43,11 +44,16 @@ RKH_THIS_MODULE
 /* ----------------------------- Local macros ------------------------------ */
 #define ModStatus_init()    gpioConfig(LED1, GPIO_OUTPUT)
 #define ModStatus(b)        gpioWrite(LED1, b)
-#define ModStatus_toggle()  gpioToggle(LED1)
+//  #define ModStatus_toggle()  gpioToggle(LED1)
+#define ModStatus_toggle()  BSP_LED_On(LED1)
+
 #define RegStatus_init()    gpioConfig(LED2, GPIO_OUTPUT)
-#define RegStatus(b)        gpioWrite(LED2, b)
+//  #define RegStatus(b)        gpioWrite(LED2, b)
+#define RegStatus(b)        BSP_LED_On(LED2)
+
 #define NetStatus_init()    gpioConfig(LED3, GPIO_OUTPUT)
-#define NetStatus(b)        gpioWrite(LED3, b)
+//  #define NetStatus(b)        gpioWrite(LED3, b)
+#define NetStatus(b)        BSP_LED_On(LED3)
 
 /* ------------------------------- Constants ------------------------------- */
 /* ---------------------------- Local data types --------------------------- */
@@ -62,7 +68,7 @@ void
 bsp_init()
 {
     /* Read clock settings and update SystemCoreClock variable */
-    SystemCoreClockUpdate();
+    //  SystemCoreClockUpdate();
 
     /* EDU-CIAA Configuration */
     /* Inicializar el conteo de Ticks con resolución de 1ms, sin tickHook */

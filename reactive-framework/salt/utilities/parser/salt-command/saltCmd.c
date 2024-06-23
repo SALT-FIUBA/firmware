@@ -24,7 +24,7 @@
 
 #define JSMN_PARENT_LINKS
 #include "jsmn.h"
-#include "bsp/bsp.h"
+#include "bsp.h"
 
 /* ----------------------------- Local macros ------------------------------ */
 /* ------------------------------- Constants ------------------------------- */

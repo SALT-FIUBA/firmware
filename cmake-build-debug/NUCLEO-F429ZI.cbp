@@ -85,6 +85,7 @@
 					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/relay-control"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/analog-inputs"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/emaFilter"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/parser"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/parser/sim900"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/parser/salt-command"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/src"/>
@@ -170,6 +171,7 @@
 					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/relay-control"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/analog-inputs"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/emaFilter"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/parser"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/parser/sim900"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/parser/salt-command"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/src"/>

@@ -27,6 +27,7 @@
 #include "mqtt-c.h"
 #include "epoch.h"
 #include "date.h"
+#include "conmgr.h"
 
 //  #include "conmgr.h"
 //  #include "BSP-Nucleo-144.h"

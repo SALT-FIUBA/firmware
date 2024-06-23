@@ -130,4 +130,8 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/state-machines/mqtt-pro
  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/epoch/epoch.h \
  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/MQTT-C/include/mqtt_sync.h \
  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/MQTT-C/include/mqtt-c.h \
- /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/date/date.h
+ /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/date/date.h \
+ /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/state-machines/connector-manager/conmgr.h \
+ /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/state-machines/module-manager/modMgr.h \
+ /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/module-command/modcmd.h \
+ /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/gps/gps.h
