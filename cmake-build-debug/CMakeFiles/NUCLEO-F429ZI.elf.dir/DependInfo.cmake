@@ -81,6 +81,7 @@ set(CMAKE_ASM_TARGET_INCLUDE_PATH
   "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/emaFilter"
   "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/parser/sim900"
   "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/parser/salt-command"
+  "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/src"
   )
 
 # The set of dependency files which are needed:
@@ -244,6 +245,14 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/parser/salt-command/saltCmd.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/parser/salt-command/saltCmd.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/parser/salt-command/saltCmd.c.obj.d"
   "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/parser/sim900/sim900parser.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/parser/sim900/sim900parser.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/parser/sim900/sim900parser.c.obj.d"
   "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/rtime/rtime.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/rtime/rtime.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/rtime/rtime.c.obj.d"
+  "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/src/ssp.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/src/ssp.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/src/ssp.c.obj.d"
+  "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/tests/ssp/stub/mocks/Mocktree_actions.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/stub/mocks/Mocktree_actions.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/stub/mocks/Mocktree_actions.c.obj.d"
+  "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/all_tests.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/all_tests.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/all_tests.c.obj.d"
+  "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/test_ssp_runner.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/test_ssp_runner.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/test_ssp_runner.c.obj.d"
+  "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/tests/ssp/test_ssp.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_ssp.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_ssp.c.obj.d"
+  "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/tools/cmock/cmock.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/cmock/cmock.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/cmock/cmock.c.obj.d"
+  "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/tools/unity/fixture/unity_fixture.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/unity/fixture/unity_fixture.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/unity/fixture/unity_fixture.c.obj.d"
+  "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/tools/unity/unity.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/unity/unity.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/unity/unity.c.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

@@ -17,6 +17,7 @@
 /* ----------------------------- Include files ----------------------------- */
 #include "ledPanel.h"
 #include "as1116.h"
+#include "stm32f4xx_nucleo_144.h"
 
 /* ----------------------------- Local macros ------------------------------ */
 /* ------------------------------- Constants ------------------------------- */
@@ -199,14 +200,19 @@ void ledPanelTestSalt(void){
 
         ledPanelSetCfgInt(&testConfig);
 
-        gpioWrite( LED1, ON );
+        //  gpioWrite( LED1, ON );
+        BSP_LED_On(LED1);
 
-        delay(500);
+        //  delay(500);
+        HAL_Delay(500);
 
         /* Apago el led azul */
-        gpioWrite( LED1, OFF );
+        //  gpioWrite( LED1, OFF );
+        BSP_LED_Off(LED1);
 
-        delay(500);
+        //  delay(500);
+        HAL_Delay(500);
+
     }
 
 }

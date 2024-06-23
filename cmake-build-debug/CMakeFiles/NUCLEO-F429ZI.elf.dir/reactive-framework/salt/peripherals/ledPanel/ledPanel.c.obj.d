@@ -72,4 +72,5 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/peripherals/ledPanel/le
  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhitl.h \
  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_evtpool.h \
  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_sched.h \
- /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/ledPanel/as1116.h
+ /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/ledPanel/as1116.h \
+ /Users/nando/NUCLEO-F429ZI/Drivers/BSP-Nucleo-144/stm32f4xx_nucleo_144.h

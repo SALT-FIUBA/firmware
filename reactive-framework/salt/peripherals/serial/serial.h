@@ -37,11 +37,18 @@ typedef enum{
 
 typedef void (* serialIsrCb_t)(unsigned char c);
 
-typedef enum{
+/* TODO: check
+ * type already defined in ->
+ *                            Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
+typedef enum {
+
     UART_PARITY_NONE = 0,
     UART_PARITY_ODD = 0,
-    UART_PARITY_EVEN,
+    UART_PARITY_EVEN
+
 } uartParity_t;
+ */
+
 /* -------------------------- External variables --------------------------- */
 /* -------------------------- Function prototypes -------------------------- */
 void serialInit(serialMap_t serialMap);

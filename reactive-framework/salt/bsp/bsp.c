@@ -20,7 +20,6 @@
 /* ----------------------------- Include files ----------------------------- */
 #include <stdio.h>
 #include "rkh.h"
-#include "sapi.h"
 #include "bsp.h"
 
 #include "signals.h"
@@ -65,31 +64,34 @@ bsp_init()
     /* Read clock settings and update SystemCoreClock variable */
     SystemCoreClockUpdate();
 
+    /* EDU-CIAA Configuration */
     /* Inicializar el conteo de Ticks con resolución de 1ms, sin tickHook */
-    tickConfig( 1, 0 );
+    //  tickConfig( 1, 0 );
 
     /* Inicializar GPIOs */
-    gpioConfig( 0, GPIO_ENABLE );
+    //  gpioConfig( 0, GPIO_ENABLE );
 
     /* Configuración de pines de entrada para Teclas de la EDU-CIAA-NXP */
-    gpioConfig( TEC1, GPIO_INPUT );
-    gpioConfig( TEC2, GPIO_INPUT );
-    gpioConfig( TEC3, GPIO_INPUT );
-    gpioConfig( TEC4, GPIO_INPUT );
+   //    gpioConfig( TEC1, GPIO_INPUT );
+   //    gpioConfig( TEC2, GPIO_INPUT );
+   //    gpioConfig( TEC3, GPIO_INPUT );
+   //    gpioConfig( TEC4, GPIO_INPUT );
 
     /* Configuración de pines de salida para Leds de la EDU-CIAA-NXP */
-    gpioConfig( LEDR, GPIO_OUTPUT );
-    gpioConfig( LEDG, GPIO_OUTPUT );
-    gpioConfig( LEDB, GPIO_OUTPUT );
-    gpioConfig( LED1, GPIO_OUTPUT );
-    gpioConfig( LED2, GPIO_OUTPUT );
-    gpioConfig( LED3, GPIO_OUTPUT );
+   //    gpioConfig( LEDR, GPIO_OUTPUT );
+   //    gpioConfig( LEDG, GPIO_OUTPUT );
+   //    gpioConfig( LEDB, GPIO_OUTPUT );
+   //    gpioConfig( LED1, GPIO_OUTPUT );
+   //    gpioConfig( LED2, GPIO_OUTPUT );
+   //    gpioConfig( LED3, GPIO_OUTPUT );
 
-    ModStatus_init();
-    ModStatus(0);
-    RegStatus(UnregisteredSt);
-    NetStatus_init();
-    NetStatus(DisconnectedSt);
+   //    ModStatus_init();
+   //    ModStatus(0);
+   //    RegStatus(UnregisteredSt);
+   //    NetStatus_init();
+   //    NetStatus(DisconnectedSt);
+   /***************************************************/
+
 
     modPwr_init();
     rtime_init();

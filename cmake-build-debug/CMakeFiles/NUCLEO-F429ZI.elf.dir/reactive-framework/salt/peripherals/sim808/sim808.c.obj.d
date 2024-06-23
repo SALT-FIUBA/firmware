@@ -72,4 +72,6 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/peripherals/sim808/sim8
  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhitl.h \
  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_evtpool.h \
  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhfwk_sched.h \
- /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/serial/serial.h
+ /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/serial/serial.h \
+ /Users/nando/NUCLEO-F429ZI/Core/Inc/gpio.h \
+ /Users/nando/NUCLEO-F429ZI/Core/Inc/main.h

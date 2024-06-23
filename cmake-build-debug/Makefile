@@ -3953,6 +3953,198 @@ reactive-framework/salt/utilities/rtime/rtime.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/rtime/rtime.c.s
 .PHONY : reactive-framework/salt/utilities/rtime/rtime.c.s
 
+reactive-framework/salt/utilities/ssp/src/ssp.obj: reactive-framework/salt/utilities/ssp/src/ssp.c.obj
+.PHONY : reactive-framework/salt/utilities/ssp/src/ssp.obj
+
+# target to build an object file
+reactive-framework/salt/utilities/ssp/src/ssp.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/src/ssp.c.obj
+.PHONY : reactive-framework/salt/utilities/ssp/src/ssp.c.obj
+
+reactive-framework/salt/utilities/ssp/src/ssp.i: reactive-framework/salt/utilities/ssp/src/ssp.c.i
+.PHONY : reactive-framework/salt/utilities/ssp/src/ssp.i
+
+# target to preprocess a source file
+reactive-framework/salt/utilities/ssp/src/ssp.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/src/ssp.c.i
+.PHONY : reactive-framework/salt/utilities/ssp/src/ssp.c.i
+
+reactive-framework/salt/utilities/ssp/src/ssp.s: reactive-framework/salt/utilities/ssp/src/ssp.c.s
+.PHONY : reactive-framework/salt/utilities/ssp/src/ssp.s
+
+# target to generate assembly for a file
+reactive-framework/salt/utilities/ssp/src/ssp.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/src/ssp.c.s
+.PHONY : reactive-framework/salt/utilities/ssp/src/ssp.c.s
+
+reactive-framework/salt/utilities/ssp/tests/ssp/stub/mocks/Mocktree_actions.obj: reactive-framework/salt/utilities/ssp/tests/ssp/stub/mocks/Mocktree_actions.c.obj
+.PHONY : reactive-framework/salt/utilities/ssp/tests/ssp/stub/mocks/Mocktree_actions.obj
+
+# target to build an object file
+reactive-framework/salt/utilities/ssp/tests/ssp/stub/mocks/Mocktree_actions.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/stub/mocks/Mocktree_actions.c.obj
+.PHONY : reactive-framework/salt/utilities/ssp/tests/ssp/stub/mocks/Mocktree_actions.c.obj
+
+reactive-framework/salt/utilities/ssp/tests/ssp/stub/mocks/Mocktree_actions.i: reactive-framework/salt/utilities/ssp/tests/ssp/stub/mocks/Mocktree_actions.c.i
+.PHONY : reactive-framework/salt/utilities/ssp/tests/ssp/stub/mocks/Mocktree_actions.i
+
+# target to preprocess a source file
+reactive-framework/salt/utilities/ssp/tests/ssp/stub/mocks/Mocktree_actions.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/stub/mocks/Mocktree_actions.c.i
+.PHONY : reactive-framework/salt/utilities/ssp/tests/ssp/stub/mocks/Mocktree_actions.c.i
+
+reactive-framework/salt/utilities/ssp/tests/ssp/stub/mocks/Mocktree_actions.s: reactive-framework/salt/utilities/ssp/tests/ssp/stub/mocks/Mocktree_actions.c.s
+.PHONY : reactive-framework/salt/utilities/ssp/tests/ssp/stub/mocks/Mocktree_actions.s
+
+# target to generate assembly for a file
+reactive-framework/salt/utilities/ssp/tests/ssp/stub/mocks/Mocktree_actions.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/stub/mocks/Mocktree_actions.c.s
+.PHONY : reactive-framework/salt/utilities/ssp/tests/ssp/stub/mocks/Mocktree_actions.c.s
+
+reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/all_tests.obj: reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/all_tests.c.obj
+.PHONY : reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/all_tests.obj
+
+# target to build an object file
+reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/all_tests.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/all_tests.c.obj
+.PHONY : reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/all_tests.c.obj
+
+reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/all_tests.i: reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/all_tests.c.i
+.PHONY : reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/all_tests.i
+
+# target to preprocess a source file
+reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/all_tests.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/all_tests.c.i
+.PHONY : reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/all_tests.c.i
+
+reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/all_tests.s: reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/all_tests.c.s
+.PHONY : reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/all_tests.s
+
+# target to generate assembly for a file
+reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/all_tests.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/all_tests.c.s
+.PHONY : reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/all_tests.c.s
+
+reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/test_ssp_runner.obj: reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/test_ssp_runner.c.obj
+.PHONY : reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/test_ssp_runner.obj
+
+# target to build an object file
+reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/test_ssp_runner.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/test_ssp_runner.c.obj
+.PHONY : reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/test_ssp_runner.c.obj
+
+reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/test_ssp_runner.i: reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/test_ssp_runner.c.i
+.PHONY : reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/test_ssp_runner.i
+
+# target to preprocess a source file
+reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/test_ssp_runner.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/test_ssp_runner.c.i
+.PHONY : reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/test_ssp_runner.c.i
+
+reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/test_ssp_runner.s: reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/test_ssp_runner.c.s
+.PHONY : reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/test_ssp_runner.s
+
+# target to generate assembly for a file
+reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/test_ssp_runner.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/test_ssp_runner.c.s
+.PHONY : reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/test_ssp_runner.c.s
+
+reactive-framework/salt/utilities/ssp/tests/ssp/test_ssp.obj: reactive-framework/salt/utilities/ssp/tests/ssp/test_ssp.c.obj
+.PHONY : reactive-framework/salt/utilities/ssp/tests/ssp/test_ssp.obj
+
+# target to build an object file
+reactive-framework/salt/utilities/ssp/tests/ssp/test_ssp.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_ssp.c.obj
+.PHONY : reactive-framework/salt/utilities/ssp/tests/ssp/test_ssp.c.obj
+
+reactive-framework/salt/utilities/ssp/tests/ssp/test_ssp.i: reactive-framework/salt/utilities/ssp/tests/ssp/test_ssp.c.i
+.PHONY : reactive-framework/salt/utilities/ssp/tests/ssp/test_ssp.i
+
+# target to preprocess a source file
+reactive-framework/salt/utilities/ssp/tests/ssp/test_ssp.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_ssp.c.i
+.PHONY : reactive-framework/salt/utilities/ssp/tests/ssp/test_ssp.c.i
+
+reactive-framework/salt/utilities/ssp/tests/ssp/test_ssp.s: reactive-framework/salt/utilities/ssp/tests/ssp/test_ssp.c.s
+.PHONY : reactive-framework/salt/utilities/ssp/tests/ssp/test_ssp.s
+
+# target to generate assembly for a file
+reactive-framework/salt/utilities/ssp/tests/ssp/test_ssp.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_ssp.c.s
+.PHONY : reactive-framework/salt/utilities/ssp/tests/ssp/test_ssp.c.s
+
+reactive-framework/salt/utilities/ssp/tools/cmock/cmock.obj: reactive-framework/salt/utilities/ssp/tools/cmock/cmock.c.obj
+.PHONY : reactive-framework/salt/utilities/ssp/tools/cmock/cmock.obj
+
+# target to build an object file
+reactive-framework/salt/utilities/ssp/tools/cmock/cmock.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/cmock/cmock.c.obj
+.PHONY : reactive-framework/salt/utilities/ssp/tools/cmock/cmock.c.obj
+
+reactive-framework/salt/utilities/ssp/tools/cmock/cmock.i: reactive-framework/salt/utilities/ssp/tools/cmock/cmock.c.i
+.PHONY : reactive-framework/salt/utilities/ssp/tools/cmock/cmock.i
+
+# target to preprocess a source file
+reactive-framework/salt/utilities/ssp/tools/cmock/cmock.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/cmock/cmock.c.i
+.PHONY : reactive-framework/salt/utilities/ssp/tools/cmock/cmock.c.i
+
+reactive-framework/salt/utilities/ssp/tools/cmock/cmock.s: reactive-framework/salt/utilities/ssp/tools/cmock/cmock.c.s
+.PHONY : reactive-framework/salt/utilities/ssp/tools/cmock/cmock.s
+
+# target to generate assembly for a file
+reactive-framework/salt/utilities/ssp/tools/cmock/cmock.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/cmock/cmock.c.s
+.PHONY : reactive-framework/salt/utilities/ssp/tools/cmock/cmock.c.s
+
+reactive-framework/salt/utilities/ssp/tools/unity/fixture/unity_fixture.obj: reactive-framework/salt/utilities/ssp/tools/unity/fixture/unity_fixture.c.obj
+.PHONY : reactive-framework/salt/utilities/ssp/tools/unity/fixture/unity_fixture.obj
+
+# target to build an object file
+reactive-framework/salt/utilities/ssp/tools/unity/fixture/unity_fixture.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/unity/fixture/unity_fixture.c.obj
+.PHONY : reactive-framework/salt/utilities/ssp/tools/unity/fixture/unity_fixture.c.obj
+
+reactive-framework/salt/utilities/ssp/tools/unity/fixture/unity_fixture.i: reactive-framework/salt/utilities/ssp/tools/unity/fixture/unity_fixture.c.i
+.PHONY : reactive-framework/salt/utilities/ssp/tools/unity/fixture/unity_fixture.i
+
+# target to preprocess a source file
+reactive-framework/salt/utilities/ssp/tools/unity/fixture/unity_fixture.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/unity/fixture/unity_fixture.c.i
+.PHONY : reactive-framework/salt/utilities/ssp/tools/unity/fixture/unity_fixture.c.i
+
+reactive-framework/salt/utilities/ssp/tools/unity/fixture/unity_fixture.s: reactive-framework/salt/utilities/ssp/tools/unity/fixture/unity_fixture.c.s
+.PHONY : reactive-framework/salt/utilities/ssp/tools/unity/fixture/unity_fixture.s
+
+# target to generate assembly for a file
+reactive-framework/salt/utilities/ssp/tools/unity/fixture/unity_fixture.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/unity/fixture/unity_fixture.c.s
+.PHONY : reactive-framework/salt/utilities/ssp/tools/unity/fixture/unity_fixture.c.s
+
+reactive-framework/salt/utilities/ssp/tools/unity/unity.obj: reactive-framework/salt/utilities/ssp/tools/unity/unity.c.obj
+.PHONY : reactive-framework/salt/utilities/ssp/tools/unity/unity.obj
+
+# target to build an object file
+reactive-framework/salt/utilities/ssp/tools/unity/unity.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/unity/unity.c.obj
+.PHONY : reactive-framework/salt/utilities/ssp/tools/unity/unity.c.obj
+
+reactive-framework/salt/utilities/ssp/tools/unity/unity.i: reactive-framework/salt/utilities/ssp/tools/unity/unity.c.i
+.PHONY : reactive-framework/salt/utilities/ssp/tools/unity/unity.i
+
+# target to preprocess a source file
+reactive-framework/salt/utilities/ssp/tools/unity/unity.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/unity/unity.c.i
+.PHONY : reactive-framework/salt/utilities/ssp/tools/unity/unity.c.i
+
+reactive-framework/salt/utilities/ssp/tools/unity/unity.s: reactive-framework/salt/utilities/ssp/tools/unity/unity.c.s
+.PHONY : reactive-framework/salt/utilities/ssp/tools/unity/unity.s
+
+# target to generate assembly for a file
+reactive-framework/salt/utilities/ssp/tools/unity/unity.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/unity/unity.c.s
+.PHONY : reactive-framework/salt/utilities/ssp/tools/unity/unity.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -4440,6 +4632,30 @@ help:
 	@echo "... reactive-framework/salt/utilities/rtime/rtime.obj"
 	@echo "... reactive-framework/salt/utilities/rtime/rtime.i"
 	@echo "... reactive-framework/salt/utilities/rtime/rtime.s"
+	@echo "... reactive-framework/salt/utilities/ssp/src/ssp.obj"
+	@echo "... reactive-framework/salt/utilities/ssp/src/ssp.i"
+	@echo "... reactive-framework/salt/utilities/ssp/src/ssp.s"
+	@echo "... reactive-framework/salt/utilities/ssp/tests/ssp/stub/mocks/Mocktree_actions.obj"
+	@echo "... reactive-framework/salt/utilities/ssp/tests/ssp/stub/mocks/Mocktree_actions.i"
+	@echo "... reactive-framework/salt/utilities/ssp/tests/ssp/stub/mocks/Mocktree_actions.s"
+	@echo "... reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/all_tests.obj"
+	@echo "... reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/all_tests.i"
+	@echo "... reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/all_tests.s"
+	@echo "... reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/test_ssp_runner.obj"
+	@echo "... reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/test_ssp_runner.i"
+	@echo "... reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/test_ssp_runner.s"
+	@echo "... reactive-framework/salt/utilities/ssp/tests/ssp/test_ssp.obj"
+	@echo "... reactive-framework/salt/utilities/ssp/tests/ssp/test_ssp.i"
+	@echo "... reactive-framework/salt/utilities/ssp/tests/ssp/test_ssp.s"
+	@echo "... reactive-framework/salt/utilities/ssp/tools/cmock/cmock.obj"
+	@echo "... reactive-framework/salt/utilities/ssp/tools/cmock/cmock.i"
+	@echo "... reactive-framework/salt/utilities/ssp/tools/cmock/cmock.s"
+	@echo "... reactive-framework/salt/utilities/ssp/tools/unity/fixture/unity_fixture.obj"
+	@echo "... reactive-framework/salt/utilities/ssp/tools/unity/fixture/unity_fixture.i"
+	@echo "... reactive-framework/salt/utilities/ssp/tools/unity/fixture/unity_fixture.s"
+	@echo "... reactive-framework/salt/utilities/ssp/tools/unity/unity.obj"
+	@echo "... reactive-framework/salt/utilities/ssp/tools/unity/unity.i"
+	@echo "... reactive-framework/salt/utilities/ssp/tools/unity/unity.s"
 .PHONY : help
 
 

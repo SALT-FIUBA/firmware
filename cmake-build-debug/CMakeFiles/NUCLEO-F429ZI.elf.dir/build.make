@@ -2308,6 +2308,118 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/rtime/rtime.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/rtime/rtime.c.s"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/rtime/rtime.c -o CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/rtime/rtime.c.s
 
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/src/ssp.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/src/ssp.c.obj: /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/src/ssp.c
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/src/ssp.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_161) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/src/ssp.c.obj"
+	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/src/ssp.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/src/ssp.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/src/ssp.c.obj -c /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/src/ssp.c
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/src/ssp.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/src/ssp.c.i"
+	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/src/ssp.c > CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/src/ssp.c.i
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/src/ssp.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/src/ssp.c.s"
+	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/src/ssp.c -o CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/src/ssp.c.s
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/stub/mocks/Mocktree_actions.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/stub/mocks/Mocktree_actions.c.obj: /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/tests/ssp/stub/mocks/Mocktree_actions.c
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/stub/mocks/Mocktree_actions.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_162) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/stub/mocks/Mocktree_actions.c.obj"
+	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/stub/mocks/Mocktree_actions.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/stub/mocks/Mocktree_actions.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/stub/mocks/Mocktree_actions.c.obj -c /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/tests/ssp/stub/mocks/Mocktree_actions.c
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/stub/mocks/Mocktree_actions.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/stub/mocks/Mocktree_actions.c.i"
+	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/tests/ssp/stub/mocks/Mocktree_actions.c > CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/stub/mocks/Mocktree_actions.c.i
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/stub/mocks/Mocktree_actions.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/stub/mocks/Mocktree_actions.c.s"
+	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/tests/ssp/stub/mocks/Mocktree_actions.c -o CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/stub/mocks/Mocktree_actions.c.s
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/all_tests.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/all_tests.c.obj: /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/all_tests.c
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/all_tests.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_163) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/all_tests.c.obj"
+	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/all_tests.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/all_tests.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/all_tests.c.obj -c /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/all_tests.c
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/all_tests.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/all_tests.c.i"
+	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/all_tests.c > CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/all_tests.c.i
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/all_tests.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/all_tests.c.s"
+	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/all_tests.c -o CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/all_tests.c.s
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/test_ssp_runner.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/test_ssp_runner.c.obj: /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/test_ssp_runner.c
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/test_ssp_runner.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_164) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/test_ssp_runner.c.obj"
+	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/test_ssp_runner.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/test_ssp_runner.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/test_ssp_runner.c.obj -c /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/test_ssp_runner.c
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/test_ssp_runner.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/test_ssp_runner.c.i"
+	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/test_ssp_runner.c > CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/test_ssp_runner.c.i
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/test_ssp_runner.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/test_ssp_runner.c.s"
+	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/test_ssp_runner.c -o CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/test_ssp_runner.c.s
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_ssp.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_ssp.c.obj: /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/tests/ssp/test_ssp.c
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_ssp.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_165) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_ssp.c.obj"
+	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_ssp.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_ssp.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_ssp.c.obj -c /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/tests/ssp/test_ssp.c
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_ssp.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_ssp.c.i"
+	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/tests/ssp/test_ssp.c > CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_ssp.c.i
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_ssp.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_ssp.c.s"
+	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/tests/ssp/test_ssp.c -o CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_ssp.c.s
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/cmock/cmock.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/cmock/cmock.c.obj: /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/tools/cmock/cmock.c
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/cmock/cmock.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_166) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/cmock/cmock.c.obj"
+	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/cmock/cmock.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/cmock/cmock.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/cmock/cmock.c.obj -c /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/tools/cmock/cmock.c
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/cmock/cmock.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/cmock/cmock.c.i"
+	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/tools/cmock/cmock.c > CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/cmock/cmock.c.i
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/cmock/cmock.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/cmock/cmock.c.s"
+	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/tools/cmock/cmock.c -o CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/cmock/cmock.c.s
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/unity/fixture/unity_fixture.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/unity/fixture/unity_fixture.c.obj: /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/tools/unity/fixture/unity_fixture.c
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/unity/fixture/unity_fixture.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_167) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/unity/fixture/unity_fixture.c.obj"
+	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/unity/fixture/unity_fixture.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/unity/fixture/unity_fixture.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/unity/fixture/unity_fixture.c.obj -c /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/tools/unity/fixture/unity_fixture.c
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/unity/fixture/unity_fixture.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/unity/fixture/unity_fixture.c.i"
+	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/tools/unity/fixture/unity_fixture.c > CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/unity/fixture/unity_fixture.c.i
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/unity/fixture/unity_fixture.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/unity/fixture/unity_fixture.c.s"
+	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/tools/unity/fixture/unity_fixture.c -o CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/unity/fixture/unity_fixture.c.s
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/unity/unity.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/unity/unity.c.obj: /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/tools/unity/unity.c
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/unity/unity.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_168) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/unity/unity.c.obj"
+	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/unity/unity.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/unity/unity.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/unity/unity.c.obj -c /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/tools/unity/unity.c
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/unity/unity.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/unity/unity.c.i"
+	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/tools/unity/unity.c > CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/unity/unity.c.i
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/unity/unity.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/unity/unity.c.s"
+	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/tools/unity/unity.c -o CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/unity/unity.c.s
+
 # Object files for target NUCLEO-F429ZI.elf
 NUCLEO__F429ZI_elf_OBJECTS = \
 "CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/gpio.c.obj" \
@@ -2469,7 +2581,15 @@ NUCLEO__F429ZI_elf_OBJECTS = \
 "CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/mTime/mTimeTbl.c.obj" \
 "CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/parser/salt-command/saltCmd.c.obj" \
 "CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/parser/sim900/sim900parser.c.obj" \
-"CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/rtime/rtime.c.obj"
+"CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/rtime/rtime.c.obj" \
+"CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/src/ssp.c.obj" \
+"CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/stub/mocks/Mocktree_actions.c.obj" \
+"CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/all_tests.c.obj" \
+"CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/test_ssp_runner.c.obj" \
+"CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_ssp.c.obj" \
+"CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/cmock/cmock.c.obj" \
+"CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/unity/fixture/unity_fixture.c.obj" \
+"CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/unity/unity.c.obj"
 
 # External object files for target NUCLEO-F429ZI.elf
 NUCLEO__F429ZI_elf_EXTERNAL_OBJECTS =
@@ -2634,9 +2754,17 @@ NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/util
 NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/parser/salt-command/saltCmd.c.obj
 NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/parser/sim900/sim900parser.c.obj
 NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/rtime/rtime.c.obj
+NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/src/ssp.c.obj
+NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/stub/mocks/Mocktree_actions.c.obj
+NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/all_tests.c.obj
+NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/test_ssp_runner.c.obj
+NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tests/ssp/test_ssp.c.obj
+NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/cmock/cmock.c.obj
+NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/unity/fixture/unity_fixture.c.obj
+NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/ssp/tools/unity/unity.c.obj
 NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make
 NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_161) "Linking C executable NUCLEO-F429ZI.elf"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_169) "Linking C executable NUCLEO-F429ZI.elf"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/NUCLEO-F429ZI.elf.dir/link.txt --verbose=$(VERBOSE)
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold "Building /Users/nando/NUCLEO-F429ZI/cmake-build-debug/NUCLEO-F429ZI.hex"
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold "Building /Users/nando/NUCLEO-F429ZI/cmake-build-debug/NUCLEO-F429ZI.bin"

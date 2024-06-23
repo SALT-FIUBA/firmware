@@ -17,14 +17,14 @@
  *	Specify the maximum number of state machine applications (SMA) to be used
  *	by the application (can be a number in the range [1..64]).
  */
-#define RKH_CFG_FWK_MAX_SMA             2u
+#define RKH_CFG_FWK_MAX_SMA             6u
 
 /**
  *	If the dynamic event support (see #RKH_CFG_FWK_DYN_EVT_EN) is set to
  *	1, RKH allows to use event with parameters, defer/recall, allocating
  *	and recycling dynamic events, among other features.
  */
-#define RKH_CFG_FWK_DYN_EVT_EN          RKH_DISABLED
+#define RKH_CFG_FWK_DYN_EVT_EN          RKH_ENABLED
 
 /**
  *	If the dynamic event support is enabled (see #RKH_CFG_FWK_DYN_EVT_EN)
@@ -33,7 +33,7 @@
  *	(can be a number in the range [0..256]).
  *	Note that a value of 0 will completely suppress the memory pool services.
  */
-#define RKH_CFG_FWK_MAX_EVT_POOL        0u
+#define RKH_CFG_FWK_MAX_EVT_POOL        3u
 
 /**
  *  Specify the size of the event signal. The valid values [in bits] are
@@ -47,7 +47,7 @@
  *	Specify the maximum number of event signals to be used by the
  *	application.
  */
-#define RKH_CFG_FWK_MAX_SIGNALS         16u
+#define RKH_CFG_FWK_MAX_SIGNALS         48u
 
 /**
  *  Specify the data type of event size. The valid values [in bits] are
@@ -62,7 +62,7 @@
  *	support is enabled (see #RKH_CFG_FWK_DYN_EVT_EN), RKH enables the
  *	defer and recall event features.
  */
-#define RKH_CFG_FWK_DEFER_EVT_EN        RKH_DISABLED
+#define RKH_CFG_FWK_DEFER_EVT_EN        RKH_ENABLED
 
 /**
  *	If the #RKH_CFG_FWK_ASSERT_EN is set to 0 the checking assertions are
@@ -221,7 +221,7 @@
  *  hierarchical state machines uses up to 4 levels. Currently
  *  #RKH_CFG_SMA_MAX_HCAL_DEPTH cannot exceed 8.
  */
-#define RKH_CFG_SMA_MAX_HCAL_DEPTH      2u
+#define RKH_CFG_SMA_MAX_HCAL_DEPTH      6u
 
 /**
  *	Specify the maximum number of linked transition segments. The smaller
@@ -229,7 +229,7 @@
  *	hierarchical state machines uses up to 4 transition segments.
  *	Currently #RKH_CFG_SMA_MAX_TRC_SEGS cannot exceed 8.
  */
-#define RKH_CFG_SMA_MAX_TRC_SEGS        2u
+#define RKH_CFG_SMA_MAX_TRC_SEGS        8u
 
 /**
  *	If the #RKH_CFG_SMA_PSEUDOSTATE_EN is set to 1, the RKH allows
@@ -667,7 +667,7 @@
  *	If the #RKH_CFG_MP_EN is set to 1 then RKH will include the native
  *	fixed-size memory block management.
  */
-#define RKH_CFG_MP_EN                   RKH_DISABLED
+#define RKH_CFG_MP_EN                   RKH_ENABLED
 
 /**
  *	If the #RKH_CFG_MP_EN is set to 1 then RKH will include the native
@@ -709,7 +709,7 @@
  *	data for proper sizing of the memory pool.
  *	See rkh_mp_get_low_wmark() function.
  */
-#define RKH_CFG_MP_GET_LWM_EN           RKH_DISABLED
+#define RKH_CFG_MP_GET_LWM_EN           RKH_ENABLED
 
 /**
  *	If the #RKH_CFG_MP_GET_INFO_EN is set to 1 then RKH will include the

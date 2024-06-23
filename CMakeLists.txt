@@ -116,6 +116,7 @@ include_directories(
         reactive-framework/salt/utilities/emaFilter
         reactive-framework/salt/utilities/parser/sim900
         reactive-framework/salt/utilities/parser/salt-command
+        reactive-framework/salt/utilities/ssp/src
 
 )
 

@@ -31,17 +31,17 @@ extern "C" {
 /* -------------------------- Function prototypes -------------------------- */
 #ifdef MODPWR_CTRL_ENABLE
 
-void modPwr_init(void);
-void modPwr_ctrl(void);
-void modPwr_on(void);
-void modPwr_off(void);
+    void modPwr_init(void);
+    void modPwr_ctrl(void);
+    void modPwr_on(void);
+    void modPwr_off(void);
 
 #else
 
-#define modPwr_init();
-#define modPwr_ctrl();
-#define modPwr_on();
-#define modPwr_off();
+    #define modPwr_init();
+    #define modPwr_ctrl();
+    #define modPwr_on();
+    #define modPwr_off();
 
 #endif
 

@@ -18,13 +18,35 @@
 #include "sim808.h"
 #include "rkh.h"
 #include "serial.h"
+#include "gpio.h"
 
 /* ----------------------------- Local macros ------------------------------ */
 /* ------------------------------- Constants ------------------------------- */
+/*
+ *  migrate sim808PinConfig based on the following files:
+ *                                                          *   LWIP/Target/ethernetif.c
+ *                                                          *   Core/Inc/main.h
+ */
 
 static const Sim808PinConfig_t sim808PinConfig[] = {
-        { SIM_808_A, ENET_TXEN, ENET_RXD1, ENET_MDC },
-        { SIM_808_B, GPIO0, GPIO2, LCDEN },
+        {
+            SIM_808_A,
+            //  ENET_TXEN
+            RMII_TX_EN_Pin,
+            //  ENET_RXD1
+            RMII_RXD1_Pin,
+            //  ENET_MDC
+            RMII_MDC_Pin
+        },
+        {
+            SIM_808_B,
+            //  GPIO0
+            GPIO_PIN_0, // no reason why
+            //  GPIO2
+            GPIO_PIN_1, // no reason why
+            //  LCDEN
+            RMII_TXD0_Pin // no reason why
+        }
 };
 
 /* ---------------------------- Local data types --------------------------- */
@@ -44,10 +66,11 @@ void sim808Init(Sim808_t sim808){
     Sim808PinConfig_t pinConfig = sim808PinConfig[sim808];
 
     sim808SetControlPin(sim808, SIM_808_SLEEP, false);
-    gpioConfig( pinConfig.sleepPin, GPIO_OUTPUT );
+    //  TODO: check if is necessary ->  gpioConfig( pinConfig.sleepPin, GPIO_OUTPUT );
+
 
     sim808SetControlPin(sim808, SIM_808_PWRKEY, false);
-    gpioConfig( pinConfig.pwrkeyPin, GPIO_OUTPUT );
+    //  TODO: check if is necessary ->  gpioConfig( pinConfig.pwrkeyPin, GPIO_OUTPUT );
 
     sim808SetControlPin(sim808, SIM_808_PWRKEY, false);
 
@@ -65,20 +88,21 @@ void sim808Init(Sim808_t sim808){
     }
 }
 
-void sim808SetControlPin( Sim808_t sim808,  Sim808ControlPin_t controlPin, bool_t data){
+void sim808SetControlPin( Sim808_t sim808,  Sim808ControlPin_t controlPin, bool data){
 
     Sim808PinConfig_t pinConfig = sim808PinConfig[sim808];
 
     switch(controlPin) {
         case SIM_808_SLEEP:
-            gpioWrite( pinConfig.sleepPin,data );
+            //  TODO: check if is necessary ->  gpioWrite( pinConfig.sleepPin,data );
             break;
 
         case SIM_808_PWRKEY:
-            gpioWrite( pinConfig.pwrkeyPin,data );
+            //  TODO: check if is necessary ->  gpioWrite( pinConfig.pwrkeyPin,data );
             break;
 
         case SIM_808_VC:
+            /* TODO: check if is necessary ->
             if(data){
                 gpioWrite( pinConfig.vcPin, false );
                 gpioConfig( pinConfig.vcPin, GPIO_OUTPUT );
@@ -86,6 +110,8 @@ void sim808SetControlPin( Sim808_t sim808,  Sim808ControlPin_t controlPin, bool_
                 gpioConfig( pinConfig.vcPin, GPIO_INPUT );
                 gpioWrite( pinConfig.vcPin, true );
             }
+             */
+
             break;
 
         default:
@@ -93,19 +119,22 @@ void sim808SetControlPin( Sim808_t sim808,  Sim808ControlPin_t controlPin, bool_
     }
 }
 
-bool_t sim808GetControlPin( Sim808_t sim808,  Sim808ControlPin_t controlPin){
+bool sim808GetControlPin( Sim808_t sim808,  Sim808ControlPin_t controlPin){
 
     Sim808PinConfig_t pinConfig = sim808PinConfig[sim808];
 
     switch(controlPin) {
         case SIM_808_SLEEP:
-            return gpioRead( pinConfig.sleepPin);
+            // TODO: check -> return gpioRead( pinConfig.sleepPin);
+            return true;
 
         case SIM_808_PWRKEY:
-            return gpioRead( pinConfig.pwrkeyPin );
+            // TODO: check ->  return gpioRead( pinConfig.pwrkeyPin );
+            return true;
 
         case SIM_808_VC:
-            return !gpioRead( pinConfig.vcPin );
+            // TODO: check ->  return !gpioRead( pinConfig.vcPin );
+            return true;
 
         default:
             break;

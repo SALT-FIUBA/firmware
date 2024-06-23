@@ -58,6 +58,8 @@ static ruint state, counter;
 /* ----------------------- Local function prototypes ----------------------- */
 /* ---------------------------- Local functions ---------------------------- */
 /* ---------------------------- Global functions --------------------------- */
+
+#ifdef MODPWR_CTRL_ENABLE
 void modPwr_init(void) {
     PwrKey_init();
     PwrKey(1);
@@ -99,5 +101,6 @@ modPwr_on(void)
     Power(1);
     modPwr_toggle();
 }
+#endif
 
 /* ------------------------------ End of file ------------------------------ */

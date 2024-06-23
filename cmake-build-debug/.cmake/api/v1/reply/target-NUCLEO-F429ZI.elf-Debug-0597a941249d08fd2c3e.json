@@ -28,13 +28,7 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 171,
-				"parent" : 0
-			},
-			{
-				"command" : 1,
-				"file" : 0,
-				"line" : 167,
+				"line" : 172,
 				"parent" : 0
 			},
 			{
@@ -47,6 +41,12 @@
 				"command" : 1,
 				"file" : 0,
 				"line" : 169,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 170,
 				"parent" : 0
 			},
 			{
@@ -76,7 +76,7 @@
 			{
 				"command" : 3,
 				"file" : 0,
-				"line" : 123,
+				"line" : 124,
 				"parent" : 0
 			},
 			{
@@ -388,6 +388,10 @@
 				{
 					"backtrace" : 10,
 					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/parser/salt-command"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/src"
 				}
 			],
 			"language" : "C",
@@ -548,18 +552,26 @@
 				408,
 				410,
 				412,
-				415,
-				417,
-				419,
-				421,
-				424,
-				426,
-				428,
-				430,
-				433,
-				435,
-				437,
-				439
+				416,
+				418,
+				420,
+				422,
+				425,
+				427,
+				429,
+				431,
+				434,
+				436,
+				438,
+				440,
+				445,
+				453,
+				455,
+				456,
+				457,
+				460,
+				463,
+				467
 			]
 		},
 		{
@@ -869,6 +881,10 @@
 				{
 					"backtrace" : 10,
 					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/parser/salt-command"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/src"
 				}
 			],
 			"language" : "ASM",
@@ -958,7 +974,15 @@
 				40,
 				62,
 				96,
-				441
+				442,
+				443,
+				444,
+				447,
+				448,
+				449,
+				450,
+				451,
+				470
 			]
 		},
 		{
@@ -1212,20 +1236,33 @@
 				411,
 				413,
 				414,
-				416,
-				418,
-				420,
-				422,
+				415,
+				417,
+				419,
+				421,
 				423,
-				425,
-				427,
-				429,
-				431,
+				424,
+				426,
+				428,
+				430,
 				432,
-				434,
-				436,
-				438,
-				440
+				433,
+				435,
+				437,
+				439,
+				441,
+				446,
+				452,
+				454,
+				458,
+				459,
+				461,
+				462,
+				464,
+				465,
+				466,
+				468,
+				469
 			]
 		},
 		{
@@ -1379,18 +1416,26 @@
 				408,
 				410,
 				412,
-				415,
-				417,
-				419,
-				421,
-				424,
-				426,
-				428,
-				430,
-				433,
-				435,
-				437,
-				439
+				416,
+				418,
+				420,
+				422,
+				425,
+				427,
+				429,
+				431,
+				434,
+				436,
+				438,
+				440,
+				445,
+				453,
+				455,
+				456,
+				457,
+				460,
+				463,
+				467
 			]
 		}
 	],
@@ -3621,6 +3666,11 @@
 		},
 		{
 			"backtrace" : 1,
+			"path" : "reactive-framework/salt/sspcfg.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "reactive-framework/salt/state-machines/connector-manager/conmgr.c",
 			"sourceGroupIndex" : 2
@@ -3759,6 +3809,154 @@
 		{
 			"backtrace" : 1,
 			"path" : "reactive-framework/salt/utilities/rtime/rtime.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "reactive-framework/salt/utilities/ssp/.gitattributes",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "reactive-framework/salt/utilities/ssp/.gitignore",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "reactive-framework/salt/utilities/ssp/README.md",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "reactive-framework/salt/utilities/ssp/src/ssp.c",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "reactive-framework/salt/utilities/ssp/src/ssp.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "reactive-framework/salt/utilities/ssp/tests/ssp/prj/ssp/.gitignore",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "reactive-framework/salt/utilities/ssp/tests/ssp/prj/ssp/ssp.sln",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "reactive-framework/salt/utilities/ssp/tests/ssp/prj/ssp/ssp.v11.suo",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "reactive-framework/salt/utilities/ssp/tests/ssp/prj/ssp/ssp.vcxproj",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "reactive-framework/salt/utilities/ssp/tests/ssp/prj/ssp/ssp.vcxproj.filters",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "reactive-framework/salt/utilities/ssp/tests/ssp/sspcfg.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "reactive-framework/salt/utilities/ssp/tests/ssp/stub/mocks/Mocktree_actions.c",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "reactive-framework/salt/utilities/ssp/tests/ssp/stub/mocks/Mocktree_actions.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/all_tests.c",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "reactive-framework/salt/utilities/ssp/tests/ssp/test_runners/test_ssp_runner.c",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "reactive-framework/salt/utilities/ssp/tests/ssp/test_ssp.c",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "reactive-framework/salt/utilities/ssp/tests/ssp/tree_actions.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "reactive-framework/salt/utilities/ssp/tests/ssp/unity_config.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "reactive-framework/salt/utilities/ssp/tools/cmock/cmock.c",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "reactive-framework/salt/utilities/ssp/tools/cmock/cmock.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "reactive-framework/salt/utilities/ssp/tools/cmock/cmock_internals.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "reactive-framework/salt/utilities/ssp/tools/unity/fixture/unity_fixture.c",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "reactive-framework/salt/utilities/ssp/tools/unity/fixture/unity_fixture.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "reactive-framework/salt/utilities/ssp/tools/unity/fixture/unity_fixture_internals.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "reactive-framework/salt/utilities/ssp/tools/unity/fixture/unity_fixture_malloc_overrides.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "reactive-framework/salt/utilities/ssp/tools/unity/unity.c",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "reactive-framework/salt/utilities/ssp/tools/unity/unity.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "reactive-framework/salt/utilities/ssp/tools/unity/unity_internals.h",
 			"sourceGroupIndex" : 1
 		},
 		{
