@@ -60,6 +60,7 @@
 					<Add directory="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/tmr/inc"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/jWrite/jWrite"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/Drivers/BSP-Nucleo-144"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/blinky"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/blinky/bsp"/>
@@ -84,11 +85,15 @@
 					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/ihm"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/relay-control"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/analog-inputs"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/pulse-counter"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/teloc"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/emaFilter"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/parser"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/parser/sim900"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/parser/salt-command"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/src"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/aes"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/publisher"/>
 					<Add directory="/usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1"/>
 					<Add directory="/usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/arm-none-eabi"/>
 					<Add directory="/usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/backward"/>
@@ -146,6 +151,7 @@
 					<Add directory="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/tmr/inc"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/jWrite/jWrite"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/Drivers/BSP-Nucleo-144"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/blinky"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/blinky/bsp"/>
@@ -170,11 +176,15 @@
 					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/ihm"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/relay-control"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/analog-inputs"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/pulse-counter"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/teloc"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/emaFilter"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/parser"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/parser/sim900"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/parser/salt-command"/>
 					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/src"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/aes"/>
+					<Add directory="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/publisher"/>
 					<Add directory="/usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1"/>
 					<Add directory="/usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/arm-none-eabi"/>
 					<Add directory="/usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/backward"/>
@@ -1299,6 +1309,12 @@
 		<Unit filename="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/MQTT-C/src/mqtt_pal.c">
 			<Option target="NUCLEO-F429ZI.elf"/>
 		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/jWrite/jWrite/jWrite.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/jWrite/jWrite/jWrite.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
 		<Unit filename="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/src/rkhfwk_bittbl.c">
 			<Option target="NUCLEO-F429ZI.elf"/>
 		</Unit>
@@ -1440,6 +1456,12 @@
 		<Unit filename="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/module-power/modpwr.h">
 			<Option target="NUCLEO-F429ZI.elf"/>
 		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/pulse-counter/pulseCounter.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/pulse-counter/pulseCounter.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
 		<Unit filename="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/relay-control/relay.c">
 			<Option target="NUCLEO-F429ZI.elf"/>
 		</Unit>
@@ -1456,6 +1478,12 @@
 			<Option target="NUCLEO-F429ZI.elf"/>
 		</Unit>
 		<Unit filename="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/sim808/sim808.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/teloc/teloc.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/teloc/teloc.h">
 			<Option target="NUCLEO-F429ZI.elf"/>
 		</Unit>
 		<Unit filename="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/signals.h">
@@ -1489,6 +1517,12 @@
 			<Option target="NUCLEO-F429ZI.elf"/>
 		</Unit>
 		<Unit filename="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/stm32_mqtt_pal.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/aes/aes.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/aes/aes.h">
 			<Option target="NUCLEO-F429ZI.elf"/>
 		</Unit>
 		<Unit filename="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/date/date.c">
@@ -1534,6 +1568,12 @@
 			<Option target="NUCLEO-F429ZI.elf"/>
 		</Unit>
 		<Unit filename="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/parser/sim900/sim900parser.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/publisher/publisher.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/publisher/publisher.h">
 			<Option target="NUCLEO-F429ZI.elf"/>
 		</Unit>
 		<Unit filename="/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/rtime/rtime.c">

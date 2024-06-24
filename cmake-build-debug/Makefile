@@ -2897,6 +2897,30 @@ Middlewares/Third_Party/MQTT-C/src/mqtt_pal.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/MQTT-C/src/mqtt_pal.c.s
 .PHONY : Middlewares/Third_Party/MQTT-C/src/mqtt_pal.c.s
 
+Middlewares/Third_Party/jWrite/jWrite/jWrite.obj: Middlewares/Third_Party/jWrite/jWrite/jWrite.c.obj
+.PHONY : Middlewares/Third_Party/jWrite/jWrite/jWrite.obj
+
+# target to build an object file
+Middlewares/Third_Party/jWrite/jWrite/jWrite.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/jWrite/jWrite/jWrite.c.obj
+.PHONY : Middlewares/Third_Party/jWrite/jWrite/jWrite.c.obj
+
+Middlewares/Third_Party/jWrite/jWrite/jWrite.i: Middlewares/Third_Party/jWrite/jWrite/jWrite.c.i
+.PHONY : Middlewares/Third_Party/jWrite/jWrite/jWrite.i
+
+# target to preprocess a source file
+Middlewares/Third_Party/jWrite/jWrite/jWrite.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/jWrite/jWrite/jWrite.c.i
+.PHONY : Middlewares/Third_Party/jWrite/jWrite/jWrite.c.i
+
+Middlewares/Third_Party/jWrite/jWrite/jWrite.s: Middlewares/Third_Party/jWrite/jWrite/jWrite.c.s
+.PHONY : Middlewares/Third_Party/jWrite/jWrite/jWrite.s
+
+# target to generate assembly for a file
+Middlewares/Third_Party/jWrite/jWrite/jWrite.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/jWrite/jWrite/jWrite.c.s
+.PHONY : Middlewares/Third_Party/jWrite/jWrite/jWrite.c.s
+
 Middlewares/Third_Party/rkh/source/fwk/src/rkhfwk_bittbl.obj: Middlewares/Third_Party/rkh/source/fwk/src/rkhfwk_bittbl.c.obj
 .PHONY : Middlewares/Third_Party/rkh/source/fwk/src/rkhfwk_bittbl.obj
 
@@ -3593,6 +3617,30 @@ reactive-framework/salt/peripherals/module-power/modpwr.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/peripherals/module-power/modpwr.c.s
 .PHONY : reactive-framework/salt/peripherals/module-power/modpwr.c.s
 
+reactive-framework/salt/peripherals/pulse-counter/pulseCounter.obj: reactive-framework/salt/peripherals/pulse-counter/pulseCounter.c.obj
+.PHONY : reactive-framework/salt/peripherals/pulse-counter/pulseCounter.obj
+
+# target to build an object file
+reactive-framework/salt/peripherals/pulse-counter/pulseCounter.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/peripherals/pulse-counter/pulseCounter.c.obj
+.PHONY : reactive-framework/salt/peripherals/pulse-counter/pulseCounter.c.obj
+
+reactive-framework/salt/peripherals/pulse-counter/pulseCounter.i: reactive-framework/salt/peripherals/pulse-counter/pulseCounter.c.i
+.PHONY : reactive-framework/salt/peripherals/pulse-counter/pulseCounter.i
+
+# target to preprocess a source file
+reactive-framework/salt/peripherals/pulse-counter/pulseCounter.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/peripherals/pulse-counter/pulseCounter.c.i
+.PHONY : reactive-framework/salt/peripherals/pulse-counter/pulseCounter.c.i
+
+reactive-framework/salt/peripherals/pulse-counter/pulseCounter.s: reactive-framework/salt/peripherals/pulse-counter/pulseCounter.c.s
+.PHONY : reactive-framework/salt/peripherals/pulse-counter/pulseCounter.s
+
+# target to generate assembly for a file
+reactive-framework/salt/peripherals/pulse-counter/pulseCounter.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/peripherals/pulse-counter/pulseCounter.c.s
+.PHONY : reactive-framework/salt/peripherals/pulse-counter/pulseCounter.c.s
+
 reactive-framework/salt/peripherals/relay-control/relay.obj: reactive-framework/salt/peripherals/relay-control/relay.c.obj
 .PHONY : reactive-framework/salt/peripherals/relay-control/relay.obj
 
@@ -3664,6 +3712,30 @@ reactive-framework/salt/peripherals/sim808/sim808.s: reactive-framework/salt/per
 reactive-framework/salt/peripherals/sim808/sim808.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/peripherals/sim808/sim808.c.s
 .PHONY : reactive-framework/salt/peripherals/sim808/sim808.c.s
+
+reactive-framework/salt/peripherals/teloc/teloc.obj: reactive-framework/salt/peripherals/teloc/teloc.c.obj
+.PHONY : reactive-framework/salt/peripherals/teloc/teloc.obj
+
+# target to build an object file
+reactive-framework/salt/peripherals/teloc/teloc.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/peripherals/teloc/teloc.c.obj
+.PHONY : reactive-framework/salt/peripherals/teloc/teloc.c.obj
+
+reactive-framework/salt/peripherals/teloc/teloc.i: reactive-framework/salt/peripherals/teloc/teloc.c.i
+.PHONY : reactive-framework/salt/peripherals/teloc/teloc.i
+
+# target to preprocess a source file
+reactive-framework/salt/peripherals/teloc/teloc.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/peripherals/teloc/teloc.c.i
+.PHONY : reactive-framework/salt/peripherals/teloc/teloc.c.i
+
+reactive-framework/salt/peripherals/teloc/teloc.s: reactive-framework/salt/peripherals/teloc/teloc.c.s
+.PHONY : reactive-framework/salt/peripherals/teloc/teloc.s
+
+# target to generate assembly for a file
+reactive-framework/salt/peripherals/teloc/teloc.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/peripherals/teloc/teloc.c.s
+.PHONY : reactive-framework/salt/peripherals/teloc/teloc.c.s
 
 reactive-framework/salt/state-machines/connector-manager/conmgr.obj: reactive-framework/salt/state-machines/connector-manager/conmgr.c.obj
 .PHONY : reactive-framework/salt/state-machines/connector-manager/conmgr.obj
@@ -3760,6 +3832,30 @@ reactive-framework/salt/state-machines/mqtt-protocol/mqttProt.s: reactive-framew
 reactive-framework/salt/state-machines/mqtt-protocol/mqttProt.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/state-machines/mqtt-protocol/mqttProt.c.s
 .PHONY : reactive-framework/salt/state-machines/mqtt-protocol/mqttProt.c.s
+
+reactive-framework/salt/utilities/aes/aes.obj: reactive-framework/salt/utilities/aes/aes.c.obj
+.PHONY : reactive-framework/salt/utilities/aes/aes.obj
+
+# target to build an object file
+reactive-framework/salt/utilities/aes/aes.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/aes/aes.c.obj
+.PHONY : reactive-framework/salt/utilities/aes/aes.c.obj
+
+reactive-framework/salt/utilities/aes/aes.i: reactive-framework/salt/utilities/aes/aes.c.i
+.PHONY : reactive-framework/salt/utilities/aes/aes.i
+
+# target to preprocess a source file
+reactive-framework/salt/utilities/aes/aes.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/aes/aes.c.i
+.PHONY : reactive-framework/salt/utilities/aes/aes.c.i
+
+reactive-framework/salt/utilities/aes/aes.s: reactive-framework/salt/utilities/aes/aes.c.s
+.PHONY : reactive-framework/salt/utilities/aes/aes.s
+
+# target to generate assembly for a file
+reactive-framework/salt/utilities/aes/aes.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/aes/aes.c.s
+.PHONY : reactive-framework/salt/utilities/aes/aes.c.s
 
 reactive-framework/salt/utilities/date/date.obj: reactive-framework/salt/utilities/date/date.c.obj
 .PHONY : reactive-framework/salt/utilities/date/date.obj
@@ -3928,6 +4024,30 @@ reactive-framework/salt/utilities/parser/sim900/sim900parser.s: reactive-framewo
 reactive-framework/salt/utilities/parser/sim900/sim900parser.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/parser/sim900/sim900parser.c.s
 .PHONY : reactive-framework/salt/utilities/parser/sim900/sim900parser.c.s
+
+reactive-framework/salt/utilities/publisher/publisher.obj: reactive-framework/salt/utilities/publisher/publisher.c.obj
+.PHONY : reactive-framework/salt/utilities/publisher/publisher.obj
+
+# target to build an object file
+reactive-framework/salt/utilities/publisher/publisher.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/publisher/publisher.c.obj
+.PHONY : reactive-framework/salt/utilities/publisher/publisher.c.obj
+
+reactive-framework/salt/utilities/publisher/publisher.i: reactive-framework/salt/utilities/publisher/publisher.c.i
+.PHONY : reactive-framework/salt/utilities/publisher/publisher.i
+
+# target to preprocess a source file
+reactive-framework/salt/utilities/publisher/publisher.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/publisher/publisher.c.i
+.PHONY : reactive-framework/salt/utilities/publisher/publisher.c.i
+
+reactive-framework/salt/utilities/publisher/publisher.s: reactive-framework/salt/utilities/publisher/publisher.c.s
+.PHONY : reactive-framework/salt/utilities/publisher/publisher.s
+
+# target to generate assembly for a file
+reactive-framework/salt/utilities/publisher/publisher.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/utilities/publisher/publisher.c.s
+.PHONY : reactive-framework/salt/utilities/publisher/publisher.c.s
 
 reactive-framework/salt/utilities/rtime/rtime.obj: reactive-framework/salt/utilities/rtime/rtime.c.obj
 .PHONY : reactive-framework/salt/utilities/rtime/rtime.obj
@@ -4500,6 +4620,9 @@ help:
 	@echo "... Middlewares/Third_Party/MQTT-C/src/mqtt_pal.obj"
 	@echo "... Middlewares/Third_Party/MQTT-C/src/mqtt_pal.i"
 	@echo "... Middlewares/Third_Party/MQTT-C/src/mqtt_pal.s"
+	@echo "... Middlewares/Third_Party/jWrite/jWrite/jWrite.obj"
+	@echo "... Middlewares/Third_Party/jWrite/jWrite/jWrite.i"
+	@echo "... Middlewares/Third_Party/jWrite/jWrite/jWrite.s"
 	@echo "... Middlewares/Third_Party/rkh/source/fwk/src/rkhfwk_bittbl.obj"
 	@echo "... Middlewares/Third_Party/rkh/source/fwk/src/rkhfwk_bittbl.i"
 	@echo "... Middlewares/Third_Party/rkh/source/fwk/src/rkhfwk_bittbl.s"
@@ -4587,6 +4710,9 @@ help:
 	@echo "... reactive-framework/salt/peripherals/module-power/modpwr.obj"
 	@echo "... reactive-framework/salt/peripherals/module-power/modpwr.i"
 	@echo "... reactive-framework/salt/peripherals/module-power/modpwr.s"
+	@echo "... reactive-framework/salt/peripherals/pulse-counter/pulseCounter.obj"
+	@echo "... reactive-framework/salt/peripherals/pulse-counter/pulseCounter.i"
+	@echo "... reactive-framework/salt/peripherals/pulse-counter/pulseCounter.s"
 	@echo "... reactive-framework/salt/peripherals/relay-control/relay.obj"
 	@echo "... reactive-framework/salt/peripherals/relay-control/relay.i"
 	@echo "... reactive-framework/salt/peripherals/relay-control/relay.s"
@@ -4596,6 +4722,9 @@ help:
 	@echo "... reactive-framework/salt/peripherals/sim808/sim808.obj"
 	@echo "... reactive-framework/salt/peripherals/sim808/sim808.i"
 	@echo "... reactive-framework/salt/peripherals/sim808/sim808.s"
+	@echo "... reactive-framework/salt/peripherals/teloc/teloc.obj"
+	@echo "... reactive-framework/salt/peripherals/teloc/teloc.i"
+	@echo "... reactive-framework/salt/peripherals/teloc/teloc.s"
 	@echo "... reactive-framework/salt/state-machines/connector-manager/conmgr.obj"
 	@echo "... reactive-framework/salt/state-machines/connector-manager/conmgr.i"
 	@echo "... reactive-framework/salt/state-machines/connector-manager/conmgr.s"
@@ -4608,6 +4737,9 @@ help:
 	@echo "... reactive-framework/salt/state-machines/mqtt-protocol/mqttProt.obj"
 	@echo "... reactive-framework/salt/state-machines/mqtt-protocol/mqttProt.i"
 	@echo "... reactive-framework/salt/state-machines/mqtt-protocol/mqttProt.s"
+	@echo "... reactive-framework/salt/utilities/aes/aes.obj"
+	@echo "... reactive-framework/salt/utilities/aes/aes.i"
+	@echo "... reactive-framework/salt/utilities/aes/aes.s"
 	@echo "... reactive-framework/salt/utilities/date/date.obj"
 	@echo "... reactive-framework/salt/utilities/date/date.i"
 	@echo "... reactive-framework/salt/utilities/date/date.s"
@@ -4629,6 +4761,9 @@ help:
 	@echo "... reactive-framework/salt/utilities/parser/sim900/sim900parser.obj"
 	@echo "... reactive-framework/salt/utilities/parser/sim900/sim900parser.i"
 	@echo "... reactive-framework/salt/utilities/parser/sim900/sim900parser.s"
+	@echo "... reactive-framework/salt/utilities/publisher/publisher.obj"
+	@echo "... reactive-framework/salt/utilities/publisher/publisher.i"
+	@echo "... reactive-framework/salt/utilities/publisher/publisher.s"
 	@echo "... reactive-framework/salt/utilities/rtime/rtime.obj"
 	@echo "... reactive-framework/salt/utilities/rtime/rtime.i"
 	@echo "... reactive-framework/salt/utilities/rtime/rtime.s"

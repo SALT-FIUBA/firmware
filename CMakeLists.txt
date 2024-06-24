@@ -83,6 +83,8 @@ include_directories(
 
         Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32
 
+        Middlewares/Third_Party/jWrite/jWrite
+
         Drivers/BSP-Nucleo-144
 
         reactive-framework/blinky
@@ -112,12 +114,16 @@ include_directories(
         reactive-framework/salt/peripherals/ihm
         reactive-framework/salt/peripherals/relay-control
         reactive-framework/salt/peripherals/analog-inputs
+        reactive-framework/salt/peripherals/pulse-counter
+        reactive-framework/salt/peripherals/teloc
 
         reactive-framework/salt/utilities/emaFilter
         reactive-framework/salt/utilities/parser
         reactive-framework/salt/utilities/parser/sim900
         reactive-framework/salt/utilities/parser/salt-command
         reactive-framework/salt/utilities/ssp/src
+        reactive-framework/salt/utilities/aes
+        reactive-framework/salt/utilities/publisher
 
 )
 
@@ -159,6 +165,7 @@ file(
 
         "Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c"
 
+        "Middlewares/Third_Party/jWrite/jWrite/jWrite.c"
 
         "Middlewares/Third_Party/MQTT-C/src/mqtt-c.c"
         "Middlewares/Third_Party/MQTT-C/src/mqtt_pal.c"

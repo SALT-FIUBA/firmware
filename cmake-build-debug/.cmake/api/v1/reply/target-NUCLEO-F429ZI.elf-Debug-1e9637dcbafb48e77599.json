@@ -28,25 +28,25 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 175,
+				"line" : 182,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 171,
+				"line" : 178,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 172,
+				"line" : 179,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 173,
+				"line" : 180,
 				"parent" : 0
 			},
 			{
@@ -76,7 +76,7 @@
 			{
 				"command" : 3,
 				"file" : 0,
-				"line" : 125,
+				"line" : 131,
 				"parent" : 0
 			},
 			{
@@ -283,6 +283,10 @@
 				},
 				{
 					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/jWrite/jWrite"
+				},
+				{
+					"backtrace" : 10,
 					"path" : "/Users/nando/NUCLEO-F429ZI/Drivers/BSP-Nucleo-144"
 				},
 				{
@@ -379,6 +383,14 @@
 				},
 				{
 					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/pulse-counter"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/teloc"
+				},
+				{
+					"backtrace" : 10,
 					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/emaFilter"
 				},
 				{
@@ -396,6 +408,14 @@
 				{
 					"backtrace" : 10,
 					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/src"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/aes"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/publisher"
 				}
 			],
 			"language" : "C",
@@ -543,39 +563,44 @@
 				379,
 				380,
 				381,
-				383,
+				382,
 				384,
-				386,
-				391,
-				393,
-				395,
-				398,
-				402,
-				405,
+				385,
+				387,
+				392,
+				394,
+				396,
+				399,
+				403,
 				406,
-				408,
-				410,
-				412,
-				416,
-				418,
-				420,
-				422,
+				407,
+				409,
+				411,
+				413,
+				415,
+				417,
+				421,
+				423,
 				425,
 				427,
-				429,
-				431,
+				430,
+				432,
 				434,
 				436,
 				438,
-				440,
+				441,
+				443,
 				445,
-				453,
-				455,
-				456,
-				457,
-				460,
-				463,
-				467
+				447,
+				449,
+				454,
+				462,
+				464,
+				465,
+				466,
+				469,
+				472,
+				476
 			]
 		},
 		{
@@ -780,6 +805,10 @@
 				},
 				{
 					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/jWrite/jWrite"
+				},
+				{
+					"backtrace" : 10,
 					"path" : "/Users/nando/NUCLEO-F429ZI/Drivers/BSP-Nucleo-144"
 				},
 				{
@@ -876,6 +905,14 @@
 				},
 				{
 					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/pulse-counter"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/teloc"
+				},
+				{
+					"backtrace" : 10,
 					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/emaFilter"
 				},
 				{
@@ -893,6 +930,14 @@
 				{
 					"backtrace" : 10,
 					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/ssp/src"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/aes"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/nando/NUCLEO-F429ZI/reactive-framework/salt/utilities/publisher"
 				}
 			],
 			"language" : "ASM",
@@ -982,15 +1027,15 @@
 				40,
 				62,
 				96,
-				442,
-				443,
-				444,
-				447,
-				448,
-				449,
-				450,
 				451,
-				470
+				452,
+				453,
+				456,
+				457,
+				458,
+				459,
+				460,
+				479
 			]
 		},
 		{
@@ -1224,53 +1269,57 @@
 				358,
 				359,
 				360,
-				382,
-				385,
-				387,
+				383,
+				386,
 				388,
 				389,
 				390,
-				392,
-				394,
-				396,
+				391,
+				393,
+				395,
 				397,
-				399,
+				398,
 				400,
 				401,
-				403,
+				402,
 				404,
-				407,
-				409,
-				411,
-				413,
+				405,
+				408,
+				410,
+				412,
 				414,
-				415,
-				417,
+				416,
+				418,
 				419,
-				421,
-				423,
+				420,
+				422,
 				424,
 				426,
 				428,
-				430,
-				432,
+				429,
+				431,
 				433,
 				435,
 				437,
 				439,
-				441,
+				440,
+				442,
+				444,
 				446,
-				452,
-				454,
-				458,
-				459,
+				448,
+				450,
+				455,
 				461,
-				462,
-				464,
-				465,
-				466,
+				463,
+				467,
 				468,
-				469
+				470,
+				471,
+				473,
+				474,
+				475,
+				477,
+				478
 			]
 		},
 		{
@@ -1411,39 +1460,44 @@
 				379,
 				380,
 				381,
-				383,
+				382,
 				384,
-				386,
-				391,
-				393,
-				395,
-				398,
-				402,
-				405,
+				385,
+				387,
+				392,
+				394,
+				396,
+				399,
+				403,
 				406,
-				408,
-				410,
-				412,
-				416,
-				418,
-				420,
-				422,
+				407,
+				409,
+				411,
+				413,
+				415,
+				417,
+				421,
+				423,
 				425,
 				427,
-				429,
-				431,
+				430,
+				432,
 				434,
 				436,
 				438,
-				440,
+				441,
+				443,
 				445,
-				453,
-				455,
-				456,
-				457,
-				460,
-				463,
-				467
+				447,
+				449,
+				454,
+				462,
+				464,
+				465,
+				466,
+				469,
+				472,
+				476
 			]
 		}
 	],
@@ -3383,6 +3437,12 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
+			"path" : "Middlewares/Third_Party/jWrite/jWrite/jWrite.c",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
 			"path" : "Middlewares/Third_Party/rkh/source/fwk/src/rkhfwk_bittbl.c",
 			"sourceGroupIndex" : 2
 		},
@@ -3637,6 +3697,17 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
+			"path" : "reactive-framework/salt/peripherals/pulse-counter/pulseCounter.c",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "reactive-framework/salt/peripherals/pulse-counter/pulseCounter.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
 			"path" : "reactive-framework/salt/peripherals/relay-control/relay.c",
 			"sourceGroupIndex" : 2
 		},
@@ -3665,6 +3736,17 @@
 		{
 			"backtrace" : 1,
 			"path" : "reactive-framework/salt/peripherals/sim808/sim808.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "reactive-framework/salt/peripherals/teloc/teloc.c",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "reactive-framework/salt/peripherals/teloc/teloc.h",
 			"sourceGroupIndex" : 1
 		},
 		{
@@ -3724,6 +3806,17 @@
 		{
 			"backtrace" : 1,
 			"path" : "reactive-framework/salt/stm32_mqtt_pal.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "reactive-framework/salt/utilities/aes/aes.c",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "reactive-framework/salt/utilities/aes/aes.h",
 			"sourceGroupIndex" : 1
 		},
 		{
@@ -3806,6 +3899,17 @@
 		{
 			"backtrace" : 1,
 			"path" : "reactive-framework/salt/utilities/parser/sim900/sim900parser.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "reactive-framework/salt/utilities/publisher/publisher.c",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "reactive-framework/salt/utilities/publisher/publisher.h",
 			"sourceGroupIndex" : 1
 		},
 		{
