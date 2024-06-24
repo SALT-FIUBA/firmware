@@ -28,7 +28,7 @@ And we can publish, say the coffee maker's temperature, like so:
 ```c
     /* publish coffee temperature with a QoS level of 1 */
     int temperature = 67;
-    mqtt_publish(&client, "coffee/temperature", &temperature, sizeof(int), MQTT_PUBLISH_QOS_1);
+    mqttc_publish(&client, "coffee/temperature", &temperature, sizeof(int), MQTT_PUBLISH_QOS_1);
 ```
 
 ## Building

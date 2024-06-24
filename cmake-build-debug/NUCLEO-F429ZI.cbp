@@ -1293,10 +1293,7 @@
 		<Unit filename="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/system/arch/sys_arch.h">
 			<Option target="NUCLEO-F429ZI.elf"/>
 		</Unit>
-		<Unit filename="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/MQTT-C/src/mqtt.c">
-			<Option target="NUCLEO-F429ZI.elf"/>
-		</Unit>
-		<Unit filename="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/MQTT-C/src/mqtt_org.c">
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/MQTT-C/src/mqtt-c.c">
 			<Option target="NUCLEO-F429ZI.elf"/>
 		</Unit>
 		<Unit filename="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/MQTT-C/src/mqtt_pal.c">
@@ -1324,6 +1321,12 @@
 			<Option target="NUCLEO-F429ZI.elf"/>
 		</Unit>
 		<Unit filename="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/mempool/src/rkhmempool.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.h">
 			<Option target="NUCLEO-F429ZI.elf"/>
 		</Unit>
 		<Unit filename="/Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/queue/src/rkhqueue.c">

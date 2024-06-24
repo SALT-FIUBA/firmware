@@ -445,11 +445,11 @@ publish(MQTTProt *const me, RKH_EVT_T *pe)
     {
         me->config->publishTime = pubTime;
     }
-    me->operRes = mqtt_publish(&me->client, 
-                               me->config->topic, 
-                               appMsg.data, 
-                               appMsg.size, 
-                               (me->config->qos << 1) & 0x06);
+    me->operRes = mqttc_publish(&me->client,
+                                me->config->topic,
+                                appMsg.data,
+                                appMsg.size,
+                                (me->config->qos << 1) & 0x06);
 
     RKH_TRC_USR_BEGIN(USR_TRACE_MQTT)
         RKH_TUSR_STR("MQTT send");

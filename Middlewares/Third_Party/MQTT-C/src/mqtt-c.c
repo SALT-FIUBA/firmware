@@ -162,11 +162,11 @@ enum MQTTErrors mqtt_connect(struct mqtt_client *client,
     return MQTT_OK;
 }
 
-enum MQTTErrors mqtt_publish(struct mqtt_client *client,
-                     const char* topic_name,
-                     void* application_message,
-                     size_t application_message_size,
-                     uint8_t publish_flags)
+enum MQTTErrors mqttc_publish(struct mqtt_client *client,
+                              const char* topic_name,
+                              void* application_message,
+                              size_t application_message_size,
+                              uint8_t publish_flags)
 {
     MQTT_PAL_MUTEX_LOCK(&client->mutex);
     uint16_t packet_id = __mqtt_next_pid(client);
@@ -362,7 +362,7 @@ enum MQTTErrors __mqtt_ping(struct mqtt_client *client)
     return MQTT_OK;
 }
 
-enum MQTTErrors mqtt_disconnect(struct mqtt_client *client) 
+enum MQTTErrors mqttc_disconnect(struct mqtt_client *client)
 {
     MQTT_PAL_MUTEX_LOCK(&client->mutex);
     ssize_t rv;

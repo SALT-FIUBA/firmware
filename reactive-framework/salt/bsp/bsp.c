@@ -65,7 +65,7 @@ static RKH_TS_T tstamp;
 /* ---------------------------- Local functions ---------------------------- */
 /* ---------------------------- Global functions --------------------------- */
 void
-bsp_init()
+bsp_salt_init()
 {
     /* Read clock settings and update SystemCoreClock variable */
     //  SystemCoreClockUpdate();

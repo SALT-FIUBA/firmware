@@ -157,9 +157,11 @@ file(
         "Middlewares/Third_Party/rkh/source/trc/src/rkhtrc_record.c"
         "Middlewares/Third_Party/rkh/source/trc/src/rkhtrc_stream.c"
 
-        "Middlewares/Third_Party/MQTT-C/src/mqtt.c"
+        "Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c"
+
+
+        "Middlewares/Third_Party/MQTT-C/src/mqtt-c.c"
         "Middlewares/Third_Party/MQTT-C/src/mqtt_pal.c"
-        "Middlewares/Third_Party/MQTT-C/src/mqtt_org.c"
 
         "reactive-framework/*.*"
 )

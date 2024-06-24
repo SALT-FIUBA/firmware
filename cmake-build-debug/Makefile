@@ -2849,53 +2849,29 @@ Middlewares/Third_Party/LwIP/src/netif/zepif.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/LwIP/src/netif/zepif.c.s
 .PHONY : Middlewares/Third_Party/LwIP/src/netif/zepif.c.s
 
-Middlewares/Third_Party/MQTT-C/src/mqtt.obj: Middlewares/Third_Party/MQTT-C/src/mqtt.c.obj
-.PHONY : Middlewares/Third_Party/MQTT-C/src/mqtt.obj
+Middlewares/Third_Party/MQTT-C/src/mqtt-c.obj: Middlewares/Third_Party/MQTT-C/src/mqtt-c.c.obj
+.PHONY : Middlewares/Third_Party/MQTT-C/src/mqtt-c.obj
 
 # target to build an object file
-Middlewares/Third_Party/MQTT-C/src/mqtt.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/MQTT-C/src/mqtt.c.obj
-.PHONY : Middlewares/Third_Party/MQTT-C/src/mqtt.c.obj
+Middlewares/Third_Party/MQTT-C/src/mqtt-c.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/MQTT-C/src/mqtt-c.c.obj
+.PHONY : Middlewares/Third_Party/MQTT-C/src/mqtt-c.c.obj
 
-Middlewares/Third_Party/MQTT-C/src/mqtt.i: Middlewares/Third_Party/MQTT-C/src/mqtt.c.i
-.PHONY : Middlewares/Third_Party/MQTT-C/src/mqtt.i
-
-# target to preprocess a source file
-Middlewares/Third_Party/MQTT-C/src/mqtt.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/MQTT-C/src/mqtt.c.i
-.PHONY : Middlewares/Third_Party/MQTT-C/src/mqtt.c.i
-
-Middlewares/Third_Party/MQTT-C/src/mqtt.s: Middlewares/Third_Party/MQTT-C/src/mqtt.c.s
-.PHONY : Middlewares/Third_Party/MQTT-C/src/mqtt.s
-
-# target to generate assembly for a file
-Middlewares/Third_Party/MQTT-C/src/mqtt.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/MQTT-C/src/mqtt.c.s
-.PHONY : Middlewares/Third_Party/MQTT-C/src/mqtt.c.s
-
-Middlewares/Third_Party/MQTT-C/src/mqtt_org.obj: Middlewares/Third_Party/MQTT-C/src/mqtt_org.c.obj
-.PHONY : Middlewares/Third_Party/MQTT-C/src/mqtt_org.obj
-
-# target to build an object file
-Middlewares/Third_Party/MQTT-C/src/mqtt_org.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/MQTT-C/src/mqtt_org.c.obj
-.PHONY : Middlewares/Third_Party/MQTT-C/src/mqtt_org.c.obj
-
-Middlewares/Third_Party/MQTT-C/src/mqtt_org.i: Middlewares/Third_Party/MQTT-C/src/mqtt_org.c.i
-.PHONY : Middlewares/Third_Party/MQTT-C/src/mqtt_org.i
+Middlewares/Third_Party/MQTT-C/src/mqtt-c.i: Middlewares/Third_Party/MQTT-C/src/mqtt-c.c.i
+.PHONY : Middlewares/Third_Party/MQTT-C/src/mqtt-c.i
 
 # target to preprocess a source file
-Middlewares/Third_Party/MQTT-C/src/mqtt_org.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/MQTT-C/src/mqtt_org.c.i
-.PHONY : Middlewares/Third_Party/MQTT-C/src/mqtt_org.c.i
+Middlewares/Third_Party/MQTT-C/src/mqtt-c.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/MQTT-C/src/mqtt-c.c.i
+.PHONY : Middlewares/Third_Party/MQTT-C/src/mqtt-c.c.i
 
-Middlewares/Third_Party/MQTT-C/src/mqtt_org.s: Middlewares/Third_Party/MQTT-C/src/mqtt_org.c.s
-.PHONY : Middlewares/Third_Party/MQTT-C/src/mqtt_org.s
+Middlewares/Third_Party/MQTT-C/src/mqtt-c.s: Middlewares/Third_Party/MQTT-C/src/mqtt-c.c.s
+.PHONY : Middlewares/Third_Party/MQTT-C/src/mqtt-c.s
 
 # target to generate assembly for a file
-Middlewares/Third_Party/MQTT-C/src/mqtt_org.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/MQTT-C/src/mqtt_org.c.s
-.PHONY : Middlewares/Third_Party/MQTT-C/src/mqtt_org.c.s
+Middlewares/Third_Party/MQTT-C/src/mqtt-c.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/MQTT-C/src/mqtt-c.c.s
+.PHONY : Middlewares/Third_Party/MQTT-C/src/mqtt-c.c.s
 
 Middlewares/Third_Party/MQTT-C/src/mqtt_pal.obj: Middlewares/Third_Party/MQTT-C/src/mqtt_pal.c.obj
 .PHONY : Middlewares/Third_Party/MQTT-C/src/mqtt_pal.obj
@@ -3112,6 +3088,30 @@ Middlewares/Third_Party/rkh/source/mempool/src/rkhmempool.s: Middlewares/Third_P
 Middlewares/Third_Party/rkh/source/mempool/src/rkhmempool.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/rkh/source/mempool/src/rkhmempool.c.s
 .PHONY : Middlewares/Third_Party/rkh/source/mempool/src/rkhmempool.c.s
+
+Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.obj: Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c.obj
+.PHONY : Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.obj
+
+# target to build an object file
+Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c.obj
+.PHONY : Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c.obj
+
+Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.i: Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c.i
+.PHONY : Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.i
+
+# target to preprocess a source file
+Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c.i
+.PHONY : Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c.i
+
+Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.s: Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c.s
+.PHONY : Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.s
+
+# target to generate assembly for a file
+Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c.s
+.PHONY : Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c.s
 
 Middlewares/Third_Party/rkh/source/queue/src/rkhqueue.obj: Middlewares/Third_Party/rkh/source/queue/src/rkhqueue.c.obj
 .PHONY : Middlewares/Third_Party/rkh/source/queue/src/rkhqueue.obj
@@ -4494,12 +4494,9 @@ help:
 	@echo "... Middlewares/Third_Party/LwIP/src/netif/zepif.obj"
 	@echo "... Middlewares/Third_Party/LwIP/src/netif/zepif.i"
 	@echo "... Middlewares/Third_Party/LwIP/src/netif/zepif.s"
-	@echo "... Middlewares/Third_Party/MQTT-C/src/mqtt.obj"
-	@echo "... Middlewares/Third_Party/MQTT-C/src/mqtt.i"
-	@echo "... Middlewares/Third_Party/MQTT-C/src/mqtt.s"
-	@echo "... Middlewares/Third_Party/MQTT-C/src/mqtt_org.obj"
-	@echo "... Middlewares/Third_Party/MQTT-C/src/mqtt_org.i"
-	@echo "... Middlewares/Third_Party/MQTT-C/src/mqtt_org.s"
+	@echo "... Middlewares/Third_Party/MQTT-C/src/mqtt-c.obj"
+	@echo "... Middlewares/Third_Party/MQTT-C/src/mqtt-c.i"
+	@echo "... Middlewares/Third_Party/MQTT-C/src/mqtt-c.s"
 	@echo "... Middlewares/Third_Party/MQTT-C/src/mqtt_pal.obj"
 	@echo "... Middlewares/Third_Party/MQTT-C/src/mqtt_pal.i"
 	@echo "... Middlewares/Third_Party/MQTT-C/src/mqtt_pal.s"
@@ -4527,6 +4524,9 @@ help:
 	@echo "... Middlewares/Third_Party/rkh/source/mempool/src/rkhmempool.obj"
 	@echo "... Middlewares/Third_Party/rkh/source/mempool/src/rkhmempool.i"
 	@echo "... Middlewares/Third_Party/rkh/source/mempool/src/rkhmempool.s"
+	@echo "... Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.obj"
+	@echo "... Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.i"
+	@echo "... Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.s"
 	@echo "... Middlewares/Third_Party/rkh/source/queue/src/rkhqueue.obj"
 	@echo "... Middlewares/Third_Party/rkh/source/queue/src/rkhqueue.i"
 	@echo "... Middlewares/Third_Party/rkh/source/queue/src/rkhqueue.s"

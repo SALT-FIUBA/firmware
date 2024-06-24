@@ -114,7 +114,7 @@ int main(void)
   MX_USB_OTG_FS_PCD_Init();
   /* USER CODE BEGIN 2 */
 
-  bsp_init();
+    bsp_init();
 
   mTime_init();
 

@@ -1268,11 +1268,11 @@ enum MQTTErrors mqtt_connect(struct mqtt_client *client,
  * 
  * @returns \c MQTT_OK upon success, an \ref MQTTErrors otherwise.
  */
-enum MQTTErrors mqtt_publish(struct mqtt_client *client,
-                             const char* topic_name,
-                             void* application_message,
-                             size_t application_message_size,
-                             uint8_t publish_flags);
+enum MQTTErrors mqttc_publish(struct mqtt_client *client,
+                              const char* topic_name,
+                              void* application_message,
+                              size_t application_message_size,
+                              uint8_t publish_flags);
 
 /**
  * @brief Acknowledge an ingree publish with QOS==1.
@@ -1380,7 +1380,7 @@ enum MQTTErrors __mqtt_ping(struct mqtt_client *client);
  * 
  * @returns \c MQTT_OK upon success, an \ref MQTTErrors otherwise.
  */
-enum MQTTErrors mqtt_disconnect(struct mqtt_client *client);
+enum MQTTErrors mqttc_disconnect(struct mqtt_client *client);
 
 #include "mqtt_sync.h"
 
