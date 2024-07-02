@@ -17,17 +17,7 @@
 
 /* --------------------------------- Notes --------------------------------- */
 /* ----------------------------- Include files ----------------------------- */
-#include <stdio.h>
-#include <string.h>
-
-#include "rkh.h"
-#include "rkhtmr.h"
-#include "signals.h"
 #include "mqttProt.h"
-#include "mqtt-c.h"
-#include "epoch.h"
-#include "date.h"
-#include "conmgr.h"
 
 //  #include "conmgr.h"
 //  #include "BSP-Nucleo-144.h"
@@ -38,12 +28,21 @@ typedef struct MQTTProt MQTTProt;
 typedef struct SyncRegion SyncRegion;
 
 /* ................... Declares states and pseudostates .................... */
-RKH_DCLR_BASIC_STATE Sync_Idle, Sync_WaitSync, Sync_Receiving, 
-                     Sync_EndCycle, Sync_Sending,
-                     Client_Idle, Client_TryConnect,
-                     Client_AwaitingAck, Client_WaitToPublish, 
-                     Client_WaitToUse0, Client_WaitToUse1;
+
+RKH_DCLR_BASIC_STATE Sync_Idle,
+                    Sync_WaitSync,
+                    Sync_Receiving,
+                    Sync_EndCycle,
+                    Sync_Sending,
+                    Client_Idle,
+                    Client_TryConnect,
+                     Client_AwaitingAck,
+                     Client_WaitToPublish,
+                     Client_WaitToUse0,
+                     Client_WaitToUse1;
+
 RKH_DCLR_COMP_STATE Sync_Active, Client_Connected;
+
 RKH_DCLR_CHOICE_STATE Sync_C10, Sync_C12, Sync_C14, Sync_C25, Sync_C31,
                       Sync_C32, Sync_C36, Sync_C38,
                       Client_C7, Client_C15, Client_C20;
@@ -137,12 +136,19 @@ RKH_CREATE_TRANS_TABLE(Sync_EndCycle)
     RKH_TRCOMPLETION(NULL, releaseUse, &Sync_WaitSync),
 RKH_END_TRANS_TABLE
 
+
+/*
+ *      evNetConnected event + activateSync function: Idle -> Connected
+ */
 RKH_CREATE_BASIC_STATE(Client_Idle, NULL, NULL, RKH_ROOT, NULL);
 RKH_CREATE_TRANS_TABLE(Client_Idle)
     RKH_TRREG(evNetConnected, NULL, activateSync, &Client_Connected),
 RKH_END_TRANS_TABLE
 
-RKH_CREATE_COMP_REGION_STATE(Client_Connected, NULL, NULL, RKH_ROOT, 
+/*
+ *      evNetDisconnected event + deactivateSync function: Connected -> Idle
+ */
+RKH_CREATE_COMP_REGION_STATE(Client_Connected, NULL, NULL, RKH_ROOT,
                              &Client_C15, NULL,
                              RKH_NO_HISTORY, NULL, NULL, NULL, NULL);
 RKH_CREATE_TRANS_TABLE(Client_Connected)
@@ -150,7 +156,8 @@ RKH_CREATE_TRANS_TABLE(Client_Connected)
     RKH_TRCOMPLETION(NULL, deactivateSync, &Client_Idle),
 RKH_END_TRANS_TABLE
 
-RKH_CREATE_BASIC_STATE(Client_TryConnect, brokerConnect, NULL, 
+
+RKH_CREATE_BASIC_STATE(Client_TryConnect, brokerConnect, NULL,
                        &Client_Connected, NULL);
 RKH_CREATE_TRANS_TABLE(Client_TryConnect)
     RKH_TRCOMPLETION(NULL, NULL, &Client_C7),
@@ -303,6 +310,7 @@ static RKH_ROM_STATIC_EVENT(evDeactivateObj, evDeactivate);
 static RKH_ROM_STATIC_EVENT(evConnAcceptedObj, evConnAccepted);
 static RKH_ROM_STATIC_EVENT(evUnlockedObj, evUnlocked);
 static RKH_ROM_STATIC_EVENT(evRestartObj, evRestart);
+
 static SendEvt evSendObj;
 static ConnRefusedEvt evConnRefusedObj;
 static LocalSendAll localSend;
@@ -425,12 +433,22 @@ init(MQTTProt *const me, RKH_EVT_T *pe)
     RKH_TR_FWK_SIG(RKH_COMPLETION_EVENT);
     //RKH_FILTER_OFF_SMA(MQTTProt_syncRegion);
 
-    RKH_SET_STATIC_EVENT(RKH_UPCAST(RKH_EVT_T, &evSendObj), evSend);
-    RKH_SET_STATIC_EVENT(RKH_UPCAST(RKH_EVT_T, &evConnRefusedObj), 
-                         evConnRefused);
+    RKH_SET_STATIC_EVENT(
+            RKH_UPCAST(RKH_EVT_T, &evSendObj),
+            evSend
+    );
+    RKH_SET_STATIC_EVENT(
+            RKH_UPCAST(RKH_EVT_T, &evConnRefusedObj),
+            evConnRefused
+    );
 
     me->client.connack_response_callback = connack_response_callback;
-    rkh_sm_init(RKH_UPCAST(RKH_SM_T, &me->itsSyncRegion));
+    rkh_sm_init(
+            RKH_UPCAST(
+                    RKH_SM_T,
+                    &me->itsSyncRegion
+            )
+    );
 }
 
 /* ............................ Effect actions ............................. */

@@ -21,7 +21,15 @@
 #define __MQTTPROT_H__
 
 /* ----------------------------- Include files ----------------------------- */
+#include <stdio.h>
+#include <string.h>
+
 #include "rkh.h"
+#include "rkhtmr.h"
+#include "signals.h"
+#include "epoch.h"
+#include "date.h"
+#include "conmgr.h"
 #include "mqtt-c.h"
 
 /* ---------------------- External C language linkage ---------------------- */

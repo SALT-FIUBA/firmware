@@ -58,6 +58,8 @@ enum Signals
     evConnecting,       // 22
     evClosed,           // 23
     evConnected,        // 24
+
+    // events for mqtt sm & other ones
     evSend,             // 25
     evSendFail,         // 26
     evSent,             // 27
@@ -75,10 +77,11 @@ enum Signals
     evConnAccepted,     // 39
     evActivate,         // 40
     evDeactivate,       // 41
+
     evSyncTout,         // 42
     evNetClockSync,     // 43
     evLocalTime,        // 44
-    evUnlocked,         // 45
+    evUnlocked,         // 45  mqtt prot event
     evImei,             // 46
     evOper,             // 47
     evSigLevel,         // 48

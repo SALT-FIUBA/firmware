@@ -2895,14 +2895,14 @@ Discarded input sections
                 0x0000000000000000       0x2c CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/configuration/saltCfg.c.obj
  .bss.mqttProtCfg
                 0x0000000000000000       0x44 CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/configuration/saltCfg.c.obj
- .debug_info    0x0000000000000000      0x2eb CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/configuration/saltCfg.c.obj
+ .debug_info    0x0000000000000000      0x2f9 CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/configuration/saltCfg.c.obj
  .debug_abbrev  0x0000000000000000      0x130 CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/configuration/saltCfg.c.obj
  .debug_loc     0x0000000000000000       0x64 CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/configuration/saltCfg.c.obj
  .debug_aranges
                 0x0000000000000000       0x28 CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/configuration/saltCfg.c.obj
  .debug_ranges  0x0000000000000000       0x18 CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/configuration/saltCfg.c.obj
  .debug_line    0x0000000000000000      0x35b CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/configuration/saltCfg.c.obj
- .debug_str     0x0000000000000000      0x32f CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/configuration/saltCfg.c.obj
+ .debug_str     0x0000000000000000      0x33b CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/configuration/saltCfg.c.obj
  .comment       0x0000000000000000       0x4a CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/configuration/saltCfg.c.obj
  .debug_frame   0x0000000000000000       0x40 CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/configuration/saltCfg.c.obj
  .ARM.attributes
@@ -4235,8 +4235,8 @@ Discarded input sections
                 0x0000000000000000        0xc CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/state-machines/mqtt-protocol/mqttProt.c.obj
  .rodata.rs_syncRegion
                 0x0000000000000000        0xc CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/state-machines/mqtt-protocol/mqttProt.c.obj
- .debug_info    0x0000000000000000     0x2f76 CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/state-machines/mqtt-protocol/mqttProt.c.obj
- .debug_abbrev  0x0000000000000000      0x3c8 CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/state-machines/mqtt-protocol/mqttProt.c.obj
+ .debug_info    0x0000000000000000     0x2f6e CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/state-machines/mqtt-protocol/mqttProt.c.obj
+ .debug_abbrev  0x0000000000000000      0x3b7 CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/state-machines/mqtt-protocol/mqttProt.c.obj
  .debug_loc     0x0000000000000000     0x1104 CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/state-machines/mqtt-protocol/mqttProt.c.obj
  .debug_aranges
                 0x0000000000000000      0x180 CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/state-machines/mqtt-protocol/mqttProt.c.obj
