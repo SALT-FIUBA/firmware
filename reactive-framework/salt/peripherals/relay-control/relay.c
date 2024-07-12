@@ -77,7 +77,7 @@ void relaySetRemoteMode(rbool_t active){
     relaySetActivated(reg4, active);
 }
 
-void relayUpdate(){
+void relayUpdate() {
     for (int i = 0; i < NUM_RELAY; ++i) {
         rbool_t relayStatus = relayReadStatus(i);
         rbool_t relayActivation = relayGetActivated(i);
@@ -91,6 +91,24 @@ void relayUpdate(){
             error[i] = 0;
         }
     }
+}
+
+void relaySetActivated(Relay_t relay, rbool_t activated){
+
+    //  gpioWrite(relayPinConfig[relay].actPin,activated);
+
+}
+
+rbool_t relayGetActivated(Relay_t relay) {
+
+    // return gpioRead(relayPinConfig[relay].actPin);
+    return false;
+}
+
+rbool_t relayReadStatus(Relay_t relay) {
+
+    //  return !gpioRead(relayPinConfig[relay].statusPin);
+    return false;
 }
 
 

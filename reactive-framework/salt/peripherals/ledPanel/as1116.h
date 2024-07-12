@@ -105,7 +105,7 @@ static const rui8_t digitRegMap[] = {
 /* ------------------------------- Data types ------------------------------ */
 /* -------------------------- External variables --------------------------- */
 /* -------------------------- Function prototypes -------------------------- */
-void as1116Init(uint32_t sselPin);
+void as1116Init(ruint sselPin);
 void as1116SetDigit(rui8_t digit, rui8_t data);
 
 /* -------------------- External C language linkage end -------------------- */

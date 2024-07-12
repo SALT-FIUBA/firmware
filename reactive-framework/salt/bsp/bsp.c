@@ -32,6 +32,7 @@
 #include "epoch.h"
 #include "rtime.h"
 #include "stm32f4xx_nucleo_144.h"
+#include "logic.h"
 
 RKH_THIS_MODULE
 
@@ -132,6 +133,27 @@ void
 bsp_modStatusToggle(void)
 {
     ModStatus_toggle();
+}
+
+void
+bsp_init(void)
+{
+    printf("SAL/T \n\n");
+    printf("RKH version      = %s\n", RKH_RELEASE);
+    printf("Port version     = %s\n", rkhport_get_version());
+    printf("Port description = %s\n\n", rkhport_get_desc());
+
+    rkh_fwk_init();
+
+    RKH_FILTER_ON_GROUP(RKH_TRC_ALL_GROUPS);
+    RKH_FILTER_ON_EVENT(RKH_TRC_ALL_EVENTS);
+    RKH_FILTER_OFF_EVENT(RKH_TE_TMR_TOUT);
+    RKH_FILTER_OFF_EVENT(RKH_TE_SM_STATE);
+    RKH_FILTER_OFF_SMA(logic);
+    RKH_FILTER_OFF_ALL_SIGNALS();
+
+
+    RKH_TRC_OPEN();
 }
 
 

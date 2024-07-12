@@ -68,9 +68,9 @@ PUTCHAR_PROTOTYPE
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 #include "rkh.h"
-#include "blinky.h"
-#include "bsp/bsp_blinky.h"
 #include "mTime.h"
+#include "bsp_blinky.h"
+#include "blinky.h"
 
 
 #define QSTO_SIZE           4
@@ -115,11 +115,9 @@ int main(void)
   RKH_SMA_ACTIVATE(blinky, qsto, QSTO_SIZE, 0, 0);
   rkh_fwk_enter();
 
-    /*
-     * Trazer -> RKH_TRC_CLOSE();
-     */
+  RKH_TRC_CLOSE();
 
-    return 0;
+  return 0;
 
 
   /* USER CODE END 2 */

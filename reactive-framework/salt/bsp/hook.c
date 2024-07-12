@@ -30,51 +30,93 @@
  */
 
 /**
- *  \file       rkhport.c
- *  \brief      ARM Cortex-M MCU's, STM32 port
- *  \ingroup    port
+ *  \file       hook.c
+ *  \brief      RKH hooks functions for DemoQE128-S08
+ *
+ *  \ingroup    BSP-Nucleo-144
  */
 
 /* -------------------------- Development history -------------------------- */
 /*
- *  2019.02.1  Daba  v2.4.05  Initial version
+ *  2017.04.14  DaBa  v2.4.05  Initial version
  */
 
 /* -------------------------------- Authors -------------------------------- */
 /*
- *  DaBa  Dario Baliña       dariosb@gmail.com
+ *  LeFr  Leandro Francucci  francuccilea@gmail.com
+ *  DaBa  Dario Bali�a       dariosb@gmail.com
  */
-
 /* --------------------------------- Notes --------------------------------- */
 /* ----------------------------- Include files ----------------------------- */
+#include <stdio.h>
 #include "rkh.h"
+#include "stm32f4xx_it.h"
+#include "mTime.h"
+
+
+RKH_THIS_MODULE
 
 /* ----------------------------- Local macros ------------------------------ */
 /* ------------------------------- Constants ------------------------------- */
-RKH_MODULE_NAME(rkhport)
-RKH_MODULE_VERSION(rkhport, 1.00)
-RKH_MODULE_DESC(rkhport, "ARM Cortex-M, STM32")
+#define BSP_TICK_RATE_MS    (1000/RKH_CFG_FWK_TICK_RATE_HZ)
 
 /* ---------------------------- Local data types --------------------------- */
 /* ---------------------------- Global variables --------------------------- */
 /* ---------------------------- Local variables ---------------------------- */
-ruint rkh_critical_nesting;
+static ruint tickCounter;
+static RKH_TS_T tstamp;
+
+#if defined(RKH_CFG_SMA_TRC_SNDR_EN)
+static rui8_t rkhtick;
+#endif
 
 /* ----------------------- Local function prototypes ----------------------- */
+static void SystickHook(void);
+
 /* ---------------------------- Local functions ---------------------------- */
-/* ---------------------------- Global functions --------------------------- */
-const
-char *
-rkhport_get_version(void)
+static void
+SystickHook(void)
 {
-    return RKH_MODULE_GET_VERSION();
+    if(tickCounter && (--tickCounter == 0))
+    {
+        tickCounter = BSP_TICK_RATE_MS;
+        RKH_TIM_TICK(&rkhtick);
+    }
 }
 
-const
-char *
-rkhport_get_desc(void)
+/* ---------------------------- Global functions --------------------------- */
+void
+rkh_hook_start(void)
 {
-    return RKH_MODULE_GET_DESC();
+    printf("rkh_hook_start \n");
+
+    tickCounter = BSP_TICK_RATE_MS;
+    Systick_setCallback(SystickHook);
+}
+
+void
+rkh_hook_exit(void)
+{
+    printf("rkh_hook_exit \n");
+    //  RKH_TRC_FLUSH();
+}
+
+void
+rkh_hook_timetick(void)
+{
+    printf("rkh_hook_timetick \n");
+
+    ++tstamp;
+    mTime_tick();
+}
+
+void
+rkh_hook_idle(void)
+{
+    //  printf("rkh_hook_idle \n");
+
+    RKH_ENA_INTERRUPT();
+    //  RKH_TRC_FLUSH();
 }
 
 /* ------------------------------ File footer ------------------------------ */

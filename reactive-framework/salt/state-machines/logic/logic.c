@@ -18,6 +18,7 @@
 #include "logic.h"
 #include "rkh.h"
 #include <string.h>
+#include <stdio.h>
 #include "conmgr.h"
 #include "mqttProt.h"
 #include "signals.h"
@@ -1016,7 +1017,8 @@ void logic_ctor(LogicCfg *config){
     Logic_logicVel = (RKH_SM_T *)&(me->itsLogicVel);
 }
 
-void logic_getData(LogicData* data){
+void logic_getData(LogicData * data) {
+
     Logic *me = RKH_DOWNCAST(Logic, logic);
     data->cmdTimeout = RKH_TICK_TO_MS(me->cmdTimeout);
     data->blinkPeriod = me->blinkPeriod;
@@ -1031,10 +1033,13 @@ void logic_getData(LogicData* data){
     data->velSource = me->itsLogicVel.velEvt.source;
     data->alMode = me->ledConfig.ledIsolated == GREEN;
     data->publishPeriod = me->publishPeriod;
+
 }
 
-rui16_t logic_getPublishPeriod(){
+rui16_t logic_getPublishPeriod() {
+
     Logic *me = RKH_DOWNCAST(Logic, logic);
+
     return me->publishPeriod;
 }
 

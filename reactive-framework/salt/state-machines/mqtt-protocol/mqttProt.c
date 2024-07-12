@@ -18,6 +18,7 @@
 /* --------------------------------- Notes --------------------------------- */
 /* ----------------------------- Include files ----------------------------- */
 #include "mqttProt.h"
+#include "bsp.h"
 
 //  #include "conmgr.h"
 //  #include "BSP-Nucleo-144.h"
@@ -614,9 +615,11 @@ handleRecvMsg(SyncRegion *const me, RKH_EVT_T *pe)
 static void 
 activateSync(MQTTProt *const me, RKH_EVT_T *pe)
 {
-    RKH_SMA_POST_FIFO(RKH_UPCAST(RKH_SMA_T, me), 
-                      RKH_UPCAST(RKH_EVT_T, &evActivateObj), 
-                      me);
+    RKH_SMA_POST_FIFO(
+            RKH_UPCAST(RKH_SMA_T, me),
+            RKH_UPCAST(RKH_EVT_T, &evActivateObj),
+            me
+    );
 }
 
 static void 
@@ -670,14 +673,33 @@ enAwaitingAck(MQTTProt *const me, RKH_EVT_T *pe)
 static void 
 brokerConnect(MQTTProt *const me, RKH_EVT_T *pe)
 {
-    mqtt_init(&me->client, 0, me->sendbuf, sizeof(me->sendbuf), 
-              me->recvbuf, sizeof(me->recvbuf), me->config->callback);
-    me->operRes = mqtt_connect(&me->client, 
-                               me->config->clientId, 
-                               NULL, NULL, 0, NULL, NULL, 0, 
-                               me->config->keepAlive);
+    mqtt_init(
+            &me->client,
+            0,
+            me->sendbuf,
+            sizeof(me->sendbuf),
+            me->recvbuf,
+            sizeof(me->recvbuf),
+            me->config->callback
+    );
+
+    me->operRes = mqtt_connect(
+            &me->client,
+            me->config->clientId,
+            NULL,
+            NULL,
+            0,
+            NULL,
+            NULL,
+            0,
+            me->config->keepAlive
+    );
     me->errorStr = mqtt_error_str(me->operRes);
-    mqtt_subscribe(&me->client, me->config->subTopic, 2);
+    mqtt_subscribe(
+            &me->client,
+            me->config->subTopic,
+            2
+    );
 }
 
 static void 

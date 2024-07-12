@@ -89,41 +89,43 @@ include_directories(
 
         reactive-framework/blinky
         reactive-framework/blinky/bsp
-        reactive-framework/salt/utilities/rtime
+
         reactive-framework/salt/utilities/mTime
-        reactive-framework/salt/utilities/date
+
+        #     reactive-framework/salt/utilities/rtime
+       #     reactive-framework/salt/utilities/date
         reactive-framework/salt/utilities/epoch
 
         Middlewares/Third_Party/MQTT-C/include
 
         reactive-framework/salt
-        reactive-framework/salt/configuration
-        reactive-framework/salt/bsp
+       #     reactive-framework/salt/configuration
+       #     reactive-framework/salt/bsp
 
-        reactive-framework/salt/state-machines/mqtt-protocol
-        reactive-framework/salt/state-machines/connector-manager
-        reactive-framework/salt/state-machines/module-manager
-        reactive-framework/salt/state-machines/logic
+       #     reactive-framework/salt/state-machines/mqtt-protocol
+       #     reactive-framework/salt/state-machines/connector-manager
+       #     reactive-framework/salt/state-machines/module-manager
+       #     reactive-framework/salt/state-machines/logic
 
-        reactive-framework/salt/peripherals/module-command
-        reactive-framework/salt/peripherals/module-power
-        reactive-framework/salt/peripherals/serial
-        reactive-framework/salt/peripherals/gps
-        reactive-framework/salt/peripherals/sim808
-        reactive-framework/salt/peripherals/ledPanel
-        reactive-framework/salt/peripherals/ihm
-        reactive-framework/salt/peripherals/relay-control
-        reactive-framework/salt/peripherals/analog-inputs
-        reactive-framework/salt/peripherals/pulse-counter
-        reactive-framework/salt/peripherals/teloc
+       #     reactive-framework/salt/peripherals/module-command
+       #     reactive-framework/salt/peripherals/module-power
+       #     reactive-framework/salt/peripherals/serial
+       #     reactive-framework/salt/peripherals/gps
+       #     reactive-framework/salt/peripherals/sim808
+       #     reactive-framework/salt/peripherals/ledPanel
+       #     reactive-framework/salt/peripherals/ihm
+       #     reactive-framework/salt/peripherals/relay-control
+       #     reactive-framework/salt/peripherals/analog-inputs
+       #     reactive-framework/salt/peripherals/pulse-counter
+       #     reactive-framework/salt/peripherals/teloc
 
-        reactive-framework/salt/utilities/emaFilter
-        reactive-framework/salt/utilities/parser
-        reactive-framework/salt/utilities/parser/sim900
-        reactive-framework/salt/utilities/parser/salt-command
-        reactive-framework/salt/utilities/ssp/src
-        reactive-framework/salt/utilities/aes
-        reactive-framework/salt/utilities/publisher
+       #     reactive-framework/salt/utilities/emaFilter
+       #     reactive-framework/salt/utilities/parser
+       #     reactive-framework/salt/utilities/parser/sim900
+       #     reactive-framework/salt/utilities/parser/salt-command
+       #     reactive-framework/salt/utilities/ssp/src
+       #     reactive-framework/salt/utilities/aes
+       #     reactive-framework/salt/utilities/publisher
 
 )
 
@@ -170,7 +172,12 @@ file(
         "Middlewares/Third_Party/MQTT-C/src/mqtt-c.c"
         "Middlewares/Third_Party/MQTT-C/src/mqtt_pal.c"
 
-        "reactive-framework/*.*"
+        "reactive-framework/blinky/*.*"
+
+        "reactive-framework/salt/utilities/mTime/mTime.c"
+        "reactive-framework/salt/utilities/mTime/mTimeTbl.c"
+
+        #   "reactive-framework/salt/*.*"
 )
 
 set(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/STM32F429ZITX_FLASH.ld)

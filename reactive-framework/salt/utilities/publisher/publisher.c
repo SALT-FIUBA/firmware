@@ -92,6 +92,7 @@ publishDimba(AppData *appMsg)
 
     appMsg->data = (rui8_t *)dataBuf;
     appMsg->size = (rui16_t)strlen(dataBuf);
+
     return getNextPublishTime();
 }
 

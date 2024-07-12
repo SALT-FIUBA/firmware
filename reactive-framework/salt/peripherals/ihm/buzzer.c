@@ -39,6 +39,15 @@ void buzzerSetMode(BUZZER_MODE mode){
     buzzerUpdate();
 }
 
+bool buzzerGet(){
+    return false; // gpioRead(BUZZER_PIN);
+}
+
+void buzzerSet(bool on){
+    //TODO volver a habilitar
+    //gpioWrite( BUZZER_PIN, on);
+}
+
 void buzzerUpdate(){
     switch (buzzerMode){
         case BUZZER_MODE_DISABLE:
