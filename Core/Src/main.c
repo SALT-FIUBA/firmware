@@ -74,6 +74,7 @@ PUTCHAR_PROTOTYPE
 #include "blinky.h"
 #include "bsp/bsp_blinky.h"
 #include "mTime.h"
+#include "epoch.h"
 
 
 #define QSTO_SIZE           4
@@ -93,7 +94,6 @@ int main(void)
   /* MCU Configuration--------------------------------------------------------*/
 
 
-  printf("main \n");
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
 
@@ -113,18 +113,17 @@ int main(void)
   MX_USB_OTG_FS_PCD_Init();
   /* USER CODE BEGIN 2 */
 
-  bsp_init();
+  bsp_init(); // inside this function are invoked: RKH_TRC_OPEN, rkh_fwk_init & the trace filters
 
+  epoch_init();
   mTime_init();
 
   RKH_SMA_ACTIVATE(blinky, qsto, QSTO_SIZE, 0, 0);
   rkh_fwk_enter();
 
-    /*
-     * Trazer -> RKH_TRC_CLOSE();
-     */
+  RKH_TRC_CLOSE();
 
-    return 0;
+  return 0;
 
 
   /* USER CODE END 2 */

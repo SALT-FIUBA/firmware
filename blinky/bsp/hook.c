@@ -88,8 +88,6 @@ SystickHook(void)
 void
 rkh_hook_start(void)
 {
-    printf("rkh_hook_start \n");
-
     tickCounter = BSP_TICK_RATE_MS;
     Systick_setCallback(SystickHook);
 }
@@ -97,15 +95,12 @@ rkh_hook_start(void)
 void
 rkh_hook_exit(void)
 {
-    printf("rkh_hook_exit \n");
-    //  RKH_TRC_FLUSH();
+    RKH_TRC_FLUSH();
 }
 
 void
 rkh_hook_timetick(void)
 {
-    printf("rkh_hook_timetick \n");
-
     ++tstamp;
     mTime_tick();
 }
@@ -113,10 +108,8 @@ rkh_hook_timetick(void)
 void
 rkh_hook_idle(void)
 {
-    //  printf("rkh_hook_idle \n");
-
     RKH_ENA_INTERRUPT();
-    //  RKH_TRC_FLUSH();
+    RKH_TRC_FLUSH();
 }
 
 /* ------------------------------ File footer ------------------------------ */

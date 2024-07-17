@@ -55,7 +55,7 @@
  *	RKH_ALLOC_EVT(). Use a 8 value if the bigger event size is minor to
  *	256 bytes.
  */
-#define RKH_CFG_FWK_SIZEOF_EVT_SIZE     16u
+#define RKH_CFG_FWK_SIZEOF_EVT_SIZE     8u
 
 /**
  *	If the #RKH_CFG_FWK_DEFER_EVT_EN is set to 1 and the dynamic event
@@ -409,7 +409,7 @@
  *	If the #RKH_CFG_TRC_EN is set to 1 then RKH will include the trace
  *	facility.
  */
-#define RKH_CFG_TRC_EN                  RKH_DISABLED
+#define RKH_CFG_TRC_EN                  RKH_ENABLED
 
 /**
  *	If the #RKH_CFG_TRC_RTFIL_EN is set to 1 then RKH will include
@@ -441,7 +441,7 @@
  *	build and generate tracing information from the application-level code.
  *	This trace records are application-specific.
  */
-#define RKH_CFG_TRC_USER_TRACE_EN       RKH_DISABLED
+#define RKH_CFG_TRC_USER_TRACE_EN       RKH_ENABLED
 
 /**
  *	If the #RKH_CFG_TRC_ALL_EN is set to 1 then RKH will include all its own
@@ -578,7 +578,7 @@
  *	If the #RKH_CFG_TRC_CHK_EN is set to 1 then RKH will add to the trace
  *	record a checksum (1-byte). See RKH_TRC_CHK() macro.
  */
-#define RKH_CFG_TRC_CHK_EN              RKH_ENABLED
+#define RKH_CFG_TRC_CHK_EN              RKH_DISABLED
 
 /**
  *	If the #RKH_CFG_TRC_TSTAMP_EN is set to 1 then RKH will add to the trace

@@ -60,8 +60,6 @@ mTime_init(void)
 void
 mTime_tick(void)
 {
-    printf("mTime tick \n");
-
     const timerChain_t *p;
     unsigned char num;
 

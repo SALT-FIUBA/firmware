@@ -69,8 +69,9 @@ include_directories(
 
       third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32
 
+        rtime
         mTime
-
+        epoch/inc
 )
 
 file(
@@ -107,9 +108,13 @@ file(
         "blinky/bsp/assert.c"
         "blinky/bsp/hook.c"
 
+        "blinky/bsp/trace_io.c"
+
         "mTime/mTime.c"
         "mTime/mTimeTbl.c"
 
+        "epoch/src/epoch.c"
+        "rtime/rtime.c"
 )
 
 add_definitions(

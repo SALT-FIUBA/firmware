@@ -212,7 +212,6 @@ void SysTick_Handler(void)
 void
 Systick_setCallback(SystickCb cb)
 {
-    printf("Systick_setCallback \n");
     userSysticCb = cb;
 }
 /* USER CODE END 1 */
