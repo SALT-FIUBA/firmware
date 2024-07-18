@@ -113,7 +113,7 @@ extern "C" {
 /**
  *	If the #RKH_CFGPORT_SMA_THREAD_EN and #RKH_CFGPORT_SMA_THREAD_DATA_EN 
  *	are set to 1, each SMA (active object) has its own thread of execution 
- *	and its own object data.
+ *	and its own object da32a.
  */
 #define RKH_CFGPORT_SMA_THREAD_DATA_EN		RKH_DISABLED
 

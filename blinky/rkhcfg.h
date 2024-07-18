@@ -33,7 +33,7 @@
  *	(can be a number in the range [0..256]).
  *	Note that a value of 0 will completely suppress the memory pool services.
  */
-#define RKH_CFG_FWK_MAX_EVT_POOL        0u
+#define RKH_CFG_FWK_MAX_EVT_POOL        4u
 
 /**
  *  Specify the size of the event signal. The valid values [in bits] are
@@ -55,7 +55,7 @@
  *	RKH_ALLOC_EVT(). Use a 8 value if the bigger event size is minor to
  *	256 bytes.
  */
-#define RKH_CFG_FWK_SIZEOF_EVT_SIZE     8u
+#define RKH_CFG_FWK_SIZEOF_EVT_SIZE     16u
 
 /**
  *	If the #RKH_CFG_FWK_DEFER_EVT_EN is set to 1 and the dynamic event
@@ -271,8 +271,6 @@
  *	If the #RKH_CFG_SMA_TRC_SNDR_EN and #RKH_CFG_TRC_EN are set to 1,
  *	when posting an event the RKH inserts a pointer to the sender object.
  */
-//  #define RKH_CFG_SMA_TRC_SNDR_EN         RKH_DISABLED
-
 #define RKH_CFG_SMA_TRC_SNDR_EN         RKH_ENABLED
 
 /**
@@ -459,6 +457,8 @@
  *	If the #RKH_CFG_TRC_QUE_EN is set to 1 then RKH will include all trace
  *	records related to the native queues.
  */
+
+// en Trazer se llama RKH_CFG_TRC_RQ_EN
 #define RKH_CFG_TRC_QUE_EN               RKH_DISABLED
 
 /**
@@ -578,7 +578,7 @@
  *	If the #RKH_CFG_TRC_CHK_EN is set to 1 then RKH will add to the trace
  *	record a checksum (1-byte). See RKH_TRC_CHK() macro.
  */
-#define RKH_CFG_TRC_CHK_EN              RKH_DISABLED
+#define RKH_CFG_TRC_CHK_EN              RKH_ENABLED
 
 /**
  *	If the #RKH_CFG_TRC_TSTAMP_EN is set to 1 then RKH will add to the trace
@@ -692,7 +692,7 @@
  *	rkh_mp_get_bsize() function that returns the size of memory block in
  *	bytes. See rkh_mp_get_bsize() function.
  */
-#define RKH_CFG_MP_GET_BSIZE_EN         RKH_DISABLED
+#define RKH_CFG_MP_GET_BSIZE_EN         RKH_ENABLED
 
 /**
  *	If the #RKH_CFG_MP_GET_NFREE_EN is set to 1 then RKH will include the
