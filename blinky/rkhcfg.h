@@ -33,7 +33,7 @@
  *	(can be a number in the range [0..256]).
  *	Note that a value of 0 will completely suppress the memory pool services.
  */
-#define RKH_CFG_FWK_MAX_EVT_POOL        4u
+#define RKH_CFG_FWK_MAX_EVT_POOL        0u
 
 /**
  *  Specify the size of the event signal. The valid values [in bits] are
@@ -73,7 +73,7 @@
  *  macro RKH_ALLEGE(), that still evaluates the test condition, but does
  *  not report assertion failures when the #RKH_CFG_FWK_ASSERT_EN is enabled.
  */
-#define RKH_CFG_FWK_ASSERT_EN           RKH_DISABLED //    RKH_ENABLED
+#define RKH_CFG_FWK_ASSERT_EN           RKH_ENABLED
 
 /**
  *  \brief
@@ -171,23 +171,6 @@
  */
 #define RKH_CFG_FWK_TICK_RATE_HZ            100u
 
-/**
- *  \brief
- *  This number divides interrupts into "aware" and "unware" interrupts, which
- *  are never disabled, and "aware" interrupts, which are disabled in the RKH
- *  critical section.
- *  For example, an interrupt priority number lower than
- *  RKH_CFG_FWK_AWARE_ISR_PRIO indicates an "unware" interrupt, whereas an
- *  interrupt priority number equal or higher than RKH_CFG_FWK_AWARE_ISR_PRIO
- *  indicates an "aware" interrupt.
- *
- *  \type       Integer
- *  \range      [1..255]
- *  \default    0
- */
-#define RKH_CFG_FWK_AWARE_ISR_PRIO      0
-
-
 /* --- Configuration options related to state machine applications -------- */
 
 /**
@@ -271,7 +254,7 @@
  *	If the #RKH_CFG_SMA_TRC_SNDR_EN and #RKH_CFG_TRC_EN are set to 1,
  *	when posting an event the RKH inserts a pointer to the sender object.
  */
-#define RKH_CFG_SMA_TRC_SNDR_EN         RKH_ENABLED
+#define RKH_CFG_SMA_TRC_SNDR_EN         RKH_DISABLED
 
 /**
  *	If the #RKH_CFG_SMA_INIT_EVT_EN is set to 1 then an initial event could
@@ -439,7 +422,7 @@
  *	build and generate tracing information from the application-level code.
  *	This trace records are application-specific.
  */
-#define RKH_CFG_TRC_USER_TRACE_EN       RKH_ENABLED
+#define RKH_CFG_TRC_USER_TRACE_EN       RKH_DISABLED
 
 /**
  *	If the #RKH_CFG_TRC_ALL_EN is set to 1 then RKH will include all its own
@@ -457,8 +440,6 @@
  *	If the #RKH_CFG_TRC_QUE_EN is set to 1 then RKH will include all trace
  *	records related to the native queues.
  */
-
-// en Trazer se llama RKH_CFG_TRC_RQ_EN
 #define RKH_CFG_TRC_QUE_EN               RKH_DISABLED
 
 /**
@@ -578,14 +559,14 @@
  *	If the #RKH_CFG_TRC_CHK_EN is set to 1 then RKH will add to the trace
  *	record a checksum (1-byte). See RKH_TRC_CHK() macro.
  */
-#define RKH_CFG_TRC_CHK_EN              RKH_ENABLED
+#define RKH_CFG_TRC_CHK_EN              RKH_DISABLED
 
 /**
  *	If the #RKH_CFG_TRC_TSTAMP_EN is set to 1 then RKH will add to the trace
  *	record a timestamp field. It's configurable by means of
  *	#RKH_CFGPORT_TRC_SIZEOF_TSTAMP.
  */
-#define RKH_CFG_TRC_TSTAMP_EN           RKH_ENABLED
+#define RKH_CFG_TRC_TSTAMP_EN           RKH_DISABLED
 
 /**
  *	Specify the maximum number of trace events in the stream. The smaller
@@ -692,7 +673,7 @@
  *	rkh_mp_get_bsize() function that returns the size of memory block in
  *	bytes. See rkh_mp_get_bsize() function.
  */
-#define RKH_CFG_MP_GET_BSIZE_EN         RKH_ENABLED
+#define RKH_CFG_MP_GET_BSIZE_EN         RKH_DISABLED
 
 /**
  *	If the #RKH_CFG_MP_GET_NFREE_EN is set to 1 then RKH will include the
@@ -749,3 +730,20 @@
 
 #endif
 /* ------------------------------ End of file ------------------------------ */
+
+
+/**
+ *  \brief
+ *  This number divides interrupts into "aware" and "unware" interrupts, which
+ *  are never disabled, and "aware" interrupts, which are disabled in the RKH
+ *  critical section.
+ *  For example, an interrupt priority number lower than
+ *  RKH_CFG_FWK_AWARE_ISR_PRIO indicates an "unware" interrupt, whereas an
+ *  interrupt priority number equal or higher than RKH_CFG_FWK_AWARE_ISR_PRIO
+ *  indicates an "aware" interrupt.
+ *
+ *  \type       Integer
+ *  \range      [1..255]
+ *  \default    0
+ */
+#define RKH_CFG_FWK_AWARE_ISR_PRIO      0

@@ -74,7 +74,7 @@ rkh_trc_open(void)
      * TODO: Init Trace Uart
      * Ex: uartConfig(TRC_COM_PORT, TRC_BAUD_RATE);
      */
-    
+    MX_USART3_UART_Init();
     RKH_TRC_SEND_CFG(BSP_TS_RATE_HZ);
 }
 
@@ -106,9 +106,7 @@ rkh_trc_flush(void)
                  */
 
                 rui8_t c = *blk++;
-                HAL_UART_Transmit(&huart3, (uint8_t *)&c, 10, HAL_MAX_DELAY);
-
-                //  printf("\n %s \n", blk);
+                HAL_UART_Transmit(&huart3, (uint8_t *)&c, 1, HAL_MAX_DELAY);
             }
         }
         else
