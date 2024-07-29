@@ -24,8 +24,6 @@
 
 #include "signals.h"
 #include "modpwr.h"
-#include "modmgr.h"
-#include "modcmd.h"
 #include "conmgr.h"
 #include "mTime.h"
 #include "anIn.h"

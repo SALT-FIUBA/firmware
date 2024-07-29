@@ -23,7 +23,6 @@
 /* ----------------------------- Include files ----------------------------- */
 #include "rkh.h"
 #include "epoch.h"
-#include "modMgr.h"
 #include "gps.h"
 
 /* ---------------------- External C language linkage ---------------------- */
@@ -200,7 +199,7 @@ struct ReceivedEvt
 typedef struct LocalTimeEvt LocalTimeEvt;
 struct LocalTimeEvt
 {
-    ModMgrResp e;
+    //  ModMgrResp e;
     Time time;
 };
 
@@ -208,21 +207,21 @@ struct LocalTimeEvt
 typedef struct ImeiEvt ImeiEvt;
 struct ImeiEvt
 {
-    ModMgrResp e;
+    //  ModMgrResp e;
     char buf[IMEI_BUF_SIZE];
 };
 
 typedef struct OperEvt OperEvt;
 struct OperEvt
 {
-    ModMgrResp e;
+    //  ModMgrResp e;
     char buf[OPER_BUF_SIZE];
 };
 
 typedef struct SigLevelEvt SigLevelEvt;
 struct SigLevelEvt
 {
-    ModMgrResp e;
+    //  ModMgrResp e;
     int value;
 };
 
@@ -230,7 +229,7 @@ struct SigLevelEvt
 typedef struct GpsEvt GpsEvt;
 struct GpsEvt
 {
-    ModMgrResp e;
+    //  ModMgrResp e;
     GpsData gpsData;
 };
 

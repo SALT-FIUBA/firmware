@@ -102,10 +102,8 @@ include_directories(
 
         reactive-framework/salt/state-machines/mqtt-protocol
         reactive-framework/salt/state-machines/connector-manager
-        reactive-framework/salt/state-machines/module-manager
         reactive-framework/salt/state-machines/logic
 
-        reactive-framework/salt/peripherals/module-command
         reactive-framework/salt/peripherals/module-power
         reactive-framework/salt/peripherals/serial
         reactive-framework/salt/peripherals/gps
@@ -119,7 +117,6 @@ include_directories(
 
         reactive-framework/salt/utilities/emaFilter
         reactive-framework/salt/utilities/parser
-        reactive-framework/salt/utilities/parser/sim900
         reactive-framework/salt/utilities/parser/salt-command
         reactive-framework/salt/utilities/ssp/src
         reactive-framework/salt/utilities/aes
