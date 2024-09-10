@@ -30,7 +30,7 @@
 #include "epoch.h"
 #include "date.h"
 #include "conmgr.h"
-#include "mqtt-c.h"
+#include "mqtt.h"
 
 /* ---------------------- External C language linkage ---------------------- */
 #ifdef __cplusplus

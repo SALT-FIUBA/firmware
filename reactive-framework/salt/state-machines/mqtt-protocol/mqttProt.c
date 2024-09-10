@@ -18,14 +18,25 @@
 /* --------------------------------- Notes --------------------------------- */
 /* ----------------------------- Include files ----------------------------- */
 #include "mqttProt.h"
+#include "mqttc.h"
 
 //  #include "conmgr.h"
 //  #include "BSP-Nucleo-144.h"
+
+#include "lwip/sockets.h"
+#include "lwip/sys.h"
+#include "lwip/netdb.h"
 
 /* ----------------------------- Local macros ------------------------------ */
 /* ......................... Declares active object ........................ */
 typedef struct MQTTProt MQTTProt;
 typedef struct SyncRegion SyncRegion;
+
+static int mqtt_socket = -1;
+static struct sockaddr_in mqtt_server_addr;
+
+
+
 
 /* ................... Declares states and pseudostates .................... */
 
@@ -268,7 +279,7 @@ struct MQTTProt
     SyncRegion itsSyncRegion;   /* Sync orthogonal region */
     RKH_TMR_T publishTmr;
     RKH_TMR_T tryConnTmr;
-    struct mqtt_client client;
+    struct mqttc_client client;
     uint8_t sendbuf[2048];  /* sendbuf should be large enough to hold */
                             /* multiple whole mqtt messages */
     uint8_t recvbuf[1024];  /* recvbuf should be large enough any whole */
@@ -670,14 +681,14 @@ enAwaitingAck(MQTTProt *const me, RKH_EVT_T *pe)
 static void 
 brokerConnect(MQTTProt *const me, RKH_EVT_T *pe)
 {
-    mqtt_init(&me->client, 0, me->sendbuf, sizeof(me->sendbuf), 
-              me->recvbuf, sizeof(me->recvbuf), me->config->callback);
+    mqttc_init(&me->client, 0, me->sendbuf, sizeof(me->sendbuf),
+               me->recvbuf, sizeof(me->recvbuf), me->config->callback);
     me->operRes = mqtt_connect(&me->client, 
                                me->config->clientId, 
                                NULL, NULL, 0, NULL, NULL, 0, 
                                me->config->keepAlive);
     me->errorStr = mqtt_error_str(me->operRes);
-    mqtt_subscribe(&me->client, me->config->subTopic, 2);
+    mqttc_subscribe(&me->client, me->config->subTopic, 2);
 }
 
 static void 
@@ -833,6 +844,18 @@ MQTTProt_ctor(MQTTProtCfg *config, MQTTProtPublish publisher)
     MQTTProt_syncRegion = (RKH_SM_T *)&(me->itsSyncRegion);
     configClient(me, config);
     me->publisher = (publisher != (MQTTProtPublish)0) ? publisher : pubDft;
+
 }
 
 /* ------------------------------ End of file ------------------------------ */
+
+
+
+
+
+
+
+
+
+
+

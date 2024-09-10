@@ -18,7 +18,6 @@
 /* USER CODE END Header */
 
 /* Includes ------------------------------------------------------------------*/
-#include <stdio.h>
 #include "main.h"
 #include "stm32f4xx_it.h"
 /* Private includes ----------------------------------------------------------*/
@@ -185,18 +184,14 @@ void PendSV_Handler(void)
 /**
   * @brief This function handles System tick timer.
   */
-// aunque nse muestre sombreado la fuyncion se esta llamando correctamente
 void SysTick_Handler(void)
 {
-
   /* USER CODE BEGIN SysTick_IRQn 0 */
     if(userSysticCb != NULL)
         userSysticCb();
 
   /* USER CODE END SysTick_IRQn 0 */
-
   HAL_IncTick();
-
   /* USER CODE BEGIN SysTick_IRQn 1 */
   /* USER CODE END SysTick_IRQn 1 */
 }
@@ -212,7 +207,6 @@ void SysTick_Handler(void)
 void
 Systick_setCallback(SystickCb cb)
 {
-    printf("Systick_setCallback \n");
     userSysticCb = cb;
 }
 /* USER CODE END 1 */

@@ -1,23 +1,23 @@
 CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/rkh/source/trc/src/rkhtrc_stream.c.obj: \
  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/src/rkhtrc_stream.c \
- /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/string.h \
- /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/_ansi.h \
- /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/newlib.h \
- /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/_newlib_version.h \
- /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/config.h \
- /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/machine/ieeefp.h \
- /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/features.h \
- /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/reent.h \
- /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/_ansi.h \
- /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h \
- /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_types.h \
- /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/machine/_types.h \
- /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/machine/_default_types.h \
- /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/lock.h \
- /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/cdefs.h \
- /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_locale.h \
- /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/strings.h \
- /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/string.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/string.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/_ansi.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/newlib.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/_newlib_version.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/config.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/ieeefp.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/features.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/reent.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/_ansi.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/lib/gcc/arm-none-eabi/13.3.1/include/stddef.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/cdefs.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/_default_types.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/_types.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/_types.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/lock.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/_locale.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/strings.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/string.h \
  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_stream.h \
  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_out.h \
  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/trc/inc/rkhtrc_define.h \
@@ -31,10 +31,10 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/rkh/source/trc/src/rkht
  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h \
  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f429xx.h \
  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/core_cm4.h \
- /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h \
- /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/stdint.h \
- /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_intsup.h \
- /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_stdint.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/lib/gcc/arm-none-eabi/13.3.1/include/stdint.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/stdint.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/_intsup.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/_stdint.h \
  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/cmsis_version.h \
  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/cmsis_compiler.h \
  /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/cmsis_gcc.h \
@@ -54,13 +54,15 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/rkh/source/trc/src/rkht
  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h \
  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
+ /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
+ /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h \
  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h \
  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h \
  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhtype.h \
  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/../../portable/arm-cortex/rkhs/arm_cm4f/stm32/rkht.h \
- /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stdbool.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/lib/gcc/arm-none-eabi/13.3.1/include/stdbool.h \
  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/queue/inc/rkhqueue.h \
  /Users/nando/NUCLEO-F429ZI/reactive-framework/blinky/rkhcfg.h \
  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkhdef.h \

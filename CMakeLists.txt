@@ -19,9 +19,9 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_C_STANDARD 11)
 
 #Uncomment for hardware floating point
-#add_compile_definitions(ARM_MATH_CM4;ARM_MATH_MATRIX_CHECK;ARM_MATH_ROUNDING)
-#add_compile_options(-mfloat-abi=hard -mfpu=fpv4-sp-d16)
-#add_link_options(-mfloat-abi=hard -mfpu=fpv4-sp-d16)
+add_compile_definitions(ARM_MATH_CM4;ARM_MATH_MATRIX_CHECK;ARM_MATH_ROUNDING)
+add_compile_options(-mfloat-abi=hard -mfpu=fpv4-sp-d16)
+add_link_options(-mfloat-abi=hard -mfpu=fpv4-sp-d16)
 
 #Uncomment for software floating point
 #add_compile_options(-mfloat-abi=soft)
@@ -51,15 +51,19 @@ endif ()
 
 include_directories(
         Core/Inc
+
         Drivers/STM32F4xx_HAL_Driver/Inc
         Drivers/STM32F4xx_HAL_Driver/Inc/Legacy
         Drivers/CMSIS/Device/ST/STM32F4xx/Include
-        Drivers/CMSIS/Include LWIP/App LWIP/Target
+        Drivers/CMSIS/Include
+        Drivers/BSP/Components/lan8742
+        Drivers/BSP-Nucleo-144
+
+        LWIP/App
+        LWIP/Target
 
         Middlewares/Third_Party/LwIP/src/include
         Middlewares/Third_Party/LwIP/system
-
-        Drivers/BSP/Components/lan8742
         Middlewares/Third_Party/LwIP/src/include/netif/ppp
         Middlewares/Third_Party/LwIP/src/include/lwip
         Middlewares/Third_Party/LwIP/src/include/lwip/apps
@@ -73,6 +77,10 @@ include_directories(
         Middlewares/Third_Party/LwIP/src/include/compat/stdc
         Middlewares/Third_Party/LwIP/system/arch
 
+        Middlewares/Third_Party/FreeRTOS/Source/include
+        Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2
+        Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
+
         Middlewares/Third_Party/rkh/source/fwk/inc
         Middlewares/Third_Party/rkh/source/mempool/inc
         Middlewares/Third_Party/rkh/source/queue/inc
@@ -80,12 +88,11 @@ include_directories(
         Middlewares/Third_Party/rkh/source/sma/inc
         Middlewares/Third_Party/rkh/source/tmr/inc
         Middlewares/Third_Party/rkh/source/trc/inc
-
         Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32
 
         Middlewares/Third_Party/jWrite/jWrite
+        Middlewares/Third_Party/MQTT-C/include
 
-        Drivers/BSP-Nucleo-144
 
         reactive-framework/blinky
         reactive-framework/blinky/bsp
@@ -93,8 +100,6 @@ include_directories(
         reactive-framework/salt/utilities/mTime
         reactive-framework/salt/utilities/date
         reactive-framework/salt/utilities/epoch
-
-        Middlewares/Third_Party/MQTT-C/include
 
         reactive-framework/salt
         reactive-framework/salt/configuration
@@ -127,7 +132,6 @@ include_directories(
 
 )
 
-
 add_definitions(
         -DDEBUG
         -DUSE_HAL_DRIVER
@@ -139,11 +143,15 @@ add_definitions(
 
 file(
         GLOB_RECURSE SOURCES
+
         "Core/*.*"
         "LWIP/*.*"
         "Drivers/*.*"
+        "reactive-framework/*.*"
 
         "Middlewares/Third_Party/LwIP/*.*"
+        "Middlewares/Third_Party/jWrite/jWrite/*.*"
+        "Middlewares/Third_Party/MQTT-C/source/*.*"
 
         "Middlewares/Third_Party/rkh/source/fwk/src/rkhfwk_bittbl.c"
         "Middlewares/Third_Party/rkh/source/fwk/src/rkhfwk_dynevt.c"
@@ -165,12 +173,6 @@ file(
 
         "Middlewares/Third_Party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c"
 
-        "Middlewares/Third_Party/jWrite/jWrite/jWrite.c"
-
-        "Middlewares/Third_Party/MQTT-C/src/mqtt-c.c"
-        "Middlewares/Third_Party/MQTT-C/src/mqtt_pal.c"
-
-        "reactive-framework/*.*"
 )
 
 set(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/STM32F429ZITX_FLASH.ld)

@@ -4,7 +4,7 @@
  *
  * @defgroup mqtt MQTT client
  * @ingroup apps
- * @verbinclude mqtt_client.txt
+ * @verbinclude mqttc_client.txt
  */
 
 /*
