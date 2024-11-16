@@ -77,6 +77,7 @@ tickHook(void *p)
 }
 
 /* ---------------------------- Global functions --------------------------- */
+/*
 void
 rkh_hook_start(void)
 {
@@ -97,10 +98,11 @@ rkh_hook_timetick(void)
 }
 
 void
-rkh_hook_idle(void)             /* called within critical section */
+rkh_hook_idle(void)             // called within critical section
 {
     RKH_ENA_INTERRUPT();
     RKH_TRC_FLUSH();
 }
+*/
 
 /* ------------------------------ File footer ------------------------------ */

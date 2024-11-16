@@ -46,7 +46,7 @@ RKH_DCLR_BASIC_STATE ConMgr_inactive, ConMgr_sync, ConMgr_waitInit,
         ConMgr_checkIP, ConMgr_waitRetryConfig, ConMgr_waitingServer,
         ConMgr_idle, ConMgr_getStatus, ConMgr_waitPrompt, ConMgr_waitOk,
         ConMgr_receiving, ConMgr_restarting, ConMgr_wReopen,
-        ConMgr_waitRetryConnect, ConMgr_disconnecting;
+        ConMgr_waitRetryConnect, ConMgr_disconnecting, ConMgr_configureHist;
 
 RKH_DCLR_COMP_STATE ConMgr_active, ConMgr_initialize, ConMgr_registered,
         ConMgr_configure, ConMgr_connecting, ConMgr_connected,

@@ -30,19 +30,16 @@ static const uint8_t BitReverseTable256[256] = {
 };
 
 /* ---------------------------- Local data types --------------------------- */
-/* TODO: enable SPI
 typedef struct {
     SPI_HandleTypeDef* hspi;
     GPIO_TypeDef* csPort;
     uint16_t csPin;
 } AS1116_Config_t;
-*/
 
 /* ---------------------------- Global variables --------------------------- */
 /* ---------------------------- Local variables --------------------------- */
 static uint8_t as1116Buffer[2];
-//      TODO: enable SPI
-//  static AS1116_Config_t as1116Config;
+static AS1116_Config_t as1116Config;
 static bool initilized = false;
 
 /* ----------------------- Local function prototypes ----------------------- */
@@ -52,7 +49,6 @@ static void AS1116_CS_Select(void);
 static void AS1116_CS_Deselect(void);
 
 /* ---------------------------- Local functions ---------------------------- */
-/* TODO: enable SPI
 static void AS1116_CS_Select(void)
 {
     HAL_GPIO_WritePin(as1116Config.csPort, as1116Config.csPin, GPIO_PIN_RESET);
@@ -97,10 +93,8 @@ static uint8_t as1116ReadReg(uint8_t reg)
 
     return as1116Buffer[1];
 }
-*/
 /* ---------------------------- Global functions --------------------------- */
 
-/* TODO: enable SPI
 void as1116Init(SPI_HandleTypeDef* hspi, GPIO_TypeDef* csPort, uint16_t csPin)
 {
     // Store configuration
@@ -144,6 +138,5 @@ void as1116SetDigit(uint8_t digit, uint8_t data)
     }
     as1116WriteReg(digitRegMap[digit], data);
 }
- */
 
 /* ------------------------------ End of file ------------------------------ */

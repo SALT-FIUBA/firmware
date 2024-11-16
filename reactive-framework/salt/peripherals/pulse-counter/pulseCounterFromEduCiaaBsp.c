@@ -149,7 +149,7 @@ void pulseCounterInitBsp(pulseCount_t errorThr){
     Chip_PININT_EnableIntHigh(LPC_GPIO_PIN_INT, PULSE_B_PININT_SWITCH);
 
 
-    /* Enable interrupt in the NVIC */
+    // Enable interrupt in the NVIC
     pulseCounterEnableInt(true);
 }
 */
@@ -247,6 +247,7 @@ void EXTI1_IRQHandler(void)
 }
 
 /* Callback function for EXTI line detection */
+/*
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
     if (GPIO_Pin == PULSE_A_GPIO_PIN)
@@ -258,5 +259,6 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
         pulseBCounter++;
     }
 }
+ */
 
 /* ------------------------------ End of file ------------------------------ */

@@ -4,7 +4,7 @@
  *
  * @defgroup mqtt MQTT client
  * @ingroup apps
- * @verbinclude mqttc_client.txt
+ * @verbinclude mqtt_client.txt
  */
 
 /*
@@ -1105,12 +1105,12 @@ mqtt_publish(mqtt_client_t *client, const char *topic, const void *payload, u16_
   u16_t remaining_length;
 
   LWIP_ASSERT_CORE_LOCKED();
-  LWIP_ASSERT("mqttc_publish: client != NULL", client);
-  LWIP_ASSERT("mqttc_publish: topic != NULL", topic);
-  LWIP_ERROR("mqttc_publish: TCP disconnected", (client->conn_state != TCP_DISCONNECTED), return ERR_CONN);
+  LWIP_ASSERT("mqtt_publish: client != NULL", client);
+  LWIP_ASSERT("mqtt_publish: topic != NULL", topic);
+  LWIP_ERROR("mqtt_publish: TCP disconnected", (client->conn_state != TCP_DISCONNECTED), return ERR_CONN);
 
   topic_strlen = strlen(topic);
-  LWIP_ERROR("mqttc_publish: topic length overflow", (topic_strlen <= (0xFFFF - 2)), return ERR_ARG);
+  LWIP_ERROR("mqtt_publish: topic length overflow", (topic_strlen <= (0xFFFF - 2)), return ERR_ARG);
   topic_len = (u16_t)topic_strlen;
   total_len = 2 + topic_len + payload_length;
 
@@ -1122,10 +1122,10 @@ mqtt_publish(mqtt_client_t *client, const char *topic, const void *payload, u16_
     /* Use reserved value pkt_id 0 for QoS 0 in request handle */
     pkt_id = 0;
   }
-  LWIP_ERROR("mqttc_publish: total length overflow", (total_len <= 0xFFFF), return ERR_ARG);
+  LWIP_ERROR("mqtt_publish: total length overflow", (total_len <= 0xFFFF), return ERR_ARG);
   remaining_length = (u16_t)total_len;
 
-  LWIP_DEBUGF(MQTT_DEBUG_TRACE, ("mqttc_publish: Publish with payload length %d to topic \"%s\"\n", payload_length, topic));
+  LWIP_DEBUGF(MQTT_DEBUG_TRACE, ("mqtt_publish: Publish with payload length %d to topic \"%s\"\n", payload_length, topic));
 
   r = mqtt_create_request(client->req_list, LWIP_ARRAYSIZE(client->req_list), pkt_id, cb, arg);
   if (r == NULL) {
@@ -1437,7 +1437,7 @@ void
 mqtt_disconnect(mqtt_client_t *client)
 {
   LWIP_ASSERT_CORE_LOCKED();
-  LWIP_ASSERT("mqttc_disconnect: client != NULL", client);
+  LWIP_ASSERT("mqtt_disconnect: client != NULL", client);
   /* If connection in not already closed */
   if (client->conn_state != TCP_DISCONNECTED) {
     /* Set conn_state before calling mqtt_close to prevent callback from being called */

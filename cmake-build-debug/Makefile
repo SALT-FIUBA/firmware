@@ -201,6 +201,54 @@ Core/Src/main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/main.c.s
 .PHONY : Core/Src/main.c.s
 
+Core/Src/rtc.obj: Core/Src/rtc.c.obj
+.PHONY : Core/Src/rtc.obj
+
+# target to build an object file
+Core/Src/rtc.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/rtc.c.obj
+.PHONY : Core/Src/rtc.c.obj
+
+Core/Src/rtc.i: Core/Src/rtc.c.i
+.PHONY : Core/Src/rtc.i
+
+# target to preprocess a source file
+Core/Src/rtc.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/rtc.c.i
+.PHONY : Core/Src/rtc.c.i
+
+Core/Src/rtc.s: Core/Src/rtc.c.s
+.PHONY : Core/Src/rtc.s
+
+# target to generate assembly for a file
+Core/Src/rtc.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/rtc.c.s
+.PHONY : Core/Src/rtc.c.s
+
+Core/Src/spi.obj: Core/Src/spi.c.obj
+.PHONY : Core/Src/spi.obj
+
+# target to build an object file
+Core/Src/spi.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/spi.c.obj
+.PHONY : Core/Src/spi.c.obj
+
+Core/Src/spi.i: Core/Src/spi.c.i
+.PHONY : Core/Src/spi.i
+
+# target to preprocess a source file
+Core/Src/spi.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/spi.c.i
+.PHONY : Core/Src/spi.c.i
+
+Core/Src/spi.s: Core/Src/spi.c.s
+.PHONY : Core/Src/spi.s
+
+# target to generate assembly for a file
+Core/Src/spi.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/spi.c.s
+.PHONY : Core/Src/spi.c.s
+
 Core/Src/stm32f4xx_hal_msp.obj: Core/Src/stm32f4xx_hal_msp.c.obj
 .PHONY : Core/Src/stm32f4xx_hal_msp.obj
 
@@ -833,6 +881,78 @@ Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c.s
 .PHONY : Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c.s
 
+Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc.obj: Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc.c.obj
+.PHONY : Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc.obj
+
+# target to build an object file
+Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc.c.obj
+.PHONY : Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc.c.obj
+
+Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc.i: Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc.c.i
+.PHONY : Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc.i
+
+# target to preprocess a source file
+Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc.c.i
+.PHONY : Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc.c.i
+
+Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc.s: Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc.c.s
+.PHONY : Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc.s
+
+# target to generate assembly for a file
+Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc.c.s
+.PHONY : Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc.c.s
+
+Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc_ex.obj: Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc_ex.c.obj
+.PHONY : Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc_ex.obj
+
+# target to build an object file
+Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc_ex.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc_ex.c.obj
+.PHONY : Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc_ex.c.obj
+
+Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc_ex.i: Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc_ex.c.i
+.PHONY : Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc_ex.i
+
+# target to preprocess a source file
+Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc_ex.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc_ex.c.i
+.PHONY : Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc_ex.c.i
+
+Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc_ex.s: Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc_ex.c.s
+.PHONY : Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc_ex.s
+
+# target to generate assembly for a file
+Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc_ex.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc_ex.c.s
+.PHONY : Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc_ex.c.s
+
+Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.obj: Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c.obj
+.PHONY : Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.obj
+
+# target to build an object file
+Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c.obj
+.PHONY : Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c.obj
+
+Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.i: Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c.i
+.PHONY : Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.i
+
+# target to preprocess a source file
+Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c.i
+.PHONY : Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c.i
+
+Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.s: Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c.s
+.PHONY : Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.s
+
+# target to generate assembly for a file
+Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c.s
+.PHONY : Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c.s
+
 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.obj: Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c.obj
 .PHONY : Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.obj
 
@@ -976,6 +1096,246 @@ LWIP/Target/ethernetif.s: LWIP/Target/ethernetif.c.s
 LWIP/Target/ethernetif.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/LWIP/Target/ethernetif.c.s
 .PHONY : LWIP/Target/ethernetif.c.s
+
+Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.obj: Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.obj
+
+# target to build an object file
+Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.obj
+
+Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.i: Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.i
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.i
+
+# target to preprocess a source file
+Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.i
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.i
+
+Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.s: Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.s
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.s
+
+# target to generate assembly for a file
+Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.s
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c.s
+
+Middlewares/Third_Party/FreeRTOS/Source/croutine.obj: Middlewares/Third_Party/FreeRTOS/Source/croutine.c.obj
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/croutine.obj
+
+# target to build an object file
+Middlewares/Third_Party/FreeRTOS/Source/croutine.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/croutine.c.obj
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/croutine.c.obj
+
+Middlewares/Third_Party/FreeRTOS/Source/croutine.i: Middlewares/Third_Party/FreeRTOS/Source/croutine.c.i
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/croutine.i
+
+# target to preprocess a source file
+Middlewares/Third_Party/FreeRTOS/Source/croutine.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/croutine.c.i
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/croutine.c.i
+
+Middlewares/Third_Party/FreeRTOS/Source/croutine.s: Middlewares/Third_Party/FreeRTOS/Source/croutine.c.s
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/croutine.s
+
+# target to generate assembly for a file
+Middlewares/Third_Party/FreeRTOS/Source/croutine.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/croutine.c.s
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/croutine.c.s
+
+Middlewares/Third_Party/FreeRTOS/Source/event_groups.obj: Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/event_groups.obj
+
+# target to build an object file
+Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj
+
+Middlewares/Third_Party/FreeRTOS/Source/event_groups.i: Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.i
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/event_groups.i
+
+# target to preprocess a source file
+Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.i
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.i
+
+Middlewares/Third_Party/FreeRTOS/Source/event_groups.s: Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.s
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/event_groups.s
+
+# target to generate assembly for a file
+Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.s
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.s
+
+Middlewares/Third_Party/FreeRTOS/Source/list.obj: Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/list.obj
+
+# target to build an object file
+Middlewares/Third_Party/FreeRTOS/Source/list.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
+
+Middlewares/Third_Party/FreeRTOS/Source/list.i: Middlewares/Third_Party/FreeRTOS/Source/list.c.i
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/list.i
+
+# target to preprocess a source file
+Middlewares/Third_Party/FreeRTOS/Source/list.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.i
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/list.c.i
+
+Middlewares/Third_Party/FreeRTOS/Source/list.s: Middlewares/Third_Party/FreeRTOS/Source/list.c.s
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/list.s
+
+# target to generate assembly for a file
+Middlewares/Third_Party/FreeRTOS/Source/list.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.s
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/list.c.s
+
+Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.obj: Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.obj
+
+# target to build an object file
+Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
+
+Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.i: Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.i
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.i
+
+# target to preprocess a source file
+Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.i
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.i
+
+Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.s: Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.s
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.s
+
+# target to generate assembly for a file
+Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.s
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.s
+
+Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.obj: Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.obj
+
+# target to build an object file
+Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
+
+Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.i: Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.i
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.i
+
+# target to preprocess a source file
+Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.i
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.i
+
+Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.s: Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.s
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.s
+
+# target to generate assembly for a file
+Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.s
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.s
+
+Middlewares/Third_Party/FreeRTOS/Source/queue.obj: Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/queue.obj
+
+# target to build an object file
+Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
+
+Middlewares/Third_Party/FreeRTOS/Source/queue.i: Middlewares/Third_Party/FreeRTOS/Source/queue.c.i
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/queue.i
+
+# target to preprocess a source file
+Middlewares/Third_Party/FreeRTOS/Source/queue.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.i
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/queue.c.i
+
+Middlewares/Third_Party/FreeRTOS/Source/queue.s: Middlewares/Third_Party/FreeRTOS/Source/queue.c.s
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/queue.s
+
+# target to generate assembly for a file
+Middlewares/Third_Party/FreeRTOS/Source/queue.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.s
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/queue.c.s
+
+Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.obj: Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c.obj
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.obj
+
+# target to build an object file
+Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c.obj
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c.obj
+
+Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.i: Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c.i
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.i
+
+# target to preprocess a source file
+Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c.i
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c.i
+
+Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.s: Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c.s
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.s
+
+# target to generate assembly for a file
+Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c.s
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c.s
+
+Middlewares/Third_Party/FreeRTOS/Source/tasks.obj: Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/tasks.obj
+
+# target to build an object file
+Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+
+Middlewares/Third_Party/FreeRTOS/Source/tasks.i: Middlewares/Third_Party/FreeRTOS/Source/tasks.c.i
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/tasks.i
+
+# target to preprocess a source file
+Middlewares/Third_Party/FreeRTOS/Source/tasks.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.i
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/tasks.c.i
+
+Middlewares/Third_Party/FreeRTOS/Source/tasks.s: Middlewares/Third_Party/FreeRTOS/Source/tasks.c.s
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/tasks.s
+
+# target to generate assembly for a file
+Middlewares/Third_Party/FreeRTOS/Source/tasks.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.s
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/tasks.c.s
+
+Middlewares/Third_Party/FreeRTOS/Source/timers.obj: Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/timers.obj
+
+# target to build an object file
+Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
+
+Middlewares/Third_Party/FreeRTOS/Source/timers.i: Middlewares/Third_Party/FreeRTOS/Source/timers.c.i
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/timers.i
+
+# target to preprocess a source file
+Middlewares/Third_Party/FreeRTOS/Source/timers.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.i
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/timers.c.i
+
+Middlewares/Third_Party/FreeRTOS/Source/timers.s: Middlewares/Third_Party/FreeRTOS/Source/timers.c.s
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/timers.s
+
+# target to generate assembly for a file
+Middlewares/Third_Party/FreeRTOS/Source/timers.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.s
+.PHONY : Middlewares/Third_Party/FreeRTOS/Source/timers.c.s
 
 Middlewares/Third_Party/LwIP/src/api/api_lib.obj: Middlewares/Third_Party/LwIP/src/api/api_lib.c.obj
 .PHONY : Middlewares/Third_Party/LwIP/src/api/api_lib.obj
@@ -4547,6 +4907,12 @@ help:
 	@echo "... Core/Src/main.obj"
 	@echo "... Core/Src/main.i"
 	@echo "... Core/Src/main.s"
+	@echo "... Core/Src/rtc.obj"
+	@echo "... Core/Src/rtc.i"
+	@echo "... Core/Src/rtc.s"
+	@echo "... Core/Src/spi.obj"
+	@echo "... Core/Src/spi.i"
+	@echo "... Core/Src/spi.s"
 	@echo "... Core/Src/stm32f4xx_hal_msp.obj"
 	@echo "... Core/Src/stm32f4xx_hal_msp.i"
 	@echo "... Core/Src/stm32f4xx_hal_msp.s"
@@ -4626,6 +4992,15 @@ help:
 	@echo "... Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.obj"
 	@echo "... Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.i"
 	@echo "... Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.s"
+	@echo "... Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc.obj"
+	@echo "... Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc.i"
+	@echo "... Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc.s"
+	@echo "... Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc_ex.obj"
+	@echo "... Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc_ex.i"
+	@echo "... Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc_ex.s"
+	@echo "... Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.obj"
+	@echo "... Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.i"
+	@echo "... Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.s"
 	@echo "... Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.obj"
 	@echo "... Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.i"
 	@echo "... Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.s"
@@ -4644,6 +5019,36 @@ help:
 	@echo "... LWIP/Target/ethernetif.obj"
 	@echo "... LWIP/Target/ethernetif.i"
 	@echo "... LWIP/Target/ethernetif.s"
+	@echo "... Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.obj"
+	@echo "... Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.i"
+	@echo "... Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.s"
+	@echo "... Middlewares/Third_Party/FreeRTOS/Source/croutine.obj"
+	@echo "... Middlewares/Third_Party/FreeRTOS/Source/croutine.i"
+	@echo "... Middlewares/Third_Party/FreeRTOS/Source/croutine.s"
+	@echo "... Middlewares/Third_Party/FreeRTOS/Source/event_groups.obj"
+	@echo "... Middlewares/Third_Party/FreeRTOS/Source/event_groups.i"
+	@echo "... Middlewares/Third_Party/FreeRTOS/Source/event_groups.s"
+	@echo "... Middlewares/Third_Party/FreeRTOS/Source/list.obj"
+	@echo "... Middlewares/Third_Party/FreeRTOS/Source/list.i"
+	@echo "... Middlewares/Third_Party/FreeRTOS/Source/list.s"
+	@echo "... Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.obj"
+	@echo "... Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.i"
+	@echo "... Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.s"
+	@echo "... Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.obj"
+	@echo "... Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.i"
+	@echo "... Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.s"
+	@echo "... Middlewares/Third_Party/FreeRTOS/Source/queue.obj"
+	@echo "... Middlewares/Third_Party/FreeRTOS/Source/queue.i"
+	@echo "... Middlewares/Third_Party/FreeRTOS/Source/queue.s"
+	@echo "... Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.obj"
+	@echo "... Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.i"
+	@echo "... Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.s"
+	@echo "... Middlewares/Third_Party/FreeRTOS/Source/tasks.obj"
+	@echo "... Middlewares/Third_Party/FreeRTOS/Source/tasks.i"
+	@echo "... Middlewares/Third_Party/FreeRTOS/Source/tasks.s"
+	@echo "... Middlewares/Third_Party/FreeRTOS/Source/timers.obj"
+	@echo "... Middlewares/Third_Party/FreeRTOS/Source/timers.i"
+	@echo "... Middlewares/Third_Party/FreeRTOS/Source/timers.s"
 	@echo "... Middlewares/Third_Party/LwIP/src/api/api_lib.obj"
 	@echo "... Middlewares/Third_Party/LwIP/src/api/api_lib.i"
 	@echo "... Middlewares/Third_Party/LwIP/src/api/api_lib.s"

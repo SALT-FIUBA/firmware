@@ -35,6 +35,9 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/main.c.obj: \
  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h \
  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
+ /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h \
+ /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc_ex.h \
+ /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h \
  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
@@ -131,8 +134,10 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/main.c.obj: \
  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/system/arch/sys_arch.h \
  /Users/nando/NUCLEO-F429ZI/LWIP/Target/ethernetif.h \
  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/LwIP/src/include/lwip/tcpip.h \
- /Users/nando/NUCLEO-F429ZI/Core/Inc/usart.h \
+ /Users/nando/NUCLEO-F429ZI/Core/Inc/rtc.h \
  /Users/nando/NUCLEO-F429ZI/Core/Inc/main.h \
+ /Users/nando/NUCLEO-F429ZI/Core/Inc/spi.h \
+ /Users/nando/NUCLEO-F429ZI/Core/Inc/usart.h \
  /Users/nando/NUCLEO-F429ZI/Core/Inc/usb_otg.h \
  /Users/nando/NUCLEO-F429ZI/Core/Inc/gpio.h \
  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/rkh/source/fwk/inc/rkh.h \

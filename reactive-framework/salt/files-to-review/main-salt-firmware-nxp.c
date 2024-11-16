@@ -178,17 +178,20 @@ void onMQTTCb(void** state,struct mqtt_response_publish *publish){
 
     char dump1[255] = {0};
     char dump2[255] = {0};
-    sprintf(dump1, "MQTT topic: %.*s", MIN(publish->topic_name_size,200), publish->topic_name);
-    sprintf(dump2, "MQTT data: %.*s", MIN((int) publish->application_message_size,200), publish->application_message);
+    // TODO: check the purpose of these messages
+    //  sprintf(dump1, "MQTT topic: %.*s", MIN(publish->topic_name_size,200), publish->topic_name);
+    //  sprintf(dump2, "MQTT data: %.*s", MIN((int) publish->application_message_size,200), publish->application_message);
     RKH_TRC_USR_BEGIN(USR_TRACE_MQTT)
     RKH_TUSR_STR(dump1);
     RKH_TUSR_STR(dump2);
     RKH_TRC_USR_END();
 
-    int result = saltCmdParse((char *) publish->application_message, publish->application_message_size, &(e_saltCmd.cmd));
-    if (result > 0){
-        RKH_SMA_POST_FIFO(logic, RKH_UPCAST(RKH_EVT_T, &e_saltCmd), 0);
-    }
+
+    // TODO: check the purpose of posting a result
+   // int result = saltCmdParse((char *) publish->application_message, publish->application_message_size, &(e_saltCmd.cmd));
+   // if (result > 0){
+   //     RKH_SMA_POST_FIFO(logic, RKH_UPCAST(RKH_EVT_T, &e_saltCmd), 0);
+   // }
 
 }
 
@@ -215,14 +218,14 @@ saltConfig(void)
     mTime_init();
 
     sim808Init(SIM_808_A);
-    serialSetIntCb(UART_SIM_808_A, simACb);
+    //  serialSetIntCb(UART_SIM_808_A, simACb);
 
 #ifdef DEBUG_SERIAL
     serialInit(UART_DEBUG);
     serialSetIntCb(UART_DEBUG, debugCb);
 #else
     sim808Init(SIM_808_B);
-    serialSetIntCb(UART_SIM_808_B, simBCb);
+    //  serialSetIntCb(UART_SIM_808_B, simBCb);
 #endif
 
     /* Conexion de modulos */
@@ -257,6 +260,7 @@ setupTraceFilters(void)
 }
 
 /* ---------------------------- Global functions --------------------------- */
+/*
 void
 saltCfg_clientId(char *pid)
 {
@@ -269,10 +273,9 @@ saltCfg_topic(char *t)
     sprintf(mqttProtCfg.topic, "/salt/%s", t);
     sprintf(mqttProtCfg.subTopic, "/salt/cmd");
 }
+ */
 
-int
-main(int argc, char *argv[])
-{
+int mainSaltFirmwareNxp(int argc, char *argv[]) {
 
     saltConfig();
 

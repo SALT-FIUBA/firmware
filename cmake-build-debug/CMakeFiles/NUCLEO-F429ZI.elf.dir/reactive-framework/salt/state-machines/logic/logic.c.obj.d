@@ -44,6 +44,9 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/state-machines/logic/lo
  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h \
  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
+ /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h \
+ /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc_ex.h \
+ /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h \
  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
@@ -183,5 +186,6 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/state-machines/logic/lo
  /Users/nando/NUCLEO-F429ZI/Middlewares/Third_Party/MQTT-C/include/mqttc.h \
  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/bsp/bsp.h \
  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/ledPanel/ledPanel.h \
+ /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/ledPanel/as1116.h \
  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/ihm/buzzer.h \
  /Users/nando/NUCLEO-F429ZI/reactive-framework/salt/peripherals/relay-control/relay.h

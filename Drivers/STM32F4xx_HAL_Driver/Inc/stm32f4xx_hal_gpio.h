@@ -59,7 +59,7 @@ typedef struct
 
   uint32_t Alternate;  /*!< Peripheral to be connected to the selected pins. 
                             This parameter can be a value of @ref GPIO_Alternate_function_selection */
-} GPIO_InitTypeDef;
+}GPIO_InitTypeDef;
 
 /** 
   * @brief  GPIO Bit SET and Bit RESET enumeration 

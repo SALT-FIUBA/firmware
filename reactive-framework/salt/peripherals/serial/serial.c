@@ -37,6 +37,7 @@ void UART4_IRQHandler(void);
 */
 /* ----------------------------- Include files ----------------------------- */
 #include "serial.h"
+#include "lwipopts.h"
 
 //  #include "sapi.h"
 
@@ -341,6 +342,7 @@ void serialInit(serialMap_t serialMap)
     __HAL_UART_ENABLE_IT(huart_ptr, UART_IT_RXNE);
 }
 
+/*
 void HAL_UART_MspInit(UART_HandleTypeDef* huart)
 {
     GPIO_InitTypeDef GPIO_InitStruct = {0};
@@ -360,8 +362,9 @@ void HAL_UART_MspInit(UART_HandleTypeDef* huart)
         HAL_NVIC_SetPriority(UART_TELOC_1500_IRQ, 6, 0);
         HAL_NVIC_EnableIRQ(UART_TELOC_1500_IRQ);
     }
-    /* Add similar configurations for other UARTs */
+    // Add similar configurations for other UARTs
 }
+ */
 
 /*
 void serialSetIntCb(serialMap_t serialMap, serialIsrCb_t cb ){
@@ -524,7 +527,10 @@ void UART_SIM_808_A_IRQ_HANDLER(void){
  */
 
 
-/* IRQ Handlers */
+/*
+ * IRQ Handlers alternative to USARTx_IRQHandler
+ */
+/*
 void UART_TELOC_1500_IRQ_HANDLER(void)
 {
     uint8_t receivedByte;
@@ -569,5 +575,6 @@ void UART_SIM_808_A_IRQ_HANDLER(void)
 
     HAL_UART_IRQHandler(&huart[UART_SIM_808_A]);
 }
+ */
 
 /* ------------------------------ End of file ------------------------------ */

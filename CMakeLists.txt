@@ -1,7 +1,7 @@
 #THIS FILE IS AUTO GENERATED FROM THE TEMPLATE! DO NOT CHANGE!
 set(CMAKE_SYSTEM_NAME Generic)
 set(CMAKE_SYSTEM_VERSION 1)
-cmake_minimum_required(VERSION 3.28)
+cmake_minimum_required(VERSION 3.29)
 
 # specify cross-compilers and tools
 set(CMAKE_C_COMPILER arm-none-eabi-gcc)
@@ -50,36 +50,24 @@ else ()
 endif ()
 
 include_directories(
-        Core/Inc
 
-        Drivers/STM32F4xx_HAL_Driver/Inc
-        Drivers/STM32F4xx_HAL_Driver/Inc/Legacy
-        Drivers/CMSIS/Device/ST/STM32F4xx/Include
-        Drivers/CMSIS/Include
-        Drivers/BSP/Components/lan8742
-        Drivers/BSP-Nucleo-144
+        #   directories from stm32cubemx
+        Core/Inc Drivers/STM32F4xx_HAL_Driver/Inc Drivers/STM32F4xx_HAL_Driver/Inc/Legacy Drivers/CMSIS/Device/ST/STM32F4xx/Include
+        Drivers/CMSIS/Include LWIP/App LWIP/Target Middlewares/Third_Party/LwIP/src/include Middlewares/Third_Party/LwIP/system
+        Drivers/BSP/Components/lan8742 Middlewares/Third_Party/LwIP/src/include/netif/ppp Middlewares/Third_Party/LwIP/src/include/lwip
 
-        LWIP/App
-        LWIP/Target
-
-        Middlewares/Third_Party/LwIP/src/include
-        Middlewares/Third_Party/LwIP/system
-        Middlewares/Third_Party/LwIP/src/include/netif/ppp
-        Middlewares/Third_Party/LwIP/src/include/lwip
-        Middlewares/Third_Party/LwIP/src/include/lwip/apps
-        Middlewares/Third_Party/LwIP/src/include/lwip/priv
-        Middlewares/Third_Party/LwIP/src/include/lwip/prot
-        Middlewares/Third_Party/LwIP/src/include/netif
-        Middlewares/Third_Party/LwIP/src/include/compat/posix
-        Middlewares/Third_Party/LwIP/src/include/compat/posix/arpa
-        Middlewares/Third_Party/LwIP/src/include/compat/posix/net
-        Middlewares/Third_Party/LwIP/src/include/compat/posix/sys
-        Middlewares/Third_Party/LwIP/src/include/compat/stdc
-        Middlewares/Third_Party/LwIP/system/arch
+        Middlewares/Third_Party/LwIP/src/include/lwip/apps Middlewares/Third_Party/LwIP/src/include/lwip/priv
+        Middlewares/Third_Party/LwIP/src/include/lwip/prot Middlewares/Third_Party/LwIP/src/include/netif
+        Middlewares/Third_Party/LwIP/src/include/compat/posix Middlewares/Third_Party/LwIP/src/include/compat/posix/arpa
+        Middlewares/Third_Party/LwIP/src/include/compat/posix/net Middlewares/Third_Party/LwIP/src/include/compat/posix/sys
+        Middlewares/Third_Party/LwIP/src/include/compat/stdc Middlewares/Third_Party/LwIP/system/arch
 
         Middlewares/Third_Party/FreeRTOS/Source/include
         Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2
         Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
+
+        #   added directories
+        Drivers/BSP-Nucleo-144
 
         Middlewares/Third_Party/rkh/source/fwk/inc
         Middlewares/Third_Party/rkh/source/mempool/inc
@@ -92,7 +80,6 @@ include_directories(
 
         Middlewares/Third_Party/jWrite/jWrite
         Middlewares/Third_Party/MQTT-C/include
-
 
         reactive-framework/blinky
         reactive-framework/blinky/bsp
@@ -142,12 +129,11 @@ add_definitions(
 )
 
 file(
-        GLOB_RECURSE SOURCES
+        GLOB_RECURSE SOURCES "Core/*.*" "LWIP/*.*" "Drivers/*.*"
 
-        "Core/*.*"
-        "LWIP/*.*"
-        "Drivers/*.*"
         "reactive-framework/*.*"
+
+        "Middlewares/Third_Party/FreeRTOS/*.*"
 
         "Middlewares/Third_Party/LwIP/*.*"
         "Middlewares/Third_Party/jWrite/jWrite/*.*"

@@ -27,6 +27,7 @@
 
 /* ----------------------------- Include files ----------------------------- */
 #include "rkh.h"
+#include "as1116.h"
 
 /* ---------------------- External C language linkage ---------------------- */
 #ifdef __cplusplus

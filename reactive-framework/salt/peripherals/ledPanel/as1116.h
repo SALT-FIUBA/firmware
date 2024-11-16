@@ -27,10 +27,19 @@
 #define PANEL_SHUTDOWN_NORMAL_MODE_RESET    0x01
 #define PANEL_NUM_DIGITS                    8
 
+#define PANEL_SEGMENT_G_POS                 0
+#define PANEL_SEGMENT_F_POS                 1
+#define PANEL_SEGMENT_E_POS                 2
+#define PANEL_SEGMENT_D_POS                 3
+#define PANEL_SEGMENT_C_POS                 4
+#define PANEL_SEGMENT_B_POS                 5
+#define PANEL_SEGMENT_A_POS                 6
+#define PANEL_SEGMENT_DP_POS                7
+
+
 extern const uint8_t digitRegMap[PANEL_NUM_DIGITS];
 
-// TODO: enable SPI
-// void as1116Init(SPI_HandleTypeDef * hspi, GPIO_TypeDef* csPort, uint16_t csPin);
+void as1116Init(SPI_HandleTypeDef * hspi, GPIO_TypeDef* csPort, uint16_t csPin);
 void as1116SetDigit(uint8_t digit, uint8_t data);
 
 #endif /* AS1116_H */

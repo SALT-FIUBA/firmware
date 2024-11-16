@@ -59,7 +59,8 @@ uint16_t crc16(unsigned char* pData, int length) // CRC16_CCITT_FALSE https://gi
 
 /* ---------------------------- Global functions --------------------------- */
 /* -------------------------- Function prototypes -------------------------- */
-void telocInit(){
+void telocInit() {
+
     nextTelocFrameByte = telocFrame;
     haslerVelEvt.source = VEL_SOURCE_TELOC;
     RKH_SET_STATIC_EVENT(RKH_UPCAST(RKH_EVT_T, &haslerVelEvt), evVelHasler);
@@ -68,6 +69,7 @@ void telocInit(){
     serialSetIntCb(UART_TELOC_1500, telocParse);
 
 }
+
 void telocParse(unsigned char c){
     if(nextTelocFrameByte >= telocFrame + TELOC_FRAME_LENGTH){
         nextTelocFrameByte = telocFrame; //Proteccion contra overflow del buffer de trama

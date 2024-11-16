@@ -258,7 +258,7 @@ struct MQTTProt
     SyncRegion itsSyncRegion;   /* Sync orthogonal region */
     RKH_TMR_T publishTmr;
     RKH_TMR_T tryConnTmr;
-    struct mqtt_client client;
+    struct mqttc_client client;
     uint8_t sendbuf[2048];  /* sendbuf should be large enough to hold */
     /* multiple whole mqtt messages */
     uint8_t recvbuf[1024];  /* recvbuf should be large enough any whole */
@@ -442,7 +442,7 @@ publish(MQTTProt *const me, RKH_EVT_T *pe)
     {
         me->config->publishTime = pubTime;
     }
-    me->operRes = mqtt_publish(&me->client,
+    me->operRes = mqttc_publish(&me->client,
                                me->config->topic,
                                appMsg.data,
                                appMsg.size,
@@ -459,7 +459,7 @@ initRecvAll(SyncRegion *const me, RKH_EVT_T *pe)
     MQTTProt *realMe;
 
     realMe = me->itsMQTTProt;
-    mqtt_initRecvAll();
+    mqttc_initRecvAll();
 }
 
 static void
@@ -469,7 +469,7 @@ recvFail(SyncRegion *const me, RKH_EVT_T *pe)
 
     realMe = me->itsMQTTProt;
     localRecv.rv = MQTT_ERROR_SOCKET_ERROR;
-    mqtt_recvFail(&realMe->client, &localRecv); /* an error occurred */
+    mqttc_recvFail(&realMe->client, &localRecv); /* an error occurred */
 }
 
 static void
@@ -483,7 +483,7 @@ parseRecv(SyncRegion *const me, RKH_EVT_T *pe)
 
     memcpy(realMe->client.recv_buffer.curr, evt->buf, evt->size);
     localRecv.rv = evt->size;
-    mqtt_parseRecv(&realMe->client, &localRecv);
+    mqttc_parseRecv(&realMe->client, &localRecv);
 }
 
 static void
@@ -493,7 +493,7 @@ sendMsgFail(SyncRegion *const me, RKH_EVT_T *pe)
 
     realMe = me->itsMQTTProt;
     localSend.tmp = MQTT_ERROR_SOCKET_ERROR;
-    mqtt_sendMsgFail(&realMe->client, &localSend);
+    mqttc_sendMsgFail(&realMe->client, &localSend);
 }
 
 static void
@@ -502,7 +502,7 @@ setMsgState(SyncRegion *const me, RKH_EVT_T *pe)
     MQTTProt *realMe;
 
     realMe = me->itsMQTTProt;
-    mqtt_setMsgState(&realMe->client, &localSend);
+    mqttc_setMsgState(&realMe->client, &localSend);
 }
 
 static void
@@ -511,7 +511,7 @@ parseError(SyncRegion *const me, RKH_EVT_T *pe)
     MQTTProt *realMe;
 
     realMe = me->itsMQTTProt;
-    mqtt_parseError(&realMe->client, &localRecv);
+    mqttc_parseError(&realMe->client, &localRecv);
 }
 
 static void
@@ -520,7 +520,7 @@ noConsumed(SyncRegion *const me, RKH_EVT_T *pe)
     MQTTProt *realMe;
 
     realMe = me->itsMQTTProt;
-    mqtt_noConsumed(&realMe->client, &localRecv);
+    mqttc_noConsumed(&realMe->client, &localRecv);
 }
 
 static void
@@ -529,7 +529,7 @@ cleanBuf(SyncRegion *const me, RKH_EVT_T *pe)
     MQTTProt *realMe;
 
     realMe = me->itsMQTTProt;
-    mqtt_cleanBuf(&realMe->client, &localRecv);
+    mqttc_cleanBuf(&realMe->client, &localRecv);
 }
 
 static void
@@ -538,7 +538,7 @@ recvMsgError(SyncRegion *const me, RKH_EVT_T *pe)
     MQTTProt *realMe;
 
     realMe = me->itsMQTTProt;
-    mqtt_recvMsgError(&realMe->client, &localRecv);
+    mqttc_recvMsgError(&realMe->client, &localRecv);
 }
 
 static void
@@ -547,7 +547,7 @@ initSendAll(SyncRegion *const me, RKH_EVT_T *pe)
     MQTTProt *realMe;
 
     realMe = me->itsMQTTProt;
-    mqtt_initSendAll(&realMe->client, &localSend);
+    mqttc_initSendAll(&realMe->client, &localSend);
 }
 
 static void
@@ -563,7 +563,7 @@ sendOneMsg(SyncRegion *const me, RKH_EVT_T *pe)
     MQTTProt *realMe;
 
     realMe = me->itsMQTTProt;
-    mqtt_sendOneMsg(&realMe->client, &localSend);
+    mqttc_sendOneMsg(&realMe->client, &localSend);
 }
 
 static void
@@ -572,13 +572,13 @@ endSendAll(SyncRegion *const me, RKH_EVT_T *pe)
     MQTTProt *realMe;
 
     realMe = me->itsMQTTProt;
-    mqtt_endSendAll(&realMe->client);
+    mqttc_endSendAll(&realMe->client);
 }
 
 static void
 nextSend(SyncRegion *const me, RKH_EVT_T *pe)
 {
-    mqtt_nextSend(&localSend);
+    mqttc_nextSend(&localSend);
 }
 
 static void
@@ -587,7 +587,7 @@ handleRecvMsg(SyncRegion *const me, RKH_EVT_T *pe)
     MQTTProt *realMe;
 
     realMe = me->itsMQTTProt;
-    mqtt_handleRecvMsg(&realMe->client, &localRecv);
+    mqttc_handleRecvMsg(&realMe->client, &localRecv);
 }
 
 static void
@@ -649,14 +649,14 @@ enAwaitingAck(MQTTProt *const me, RKH_EVT_T *pe)
 static void
 brokerConnect(MQTTProt *const me, RKH_EVT_T *pe)
 {
-    mqtt_init(&me->client, 0, me->sendbuf, sizeof(me->sendbuf),
+    mqttc_init(&me->client, 0, me->sendbuf, sizeof(me->sendbuf),
               me->recvbuf, sizeof(me->recvbuf), me->config->callback);
-    me->operRes = mqtt_connect(&me->client,
+    me->operRes = mqttc_connect(&me->client,
                                me->config->clientId,
                                NULL, NULL, 0, NULL, NULL, 0,
                                me->config->keepAlive);
-    me->errorStr = mqtt_error_str(me->operRes);
-    mqtt_subscribe(&me->client, me->config->subTopic, 2);
+    me->errorStr = mqttc_error_str(me->operRes);
+    mqttc_subscribe(&me->client, me->config->subTopic, 2);
 }
 
 static void
@@ -728,37 +728,37 @@ isConnectOk(const RKH_SM_T *me, RKH_EVT_T *pe)
 static rbool_t
 isConsumed(const RKH_SM_T *me, RKH_EVT_T *pe)
 {
-    return mqtt_isConsumed(&localRecv);
+    return mqttc_isConsumed(&localRecv);
 }
 
 static rbool_t
 isUnpackError(const RKH_SM_T *me, RKH_EVT_T *pe)
 {
-    return mqtt_isUnpackError(&localRecv);
+    return mqttc_isUnpackError(&localRecv);
 }
 
 static rbool_t
 isNotError(const RKH_SM_T *me, RKH_EVT_T *pe)
 {
-    return mqtt_isNotError(&localRecv);
+    return mqttc_isNotError(&localRecv);
 }
 
 static rbool_t
 isRecvBufFull(const RKH_SM_T *me, RKH_EVT_T *pe)
 {
-    return mqtt_isRecvBufFull(&localRecv);
+    return mqttc_isRecvBufFull(&localRecv);
 }
 
 static rbool_t
 isInitOk(const RKH_SM_T *me, RKH_EVT_T *pe)
 {
-    return mqtt_isInitOk(&localSend);
+    return mqttc_isInitOk(&localSend);
 }
 
 static rbool_t
 isThereMsg(const RKH_SM_T *me, RKH_EVT_T *pe)
 {
-    return mqtt_isThereMsg(&localSend);
+    return mqttc_isThereMsg(&localSend);
 }
 
 static rbool_t
@@ -770,7 +770,7 @@ isNotResend(const RKH_SM_T *me, RKH_EVT_T *pe)
 static rbool_t
 isSetMsgStateOk(const RKH_SM_T *me, RKH_EVT_T *pe)
 {
-    return mqtt_isSetMsgStateResult(&localSend);
+    return mqttc_isSetMsgStateResult(&localSend);
 }
 
 static rbool_t
@@ -792,7 +792,7 @@ isReconnect(const RKH_SM_T *me, RKH_EVT_T *pe)
     SyncRegion *realMe;
 
     realMe = RKH_DOWNCAST(SyncRegion, me);
-    return mqtt_isReconnect(&realMe->itsMQTTProt->client);
+    return mqttc_isReconnect(&realMe->itsMQTTProt->client);
 }
 
 /* ---------------------------- Global functions --------------------------- */
