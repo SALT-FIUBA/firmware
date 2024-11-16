@@ -17,7 +17,6 @@
 
 /* --------------------------------- Notes --------------------------------- */
 /* ----------------------------- Include files ----------------------------- */
-#include <stdio.h>
 #include "rkh.h"
 #include "signals.h"
 #include "modmgr.h"
@@ -31,8 +30,8 @@
 typedef struct ModMgr ModMgr;
 
 /* ................... Declares states and pseudostates .................... */
-RKH_DCLR_BASIC_STATE ModMgr_inactive, ModMgr_idle, ModMgr_inProgress, 
-                     ModMgr_waitInterCmdDelay;
+RKH_DCLR_BASIC_STATE ModMgr_inactive, ModMgr_idle, ModMgr_inProgress,
+        ModMgr_waitInterCmdDelay;
 RKH_DCLR_COMP_STATE ModMgr_active;
 RKH_DCLR_COND_STATE ModMgr_chkInterCmdDelay, ModMgr_chkDataCmd;
 
@@ -60,46 +59,46 @@ rbool_t isDataCmd(ModMgr *const me, RKH_EVT_T *pe);
 /* ........................ States and pseudostates ........................ */
 RKH_CREATE_BASIC_STATE(ModMgr_inactive, NULL, NULL, RKH_ROOT, NULL);
 RKH_CREATE_TRANS_TABLE(ModMgr_inactive)
-    RKH_TRREG(evOpen, NULL, NULL, &ModMgr_active),
+                RKH_TRREG(evOpen, NULL, NULL, &ModMgr_active),
 RKH_END_TRANS_TABLE
 
-RKH_CREATE_COMP_REGION_STATE(ModMgr_active, NULL, NULL, RKH_ROOT, 
-                              &ModMgr_idle, NULL,
-                              RKH_NO_HISTORY, NULL, NULL, NULL, NULL);
+RKH_CREATE_COMP_REGION_STATE(ModMgr_active, NULL, NULL, RKH_ROOT,
+                             &ModMgr_idle, NULL,
+                             RKH_NO_HISTORY, NULL, NULL, NULL, NULL);
 RKH_CREATE_TRANS_TABLE(ModMgr_active)
-    RKH_TRINT(evCmd, NULL, defer),
-    RKH_TRINT(evURC, NULL, notifyURC),
-    RKH_TRINT(evClose,  NULL, defer),
+                RKH_TRINT(evCmd, NULL, defer),
+                RKH_TRINT(evURC, NULL, notifyURC),
+                RKH_TRINT(evClose,  NULL, defer),
 RKH_END_TRANS_TABLE
 
 RKH_CREATE_BASIC_STATE(ModMgr_idle, NULL, NULL, &ModMgr_active, NULL);
 RKH_CREATE_TRANS_TABLE(ModMgr_idle)
-    RKH_TRREG(evCmd, NULL, NULL, &ModMgr_chkDataCmd),
+                RKH_TRREG(evCmd, NULL, NULL, &ModMgr_chkDataCmd),
 RKH_END_TRANS_TABLE
 
 RKH_CREATE_COND_STATE(ModMgr_chkDataCmd);
 RKH_CREATE_BRANCH_TABLE(ModMgr_chkDataCmd)
-    RKH_BRANCH(isDataCmd,   sendData,  &ModMgr_inProgress),
-    RKH_BRANCH(ELSE,        sendCmd,   &ModMgr_inProgress),
+                RKH_BRANCH(isDataCmd,   sendData,  &ModMgr_inProgress),
+                RKH_BRANCH(ELSE,        sendCmd,   &ModMgr_inProgress),
 RKH_END_BRANCH_TABLE
 
 RKH_CREATE_BASIC_STATE(ModMgr_inProgress, setupResponse, NULL,
-												&ModMgr_active, NULL);
+                       &ModMgr_active, NULL);
 RKH_CREATE_TRANS_TABLE(ModMgr_inProgress)
-    RKH_TRREG(evResponse, NULL, sendResponse, &ModMgr_chkInterCmdDelay),
-    RKH_TRREG(evToutWaitResponse, NULL, noResponse, &ModMgr_idle),
+                RKH_TRREG(evResponse, NULL, sendResponse, &ModMgr_chkInterCmdDelay),
+                RKH_TRREG(evToutWaitResponse, NULL, noResponse, &ModMgr_idle),
 RKH_END_TRANS_TABLE
 
 RKH_CREATE_COND_STATE(ModMgr_chkInterCmdDelay);
 RKH_CREATE_BRANCH_TABLE(ModMgr_chkInterCmdDelay)
-    RKH_BRANCH(isInterCmdTime, startDelay,  &ModMgr_waitInterCmdDelay),
-    RKH_BRANCH(ELSE,           moreCmd,   &ModMgr_idle),
+                RKH_BRANCH(isInterCmdTime, startDelay,  &ModMgr_waitInterCmdDelay),
+                RKH_BRANCH(ELSE,           moreCmd,   &ModMgr_idle),
 RKH_END_BRANCH_TABLE
 
-RKH_CREATE_BASIC_STATE(ModMgr_waitInterCmdDelay, NULL, NULL, 
+RKH_CREATE_BASIC_STATE(ModMgr_waitInterCmdDelay, NULL, NULL,
                        &ModMgr_active, NULL);
 RKH_CREATE_TRANS_TABLE(ModMgr_waitInterCmdDelay)
-    RKH_TRREG(evTimeout, NULL, moreCmd, &ModMgr_idle),
+                RKH_TRREG(evTimeout, NULL, moreCmd, &ModMgr_idle),
 RKH_END_TRANS_TABLE
 
 /* ............................. Active object ............................. */
@@ -116,7 +115,7 @@ struct ModMgr
     ModMgrChannelPutnchar channelPutnchar;
 };
 
-RKH_SMA_CREATE(ModMgr, modMgr, 0, HCAL, &ModMgr_inactive, initialization, 
+RKH_SMA_CREATE(ModMgr, modMgr, 0, HCAL, &ModMgr_inactive, initialization,
                NULL);
 RKH_SMA_DEF_PTR(modMgr);
 
@@ -145,7 +144,7 @@ forwardModMgrEvt(RKH_SMA_T *ao, RKH_EVT_T *pe)
     char dump[5] = {0};
     sprintf(dump, "%d", presp->fwdEvt);
     RKH_TRC_USR_BEGIN(USR_TRACE_EVT)
-        RKH_TUSR_STR(dump);
+    RKH_TUSR_STR(dump);
     RKH_TRC_USR_END();
 
     RKH_SMA_POST_FIFO(ao, RKH_UPCAST(RKH_EVT_T, presp), modMgr);
@@ -180,7 +179,7 @@ static void sim808APutnchar(unsigned char *p, ruint ndata){
 static void
 initialization(ModMgr *const me, RKH_EVT_T *pe)
 {
-	(void)pe;
+    (void)pe;
 
     RKH_TR_FWK_AO(me);
     RKH_TR_FWK_QUEUE(&RKH_UPCAST(RKH_SMA_T, me)->equeue);
@@ -202,9 +201,9 @@ initialization(ModMgr *const me, RKH_EVT_T *pe)
     RKH_TR_FWK_TUSR(USR_TRACE_SSP);
     RKH_TR_FWK_TUSR(USR_TRACE_MQTT);
 
-    rkh_queue_init(&qDefer, (const void **)qDefer_sto, SIZEOF_QDEFER, 
-                CV(0));
- 
+    rkh_queue_init(&qDefer, (const void **)qDefer_sto, SIZEOF_QDEFER,
+                   CV(0));
+
     RKH_TMR_INIT(&me->timer, &e_tout, NULL);
 
     me->channelOpen = sim808AChannelOpen;
@@ -241,8 +240,8 @@ sendCmd(ModMgr *const me, RKH_EVT_T *pe)
     me->channelPuts(me->pCmd->cmd);
 
     RKH_TRC_USR_BEGIN(USR_TRACE_OUT)
-        RKH_TUSR_STR("cmd:");
-        RKH_TUSR_STR(me->pCmd->cmd);
+    RKH_TUSR_STR("cmd:");
+    RKH_TUSR_STR(me->pCmd->cmd);
     RKH_TRC_USR_END();
 }
 
@@ -257,8 +256,8 @@ sendData(ModMgr *const me, RKH_EVT_T *pe)
     me->channelPuts(ModCmd_endOfXmitStr());
 #endif
     RKH_TRC_USR_BEGIN(USR_TRACE_OUT)
-		RKH_TUSR_STR("data:");
-        RKH_TUSR_MEM(me->pCmd->data, me->pCmd->nData);
+    RKH_TUSR_STR("data:");
+    RKH_TUSR_MEM(me->pCmd->data, me->pCmd->nData);
     RKH_TRC_USR_END();
 }
 
@@ -273,9 +272,9 @@ static void
 noResponse(ModMgr *const me, RKH_EVT_T *pe)
 {
     (void)pe;
-    
-    RKH_SMA_POST_FIFO((RKH_SMA_T *)*(me->pCmd->args.aoDest), 
-                            &e_noResp, modMgr);
+
+    RKH_SMA_POST_FIFO((RKH_SMA_T *)*(me->pCmd->args.aoDest),
+                      &e_noResp, modMgr);
 
     RKH_FWK_GC(RKH_CAST(RKH_EVT_T, me->pCmd), me);
 }
@@ -286,7 +285,7 @@ startDelay(ModMgr *const me, RKH_EVT_T *pe)
     (void)pe;
 
     RKH_SET_STATIC_EVENT(&e_tout, evTimeout);
-    RKH_TMR_ONESHOT(&me->timer, RKH_UPCAST(RKH_SMA_T, me), 
+    RKH_TMR_ONESHOT(&me->timer, RKH_UPCAST(RKH_SMA_T, me),
                     me->pCmd->args.interCmdTime);
 }
 
@@ -315,7 +314,7 @@ rbool_t
 isInterCmdTime(ModMgr *const me, RKH_EVT_T *pe)
 {
     (void)pe;
-    
+
     return (me->pCmd->args.interCmdTime != 0) ? RKH_TRUE : RKH_FALSE;
 }
 
@@ -323,7 +322,7 @@ rbool_t
 isDataCmd(ModMgr *const me, RKH_EVT_T *pe)
 {
     (void)me;
-    
+
     return (RKH_UPCAST(ModMgrEvt, pe)->data != NULL) ? RKH_TRUE : RKH_FALSE;
 }
 

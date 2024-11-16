@@ -20,7 +20,7 @@
 #define __ON_SWITCH_H__
 
 /* ----------------------------- Include files ----------------------------- */
-#include "sapi.h"
+#include <stdbool.h>
 
 /* ---------------------- External C language linkage ---------------------- */
 #ifdef __cplusplus
@@ -30,12 +30,12 @@ extern "C" {
 /* --------------------------------- Macros -------------------------------- */
 /* -------------------------------- Constants ------------------------------ */
 /* ------------------------------- Data types ------------------------------ */
-typedef void (* onSwitchCb_t)(bool_t activated);
+typedef void (* onSwitchCb_t)(bool activated);
 
 /* -------------------------- External variables --------------------------- */
 /* -------------------------- Function prototypes -------------------------- */
 void onSwitchInit(onSwitchCb_t cb);
-bool_t onSwitchGet();
+bool onSwitchGet();
 void onSwitchSetIntCb( onSwitchCb_t cb );
 
 /* -------------------- External C language linkage end -------------------- */

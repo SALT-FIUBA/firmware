@@ -31,19 +31,33 @@ extern "C" {
 /* -------------------------------- Constants ------------------------------ */
 /* ------------------------------- Data types ------------------------------ */
 
-typedef enum{
-    SIM_808_A, SIM_808_B, SIM_808_COUNT
+typedef enum {
+
+    SIM_808_A,
+    SIM_808_B,
+    SIM_808_COUNT
+
 } Sim808_t;
 
-typedef enum{
-    SIM_808_SLEEP, SIM_808_PWRKEY, SIM_808_VC, SIM_808_CONTROL_PIN_COUNT
+typedef enum {
+
+    SIM_808_SLEEP,
+    SIM_808_PWRKEY,
+    SIM_808_VC,
+    SIM_808_CONTROL_PIN_COUNT
+
 } Sim808ControlPin_t;
 
-typedef struct Sim808PinConfig_t{
-    Sim808_t sim808;
-    GPIO_InitTypeDef sleepPin;
-    GPIO_InitTypeDef pwrkeyPin;
-    GPIO_InitTypeDef vcPin;
+typedef struct {
+
+    GPIO_TypeDef * sleepPort;
+    uint16_t sleepPin;
+    GPIO_TypeDef * pwrkeyPort;
+    uint16_t pwrkeyPin;
+    GPIO_TypeDef * vcPort;
+    uint16_t vcPin;
+    UART_HandleTypeDef * huart;
+
 } Sim808PinConfig_t;
 
 /* -------------------------- External variables --------------------------- */

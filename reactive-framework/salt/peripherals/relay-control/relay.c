@@ -33,9 +33,11 @@ ri8_t error[NUM_RELAY];
 /* ----------------------- Local function prototypes ----------------------- */
 /* ---------------------------- Local functions ---------------------------- */
 /* ---------------------------- Global functions --------------------------- */
-void relayInit(onRelayErrorCb_t errorCb){
+void relayInit(onRelayErrorCb_t errorCb) {
+
     onRelayErrorCb = errorCb;
     relayInitBsp();
+
     for (int i = 0; i < NUM_RELAY; ++i) {
         error[i] = 0;
     }
@@ -50,10 +52,12 @@ void relaySetAlEnable(rbool_t enable){
     relaySetActivated(reg1, enable);
 }
 void relaySetCTActive(rbool_t active){
+
     if(active && relayGetActivated(ctEn) && relayGetActivated(ctDis)){
         relaySetActivated(ctAct, RKH_TRUE);
 
         relaySetActivated(reg2, RKH_TRUE);
+
     } else {
         relaySetActivated(ctAct, RKH_FALSE);
 
@@ -61,6 +65,7 @@ void relaySetCTActive(rbool_t active){
     }
 
 }
+
 void relaySetFEActive(rbool_t active){
     if(active && relayGetActivated(feEn) && relayGetActivated(feDis)){
         relaySetActivated(feAct, RKH_TRUE);

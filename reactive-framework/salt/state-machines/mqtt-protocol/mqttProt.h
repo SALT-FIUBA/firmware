@@ -30,7 +30,7 @@
 #include "epoch.h"
 #include "date.h"
 #include "conmgr.h"
-#include "mqtt.h"
+#include "mqttc.h"
 
 /* ---------------------- External C language linkage ---------------------- */
 #ifdef __cplusplus
@@ -44,7 +44,7 @@ extern "C" {
 RKH_SMA_DCLR(mqttProt);
 
 /* ------------------------------- Data types ------------------------------ */
-typedef void (*MQTTCallback)(void** state,struct mqtt_response_publish *publish);
+typedef void (*MQTTCallback)(void** state,struct mqttc_response_publish *publish);
 
 typedef struct AppData AppData;
 struct AppData

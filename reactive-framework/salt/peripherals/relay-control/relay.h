@@ -29,11 +29,19 @@ extern "C" {
 /* ------------------------------- Data types ------------------------------ */
 typedef enum Relay
 {
-    feEn, feDis, feAct,
-    ctEn, ctDis, ctAct,
-    reg1, reg2, reg3, reg4,
-    NUM_RELAY, NULL_RELAY
-}Relay_t;
+    feEn,
+    feDis,
+    feAct,
+    ctEn,
+    ctDis,
+    ctAct,
+    reg1,
+    reg2,
+    reg3,
+    reg4,
+    NUM_RELAY,
+    NULL_RELAY
+} Relay_t;
 
 
 typedef struct RelayPinConfig_t{

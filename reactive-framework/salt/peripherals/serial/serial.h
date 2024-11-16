@@ -28,34 +28,28 @@ extern "C" {
 #endif
 
 /* --------------------------------- Macros -------------------------------- */
-/* -------------------------------- Constants ------------------------------ */
-/* ------------------------------- Data types ------------------------------ */
+/* -------------------------------- Constants ----------------------------- */
+#define UART_TELOC_1500_BAUDRATE    115200
+#define UART_SIM_808_BAUDRATE       19200
+#define UART_DEBUG_BAUDRATE         19200
 
-typedef enum{
-    UART_SIM_808_A, UART_SIM_808_B, UART_TELOC_1500, UART_DEBUG,
+/* ------------------------------- Data types ----------------------------- */
+typedef enum {
+    UART_SIM_808_A,
+    UART_SIM_808_B,
+    UART_TELOC_1500,
+    UART_DEBUG,
+    UART_COUNT
 } serialMap_t;
 
-typedef void (* serialIsrCb_t)(unsigned char c);
+typedef void (*serialIsrCb_t)(char data);
 
-/* TODO: check
- * type already defined in ->
- *                            Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
-typedef enum {
-
-    UART_PARITY_NONE = 0,
-    UART_PARITY_ODD = 0,
-    UART_PARITY_EVEN
-
-} uartParity_t;
- */
-
-/* -------------------------- External variables --------------------------- */
-/* -------------------------- Function prototypes -------------------------- */
+/* -------------------------- Function prototypes ------------------------- */
 void serialInit(serialMap_t serialMap);
-void serialSetIntCb(serialMap_t serialMap, serialIsrCb_t cb );
-void serialPutByte( serialMap_t uart, uint8_t byte );
-void serialPutString( serialMap_t uart,  char *p );
-void serialPutChars( serialMap_t uart,  unsigned char *p, ruint ndata );
+void serialSetIntCb(serialMap_t serialMap, serialIsrCb_t cb);
+void serialPutByte(serialMap_t uart, uint8_t byte);
+void serialPutString(serialMap_t uart, char *p);
+void serialPutChars(serialMap_t uart, unsigned char *p, uint32_t ndata);
 
 /* -------------------- External C language linkage end -------------------- */
 #ifdef __cplusplus

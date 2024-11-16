@@ -18,36 +18,49 @@
 #include "sim808.h"
 #include "rkh.h"
 #include "serial.h"
-#include "gpio.h"
+#include "usart.h"
+#include "rkht.h"
+#include <stdint.h>
+#include <stdbool.h>
+
+//  #include "sapi.h"
 
 /* ----------------------------- Local macros ------------------------------ */
 /* ------------------------------- Constants ------------------------------- */
-/*
- *  migrate sim808PinConfig based on the following files:
- *                                                          *   LWIP/Target/ethernetif.c
- *                                                          *   Core/Inc/main.h
- */
 
-static const Sim808PinConfig_t sim808PinConfig[] = {
+/*
+static const Sim808PinConfig_t sim808PinConfig [] = {
+        { SIM_808_A, ENET_TXEN, ENET_RXD1, ENET_MDC },
+        { SIM_808_B, GPIO0, GPIO2, LCDEN },
+};
+*/
+
+// is it necessary to define it on stm32cubemx ?
+static UART_HandleTypeDef huart6;
+
+static const Sim808PinConfig_t sim808Config[] = {
+        // SIM808_A configuration
         {
-            SIM_808_A,
-            //  ENET_TXEN
-            RMII_TX_EN_Pin,
-            //  ENET_RXD1
-            RMII_RXD1_Pin,
-            //  ENET_MDC
-            RMII_MDC_Pin
+                .sleepPort = GPIOD,
+                .sleepPin = GPIO_PIN_0,
+                .pwrkeyPort = GPIOD,
+                .pwrkeyPin = GPIO_PIN_1,
+                .vcPort = GPIOD,
+                .vcPin = GPIO_PIN_2,
+                .huart = &huart3  // Assuming UART3 for SIM808_A
         },
+        // SIM808_B configuration
         {
-            SIM_808_B,
-            //  GPIO0
-            GPIO_PIN_0, // no reason why
-            //  GPIO2
-            GPIO_PIN_1, // no reason why
-            //  LCDEN
-            RMII_TXD0_Pin // no reason why
+                .sleepPort = GPIOE,
+                .sleepPin = GPIO_PIN_0,
+                .pwrkeyPort = GPIOE,
+                .pwrkeyPin = GPIO_PIN_1,
+                .vcPort = GPIOE,
+                .vcPin = GPIO_PIN_2,
+                .huart = &huart6  // Assuming UART6 for SIM808_B
         }
 };
+
 
 /* ---------------------------- Local data types --------------------------- */
 /* ---------------------------- Global variables --------------------------- */
@@ -56,8 +69,38 @@ static const Sim808PinConfig_t sim808PinConfig[] = {
 
 
 /* ----------------------- Local function prototypes ----------------------- */
+static void GPIO_Clock_Enable(void);
+static void UART_Init(UART_HandleTypeDef* huart, uint32_t baudrate);
+
+
 /* ---------------------------- Local functions ---------------------------- */
+static void GPIO_Clock_Enable(void)
+{
+    __HAL_RCC_GPIOD_CLK_ENABLE();
+    __HAL_RCC_GPIOE_CLK_ENABLE();
+    __HAL_RCC_USART3_CLK_ENABLE();
+    __HAL_RCC_USART6_CLK_ENABLE();
+}
+
+static void UART_Init(UART_HandleTypeDef* huart, uint32_t baudrate)
+{
+    huart->Instance = (huart == &huart3) ? USART3 : USART6;
+    huart->Init.BaudRate = baudrate;
+    huart->Init.WordLength = UART_WORDLENGTH_8B;
+    huart->Init.StopBits = UART_STOPBITS_1;
+    huart->Init.Parity = UART_PARITY_NONE;
+    huart->Init.Mode = UART_MODE_TX_RX;
+    huart->Init.HwFlowCtl = UART_HWCONTROL_NONE;
+    huart->Init.OverSampling = UART_OVERSAMPLING_16;
+
+    if (HAL_UART_Init(huart) != HAL_OK)
+    {
+        Error_Handler();
+    }
+}
+
 /* ---------------------------- Global functions --------------------------- */
+/*
 void sim808Init(Sim808_t sim808){
 
     if(sim808 >= SIM_808_COUNT)
@@ -66,11 +109,10 @@ void sim808Init(Sim808_t sim808){
     Sim808PinConfig_t pinConfig = sim808PinConfig[sim808];
 
     sim808SetControlPin(sim808, SIM_808_SLEEP, false);
-    //  TODO: check if is necessary ->  gpioConfig( pinConfig.sleepPin, GPIO_OUTPUT );
-
+    gpioConfig( pinConfig.sleepPin, GPIO_OUTPUT );
 
     sim808SetControlPin(sim808, SIM_808_PWRKEY, false);
-    //  TODO: check if is necessary ->  gpioConfig( pinConfig.pwrkeyPin, GPIO_OUTPUT );
+    gpioConfig( pinConfig.pwrkeyPin, GPIO_OUTPUT );
 
     sim808SetControlPin(sim808, SIM_808_PWRKEY, false);
 
@@ -87,22 +129,59 @@ void sim808Init(Sim808_t sim808){
             break;
     }
 }
+*/
 
-void sim808SetControlPin( Sim808_t sim808,  Sim808ControlPin_t controlPin, bool data){
+void sim808Init(Sim808_t sim808)
+{
+    if(sim808 >= SIM_808_COUNT)
+        return;
+
+    GPIO_InitTypeDef GPIO_InitStruct = {0};
+
+    // Enable clocks
+    GPIO_Clock_Enable();
+
+    // Configure SLEEP pin
+    GPIO_InitStruct.Pin = sim808Config[sim808].sleepPin;
+    GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+    HAL_GPIO_Init(sim808Config[sim808].sleepPort, &GPIO_InitStruct);
+
+    // Configure PWRKEY pin
+    GPIO_InitStruct.Pin = sim808Config[sim808].pwrkeyPin;
+    HAL_GPIO_Init(sim808Config[sim808].pwrkeyPort, &GPIO_InitStruct);
+
+    // Configure VC pin initially as input
+    GPIO_InitStruct.Pin = sim808Config[sim808].vcPin;
+    GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+    GPIO_InitStruct.Pull = GPIO_PULLUP;
+    HAL_GPIO_Init(sim808Config[sim808].vcPort, &GPIO_InitStruct);
+
+    // Initialize control pins
+    sim808SetControlPin(sim808, SIM_808_SLEEP, false);
+    sim808SetControlPin(sim808, SIM_808_PWRKEY, false);
+
+    // Initialize UART
+    UART_Init(sim808Config[sim808].huart, 115200); // Adjust baudrate as needed
+}
+
+
+/*
+void sim808SetControlPin( Sim808_t sim808,  Sim808ControlPin_t controlPin, bool_t data){
 
     Sim808PinConfig_t pinConfig = sim808PinConfig[sim808];
 
     switch(controlPin) {
         case SIM_808_SLEEP:
-            //  TODO: check if is necessary ->  gpioWrite( pinConfig.sleepPin,data );
+            gpioWrite( pinConfig.sleepPin,data );
             break;
 
         case SIM_808_PWRKEY:
-            //  TODO: check if is necessary ->  gpioWrite( pinConfig.pwrkeyPin,data );
+            gpioWrite( pinConfig.pwrkeyPin,data );
             break;
 
         case SIM_808_VC:
-            /* TODO: check if is necessary ->
             if(data){
                 gpioWrite( pinConfig.vcPin, false );
                 gpioConfig( pinConfig.vcPin, GPIO_OUTPUT );
@@ -110,8 +189,50 @@ void sim808SetControlPin( Sim808_t sim808,  Sim808ControlPin_t controlPin, bool 
                 gpioConfig( pinConfig.vcPin, GPIO_INPUT );
                 gpioWrite( pinConfig.vcPin, true );
             }
-             */
+            break;
 
+        default:
+            break;
+    }
+}
+ */
+
+void sim808SetControlPin(Sim808_t sim808, Sim808ControlPin_t controlPin, bool data)
+{
+    if(sim808 >= SIM_808_COUNT)
+        return;
+
+    GPIO_InitTypeDef GPIO_InitStruct = {0};
+
+    switch(controlPin) {
+        case SIM_808_SLEEP:
+            HAL_GPIO_WritePin(sim808Config[sim808].sleepPort,
+                              sim808Config[sim808].sleepPin,
+                              data ? GPIO_PIN_SET : GPIO_PIN_RESET);
+            break;
+
+        case SIM_808_PWRKEY:
+            HAL_GPIO_WritePin(sim808Config[sim808].pwrkeyPort,
+                              sim808Config[sim808].pwrkeyPin,
+                              data ? GPIO_PIN_SET : GPIO_PIN_RESET);
+            break;
+
+        case SIM_808_VC:
+            if(data) {
+                GPIO_InitStruct.Pin = sim808Config[sim808].vcPin;
+                GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+                GPIO_InitStruct.Pull = GPIO_NOPULL;
+                GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+                HAL_GPIO_Init(sim808Config[sim808].vcPort, &GPIO_InitStruct);
+                HAL_GPIO_WritePin(sim808Config[sim808].vcPort,
+                                  sim808Config[sim808].vcPin,
+                                  GPIO_PIN_RESET);
+            } else {
+                GPIO_InitStruct.Pin = sim808Config[sim808].vcPin;
+                GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+                GPIO_InitStruct.Pull = GPIO_PULLUP;
+                HAL_GPIO_Init(sim808Config[sim808].vcPort, &GPIO_InitStruct);
+            }
             break;
 
         default:
@@ -119,22 +240,47 @@ void sim808SetControlPin( Sim808_t sim808,  Sim808ControlPin_t controlPin, bool 
     }
 }
 
-bool sim808GetControlPin( Sim808_t sim808,  Sim808ControlPin_t controlPin){
+
+/*
+bool_t sim808GetControlPin( Sim808_t sim808,  Sim808ControlPin_t controlPin){
 
     Sim808PinConfig_t pinConfig = sim808PinConfig[sim808];
 
     switch(controlPin) {
         case SIM_808_SLEEP:
-            // TODO: check -> return gpioRead( pinConfig.sleepPin);
-            return true;
+            return gpioRead( pinConfig.sleepPin);
 
         case SIM_808_PWRKEY:
-            // TODO: check ->  return gpioRead( pinConfig.pwrkeyPin );
-            return true;
+            return gpioRead( pinConfig.pwrkeyPin );
 
         case SIM_808_VC:
-            // TODO: check ->  return !gpioRead( pinConfig.vcPin );
-            return true;
+            return !gpioRead( pinConfig.vcPin );
+
+        default:
+            break;
+    }
+
+    return false;
+}
+ */
+
+bool sim808GetControlPin(Sim808_t sim808, Sim808ControlPin_t controlPin)
+{
+    if(sim808 >= SIM_808_COUNT)
+        return false;
+
+    switch(controlPin) {
+        case SIM_808_SLEEP:
+            return HAL_GPIO_ReadPin(sim808Config[sim808].sleepPort,
+                                    sim808Config[sim808].sleepPin) == GPIO_PIN_SET;
+
+        case SIM_808_PWRKEY:
+            return HAL_GPIO_ReadPin(sim808Config[sim808].pwrkeyPort,
+                                    sim808Config[sim808].pwrkeyPin) == GPIO_PIN_SET;
+
+        case SIM_808_VC:
+            return HAL_GPIO_ReadPin(sim808Config[sim808].vcPort,
+                                    sim808Config[sim808].vcPin) == GPIO_PIN_RESET;
 
         default:
             break;

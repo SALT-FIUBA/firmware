@@ -1,0 +1,7 @@
+{
+    "CodeGPT.apiKey": "CodeGPT Plus Beta",
+    "files.associations": {
+        "bsp.h": "c",
+        "sys.h": "c"
+    }
+}

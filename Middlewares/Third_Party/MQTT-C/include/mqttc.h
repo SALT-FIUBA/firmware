@@ -2,6 +2,8 @@
 #define __MQTT_H__
 
 #include <mqttc_pal.h>
+#include <string.h>
+#include <stdarg.h>
 
 /**
  * @file

@@ -109,9 +109,11 @@
 #elif defined(STM32F429xx)
 
     #include <limits.h>
-#include <sys/time.h>
+    #include <sys/time.h>
+    #include "epoch.h"
+    #include "lwip.h"
 
-#define MQTT_PAL_HTONS(s) htons(s)
+    #define MQTT_PAL_HTONS(s) htons(s)
     #define MQTT_PAL_NTOHS(s) ntohs(s)
 
     #define MQTT_PAL_TIME() (time_t)epoch_get()

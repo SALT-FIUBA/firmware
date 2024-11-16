@@ -18,11 +18,11 @@
 //
 void jWriteTest();
 
-int main(int argc, char * argv[])
-{
-	jWriteTest();
-	return 0;
-}
+//  int main(int argc, char * argv[])
+//  {
+//  	jWriteTest();
+//  	return 0;
+//  }
 
 
 //------------------------------------------------------------

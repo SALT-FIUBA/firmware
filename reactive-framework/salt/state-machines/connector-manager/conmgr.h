@@ -40,7 +40,7 @@ extern "C" {
 #define SYNC_DELAY_TIME     RKH_TIME_MS(1000)
 
 /**
- * Specifies the maximum tries seeking for GSM modem response. 
+ * Specifies the maximum tries seeking for GSM modem response.
  */
 #define MAX_SYNC_RETRY      10
 
@@ -134,7 +134,7 @@ extern "C" {
  */
 /* .................................. APN .................................. */
 #define MOVISTAR_OPERATOR       "72207"
-#define MOVISTAR_APN_ADDR       "internet.gprs.unifon.com.ar"  
+#define MOVISTAR_APN_ADDR       "internet.gprs.unifon.com.ar"
 #define MOVISTAR_APN_USER       "wap"
 #define MOVISTAR_APN_PASS       "wap"
 

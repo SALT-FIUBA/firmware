@@ -32,20 +32,29 @@ VelEvt externalVelEvt;
 /* ---------------------------- Local functions ---------------------------- */
 
 /* ---------------------------- Global functions --------------------------- */
-void pulseCounterInit(pulseCount_t errorThr, float velFactor){
+void pulseCounterInit(
+        pulseCount_t errorThr,
+        float velFactor
+    ) {
+
     pulseCounterInitBsp(errorThr);
     factor = velFactor;
     externalVelEvt.source = VEL_SOURCE_EXTERNAL;
+
     RKH_SET_STATIC_EVENT(RKH_UPCAST(RKH_EVT_T, &externalVelEvt), evVelExternal);
 }
-void pulseCounterUpdate(){
+
+void pulseCounterUpdate() {
+
     pulseCount_t pulseCount;
     pulseCounterGet(&pulseCount);
+
     if(pulseCount != 0){
         externalVelEvt.vel = pulseCount * factor;
     } else {
         externalVelEvt.vel = -1;
     }
+
     RKH_SMA_POST_FIFO(logic, RKH_UPCAST(RKH_EVT_T,&externalVelEvt), 0);
 }
 

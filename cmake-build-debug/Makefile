@@ -2945,30 +2945,6 @@ Middlewares/Third_Party/MQTT-C/source/mqttc.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/MQTT-C/source/mqttc.c.s
 .PHONY : Middlewares/Third_Party/MQTT-C/source/mqttc.c.s
 
-Middlewares/Third_Party/MQTT-C/source/mqttc_org.obj: Middlewares/Third_Party/MQTT-C/source/mqttc_org.c.obj
-.PHONY : Middlewares/Third_Party/MQTT-C/source/mqttc_org.obj
-
-# target to build an object file
-Middlewares/Third_Party/MQTT-C/source/mqttc_org.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/MQTT-C/source/mqttc_org.c.obj
-.PHONY : Middlewares/Third_Party/MQTT-C/source/mqttc_org.c.obj
-
-Middlewares/Third_Party/MQTT-C/source/mqttc_org.i: Middlewares/Third_Party/MQTT-C/source/mqttc_org.c.i
-.PHONY : Middlewares/Third_Party/MQTT-C/source/mqttc_org.i
-
-# target to preprocess a source file
-Middlewares/Third_Party/MQTT-C/source/mqttc_org.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/MQTT-C/source/mqttc_org.c.i
-.PHONY : Middlewares/Third_Party/MQTT-C/source/mqttc_org.c.i
-
-Middlewares/Third_Party/MQTT-C/source/mqttc_org.s: Middlewares/Third_Party/MQTT-C/source/mqttc_org.c.s
-.PHONY : Middlewares/Third_Party/MQTT-C/source/mqttc_org.s
-
-# target to generate assembly for a file
-Middlewares/Third_Party/MQTT-C/source/mqttc_org.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Middlewares/Third_Party/MQTT-C/source/mqttc_org.c.s
-.PHONY : Middlewares/Third_Party/MQTT-C/source/mqttc_org.c.s
-
 Middlewares/Third_Party/MQTT-C/source/mqttc_pal.obj: Middlewares/Third_Party/MQTT-C/source/mqttc_pal.c.obj
 .PHONY : Middlewares/Third_Party/MQTT-C/source/mqttc_pal.obj
 
@@ -3617,6 +3593,78 @@ reactive-framework/salt/configuration/saltCfg.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/configuration/saltCfg.c.s
 .PHONY : reactive-framework/salt/configuration/saltCfg.c.s
 
+reactive-framework/salt/files-to-review/hook.obj: reactive-framework/salt/files-to-review/hook.c.obj
+.PHONY : reactive-framework/salt/files-to-review/hook.obj
+
+# target to build an object file
+reactive-framework/salt/files-to-review/hook.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/files-to-review/hook.c.obj
+.PHONY : reactive-framework/salt/files-to-review/hook.c.obj
+
+reactive-framework/salt/files-to-review/hook.i: reactive-framework/salt/files-to-review/hook.c.i
+.PHONY : reactive-framework/salt/files-to-review/hook.i
+
+# target to preprocess a source file
+reactive-framework/salt/files-to-review/hook.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/files-to-review/hook.c.i
+.PHONY : reactive-framework/salt/files-to-review/hook.c.i
+
+reactive-framework/salt/files-to-review/hook.s: reactive-framework/salt/files-to-review/hook.c.s
+.PHONY : reactive-framework/salt/files-to-review/hook.s
+
+# target to generate assembly for a file
+reactive-framework/salt/files-to-review/hook.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/files-to-review/hook.c.s
+.PHONY : reactive-framework/salt/files-to-review/hook.c.s
+
+reactive-framework/salt/files-to-review/main-salt-firmware-nxp.obj: reactive-framework/salt/files-to-review/main-salt-firmware-nxp.c.obj
+.PHONY : reactive-framework/salt/files-to-review/main-salt-firmware-nxp.obj
+
+# target to build an object file
+reactive-framework/salt/files-to-review/main-salt-firmware-nxp.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/files-to-review/main-salt-firmware-nxp.c.obj
+.PHONY : reactive-framework/salt/files-to-review/main-salt-firmware-nxp.c.obj
+
+reactive-framework/salt/files-to-review/main-salt-firmware-nxp.i: reactive-framework/salt/files-to-review/main-salt-firmware-nxp.c.i
+.PHONY : reactive-framework/salt/files-to-review/main-salt-firmware-nxp.i
+
+# target to preprocess a source file
+reactive-framework/salt/files-to-review/main-salt-firmware-nxp.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/files-to-review/main-salt-firmware-nxp.c.i
+.PHONY : reactive-framework/salt/files-to-review/main-salt-firmware-nxp.c.i
+
+reactive-framework/salt/files-to-review/main-salt-firmware-nxp.s: reactive-framework/salt/files-to-review/main-salt-firmware-nxp.c.s
+.PHONY : reactive-framework/salt/files-to-review/main-salt-firmware-nxp.s
+
+# target to generate assembly for a file
+reactive-framework/salt/files-to-review/main-salt-firmware-nxp.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/files-to-review/main-salt-firmware-nxp.c.s
+.PHONY : reactive-framework/salt/files-to-review/main-salt-firmware-nxp.c.s
+
+reactive-framework/salt/files-to-review/trace_io.obj: reactive-framework/salt/files-to-review/trace_io.c.obj
+.PHONY : reactive-framework/salt/files-to-review/trace_io.obj
+
+# target to build an object file
+reactive-framework/salt/files-to-review/trace_io.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/files-to-review/trace_io.c.obj
+.PHONY : reactive-framework/salt/files-to-review/trace_io.c.obj
+
+reactive-framework/salt/files-to-review/trace_io.i: reactive-framework/salt/files-to-review/trace_io.c.i
+.PHONY : reactive-framework/salt/files-to-review/trace_io.i
+
+# target to preprocess a source file
+reactive-framework/salt/files-to-review/trace_io.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/files-to-review/trace_io.c.i
+.PHONY : reactive-framework/salt/files-to-review/trace_io.c.i
+
+reactive-framework/salt/files-to-review/trace_io.s: reactive-framework/salt/files-to-review/trace_io.c.s
+.PHONY : reactive-framework/salt/files-to-review/trace_io.s
+
+# target to generate assembly for a file
+reactive-framework/salt/files-to-review/trace_io.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/files-to-review/trace_io.c.s
+.PHONY : reactive-framework/salt/files-to-review/trace_io.c.s
+
 reactive-framework/salt/peripherals/analog-inputs/anIn.obj: reactive-framework/salt/peripherals/analog-inputs/anIn.c.obj
 .PHONY : reactive-framework/salt/peripherals/analog-inputs/anIn.obj
 
@@ -3664,6 +3712,54 @@ reactive-framework/salt/peripherals/ihm/buzzer.s: reactive-framework/salt/periph
 reactive-framework/salt/peripherals/ihm/buzzer.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/peripherals/ihm/buzzer.c.s
 .PHONY : reactive-framework/salt/peripherals/ihm/buzzer.c.s
+
+reactive-framework/salt/peripherals/ihm/onSwitch.obj: reactive-framework/salt/peripherals/ihm/onSwitch.c.obj
+.PHONY : reactive-framework/salt/peripherals/ihm/onSwitch.obj
+
+# target to build an object file
+reactive-framework/salt/peripherals/ihm/onSwitch.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/peripherals/ihm/onSwitch.c.obj
+.PHONY : reactive-framework/salt/peripherals/ihm/onSwitch.c.obj
+
+reactive-framework/salt/peripherals/ihm/onSwitch.i: reactive-framework/salt/peripherals/ihm/onSwitch.c.i
+.PHONY : reactive-framework/salt/peripherals/ihm/onSwitch.i
+
+# target to preprocess a source file
+reactive-framework/salt/peripherals/ihm/onSwitch.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/peripherals/ihm/onSwitch.c.i
+.PHONY : reactive-framework/salt/peripherals/ihm/onSwitch.c.i
+
+reactive-framework/salt/peripherals/ihm/onSwitch.s: reactive-framework/salt/peripherals/ihm/onSwitch.c.s
+.PHONY : reactive-framework/salt/peripherals/ihm/onSwitch.s
+
+# target to generate assembly for a file
+reactive-framework/salt/peripherals/ihm/onSwitch.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/peripherals/ihm/onSwitch.c.s
+.PHONY : reactive-framework/salt/peripherals/ihm/onSwitch.c.s
+
+reactive-framework/salt/peripherals/ledPanel/as1116.obj: reactive-framework/salt/peripherals/ledPanel/as1116.c.obj
+.PHONY : reactive-framework/salt/peripherals/ledPanel/as1116.obj
+
+# target to build an object file
+reactive-framework/salt/peripherals/ledPanel/as1116.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/peripherals/ledPanel/as1116.c.obj
+.PHONY : reactive-framework/salt/peripherals/ledPanel/as1116.c.obj
+
+reactive-framework/salt/peripherals/ledPanel/as1116.i: reactive-framework/salt/peripherals/ledPanel/as1116.c.i
+.PHONY : reactive-framework/salt/peripherals/ledPanel/as1116.i
+
+# target to preprocess a source file
+reactive-framework/salt/peripherals/ledPanel/as1116.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/peripherals/ledPanel/as1116.c.i
+.PHONY : reactive-framework/salt/peripherals/ledPanel/as1116.c.i
+
+reactive-framework/salt/peripherals/ledPanel/as1116.s: reactive-framework/salt/peripherals/ledPanel/as1116.c.s
+.PHONY : reactive-framework/salt/peripherals/ledPanel/as1116.s
+
+# target to generate assembly for a file
+reactive-framework/salt/peripherals/ledPanel/as1116.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/peripherals/ledPanel/as1116.c.s
+.PHONY : reactive-framework/salt/peripherals/ledPanel/as1116.c.s
 
 reactive-framework/salt/peripherals/ledPanel/ledPanel.obj: reactive-framework/salt/peripherals/ledPanel/ledPanel.c.obj
 .PHONY : reactive-framework/salt/peripherals/ledPanel/ledPanel.obj
@@ -3761,6 +3857,30 @@ reactive-framework/salt/peripherals/pulse-counter/pulseCounter.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/peripherals/pulse-counter/pulseCounter.c.s
 .PHONY : reactive-framework/salt/peripherals/pulse-counter/pulseCounter.c.s
 
+reactive-framework/salt/peripherals/pulse-counter/pulseCounterFromEduCiaaBsp.obj: reactive-framework/salt/peripherals/pulse-counter/pulseCounterFromEduCiaaBsp.c.obj
+.PHONY : reactive-framework/salt/peripherals/pulse-counter/pulseCounterFromEduCiaaBsp.obj
+
+# target to build an object file
+reactive-framework/salt/peripherals/pulse-counter/pulseCounterFromEduCiaaBsp.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/peripherals/pulse-counter/pulseCounterFromEduCiaaBsp.c.obj
+.PHONY : reactive-framework/salt/peripherals/pulse-counter/pulseCounterFromEduCiaaBsp.c.obj
+
+reactive-framework/salt/peripherals/pulse-counter/pulseCounterFromEduCiaaBsp.i: reactive-framework/salt/peripherals/pulse-counter/pulseCounterFromEduCiaaBsp.c.i
+.PHONY : reactive-framework/salt/peripherals/pulse-counter/pulseCounterFromEduCiaaBsp.i
+
+# target to preprocess a source file
+reactive-framework/salt/peripherals/pulse-counter/pulseCounterFromEduCiaaBsp.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/peripherals/pulse-counter/pulseCounterFromEduCiaaBsp.c.i
+.PHONY : reactive-framework/salt/peripherals/pulse-counter/pulseCounterFromEduCiaaBsp.c.i
+
+reactive-framework/salt/peripherals/pulse-counter/pulseCounterFromEduCiaaBsp.s: reactive-framework/salt/peripherals/pulse-counter/pulseCounterFromEduCiaaBsp.c.s
+.PHONY : reactive-framework/salt/peripherals/pulse-counter/pulseCounterFromEduCiaaBsp.s
+
+# target to generate assembly for a file
+reactive-framework/salt/peripherals/pulse-counter/pulseCounterFromEduCiaaBsp.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/peripherals/pulse-counter/pulseCounterFromEduCiaaBsp.c.s
+.PHONY : reactive-framework/salt/peripherals/pulse-counter/pulseCounterFromEduCiaaBsp.c.s
+
 reactive-framework/salt/peripherals/relay-control/relay.obj: reactive-framework/salt/peripherals/relay-control/relay.c.obj
 .PHONY : reactive-framework/salt/peripherals/relay-control/relay.obj
 
@@ -3784,6 +3904,30 @@ reactive-framework/salt/peripherals/relay-control/relay.s: reactive-framework/sa
 reactive-framework/salt/peripherals/relay-control/relay.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/peripherals/relay-control/relay.c.s
 .PHONY : reactive-framework/salt/peripherals/relay-control/relay.c.s
+
+reactive-framework/salt/peripherals/relay-control/relayFromEduCiaaBsp.obj: reactive-framework/salt/peripherals/relay-control/relayFromEduCiaaBsp.c.obj
+.PHONY : reactive-framework/salt/peripherals/relay-control/relayFromEduCiaaBsp.obj
+
+# target to build an object file
+reactive-framework/salt/peripherals/relay-control/relayFromEduCiaaBsp.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/peripherals/relay-control/relayFromEduCiaaBsp.c.obj
+.PHONY : reactive-framework/salt/peripherals/relay-control/relayFromEduCiaaBsp.c.obj
+
+reactive-framework/salt/peripherals/relay-control/relayFromEduCiaaBsp.i: reactive-framework/salt/peripherals/relay-control/relayFromEduCiaaBsp.c.i
+.PHONY : reactive-framework/salt/peripherals/relay-control/relayFromEduCiaaBsp.i
+
+# target to preprocess a source file
+reactive-framework/salt/peripherals/relay-control/relayFromEduCiaaBsp.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/peripherals/relay-control/relayFromEduCiaaBsp.c.i
+.PHONY : reactive-framework/salt/peripherals/relay-control/relayFromEduCiaaBsp.c.i
+
+reactive-framework/salt/peripherals/relay-control/relayFromEduCiaaBsp.s: reactive-framework/salt/peripherals/relay-control/relayFromEduCiaaBsp.c.s
+.PHONY : reactive-framework/salt/peripherals/relay-control/relayFromEduCiaaBsp.s
+
+# target to generate assembly for a file
+reactive-framework/salt/peripherals/relay-control/relayFromEduCiaaBsp.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/reactive-framework/salt/peripherals/relay-control/relayFromEduCiaaBsp.c.s
+.PHONY : reactive-framework/salt/peripherals/relay-control/relayFromEduCiaaBsp.c.s
 
 reactive-framework/salt/peripherals/serial/serial.obj: reactive-framework/salt/peripherals/serial/serial.c.obj
 .PHONY : reactive-framework/salt/peripherals/serial/serial.obj
@@ -4746,9 +4890,6 @@ help:
 	@echo "... Middlewares/Third_Party/MQTT-C/source/mqttc.obj"
 	@echo "... Middlewares/Third_Party/MQTT-C/source/mqttc.i"
 	@echo "... Middlewares/Third_Party/MQTT-C/source/mqttc.s"
-	@echo "... Middlewares/Third_Party/MQTT-C/source/mqttc_org.obj"
-	@echo "... Middlewares/Third_Party/MQTT-C/source/mqttc_org.i"
-	@echo "... Middlewares/Third_Party/MQTT-C/source/mqttc_org.s"
 	@echo "... Middlewares/Third_Party/MQTT-C/source/mqttc_pal.obj"
 	@echo "... Middlewares/Third_Party/MQTT-C/source/mqttc_pal.i"
 	@echo "... Middlewares/Third_Party/MQTT-C/source/mqttc_pal.s"
@@ -4830,12 +4971,27 @@ help:
 	@echo "... reactive-framework/salt/configuration/saltCfg.obj"
 	@echo "... reactive-framework/salt/configuration/saltCfg.i"
 	@echo "... reactive-framework/salt/configuration/saltCfg.s"
+	@echo "... reactive-framework/salt/files-to-review/hook.obj"
+	@echo "... reactive-framework/salt/files-to-review/hook.i"
+	@echo "... reactive-framework/salt/files-to-review/hook.s"
+	@echo "... reactive-framework/salt/files-to-review/main-salt-firmware-nxp.obj"
+	@echo "... reactive-framework/salt/files-to-review/main-salt-firmware-nxp.i"
+	@echo "... reactive-framework/salt/files-to-review/main-salt-firmware-nxp.s"
+	@echo "... reactive-framework/salt/files-to-review/trace_io.obj"
+	@echo "... reactive-framework/salt/files-to-review/trace_io.i"
+	@echo "... reactive-framework/salt/files-to-review/trace_io.s"
 	@echo "... reactive-framework/salt/peripherals/analog-inputs/anIn.obj"
 	@echo "... reactive-framework/salt/peripherals/analog-inputs/anIn.i"
 	@echo "... reactive-framework/salt/peripherals/analog-inputs/anIn.s"
 	@echo "... reactive-framework/salt/peripherals/ihm/buzzer.obj"
 	@echo "... reactive-framework/salt/peripherals/ihm/buzzer.i"
 	@echo "... reactive-framework/salt/peripherals/ihm/buzzer.s"
+	@echo "... reactive-framework/salt/peripherals/ihm/onSwitch.obj"
+	@echo "... reactive-framework/salt/peripherals/ihm/onSwitch.i"
+	@echo "... reactive-framework/salt/peripherals/ihm/onSwitch.s"
+	@echo "... reactive-framework/salt/peripherals/ledPanel/as1116.obj"
+	@echo "... reactive-framework/salt/peripherals/ledPanel/as1116.i"
+	@echo "... reactive-framework/salt/peripherals/ledPanel/as1116.s"
 	@echo "... reactive-framework/salt/peripherals/ledPanel/ledPanel.obj"
 	@echo "... reactive-framework/salt/peripherals/ledPanel/ledPanel.i"
 	@echo "... reactive-framework/salt/peripherals/ledPanel/ledPanel.s"
@@ -4848,9 +5004,15 @@ help:
 	@echo "... reactive-framework/salt/peripherals/pulse-counter/pulseCounter.obj"
 	@echo "... reactive-framework/salt/peripherals/pulse-counter/pulseCounter.i"
 	@echo "... reactive-framework/salt/peripherals/pulse-counter/pulseCounter.s"
+	@echo "... reactive-framework/salt/peripherals/pulse-counter/pulseCounterFromEduCiaaBsp.obj"
+	@echo "... reactive-framework/salt/peripherals/pulse-counter/pulseCounterFromEduCiaaBsp.i"
+	@echo "... reactive-framework/salt/peripherals/pulse-counter/pulseCounterFromEduCiaaBsp.s"
 	@echo "... reactive-framework/salt/peripherals/relay-control/relay.obj"
 	@echo "... reactive-framework/salt/peripherals/relay-control/relay.i"
 	@echo "... reactive-framework/salt/peripherals/relay-control/relay.s"
+	@echo "... reactive-framework/salt/peripherals/relay-control/relayFromEduCiaaBsp.obj"
+	@echo "... reactive-framework/salt/peripherals/relay-control/relayFromEduCiaaBsp.i"
+	@echo "... reactive-framework/salt/peripherals/relay-control/relayFromEduCiaaBsp.s"
 	@echo "... reactive-framework/salt/peripherals/serial/serial.obj"
 	@echo "... reactive-framework/salt/peripherals/serial/serial.i"
 	@echo "... reactive-framework/salt/peripherals/serial/serial.s"

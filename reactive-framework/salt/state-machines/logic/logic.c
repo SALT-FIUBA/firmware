@@ -35,33 +35,13 @@ typedef struct Logic Logic;
 typedef struct LogicVel LogicVel;
 
 /* ................... Declares states and pseudostates .................... */
-RKH_DCLR_BASIC_STATE Logic_Disable,
-                    Logic_PreventiveStop,
-                    Logic_RemoteStop,
-                    Logic_RemoteDrift,
-                    Logic_RemoteIsolated,
-                    Logic_controlAutomaticEnable,
-                    Logic_controlAutomaticDisable,
-                    Logic_controlAutomaticBrake,
-                    Logic_controlBlinkEnable,
-                    Logic_controlBlinkDisable,
-                    Logic_controlBlinkBrake,
-                    LogicVel_Hasler,
-                    LogicVel_External,
-                    LogicVel_GPS,
-                    LogicVel_Missing;
+RKH_DCLR_BASIC_STATE Logic_Disable, Logic_PreventiveStop, Logic_RemoteStop, Logic_RemoteDrift, Logic_RemoteIsolated,
+        Logic_controlAutomaticEnable, Logic_controlAutomaticDisable, Logic_controlAutomaticBrake,
+        Logic_controlBlinkEnable, Logic_controlBlinkDisable, Logic_controlBlinkBrake,
+        LogicVel_Hasler, LogicVel_External, LogicVel_GPS, LogicVel_Missing;
 
-RKH_DCLR_COMP_STATE Logic_Enable,
-                    Logic_remote,
-                    Logic_automatic,
-                    Logic_controlAutomatic,
-                    Logic_controlBlink;
-
-RKH_DCLR_COND_STATE Logic_C1,
-                    Logic_C2,
-                    Logic_C3,
-                    Logic_C4,
-                    Logic_C5;
+RKH_DCLR_COMP_STATE Logic_Enable, Logic_remote, Logic_automatic, Logic_controlAutomatic, Logic_controlBlink;
+RKH_DCLR_COND_STATE Logic_C1, Logic_C2, Logic_C3, Logic_C4, Logic_C5;
 
 
 /* ........................ Declares initial action ........................ */
@@ -389,7 +369,7 @@ dispatch(RKH_SMA_T *me, void *arg)
 }
 
 static void
-setVelDisplay(Logic *me, VelEvt *velEvt, bool on)
+setVelDisplay(Logic *me, VelEvt *velEvt, rbool_t on)
 {
     if(on){
         if(velEvt != NULL && velEvt->vel >= 0){
@@ -492,10 +472,6 @@ static void init(Logic *const me, RKH_EVT_T *pe){
     RKH_TR_FWK_SIG(evVelExternal);
     RKH_TR_FWK_SIG(evVelGPS);
 
-    /*
-     * pagina 64 de la memoria SAL/T -> lo primero que hace al entraar en el estado compuesto HABILITADO
-     * es chequear si existe o no una fuente de velocidad disponible.
-    */
     RKH_SET_STATIC_EVENT(RKH_UPCAST(RKH_EVT_T, &(me->itsLogicVel.velEvt)), evVel);
     RKH_TMR_INIT(&me->timerStop, &e_tOutStop, NULL);
     RKH_TMR_INIT(&me->timerGpsEnable, &e_tOutGps, NULL);
@@ -523,12 +499,7 @@ static void init(Logic *const me, RKH_EVT_T *pe){
     me->ledConfig.digit2 = NUM_NULL;
     me->ledConfig.digit3 = NUM_NULL;
 
-    rkh_sm_init(
-            RKH_UPCAST(
-                    RKH_SM_T,
-                    &me->itsLogicVel
-            )
-    );
+    rkh_sm_init(RKH_UPCAST(RKH_SM_T, &me->itsLogicVel));
 }
 
 /* ............................ Effect actions ............................. */
@@ -551,7 +522,7 @@ effect_disable(Logic *const me, RKH_EVT_T *pe)
 static void
 effect_gps(Logic *const me, RKH_EVT_T *pe)
 {
-    VelEvt* p = RKH_UPCAST(VelEvt, pe);
+    VelEvt * p = RKH_UPCAST(VelEvt, pe);
 
     if(p->vel < 0){
         me->ledConfig.ledGps = RED;
@@ -625,9 +596,17 @@ effect_cmdTOut(Logic *const me, RKH_EVT_T *pe)
 }
 
 static void effect_vel(Logic *const me, RKH_EVT_T *pe){
-    VelEvt* velEvt = RKH_DOWNCAST(VelEvt*, pe);
 
-    setVelDisplay(me, velEvt, true);
+    /* TODO: check original code
+
+     VelEvt  * velEvt = RKH_DOWNCAST(VelEvt*, pe);
+     setVelDisplay(me, velEvt, true);
+
+    */
+
+    VelEvt  ** velEvt = RKH_DOWNCAST(VelEvt*, pe);
+    setVelDisplay(me, (VelEvt *) velEvt, true);
+
 }
 
 static void effect_velHasler(LogicVel *const me, RKH_EVT_T *pe){
