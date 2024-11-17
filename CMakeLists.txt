@@ -1,7 +1,7 @@
 #THIS FILE IS AUTO GENERATED FROM THE TEMPLATE! DO NOT CHANGE!
 set(CMAKE_SYSTEM_NAME Generic)
 set(CMAKE_SYSTEM_VERSION 1)
-cmake_minimum_required(VERSION 3.28)
+cmake_minimum_required(VERSION 3.29)
 
 # specify cross-compilers and tools
 set(CMAKE_C_COMPILER arm-none-eabi-gcc)
@@ -50,54 +50,96 @@ else ()
 endif ()
 
 include_directories(
-        Core/Inc
-        Drivers/STM32F4xx_HAL_Driver/Inc
-        Drivers/STM32F4xx_HAL_Driver/Inc/Legacy
-        Drivers/CMSIS/Device/ST/STM32F4xx/Include
-        Drivers/CMSIS/Include
+        Core/Inc Drivers/STM32F4xx_HAL_Driver/Inc Drivers/STM32F4xx_HAL_Driver/Inc/Legacy Drivers/CMSIS/Device/ST/STM32F4xx/Include Drivers/CMSIS/Include
 
+        ##  blinky example
         bsp
         blinky
 
-       third-party/rkh/source/fwk/inc
-       third-party/rkh/source/mempool/inc
-       third-party/rkh/source/queue/inc
-       third-party/rkh/source/sm/inc
-       third-party/rkh/source/sma/inc
-       third-party/rkh/source/tmr/inc
-       third-party/rkh/source/trc/inc
+        third-party/rkh/source/fwk/inc
+        third-party/rkh/source/mempool/inc
+        third-party/rkh/source/queue/inc
+        third-party/rkh/source/sm/inc
+        third-party/rkh/source/sma/inc
+        third-party/rkh/source/tmr/inc
+        third-party/rkh/source/trc/inc
 
-      third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32
+        third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32
 
         mTime
 
+        # salt
+
+        third-party/jWrite/jWrite
+        third-party/MQTT-C/include
+
+        salt
+        salt/configuration
+        salt/bsp
+
+        salt/utilities/rtime
+        salt/utilities/mTime
+        salt/utilities/date
+        salt/utilities/epoch
+        salt/utilities/ssp
+        salt/utilities/parser
+        salt/utilities/parser/salt-command
+        salt/utilities/parser/sim900
+        salt/utilities/publisher
+        salt/utilities/emaFilter
+
+        salt/peripherals/module-command
+        salt/peripherals/module-power
+        salt/peripherals/serial
+        salt/peripherals/gps
+        salt/peripherals/sim808
+        salt/peripherals/ledPan
+        salt/peripherals/ihm
+        salt/peripherals/relay-control
+        salt/peripherals/analog-inputs
+        salt/peripherals/pulse-counter
+        salt/peripherals/teloc
+        salt/peripherals/ledPanel
+
+        salt/state-machines/logic
+        salt/state-machines/connector-manager
+        salt/state-machines/module-manager
+        salt/state-machines/mqtt-protocol
+
+
+)
+
+add_definitions(
+        -DDEBUG
+        -DUSE_HAL_DRIVER
+        -DSTM32F429xx
+        -DRKH_PLATFORM="__STM32__"
+        #   -DRKH_CONF_FILE="blinky/rkhcfg.h"
+        -DRKH_CONF_FILE="salt/rkhcfg.h"
 )
 
 file(
-        GLOB_RECURSE
-        SOURCES
-        "Core/*.*"
-        "Drivers/*.*"
+        GLOB_RECURSE SOURCES "Core/*.*" "Drivers/*.*"
 
-       "third-party/rkh/source/fwk/src/rkhfwk_bittbl.c"
-       "third-party/rkh/source/fwk/src/rkhfwk_dynevt.c"
-       "third-party/rkh/source/fwk/src/rkhfwk_evtpool.c"
-       "third-party/rkh/source/fwk/src/rkhfwk_pubsub.c"
-       "third-party/rkh/source/fwk/src/rkhfwk_rdygrp.c"
-       "third-party/rkh/source/fwk/src/rkhfwk_sched.c"
-       "third-party/rkh/source/fwk/src/rkhfwk_version.c"
-       "third-party/rkh/source/mempool/src/rkhmempool.c"
-       "third-party/rkh/source/queue/src/rkhqueue.c"
-       "third-party/rkh/source/sm/src/rkhsm.c"
-       "third-party/rkh/source/sma/src/rkhsma.c"
-       "third-party/rkh/source/sma/src/rkhsma_prio.c"
-       "third-party/rkh/source/sma/src/rkhsma_sync.c"
-       "third-party/rkh/source/tmr/src/rkhtmr.c"
-       "third-party/rkh/source/trc/src/rkhtrc_filter.c"
-       "third-party/rkh/source/trc/src/rkhtrc_record.c"
-       "third-party/rkh/source/trc/src/rkhtrc_stream.c"
+        "third-party/rkh/source/fwk/src/rkhfwk_bittbl.c"
+        "third-party/rkh/source/fwk/src/rkhfwk_dynevt.c"
+        "third-party/rkh/source/fwk/src/rkhfwk_evtpool.c"
+        "third-party/rkh/source/fwk/src/rkhfwk_pubsub.c"
+        "third-party/rkh/source/fwk/src/rkhfwk_rdygrp.c"
+        "third-party/rkh/source/fwk/src/rkhfwk_sched.c"
+        "third-party/rkh/source/fwk/src/rkhfwk_version.c"
+        "third-party/rkh/source/mempool/src/rkhmempool.c"
+        "third-party/rkh/source/queue/src/rkhqueue.c"
+        "third-party/rkh/source/sm/src/rkhsm.c"
+        "third-party/rkh/source/sma/src/rkhsma.c"
+        "third-party/rkh/source/sma/src/rkhsma_prio.c"
+        "third-party/rkh/source/sma/src/rkhsma_sync.c"
+        "third-party/rkh/source/tmr/src/rkhtmr.c"
+        "third-party/rkh/source/trc/src/rkhtrc_filter.c"
+        "third-party/rkh/source/trc/src/rkhtrc_record.c"
+        "third-party/rkh/source/trc/src/rkhtrc_stream.c"
 
-       "third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c"
+        "third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c"
 
         "bsp/stm32f4xx_nucleo_144.c"
 
@@ -110,16 +152,19 @@ file(
         "mTime/mTime.c"
         "mTime/mTimeTbl.c"
 
-)
+        # salt firmware
 
-add_definitions(
-        -DDEBUG
-        -DUSE_HAL_DRIVER
-        -DSTM32F429xx
-        -DRKH_PLATFORM="__STM32__"
-        -DRKH_CONF_FILE="blinky/rkhcfg.h"
-)
+        "Middlewares/Third_Party/jWrite/jWrite/*.*"
+        "Middlewares/Third_Party/MQTT-C/source/*.*"
 
+
+        "salt/*.*"
+        "salt/utilities/*.*"
+
+        "salt/state-machines/*.*"
+
+
+)
 
 set(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/STM32F429ZITX_FLASH.ld)
 

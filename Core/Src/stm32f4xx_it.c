@@ -185,18 +185,14 @@ void PendSV_Handler(void)
 /**
   * @brief This function handles System tick timer.
   */
-// aunque nse muestre sombreado la fuyncion se esta llamando correctamente
 void SysTick_Handler(void)
 {
-
   /* USER CODE BEGIN SysTick_IRQn 0 */
     if(userSysticCb != NULL)
         userSysticCb();
 
   /* USER CODE END SysTick_IRQn 0 */
-
   HAL_IncTick();
-
   /* USER CODE BEGIN SysTick_IRQn 1 */
   /* USER CODE END SysTick_IRQn 1 */
 }
