@@ -27,6 +27,25 @@
 BUZZER_MODE buzzerMode;
 /* ----------------------- Local function prototypes ----------------------- */
 /* ---------------------------- Local functions ---------------------------- */
+/*
+ * buzzer bsp: functions defined in salt-firmware/salt/arch/edu-ciaa-nxp/bsp
+ */
+void buzzerInitBsp(){
+
+    // Configure Buzzer Pin
+    //  gpioWrite( BUZZER_PIN, false);
+    //  gpioConfig( BUZZER_PIN, GPIO_OUTPUT );
+}
+
+void buzzerSet(bool on){
+    //TODO volver a habilitar
+    //gpioWrite( BUZZER_PIN, on);
+}
+
+bool buzzerGet(){
+    return false; // gpioRead(BUZZER_PIN);
+}
+
 /* ---------------------------- Global functions --------------------------- */
 
 void buzzerInit(){

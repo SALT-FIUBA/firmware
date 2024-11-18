@@ -136,7 +136,8 @@ void as1116SetDigit(uint8_t digit, uint8_t data)
     if (digit >= PANEL_NUM_DIGITS) {
         return;
     }
-    as1116WriteReg(digitRegMap[digit], data);
+    //  TODO: uncomment & solve the issue:
+    //   as1116WriteReg(digitRegMap[digit], data);
 }
 
 /* ------------------------------ End of file ------------------------------ */

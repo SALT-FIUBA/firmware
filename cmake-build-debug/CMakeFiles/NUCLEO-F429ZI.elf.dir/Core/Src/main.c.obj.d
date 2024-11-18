@@ -129,6 +129,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/main.c.obj: \
  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/time.h \
  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/time.h \
  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/_time.h \
+ /Users/nando/NUCLEO-F429ZI/utilities/htons.h \
  /Users/nando/NUCLEO-F429ZI/third-party/MQTT-C/include/mqttc_sync.h \
  /Users/nando/NUCLEO-F429ZI/third-party/MQTT-C/include/mqttc.h \
  /Users/nando/NUCLEO-F429ZI/salt/state-machines/logic/logic.h \
@@ -136,4 +137,12 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/main.c.obj: \
  /Users/nando/NUCLEO-F429ZI/salt/peripherals/analog-inputs/anIn.h \
  /Users/nando/NUCLEO-F429ZI/salt/peripherals/ihm/onSwitch.h \
  /Users/nando/NUCLEO-F429ZI/salt/peripherals/relay-control/relay.h \
- /Users/nando/NUCLEO-F429ZI/salt/bsp/bsp-salt.h
+ /Users/nando/NUCLEO-F429ZI/salt/bsp/bsp-salt.h \
+ /Users/nando/NUCLEO-F429ZI/salt/peripherals/ledPanel/ledPanel.h \
+ /Users/nando/NUCLEO-F429ZI/salt/peripherals/ledPanel/as1116.h \
+ /Users/nando/NUCLEO-F429ZI/salt/peripherals/ihm/buzzer.h \
+ /Users/nando/NUCLEO-F429ZI/salt/peripherals/pulse-counter/pulseCounter.h \
+ /Users/nando/NUCLEO-F429ZI/salt/peripherals/teloc/teloc.h \
+ /Users/nando/NUCLEO-F429ZI/salt/peripherals/sim808/sim808.h \
+ /Users/nando/NUCLEO-F429ZI/salt/peripherals/serial/serial.h \
+ /Users/nando/NUCLEO-F429ZI/salt/utilities/publisher/publisher.h

@@ -111,6 +111,7 @@ include_directories(
         salt/utilities/aes
         salt/utilities/publisher
 
+        utilities
 
 )
 
@@ -158,11 +159,12 @@ file(
 
         # salt
 
-        "third_Party/jWrite/jWrite/*.*"
-        "third_Party/MQTT-C/source/*.*"
+        "third-party/jWrite/jWrite/*.*"
+        "third-party/MQTT-C/source/*.*"
 
         "salt/*.*"
 
+        "utilities/*.*"
 )
 
 set(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/STM32F429ZITX_FLASH.ld)

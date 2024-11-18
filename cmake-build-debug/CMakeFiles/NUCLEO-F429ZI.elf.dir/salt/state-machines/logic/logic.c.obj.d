@@ -120,6 +120,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/logic/logic.c.obj: \
  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/time.h \
  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/time.h \
  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/_time.h \
+ /Users/nando/NUCLEO-F429ZI/utilities/htons.h \
  /Users/nando/NUCLEO-F429ZI/third-party/MQTT-C/include/mqttc_sync.h \
  /Users/nando/NUCLEO-F429ZI/third-party/MQTT-C/include/mqttc.h \
  /Users/nando/NUCLEO-F429ZI/salt/bsp/bsp-salt.h \

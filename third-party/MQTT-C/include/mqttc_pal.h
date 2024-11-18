@@ -111,6 +111,7 @@
     #include <limits.h>
     #include <sys/time.h>
     #include "epoch.h"
+    #include "htons.h"
 
     #define MQTT_PAL_HTONS(s) htons(s)
     #define MQTT_PAL_NTOHS(s) ntohs(s)

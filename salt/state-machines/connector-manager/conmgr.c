@@ -46,7 +46,7 @@ RKH_DCLR_BASIC_STATE ConMgr_inactive, ConMgr_sync, ConMgr_waitInit,
         ConMgr_checkIP, ConMgr_waitRetryConfig, ConMgr_waitingServer,
         ConMgr_idle, ConMgr_getStatus, ConMgr_waitPrompt, ConMgr_waitOk,
         ConMgr_receiving, ConMgr_restarting, ConMgr_wReopen,
-        ConMgr_waitRetryConnect, ConMgr_disconnecting, ConMgr_configureHist;
+        ConMgr_waitRetryConnect, ConMgr_disconnecting;
 
 RKH_DCLR_COMP_STATE ConMgr_active, ConMgr_initialize, ConMgr_registered,
         ConMgr_configure, ConMgr_connecting, ConMgr_connected,
@@ -324,7 +324,8 @@ RKH_END_BRANCH_TABLE
 RKH_CREATE_BASIC_STATE(ConMgr_waitRetryConfig, waitRetryConfigEntry, NULL,
                        &ConMgr_registered, NULL);
 RKH_CREATE_TRANS_TABLE(ConMgr_waitRetryConfig)
-                RKH_TRREG(evTimeout,  NULL,    configTry, &ConMgr_configureHist),
+                //  RKH_TRREG(evTimeout,  NULL,    configTry, &ConMgr_configureHist),
+                RKH_TRREG(evTimeout,  NULL,    configTry, NULL),
 RKH_END_TRANS_TABLE
 
 RKH_CREATE_COMP_REGION_STATE(ConMgr_connecting, NULL, NULL,

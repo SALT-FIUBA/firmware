@@ -189,9 +189,16 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/main.c.obj: /Users/nando/NUCLEO-F429ZI
   /Users/nando/NUCLEO-F429ZI/salt/bsp/bsp-salt.h \
   /Users/nando/NUCLEO-F429ZI/salt/peripherals/analog-inputs/anIn.h \
   /Users/nando/NUCLEO-F429ZI/salt/peripherals/gps/gps.h \
+  /Users/nando/NUCLEO-F429ZI/salt/peripherals/ihm/buzzer.h \
   /Users/nando/NUCLEO-F429ZI/salt/peripherals/ihm/onSwitch.h \
+  /Users/nando/NUCLEO-F429ZI/salt/peripherals/ledPanel/as1116.h \
+  /Users/nando/NUCLEO-F429ZI/salt/peripherals/ledPanel/ledPanel.h \
   /Users/nando/NUCLEO-F429ZI/salt/peripherals/module-command/modcmd.h \
+  /Users/nando/NUCLEO-F429ZI/salt/peripherals/pulse-counter/pulseCounter.h \
   /Users/nando/NUCLEO-F429ZI/salt/peripherals/relay-control/relay.h \
+  /Users/nando/NUCLEO-F429ZI/salt/peripherals/serial/serial.h \
+  /Users/nando/NUCLEO-F429ZI/salt/peripherals/sim808/sim808.h \
+  /Users/nando/NUCLEO-F429ZI/salt/peripherals/teloc/teloc.h \
   /Users/nando/NUCLEO-F429ZI/salt/salt-signals.h \
   /Users/nando/NUCLEO-F429ZI/salt/state-machines/connector-manager/conmgr.h \
   /Users/nando/NUCLEO-F429ZI/salt/state-machines/logic/logic.h \
@@ -201,6 +208,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/main.c.obj: /Users/nando/NUCLEO-F429ZI
   /Users/nando/NUCLEO-F429ZI/salt/utilities/date/date.h \
   /Users/nando/NUCLEO-F429ZI/salt/utilities/epoch/epoch.h \
   /Users/nando/NUCLEO-F429ZI/salt/utilities/parser/salt-command/saltCmd.h \
+  /Users/nando/NUCLEO-F429ZI/salt/utilities/publisher/publisher.h \
   /Users/nando/NUCLEO-F429ZI/third-party/MQTT-C/include/mqttc.h \
   /Users/nando/NUCLEO-F429ZI/third-party/MQTT-C/include/mqttc_pal.h \
   /Users/nando/NUCLEO-F429ZI/third-party/MQTT-C/include/mqttc_sync.h \
@@ -232,7 +240,8 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/main.c.obj: /Users/nando/NUCLEO-F429ZI
   /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/inc/rkhtrc_filter.h \
   /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/inc/rkhtrc_out.h \
   /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/inc/rkhtrc_record.h \
-  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/inc/rkhtrc_stream.h
+  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/inc/rkhtrc_stream.h \
+  /Users/nando/NUCLEO-F429ZI/utilities/htons.h
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/spi.c.obj: /Users/nando/NUCLEO-F429ZI/Core/Src/spi.c \
   /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/_newlib_version.h \
@@ -2186,7 +2195,8 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/configuration/saltCfg.c.obj: /Users/nando/
   /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/inc/rkhtrc_filter.h \
   /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/inc/rkhtrc_out.h \
   /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/inc/rkhtrc_record.h \
-  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/inc/rkhtrc_stream.h
+  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/inc/rkhtrc_stream.h \
+  /Users/nando/NUCLEO-F429ZI/utilities/htons.h
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/hook.c.obj: /Users/nando/NUCLEO-F429ZI/salt/files-to-review/hook.c
 
@@ -2323,7 +2333,8 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/main-salt-firmware-nxp.c.o
   /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/inc/rkhtrc_filter.h \
   /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/inc/rkhtrc_out.h \
   /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/inc/rkhtrc_record.h \
-  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/inc/rkhtrc_stream.h
+  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/inc/rkhtrc_stream.h \
+  /Users/nando/NUCLEO-F429ZI/utilities/htons.h
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/trace_io.c.obj: /Users/nando/NUCLEO-F429ZI/salt/files-to-review/trace_io.c \
   /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/_newlib_version.h \
@@ -3473,7 +3484,8 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/connector-manager/conmgr.c.
   /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/inc/rkhtrc_filter.h \
   /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/inc/rkhtrc_out.h \
   /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/inc/rkhtrc_record.h \
-  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/inc/rkhtrc_stream.h
+  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/inc/rkhtrc_stream.h \
+  /Users/nando/NUCLEO-F429ZI/utilities/htons.h
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/logic/logic.c.obj: /Users/nando/NUCLEO-F429ZI/salt/state-machines/logic/logic.c \
   /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/_ansi.h \
@@ -3598,7 +3610,8 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/logic/logic.c.obj: /Users/n
   /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/inc/rkhtrc_filter.h \
   /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/inc/rkhtrc_out.h \
   /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/inc/rkhtrc_record.h \
-  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/inc/rkhtrc_stream.h
+  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/inc/rkhtrc_stream.h \
+  /Users/nando/NUCLEO-F429ZI/utilities/htons.h
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/module-manager/modmgr.c.obj: /Users/nando/NUCLEO-F429ZI/salt/state-machines/module-manager/modmgr.c \
   /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/_ansi.h \
@@ -3809,7 +3822,8 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/mqtt-protocol/mqttProt.c.ob
   /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/inc/rkhtrc_filter.h \
   /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/inc/rkhtrc_out.h \
   /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/inc/rkhtrc_record.h \
-  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/inc/rkhtrc_stream.h
+  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/inc/rkhtrc_stream.h \
+  /Users/nando/NUCLEO-F429ZI/utilities/htons.h
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/aes/aes.c.obj: /Users/nando/NUCLEO-F429ZI/salt/utilities/aes/aes.c \
   /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/_ansi.h \
@@ -4196,7 +4210,8 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/publisher/publisher.c.obj: /User
   /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/inc/rkhtrc_filter.h \
   /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/inc/rkhtrc_out.h \
   /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/inc/rkhtrc_record.h \
-  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/inc/rkhtrc_stream.h
+  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/inc/rkhtrc_stream.h \
+  /Users/nando/NUCLEO-F429ZI/utilities/htons.h
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/rtime/rtime.c.obj: /Users/nando/NUCLEO-F429ZI/salt/utilities/rtime/rtime.c \
   /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/_newlib_version.h \
@@ -4244,6 +4259,148 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/rtime/rtime.c.obj: /Users/nando/
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/ssp/ssp.c.obj: /Users/nando/NUCLEO-F429ZI/salt/utilities/ssp/ssp.c \
   /Users/nando/NUCLEO-F429ZI/salt/sspcfg.h \
   /Users/nando/NUCLEO-F429ZI/salt/utilities/ssp/ssp.h
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc.c.obj: /Users/nando/NUCLEO-F429ZI/third-party/MQTT-C/source/mqttc.c \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/_ansi.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/_newlib_version.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/limits.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/_default_types.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/_endian.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/_time.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/_types.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/endian.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/ieeefp.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/time.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/types.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/newlib.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/stdint.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/string.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/strings.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/_intsup.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/_locale.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/_pthreadtypes.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/_sigset.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/_stdint.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/_timespec.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/_timeval.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/_types.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/cdefs.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/config.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/features.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/lock.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/reent.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/sched.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/select.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/string.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/syslimits.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/time.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/timespec.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/types.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/time.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/lib/gcc/arm-none-eabi/13.3.1/include/limits.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/lib/gcc/arm-none-eabi/13.3.1/include/stdarg.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/lib/gcc/arm-none-eabi/13.3.1/include/stddef.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/lib/gcc/arm-none-eabi/13.3.1/include/stdint.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/lib/gcc/arm-none-eabi/13.3.1/include/syslimits.h \
+  /Users/nando/NUCLEO-F429ZI/salt/utilities/epoch/epoch.h \
+  /Users/nando/NUCLEO-F429ZI/third-party/MQTT-C/include/mqttc.h \
+  /Users/nando/NUCLEO-F429ZI/third-party/MQTT-C/include/mqttc_pal.h \
+  /Users/nando/NUCLEO-F429ZI/third-party/MQTT-C/include/mqttc_sync.h \
+  /Users/nando/NUCLEO-F429ZI/utilities/htons.h
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc_pal.c.obj: /Users/nando/NUCLEO-F429ZI/third-party/MQTT-C/source/mqttc_pal.c \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/_ansi.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/_newlib_version.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/limits.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/_default_types.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/_endian.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/_time.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/_types.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/endian.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/ieeefp.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/time.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/types.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/newlib.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/stdint.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/string.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/strings.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/_intsup.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/_locale.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/_pthreadtypes.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/_sigset.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/_stdint.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/_timespec.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/_timeval.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/_types.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/cdefs.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/config.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/features.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/lock.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/reent.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/sched.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/select.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/string.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/syslimits.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/time.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/timespec.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/types.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/time.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/lib/gcc/arm-none-eabi/13.3.1/include/limits.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/lib/gcc/arm-none-eabi/13.3.1/include/stdarg.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/lib/gcc/arm-none-eabi/13.3.1/include/stddef.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/lib/gcc/arm-none-eabi/13.3.1/include/stdint.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/lib/gcc/arm-none-eabi/13.3.1/include/syslimits.h \
+  /Users/nando/NUCLEO-F429ZI/salt/utilities/epoch/epoch.h \
+  /Users/nando/NUCLEO-F429ZI/third-party/MQTT-C/include/mqttc.h \
+  /Users/nando/NUCLEO-F429ZI/third-party/MQTT-C/include/mqttc_pal.h \
+  /Users/nando/NUCLEO-F429ZI/third-party/MQTT-C/include/mqttc_sync.h \
+  /Users/nando/NUCLEO-F429ZI/utilities/htons.h
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/jWrite.c.obj: /Users/nando/NUCLEO-F429ZI/third-party/jWrite/jWrite/jWrite.c \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/_ansi.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/_newlib_version.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/_default_types.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/_types.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/ieeefp.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/newlib.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/stdint.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/stdio.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/string.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/strings.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/_intsup.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/_locale.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/_stdint.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/_types.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/cdefs.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/config.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/features.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/lock.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/reent.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/stdio.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/string.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/lib/gcc/arm-none-eabi/13.3.1/include/stdarg.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/lib/gcc/arm-none-eabi/13.3.1/include/stddef.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/lib/gcc/arm-none-eabi/13.3.1/include/stdint.h \
+  /Users/nando/NUCLEO-F429ZI/third-party/jWrite/jWrite/jWrite.h
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/main.c.obj: /Users/nando/NUCLEO-F429ZI/third-party/jWrite/jWrite/main.c \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/_ansi.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/_newlib_version.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/_default_types.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/_types.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/ieeefp.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/newlib.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/stdio.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/_types.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/cdefs.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/config.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/features.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/lock.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/reent.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/stdio.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/lib/gcc/arm-none-eabi/13.3.1/include/stdarg.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/lib/gcc/arm-none-eabi/13.3.1/include/stddef.h \
+  /Users/nando/NUCLEO-F429ZI/third-party/jWrite/jWrite/jWrite.h
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_bittbl.c.obj: /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/src/rkhfwk_bittbl.c \
   /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/_newlib_version.h \
@@ -5376,10 +5533,18 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.
   /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/inc/rkhtrc_out.h \
   /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/inc/rkhtrc_stream.h
 
+CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj: /Users/nando/NUCLEO-F429ZI/utilities/htons.c \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/_newlib_version.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/_default_types.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/stdint.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/_intsup.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/_stdint.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/features.h \
+  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/lib/gcc/arm-none-eabi/13.3.1/include/stdint.h \
+  /Users/nando/NUCLEO-F429ZI/utilities/htons.h
+
 
 /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/src/rkhtrc_stream.c:
-
-/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/src/rkhtrc_record.c:
 
 /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/sma/src/rkhsma_sync.c:
 
@@ -5402,6 +5567,12 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.
 /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/src/rkhfwk_pubsub.c:
 
 /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/src/rkhfwk_dynevt.c:
+
+/Users/nando/NUCLEO-F429ZI/third-party/jWrite/jWrite/main.c:
+
+/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/src/rkhtrc_record.c:
+
+/Users/nando/NUCLEO-F429ZI/third-party/MQTT-C/source/mqttc.c:
 
 /Users/nando/NUCLEO-F429ZI/salt/utilities/ssp/ssp.c:
 
@@ -5443,23 +5614,15 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.
 
 /Users/nando/NUCLEO-F429ZI/salt/utilities/emaFilter/emaFilter.h:
 
+/Users/nando/NUCLEO-F429ZI/third-party/MQTT-C/source/mqttc_pal.c:
+
 /Users/nando/NUCLEO-F429ZI/salt/files-to-review/trace_io.c:
 
-/Users/nando/NUCLEO-F429ZI/salt/utilities/publisher/publisher.h:
+/Users/nando/NUCLEO-F429ZI/salt/files-to-review/main-salt-firmware-nxp.c:
 
-/Users/nando/NUCLEO-F429ZI/salt/utilities/parser/jsmn.h:
+/Users/nando/NUCLEO-F429ZI/salt/peripherals/teloc/teloc.c:
 
-/Users/nando/NUCLEO-F429ZI/third-party/MQTT-C/include/mqttc.h:
-
-/Users/nando/NUCLEO-F429ZI/salt/peripherals/teloc/teloc.h:
-
-/Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/_pthreadtypes.h:
-
-/Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_eth.c:
-
-/Users/nando/NUCLEO-F429ZI/salt/peripherals/serial/serial.h:
-
-/Users/nando/NUCLEO-F429ZI/salt/peripherals/pulse-counter/pulseCounter.h:
+/Users/nando/NUCLEO-F429ZI/salt/files-to-review/hook.c:
 
 /Users/nando/NUCLEO-F429ZI/salt/configuration/saltCfg.c:
 
@@ -5501,15 +5664,21 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.
 
 /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c:
 
-/Users/nando/NUCLEO-F429ZI/salt/state-machines/connector-manager/conmgr.h:
-
 /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/sched.h:
+
+/Users/nando/NUCLEO-F429ZI/salt/state-machines/connector-manager/conmgr.h:
 
 /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c:
 
 /Users/nando/NUCLEO-F429ZI/salt/peripherals/relay-control/relayFromEduCiaaBsp.c:
 
 /Users/nando/NUCLEO-F429ZI/salt/bsp/bsp-salt.c:
+
+/Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/_pthreadtypes.h:
+
+/Users/nando/NUCLEO-F429ZI/salt/peripherals/serial/serial.h:
+
+/Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_eth.c:
 
 /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/config.h:
 
@@ -5524,10 +5693,6 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.
 /Users/nando/NUCLEO-F429ZI/salt/state-machines/logic/logic.h:
 
 /Users/nando/NUCLEO-F429ZI/Core/Src/usart.c:
-
-/Users/nando/NUCLEO-F429ZI/salt/peripherals/sim808/sim808.h:
-
-/Users/nando/NUCLEO-F429ZI/blinky/signal.h:
 
 /Users/nando/NUCLEO-F429ZI/salt/peripherals/pulse-counter/pulseCounterFromEduCiaaBsp.c:
 
@@ -5589,6 +5754,8 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.
 
 /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c:
 
+/Users/nando/NUCLEO-F429ZI/utilities/htons.c:
+
 /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/src/rkhfwk_rdygrp.c:
 
 /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/rkhfwk_version.h:
@@ -5607,6 +5774,12 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.
 
 /Users/nando/NUCLEO-F429ZI/third-party/MQTT-C/include/mqttc_sync.h:
 
+/Users/nando/NUCLEO-F429ZI/salt/utilities/parser/jsmn.h:
+
+/Users/nando/NUCLEO-F429ZI/salt/peripherals/teloc/teloc.h:
+
+/Users/nando/NUCLEO-F429ZI/third-party/MQTT-C/include/mqttc.h:
+
 /Users/nando/NUCLEO-F429ZI/salt/peripherals/ihm/buzzer.c:
 
 /Users/nando/NUCLEO-F429ZI/salt/utilities/epoch/epoch.h:
@@ -5621,25 +5794,57 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.
 
 /Users/nando/NUCLEO-F429ZI/salt/state-machines/module-manager/modmgr.h:
 
+/Users/nando/NUCLEO-F429ZI/salt/utilities/parser/salt-command/saltCmd.c:
+
+/Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.c:
+
+/Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c:
+
+/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/mempool/inc/rkhmempool.h:
+
+/Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/stdint.h:
+
+/Users/nando/NUCLEO-F429ZI/salt/salt-signals.h:
+
+/Users/nando/NUCLEO-F429ZI/blinky/signal.h:
+
+/Users/nando/NUCLEO-F429ZI/salt/peripherals/sim808/sim808.h:
+
+/Users/nando/NUCLEO-F429ZI/salt/peripherals/gps/gps.h:
+
+/Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/endian.h:
+
+/Users/nando/NUCLEO-F429ZI/salt/peripherals/relay-control/relay.h:
+
+/Users/nando/NUCLEO-F429ZI/salt/peripherals/pulse-counter/pulseCounter.h:
+
+/Users/nando/NUCLEO-F429ZI/salt/peripherals/pulse-counter/pulseCounter.c:
+
+/Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/cmsis_version.h:
+
+/Users/nando/NUCLEO-F429ZI/salt/configuration/saltCfg.h:
+
+/Users/nando/NUCLEO-F429ZI/salt/peripherals/ihm/buzzer.h:
+
+/Users/nando/NUCLEO-F429ZI/salt/peripherals/module-command/modcmd.h:
+
+/Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h:
+
+/Users/nando/NUCLEO-F429ZI/salt/state-machines/module-manager/modMgr.h:
+
 /Users/nando/NUCLEO-F429ZI/salt/peripherals/ledPanel/ledPanel.c:
 
 /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/time.h:
 
 /Users/nando/NUCLEO-F429ZI/salt/peripherals/ledPanel/ledPanel.h:
 
-/Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h:
+/Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c:
 
-/Users/nando/NUCLEO-F429ZI/salt/state-machines/module-manager/modMgr.h:
+/Users/nando/NUCLEO-F429ZI/salt/utilities/parser/salt-command/saltCmd.h:
 
-/Users/nando/NUCLEO-F429ZI/salt/configuration/saltCfg.h:
+/Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h:
 
-/Users/nando/NUCLEO-F429ZI/salt/peripherals/ihm/buzzer.h:
-
-/Users/nando/NUCLEO-F429ZI/salt/peripherals/pulse-counter/pulseCounter.c:
-
-/Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/cmsis_version.h:
-
-/Users/nando/NUCLEO-F429ZI/salt/peripherals/module-command/modcmd.h:
+/Users/nando/NUCLEO-F429ZI/salt/peripherals/ledPanel/as1116.h:
 
 /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h:
 
@@ -5654,8 +5859,6 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.
 /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/rkhevt.h:
 
 /Users/nando/NUCLEO-F429ZI/mTime/mTime.h:
-
-/Users/nando/NUCLEO-F429ZI/salt/files-to-review/main-salt-firmware-nxp.c:
 
 /Users/nando/NUCLEO-F429ZI/blinky/blinky.h:
 
@@ -5705,20 +5908,6 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.
 
 /Users/nando/NUCLEO-F429ZI/Core/Inc/usart.h:
 
-/Users/nando/NUCLEO-F429ZI/salt/utilities/parser/salt-command/saltCmd.c:
-
-/Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.c:
-
-/Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c:
-
-/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/mempool/inc/rkhmempool.h:
-
-/Users/nando/NUCLEO-F429ZI/salt/peripherals/gps/gps.h:
-
-/Users/nando/NUCLEO-F429ZI/salt/peripherals/relay-control/relay.h:
-
-/Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/endian.h:
-
 /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/ieeefp.h:
 
 /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/time.h:
@@ -5728,6 +5917,8 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.
 /Users/nando/NUCLEO-F429ZI/Core/Inc/stm32f4xx_it.h:
 
 /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/sma/inc/rkhsma_sync.h:
+
+/Users/nando/NUCLEO-F429ZI/utilities/htons.h:
 
 /Users/nando/NUCLEO-F429ZI/Core/Src/gpio.c:
 
@@ -5746,6 +5937,8 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.
 /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/_time.h:
 
 /Users/nando/NUCLEO-F429ZI/Core/Src/system_stm32f4xx.c:
+
+/Users/nando/NUCLEO-F429ZI/third-party/jWrite/jWrite/jWrite.c:
 
 /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h:
 
@@ -5777,10 +5970,6 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.
 
 /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 
-/Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/stdint.h:
-
-/Users/nando/NUCLEO-F429ZI/salt/salt-signals.h:
-
 /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/cmsis_compiler.h:
 
 /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/core_cm4.h:
@@ -5799,14 +5988,6 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.
 
 /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/select.h:
 
-/Users/nando/NUCLEO-F429ZI/salt/peripherals/ledPanel/as1116.h:
-
-/Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c:
-
-/Users/nando/NUCLEO-F429ZI/salt/utilities/parser/salt-command/saltCmd.h:
-
-/Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h:
-
 /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/_default_types.h:
 
 /Users/nando/NUCLEO-F429ZI/Core/Inc/gpio.h:
@@ -5824,6 +6005,8 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.
 /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h:
 
 /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/rkhfwk_bittbl.h:
+
+/Users/nando/NUCLEO-F429ZI/salt/utilities/publisher/publisher.h:
 
 /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/lib/gcc/arm-none-eabi/13.3.1/include/stdint.h:
 
@@ -5852,10 +6035,6 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.
 /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h:
 
 /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h:
-
-/Users/nando/NUCLEO-F429ZI/salt/peripherals/teloc/teloc.c:
-
-/Users/nando/NUCLEO-F429ZI/salt/files-to-review/hook.c:
 
 /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/mempool/src/rkhmempool.c:
 

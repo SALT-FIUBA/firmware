@@ -43,6 +43,13 @@
 #include "onSwitch.h"
 #include "relay.h"
 #include "bsp-salt.h"
+#include "ledPanel.h"
+#include "buzzer.h"
+#include "pulseCounter.h"
+#include "teloc.h"
+#include "sim808.h"
+#include "serial.h"
+#include "publisher.h"
 
 /* USER CODE END Includes */
 
@@ -69,6 +76,8 @@
 #define SIZEOF_EP1_BLOCK    sizeof(ModCmd)
 #define SIZEOF_EP2STO       512
 #define SIZEOF_EP2_BLOCK    sizeof(ModMgrEvt)
+
+#define MIN(a, b) (((a) < (b)) ? (a) : (b))
 
 /* Constants ------------------------------- */
 
@@ -212,7 +221,6 @@ static void debugCb(unsigned char c){
 #endif
 }
 
-#define MIN(a, b) (((a) < (b)) ? (a) : (b))
 
 void onMQTTCb(void** state,struct mqttc_response_publish *publish) {
     if (!initEnd) {
@@ -235,6 +243,69 @@ void onMQTTCb(void** state,struct mqttc_response_publish *publish) {
     }
 }
 
+static void
+saltConfig(void)
+{
+    /* Configuracion especifica SALT */
+
+    /* RKH */
+
+    RKH_SET_STATIC_EVENT(RKH_UPCAST(RKH_EVT_T, &e_saltCmd), evSaltCmd);
+
+    /* Inicializacion SALT */
+
+    bsp_init();
+    relayInit(onRelayErrorCb);
+    ledPanelInit();
+    anInInit(onAnInCb);
+    buzzerInit();
+    onSwitchInit(onSwitchCb);
+    pulseCounterInit(PULSE_COUNTER_THR,PULSE_COUNTER_FACTOR);
+    telocInit();
+    //epoch_init();
+    mTime_init();
+
+    sim808Init(SIM_808_A);
+    serialSetIntCb(UART_SIM_808_A, (serialIsrCb_t) simACb);
+
+#ifdef DEBUG_SERIAL
+    serialInit(UART_DEBUG);
+    serialSetIntCb(UART_DEBUG, debugCb);
+#else
+    sim808Init(SIM_808_B);
+    serialSetIntCb(UART_SIM_808_B, (serialIsrCb_t) simBCb);
+#endif
+
+    /* Conexion de modulos */
+
+    simACmdParser = ModCmd_init();
+
+}
+
+static void
+setupTraceFilters(void)
+{
+    RKH_FILTER_ON_GROUP(RKH_TRC_ALL_GROUPS);
+    RKH_FILTER_ON_EVENT(RKH_TRC_ALL_EVENTS);
+    //RKH_FILTER_OFF_EVENT(USR_TRACE);
+    //RKH_FILTER_OFF_EVENT(USR_TRACE_OUT);
+    //RKH_FILTER_OFF_EVENT(USR_TRACE_EVT);
+    //RKH_FILTER_OFF_EVENT(USR_TRACE_IN);
+    //RKH_FILTER_OFF_EVENT(USR_TRACE_SSP);
+    RKH_FILTER_OFF_EVENT(USR_TRACE_MQTT);
+    //RKH_FILTER_OFF_GROUP_ALL_EVENTS(RKH_TG_USR);
+    //RKH_FILTER_OFF_EVENT(RKH_TE_TMR_TOUT);
+    RKH_FILTER_OFF_EVENT(RKH_TE_SM_STATE);
+    //RKH_FILTER_OFF_EVENT(RKH_TE_SMA_FIFO);
+    //RKH_FILTER_OFF_EVENT(RKH_TE_SMA_LIFO);
+    //RKH_FILTER_OFF_EVENT(RKH_TE_SM_TS_STATE);
+    //RKH_FILTER_OFF_EVENT(RKH_TE_SM_DCH);
+    //RKH_FILTER_OFF_SMA(modMgr);
+    RKH_FILTER_OFF_SMA(conMgr);
+    //RKH_FILTER_OFF_SMA(mqttProt);
+    RKH_FILTER_OFF_SMA(logic);
+    RKH_FILTER_OFF_ALL_SIGNALS();
+}
 
 
 
@@ -249,6 +320,9 @@ void onMQTTCb(void** state,struct mqttc_response_publish *publish) {
 int main(void)
 {
   /* USER CODE BEGIN 1 */
+ // saltConfig();
+
+
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -274,15 +348,47 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
   bsp_init();
-
+  //    setupTraceFilters();
   mTime_init();
+
+  /* salt code snippet */
+  /*
+  rkh_dynEvt_init();
+  rkh_fwk_registerEvtPool(evPool0Sto, SIZEOF_EP0STO, SIZEOF_EP0_BLOCK);
+  rkh_fwk_registerEvtPool(evPool1Sto, SIZEOF_EP1STO, SIZEOF_EP1_BLOCK);
+  rkh_fwk_registerEvtPool(evPool2Sto, SIZEOF_EP2STO, SIZEOF_EP2_BLOCK);
+
+    mqttProtCfg.publishTime = 5;
+    mqttProtCfg.syncTime = 4;
+    mqttProtCfg.keepAlive = 400;
+    mqttProtCfg.qos = 1;
+    strcpy(mqttProtCfg.clientId, "");
+    strcpy(mqttProtCfg.topic, "");
+    strcpy(mqttProtCfg.subTopic, "");
+    mqttProtCfg.callback = onMQTTCb;
+    MQTTProt_ctor(&mqttProtCfg, publishDimba);
+
+    logicCfg.publishTime = 8;
+    logic_ctor(&logicCfg);
+
+    logicCfg.publishTime = 8;
+    logic_ctor(&logicCfg);
+
+    RKH_SMA_ACTIVATE(conMgr, ConMgr_qsto, CONMGR_QSTO_SIZE, 0, 0);
+    RKH_SMA_ACTIVATE(modMgr, ModMgr_qsto, MODMGR_QSTO_SIZE, 0, 0);
+    RKH_SMA_ACTIVATE(mqttProt, MQTTProt_qsto, MQTTPROT_QSTO_SIZE, 0, 0);
+    RKH_SMA_ACTIVATE(logic, Logic_qsto, LOGIC_QSTO_SIZE, 0, 0);
+
+    RKH_SMA_POST_FIFO(conMgr, &e_Open, 0);
+
+    initEnd = true;
+    */
+  /* ---------------- */
 
   RKH_SMA_ACTIVATE(blinky, qsto, QSTO_SIZE, 0, 0);
   rkh_fwk_enter();
 
-    /*
-     * Trazer -> RKH_TRC_CLOSE();
-     */
+  RKH_TRC_CLOSE();
 
     return 0;
 

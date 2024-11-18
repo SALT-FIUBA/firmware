@@ -1841,6 +1841,102 @@ salt/utilities/ssp/ssp.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/ssp/ssp.c.s
 .PHONY : salt/utilities/ssp/ssp.c.s
 
+third-party/MQTT-C/source/mqttc.obj: third-party/MQTT-C/source/mqttc.c.obj
+.PHONY : third-party/MQTT-C/source/mqttc.obj
+
+# target to build an object file
+third-party/MQTT-C/source/mqttc.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc.c.obj
+.PHONY : third-party/MQTT-C/source/mqttc.c.obj
+
+third-party/MQTT-C/source/mqttc.i: third-party/MQTT-C/source/mqttc.c.i
+.PHONY : third-party/MQTT-C/source/mqttc.i
+
+# target to preprocess a source file
+third-party/MQTT-C/source/mqttc.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc.c.i
+.PHONY : third-party/MQTT-C/source/mqttc.c.i
+
+third-party/MQTT-C/source/mqttc.s: third-party/MQTT-C/source/mqttc.c.s
+.PHONY : third-party/MQTT-C/source/mqttc.s
+
+# target to generate assembly for a file
+third-party/MQTT-C/source/mqttc.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc.c.s
+.PHONY : third-party/MQTT-C/source/mqttc.c.s
+
+third-party/MQTT-C/source/mqttc_pal.obj: third-party/MQTT-C/source/mqttc_pal.c.obj
+.PHONY : third-party/MQTT-C/source/mqttc_pal.obj
+
+# target to build an object file
+third-party/MQTT-C/source/mqttc_pal.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc_pal.c.obj
+.PHONY : third-party/MQTT-C/source/mqttc_pal.c.obj
+
+third-party/MQTT-C/source/mqttc_pal.i: third-party/MQTT-C/source/mqttc_pal.c.i
+.PHONY : third-party/MQTT-C/source/mqttc_pal.i
+
+# target to preprocess a source file
+third-party/MQTT-C/source/mqttc_pal.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc_pal.c.i
+.PHONY : third-party/MQTT-C/source/mqttc_pal.c.i
+
+third-party/MQTT-C/source/mqttc_pal.s: third-party/MQTT-C/source/mqttc_pal.c.s
+.PHONY : third-party/MQTT-C/source/mqttc_pal.s
+
+# target to generate assembly for a file
+third-party/MQTT-C/source/mqttc_pal.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc_pal.c.s
+.PHONY : third-party/MQTT-C/source/mqttc_pal.c.s
+
+third-party/jWrite/jWrite/jWrite.obj: third-party/jWrite/jWrite/jWrite.c.obj
+.PHONY : third-party/jWrite/jWrite/jWrite.obj
+
+# target to build an object file
+third-party/jWrite/jWrite/jWrite.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/jWrite.c.obj
+.PHONY : third-party/jWrite/jWrite/jWrite.c.obj
+
+third-party/jWrite/jWrite/jWrite.i: third-party/jWrite/jWrite/jWrite.c.i
+.PHONY : third-party/jWrite/jWrite/jWrite.i
+
+# target to preprocess a source file
+third-party/jWrite/jWrite/jWrite.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/jWrite.c.i
+.PHONY : third-party/jWrite/jWrite/jWrite.c.i
+
+third-party/jWrite/jWrite/jWrite.s: third-party/jWrite/jWrite/jWrite.c.s
+.PHONY : third-party/jWrite/jWrite/jWrite.s
+
+# target to generate assembly for a file
+third-party/jWrite/jWrite/jWrite.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/jWrite.c.s
+.PHONY : third-party/jWrite/jWrite/jWrite.c.s
+
+third-party/jWrite/jWrite/main.obj: third-party/jWrite/jWrite/main.c.obj
+.PHONY : third-party/jWrite/jWrite/main.obj
+
+# target to build an object file
+third-party/jWrite/jWrite/main.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/main.c.obj
+.PHONY : third-party/jWrite/jWrite/main.c.obj
+
+third-party/jWrite/jWrite/main.i: third-party/jWrite/jWrite/main.c.i
+.PHONY : third-party/jWrite/jWrite/main.i
+
+# target to preprocess a source file
+third-party/jWrite/jWrite/main.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/main.c.i
+.PHONY : third-party/jWrite/jWrite/main.c.i
+
+third-party/jWrite/jWrite/main.s: third-party/jWrite/jWrite/main.c.s
+.PHONY : third-party/jWrite/jWrite/main.s
+
+# target to generate assembly for a file
+third-party/jWrite/jWrite/main.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/main.c.s
+.PHONY : third-party/jWrite/jWrite/main.c.s
+
 third-party/rkh/source/fwk/src/rkhfwk_bittbl.obj: third-party/rkh/source/fwk/src/rkhfwk_bittbl.c.obj
 .PHONY : third-party/rkh/source/fwk/src/rkhfwk_bittbl.obj
 
@@ -2273,6 +2369,30 @@ third-party/rkh/source/trc/src/rkhtrc_stream.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.s
 .PHONY : third-party/rkh/source/trc/src/rkhtrc_stream.c.s
 
+utilities/htons.obj: utilities/htons.c.obj
+.PHONY : utilities/htons.obj
+
+# target to build an object file
+utilities/htons.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj
+.PHONY : utilities/htons.c.obj
+
+utilities/htons.i: utilities/htons.c.i
+.PHONY : utilities/htons.i
+
+# target to preprocess a source file
+utilities/htons.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.i
+.PHONY : utilities/htons.c.i
+
+utilities/htons.s: utilities/htons.c.s
+.PHONY : utilities/htons.s
+
+# target to generate assembly for a file
+utilities/htons.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.s
+.PHONY : utilities/htons.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -2496,6 +2616,18 @@ help:
 	@echo "... salt/utilities/ssp/ssp.obj"
 	@echo "... salt/utilities/ssp/ssp.i"
 	@echo "... salt/utilities/ssp/ssp.s"
+	@echo "... third-party/MQTT-C/source/mqttc.obj"
+	@echo "... third-party/MQTT-C/source/mqttc.i"
+	@echo "... third-party/MQTT-C/source/mqttc.s"
+	@echo "... third-party/MQTT-C/source/mqttc_pal.obj"
+	@echo "... third-party/MQTT-C/source/mqttc_pal.i"
+	@echo "... third-party/MQTT-C/source/mqttc_pal.s"
+	@echo "... third-party/jWrite/jWrite/jWrite.obj"
+	@echo "... third-party/jWrite/jWrite/jWrite.i"
+	@echo "... third-party/jWrite/jWrite/jWrite.s"
+	@echo "... third-party/jWrite/jWrite/main.obj"
+	@echo "... third-party/jWrite/jWrite/main.i"
+	@echo "... third-party/jWrite/jWrite/main.s"
 	@echo "... third-party/rkh/source/fwk/src/rkhfwk_bittbl.obj"
 	@echo "... third-party/rkh/source/fwk/src/rkhfwk_bittbl.i"
 	@echo "... third-party/rkh/source/fwk/src/rkhfwk_bittbl.s"
@@ -2550,6 +2682,9 @@ help:
 	@echo "... third-party/rkh/source/trc/src/rkhtrc_stream.obj"
 	@echo "... third-party/rkh/source/trc/src/rkhtrc_stream.i"
 	@echo "... third-party/rkh/source/trc/src/rkhtrc_stream.s"
+	@echo "... utilities/htons.obj"
+	@echo "... utilities/htons.i"
+	@echo "... utilities/htons.s"
 .PHONY : help
 
 

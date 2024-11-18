@@ -71,6 +71,7 @@ set(CMAKE_ASM_TARGET_INCLUDE_PATH
   "/Users/nando/NUCLEO-F429ZI/salt/utilities/ssp/src"
   "/Users/nando/NUCLEO-F429ZI/salt/utilities/aes"
   "/Users/nando/NUCLEO-F429ZI/salt/utilities/publisher"
+  "/Users/nando/NUCLEO-F429ZI/utilities"
   )
 
 # The set of dependency files which are needed:
@@ -146,6 +147,10 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/nando/NUCLEO-F429ZI/salt/utilities/publisher/publisher.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/publisher/publisher.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/publisher/publisher.c.obj.d"
   "/Users/nando/NUCLEO-F429ZI/salt/utilities/rtime/rtime.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/rtime/rtime.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/rtime/rtime.c.obj.d"
   "/Users/nando/NUCLEO-F429ZI/salt/utilities/ssp/ssp.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/ssp/ssp.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/ssp/ssp.c.obj.d"
+  "/Users/nando/NUCLEO-F429ZI/third-party/MQTT-C/source/mqttc.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc.c.obj.d"
+  "/Users/nando/NUCLEO-F429ZI/third-party/MQTT-C/source/mqttc_pal.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc_pal.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc_pal.c.obj.d"
+  "/Users/nando/NUCLEO-F429ZI/third-party/jWrite/jWrite/jWrite.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/jWrite.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/jWrite.c.obj.d"
+  "/Users/nando/NUCLEO-F429ZI/third-party/jWrite/jWrite/main.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/main.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/main.c.obj.d"
   "/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/src/rkhfwk_bittbl.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_bittbl.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_bittbl.c.obj.d"
   "/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/src/rkhfwk_dynevt.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_dynevt.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_dynevt.c.obj.d"
   "/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/src/rkhfwk_evtpool.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_evtpool.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_evtpool.c.obj.d"
@@ -164,6 +169,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/src/rkhtrc_filter.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_filter.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_filter.c.obj.d"
   "/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/src/rkhtrc_record.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_record.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_record.c.obj.d"
   "/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/src/rkhtrc_stream.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.obj.d"
+  "/Users/nando/NUCLEO-F429ZI/utilities/htons.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.
