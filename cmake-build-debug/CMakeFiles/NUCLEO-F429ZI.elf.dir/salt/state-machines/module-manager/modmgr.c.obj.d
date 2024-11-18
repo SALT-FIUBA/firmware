@@ -85,7 +85,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/module-manager/modmgr.c.obj
  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/rkhitl.h \
  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/rkhfwk_evtpool.h \
  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/rkhfwk_sched.h \
- /Users/nando/NUCLEO-F429ZI/salt/signals.h \
+ /Users/nando/NUCLEO-F429ZI/salt/salt-signals.h \
  /Users/nando/NUCLEO-F429ZI/salt/state-machines/module-manager/modmgr.h \
  /Users/nando/NUCLEO-F429ZI/salt/peripherals/module-command/modcmd.h \
  /Users/nando/NUCLEO-F429ZI/salt/state-machines/connector-manager/conmgr.h \

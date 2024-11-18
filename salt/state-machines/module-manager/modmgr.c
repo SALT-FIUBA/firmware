@@ -19,7 +19,7 @@
 /* ----------------------------- Include files ----------------------------- */
 #include <stdio.h>
 #include "rkh.h"
-#include "signals.h"
+#include "salt-signals.h"
 #include "modmgr.h"
 #include "conmgr.h"
 #include "bsp-salt.h"

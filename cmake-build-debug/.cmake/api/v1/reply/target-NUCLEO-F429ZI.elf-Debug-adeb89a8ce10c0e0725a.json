@@ -1916,7 +1916,7 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "salt/signals.h",
+			"path" : "salt/salt-signals.h",
 			"sourceGroupIndex" : 1
 		},
 		{

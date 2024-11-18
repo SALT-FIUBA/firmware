@@ -22,7 +22,7 @@
 #include "rkh.h"
 #include "bsp-salt.h"
 
-#include "signals.h"
+#include "salt-signals.h"
 #include "modpwr.h"
 #include "modmgr.h"
 #include "modcmd.h"

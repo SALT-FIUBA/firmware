@@ -89,7 +89,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/mqtt-protocol/mqttProt.c.ob
  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/rkhitl.h \
  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/rkhfwk_evtpool.h \
  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/rkhfwk_sched.h \
- /Users/nando/NUCLEO-F429ZI/salt/signals.h \
+ /Users/nando/NUCLEO-F429ZI/salt/salt-signals.h \
  /Users/nando/NUCLEO-F429ZI/salt/state-machines/mqtt-protocol/mqttProt.h \
  /Users/nando/NUCLEO-F429ZI/salt/utilities/epoch/epoch.h \
  /Users/nando/NUCLEO-F429ZI/salt/utilities/date/date.h \

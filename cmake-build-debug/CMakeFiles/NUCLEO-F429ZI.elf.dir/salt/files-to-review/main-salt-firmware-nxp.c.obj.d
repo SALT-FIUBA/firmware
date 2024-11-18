@@ -98,7 +98,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/main-salt-firmware-nxp.c.o
  /Users/nando/NUCLEO-F429ZI/salt/peripherals/pulse-counter/pulseCounter.h \
  /Users/nando/NUCLEO-F429ZI/salt/peripherals/serial/serial.h \
  /Users/nando/NUCLEO-F429ZI/salt/peripherals/sim808/sim808.h \
- /Users/nando/NUCLEO-F429ZI/salt/signals.h \
+ /Users/nando/NUCLEO-F429ZI/salt/salt-signals.h \
  /Users/nando/NUCLEO-F429ZI/salt/bsp/bsp-salt.h \
  /Users/nando/NUCLEO-F429ZI/salt/peripherals/module-power/modpwr.h \
  /Users/nando/NUCLEO-F429ZI/salt/peripherals/teloc/teloc.h \

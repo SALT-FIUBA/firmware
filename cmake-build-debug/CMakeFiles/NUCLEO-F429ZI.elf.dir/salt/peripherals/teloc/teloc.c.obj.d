@@ -77,5 +77,5 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/teloc/teloc.c.obj: \
  /Users/nando/NUCLEO-F429ZI/salt/peripherals/gps/gps.h \
  /Users/nando/NUCLEO-F429ZI/salt/utilities/epoch/epoch.h \
  /Users/nando/NUCLEO-F429ZI/salt/utilities/parser/salt-command/saltCmd.h \
- /Users/nando/NUCLEO-F429ZI/salt/signals.h \
+ /Users/nando/NUCLEO-F429ZI/salt/salt-signals.h \
  /Users/nando/NUCLEO-F429ZI/salt/peripherals/serial/serial.h

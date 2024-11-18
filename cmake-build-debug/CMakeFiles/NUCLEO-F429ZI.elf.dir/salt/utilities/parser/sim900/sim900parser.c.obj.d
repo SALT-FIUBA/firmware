@@ -75,7 +75,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/sim900/sim900parser.c.obj
  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/rkhfwk_sched.h \
  /Users/nando/NUCLEO-F429ZI/salt/utilities/ssp/ssp.h \
  /Users/nando/NUCLEO-F429ZI/salt/sspcfg.h \
- /Users/nando/NUCLEO-F429ZI/salt/signals.h \
+ /Users/nando/NUCLEO-F429ZI/salt/salt-signals.h \
  /Users/nando/NUCLEO-F429ZI/salt/state-machines/module-manager/modmgr.h \
  /Users/nando/NUCLEO-F429ZI/salt/peripherals/module-command/modcmd.h \
  /Users/nando/NUCLEO-F429ZI/salt/state-machines/connector-manager/conmgr.h \

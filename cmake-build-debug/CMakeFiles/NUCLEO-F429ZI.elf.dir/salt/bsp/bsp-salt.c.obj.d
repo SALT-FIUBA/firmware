@@ -86,7 +86,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/bsp/bsp-salt.c.obj: \
  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/rkhfwk_evtpool.h \
  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/rkhfwk_sched.h \
  /Users/nando/NUCLEO-F429ZI/salt/bsp/bsp-salt.h \
- /Users/nando/NUCLEO-F429ZI/salt/signals.h \
+ /Users/nando/NUCLEO-F429ZI/salt/salt-signals.h \
  /Users/nando/NUCLEO-F429ZI/salt/peripherals/module-power/modpwr.h \
  /Users/nando/NUCLEO-F429ZI/salt/state-machines/module-manager/modmgr.h \
  /Users/nando/NUCLEO-F429ZI/salt/peripherals/module-command/modcmd.h \

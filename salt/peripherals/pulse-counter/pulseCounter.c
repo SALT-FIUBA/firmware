@@ -17,7 +17,7 @@
 /* ----------------------------- Include files ----------------------------- */
 #include "pulseCounter.h"
 #include "logic.h"
-#include "signals.h"
+#include "salt-signals.h"
 
 /* ----------------------------- Local macros ------------------------------ */
 /* ------------------------------- Constants ------------------------------- */

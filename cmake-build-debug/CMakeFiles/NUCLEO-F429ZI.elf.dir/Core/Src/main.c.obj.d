@@ -81,4 +81,59 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/main.c.obj: \
  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/rkhfwk_sched.h \
  /Users/nando/NUCLEO-F429ZI/blinky/blinky.h \
  /Users/nando/NUCLEO-F429ZI/blinky/bsp/bsp_blinky.h \
- /Users/nando/NUCLEO-F429ZI/mTime/mTime.h
+ /Users/nando/NUCLEO-F429ZI/mTime/mTime.h \
+ /Users/nando/NUCLEO-F429ZI/salt/peripherals/module-command/modcmd.h \
+ /Users/nando/NUCLEO-F429ZI/salt/state-machines/module-manager/modmgr.h \
+ /Users/nando/NUCLEO-F429ZI/salt/state-machines/mqtt-protocol/mqttProt.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/stdio.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/_ansi.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/newlib.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/config.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/ieeefp.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/cdefs.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/lib/gcc/arm-none-eabi/13.3.1/include/stdarg.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/reent.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/_ansi.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/_types.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/_types.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/lock.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/stdio.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/string.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/_locale.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/strings.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/string.h \
+ /Users/nando/NUCLEO-F429ZI/salt/salt-signals.h \
+ /Users/nando/NUCLEO-F429ZI/salt/utilities/epoch/epoch.h \
+ /Users/nando/NUCLEO-F429ZI/salt/utilities/date/date.h \
+ /Users/nando/NUCLEO-F429ZI/salt/state-machines/connector-manager/conmgr.h \
+ /Users/nando/NUCLEO-F429ZI/salt/state-machines/module-manager/modMgr.h \
+ /Users/nando/NUCLEO-F429ZI/salt/peripherals/gps/gps.h \
+ /Users/nando/NUCLEO-F429ZI/third-party/MQTT-C/include/mqttc.h \
+ /Users/nando/NUCLEO-F429ZI/third-party/MQTT-C/include/mqttc_pal.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/lib/gcc/arm-none-eabi/13.3.1/include/limits.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/lib/gcc/arm-none-eabi/13.3.1/include/syslimits.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/limits.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/syslimits.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/time.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/_timeval.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/types.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/endian.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/_endian.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/select.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/_sigset.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/timespec.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/_timespec.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/_pthreadtypes.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/sched.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/types.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/time.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/time.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/_time.h \
+ /Users/nando/NUCLEO-F429ZI/third-party/MQTT-C/include/mqttc_sync.h \
+ /Users/nando/NUCLEO-F429ZI/third-party/MQTT-C/include/mqttc.h \
+ /Users/nando/NUCLEO-F429ZI/salt/state-machines/logic/logic.h \
+ /Users/nando/NUCLEO-F429ZI/salt/utilities/parser/salt-command/saltCmd.h \
+ /Users/nando/NUCLEO-F429ZI/salt/peripherals/analog-inputs/anIn.h \
+ /Users/nando/NUCLEO-F429ZI/salt/peripherals/ihm/onSwitch.h \
+ /Users/nando/NUCLEO-F429ZI/salt/peripherals/relay-control/relay.h \
+ /Users/nando/NUCLEO-F429ZI/salt/bsp/bsp-salt.h

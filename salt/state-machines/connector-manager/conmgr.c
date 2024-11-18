@@ -25,7 +25,7 @@
 #include "modcmd.h"
 #include "mqttProt.h"
 #include "saltCfg.h"
-#include "signals.h"
+#include "salt-signals.h"
 #include "rtime.h"
 #include "bsp-salt.h"
 #include "logic.h"

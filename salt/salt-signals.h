@@ -30,8 +30,8 @@ extern "C" {
 
 /* --------------------------------- Macros -------------------------------- */
 /* -------------------------------- Constants ------------------------------ */
-/* ................................ Signals ................................ */
-enum Signals
+/* ................................ SaltSignals ................................ */
+enum SaltSignals
 {
 	evOpen,             // 00
 	evClose,            // 01
@@ -100,7 +100,7 @@ enum Signals
     evVelExternal,
     evVelGPS,
 };
-typedef enum Signals Signals;
+typedef enum SaltSignals SaltSignals;
 
 /* ------------------------------- Data types ------------------------------ */
 /* -------------------------- External variables --------------------------- */

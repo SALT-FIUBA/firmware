@@ -17,7 +17,7 @@
 /* --------------------------------- Notes --------------------------------- */
 /* ----------------------------- Include files ----------------------------- */
 #include "sim900parser.h"
-#include "signals.h"
+#include "salt-signals.h"
 #include "modmgr.h"
 #include "conmgr.h"
 #include "bsp/bsp-salt.h"

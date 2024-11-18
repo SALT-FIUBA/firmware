@@ -174,7 +174,7 @@ extern "C" {
 #define CONNECTION_DOMAIN       HIVE_MQ_SERVER
 #define CONNECTION_PORT         HIVE_MQ_PORT
 
-/* ................................ Signals ................................ */
+/* ................................ SaltSignals ................................ */
 /* ........................ Declares active object ......................... */
 RKH_SMA_DCLR(conMgr);
 

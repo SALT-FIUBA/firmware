@@ -26,7 +26,7 @@
 
 #include "rkh.h"
 #include "rkhtmr.h"
-#include "signals.h"
+#include "salt-signals.h"
 #include "epoch.h"
 #include "date.h"
 #include "conmgr.h"
@@ -39,7 +39,7 @@ extern "C" {
 
 /* --------------------------------- Macros -------------------------------- */
 /* -------------------------------- Constants ------------------------------ */
-/* ................................ Signals ................................ */
+/* ................................ SaltSignals ................................ */
 /* ........................ Declares active object ......................... */
 RKH_SMA_DCLR(mqttProt);
 

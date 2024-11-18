@@ -17,7 +17,7 @@
 /* ----------------------------- Include files ----------------------------- */
 #include "saltCmd.h"
 #include "logic.h"
-#include "signals.h"
+#include "salt-signals.h"
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>

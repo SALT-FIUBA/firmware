@@ -28,7 +28,7 @@
 #include "pulseCounter.h"
 #include "serial.h"
 #include "sim808.h"
-#include "signals.h"
+#include "salt-signals.h"
 #include "bsp-salt.h"
 #include "modpwr.h"
 #include "teloc.h"
@@ -171,7 +171,7 @@ static void debugCb(unsigned char c){
 #endif
 }
 
-void onMQTTCb(void** state,struct mqttc_response_publish *publish){
+static void onMQTTCb(void** state,struct mqttc_response_publish *publish){
     if(!initEnd){
         return;
     }

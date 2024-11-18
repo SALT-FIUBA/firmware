@@ -27,6 +27,23 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
+/* Blinky includes */
+#include "rkh.h"
+#include "blinky.h"
+#include "bsp/bsp_blinky.h"
+#include "mTime.h"
+
+/* SALT includes */
+#include "modcmd.h"
+#include "modmgr.h"
+#include "mqttProt.h"
+#include "logic.h"
+#include "salt-signals.h"
+#include "anIn.h"
+#include "onSwitch.h"
+#include "relay.h"
+#include "bsp-salt.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -41,12 +58,56 @@
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
+#define LOGIC_QSTO_SIZE  16
+#define MQTTPROT_QSTO_SIZE  16
+#define CONMGR_QSTO_SIZE    8
+#define MODMGR_QSTO_SIZE    4
+
+#define SIZEOF_EP0STO       16
+#define SIZEOF_EP0_BLOCK    sizeof(RKH_EVT_T)
+#define SIZEOF_EP1STO       128
+#define SIZEOF_EP1_BLOCK    sizeof(ModCmd)
+#define SIZEOF_EP2STO       512
+#define SIZEOF_EP2_BLOCK    sizeof(ModMgrEvt)
+
+/* Constants ------------------------------- */
+
+#define PULSE_COUNTER_THR                   5
+#define PULSE_COUNTER_FACTOR                0.904778684 // m/s_km/h(3.6) * pi * d_rueda(0.8m) / pulsos_revolucion(10)
+
+#define PWR_INPUT_SAMPLE_FACTOR             0.01628664 // 10k/(604k+10k) PWR*factor=sample
+#define PWR_INPUT_SAMPLE_MIN                (60*PWR_INPUT_SAMPLE_FACTOR) // 60V*factor=min_sample
+#define PWR_INPUT_SAMPLE_MAX                (120*PWR_INPUT_SAMPLE_FACTOR) // 110V*factor=max_sample
 
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
+
+/* Blinky Local variables */
+#define QSTO_SIZE           4
+static RKH_EVT_T *qsto[QSTO_SIZE];
+
+
+/* SALT Local variables */
+static RKH_EVT_T *Logic_qsto[LOGIC_QSTO_SIZE];
+static RKH_EVT_T *MQTTProt_qsto[MQTTPROT_QSTO_SIZE];
+static RKH_EVT_T *ConMgr_qsto[CONMGR_QSTO_SIZE];
+static RKH_EVT_T *ModMgr_qsto[MODMGR_QSTO_SIZE];
+static rui8_t evPool0Sto[SIZEOF_EP0STO],
+        evPool1Sto[SIZEOF_EP1STO],
+        evPool2Sto[SIZEOF_EP2STO];
+
+static RKH_ROM_STATIC_EVENT(e_Open, evOpen);
+static RKH_ROM_STATIC_EVENT(e_SaltEnable, evSaltEnable);
+static RKH_ROM_STATIC_EVENT(e_SaltDisable, evSaltDisable);
+static CmdEvt e_saltCmd;
+static MQTTProtCfg mqttProtCfg;
+static LogicCfg logicCfg;
+static ModCmdRcvHandler simACmdParser = NULL;
+static rbool_t initEnd = false;
+static rbool_t pwrCorrect = false;
 
 /* USER CODE END PV */
 
@@ -66,18 +127,120 @@ PUTCHAR_PROTOTYPE
 }
 /* USER CODE END PFP */
 
+
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-#include "rkh.h"
-#include "blinky.h"
-#include "bsp/bsp_blinky.h"
-#include "mTime.h"
+
+static void onAnInCb(){
+    if(!initEnd){
+        return;
+    }
+
+    sample_t sample = anInGetSample(anIn0);
+    bool aux = sample > PWR_INPUT_SAMPLE_MIN && sample < PWR_INPUT_SAMPLE_MAX;
+    if(aux != pwrCorrect){
+        pwrCorrect = aux;
+        if(pwrCorrect && onSwitchGet()){
+            RKH_SMA_POST_FIFO(logic, &e_SaltEnable, 0);
+        } else {
+            RKH_SMA_POST_FIFO(logic, &e_SaltDisable, 0);
+        }
+    }
+}
+
+static void onSwitchCb(bool activated){
+    if(!initEnd){
+        return;
+    }
+    if(!pwrCorrect){
+        return;
+    }
+
+    if(activated){
+        RKH_SMA_POST_FIFO(logic, &e_SaltEnable, 0);
+    } else {
+        RKH_SMA_POST_FIFO(logic, &e_SaltDisable, 0);
+    }
+}
+
+static void onRelayErrorCb(Relay_t relay){
+    if(!initEnd){
+        return;
+    }
+
+    switch(relay){
+        case feEn:
+        case feDis:
+        case ctEn:
+        case ctDis:
+            if(onSwitchGet()){ //Esto es un error solo si el switch esta activado (sino es una inconsistencia dada por la posicion del switch)
+                RKH_SMA_POST_FIFO(logic, &e_SaltDisable, 0);
+            }
+            break;
+        case feAct:
+        case ctAct:
+            RKH_SMA_POST_FIFO(logic, &e_SaltDisable, 0);
+            break;
+        default:
+            break;
+    }
+}
+
+static void simACb(unsigned char c){
+#ifdef DEBUG_SERIAL_PASS
+    serialPutByte(UART_DEBUG,c);
+#endif
+    if(!initEnd){
+        return;
+    }
+
+    simACmdParser(c);
+
+}
+
+static void simBCb(unsigned char c){
+    if(!initEnd){
+        return;
+    }
+}
+
+static void debugCb(unsigned char c){
+
+#ifdef DEBUG_SERIAL_PASS
+    //serialPutByte(UART_DEBUG,c);
+    serialPutByte(UART_SIM_808_A,c);
+#endif
+}
+
+#define MIN(a, b) (((a) < (b)) ? (a) : (b))
+
+void onMQTTCb(void** state,struct mqttc_response_publish *publish) {
+    if (!initEnd) {
+        return;
+    }
+
+    char dump1[255] = {0};
+    char dump2[255] = {0};
+    sprintf(dump1, "MQTT topic: %.*s", MIN(publish->topic_name_size, 200), publish->topic_name);
+    sprintf(dump2, "MQTT data: %.*s", MIN((int) publish->application_message_size, 200), publish->application_message);
+    RKH_TRC_USR_BEGIN(USR_TRACE_MQTT)
+    RKH_TUSR_STR(dump1);
+    RKH_TUSR_STR(dump2);
+    RKH_TRC_USR_END();
+
+    int result = saltCmdParse((char *) publish->application_message, publish->application_message_size,
+                              &(e_saltCmd.cmd));
+    if (result > 0) {
+        RKH_SMA_POST_FIFO(logic, RKH_UPCAST(RKH_EVT_T, &e_saltCmd), 0);
+    }
+}
 
 
-#define QSTO_SIZE           4
-static RKH_EVT_T *qsto[QSTO_SIZE];
+
 
 /* USER CODE END 0 */
+
+
 
 /**
   * @brief  The application entry point.

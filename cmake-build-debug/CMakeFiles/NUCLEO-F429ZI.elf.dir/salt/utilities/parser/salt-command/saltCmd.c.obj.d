@@ -77,7 +77,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/salt-command/saltCmd.c.ob
  /Users/nando/NUCLEO-F429ZI/salt/peripherals/gps/gps.h \
  /Users/nando/NUCLEO-F429ZI/salt/utilities/epoch/epoch.h \
  /Users/nando/NUCLEO-F429ZI/salt/utilities/parser/salt-command/saltCmd.h \
- /Users/nando/NUCLEO-F429ZI/salt/signals.h \
+ /Users/nando/NUCLEO-F429ZI/salt/salt-signals.h \
  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/string.h \
  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/_ansi.h \
  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/newlib.h \

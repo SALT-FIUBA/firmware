@@ -28,12 +28,12 @@ extern "C" {
 
 /* --------------------------------- Macros -------------------------------- */
 /* -------------------------------- Constants ------------------------------ */
-/* ................................ Signals ................................ */
-typedef enum Signals
+/* ................................ SaltSignals ................................ */
+typedef enum BlinkySignals
 {
     evTout,     /* timeout */
     TERMINATE
-} Signals;
+} BlinkySignals;
 
 /* ........................ Declares active object ......................... */
 RKH_SMA_DCLR(blinky);

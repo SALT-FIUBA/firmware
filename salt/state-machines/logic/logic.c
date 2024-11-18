@@ -20,7 +20,7 @@
 #include <string.h>
 #include "conmgr.h"
 #include "mqttProt.h"
-#include "signals.h"
+#include "salt-signals.h"
 #include "bsp-salt.h"
 #include "ledPanel.h"
 #include "buzzer.h"

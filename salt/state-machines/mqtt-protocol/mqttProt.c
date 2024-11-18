@@ -20,7 +20,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "rkh.h"
-#include "signals.h"
+#include "salt-signals.h"
 #include "mqttProt.h"
 #include "conmgr.h"
 #include "mqttc.h"

@@ -17,7 +17,7 @@
 /* ----------------------------- Include files ----------------------------- */
 #include "teloc.h"
 #include "logic.h"
-#include "signals.h"
+#include "salt-signals.h"
 #include "serial.h"
 
 /* ----------------------------- Local macros ------------------------------ */
