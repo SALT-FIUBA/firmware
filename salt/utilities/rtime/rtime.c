@@ -99,10 +99,4 @@ void rtime_set(Time *pt)
     }
 }
 
-// SysTick interrupt handler (if needed)
-void SysTick_Handler(void)
-{
-    HAL_IncTick();
-}
-
 /* ------------------------------ End of file ------------------------------ */

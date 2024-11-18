@@ -221,11 +221,12 @@ postFIFOEvtCmd(ModMgrEvt *pe, const ModCmd *pc, unsigned char *data, ruint nData
 static void
 sendModCmd_noArgs(const ModCmd *p)
 {
-    ModMgrEvt *evtCmd;
+    ModMgrEvt * evtCmd;
 
-    evtCmd = RKH_ALLOC_EVT(ModMgrEvt, evCmd, *p->aoDest);
+    // TODO: check how to enable RKH_ALLOC_EVT
+    //  evtCmd = RKH_ALLOC_EVT(ModMgrEvt, evCmd, *p->aoDest);
 
-    strncpy(evtCmd->cmd, p->fmt, MODMGR_MAX_SIZEOF_CMDSTR);
+    // strncpy(evtCmd->cmd, p->fmt, MODMGR_MAX_SIZEOF_CMDSTR);
 
     postFIFOEvtCmd(evtCmd, p, NULL, 0);
 }
@@ -235,9 +236,10 @@ sendModCmd_rui16(const ModCmd *p, rui16_t arg)
 {
     ModMgrEvt *evtCmd;
 
-    evtCmd = RKH_ALLOC_EVT(ModMgrEvt, evCmd, *p->aoDest);
+    // TODO: check how to enable RKH_ALLOC_EVT
+    //  evtCmd = RKH_ALLOC_EVT(ModMgrEvt, evCmd, *p->aoDest);
 
-    snprintf(evtCmd->cmd, MODMGR_MAX_SIZEOF_CMDSTR, p->fmt, arg);
+    //  snprintf(evtCmd->cmd, MODMGR_MAX_SIZEOF_CMDSTR, p->fmt, arg);
 
     postFIFOEvtCmd(evtCmd, p, NULL, 0);
 }
@@ -247,9 +249,10 @@ sendModCmd_3StrArgs(const ModCmd *p, char *s1, char *s2, char *s3)
 {
     ModMgrEvt *evtCmd;
 
-    evtCmd = RKH_ALLOC_EVT(ModMgrEvt, evCmd, *p->aoDest);
+    // TODO: check how to enable RKH_ALLOC_EVT
+    //  evtCmd = RKH_ALLOC_EVT(ModMgrEvt, evCmd, *p->aoDest);
     
-    snprintf(evtCmd->cmd, MODMGR_MAX_SIZEOF_CMDSTR, p->fmt, s1, s2, s3);
+    //  snprintf(evtCmd->cmd, MODMGR_MAX_SIZEOF_CMDSTR, p->fmt, s1, s2, s3);
 
     postFIFOEvtCmd(evtCmd, p, NULL, 0);
 }
@@ -382,7 +385,8 @@ ModCmd_sendData(unsigned char *buf, ruint size)
 
     p = &cmdTbl.sendData;
 
-    evtCmd = RKH_ALLOC_EVT(ModMgrEvt, evCmd, *p->aoDest);
+    // TODO: check how to enable RKH_ALLOC_EVT
+    //  evtCmd = RKH_ALLOC_EVT(ModMgrEvt, evCmd, *p->aoDest);
 
     evtCmd->data = buf;
     evtCmd->nData = size;

@@ -37,7 +37,7 @@ void UART4_IRQHandler(void);
 */
 /* ----------------------------- Include files ----------------------------- */
 #include "serial.h"
-#include "lwipopts.h"
+#include "gpio.h"
 
 //  #include "sapi.h"
 

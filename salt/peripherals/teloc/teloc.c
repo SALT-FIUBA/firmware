@@ -66,7 +66,7 @@ void telocInit() {
     RKH_SET_STATIC_EVENT(RKH_UPCAST(RKH_EVT_T, &haslerVelEvt), evVelHasler);
 
     serialInit(UART_TELOC_1500);
-    serialSetIntCb(UART_TELOC_1500, telocParse);
+    serialSetIntCb(UART_TELOC_1500, (serialIsrCb_t) telocParse);
 
 }
 

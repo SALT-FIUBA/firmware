@@ -19,9 +19,9 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_C_STANDARD 11)
 
 #Uncomment for hardware floating point
-add_compile_definitions(ARM_MATH_CM4;ARM_MATH_MATRIX_CHECK;ARM_MATH_ROUNDING)
-add_compile_options(-mfloat-abi=hard -mfpu=fpv4-sp-d16)
-add_link_options(-mfloat-abi=hard -mfpu=fpv4-sp-d16)
+#add_compile_definitions(ARM_MATH_CM4;ARM_MATH_MATRIX_CHECK;ARM_MATH_ROUNDING)
+#add_compile_options(-mfloat-abi=hard -mfpu=fpv4-sp-d16)
+#add_link_options(-mfloat-abi=hard -mfpu=fpv4-sp-d16)
 
 #Uncomment for software floating point
 #add_compile_options(-mfloat-abi=soft)
@@ -52,6 +52,7 @@ endif ()
 include_directories(
         Core/Inc Drivers/STM32F4xx_HAL_Driver/Inc Drivers/STM32F4xx_HAL_Driver/Inc/Legacy Drivers/CMSIS/Device/ST/STM32F4xx/Include Drivers/CMSIS/Include
 
+
         ##  blinky example
         bsp
         blinky
@@ -68,43 +69,47 @@ include_directories(
 
         mTime
 
-        # salt
+
+        ##  salt project
 
         third-party/jWrite/jWrite
         third-party/MQTT-C/include
+
+        blinky
+        blinky/bsp
+        salt/utilities/rtime
+        salt/utilities/mTime
+        salt/utilities/date
+        salt/utilities/epoch
 
         salt
         salt/configuration
         salt/bsp
 
-        salt/utilities/rtime
-        salt/utilities/mTime
-        salt/utilities/date
-        salt/utilities/epoch
-        salt/utilities/ssp
-        salt/utilities/parser
-        salt/utilities/parser/salt-command
-        salt/utilities/parser/sim900
-        salt/utilities/publisher
-        salt/utilities/emaFilter
+        salt/state-machines/mqtt-protocol
+        salt/state-machines/connector-manager
+        salt/state-machines/module-manager
+        salt/state-machines/logic
 
         salt/peripherals/module-command
         salt/peripherals/module-power
         salt/peripherals/serial
         salt/peripherals/gps
         salt/peripherals/sim808
-        salt/peripherals/ledPan
+        salt/peripherals/ledPanel
         salt/peripherals/ihm
         salt/peripherals/relay-control
         salt/peripherals/analog-inputs
         salt/peripherals/pulse-counter
         salt/peripherals/teloc
-        salt/peripherals/ledPanel
 
-        salt/state-machines/logic
-        salt/state-machines/connector-manager
-        salt/state-machines/module-manager
-        salt/state-machines/mqtt-protocol
+        salt/utilities/emaFilter
+        salt/utilities/parser
+        salt/utilities/parser/sim900
+        salt/utilities/parser/salt-command
+        salt/utilities/ssp/src
+        salt/utilities/aes
+        salt/utilities/publisher
 
 
 )
@@ -114,8 +119,7 @@ add_definitions(
         -DUSE_HAL_DRIVER
         -DSTM32F429xx
         -DRKH_PLATFORM="__STM32__"
-        #   -DRKH_CONF_FILE="blinky/rkhcfg.h"
-        -DRKH_CONF_FILE="salt/rkhcfg.h"
+        -DRKH_CONF_FILE="blinky/rkhcfg.h"
 )
 
 file(
@@ -152,17 +156,12 @@ file(
         "mTime/mTime.c"
         "mTime/mTimeTbl.c"
 
-        # salt firmware
+        # salt
 
-        "Middlewares/Third_Party/jWrite/jWrite/*.*"
-        "Middlewares/Third_Party/MQTT-C/source/*.*"
-
+        "third_Party/jWrite/jWrite/*.*"
+        "third_Party/MQTT-C/source/*.*"
 
         "salt/*.*"
-        "salt/utilities/*.*"
-
-        "salt/state-machines/*.*"
-
 
 )
 

@@ -35,12 +35,14 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/main.c.obj: \
  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h \
  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
+ /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h \
  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h \
  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h \
  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h \
  /Users/nando/NUCLEO-F429ZI/Core/Inc/eth.h \
  /Users/nando/NUCLEO-F429ZI/Core/Inc/main.h \
+ /Users/nando/NUCLEO-F429ZI/Core/Inc/spi.h \
  /Users/nando/NUCLEO-F429ZI/Core/Inc/usart.h \
  /Users/nando/NUCLEO-F429ZI/Core/Inc/usb_otg.h \
  /Users/nando/NUCLEO-F429ZI/Core/Inc/gpio.h \

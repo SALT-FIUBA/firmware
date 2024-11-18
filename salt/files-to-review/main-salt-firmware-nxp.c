@@ -171,7 +171,7 @@ static void debugCb(unsigned char c){
 #endif
 }
 
-void onMQTTCb(void** state,struct mqtt_response_publish *publish){
+void onMQTTCb(void** state,struct mqttc_response_publish *publish){
     if(!initEnd){
         return;
     }

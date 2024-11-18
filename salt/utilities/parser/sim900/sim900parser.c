@@ -583,7 +583,8 @@ sendModResp_noArgs(RKH_SIG_T sig)
         ModMgrSignal = evURC;
     }
 
-    p = RKH_ALLOC_EVT( ModMgrResp, ModMgrSignal, &sim900parser );
+    // TODO: check how to enable RKH_ALLOC_EVT
+    //  p = RKH_ALLOC_EVT( ModMgrResp, ModMgrSignal, &sim900parser );
     p->fwdEvt = sig;
     RKH_SMA_POST_FIFO( modMgr, RKH_UPCAST(RKH_EVT_T, p), &sim900parser );
 }
