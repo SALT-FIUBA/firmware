@@ -74,6 +74,7 @@ include_directories(
 
         third-party/jWrite/jWrite
         third-party/MQTT-C/include
+        third-party/stm32-sapi/inc
 
         blinky
         blinky/bsp
@@ -112,6 +113,9 @@ include_directories(
         salt/utilities/publisher
 
         utilities
+
+        # blinky sys tick
+        blinkySysTick
 
 )
 
@@ -161,10 +165,15 @@ file(
 
         "third-party/jWrite/jWrite/*.*"
         "third-party/MQTT-C/source/*.*"
+        "third-party/stm32-sapi/src/*.*"
 
         "salt/*.*"
 
+
         "utilities/*.*"
+
+        # blinky sys tick
+        "blinkySysTick/*.*"
 )
 
 set(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/STM32F429ZITX_FLASH.ld)

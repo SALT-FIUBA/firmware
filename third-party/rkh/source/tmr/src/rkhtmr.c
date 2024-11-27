@@ -132,8 +132,6 @@ rkh_tmr_tick(const void *const sender)
 rkh_tmr_tick(void)
 #endif
 {
-    printf("rkh_tmr_tick \n");
-
     RKH_TMR_T *t, *tprev;
     RKH_SR_ALLOC();
 

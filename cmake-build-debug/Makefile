@@ -1001,6 +1001,30 @@ blinky/bsp/hook.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp/hook.c.s
 .PHONY : blinky/bsp/hook.c.s
 
+blinkySysTick/blinkySysTick.obj: blinkySysTick/blinkySysTick.c.obj
+.PHONY : blinkySysTick/blinkySysTick.obj
+
+# target to build an object file
+blinkySysTick/blinkySysTick.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/blinkySysTick/blinkySysTick.c.obj
+.PHONY : blinkySysTick/blinkySysTick.c.obj
+
+blinkySysTick/blinkySysTick.i: blinkySysTick/blinkySysTick.c.i
+.PHONY : blinkySysTick/blinkySysTick.i
+
+# target to preprocess a source file
+blinkySysTick/blinkySysTick.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/blinkySysTick/blinkySysTick.c.i
+.PHONY : blinkySysTick/blinkySysTick.c.i
+
+blinkySysTick/blinkySysTick.s: blinkySysTick/blinkySysTick.c.s
+.PHONY : blinkySysTick/blinkySysTick.s
+
+# target to generate assembly for a file
+blinkySysTick/blinkySysTick.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/blinkySysTick/blinkySysTick.c.s
+.PHONY : blinkySysTick/blinkySysTick.c.s
+
 bsp/stm32f4xx_nucleo_144.obj: bsp/stm32f4xx_nucleo_144.c.obj
 .PHONY : bsp/stm32f4xx_nucleo_144.obj
 
@@ -2369,6 +2393,78 @@ third-party/rkh/source/trc/src/rkhtrc_stream.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.s
 .PHONY : third-party/rkh/source/trc/src/rkhtrc_stream.c.s
 
+third-party/stm32-sapi/src/sapi_datatypes.obj: third-party/stm32-sapi/src/sapi_datatypes.c.obj
+.PHONY : third-party/stm32-sapi/src/sapi_datatypes.obj
+
+# target to build an object file
+third-party/stm32-sapi/src/sapi_datatypes.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_datatypes.c.obj
+.PHONY : third-party/stm32-sapi/src/sapi_datatypes.c.obj
+
+third-party/stm32-sapi/src/sapi_datatypes.i: third-party/stm32-sapi/src/sapi_datatypes.c.i
+.PHONY : third-party/stm32-sapi/src/sapi_datatypes.i
+
+# target to preprocess a source file
+third-party/stm32-sapi/src/sapi_datatypes.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_datatypes.c.i
+.PHONY : third-party/stm32-sapi/src/sapi_datatypes.c.i
+
+third-party/stm32-sapi/src/sapi_datatypes.s: third-party/stm32-sapi/src/sapi_datatypes.c.s
+.PHONY : third-party/stm32-sapi/src/sapi_datatypes.s
+
+# target to generate assembly for a file
+third-party/stm32-sapi/src/sapi_datatypes.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_datatypes.c.s
+.PHONY : third-party/stm32-sapi/src/sapi_datatypes.c.s
+
+third-party/stm32-sapi/src/sapi_gpio.obj: third-party/stm32-sapi/src/sapi_gpio.c.obj
+.PHONY : third-party/stm32-sapi/src/sapi_gpio.obj
+
+# target to build an object file
+third-party/stm32-sapi/src/sapi_gpio.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_gpio.c.obj
+.PHONY : third-party/stm32-sapi/src/sapi_gpio.c.obj
+
+third-party/stm32-sapi/src/sapi_gpio.i: third-party/stm32-sapi/src/sapi_gpio.c.i
+.PHONY : third-party/stm32-sapi/src/sapi_gpio.i
+
+# target to preprocess a source file
+third-party/stm32-sapi/src/sapi_gpio.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_gpio.c.i
+.PHONY : third-party/stm32-sapi/src/sapi_gpio.c.i
+
+third-party/stm32-sapi/src/sapi_gpio.s: third-party/stm32-sapi/src/sapi_gpio.c.s
+.PHONY : third-party/stm32-sapi/src/sapi_gpio.s
+
+# target to generate assembly for a file
+third-party/stm32-sapi/src/sapi_gpio.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_gpio.c.s
+.PHONY : third-party/stm32-sapi/src/sapi_gpio.c.s
+
+third-party/stm32-sapi/src/sapi_tick.obj: third-party/stm32-sapi/src/sapi_tick.c.obj
+.PHONY : third-party/stm32-sapi/src/sapi_tick.obj
+
+# target to build an object file
+third-party/stm32-sapi/src/sapi_tick.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_tick.c.obj
+.PHONY : third-party/stm32-sapi/src/sapi_tick.c.obj
+
+third-party/stm32-sapi/src/sapi_tick.i: third-party/stm32-sapi/src/sapi_tick.c.i
+.PHONY : third-party/stm32-sapi/src/sapi_tick.i
+
+# target to preprocess a source file
+third-party/stm32-sapi/src/sapi_tick.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_tick.c.i
+.PHONY : third-party/stm32-sapi/src/sapi_tick.c.i
+
+third-party/stm32-sapi/src/sapi_tick.s: third-party/stm32-sapi/src/sapi_tick.c.s
+.PHONY : third-party/stm32-sapi/src/sapi_tick.s
+
+# target to generate assembly for a file
+third-party/stm32-sapi/src/sapi_tick.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_tick.c.s
+.PHONY : third-party/stm32-sapi/src/sapi_tick.c.s
+
 utilities/htons.obj: utilities/htons.c.obj
 .PHONY : utilities/htons.obj
 
@@ -2511,6 +2607,9 @@ help:
 	@echo "... blinky/bsp/hook.obj"
 	@echo "... blinky/bsp/hook.i"
 	@echo "... blinky/bsp/hook.s"
+	@echo "... blinkySysTick/blinkySysTick.obj"
+	@echo "... blinkySysTick/blinkySysTick.i"
+	@echo "... blinkySysTick/blinkySysTick.s"
 	@echo "... bsp/stm32f4xx_nucleo_144.obj"
 	@echo "... bsp/stm32f4xx_nucleo_144.i"
 	@echo "... bsp/stm32f4xx_nucleo_144.s"
@@ -2682,6 +2781,15 @@ help:
 	@echo "... third-party/rkh/source/trc/src/rkhtrc_stream.obj"
 	@echo "... third-party/rkh/source/trc/src/rkhtrc_stream.i"
 	@echo "... third-party/rkh/source/trc/src/rkhtrc_stream.s"
+	@echo "... third-party/stm32-sapi/src/sapi_datatypes.obj"
+	@echo "... third-party/stm32-sapi/src/sapi_datatypes.i"
+	@echo "... third-party/stm32-sapi/src/sapi_datatypes.s"
+	@echo "... third-party/stm32-sapi/src/sapi_gpio.obj"
+	@echo "... third-party/stm32-sapi/src/sapi_gpio.i"
+	@echo "... third-party/stm32-sapi/src/sapi_gpio.s"
+	@echo "... third-party/stm32-sapi/src/sapi_tick.obj"
+	@echo "... third-party/stm32-sapi/src/sapi_tick.i"
+	@echo "... third-party/stm32-sapi/src/sapi_tick.s"
 	@echo "... utilities/htons.obj"
 	@echo "... utilities/htons.i"
 	@echo "... utilities/htons.s"

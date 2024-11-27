@@ -15,6 +15,7 @@
 
 /* --------------------------------- Notes --------------------------------- */
 /* ----------------------------- Include files ----------------------------- */
+#include <stdio.h>
 #include "pulseCounter.h"
 #include "logic.h"
 #include "salt-signals.h"
@@ -32,10 +33,9 @@ VelEvt externalVelEvt;
 /* ---------------------------- Local functions ---------------------------- */
 
 /* ---------------------------- Global functions --------------------------- */
-void pulseCounterInit(
-        pulseCount_t errorThr,
-        float velFactor
-    ) {
+void pulseCounterInit(pulseCount_t errorThr, float velFactor) {
+
+    //  printf("pulse counter init \n");
 
     pulseCounterInitBsp(errorThr);
     factor = velFactor;

@@ -170,6 +170,7 @@ extern "C" {
 #define HIVE_MQ_SERVER        "broker.hivemq.com"
 #define HIVE_MQ_PORT          "1883"
 
+
 #define CONNECTION_PROT         "TCP"
 #define CONNECTION_DOMAIN       HIVE_MQ_SERVER
 #define CONNECTION_PORT         HIVE_MQ_PORT

@@ -32,6 +32,8 @@
 #include "epoch.h"
 #include "rtime.h"
 #include "stm32f4xx_nucleo_144.h"
+#include "sapi_tick.h"
+#include "sapi_gpio.h"
 
 RKH_THIS_MODULE
 
@@ -43,7 +45,7 @@ RKH_THIS_MODULE
 
 /* ----------------------------- Local macros ------------------------------ */
 #define ModStatus_init()    gpioConfig(LED1, GPIO_OUTPUT)
-#define ModStatus(b)        gpioWrite(LED1, b)
+#define ModStatus(b)        BSP_LED_On(LED1) // original code: gpioWrite(LED1, b)
 //  #define ModStatus_toggle()  gpioToggle(LED1)
 #define ModStatus_toggle()  BSP_LED_On(LED1)
 
@@ -65,41 +67,43 @@ static RKH_TS_T tstamp;
 /* ---------------------------- Local functions ---------------------------- */
 /* ---------------------------- Global functions --------------------------- */
 void
-bsp_salt_init()
+bsp_init()
 {
+    //  printf("bsp_init \n");
     /* Read clock settings and update SystemCoreClock variable */
-    //  SystemCoreClockUpdate();
+    SystemCoreClockUpdate(); // function defined on stm32f4xx.c
 
     /* EDU-CIAA Configuration */
     /* Inicializar el conteo de Ticks con resolución de 1ms, sin tickHook */
-    //  tickConfig( 1, 0 );
+    tickConfig( 1, 0 );
 
     /* Inicializar GPIOs */
-    //  gpioConfig( 0, GPIO_ENABLE );
+    gpioConfig( 0, GPIO_ENABLE );
 
     /* Configuración de pines de entrada para Teclas de la EDU-CIAA-NXP */
-   //    gpioConfig( TEC1, GPIO_INPUT );
-   //    gpioConfig( TEC2, GPIO_INPUT );
-   //    gpioConfig( TEC3, GPIO_INPUT );
-   //    gpioConfig( TEC4, GPIO_INPUT );
+    gpioConfig( USER_BUTTON, GPIO_INPUT );
+    gpioConfig(USER_BUTTON, GPIO_INPUT );
+    gpioConfig(USER_BUTTON, GPIO_INPUT );
+    gpioConfig(USER_BUTTON, GPIO_INPUT );
 
     /* Configuración de pines de salida para Leds de la EDU-CIAA-NXP */
-   //    gpioConfig( LEDR, GPIO_OUTPUT );
-   //    gpioConfig( LEDG, GPIO_OUTPUT );
-   //    gpioConfig( LEDB, GPIO_OUTPUT );
-   //    gpioConfig( LED1, GPIO_OUTPUT );
-   //    gpioConfig( LED2, GPIO_OUTPUT );
-   //    gpioConfig( LED3, GPIO_OUTPUT );
+      // gpioConfig( LEDR, GPIO_OUTPUT );
+      // gpioConfig( LEDG, GPIO_OUTPUT );
+      // gpioConfig( LEDB, GPIO_OUTPUT );
+   //gpioConfig( LED1, GPIO_OUTPUT );
+   //gpioConfig( LED2, GPIO_OUTPUT );
+   //gpioConfig( LED3, GPIO_OUTPUT );
 
-   //    ModStatus_init();
-   //    ModStatus(0);
-   //    RegStatus(UnregisteredSt);
-   //    NetStatus_init();
-   //    NetStatus(DisconnectedSt);
+
+   ModStatus_init();
+   ModStatus(0);
+   RegStatus(UnregisteredSt); // turn on LED2
+   NetStatus_init();
+   NetStatus(DisconnectedSt); // turn on LED3
    /***************************************************/
 
 
-    modPwr_init();
+    //  modPwr_init();
     rtime_init();
 }
 

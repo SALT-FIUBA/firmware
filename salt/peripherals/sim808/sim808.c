@@ -22,6 +22,7 @@
 #include "rkht.h"
 #include <stdint.h>
 #include <stdbool.h>
+#include <stdio.h>
 
 //  #include "sapi.h"
 
@@ -133,6 +134,8 @@ void sim808Init(Sim808_t sim808){
 
 void sim808Init(Sim808_t sim808)
 {
+    //  printf("sim 808 init \n");
+
     if(sim808 >= SIM_808_COUNT)
         return;
 

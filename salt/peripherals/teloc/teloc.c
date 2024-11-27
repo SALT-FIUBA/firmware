@@ -15,6 +15,7 @@
 
 /* --------------------------------- Notes --------------------------------- */
 /* ----------------------------- Include files ----------------------------- */
+#include <stdio.h>
 #include "teloc.h"
 #include "logic.h"
 #include "salt-signals.h"
@@ -60,6 +61,8 @@ uint16_t crc16(unsigned char* pData, int length) // CRC16_CCITT_FALSE https://gi
 /* ---------------------------- Global functions --------------------------- */
 /* -------------------------- Function prototypes -------------------------- */
 void telocInit() {
+
+    //  printf("teloc init \n");
 
     nextTelocFrameByte = telocFrame;
     haslerVelEvt.source = VEL_SOURCE_TELOC;

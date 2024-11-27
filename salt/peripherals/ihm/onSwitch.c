@@ -31,6 +31,7 @@
 
 
 /* ----------------------------- Include files ----------------------------- */
+#include <stdio.h>
 #include "onSwitch.h"
 #include "buzzer.h"
 #include "stm32f4xx_hal.h"
@@ -94,6 +95,8 @@ static onSwitchCb_t onSwitchCb = NULL;
 
 void onSwitchInit(onSwitchCb_t cb)
 {
+    //  printf("onswitchinit \n");
+
     GPIO_InitTypeDef GPIO_InitStruct = {0};
 
     /* Set Callback */

@@ -16,6 +16,7 @@
 /* --------------------------------- Notes --------------------------------- */
 /* ----------------------------- Include files ----------------------------- */
 #include <stdbool.h>
+#include <stdio.h>
 #include "buzzer.h"
 
 /* ----------------------------- Local macros ------------------------------ */
@@ -49,6 +50,9 @@ bool buzzerGet(){
 /* ---------------------------- Global functions --------------------------- */
 
 void buzzerInit(){
+
+    //  printf("buzzer init \n");
+
     buzzerInitBsp();
     buzzerSetMode(BUZZER_MODE_DISABLE);
 }

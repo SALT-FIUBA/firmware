@@ -97,4 +97,8 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/bsp/bsp-salt.c.obj: \
  /Users/nando/NUCLEO-F429ZI/mTime/mTime.h \
  /Users/nando/NUCLEO-F429ZI/salt/peripherals/analog-inputs/anIn.h \
  /Users/nando/NUCLEO-F429ZI/salt/utilities/rtime/rtime.h \
- /Users/nando/NUCLEO-F429ZI/bsp/stm32f4xx_nucleo_144.h
+ /Users/nando/NUCLEO-F429ZI/bsp/stm32f4xx_nucleo_144.h \
+ /Users/nando/NUCLEO-F429ZI/third-party/stm32-sapi/inc/sapi_tick.h \
+ /Users/nando/NUCLEO-F429ZI/third-party/stm32-sapi/inc/sapi_datatypes.h \
+ /Users/nando/NUCLEO-F429ZI/third-party/stm32-sapi/inc/sapi_gpio.h \
+ /Users/nando/NUCLEO-F429ZI/third-party/stm32-sapi/inc/sapi_peripheral_map.h

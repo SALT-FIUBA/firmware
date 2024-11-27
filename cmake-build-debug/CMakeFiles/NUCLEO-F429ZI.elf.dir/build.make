@@ -586,10 +586,24 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp/hook.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp/hook.c.s"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/nando/NUCLEO-F429ZI/blinky/bsp/hook.c -o CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp/hook.c.s
 
+CMakeFiles/NUCLEO-F429ZI.elf.dir/blinkySysTick/blinkySysTick.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
+CMakeFiles/NUCLEO-F429ZI.elf.dir/blinkySysTick/blinkySysTick.c.obj: /Users/nando/NUCLEO-F429ZI/blinkySysTick/blinkySysTick.c
+CMakeFiles/NUCLEO-F429ZI.elf.dir/blinkySysTick/blinkySysTick.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/blinkySysTick/blinkySysTick.c.obj"
+	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/blinkySysTick/blinkySysTick.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/blinkySysTick/blinkySysTick.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/blinkySysTick/blinkySysTick.c.obj -c /Users/nando/NUCLEO-F429ZI/blinkySysTick/blinkySysTick.c
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/blinkySysTick/blinkySysTick.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/NUCLEO-F429ZI.elf.dir/blinkySysTick/blinkySysTick.c.i"
+	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/nando/NUCLEO-F429ZI/blinkySysTick/blinkySysTick.c > CMakeFiles/NUCLEO-F429ZI.elf.dir/blinkySysTick/blinkySysTick.c.i
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/blinkySysTick/blinkySysTick.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/NUCLEO-F429ZI.elf.dir/blinkySysTick/blinkySysTick.c.s"
+	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/nando/NUCLEO-F429ZI/blinkySysTick/blinkySysTick.c -o CMakeFiles/NUCLEO-F429ZI.elf.dir/blinkySysTick/blinkySysTick.c.s
+
 CMakeFiles/NUCLEO-F429ZI.elf.dir/bsp/stm32f4xx_nucleo_144.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/bsp/stm32f4xx_nucleo_144.c.obj: /Users/nando/NUCLEO-F429ZI/bsp/stm32f4xx_nucleo_144.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/bsp/stm32f4xx_nucleo_144.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/bsp/stm32f4xx_nucleo_144.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/bsp/stm32f4xx_nucleo_144.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/bsp/stm32f4xx_nucleo_144.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/bsp/stm32f4xx_nucleo_144.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/bsp/stm32f4xx_nucleo_144.c.obj -c /Users/nando/NUCLEO-F429ZI/bsp/stm32f4xx_nucleo_144.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/bsp/stm32f4xx_nucleo_144.c.i: cmake_force
@@ -603,7 +617,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/bsp/stm32f4xx_nucleo_144.c.s: cmake_force
 CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTime.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTime.c.obj: /Users/nando/NUCLEO-F429ZI/mTime/mTime.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTime.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTime.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTime.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTime.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTime.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTime.c.obj -c /Users/nando/NUCLEO-F429ZI/mTime/mTime.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTime.c.i: cmake_force
@@ -617,7 +631,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTime.c.s: cmake_force
 CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTimeTbl.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTimeTbl.c.obj: /Users/nando/NUCLEO-F429ZI/mTime/mTimeTbl.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTimeTbl.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTimeTbl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTimeTbl.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTimeTbl.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTimeTbl.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTimeTbl.c.obj -c /Users/nando/NUCLEO-F429ZI/mTime/mTimeTbl.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTimeTbl.c.i: cmake_force
@@ -631,7 +645,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTimeTbl.c.s: cmake_force
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/bsp/bsp-salt.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/bsp/bsp-salt.c.obj: /Users/nando/NUCLEO-F429ZI/salt/bsp/bsp-salt.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/bsp/bsp-salt.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/bsp/bsp-salt.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/bsp/bsp-salt.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/bsp/bsp-salt.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/bsp/bsp-salt.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/bsp/bsp-salt.c.obj -c /Users/nando/NUCLEO-F429ZI/salt/bsp/bsp-salt.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/bsp/bsp-salt.c.i: cmake_force
@@ -645,7 +659,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/bsp/bsp-salt.c.s: cmake_force
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/configuration/saltCfg.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/configuration/saltCfg.c.obj: /Users/nando/NUCLEO-F429ZI/salt/configuration/saltCfg.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/configuration/saltCfg.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/configuration/saltCfg.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/configuration/saltCfg.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/configuration/saltCfg.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/configuration/saltCfg.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/configuration/saltCfg.c.obj -c /Users/nando/NUCLEO-F429ZI/salt/configuration/saltCfg.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/configuration/saltCfg.c.i: cmake_force
@@ -659,7 +673,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/configuration/saltCfg.c.s: cmake_force
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/hook.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/hook.c.obj: /Users/nando/NUCLEO-F429ZI/salt/files-to-review/hook.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/hook.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/hook.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/hook.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/hook.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/hook.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/hook.c.obj -c /Users/nando/NUCLEO-F429ZI/salt/files-to-review/hook.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/hook.c.i: cmake_force
@@ -673,7 +687,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/hook.c.s: cmake_force
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/main-salt-firmware-nxp.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/main-salt-firmware-nxp.c.obj: /Users/nando/NUCLEO-F429ZI/salt/files-to-review/main-salt-firmware-nxp.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/main-salt-firmware-nxp.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/main-salt-firmware-nxp.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/main-salt-firmware-nxp.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/main-salt-firmware-nxp.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/main-salt-firmware-nxp.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/main-salt-firmware-nxp.c.obj -c /Users/nando/NUCLEO-F429ZI/salt/files-to-review/main-salt-firmware-nxp.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/main-salt-firmware-nxp.c.i: cmake_force
@@ -687,7 +701,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/main-salt-firmware-nxp.c.s
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/trace_io.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/trace_io.c.obj: /Users/nando/NUCLEO-F429ZI/salt/files-to-review/trace_io.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/trace_io.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/trace_io.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/trace_io.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/trace_io.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/trace_io.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/trace_io.c.obj -c /Users/nando/NUCLEO-F429ZI/salt/files-to-review/trace_io.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/trace_io.c.i: cmake_force
@@ -701,7 +715,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/trace_io.c.s: cmake_force
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/analog-inputs/anIn.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/analog-inputs/anIn.c.obj: /Users/nando/NUCLEO-F429ZI/salt/peripherals/analog-inputs/anIn.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/analog-inputs/anIn.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/analog-inputs/anIn.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/analog-inputs/anIn.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/analog-inputs/anIn.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/analog-inputs/anIn.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/analog-inputs/anIn.c.obj -c /Users/nando/NUCLEO-F429ZI/salt/peripherals/analog-inputs/anIn.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/analog-inputs/anIn.c.i: cmake_force
@@ -715,7 +729,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/analog-inputs/anIn.c.s: cmake_
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ihm/buzzer.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ihm/buzzer.c.obj: /Users/nando/NUCLEO-F429ZI/salt/peripherals/ihm/buzzer.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ihm/buzzer.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ihm/buzzer.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ihm/buzzer.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ihm/buzzer.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ihm/buzzer.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ihm/buzzer.c.obj -c /Users/nando/NUCLEO-F429ZI/salt/peripherals/ihm/buzzer.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ihm/buzzer.c.i: cmake_force
@@ -729,7 +743,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ihm/buzzer.c.s: cmake_force
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ihm/onSwitch.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ihm/onSwitch.c.obj: /Users/nando/NUCLEO-F429ZI/salt/peripherals/ihm/onSwitch.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ihm/onSwitch.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ihm/onSwitch.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ihm/onSwitch.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ihm/onSwitch.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ihm/onSwitch.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ihm/onSwitch.c.obj -c /Users/nando/NUCLEO-F429ZI/salt/peripherals/ihm/onSwitch.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ihm/onSwitch.c.i: cmake_force
@@ -743,7 +757,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ihm/onSwitch.c.s: cmake_force
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ledPanel/as1116.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ledPanel/as1116.c.obj: /Users/nando/NUCLEO-F429ZI/salt/peripherals/ledPanel/as1116.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ledPanel/as1116.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ledPanel/as1116.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ledPanel/as1116.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ledPanel/as1116.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ledPanel/as1116.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ledPanel/as1116.c.obj -c /Users/nando/NUCLEO-F429ZI/salt/peripherals/ledPanel/as1116.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ledPanel/as1116.c.i: cmake_force
@@ -757,7 +771,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ledPanel/as1116.c.s: cmake_for
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ledPanel/ledPanel.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ledPanel/ledPanel.c.obj: /Users/nando/NUCLEO-F429ZI/salt/peripherals/ledPanel/ledPanel.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ledPanel/ledPanel.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ledPanel/ledPanel.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ledPanel/ledPanel.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ledPanel/ledPanel.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ledPanel/ledPanel.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ledPanel/ledPanel.c.obj -c /Users/nando/NUCLEO-F429ZI/salt/peripherals/ledPanel/ledPanel.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ledPanel/ledPanel.c.i: cmake_force
@@ -771,7 +785,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ledPanel/ledPanel.c.s: cmake_f
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/module-command/modcmdSim900.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/module-command/modcmdSim900.c.obj: /Users/nando/NUCLEO-F429ZI/salt/peripherals/module-command/modcmdSim900.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/module-command/modcmdSim900.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/module-command/modcmdSim900.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/module-command/modcmdSim900.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/module-command/modcmdSim900.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/module-command/modcmdSim900.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/module-command/modcmdSim900.c.obj -c /Users/nando/NUCLEO-F429ZI/salt/peripherals/module-command/modcmdSim900.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/module-command/modcmdSim900.c.i: cmake_force
@@ -785,7 +799,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/module-command/modcmdSim900.c.
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/module-power/modpwr.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/module-power/modpwr.c.obj: /Users/nando/NUCLEO-F429ZI/salt/peripherals/module-power/modpwr.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/module-power/modpwr.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/module-power/modpwr.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/module-power/modpwr.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/module-power/modpwr.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/module-power/modpwr.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/module-power/modpwr.c.obj -c /Users/nando/NUCLEO-F429ZI/salt/peripherals/module-power/modpwr.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/module-power/modpwr.c.i: cmake_force
@@ -799,7 +813,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/module-power/modpwr.c.s: cmake
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/pulse-counter/pulseCounter.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/pulse-counter/pulseCounter.c.obj: /Users/nando/NUCLEO-F429ZI/salt/peripherals/pulse-counter/pulseCounter.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/pulse-counter/pulseCounter.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/pulse-counter/pulseCounter.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/pulse-counter/pulseCounter.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/pulse-counter/pulseCounter.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/pulse-counter/pulseCounter.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/pulse-counter/pulseCounter.c.obj -c /Users/nando/NUCLEO-F429ZI/salt/peripherals/pulse-counter/pulseCounter.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/pulse-counter/pulseCounter.c.i: cmake_force
@@ -813,7 +827,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/pulse-counter/pulseCounter.c.s
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/pulse-counter/pulseCounterFromEduCiaaBsp.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/pulse-counter/pulseCounterFromEduCiaaBsp.c.obj: /Users/nando/NUCLEO-F429ZI/salt/peripherals/pulse-counter/pulseCounterFromEduCiaaBsp.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/pulse-counter/pulseCounterFromEduCiaaBsp.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/pulse-counter/pulseCounterFromEduCiaaBsp.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/pulse-counter/pulseCounterFromEduCiaaBsp.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/pulse-counter/pulseCounterFromEduCiaaBsp.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/pulse-counter/pulseCounterFromEduCiaaBsp.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/pulse-counter/pulseCounterFromEduCiaaBsp.c.obj -c /Users/nando/NUCLEO-F429ZI/salt/peripherals/pulse-counter/pulseCounterFromEduCiaaBsp.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/pulse-counter/pulseCounterFromEduCiaaBsp.c.i: cmake_force
@@ -827,7 +841,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/pulse-counter/pulseCounterFrom
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/relay-control/relay.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/relay-control/relay.c.obj: /Users/nando/NUCLEO-F429ZI/salt/peripherals/relay-control/relay.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/relay-control/relay.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/relay-control/relay.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/relay-control/relay.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/relay-control/relay.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/relay-control/relay.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/relay-control/relay.c.obj -c /Users/nando/NUCLEO-F429ZI/salt/peripherals/relay-control/relay.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/relay-control/relay.c.i: cmake_force
@@ -841,7 +855,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/relay-control/relay.c.s: cmake
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/relay-control/relayFromEduCiaaBsp.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/relay-control/relayFromEduCiaaBsp.c.obj: /Users/nando/NUCLEO-F429ZI/salt/peripherals/relay-control/relayFromEduCiaaBsp.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/relay-control/relayFromEduCiaaBsp.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/relay-control/relayFromEduCiaaBsp.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/relay-control/relayFromEduCiaaBsp.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/relay-control/relayFromEduCiaaBsp.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/relay-control/relayFromEduCiaaBsp.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/relay-control/relayFromEduCiaaBsp.c.obj -c /Users/nando/NUCLEO-F429ZI/salt/peripherals/relay-control/relayFromEduCiaaBsp.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/relay-control/relayFromEduCiaaBsp.c.i: cmake_force
@@ -855,7 +869,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/relay-control/relayFromEduCiaa
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/serial/serial.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/serial/serial.c.obj: /Users/nando/NUCLEO-F429ZI/salt/peripherals/serial/serial.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/serial/serial.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/serial/serial.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/serial/serial.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/serial/serial.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/serial/serial.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/serial/serial.c.obj -c /Users/nando/NUCLEO-F429ZI/salt/peripherals/serial/serial.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/serial/serial.c.i: cmake_force
@@ -869,7 +883,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/serial/serial.c.s: cmake_force
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/sim808/sim808.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/sim808/sim808.c.obj: /Users/nando/NUCLEO-F429ZI/salt/peripherals/sim808/sim808.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/sim808/sim808.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/sim808/sim808.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/sim808/sim808.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/sim808/sim808.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/sim808/sim808.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/sim808/sim808.c.obj -c /Users/nando/NUCLEO-F429ZI/salt/peripherals/sim808/sim808.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/sim808/sim808.c.i: cmake_force
@@ -883,7 +897,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/sim808/sim808.c.s: cmake_force
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/teloc/teloc.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/teloc/teloc.c.obj: /Users/nando/NUCLEO-F429ZI/salt/peripherals/teloc/teloc.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/teloc/teloc.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/teloc/teloc.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/teloc/teloc.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/teloc/teloc.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/teloc/teloc.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/teloc/teloc.c.obj -c /Users/nando/NUCLEO-F429ZI/salt/peripherals/teloc/teloc.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/teloc/teloc.c.i: cmake_force
@@ -897,7 +911,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/teloc/teloc.c.s: cmake_force
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/connector-manager/conmgr.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/connector-manager/conmgr.c.obj: /Users/nando/NUCLEO-F429ZI/salt/state-machines/connector-manager/conmgr.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/connector-manager/conmgr.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/connector-manager/conmgr.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/connector-manager/conmgr.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/connector-manager/conmgr.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/connector-manager/conmgr.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/connector-manager/conmgr.c.obj -c /Users/nando/NUCLEO-F429ZI/salt/state-machines/connector-manager/conmgr.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/connector-manager/conmgr.c.i: cmake_force
@@ -911,7 +925,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/connector-manager/conmgr.c.
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/logic/logic.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/logic/logic.c.obj: /Users/nando/NUCLEO-F429ZI/salt/state-machines/logic/logic.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/logic/logic.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/logic/logic.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/logic/logic.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/logic/logic.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/logic/logic.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/logic/logic.c.obj -c /Users/nando/NUCLEO-F429ZI/salt/state-machines/logic/logic.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/logic/logic.c.i: cmake_force
@@ -925,7 +939,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/logic/logic.c.s: cmake_forc
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/module-manager/modmgr.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/module-manager/modmgr.c.obj: /Users/nando/NUCLEO-F429ZI/salt/state-machines/module-manager/modmgr.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/module-manager/modmgr.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/module-manager/modmgr.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/module-manager/modmgr.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/module-manager/modmgr.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/module-manager/modmgr.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/module-manager/modmgr.c.obj -c /Users/nando/NUCLEO-F429ZI/salt/state-machines/module-manager/modmgr.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/module-manager/modmgr.c.i: cmake_force
@@ -939,7 +953,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/module-manager/modmgr.c.s: 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/mqtt-protocol/mqttProt.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/mqtt-protocol/mqttProt.c.obj: /Users/nando/NUCLEO-F429ZI/salt/state-machines/mqtt-protocol/mqttProt.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/mqtt-protocol/mqttProt.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/mqtt-protocol/mqttProt.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/mqtt-protocol/mqttProt.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/mqtt-protocol/mqttProt.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/mqtt-protocol/mqttProt.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/mqtt-protocol/mqttProt.c.obj -c /Users/nando/NUCLEO-F429ZI/salt/state-machines/mqtt-protocol/mqttProt.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/mqtt-protocol/mqttProt.c.i: cmake_force
@@ -953,7 +967,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/mqtt-protocol/mqttProt.c.s:
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/aes/aes.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/aes/aes.c.obj: /Users/nando/NUCLEO-F429ZI/salt/utilities/aes/aes.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/aes/aes.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/aes/aes.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/aes/aes.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/aes/aes.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/aes/aes.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/aes/aes.c.obj -c /Users/nando/NUCLEO-F429ZI/salt/utilities/aes/aes.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/aes/aes.c.i: cmake_force
@@ -967,7 +981,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/aes/aes.c.s: cmake_force
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/date/date.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/date/date.c.obj: /Users/nando/NUCLEO-F429ZI/salt/utilities/date/date.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/date/date.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/date/date.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/date/date.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/date/date.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/date/date.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/date/date.c.obj -c /Users/nando/NUCLEO-F429ZI/salt/utilities/date/date.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/date/date.c.i: cmake_force
@@ -981,7 +995,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/date/date.c.s: cmake_force
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/emaFilter/emaFilter.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/emaFilter/emaFilter.c.obj: /Users/nando/NUCLEO-F429ZI/salt/utilities/emaFilter/emaFilter.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/emaFilter/emaFilter.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/emaFilter/emaFilter.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/emaFilter/emaFilter.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/emaFilter/emaFilter.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/emaFilter/emaFilter.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/emaFilter/emaFilter.c.obj -c /Users/nando/NUCLEO-F429ZI/salt/utilities/emaFilter/emaFilter.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/emaFilter/emaFilter.c.i: cmake_force
@@ -995,7 +1009,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/emaFilter/emaFilter.c.s: cmake_f
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/epoch/epoch.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/epoch/epoch.c.obj: /Users/nando/NUCLEO-F429ZI/salt/utilities/epoch/epoch.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/epoch/epoch.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/epoch/epoch.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/epoch/epoch.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/epoch/epoch.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/epoch/epoch.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/epoch/epoch.c.obj -c /Users/nando/NUCLEO-F429ZI/salt/utilities/epoch/epoch.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/epoch/epoch.c.i: cmake_force
@@ -1009,7 +1023,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/epoch/epoch.c.s: cmake_force
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/salt-command/saltCmd.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/salt-command/saltCmd.c.obj: /Users/nando/NUCLEO-F429ZI/salt/utilities/parser/salt-command/saltCmd.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/salt-command/saltCmd.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/salt-command/saltCmd.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_69) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/salt-command/saltCmd.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/salt-command/saltCmd.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/salt-command/saltCmd.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/salt-command/saltCmd.c.obj -c /Users/nando/NUCLEO-F429ZI/salt/utilities/parser/salt-command/saltCmd.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/salt-command/saltCmd.c.i: cmake_force
@@ -1023,7 +1037,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/salt-command/saltCmd.c.s:
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/sim900/sim900parser.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/sim900/sim900parser.c.obj: /Users/nando/NUCLEO-F429ZI/salt/utilities/parser/sim900/sim900parser.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/sim900/sim900parser.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_69) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/sim900/sim900parser.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/sim900/sim900parser.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/sim900/sim900parser.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/sim900/sim900parser.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/sim900/sim900parser.c.obj -c /Users/nando/NUCLEO-F429ZI/salt/utilities/parser/sim900/sim900parser.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/sim900/sim900parser.c.i: cmake_force
@@ -1037,7 +1051,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/sim900/sim900parser.c.s: 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/publisher/publisher.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/publisher/publisher.c.obj: /Users/nando/NUCLEO-F429ZI/salt/utilities/publisher/publisher.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/publisher/publisher.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/publisher/publisher.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/publisher/publisher.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/publisher/publisher.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/publisher/publisher.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/publisher/publisher.c.obj -c /Users/nando/NUCLEO-F429ZI/salt/utilities/publisher/publisher.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/publisher/publisher.c.i: cmake_force
@@ -1051,7 +1065,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/publisher/publisher.c.s: cmake_f
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/rtime/rtime.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/rtime/rtime.c.obj: /Users/nando/NUCLEO-F429ZI/salt/utilities/rtime/rtime.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/rtime/rtime.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/rtime/rtime.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/rtime/rtime.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/rtime/rtime.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/rtime/rtime.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/rtime/rtime.c.obj -c /Users/nando/NUCLEO-F429ZI/salt/utilities/rtime/rtime.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/rtime/rtime.c.i: cmake_force
@@ -1065,7 +1079,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/rtime/rtime.c.s: cmake_force
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/ssp/ssp.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/ssp/ssp.c.obj: /Users/nando/NUCLEO-F429ZI/salt/utilities/ssp/ssp.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/ssp/ssp.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/ssp/ssp.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_73) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/ssp/ssp.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/ssp/ssp.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/ssp/ssp.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/ssp/ssp.c.obj -c /Users/nando/NUCLEO-F429ZI/salt/utilities/ssp/ssp.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/ssp/ssp.c.i: cmake_force
@@ -1079,7 +1093,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/ssp/ssp.c.s: cmake_force
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc.c.obj: /Users/nando/NUCLEO-F429ZI/third-party/MQTT-C/source/mqttc.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_73) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_74) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc.c.obj -c /Users/nando/NUCLEO-F429ZI/third-party/MQTT-C/source/mqttc.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc.c.i: cmake_force
@@ -1093,7 +1107,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc.c.s: cmake_forc
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc_pal.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc_pal.c.obj: /Users/nando/NUCLEO-F429ZI/third-party/MQTT-C/source/mqttc_pal.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc_pal.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_74) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc_pal.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_75) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc_pal.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc_pal.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc_pal.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc_pal.c.obj -c /Users/nando/NUCLEO-F429ZI/third-party/MQTT-C/source/mqttc_pal.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc_pal.c.i: cmake_force
@@ -1107,7 +1121,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc_pal.c.s: cmake_
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/jWrite.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/jWrite.c.obj: /Users/nando/NUCLEO-F429ZI/third-party/jWrite/jWrite/jWrite.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/jWrite.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_75) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/jWrite.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_76) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/jWrite.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/jWrite.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/jWrite.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/jWrite.c.obj -c /Users/nando/NUCLEO-F429ZI/third-party/jWrite/jWrite/jWrite.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/jWrite.c.i: cmake_force
@@ -1121,7 +1135,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/jWrite.c.s: cmake_for
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/main.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/main.c.obj: /Users/nando/NUCLEO-F429ZI/third-party/jWrite/jWrite/main.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/main.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_76) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/main.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_77) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/main.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/main.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/main.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/main.c.obj -c /Users/nando/NUCLEO-F429ZI/third-party/jWrite/jWrite/main.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/main.c.i: cmake_force
@@ -1135,7 +1149,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/main.c.s: cmake_force
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_bittbl.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_bittbl.c.obj: /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/src/rkhfwk_bittbl.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_bittbl.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_77) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_bittbl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_78) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_bittbl.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_bittbl.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_bittbl.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_bittbl.c.obj -c /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/src/rkhfwk_bittbl.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_bittbl.c.i: cmake_force
@@ -1149,7 +1163,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_bittbl.c.
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_dynevt.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_dynevt.c.obj: /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/src/rkhfwk_dynevt.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_dynevt.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_78) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_dynevt.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_79) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_dynevt.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_dynevt.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_dynevt.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_dynevt.c.obj -c /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/src/rkhfwk_dynevt.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_dynevt.c.i: cmake_force
@@ -1163,7 +1177,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_dynevt.c.
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_evtpool.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_evtpool.c.obj: /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/src/rkhfwk_evtpool.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_evtpool.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_79) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_evtpool.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_80) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_evtpool.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_evtpool.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_evtpool.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_evtpool.c.obj -c /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/src/rkhfwk_evtpool.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_evtpool.c.i: cmake_force
@@ -1177,7 +1191,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_evtpool.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_pubsub.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_pubsub.c.obj: /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/src/rkhfwk_pubsub.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_pubsub.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_80) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_pubsub.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_81) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_pubsub.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_pubsub.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_pubsub.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_pubsub.c.obj -c /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/src/rkhfwk_pubsub.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_pubsub.c.i: cmake_force
@@ -1191,7 +1205,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_pubsub.c.
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_rdygrp.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_rdygrp.c.obj: /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/src/rkhfwk_rdygrp.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_rdygrp.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_81) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_rdygrp.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_82) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_rdygrp.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_rdygrp.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_rdygrp.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_rdygrp.c.obj -c /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/src/rkhfwk_rdygrp.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_rdygrp.c.i: cmake_force
@@ -1205,7 +1219,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_rdygrp.c.
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_sched.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_sched.c.obj: /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/src/rkhfwk_sched.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_sched.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_82) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_sched.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_83) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_sched.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_sched.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_sched.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_sched.c.obj -c /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/src/rkhfwk_sched.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_sched.c.i: cmake_force
@@ -1219,7 +1233,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_sched.c.s
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_version.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_version.c.obj: /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/src/rkhfwk_version.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_version.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_83) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_version.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_84) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_version.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_version.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_version.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_version.c.obj -c /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/src/rkhfwk_version.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_version.c.i: cmake_force
@@ -1233,7 +1247,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_version.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/mempool/src/rkhmempool.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/mempool/src/rkhmempool.c.obj: /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/mempool/src/rkhmempool.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/mempool/src/rkhmempool.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_84) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/mempool/src/rkhmempool.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_85) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/mempool/src/rkhmempool.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/mempool/src/rkhmempool.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/mempool/src/rkhmempool.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/mempool/src/rkhmempool.c.obj -c /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/mempool/src/rkhmempool.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/mempool/src/rkhmempool.c.i: cmake_force
@@ -1247,7 +1261,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/mempool/src/rkhmempool.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c.obj: /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_85) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_86) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c.obj -c /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c.i: cmake_force
@@ -1261,7 +1275,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/portable/arm-cortex/rkhs
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/queue/src/rkhqueue.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/queue/src/rkhqueue.c.obj: /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/queue/src/rkhqueue.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/queue/src/rkhqueue.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_86) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/queue/src/rkhqueue.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_87) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/queue/src/rkhqueue.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/queue/src/rkhqueue.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/queue/src/rkhqueue.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/queue/src/rkhqueue.c.obj -c /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/queue/src/rkhqueue.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/queue/src/rkhqueue.c.i: cmake_force
@@ -1275,7 +1289,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/queue/src/rkhqueue.c.s: 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sm/src/rkhsm.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sm/src/rkhsm.c.obj: /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/sm/src/rkhsm.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sm/src/rkhsm.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_87) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sm/src/rkhsm.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_88) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sm/src/rkhsm.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sm/src/rkhsm.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sm/src/rkhsm.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sm/src/rkhsm.c.obj -c /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/sm/src/rkhsm.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sm/src/rkhsm.c.i: cmake_force
@@ -1289,7 +1303,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sm/src/rkhsm.c.s: cmake_
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma.c.obj: /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/sma/src/rkhsma.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_88) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_89) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma.c.obj -c /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/sma/src/rkhsma.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma.c.i: cmake_force
@@ -1303,7 +1317,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma.c.s: cmak
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_prio.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_prio.c.obj: /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/sma/src/rkhsma_prio.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_prio.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_89) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_prio.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_90) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_prio.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_prio.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_prio.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_prio.c.obj -c /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/sma/src/rkhsma_prio.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_prio.c.i: cmake_force
@@ -1317,7 +1331,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_prio.c.s:
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_sync.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_sync.c.obj: /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/sma/src/rkhsma_sync.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_sync.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_90) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_sync.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_91) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_sync.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_sync.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_sync.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_sync.c.obj -c /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/sma/src/rkhsma_sync.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_sync.c.i: cmake_force
@@ -1331,7 +1345,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_sync.c.s:
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/tmr/src/rkhtmr.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/tmr/src/rkhtmr.c.obj: /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/tmr/src/rkhtmr.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/tmr/src/rkhtmr.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_91) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/tmr/src/rkhtmr.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_92) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/tmr/src/rkhtmr.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/tmr/src/rkhtmr.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/tmr/src/rkhtmr.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/tmr/src/rkhtmr.c.obj -c /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/tmr/src/rkhtmr.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/tmr/src/rkhtmr.c.i: cmake_force
@@ -1345,7 +1359,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/tmr/src/rkhtmr.c.s: cmak
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_filter.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_filter.c.obj: /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/src/rkhtrc_filter.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_filter.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_92) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_filter.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_93) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_filter.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_filter.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_filter.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_filter.c.obj -c /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/src/rkhtrc_filter.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_filter.c.i: cmake_force
@@ -1359,7 +1373,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_filter.c.
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_record.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_record.c.obj: /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/src/rkhtrc_record.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_record.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_93) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_record.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_94) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_record.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_record.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_record.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_record.c.obj -c /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/src/rkhtrc_record.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_record.c.i: cmake_force
@@ -1373,7 +1387,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_record.c.
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.obj: /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/src/rkhtrc_stream.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_94) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_95) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.obj -c /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/src/rkhtrc_stream.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.i: cmake_force
@@ -1384,10 +1398,52 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.s"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/src/rkhtrc_stream.c -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.s
 
+CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_datatypes.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
+CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_datatypes.c.obj: /Users/nando/NUCLEO-F429ZI/third-party/stm32-sapi/src/sapi_datatypes.c
+CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_datatypes.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_96) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_datatypes.c.obj"
+	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_datatypes.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_datatypes.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_datatypes.c.obj -c /Users/nando/NUCLEO-F429ZI/third-party/stm32-sapi/src/sapi_datatypes.c
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_datatypes.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_datatypes.c.i"
+	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/nando/NUCLEO-F429ZI/third-party/stm32-sapi/src/sapi_datatypes.c > CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_datatypes.c.i
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_datatypes.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_datatypes.c.s"
+	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/nando/NUCLEO-F429ZI/third-party/stm32-sapi/src/sapi_datatypes.c -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_datatypes.c.s
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_gpio.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
+CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_gpio.c.obj: /Users/nando/NUCLEO-F429ZI/third-party/stm32-sapi/src/sapi_gpio.c
+CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_gpio.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_97) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_gpio.c.obj"
+	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_gpio.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_gpio.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_gpio.c.obj -c /Users/nando/NUCLEO-F429ZI/third-party/stm32-sapi/src/sapi_gpio.c
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_gpio.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_gpio.c.i"
+	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/nando/NUCLEO-F429ZI/third-party/stm32-sapi/src/sapi_gpio.c > CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_gpio.c.i
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_gpio.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_gpio.c.s"
+	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/nando/NUCLEO-F429ZI/third-party/stm32-sapi/src/sapi_gpio.c -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_gpio.c.s
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_tick.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
+CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_tick.c.obj: /Users/nando/NUCLEO-F429ZI/third-party/stm32-sapi/src/sapi_tick.c
+CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_tick.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_98) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_tick.c.obj"
+	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_tick.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_tick.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_tick.c.obj -c /Users/nando/NUCLEO-F429ZI/third-party/stm32-sapi/src/sapi_tick.c
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_tick.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_tick.c.i"
+	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/nando/NUCLEO-F429ZI/third-party/stm32-sapi/src/sapi_tick.c > CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_tick.c.i
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_tick.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_tick.c.s"
+	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/nando/NUCLEO-F429ZI/third-party/stm32-sapi/src/sapi_tick.c -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_tick.c.s
+
 CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj: /Users/nando/NUCLEO-F429ZI/utilities/htons.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_95) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_99) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj -c /Users/nando/NUCLEO-F429ZI/utilities/htons.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.i: cmake_force
@@ -1437,6 +1493,7 @@ NUCLEO__F429ZI_elf_OBJECTS = \
 "CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp/assert.c.obj" \
 "CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp/bsp_blinky.c.obj" \
 "CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp/hook.c.obj" \
+"CMakeFiles/NUCLEO-F429ZI.elf.dir/blinkySysTick/blinkySysTick.c.obj" \
 "CMakeFiles/NUCLEO-F429ZI.elf.dir/bsp/stm32f4xx_nucleo_144.c.obj" \
 "CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTime.c.obj" \
 "CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTimeTbl.c.obj" \
@@ -1494,6 +1551,9 @@ NUCLEO__F429ZI_elf_OBJECTS = \
 "CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_filter.c.obj" \
 "CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_record.c.obj" \
 "CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.obj" \
+"CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_datatypes.c.obj" \
+"CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_gpio.c.obj" \
+"CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_tick.c.obj" \
 "CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj"
 
 # External object files for target NUCLEO-F429ZI.elf
@@ -1536,6 +1596,7 @@ NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/blinky.c.obj
 NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp/assert.c.obj
 NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp/bsp_blinky.c.obj
 NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp/hook.c.obj
+NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/blinkySysTick/blinkySysTick.c.obj
 NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/bsp/stm32f4xx_nucleo_144.c.obj
 NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTime.c.obj
 NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTimeTbl.c.obj
@@ -1593,10 +1654,13 @@ NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/tmr/s
 NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_filter.c.obj
 NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_record.c.obj
 NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.obj
+NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_datatypes.c.obj
+NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_gpio.c.obj
+NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_tick.c.obj
 NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj
 NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make
 NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_96) "Linking C executable NUCLEO-F429ZI.elf"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_100) "Linking C executable NUCLEO-F429ZI.elf"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/NUCLEO-F429ZI.elf.dir/link.txt --verbose=$(VERBOSE)
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold "Building /Users/nando/NUCLEO-F429ZI/cmake-build-debug/NUCLEO-F429ZI.hex"
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold "Building /Users/nando/NUCLEO-F429ZI/cmake-build-debug/NUCLEO-F429ZI.bin"

@@ -137,7 +137,6 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/main.c.obj: \
  /Users/nando/NUCLEO-F429ZI/salt/peripherals/analog-inputs/anIn.h \
  /Users/nando/NUCLEO-F429ZI/salt/peripherals/ihm/onSwitch.h \
  /Users/nando/NUCLEO-F429ZI/salt/peripherals/relay-control/relay.h \
- /Users/nando/NUCLEO-F429ZI/salt/bsp/bsp-salt.h \
  /Users/nando/NUCLEO-F429ZI/salt/peripherals/ledPanel/ledPanel.h \
  /Users/nando/NUCLEO-F429ZI/salt/peripherals/ledPanel/as1116.h \
  /Users/nando/NUCLEO-F429ZI/salt/peripherals/ihm/buzzer.h \
@@ -145,4 +144,5 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/main.c.obj: \
  /Users/nando/NUCLEO-F429ZI/salt/peripherals/teloc/teloc.h \
  /Users/nando/NUCLEO-F429ZI/salt/peripherals/sim808/sim808.h \
  /Users/nando/NUCLEO-F429ZI/salt/peripherals/serial/serial.h \
- /Users/nando/NUCLEO-F429ZI/salt/utilities/publisher/publisher.h
+ /Users/nando/NUCLEO-F429ZI/salt/utilities/publisher/publisher.h \
+ /Users/nando/NUCLEO-F429ZI/salt/bsp/bsp-salt.h

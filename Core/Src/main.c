@@ -42,7 +42,6 @@
 #include "anIn.h"
 #include "onSwitch.h"
 #include "relay.h"
-#include "bsp-salt.h"
 #include "ledPanel.h"
 #include "buzzer.h"
 #include "pulseCounter.h"
@@ -50,6 +49,7 @@
 #include "sim808.h"
 #include "serial.h"
 #include "publisher.h"
+#include "bsp-salt.h"
 
 /* USER CODE END Includes */
 
@@ -246,6 +246,7 @@ void onMQTTCb(void** state,struct mqttc_response_publish *publish) {
 static void
 saltConfig(void)
 {
+    printf("salt config \n");
     /* Configuracion especifica SALT */
 
     /* RKH */
@@ -253,32 +254,31 @@ saltConfig(void)
     RKH_SET_STATIC_EVENT(RKH_UPCAST(RKH_EVT_T, &e_saltCmd), evSaltCmd);
 
     /* Inicializacion SALT */
-
     bsp_init();
-    relayInit(onRelayErrorCb);
-    ledPanelInit();
-    anInInit(onAnInCb);
-    buzzerInit();
-    onSwitchInit(onSwitchCb);
-    pulseCounterInit(PULSE_COUNTER_THR,PULSE_COUNTER_FACTOR);
-    telocInit();
+    relayInit(onRelayErrorCb); // don't use rkh
+    ledPanelInit(); // don't use rkh
+    anInInit(onAnInCb); // don't use rkh
+    buzzerInit(); // don't use rkh
+    onSwitchInit(onSwitchCb); // don't use rkh
+    pulseCounterInit(PULSE_COUNTER_THR,PULSE_COUNTER_FACTOR); // use rkh
+    telocInit(); // use rkh
     //epoch_init();
-    mTime_init();
+    mTime_init(); // don't use rkh
 
-    sim808Init(SIM_808_A);
-    serialSetIntCb(UART_SIM_808_A, (serialIsrCb_t) simACb);
+    sim808Init(SIM_808_A); // don't use rkh
+    serialSetIntCb(UART_SIM_808_A, (serialIsrCb_t) simACb); // don't use rkh
 
 #ifdef DEBUG_SERIAL
     serialInit(UART_DEBUG);
     serialSetIntCb(UART_DEBUG, debugCb);
 #else
-    sim808Init(SIM_808_B);
-    serialSetIntCb(UART_SIM_808_B, (serialIsrCb_t) simBCb);
+    sim808Init(SIM_808_B); // don't use rkh
+    serialSetIntCb(UART_SIM_808_B, (serialIsrCb_t) simBCb); // don't use rkh
 #endif
 
     /* Conexion de modulos */
 
-    simACmdParser = ModCmd_init();
+    simACmdParser = ModCmd_init(); // use rkh
 
 }
 
@@ -320,8 +320,6 @@ setupTraceFilters(void)
 int main(void)
 {
   /* USER CODE BEGIN 1 */
- // saltConfig();
-
 
   /* USER CODE END 1 */
 
@@ -347,12 +345,16 @@ int main(void)
   MX_SPI1_Init();
   /* USER CODE BEGIN 2 */
 
-  bsp_init();
-  //    setupTraceFilters();
+  // bsp_init(); // blinky bsp init
+
+  saltConfig();
+  rkh_fwk_init();
+
+  setupTraceFilters();
   mTime_init();
 
+  RKH_TRC_OPEN();
   /* salt code snippet */
-  /*
   rkh_dynEvt_init();
   rkh_fwk_registerEvtPool(evPool0Sto, SIZEOF_EP0STO, SIZEOF_EP0_BLOCK);
   rkh_fwk_registerEvtPool(evPool1Sto, SIZEOF_EP1STO, SIZEOF_EP1_BLOCK);
@@ -371,26 +373,33 @@ int main(void)
     logicCfg.publishTime = 8;
     logic_ctor(&logicCfg);
 
-    logicCfg.publishTime = 8;
-    logic_ctor(&logicCfg);
 
     RKH_SMA_ACTIVATE(conMgr, ConMgr_qsto, CONMGR_QSTO_SIZE, 0, 0);
-    RKH_SMA_ACTIVATE(modMgr, ModMgr_qsto, MODMGR_QSTO_SIZE, 0, 0);
-    RKH_SMA_ACTIVATE(mqttProt, MQTTProt_qsto, MQTTPROT_QSTO_SIZE, 0, 0);
-    RKH_SMA_ACTIVATE(logic, Logic_qsto, LOGIC_QSTO_SIZE, 0, 0);
+    printf("conmgr sma \n");
 
+    RKH_SMA_ACTIVATE(modMgr, ModMgr_qsto, MODMGR_QSTO_SIZE, 0, 0);
+    printf("modmgr sma \n");
+
+    RKH_SMA_ACTIVATE(mqttProt, MQTTProt_qsto, MQTTPROT_QSTO_SIZE, 0, 0);
+    printf("mqtt prot sma \n");
+
+    RKH_SMA_ACTIVATE(logic, Logic_qsto, LOGIC_QSTO_SIZE, 0, 0);
+    printf("logic sma \n");
+
+    printf("rkh sma post fifo \n");
     RKH_SMA_POST_FIFO(conMgr, &e_Open, 0);
 
     initEnd = true;
-    */
   /* ---------------- */
 
-  RKH_SMA_ACTIVATE(blinky, qsto, QSTO_SIZE, 0, 0);
+  // blinky state machine
+  //    RKH_SMA_ACTIVATE(blinky, qsto, QSTO_SIZE, 0, 0);
+
   rkh_fwk_enter();
 
   RKH_TRC_CLOSE();
 
-    return 0;
+  return 0;
 
 
   /* USER CODE END 2 */

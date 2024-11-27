@@ -982,6 +982,9 @@ rbool_t guard_velWrongVel(LogicVel *const me, RKH_EVT_T *pe){
 
 /* ---------------------------- Global functions --------------------------- */
 void logic_ctor(LogicCfg *config){
+
+    printf("logic ctor init\n");
+
     Logic *me;
 
     me = RKH_DOWNCAST(Logic, logic);
@@ -992,7 +995,10 @@ void logic_ctor(LogicCfg *config){
     me->itsLogicVel.itsLogic = me;
     RKH_SM_INIT((RKH_SM_T *)&(me->itsLogicVel), logicVel, 0, HCAL,
                 LogicVel_Hasler, NULL, NULL);
+
     Logic_logicVel = (RKH_SM_T *)&(me->itsLogicVel);
+    printf("logic ctor end \n");
+
 }
 
 void logic_getData(LogicData* data){

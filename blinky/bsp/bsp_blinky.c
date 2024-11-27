@@ -93,24 +93,24 @@ printBanner(void)
 }
 
 /* ---------------------------- Global functions --------------------------- */
-void
-bsp_init(void)
-{
-
-    printBanner();
-
-    rkh_fwk_init();
-
-    RKH_FILTER_ON_GROUP(RKH_TRC_ALL_GROUPS);
-    RKH_FILTER_ON_EVENT(RKH_TRC_ALL_EVENTS);
-    RKH_FILTER_OFF_EVENT(RKH_TE_TMR_TOUT);
-    RKH_FILTER_OFF_EVENT(RKH_TE_SM_STATE);
-    RKH_FILTER_OFF_SMA(blinky);
-    RKH_FILTER_OFF_ALL_SIGNALS();
-
-
-    RKH_TRC_OPEN();
-}
+//void
+//bsp_init(void)
+//{
+//
+//    printBanner();
+//
+//    rkh_fwk_init();
+//
+//    RKH_FILTER_ON_GROUP(RKH_TRC_ALL_GROUPS);
+//    RKH_FILTER_ON_EVENT(RKH_TRC_ALL_EVENTS);
+//    RKH_FILTER_OFF_EVENT(RKH_TE_TMR_TOUT);
+//    RKH_FILTER_OFF_EVENT(RKH_TE_SM_STATE);
+//    RKH_FILTER_OFF_SMA(blinky);
+//    RKH_FILTER_OFF_ALL_SIGNALS();
+//
+//
+//    RKH_TRC_OPEN();
+//}
 
 void
 bsp_keyParser(int c)

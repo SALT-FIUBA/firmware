@@ -41,6 +41,7 @@
 /* -------------------------------- Authors -------------------------------- */
 /* --------------------------------- Notes --------------------------------- */
 /* ----------------------------- Include files ----------------------------- */
+#include <stdio.h>
 #include "ssp.h"
 #if SSP_DEBUG == 1
 #include <ctype.h>
@@ -262,6 +263,8 @@ ssp_isEqual(SSP *const me, unsigned char c)
 int
 ssp_init(SSP *const me, const SSPNodeNormal *root)
 {
+    printf("ssp_init \n");
+
     int r = 1;
 
     if ((me != (SSP *)0) && (root != (const SSPNodeNormal *)0))
@@ -271,6 +274,7 @@ ssp_init(SSP *const me, const SSPNodeNormal *root)
         me->state = SSP_IDLE;
         r = 0;
     }
+
     return r;
 }
 

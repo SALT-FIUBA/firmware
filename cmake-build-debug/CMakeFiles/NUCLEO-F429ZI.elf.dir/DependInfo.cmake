@@ -41,6 +41,7 @@ set(CMAKE_ASM_TARGET_INCLUDE_PATH
   "/Users/nando/NUCLEO-F429ZI/mTime"
   "/Users/nando/NUCLEO-F429ZI/third-party/jWrite/jWrite"
   "/Users/nando/NUCLEO-F429ZI/third-party/MQTT-C/include"
+  "/Users/nando/NUCLEO-F429ZI/third-party/stm32-sapi/inc"
   "/Users/nando/NUCLEO-F429ZI/blinky/bsp"
   "/Users/nando/NUCLEO-F429ZI/salt/utilities/rtime"
   "/Users/nando/NUCLEO-F429ZI/salt/utilities/mTime"
@@ -72,6 +73,7 @@ set(CMAKE_ASM_TARGET_INCLUDE_PATH
   "/Users/nando/NUCLEO-F429ZI/salt/utilities/aes"
   "/Users/nando/NUCLEO-F429ZI/salt/utilities/publisher"
   "/Users/nando/NUCLEO-F429ZI/utilities"
+  "/Users/nando/NUCLEO-F429ZI/blinkySysTick"
   )
 
 # The set of dependency files which are needed:
@@ -112,6 +114,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/nando/NUCLEO-F429ZI/blinky/bsp/assert.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp/assert.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp/assert.c.obj.d"
   "/Users/nando/NUCLEO-F429ZI/blinky/bsp/bsp_blinky.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp/bsp_blinky.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp/bsp_blinky.c.obj.d"
   "/Users/nando/NUCLEO-F429ZI/blinky/bsp/hook.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp/hook.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp/hook.c.obj.d"
+  "/Users/nando/NUCLEO-F429ZI/blinkySysTick/blinkySysTick.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/blinkySysTick/blinkySysTick.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/blinkySysTick/blinkySysTick.c.obj.d"
   "/Users/nando/NUCLEO-F429ZI/bsp/stm32f4xx_nucleo_144.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/bsp/stm32f4xx_nucleo_144.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/bsp/stm32f4xx_nucleo_144.c.obj.d"
   "/Users/nando/NUCLEO-F429ZI/mTime/mTime.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTime.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTime.c.obj.d"
   "/Users/nando/NUCLEO-F429ZI/mTime/mTimeTbl.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTimeTbl.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTimeTbl.c.obj.d"
@@ -169,6 +172,9 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/src/rkhtrc_filter.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_filter.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_filter.c.obj.d"
   "/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/src/rkhtrc_record.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_record.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_record.c.obj.d"
   "/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/src/rkhtrc_stream.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.obj.d"
+  "/Users/nando/NUCLEO-F429ZI/third-party/stm32-sapi/src/sapi_datatypes.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_datatypes.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_datatypes.c.obj.d"
+  "/Users/nando/NUCLEO-F429ZI/third-party/stm32-sapi/src/sapi_gpio.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_gpio.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_gpio.c.obj.d"
+  "/Users/nando/NUCLEO-F429ZI/third-party/stm32-sapi/src/sapi_tick.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_tick.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_tick.c.obj.d"
   "/Users/nando/NUCLEO-F429ZI/utilities/htons.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj.d"
   )
 

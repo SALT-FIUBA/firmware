@@ -17,6 +17,7 @@
 
 /* --------------------------------- Notes --------------------------------- */
 /* ----------------------------- Include files ----------------------------- */
+#include <stdio.h>
 #include "rkh.h"
 #include "anIn.h"
 #include "emaFilter.h"
@@ -84,6 +85,7 @@ convertToSampleValue(adc_t sample)
 void
 anInInit(onAnInCb_t cb)
 {
+    //  printf("anInInit \n");
     onAnInCb = cb;
 
     /*

@@ -333,6 +333,7 @@ pubDft(AppData *appMsg)
 static int
 configClient(MQTTProt *const me, MQTTProtCfg *config)
 {
+
     int result = 1;
 
     if (config->publishTime != 0 ||
@@ -348,6 +349,9 @@ configClient(MQTTProt *const me, MQTTProtCfg *config)
     {
         me->config = (MQTTProtCfg *)&configDft;
     }
+
+
+    printf("mqtt prot config client result %d \n", result);
     return result;
 }
 
@@ -800,6 +804,8 @@ isReconnect(const RKH_SM_T *me, RKH_EVT_T *pe)
 void
 MQTTProt_ctor(MQTTProtCfg *config, MQTTProtPublish publisher)
 {
+    printf("mqttprot ctor init\n");
+
     MQTTProt *me;
 
     me = RKH_DOWNCAST(MQTTProt, mqttProt);
@@ -810,9 +816,12 @@ MQTTProt_ctor(MQTTProtCfg *config, MQTTProtPublish publisher)
     me->itsSyncRegion.itsMQTTProt = me;
     RKH_SM_INIT((RKH_SM_T *)&(me->itsSyncRegion), syncRegion, 0, HCAL,
                 Sync_Idle, NULL, NULL);
+
     MQTTProt_syncRegion = (RKH_SM_T *)&(me->itsSyncRegion);
     configClient(me, config);
+
     me->publisher = (publisher != (MQTTProtPublish)0) ? publisher : pubDft;
+    printf("mqtt prot ctor end \n");
 }
 
 /* ------------------------------ End of file ------------------------------ */

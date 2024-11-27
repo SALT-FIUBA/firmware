@@ -13,6 +13,7 @@
 
 /* --------------------------------- Notes --------------------------------- */
 /* ----------------------------- Include files ----------------------------- */
+#include <stdio.h>
 #include "ledPanel.h"
 #include "as1116.h"
 #include "stm32f4xx_hal.h"
@@ -93,6 +94,7 @@ static void ledPanelSetCfgInt(LedPanelCfg* cfg)
 /* ---------------------------- Global functions --------------------------- */
 void ledPanelInit(void)
 {
+    //  printf("ledPanelInit \n");
     // Initialize LED
     LED_Init();
 
@@ -117,6 +119,8 @@ void ledPanelInit(void)
 
 void ledPanelSetCfg(LedPanelCfg* cfg)
 {
+    printf("ledPanelSetCfg \n");
+
     uint8_t aux;
 
     if(cfg->digit0 < NUM_COUNT) {

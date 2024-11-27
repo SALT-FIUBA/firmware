@@ -16,6 +16,7 @@
 
 /* --------------------------------- Notes --------------------------------- */
 /* ----------------------------- Include files ----------------------------- */
+#include <stdio.h>
 #include "as1116.h"
 #include "stm32f4xx_hal.h"
 
@@ -69,9 +70,15 @@ static void as1116WriteReg(uint8_t reg, uint8_t data)
     as1116Buffer[1] = BitReverseTable256[(reg & PANEL_REG_MASK)];
 
     AS1116_CS_Select();
-    HAL_SPI_Transmit(as1116Config.hspi, as1116Buffer, 2, HAL_MAX_DELAY);
-    while (HAL_SPI_GetState(as1116Config.hspi) != HAL_SPI_STATE_READY) {}
-    AS1116_CS_Deselect();
+
+    /*
+     * TODO: check why these line do not work. is it necessary to run the project ?
+
+        HAL_SPI_Transmit(as1116Config.hspi, as1116Buffer, 2, HAL_MAX_DELAY);
+        while (HAL_SPI_GetState(as1116Config.hspi) != HAL_SPI_STATE_READY) {}
+        AS1116_CS_Deselect();
+
+     */
 }
 
 static uint8_t as1116ReadReg(uint8_t reg)
@@ -97,6 +104,7 @@ static uint8_t as1116ReadReg(uint8_t reg)
 
 void as1116Init(SPI_HandleTypeDef* hspi, GPIO_TypeDef* csPort, uint16_t csPin)
 {
+    printf("as1116Init \n");
     // Store configuration
     as1116Config.hspi = hspi;
     as1116Config.csPort = csPort;
@@ -124,6 +132,7 @@ void as1116Init(SPI_HandleTypeDef* hspi, GPIO_TypeDef* csPort, uint16_t csPin)
     initilized = true;
 
     // Initialize AS1116
+    printf("Initialize AS1116 \n");
     as1116WriteReg(PANEL_REG_SHUTDOWN, PANEL_SHUTDOWN_NORMAL_MODE_RESET);
     as1116WriteReg(PANEL_REG_DECODE_MODE, 0x00);
     as1116WriteReg(PANEL_REG_GLOBAL_INTENSITY, 0x03);
