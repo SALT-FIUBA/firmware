@@ -52,5 +52,5 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_tick.c.obj: \
  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h \
  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h \
  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h \
- /Users/nando/NUCLEO-F429ZI/third-party/stm32-sapi/src/../inc/sapi_tick.h \
- /Users/nando/NUCLEO-F429ZI/third-party/stm32-sapi/src/../inc/sapi_datatypes.h
+ /Users/nando/NUCLEO-F429ZI/third-party/stm32-sapi/inc/sapi_tick.h \
+ /Users/nando/NUCLEO-F429ZI/third-party/stm32-sapi/inc/sapi_datatypes.h

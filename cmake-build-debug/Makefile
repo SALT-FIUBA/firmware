@@ -905,30 +905,6 @@ Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c.s
 .PHONY : Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c.s
 
-blinky/blinky.obj: blinky/blinky.c.obj
-.PHONY : blinky/blinky.obj
-
-# target to build an object file
-blinky/blinky.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/blinky.c.obj
-.PHONY : blinky/blinky.c.obj
-
-blinky/blinky.i: blinky/blinky.c.i
-.PHONY : blinky/blinky.i
-
-# target to preprocess a source file
-blinky/blinky.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/blinky.c.i
-.PHONY : blinky/blinky.c.i
-
-blinky/blinky.s: blinky/blinky.c.s
-.PHONY : blinky/blinky.s
-
-# target to generate assembly for a file
-blinky/blinky.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/blinky.c.s
-.PHONY : blinky/blinky.c.s
-
 blinky/bsp/assert.obj: blinky/bsp/assert.c.obj
 .PHONY : blinky/bsp/assert.obj
 
@@ -953,54 +929,6 @@ blinky/bsp/assert.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp/assert.c.s
 .PHONY : blinky/bsp/assert.c.s
 
-blinky/bsp/bsp_blinky.obj: blinky/bsp/bsp_blinky.c.obj
-.PHONY : blinky/bsp/bsp_blinky.obj
-
-# target to build an object file
-blinky/bsp/bsp_blinky.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp/bsp_blinky.c.obj
-.PHONY : blinky/bsp/bsp_blinky.c.obj
-
-blinky/bsp/bsp_blinky.i: blinky/bsp/bsp_blinky.c.i
-.PHONY : blinky/bsp/bsp_blinky.i
-
-# target to preprocess a source file
-blinky/bsp/bsp_blinky.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp/bsp_blinky.c.i
-.PHONY : blinky/bsp/bsp_blinky.c.i
-
-blinky/bsp/bsp_blinky.s: blinky/bsp/bsp_blinky.c.s
-.PHONY : blinky/bsp/bsp_blinky.s
-
-# target to generate assembly for a file
-blinky/bsp/bsp_blinky.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp/bsp_blinky.c.s
-.PHONY : blinky/bsp/bsp_blinky.c.s
-
-blinky/bsp/hook.obj: blinky/bsp/hook.c.obj
-.PHONY : blinky/bsp/hook.obj
-
-# target to build an object file
-blinky/bsp/hook.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp/hook.c.obj
-.PHONY : blinky/bsp/hook.c.obj
-
-blinky/bsp/hook.i: blinky/bsp/hook.c.i
-.PHONY : blinky/bsp/hook.i
-
-# target to preprocess a source file
-blinky/bsp/hook.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp/hook.c.i
-.PHONY : blinky/bsp/hook.c.i
-
-blinky/bsp/hook.s: blinky/bsp/hook.c.s
-.PHONY : blinky/bsp/hook.s
-
-# target to generate assembly for a file
-blinky/bsp/hook.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp/hook.c.s
-.PHONY : blinky/bsp/hook.c.s
-
 blinkySysTick/blinkySysTick.obj: blinkySysTick/blinkySysTick.c.obj
 .PHONY : blinkySysTick/blinkySysTick.obj
 
@@ -1024,6 +952,30 @@ blinkySysTick/blinkySysTick.s: blinkySysTick/blinkySysTick.c.s
 blinkySysTick/blinkySysTick.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/blinkySysTick/blinkySysTick.c.s
 .PHONY : blinkySysTick/blinkySysTick.c.s
+
+blinkySysTick/hook.obj: blinkySysTick/hook.c.obj
+.PHONY : blinkySysTick/hook.obj
+
+# target to build an object file
+blinkySysTick/hook.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/blinkySysTick/hook.c.obj
+.PHONY : blinkySysTick/hook.c.obj
+
+blinkySysTick/hook.i: blinkySysTick/hook.c.i
+.PHONY : blinkySysTick/hook.i
+
+# target to preprocess a source file
+blinkySysTick/hook.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/blinkySysTick/hook.c.i
+.PHONY : blinkySysTick/hook.c.i
+
+blinkySysTick/hook.s: blinkySysTick/hook.c.s
+.PHONY : blinkySysTick/hook.s
+
+# target to generate assembly for a file
+blinkySysTick/hook.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/blinkySysTick/hook.c.s
+.PHONY : blinkySysTick/hook.c.s
 
 bsp/stm32f4xx_nucleo_144.obj: bsp/stm32f4xx_nucleo_144.c.obj
 .PHONY : bsp/stm32f4xx_nucleo_144.obj
@@ -1144,30 +1096,6 @@ salt/configuration/saltCfg.s: salt/configuration/saltCfg.c.s
 salt/configuration/saltCfg.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/configuration/saltCfg.c.s
 .PHONY : salt/configuration/saltCfg.c.s
-
-salt/files-to-review/hook.obj: salt/files-to-review/hook.c.obj
-.PHONY : salt/files-to-review/hook.obj
-
-# target to build an object file
-salt/files-to-review/hook.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/hook.c.obj
-.PHONY : salt/files-to-review/hook.c.obj
-
-salt/files-to-review/hook.i: salt/files-to-review/hook.c.i
-.PHONY : salt/files-to-review/hook.i
-
-# target to preprocess a source file
-salt/files-to-review/hook.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/hook.c.i
-.PHONY : salt/files-to-review/hook.c.i
-
-salt/files-to-review/hook.s: salt/files-to-review/hook.c.s
-.PHONY : salt/files-to-review/hook.s
-
-# target to generate assembly for a file
-salt/files-to-review/hook.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/hook.c.s
-.PHONY : salt/files-to-review/hook.c.s
 
 salt/files-to-review/main-salt-firmware-nxp.obj: salt/files-to-review/main-salt-firmware-nxp.c.obj
 .PHONY : salt/files-to-review/main-salt-firmware-nxp.obj
@@ -2595,21 +2523,15 @@ help:
 	@echo "... Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.obj"
 	@echo "... Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.i"
 	@echo "... Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.s"
-	@echo "... blinky/blinky.obj"
-	@echo "... blinky/blinky.i"
-	@echo "... blinky/blinky.s"
 	@echo "... blinky/bsp/assert.obj"
 	@echo "... blinky/bsp/assert.i"
 	@echo "... blinky/bsp/assert.s"
-	@echo "... blinky/bsp/bsp_blinky.obj"
-	@echo "... blinky/bsp/bsp_blinky.i"
-	@echo "... blinky/bsp/bsp_blinky.s"
-	@echo "... blinky/bsp/hook.obj"
-	@echo "... blinky/bsp/hook.i"
-	@echo "... blinky/bsp/hook.s"
 	@echo "... blinkySysTick/blinkySysTick.obj"
 	@echo "... blinkySysTick/blinkySysTick.i"
 	@echo "... blinkySysTick/blinkySysTick.s"
+	@echo "... blinkySysTick/hook.obj"
+	@echo "... blinkySysTick/hook.i"
+	@echo "... blinkySysTick/hook.s"
 	@echo "... bsp/stm32f4xx_nucleo_144.obj"
 	@echo "... bsp/stm32f4xx_nucleo_144.i"
 	@echo "... bsp/stm32f4xx_nucleo_144.s"
@@ -2625,9 +2547,6 @@ help:
 	@echo "... salt/configuration/saltCfg.obj"
 	@echo "... salt/configuration/saltCfg.i"
 	@echo "... salt/configuration/saltCfg.s"
-	@echo "... salt/files-to-review/hook.obj"
-	@echo "... salt/files-to-review/hook.i"
-	@echo "... salt/files-to-review/hook.s"
 	@echo "... salt/files-to-review/main-salt-firmware-nxp.obj"
 	@echo "... salt/files-to-review/main-salt-firmware-nxp.i"
 	@echo "... salt/files-to-review/main-salt-firmware-nxp.s"

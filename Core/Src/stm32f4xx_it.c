@@ -21,6 +21,18 @@
 #include <stdio.h>
 #include "main.h"
 #include "stm32f4xx_it.h"
+#include "rkhtmr.h"
+#include "bsp-salt.h"
+#include "sapi_tick.h"
+
+extern volatile tick_t tickCounter;
+/*
+ * This tells the compiler that tickCounter is defined in another source file (sapi_tick.c), and the linker will
+ * resolve the reference at link time. The extern keyword is key here - it prevents a new definition while allowing
+ * access to the existing variable.
+ */
+
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 /* USER CODE END Includes */
@@ -28,14 +40,14 @@
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN TD */
 
-typedef void(* SystickCb)(void);
+//  typedef void(* SystickCb)(void);
 
 /* USER CODE END TD */
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
 
-static SystickCb userSysticCb = NULL;
+//  static SystickCb userSysticCb = NULL;
 
 /* USER CODE END PD */
 
@@ -188,11 +200,17 @@ void PendSV_Handler(void)
 void SysTick_Handler(void)
 {
   /* USER CODE BEGIN SysTick_IRQn 0 */
-    if(userSysticCb != NULL)
-        userSysticCb();
+    //  if(userSysticCb != NULL)
+     //   userSysticCb();
 
+    //  rkh_tmr_tick();
   /* USER CODE END SysTick_IRQn 0 */
   HAL_IncTick();
+    tickCounter++;
+
+
+    RKH_TIM_TICK(NULL);
+    bsp_timeTick();
   /* USER CODE BEGIN SysTick_IRQn 1 */
   /* USER CODE END SysTick_IRQn 1 */
 }
@@ -205,10 +223,10 @@ void SysTick_Handler(void)
 /******************************************************************************/
 
 /* USER CODE BEGIN 1 */
-void
-Systick_setCallback(SystickCb cb)
-{
-    printf("Systick_setCallback \n");
-    userSysticCb = cb;
-}
+//  void
+//  Systick_setCallback(SystickCb cb)
+//  {
+//      printf("Systick_setCallback \n");
+//      userSysticCb = cb;
+//  }
 /* USER CODE END 1 */

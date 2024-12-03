@@ -53,4 +53,40 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/stm32f4xx_it.c.obj: \
  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h \
  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h \
  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h \
- /Users/nando/NUCLEO-F429ZI/Core/Inc/stm32f4xx_it.h
+ /Users/nando/NUCLEO-F429ZI/Core/Inc/stm32f4xx_it.h \
+ /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/tmr/inc/rkhtmr.h \
+ /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/rkhitl.h \
+ /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/rkhplat.h \
+ /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/../../portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.h \
+ /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/rkhtype.h \
+ /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/../../portable/arm-cortex/rkhs/arm_cm4f/stm32/rkht.h \
+ /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/lib/gcc/arm-none-eabi/13.3.1/include/stdbool.h \
+ /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/queue/inc/rkhqueue.h \
+ /Users/nando/NUCLEO-F429ZI/blinky/rkhcfg.h \
+ /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/rkhdef.h \
+ /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/mempool/inc/rkhmempool.h \
+ /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/sma/inc/rkhsma_prio.h \
+ /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/rkhevt.h \
+ /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/rkhtype.h \
+ /Users/nando/NUCLEO-F429ZI/salt/bsp/bsp-salt.h \
+ /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/rkh.h \
+ /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/inc/rkhtrc.h \
+ /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/inc/rkhtrc_record.h \
+ /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/inc/rkhtrc_stream.h \
+ /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/inc/rkhtrc_out.h \
+ /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/inc/rkhtrc_define.h \
+ /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/inc/rkhtrc_filter.h \
+ /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/sma/inc/rkhsma.h \
+ /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/sm/inc/rkhsm.h \
+ /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/rkhassert.h \
+ /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/rkhfwk_module.h \
+ /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/rkhfwk_hook.h \
+ /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/rkhfwk_bittbl.h \
+ /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/rkhfwk_cast.h \
+ /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/rkhfwk_version.h \
+ /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/rkhfwk_dynevt.h \
+ /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/rkhitl.h \
+ /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/rkhfwk_evtpool.h \
+ /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/rkhfwk_sched.h \
+ /Users/nando/NUCLEO-F429ZI/third-party/stm32-sapi/inc/sapi_tick.h \
+ /Users/nando/NUCLEO-F429ZI/third-party/stm32-sapi/inc/sapi_datatypes.h

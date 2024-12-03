@@ -1,6 +1,16 @@
+#ifndef __BLINKER_H__
+#define __BLINKER_H__
 
-//  #include "rkh.h"
-//  #include "sapi_tick.h"
-//  #include "stm32f4xx_hal.h"
-//  #include "stm32f4xx_nucleo_144.h"  // Include the BSP library
-//  #include "salt-signals.h"
+#include "rkh.h"
+#include "bsp-salt.h"
+
+/* State machine */
+RKH_SMA_DCLR(blinker);
+
+/* Events */
+
+
+/* Initialization */
+void blinker_ctor(void);
+
+#endif

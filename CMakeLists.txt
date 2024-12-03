@@ -56,6 +56,7 @@ include_directories(
         ##  blinky example
         bsp
         blinky
+        #   blinky/bsp
 
         third-party/rkh/source/fwk/inc
         third-party/rkh/source/mempool/inc
@@ -76,8 +77,7 @@ include_directories(
         third-party/MQTT-C/include
         third-party/stm32-sapi/inc
 
-        blinky
-        blinky/bsp
+
         salt/utilities/rtime
         salt/utilities/mTime
         salt/utilities/date
@@ -122,10 +122,10 @@ include_directories(
 add_definitions(
         -DDEBUG
         -DUSE_HAL_DRIVER
-        -DSTM32F429xx
-        -DRKH_PLATFORM="__STM32__"
-        -DRKH_CONF_FILE="blinky/rkhcfg.h"
-)
+        -DSTM32F429xx -DRKH_PLATFORM="__STM32__" -DRKH_CONF_FILE="blinky/signal.h")
+
+#   -DCMAKE_BUILD_TYPE=Debug -G "Unix Makefiles" -DUSE_HAL_DRIVER -DSTM32F429xx -DRKH_PLATFORM="__STM32__" -DRKH_CONF_FILE="salt/rkhcfg.h"
+
 
 file(
         GLOB_RECURSE SOURCES "Core/*.*" "Drivers/*.*"
@@ -152,11 +152,11 @@ file(
 
         "bsp/stm32f4xx_nucleo_144.c"
 
-        "blinky/blinky.c"
-        "blinky/bsp/bsp_blinky.c"
+        #   "blinky/blinky.c"
+        #   "blinky/bsp/bsp_blinky.c"
 
         "blinky/bsp/assert.c"
-        "blinky/bsp/hook.c"
+        #   "blinky/bsp/hook.c"
 
         "mTime/mTime.c"
         "mTime/mTimeTbl.c"
@@ -173,7 +173,8 @@ file(
         "utilities/*.*"
 
         # blinky sys tick
-        "blinkySysTick/*.*"
+        "blinkySysTick/blinkySysTick.c"
+        "blinkySysTick/hook.c"
 )
 
 set(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/STM32F429ZITX_FLASH.ld)

@@ -94,12 +94,12 @@ bsp_init()
    //gpioConfig( LED2, GPIO_OUTPUT );
    //gpioConfig( LED3, GPIO_OUTPUT );
 
-
-   ModStatus_init();
-   ModStatus(0);
-   RegStatus(UnregisteredSt); // turn on LED2
-   NetStatus_init();
-   NetStatus(DisconnectedSt); // turn on LED3
+    // TODO: uncomment for initialization
+  // ModStatus_init();
+  // ModStatus(0);
+  // RegStatus(UnregisteredSt); // turn on LED2
+  // NetStatus_init();
+  // NetStatus(DisconnectedSt); // turn on LED3
    /***************************************************/
 
 

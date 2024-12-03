@@ -4,7 +4,7 @@
 
 #include <stdio.h>
 #include "stm32f4xx_hal.h"
-#include "../inc/sapi_tick.h"
+#include "sapi_tick.h"
 
 /* Global variables */
 volatile tick_t tickCounter;
@@ -13,6 +13,8 @@ volatile sAPI_FuncPtr_t tickHookFunction = NULL;
 
 /* Tick rate configuration 1 to 50 ms */
 bool_t tickConfig(tick_t tickRateMSvalue, sAPI_FuncPtr_t tickHook) {
+
+    printf("tickConfig \n");
 
     bool_t ret_val = 1;
     uint32_t tickRateHz = 0;
@@ -32,6 +34,9 @@ bool_t tickConfig(tick_t tickRateMSvalue, sAPI_FuncPtr_t tickHook) {
         if (HAL_SYSTICK_Config(HAL_RCC_GetHCLKFreq() / tickRateHz) != HAL_OK) {
             ret_val = 0;
         }
+
+        /* Configure SysTick to use processor clock source */
+        HAL_SYSTICK_CLKSourceConfig(SYSTICK_CLKSOURCE_HCLK);
 
         /* Configure SysTick IRQ priority */
         HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
