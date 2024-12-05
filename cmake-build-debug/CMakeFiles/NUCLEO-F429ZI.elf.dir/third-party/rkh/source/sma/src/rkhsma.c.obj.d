@@ -1,7 +1,7 @@
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma.c.obj: \
  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/sma/src/rkhsma.c \
  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/rkhassert.h \
- /Users/nando/NUCLEO-F429ZI/blinky/rkhcfg.h \
+ /Users/nando/NUCLEO-F429ZI/salt/rkhcfg.h \
  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/rkhdef.h \
  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/rkhfwk_module.h \
  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/rkhtype.h \

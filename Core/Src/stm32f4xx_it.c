@@ -206,11 +206,12 @@ void SysTick_Handler(void)
     //  rkh_tmr_tick();
   /* USER CODE END SysTick_IRQn 0 */
   HAL_IncTick();
-    tickCounter++;
+  tickCounter++;
 
 
-    RKH_TIM_TICK(NULL);
-    bsp_timeTick();
+  RKH_TIM_TICK(NULL);
+  // bsp_timeTick is called by rkh_hook_timetick that calls rkh_tmr_tick
+  //    bsp_timeTick();
   /* USER CODE BEGIN SysTick_IRQn 1 */
   /* USER CODE END SysTick_IRQn 1 */
 }

@@ -90,7 +90,7 @@ typedef signed int		rInt;
  * 	definitions in \c rkhdef.h file.
  */
 
-typedef unsigned int	rbool_t;
+typedef unsigned int rbool_t;
 
 /* -------------------------- External variables --------------------------- */
 /* -------------------------- Function prototypes -------------------------- */

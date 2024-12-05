@@ -905,30 +905,6 @@ Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c.s
 .PHONY : Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c.s
 
-blinky/bsp/assert.obj: blinky/bsp/assert.c.obj
-.PHONY : blinky/bsp/assert.obj
-
-# target to build an object file
-blinky/bsp/assert.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp/assert.c.obj
-.PHONY : blinky/bsp/assert.c.obj
-
-blinky/bsp/assert.i: blinky/bsp/assert.c.i
-.PHONY : blinky/bsp/assert.i
-
-# target to preprocess a source file
-blinky/bsp/assert.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp/assert.c.i
-.PHONY : blinky/bsp/assert.c.i
-
-blinky/bsp/assert.s: blinky/bsp/assert.c.s
-.PHONY : blinky/bsp/assert.s
-
-# target to generate assembly for a file
-blinky/bsp/assert.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp/assert.c.s
-.PHONY : blinky/bsp/assert.c.s
-
 blinkySysTick/blinkySysTick.obj: blinkySysTick/blinkySysTick.c.obj
 .PHONY : blinkySysTick/blinkySysTick.obj
 
@@ -1048,6 +1024,30 @@ mTime/mTimeTbl.s: mTime/mTimeTbl.c.s
 mTime/mTimeTbl.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTimeTbl.c.s
 .PHONY : mTime/mTimeTbl.c.s
+
+salt/bsp/assert.obj: salt/bsp/assert.c.obj
+.PHONY : salt/bsp/assert.obj
+
+# target to build an object file
+salt/bsp/assert.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/bsp/assert.c.obj
+.PHONY : salt/bsp/assert.c.obj
+
+salt/bsp/assert.i: salt/bsp/assert.c.i
+.PHONY : salt/bsp/assert.i
+
+# target to preprocess a source file
+salt/bsp/assert.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/bsp/assert.c.i
+.PHONY : salt/bsp/assert.c.i
+
+salt/bsp/assert.s: salt/bsp/assert.c.s
+.PHONY : salt/bsp/assert.s
+
+# target to generate assembly for a file
+salt/bsp/assert.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/bsp/assert.c.s
+.PHONY : salt/bsp/assert.c.s
 
 salt/bsp/bsp-salt.obj: salt/bsp/bsp-salt.c.obj
 .PHONY : salt/bsp/bsp-salt.obj
@@ -2523,9 +2523,6 @@ help:
 	@echo "... Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.obj"
 	@echo "... Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.i"
 	@echo "... Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.s"
-	@echo "... blinky/bsp/assert.obj"
-	@echo "... blinky/bsp/assert.i"
-	@echo "... blinky/bsp/assert.s"
 	@echo "... blinkySysTick/blinkySysTick.obj"
 	@echo "... blinkySysTick/blinkySysTick.i"
 	@echo "... blinkySysTick/blinkySysTick.s"
@@ -2541,6 +2538,9 @@ help:
 	@echo "... mTime/mTimeTbl.obj"
 	@echo "... mTime/mTimeTbl.i"
 	@echo "... mTime/mTimeTbl.s"
+	@echo "... salt/bsp/assert.obj"
+	@echo "... salt/bsp/assert.i"
+	@echo "... salt/bsp/assert.s"
 	@echo "... salt/bsp/bsp-salt.obj"
 	@echo "... salt/bsp/bsp-salt.i"
 	@echo "... salt/bsp/bsp-salt.s"

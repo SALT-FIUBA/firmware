@@ -15,7 +15,7 @@ set(CMAKE_ASM_COMPILER_ID "GNU")
 # Preprocessor definitions for this target.
 set(CMAKE_TARGET_DEFINITIONS_ASM
   "DEBUG"
-  "RKH_CONF_FILE=\"blinky/signal.h\""
+  "RKH_CONF_FILE=\"salt/rkhcfg.h\""
   "RKH_PLATFORM=\"__STM32__\""
   "STM32F429xx"
   "USE_HAL_DRIVER"
@@ -109,12 +109,12 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c.obj.d"
   "/Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj.d"
   "/Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c.obj.d"
-  "/Users/nando/NUCLEO-F429ZI/blinky/bsp/assert.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp/assert.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/blinky/bsp/assert.c.obj.d"
   "/Users/nando/NUCLEO-F429ZI/blinkySysTick/blinkySysTick.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/blinkySysTick/blinkySysTick.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/blinkySysTick/blinkySysTick.c.obj.d"
   "/Users/nando/NUCLEO-F429ZI/blinkySysTick/hook.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/blinkySysTick/hook.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/blinkySysTick/hook.c.obj.d"
   "/Users/nando/NUCLEO-F429ZI/bsp/stm32f4xx_nucleo_144.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/bsp/stm32f4xx_nucleo_144.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/bsp/stm32f4xx_nucleo_144.c.obj.d"
   "/Users/nando/NUCLEO-F429ZI/mTime/mTime.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTime.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTime.c.obj.d"
   "/Users/nando/NUCLEO-F429ZI/mTime/mTimeTbl.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTimeTbl.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTimeTbl.c.obj.d"
+  "/Users/nando/NUCLEO-F429ZI/salt/bsp/assert.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/bsp/assert.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/bsp/assert.c.obj.d"
   "/Users/nando/NUCLEO-F429ZI/salt/bsp/bsp-salt.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/bsp/bsp-salt.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/bsp/bsp-salt.c.obj.d"
   "/Users/nando/NUCLEO-F429ZI/salt/configuration/saltCfg.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/configuration/saltCfg.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/configuration/saltCfg.c.obj.d"
   "/Users/nando/NUCLEO-F429ZI/salt/files-to-review/main-salt-firmware-nxp.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/main-salt-firmware-nxp.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/main-salt-firmware-nxp.c.obj.d"

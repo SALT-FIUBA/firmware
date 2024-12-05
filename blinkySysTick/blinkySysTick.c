@@ -1,15 +1,12 @@
 #include <stdio.h>
 #include "blinkySysTick.h"
-#include "salt-signals.h"
 #include "stm32f4xx_nucleo_144.h"
-#include "blinky.h"
-
 #include "rkh.h"
-#include "bsp-salt.h"
-#include "sapi_tick.h"  // For tickConfig
+#include "salt-signals.h"
+
 
 /* ---------------------------- Events ----------------------------------- */
-static RKH_ROM_STATIC_EVENT(e_tout, evTout);
+static RKH_ROM_STATIC_EVENT(e_tout, evTimeout);
 
 typedef struct Blinker Blinker;
 struct Blinker
@@ -26,11 +23,11 @@ RKH_CREATE_BASIC_STATE(LedOn, led_on, NULL, RKH_ROOT, NULL);
 RKH_CREATE_BASIC_STATE(LedOff, led_off, NULL, RKH_ROOT, NULL);
 
 RKH_CREATE_TRANS_TABLE(LedOn)
-                RKH_TRREG(evTout, NULL, NULL, &LedOff),
+                RKH_TRREG(evTimeout, NULL, NULL, &LedOff),
 RKH_END_TRANS_TABLE
 
 RKH_CREATE_TRANS_TABLE(LedOff)
-                RKH_TRREG(evTout, NULL, NULL, &LedOn),
+                RKH_TRREG(evTimeout, NULL, NULL, &LedOn),
 RKH_END_TRANS_TABLE
 
 /* ------------------------- Active object ------------------------------- */
@@ -59,6 +56,8 @@ led_on(Blinker *const me, RKH_EVT_T *pe)
     printf("led_on \n");
     (void)pe;
     BSP_LED_On(LED1); // gpioWrite(LED1, 0);
+    BSP_LED_On(LED2); // gpioWrite(LED1, 0);
+    BSP_LED_On(LED3); // gpioWrite(LED1, 0);
     rkh_tmr_start(&me->tmr, RKH_UPCAST(RKH_SMA_T, me),
                   RKH_TIME_MS(1000),    /* initial tick */
                   RKH_TIME_MS(1000));   /* period */
@@ -70,6 +69,8 @@ led_off(Blinker *const me, RKH_EVT_T *pe)
     printf("led_off \n");
     (void)pe;
     BSP_LED_Off(LED1); // gpioWrite(LED1, 0);
+    BSP_LED_Off(LED2); // gpioWrite(LED1, 0);
+    BSP_LED_Off(LED3); // gpioWrite(LED1, 0);
     rkh_tmr_start(&me->tmr, RKH_UPCAST(RKH_SMA_T, me),
                   RKH_TIME_MS(1000),    /* initial tick */
                   RKH_TIME_MS(1000));   /* period */

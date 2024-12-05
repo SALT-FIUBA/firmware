@@ -66,7 +66,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/blinkySysTick/blinkySysTick.c.obj: \
  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/../../portable/arm-cortex/rkhs/arm_cm4f/stm32/rkht.h \
  /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/lib/gcc/arm-none-eabi/13.3.1/include/stdbool.h \
  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/queue/inc/rkhqueue.h \
- /Users/nando/NUCLEO-F429ZI/blinky/rkhcfg.h \
+ /Users/nando/NUCLEO-F429ZI/salt/rkhcfg.h \
  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/rkhdef.h \
  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/mempool/inc/rkhmempool.h \
  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/sma/inc/rkhsma_prio.h \
@@ -87,8 +87,5 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/blinkySysTick/blinkySysTick.c.obj: \
  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/rkhfwk_evtpool.h \
  /Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc/rkhfwk_sched.h \
  /Users/nando/NUCLEO-F429ZI/salt/bsp/bsp-salt.h \
- /Users/nando/NUCLEO-F429ZI/salt/salt-signals.h \
  /Users/nando/NUCLEO-F429ZI/bsp/stm32f4xx_nucleo_144.h \
- /Users/nando/NUCLEO-F429ZI/blinky/blinky.h \
- /Users/nando/NUCLEO-F429ZI/third-party/stm32-sapi/inc/sapi_tick.h \
- /Users/nando/NUCLEO-F429ZI/third-party/stm32-sapi/inc/sapi_datatypes.h
+ /Users/nando/NUCLEO-F429ZI/salt/salt-signals.h

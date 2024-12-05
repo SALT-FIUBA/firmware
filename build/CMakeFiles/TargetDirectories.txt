@@ -1,0 +1,3 @@
+/Users/nando/NUCLEO-F429ZI/build/CMakeFiles/NUCLEO-F429ZI.elf.dir
+/Users/nando/NUCLEO-F429ZI/build/CMakeFiles/edit_cache.dir
+/Users/nando/NUCLEO-F429ZI/build/CMakeFiles/rebuild_cache.dir

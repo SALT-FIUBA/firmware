@@ -73,7 +73,7 @@
  *  macro RKH_ALLEGE(), that still evaluates the test condition, but does
  *  not report assertion failures when the #RKH_CFG_FWK_ASSERT_EN is enabled.
  */
-#define RKH_CFG_FWK_ASSERT_EN           RKH_DISABLED //    RKH_ENABLED
+#define RKH_CFG_FWK_ASSERT_EN           RKH_ENABLED
 
 /**
  *  \brief
@@ -401,7 +401,7 @@
  *  \range
  *  \default    RKH_DISABLED
  */
-#define RKH_CFG_SMA_ORTHREG_EN          RKH_DISABLED
+#define RKH_CFG_SMA_ORTHREG_EN          RKH_ENABLED
 
 /* --- Configuration options related to trace facility -------------------- */
 
@@ -643,7 +643,7 @@
  *	rkh_rq_is_full() function that allows to known if a queue is full.
  *	See rkh_rq_is_full() function.
  */
-#define RKH_CFG_QUE_IS_FULL_EN           RKH_DISABLED
+#define RKH_CFG_QUE_IS_FULL_EN           RKH_ENABLED
 
 /**
  *	If the #RKH_CFG_QUE_GET_NELEMS_EN is set to 1 then RKH will include the
@@ -659,7 +659,7 @@
  *	manner.
  *	See rkh_rq_put_lifo() function.
  */
-#define RKH_CFG_QUE_PUT_LIFO_EN          RKH_DISABLED
+#define RKH_CFG_QUE_PUT_LIFO_EN          RKH_ENABLED
 
 /* --- Configuration options related to fixed-sized memory block facility - */
 

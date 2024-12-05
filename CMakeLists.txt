@@ -50,8 +50,11 @@ else ()
 endif ()
 
 include_directories(
-        Core/Inc Drivers/STM32F4xx_HAL_Driver/Inc Drivers/STM32F4xx_HAL_Driver/Inc/Legacy Drivers/CMSIS/Device/ST/STM32F4xx/Include Drivers/CMSIS/Include
-
+        Core/Inc
+        Drivers/STM32F4xx_HAL_Driver/Inc
+        Drivers/STM32F4xx_HAL_Driver/Inc/Legacy
+        Drivers/CMSIS/Device/ST/STM32F4xx/Include
+        Drivers/CMSIS/Include
 
         ##  blinky example
         bsp
@@ -119,13 +122,6 @@ include_directories(
 
 )
 
-add_definitions(
-        -DDEBUG
-        -DUSE_HAL_DRIVER
-        -DSTM32F429xx -DRKH_PLATFORM="__STM32__" -DRKH_CONF_FILE="blinky/signal.h")
-
-#   -DCMAKE_BUILD_TYPE=Debug -G "Unix Makefiles" -DUSE_HAL_DRIVER -DSTM32F429xx -DRKH_PLATFORM="__STM32__" -DRKH_CONF_FILE="salt/rkhcfg.h"
-
 
 file(
         GLOB_RECURSE SOURCES "Core/*.*" "Drivers/*.*"
@@ -184,6 +180,32 @@ add_link_options(-mcpu=cortex-m4 -mthumb -mthumb-interwork)
 add_link_options(-T ${LINKER_SCRIPT})
 
 add_executable(${PROJECT_NAME}.elf ${SOURCES} ${LINKER_SCRIPT})
+
+target_compile_definitions(
+    ${PROJECT_NAME}.elf PRIVATE
+    DEBUG
+    USE_HAL_DRIVER
+    STM32F429xx
+    RKH_PLATFORM="__STM32__"
+    #   RKH_CONF_FILE="blinky/rkhcfg.h"
+    RKH_CONF_FILE="salt/rkhcfg.h"
+)
+get_target_property(COMPILE_DEFS ${PROJECT_NAME}.elf COMPILE_DEFINITIONS)
+message(STATUS "All compile definitions: ${COMPILE_DEFS}")
+message(STATUS "Build type: ${CMAKE_BUILD_TYPE}")
+message(STATUS "...")
+
+#add_definitions(
+#        -DDEBUG
+#        -DUSE_HAL_DRIVER
+#        -DSTM32F429xx -DRKH_PLATFORM="__STM32__"
+#        -DRKH_CONF_FILE="blinky/rkhcfg.h"
+#)
+
+#   -DCMAKE_BUILD_TYPE=Debug -G "Unix Makefiles" -DUSE_HAL_DRIVER -DSTM32F429xx -DRKH_PLATFORM="__STM32__" -DRKH_CONF_FILE="salt/rkhcfg.h"
+
+
+
 
 set(HEX_FILE ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.hex)
 set(BIN_FILE ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.bin)

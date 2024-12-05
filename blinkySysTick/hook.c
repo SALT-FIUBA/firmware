@@ -84,7 +84,7 @@ tickHook(void *p)
 void
 rkh_hook_start(void)
 {
-    tickConfig(BSP_TICK_RATE_MS, NULL);  // Using the same interface as before
+    //  tickConfig(BSP_TICK_RATE_MS, NULL);  // Using the same interface as before
     RKH_TR_FWK_ACTOR(&rkhtick, "rkhtick");
 }
 

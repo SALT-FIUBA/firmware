@@ -29,8 +29,6 @@
 
 /* Blinky includes */
 #include "rkh.h"
-#include "blinky.h"
-#include "bsp/bsp_blinky.h"
 #include "mTime.h"
 
 /* SALT includes */
@@ -311,6 +309,8 @@ setupTraceFilters(void)
 
 
 /* USER CODE END 0 */
+#define STR(x)   #x
+#define SHOW_DEFINE(x) printf("%s=%s\n", #x, STR(x))
 
 
 
@@ -346,9 +346,9 @@ int main(void)
   MX_SPI1_Init();
   /* USER CODE BEGIN 2 */
 
-  bsp_init(); // blinky bsp init
+  //    bsp_init(); // blinky bsp init
 
-  //saltConfig();
+  saltConfig();
   rkh_fwk_init();
 
   setupTraceFilters();
@@ -356,48 +356,49 @@ int main(void)
 
   RKH_TRC_OPEN();
   /* salt code snippet */
- // rkh_dynEvt_init();
- // rkh_fwk_registerEvtPool(evPool0Sto, SIZEOF_EP0STO, SIZEOF_EP0_BLOCK);
- // rkh_fwk_registerEvtPool(evPool1Sto, SIZEOF_EP1STO, SIZEOF_EP1_BLOCK);
- // rkh_fwk_registerEvtPool(evPool2Sto, SIZEOF_EP2STO, SIZEOF_EP2_BLOCK);
+  rkh_dynEvt_init();
+  rkh_fwk_registerEvtPool(evPool0Sto, SIZEOF_EP0STO, SIZEOF_EP0_BLOCK);
+  rkh_fwk_registerEvtPool(evPool1Sto, SIZEOF_EP1STO, SIZEOF_EP1_BLOCK);
+  rkh_fwk_registerEvtPool(evPool2Sto, SIZEOF_EP2STO, SIZEOF_EP2_BLOCK);
 
- //   mqttProtCfg.publishTime = 5;
- //   mqttProtCfg.syncTime = 4;
- //   mqttProtCfg.keepAlive = 400;
- //   mqttProtCfg.qos = 1;
- //   strcpy(mqttProtCfg.clientId, "");
- //   strcpy(mqttProtCfg.topic, "");
- //   strcpy(mqttProtCfg.subTopic, "");
- //   mqttProtCfg.callback = onMQTTCb;
- //   MQTTProt_ctor(&mqttProtCfg, publishDimba);
+    mqttProtCfg.publishTime = 5;
+    mqttProtCfg.syncTime = 4;
+    mqttProtCfg.keepAlive = 400;
+    mqttProtCfg.qos = 1;
+    strcpy(mqttProtCfg.clientId, "");
+    strcpy(mqttProtCfg.topic, "");
+    strcpy(mqttProtCfg.subTopic, "");
+    mqttProtCfg.callback = onMQTTCb;
+    MQTTProt_ctor(&mqttProtCfg, publishDimba);
 
- //   logicCfg.publishTime = 8;
- //   logic_ctor(&logicCfg);
+    logicCfg.publishTime = 8;
+    logic_ctor(&logicCfg);
+
+    blinker_ctor();
 
 
- //   RKH_SMA_ACTIVATE(conMgr, ConMgr_qsto, CONMGR_QSTO_SIZE, 0, 0);
- //   printf("conmgr sma \n");
+    RKH_SMA_ACTIVATE(conMgr, ConMgr_qsto, CONMGR_QSTO_SIZE, 0, 0);
+    printf("conmgr sma \n");
 
- //   RKH_SMA_ACTIVATE(modMgr, ModMgr_qsto, MODMGR_QSTO_SIZE, 0, 0);
- //   printf("modmgr sma \n");
+    RKH_SMA_ACTIVATE(modMgr, ModMgr_qsto, MODMGR_QSTO_SIZE, 0, 0);
+    printf("modmgr sma \n");
 
- //   RKH_SMA_ACTIVATE(mqttProt, MQTTProt_qsto, MQTTPROT_QSTO_SIZE, 0, 0);
- //   printf("mqtt prot sma \n");
+    SHOW_DEFINE(RKH_CFG_FWK_MAX_SMA);
 
- //   RKH_SMA_ACTIVATE(logic, Logic_qsto, LOGIC_QSTO_SIZE, 0, 0);
- //   printf("logic sma \n");
+   RKH_SMA_ACTIVATE(mqttProt, MQTTProt_qsto, MQTTPROT_QSTO_SIZE, 0, 0);
+   printf("mqtt prot sma \n");
 
- //   printf("rkh sma post fifo \n");
- //   RKH_SMA_POST_FIFO(conMgr, &e_Open, 0);
+   RKH_SMA_ACTIVATE(logic, Logic_qsto, LOGIC_QSTO_SIZE, 0, 0);
+   printf("logic sma \n");
 
- //   initEnd = true;
+   printf("rkh sma post fifo \n");
+   RKH_SMA_POST_FIFO(conMgr, &e_Open, 0);
+
+   RKH_SMA_ACTIVATE(blinker, qsto, QSTO_SIZE,0,0);
+
+    initEnd = true;
   /* ---------------- */
 
-  // blinky state machine
-  //    RKH_SMA_ACTIVATE(blinky, qsto, QSTO_SIZE, 0, 0);
-
-  blinker_ctor();
-  RKH_SMA_ACTIVATE(blinker, qsto, QSTO_SIZE,0,0);
 
   rkh_fwk_enter();
 
