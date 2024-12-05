@@ -3931,6 +3931,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/mqtt-protocol/mqttProt.c.ob
  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
  /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h
+ /Users/nando/NUCLEO-F429ZI/salt/bsp/bsp-salt.h
  /Users/nando/NUCLEO-F429ZI/salt/peripherals/gps/gps.h
  /Users/nando/NUCLEO-F429ZI/salt/peripherals/module-command/modcmd.h
  /Users/nando/NUCLEO-F429ZI/salt/rkhcfg.h

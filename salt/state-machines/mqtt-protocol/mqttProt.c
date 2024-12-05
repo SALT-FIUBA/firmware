@@ -26,6 +26,7 @@
 #include "mqttc.h"
 #include "epoch.h"
 #include "date.h"
+#include "bsp-salt.h"
 
 /* ----------------------------- Local macros ------------------------------ */
 /* ......................... Declares active object ........................ */

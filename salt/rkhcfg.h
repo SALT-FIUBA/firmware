@@ -247,7 +247,7 @@
  *	If the #RKH_CFG_SMA_SHALLOW_HIST_EN and #RKH_CFG_SMA_PSEUDOSTATE_EN
  *	are set to 1, the RKH allows shallow history pseudostate usage.
  */
-#define RKH_CFG_SMA_SHALLOW_HIST_EN     RKH_DISABLED
+#define RKH_CFG_SMA_SHALLOW_HIST_EN     RKH_ENABLED
 
 /**
  *	If the #RKH_CFG_SMA_CHOICE_EN and #RKH_CFG_SMA_PSEUDOSTATE_EN are set to
@@ -259,7 +259,7 @@
  *	If the #RKH_CFG_SMA_CONDITIONAL_EN and #RKH_CFG_SMA_PSEUDOSTATE_EN are
  *	set to 1, the RKH allows branch (or conditional) pseudostate usage.
  */
-#define RKH_CFG_SMA_CONDITIONAL_EN      RKH_DISABLED
+#define RKH_CFG_SMA_CONDITIONAL_EN      RKH_ENABLED
 
 /**
  *	If the #RKH_CFG_SMA_SUBMACHINE_EN and #RKH_CFG_SMA_PSEUDOSTATE_EN are
@@ -409,7 +409,7 @@
  *	If the #RKH_CFG_TRC_EN is set to 1 then RKH will include the trace
  *	facility.
  */
-#define RKH_CFG_TRC_EN                  RKH_DISABLED
+#define RKH_CFG_TRC_EN                  RKH_ENABLED
 
 /**
  *	If the #RKH_CFG_TRC_RTFIL_EN is set to 1 then RKH will include
@@ -441,7 +441,7 @@
  *	build and generate tracing information from the application-level code.
  *	This trace records are application-specific.
  */
-#define RKH_CFG_TRC_USER_TRACE_EN       RKH_DISABLED
+#define RKH_CFG_TRC_USER_TRACE_EN       RKH_ENABLED
 
 /**
  *	If the #RKH_CFG_TRC_ALL_EN is set to 1 then RKH will include all its own
@@ -501,7 +501,7 @@
  *	If the #RKH_CFG_TRC_SM_DCH_EN and #RKH_CFG_TRC_SM_EN are set to 1 then
  *	RKH will include the "start a state machine" trace record.
  */
-#define RKH_CFG_TRC_SM_DCH_EN          RKH_DISABLED
+#define RKH_CFG_TRC_SM_DCH_EN          RKH_ENABLED
 
 /**
  *	If the #RKH_CFG_TRC_SM_CLRH_EN and #RKH_CFG_TRC_SM_EN are set to 1 then
@@ -552,7 +552,7 @@
  *	RKH will include the "state or pseudostate in a compound transition"
  *	trace record.
  */
-#define RKH_CFG_TRC_SM_TS_STATE_EN      RKH_DISABLED
+#define RKH_CFG_TRC_SM_TS_STATE_EN      RKH_ENABLED
 
 /**
  *	If the #RKH_CFG_TRC_SM_CLRH_EN and #RKH_CFG_TRC_SM_EN are set to 1 then
@@ -591,7 +591,7 @@
  *	Specify the maximum number of trace events in the stream. The smaller
  *	this number, the lower the RAM consumption.
  */
-#define RKH_CFG_TRC_SIZEOF_STREAM       128u
+#define RKH_CFG_TRC_SIZEOF_STREAM       1024u
 
 /* --- Configuration options related to queue (by reference) facility ----- */
 
@@ -748,4 +748,3 @@
 #define RKH_CFG_TMR_GET_INFO_EN         RKH_DISABLED
 
 #endif
-/* ------------------------------ End of file ------------------------------ */
