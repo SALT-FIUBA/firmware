@@ -69,7 +69,6 @@ static RKH_TS_T tstamp;
 void
 bsp_init()
 {
-    //  printf("bsp_init \n");
     /* Read clock settings and update SystemCoreClock variable */
     SystemCoreClockUpdate(); // function defined on stm32f4xx.c
 
@@ -87,23 +86,25 @@ bsp_init()
     gpioConfig(USER_BUTTON, GPIO_INPUT );
 
     /* Configuración de pines de salida para Leds de la EDU-CIAA-NXP */
-      // gpioConfig( LEDR, GPIO_OUTPUT );
-      // gpioConfig( LEDG, GPIO_OUTPUT );
-      // gpioConfig( LEDB, GPIO_OUTPUT );
-   //gpioConfig( LED1, GPIO_OUTPUT );
-   //gpioConfig( LED2, GPIO_OUTPUT );
-   //gpioConfig( LED3, GPIO_OUTPUT );
+     gpioConfig( LED_GREEN, GPIO_OUTPUT );
+     gpioConfig( LED_BLUE, GPIO_OUTPUT );
+     gpioConfig( LED_RED, GPIO_OUTPUT );
+     gpioConfig( LED1, GPIO_OUTPUT );
+     gpioConfig( LED2, GPIO_OUTPUT );
+     gpioConfig( LED3, GPIO_OUTPUT );
 
-    // TODO: uncomment for initialization
-  // ModStatus_init();
-  // ModStatus(0);
-  // RegStatus(UnregisteredSt); // turn on LED2
-  // NetStatus_init();
-  // NetStatus(DisconnectedSt); // turn on LED3
+    ModStatus_init();
+    ModStatus(0);
+
+    RegStatus_init();
+    RegStatus(UnregisteredSt); // turn on LED2
+
+    NetStatus_init();
+    NetStatus(DisconnectedSt); // turn on LED3
    /***************************************************/
 
 
-    //  modPwr_init();
+    modPwr_init();
     rtime_init();
 }
 

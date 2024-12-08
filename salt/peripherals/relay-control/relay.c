@@ -36,7 +36,6 @@ ri8_t error[NUM_RELAY];
 /* ---------------------------- Global functions --------------------------- */
 void relayInit(onRelayErrorCb_t errorCb) {
 
-    //  printf("relay init \n");
     onRelayErrorCb = errorCb;
     relayInitBsp();
 

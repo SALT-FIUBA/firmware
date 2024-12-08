@@ -263,8 +263,6 @@ ssp_isEqual(SSP *const me, unsigned char c)
 int
 ssp_init(SSP *const me, const SSPNodeNormal *root)
 {
-    printf("ssp_init \n");
-
     int r = 1;
 
     if ((me != (SSP *)0) && (root != (const SSPNodeNormal *)0))

@@ -62,8 +62,6 @@ uint16_t crc16(unsigned char* pData, int length) // CRC16_CCITT_FALSE https://gi
 /* -------------------------- Function prototypes -------------------------- */
 void telocInit() {
 
-    //  printf("teloc init \n");
-
     nextTelocFrameByte = telocFrame;
     haslerVelEvt.source = VEL_SOURCE_TELOC;
     RKH_SET_STATIC_EVENT(RKH_UPCAST(RKH_EVT_T, &haslerVelEvt), evVelHasler);

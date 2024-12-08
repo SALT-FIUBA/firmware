@@ -157,7 +157,7 @@ rkh_fwk_ae(RKH_ES_T esize, RKH_SIG_T e, const void *const sender)
 void
 rkh_fwk_registerEvtPool(void *sstart, rui32_t ssize, RKH_ES_T esize)
 {
-    printf("rkh_fwk_registerEvtPool \n");
+    //  printf("rkh_fwk_registerEvtPool \n");
 
     RKHEvtPool *ep;
     RKH_SR_ALLOC();
@@ -174,7 +174,7 @@ rkh_fwk_registerEvtPool(void *sstart, rui32_t ssize, RKH_ES_T esize)
 void
 rkh_dynEvt_init(void)
 {
-    printf("rkh dynevt init \n");
+    //  printf("rkh dynevt init \n");
 
     rInt i;
     RKHEvtPoolMgr *ep;

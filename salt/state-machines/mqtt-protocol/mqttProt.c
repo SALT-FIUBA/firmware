@@ -332,17 +332,18 @@ pubDft(AppData *appMsg)
 }
 
 static int
-configClient(MQTTProt *const me, MQTTProtCfg *config)
+configMqttClient(MQTTProt *const me, MQTTProtCfg *config)
 {
 
     int result = 1;
 
-    if (config->publishTime != 0 ||
+    if (
+        config->publishTime != 0 ||
         config->syncTime != 0 ||
         config->keepAlive != 0 ||
-        config->topic != (const char *)0 ||
-        config->clientId != (const char *)0)
-    {
+        strlen(config->topic) > 0 ||
+        strlen(config->clientId) > 0
+    ) {
         result = 0;
         me->config = config;
     }
@@ -805,7 +806,7 @@ isReconnect(const RKH_SM_T *me, RKH_EVT_T *pe)
 void
 MQTTProt_ctor(MQTTProtCfg *config, MQTTProtPublish publisher)
 {
-    printf("mqttprot ctor init\n");
+    //  printf("mqttprot ctor init\n");
 
     MQTTProt *me;
 
@@ -819,10 +820,10 @@ MQTTProt_ctor(MQTTProtCfg *config, MQTTProtPublish publisher)
                 Sync_Idle, NULL, NULL);
 
     MQTTProt_syncRegion = (RKH_SM_T *)&(me->itsSyncRegion);
-    configClient(me, config);
+    configMqttClient(me, config);
 
     me->publisher = (publisher != (MQTTProtPublish)0) ? publisher : pubDft;
-    printf("mqtt prot ctor end \n");
+    //  printf("mqtt prot ctor end \n");
 }
 
 /* ------------------------------ End of file ------------------------------ */

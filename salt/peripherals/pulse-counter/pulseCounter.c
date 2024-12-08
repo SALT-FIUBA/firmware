@@ -35,8 +35,6 @@ VelEvt externalVelEvt;
 /* ---------------------------- Global functions --------------------------- */
 void pulseCounterInit(pulseCount_t errorThr, float velFactor) {
 
-    //  printf("pulse counter init \n");
-
     pulseCounterInitBsp(errorThr);
     factor = velFactor;
     externalVelEvt.source = VEL_SOURCE_EXTERNAL;

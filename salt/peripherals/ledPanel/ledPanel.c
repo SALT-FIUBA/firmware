@@ -94,7 +94,6 @@ static void ledPanelSetCfgInt(LedPanelCfg* cfg)
 /* ---------------------------- Global functions --------------------------- */
 void ledPanelInit(void)
 {
-    //  printf("ledPanelInit \n");
     // Initialize LED
     LED_Init();
 
@@ -119,7 +118,7 @@ void ledPanelInit(void)
 
 void ledPanelSetCfg(LedPanelCfg* cfg)
 {
-    printf("ledPanelSetCfg \n");
+    //  printf("ledPanelSetCfg \n");
 
     uint8_t aux;
 

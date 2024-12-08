@@ -51,8 +51,6 @@ bool buzzerGet(){
 
 void buzzerInit(){
 
-    //  printf("buzzer init \n");
-
     buzzerInitBsp();
     buzzerSetMode(BUZZER_MODE_DISABLE);
 }

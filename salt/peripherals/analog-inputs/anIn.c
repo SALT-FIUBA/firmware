@@ -85,7 +85,6 @@ convertToSampleValue(adc_t sample)
 void
 anInInit(onAnInCb_t cb)
 {
-    //  printf("anInInit \n");
     onAnInCb = cb;
 
     /*

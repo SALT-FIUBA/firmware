@@ -40,7 +40,8 @@ RKH_SMA_DEF_PTR(blinker);
 void
 blinker_ctor(void)
 {
-    printf("blinker_ctor \n");
+    //  printf("blinker_ctor \n");
+
     /* Initialize 1ms tick as specified in bsp_init() */
     //  tickConfig(1, 0);  // Configure 1ms tick with bsp_timeTick as callback
 

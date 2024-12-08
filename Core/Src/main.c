@@ -261,7 +261,7 @@ saltConfig(void)
     onSwitchInit(onSwitchCb); // don't use rkh
     pulseCounterInit(PULSE_COUNTER_THR,PULSE_COUNTER_FACTOR); // use rkh
     telocInit(); // use rkh
-    //epoch_init();
+    //  epoch_init(); // commented on original code
     mTime_init(); // don't use rkh
 
     sim808Init(SIM_808_A); // don't use rkh
@@ -376,25 +376,24 @@ int main(void)
 
     blinker_ctor();
 
-
-    RKH_SMA_ACTIVATE(conMgr, ConMgr_qsto, CONMGR_QSTO_SIZE, 0, 0);
-    printf("conmgr sma \n");
-
-    RKH_SMA_ACTIVATE(modMgr, ModMgr_qsto, MODMGR_QSTO_SIZE, 0, 0);
-    printf("modmgr sma \n");
-
     SHOW_DEFINE(RKH_CFG_FWK_MAX_SMA);
 
-   RKH_SMA_ACTIVATE(mqttProt, MQTTProt_qsto, MQTTPROT_QSTO_SIZE, 0, 0);
-   printf("mqtt prot sma \n");
+    RKH_SMA_ACTIVATE(conMgr, ConMgr_qsto, CONMGR_QSTO_SIZE, 0, 0);
+    //  printf("conmgr sma \n");
 
-   RKH_SMA_ACTIVATE(logic, Logic_qsto, LOGIC_QSTO_SIZE, 0, 0);
-   printf("logic sma \n");
+    RKH_SMA_ACTIVATE(modMgr, ModMgr_qsto, MODMGR_QSTO_SIZE, 0, 0);
+    //  printf("modmgr sma \n");
 
-   printf("rkh sma post fifo \n");
-   RKH_SMA_POST_FIFO(conMgr, &e_Open, 0);
+    RKH_SMA_ACTIVATE(mqttProt, MQTTProt_qsto, MQTTPROT_QSTO_SIZE, 0, 0);
+    //  printf("mqtt prot sma \n");
 
-   RKH_SMA_ACTIVATE(blinker, qsto, QSTO_SIZE,0,0);
+    RKH_SMA_ACTIVATE(logic, Logic_qsto, LOGIC_QSTO_SIZE, 0, 0);
+    //  printf("logic sma \n");
+
+    RKH_SMA_POST_FIFO(conMgr, &e_Open, 0);
+    //  printf("rkh sma post fifo \n");
+
+   //   RKH_SMA_ACTIVATE(blinker, qsto, QSTO_SIZE,0,0);
 
     initEnd = true;
   /* ---------------- */

@@ -261,8 +261,6 @@ sendModCmd_3StrArgs(const ModCmd *p, char *s1, char *s2, char *s3)
 ModCmdRcvHandler
 ModCmd_init(void)
 {
-    //  printf("ModCmd_init \n");
-
     RKH_SR_ALLOC();
 
     RKH_ENTER_CRITICAL_();

@@ -45,8 +45,6 @@ execute_list(void (*const *p)(void))
 void
 mTime_init(void)
 {
-    //  printf("mtime init \n");
-
     counter = 0;
     enabled = 1;
 }

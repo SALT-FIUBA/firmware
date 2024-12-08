@@ -392,8 +392,6 @@ void serialSetIntCb(serialMap_t serialMap, serialIsrCb_t cb ){
 
 void serialSetIntCb(serialMap_t serialMap, serialIsrCb_t cb)
 {
-    //  printf("serialSetIntCb \n");
-
     switch(serialMap) {
         case UART_SIM_808_A:
             uartSimACb = cb;

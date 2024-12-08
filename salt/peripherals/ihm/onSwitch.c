@@ -95,8 +95,6 @@ static onSwitchCb_t onSwitchCb = NULL;
 
 void onSwitchInit(onSwitchCb_t cb)
 {
-    //  printf("onswitchinit \n");
-
     GPIO_InitTypeDef GPIO_InitStruct = {0};
 
     /* Set Callback */
