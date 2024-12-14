@@ -39,6 +39,7 @@ void UART4_IRQHandler(void);
 #include <stdio.h>
 #include "serial.h"
 #include "gpio.h"
+#include "usart.h"
 
 //  #include "sapi.h"
 
@@ -449,7 +450,8 @@ void serialPutByte(serialMap_t uart, uint8_t byte)
         return;
     }
 
-    HAL_UART_Transmit(huart_ptr, &byte, 1, HAL_MAX_DELAY);
+    // HAL_UART_Transmit(huart_ptr, &byte, 1, HAL_MAX_DELAY);
+    HAL_UART_Transmit(&huart3, &byte, 1, HAL_MAX_DELAY);
 }
 
 /*

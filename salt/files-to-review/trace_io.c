@@ -101,17 +101,17 @@ rkh_trc_flush(void)
             {
 #ifdef SEND_TRACE
                 rui8_t c = *blk++;
-                serialPutByte(UART_DEBUG, c);
+                //  serialPutByte(UART_DEBUG, c);
                  // Format for printf
-                   printf("%c", c);  // Print printable character
-                   if (isprint(c))
-                   {
-                       printf("%c", c);  // Print printable character
-                   }
-                   else
-                   {
-                       printf("\n");     // Add line break for non-printable
-                   }
+                    printf("%c", c);  // Print printable character
+                  // if (isprint(c))
+                  // {
+                  //     printf("%c", c);  // Print printable character
+                  // }
+                  // else
+                  // {
+                  //     printf("\n");     // Add line break for non-printable
+                  // }
 #endif
             }
         }

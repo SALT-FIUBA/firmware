@@ -271,7 +271,7 @@
  *	If the #RKH_CFG_SMA_TRC_SNDR_EN and #RKH_CFG_TRC_EN are set to 1,
  *	when posting an event the RKH inserts a pointer to the sender object.
  */
-#define RKH_CFG_SMA_TRC_SNDR_EN         RKH_DISABLED
+#define RKH_CFG_SMA_TRC_SNDR_EN         RKH_ENABLED
 
 
 /**
@@ -440,7 +440,7 @@
  *	build and generate tracing information from the application-level code.
  *	This trace records are application-specific.
  */
-#define RKH_CFG_TRC_USER_TRACE_EN       RKH_DISABLED
+#define RKH_CFG_TRC_USER_TRACE_EN       RKH_ENABLED
 
 /**
  *	If the #RKH_CFG_TRC_ALL_EN is set to 1 then RKH will include all its own
@@ -506,45 +506,45 @@
  *	If the #RKH_CFG_TRC_SM_CLRH_EN and #RKH_CFG_TRC_SM_EN are set to 1 then
  *	RKH will include the "dispatch an event to state machine" trace record.
  */
-#define RKH_CFG_TRC_SM_CLRH_EN          RKH_DISABLED
+#define RKH_CFG_TRC_SM_CLRH_EN          RKH_ENABLED
 
 /**
  *	If the #RKH_CFG_TRC_SM_CLRH_EN and #RKH_CFG_TRC_SM_EN are set to 1 then
  *	RKH will include the "clear the history pseudostate" trace record.
  */
-#define RKH_CFG_TRC_SM_TRN_EN           RKH_DISABLED
+#define RKH_CFG_TRC_SM_TRN_EN           RKH_ENABLED
 
 /**
  *	If the #RKH_CFG_TRC_SM_STATE_EN and #RKH_CFG_TRC_SM_EN are set to 1 then
  *	RKH will include the "final state of transition" trace record.
  */
-#define RKH_CFG_TRC_SM_STATE_EN         RKH_DISABLED
+#define RKH_CFG_TRC_SM_STATE_EN         RKH_ENABLED
 
 /**
  *	If the #RKH_CFG_TRC_SM_CLRH_EN and #RKH_CFG_TRC_SM_EN are set to 1 then
  *	RKH will include the "entry state" trace record.
  */
-#define RKH_CFG_TRC_SM_ENSTATE_EN       RKH_DISABLED
+#define RKH_CFG_TRC_SM_ENSTATE_EN       RKH_ENABLED
 
 /**
  *	If the #RKH_CFG_TRC_SM_CLRH_EN and #RKH_CFG_TRC_SM_EN are set to 1 then
  *	RKH will include the "exit state" trace record.
  */
-#define RKH_CFG_TRC_SM_EXSTATE_EN       RKH_DISABLED
+#define RKH_CFG_TRC_SM_EXSTATE_EN       RKH_ENABLED
 
 /**
  *	If the #RKH_CFG_TRC_SM_CLRH_EN and #RKH_CFG_TRC_SM_EN are set to 1 then
  *	RKH will include the "number of entry and exit states in transition"
  *	trace record.
  */
-#define RKH_CFG_TRC_SM_NENEX_EN         RKH_DISABLED
+#define RKH_CFG_TRC_SM_NENEX_EN         RKH_ENABLED
 
 /**
  *	If the #RKH_CFG_TRC_SM_CLRH_EN and #RKH_CFG_TRC_SM_EN are set to 1 then
  *	RKH will include the "number of executed actions in transition" trace
  *	record.
  */
-#define RKH_CFG_TRC_SM_NTRNACT_EN       RKH_DISABLED
+#define RKH_CFG_TRC_SM_NTRNACT_EN       RKH_ENABLED
 
 /**
  *	If the #RKH_CFG_TRC_SM_CLRH_EN and #RKH_CFG_TRC_SM_EN are set to 1 then
@@ -557,14 +557,14 @@
  *	If the #RKH_CFG_TRC_SM_CLRH_EN and #RKH_CFG_TRC_SM_EN are set to 1 then
  *	RKH will include the "returned code from dispatch function" trace record.
  */
-#define RKH_CFG_TRC_SM_PROCESS_EN       RKH_DISABLED
+#define RKH_CFG_TRC_SM_PROCESS_EN       RKH_ENABLED
 
 /**
  *	If the #RKH_CFG_TRC_SM_EXE_ACT_EN and #RKH_CFG_TRC_SM_EN are set to 1
  *	then RKH will include the "executed behavior of state machine" trace
  *	record.
  */
-#define RKH_CFG_TRC_SM_EXE_ACT_EN       RKH_DISABLED
+#define RKH_CFG_TRC_SM_EXE_ACT_EN       RKH_ENABLED
 
 /**
  *	If the #RKH_CFG_TRC_NSEQ_EN is set to 1 then RKH will add to the trace
@@ -613,7 +613,7 @@
  *  This provides valuable empirical data for proper sizing of the queue.
  *  See rkh_rq_get_lwm() function.
  */
-#define RKH_CFG_QUE_GET_LWMARK_EN        RKH_DISABLED
+#define RKH_CFG_QUE_GET_LWMARK_EN        RKH_ENABLED
 
 /**
  *	If the #RKH_CFG_QUE_GET_INFO_EN is set to 1 then RKH allows to collect and

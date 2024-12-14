@@ -83,4 +83,5 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/serial/serial.c.obj: \
  /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/fwk/inc/rkhfwk_evtpool.h \
  /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/fwk/inc/rkhfwk_sched.h \
  /home/nando-toshiba/Desktop/salt/firmware/Core/Inc/gpio.h \
- /home/nando-toshiba/Desktop/salt/firmware/Core/Inc/main.h
+ /home/nando-toshiba/Desktop/salt/firmware/Core/Inc/main.h \
+ /home/nando-toshiba/Desktop/salt/firmware/Core/Inc/usart.h

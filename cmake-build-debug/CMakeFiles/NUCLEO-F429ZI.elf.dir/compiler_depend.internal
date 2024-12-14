@@ -3190,6 +3190,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/serial/serial.c.obj
  /home/nando-toshiba/Desktop/salt/firmware/Core/Inc/gpio.h
  /home/nando-toshiba/Desktop/salt/firmware/Core/Inc/main.h
  /home/nando-toshiba/Desktop/salt/firmware/Core/Inc/stm32f4xx_hal_conf.h
+ /home/nando-toshiba/Desktop/salt/firmware/Core/Inc/usart.h
  /home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f429xx.h
  /home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
  /home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h

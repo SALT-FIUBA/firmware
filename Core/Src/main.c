@@ -303,6 +303,7 @@ setupTraceFilters(void)
     RKH_FILTER_OFF_SMA(conMgr);
     //RKH_FILTER_OFF_SMA(mqttProt);
     RKH_FILTER_OFF_SMA(logic);
+
     RKH_FILTER_OFF_ALL_SIGNALS();
 }
 
@@ -351,8 +352,11 @@ int main(void)
   saltConfig();
   rkh_fwk_init();
 
-  setupTraceFilters();
+
+  //    setupTraceFilters();
   // mTime_init();
+
+
 
   RKH_TRC_OPEN();
   /* salt code snippet */
