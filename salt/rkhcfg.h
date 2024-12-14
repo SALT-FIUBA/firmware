@@ -426,14 +426,14 @@
  *	set to 1, the RKH allows the usage of runtime trace filter for state
  *	machine applications (active objects).
  */
-#define RKH_CFG_TRC_RTFIL_SMA_EN        RKH_DISABLED
+#define RKH_CFG_TRC_RTFIL_SMA_EN        RKH_ENABLED
 
 /**
  *	If the #RKH_CFG_TRC_RTFIL_EN and #RKH_CFG_TRC_RTFIL_SIGNAL_EN
  *	are set to 1, the RKH allows the usage of runtime trace filter for
  *	signals (events).
  */
-#define RKH_CFG_TRC_RTFIL_SIGNAL_EN     RKH_DISABLED
+#define RKH_CFG_TRC_RTFIL_SIGNAL_EN     RKH_ENABLED
 
 /**
  *	If the #RKH_CFG_TRC_USER_TRACE_EN is set to 1 then RKH will allow to
@@ -452,55 +452,55 @@
  *	If the #RKH_CFG_TRC_MP_EN is set to 1 then RKH will include all trace
  *	records related to the native fixed-size memory blocks.
  */
-#define RKH_CFG_TRC_MP_EN               RKH_DISABLED
+#define RKH_CFG_TRC_MP_EN               RKH_ENABLED
 
 /**
  *	If the #RKH_CFG_TRC_QUE_EN is set to 1 then RKH will include all trace
  *	records related to the native queues.
  */
-#define RKH_CFG_TRC_QUE_EN               RKH_DISABLED
+#define RKH_CFG_TRC_QUE_EN               RKH_ENABLED
 
 /**
  *	If the #RKH_CFG_TRC_SMA_EN is set to 1 then RKH will include all trace
  *	records related to the state machine applications.
  */
-#define RKH_CFG_TRC_SMA_EN              RKH_DISABLED
+#define RKH_CFG_TRC_SMA_EN              RKH_ENABLED
 
 /**
  *	If the #RKH_CFG_TRC_TMR_EN is set to 1 then RKH will include all trace
  *	records related to the native software timer.
  */
-#define RKH_CFG_TRC_TMR_EN              RKH_DISABLED
+#define RKH_CFG_TRC_TMR_EN              RKH_ENABLED
 
 /**
  *	If the #RKH_CFG_TRC_SM_EN is set to 1 then RKH will include all trace
  *	records related to the state machine (hierarchical and "flat").
  */
-#define RKH_CFG_TRC_SM_EN               RKH_DISABLED
+#define RKH_CFG_TRC_SM_EN               RKH_ENABLED
 
 /**
  *	If the #RKH_CFG_TRC_FWK_EN is set to 1 then RKH will include all trace
  *	records related to the nativenative  event framework.
  */
-#define RKH_CFG_TRC_FWK_EN              RKH_DISABLED
+#define RKH_CFG_TRC_FWK_EN              RKH_ENABLED
 
 /**
  *	If the #RKH_CFG_TRC_ASSERT_EN and #RKH_CFG_TRC_FWK_EN are set to 1 then
  *	RKH will include the "assertion" trace record.
  */
-#define RKH_CFG_TRC_ASSERT_EN           RKH_DISABLED
+#define RKH_CFG_TRC_ASSERT_EN           RKH_ENABLED
 
 /**
  *	If the #RKH_CFG_TRC_SM_INIT_EN and #RKH_CFG_TRC_SM_EN are set to 1 then
  *	RKH will include the "init state machine" trace record.
  */
-#define RKH_CFG_TRC_SM_INIT_EN          RKH_DISABLED
+#define RKH_CFG_TRC_SM_INIT_EN          RKH_ENABLED
 
 /**
  *	If the #RKH_CFG_TRC_SM_DCH_EN and #RKH_CFG_TRC_SM_EN are set to 1 then
  *	RKH will include the "start a state machine" trace record.
  */
-#define RKH_CFG_TRC_SM_DCH_EN          RKH_DISABLED
+#define RKH_CFG_TRC_SM_DCH_EN          RKH_ENABLED
 
 /**
  *	If the #RKH_CFG_TRC_SM_CLRH_EN and #RKH_CFG_TRC_SM_EN are set to 1 then
@@ -571,7 +571,7 @@
  *	record an incremental number (1-byte), used like a sequence number.
  *	See RKH_TRC_NSEQ() and RKH_TRC_HDR() macros.
  */
-#define RKH_CFG_TRC_NSEQ_EN             RKH_DISABLED
+#define RKH_CFG_TRC_NSEQ_EN             RKH_ENABLED
 
 /**
  *	If the #RKH_CFG_TRC_CHK_EN is set to 1 then RKH will add to the trace
@@ -584,7 +584,7 @@
  *	record a timestamp field. It's configurable by means of
  *	#RKH_CFGPORT_TRC_SIZEOF_TSTAMP.
  */
-#define RKH_CFG_TRC_TSTAMP_EN           RKH_DISABLED
+#define RKH_CFG_TRC_TSTAMP_EN           RKH_ENABLED
 
 /**
  *	Specify the maximum number of trace events in the stream. The smaller
