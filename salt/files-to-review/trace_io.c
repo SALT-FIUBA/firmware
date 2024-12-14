@@ -89,7 +89,7 @@ rkh_trc_flush(void)
 
     FOREVER
     {
-        nbytes = 128;
+        nbytes = 1024;
 
         RKH_ENTER_CRITICAL_();
         blk = rkh_trc_get_block(&nbytes);
@@ -102,16 +102,16 @@ rkh_trc_flush(void)
 #ifdef SEND_TRACE
                 rui8_t c = *blk++;
                 serialPutByte(UART_DEBUG, c);
-                // Format for printf
-                //printf("%c", c);  // Print printable character
-                if (isprint(c))
-                {
-                    printf("%c", c);  // Print printable character
-                }
-                else
-                {
-                    printf("\n");     // Add line break for non-printable
-                }
+                 // Format for printf
+                   printf("%c", c);  // Print printable character
+                   if (isprint(c))
+                   {
+                       printf("%c", c);  // Print printable character
+                   }
+                   else
+                   {
+                       printf("\n");     // Add line break for non-printable
+                   }
 #endif
             }
         }

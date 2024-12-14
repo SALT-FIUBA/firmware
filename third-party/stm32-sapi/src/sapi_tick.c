@@ -14,7 +14,7 @@ volatile sAPI_FuncPtr_t tickHookFunction = NULL;
 /* Tick rate configuration 1 to 50 ms */
 bool_t tickConfig(tick_t tickRateMSvalue, sAPI_FuncPtr_t tickHook) {
 
-    printf("tickConfig \n");
+    //  printf("tickConfig \n");
 
     bool_t ret_val = 1;
     uint32_t tickRateHz = 0;

@@ -6,5 +6,5 @@
 
 #IncludeRegexTransform: 
 
-/Users/nando/NUCLEO-F429ZI/Core/Startup/startup_stm32f429zitx.s
+/home/nando-toshiba/Desktop/salt/firmware/Core/Startup/startup_stm32f429zitx.s
 

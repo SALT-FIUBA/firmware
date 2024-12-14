@@ -245,7 +245,7 @@ void onMQTTCb(void** state,struct mqttc_response_publish *publish) {
 static void
 saltConfig(void)
 {
-    printf("salt config \n");
+    //  printf("salt config \n");
     /* Configuracion especifica SALT */
 
     /* RKH */
@@ -376,7 +376,54 @@ int main(void)
 
     blinker_ctor();
 
-    SHOW_DEFINE(RKH_CFG_FWK_MAX_SMA);
+    SHOW_DEFINE(RKH_CFGPORT_TRC_SIZEOF_TSTAMP);
+    SHOW_DEFINE(RKH_CFGPORT_TRC_SIZEOF_PTR);
+    SHOW_DEFINE(RKH_CFG_FWK_SIZEOF_EVT);
+    SHOW_DEFINE(RKH_CFG_FWK_SIZEOF_EVT_SIZE);
+    SHOW_DEFINE(RKH_CFG_FWK_MAX_EVT_POOL);
+
+
+    printf("\n");
+    //
+    SHOW_DEFINE(RKH_CFG_RQ_GET_LWMARK_EN);
+    SHOW_DEFINE(RKH_CFG_QUE_GET_LWMARK_EN);
+    //
+    printf("\n");
+
+    //
+    SHOW_DEFINE(RKH_CFG_RQ_SIZEOF_NELEM);
+    SHOW_DEFINE(RKH_CFG_QUE_SIZEOF_NELEM);
+    //
+    printf("\n");
+
+    SHOW_DEFINE(RKH_CFG_MP_GET_LWM_EN);
+    SHOW_DEFINE(RKH_CFG_MP_SIZEOF_NBLOCK);
+    SHOW_DEFINE(RKH_CFG_MP_SIZEOF_BSIZE);
+    SHOW_DEFINE(RKH_CFG_SMA_TRC_SNDR_EN);
+    SHOW_DEFINE(RKH_CFG_TMR_SIZEOF_NTIMER);
+    SHOW_DEFINE(RKH_CFG_TRC_RTFIL_EN);
+    SHOW_DEFINE(RKH_CFG_TRC_USER_TRACE_EN);
+    SHOW_DEFINE(RKH_CFG_TRC_ALL_EN);
+    SHOW_DEFINE(RKH_CFG_TRC_MP_EN);
+
+    printf("\n");
+    //
+    SHOW_DEFINE(RKH_CFG_TRC_RQ_EN);
+    SHOW_DEFINE(RKH_CFG_TRC_QUE_EN);
+    //
+    printf("\n");
+
+    SHOW_DEFINE(RKH_CFG_TRC_SMA_EN);
+    SHOW_DEFINE(RKH_CFG_TRC_TMR_EN);
+    SHOW_DEFINE(RKH_CFG_TRC_SM_EN);
+    SHOW_DEFINE(RKH_CFG_TRC_FWK_EN);
+    SHOW_DEFINE(RKH_CFG_TRC_ASSERT_EN);
+
+    SHOW_DEFINE(RKH_CFG_TRC_RTFIL_SMA_EN);
+    SHOW_DEFINE(RKH_CFG_TRC_RTFIL_SIGNAL_EN);
+    SHOW_DEFINE(RKH_CFG_TRC_NSEQ_EN);
+    SHOW_DEFINE(RKH_CFG_TRC_TSTAMP_EN);
+    SHOW_DEFINE(RKH_CFG_TRC_CHK_EN);
 
     RKH_SMA_ACTIVATE(conMgr, ConMgr_qsto, CONMGR_QSTO_SIZE, 0, 0);
     //  printf("conmgr sma \n");
@@ -399,7 +446,7 @@ int main(void)
   /* ---------------- */
 
 
-  rkh_fwk_enter();
+  //    rkh_fwk_enter();
 
   RKH_TRC_CLOSE();
 

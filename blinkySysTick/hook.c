@@ -63,10 +63,12 @@ RKH_THIS_MODULE
 /* ---------------------------- Local data types --------------------------- */
 /* ---------------------------- Global variables --------------------------- */
 /* ---------------------------- Local variables ---------------------------- */
-#if defined(RKH_USE_TRC_SENDER)
-static rui8_t rkhtick;
-#endif
+//  TODO: is it ok to do not use the preprocessor object-value?
+//  #if defined(RKH_USE_TRC_SENDER)
+//  static rui8_t rkhtick;
+//  #endif
 
+static rui8_t rkhtick;
 /* ----------------------- Local function prototypes ----------------------- */
 static bool_t tickHook(void *p);
 

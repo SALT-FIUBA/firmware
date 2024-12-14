@@ -177,7 +177,7 @@ rkh_tmr_init_(RKH_TMR_T *t, const RKH_EVT_T *e)
 rkh_tmr_init_(RKH_TMR_T * t, const RKH_EVT_T * e, RKH_THK_T thk)
 #endif
 {
-    printf("rkh tmr init \n");
+    //  printf("rkh tmr init \n");
 
     RKH_SR_ALLOC();
     RKH_REQUIRE(t != CPTIM(0) && e != CCE(0));

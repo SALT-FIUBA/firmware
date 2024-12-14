@@ -23,7 +23,7 @@
 /* ----------------------------- Include files ----------------------------- */
 #include "rkh.h"
 #include "epoch.h"
-#include "modMgr.h"
+#include "modmgr.h"
 #include "gps.h"
 
 /* ---------------------- External C language linkage ---------------------- */

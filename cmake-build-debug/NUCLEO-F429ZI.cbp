@@ -1,0 +1,890 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="NUCLEO-F429ZI"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="NUCLEO-F429ZI.elf">
+				<Option output="/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/NUCLEO-F429ZI.elf" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DDEBUG"/>
+					<Add option="-DUSE_HAL_DRIVER"/>
+					<Add option="-DSTM32F429xx"/>
+					<Add option="-DRKH_PLATFORM=&quot;__STM32__&quot;"/>
+					<Add option="-DRKH_CONF_FILE=&quot;salt/rkhcfg.h&quot;"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/Core/Inc"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/Include"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/bsp"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/blinky"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/fwk/inc"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/mempool/inc"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/queue/inc"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/sm/inc"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/sma/inc"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/tmr/inc"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/trc/inc"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/mTime"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/third-party/jWrite/jWrite"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/third-party/MQTT-C/include"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/third-party/stm32-sapi/inc"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/rtime"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/mTime"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/date"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/epoch"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/configuration"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/bsp"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/mqtt-protocol"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/connector-manager"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/module-manager"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/logic"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/module-command"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/module-power"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/serial"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/gps"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/sim808"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/ledPanel"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/ihm"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/relay-control"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/analog-inputs"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/pulse-counter"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/teloc"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/emaFilter"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/parser"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/parser/sim900"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/parser/salt-command"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/ssp/src"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/aes"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/publisher"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/utilities"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/blinkySysTick"/>
+					<Add directory="/usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/include/c++/10.3.1"/>
+					<Add directory="/usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/include/c++/10.3.1/arm-none-eabi"/>
+					<Add directory="/usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/include/c++/10.3.1/backward"/>
+					<Add directory="/usr/lib/gcc/arm-none-eabi/10.3.1/include"/>
+					<Add directory="/usr/lib/gcc/arm-none-eabi/10.3.1/include-fixed"/>
+					<Add directory="/usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 NUCLEO-F429ZI.elf"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="NUCLEO-F429ZI.elf/fast">
+				<Option output="/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/NUCLEO-F429ZI.elf" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DDEBUG"/>
+					<Add option="-DUSE_HAL_DRIVER"/>
+					<Add option="-DSTM32F429xx"/>
+					<Add option="-DRKH_PLATFORM=&quot;__STM32__&quot;"/>
+					<Add option="-DRKH_CONF_FILE=&quot;salt/rkhcfg.h&quot;"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/Core/Inc"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/Include"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/bsp"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/blinky"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/fwk/inc"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/mempool/inc"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/queue/inc"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/sm/inc"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/sma/inc"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/tmr/inc"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/trc/inc"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/mTime"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/third-party/jWrite/jWrite"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/third-party/MQTT-C/include"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/third-party/stm32-sapi/inc"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/rtime"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/mTime"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/date"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/epoch"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/configuration"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/bsp"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/mqtt-protocol"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/connector-manager"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/module-manager"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/logic"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/module-command"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/module-power"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/serial"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/gps"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/sim808"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/ledPanel"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/ihm"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/relay-control"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/analog-inputs"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/pulse-counter"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/teloc"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/emaFilter"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/parser"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/parser/sim900"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/parser/salt-command"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/ssp/src"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/aes"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/publisher"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/utilities"/>
+					<Add directory="/home/nando-toshiba/Desktop/salt/firmware/blinkySysTick"/>
+					<Add directory="/usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/include/c++/10.3.1"/>
+					<Add directory="/usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/include/c++/10.3.1/arm-none-eabi"/>
+					<Add directory="/usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/include/c++/10.3.1/backward"/>
+					<Add directory="/usr/lib/gcc/arm-none-eabi/10.3.1/include"/>
+					<Add directory="/usr/lib/gcc/arm-none-eabi/10.3.1/include-fixed"/>
+					<Add directory="/usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 NUCLEO-F429ZI.elf/fast"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Core/Inc/Backup/eth.h.bak">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Core/Inc/Backup/gpio.h.bak">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Core/Inc/Backup/main.h.bak">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Core/Inc/Backup/rtc.h.bak">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Core/Inc/Backup/spi.h.bak">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Core/Inc/Backup/stm32f4xx_hal_conf.h.bak">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Core/Inc/Backup/stm32f4xx_it.h.bak">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Core/Inc/Backup/usart.h.bak">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Core/Inc/Backup/usb_otg.h.bak">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Core/Inc/eth.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Core/Inc/gpio.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Core/Inc/main.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Core/Inc/spi.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Core/Inc/stm32f4xx_hal_conf.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Core/Inc/stm32f4xx_it.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Core/Inc/usart.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Core/Inc/usb_otg.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Core/Src/Backup/eth.c.bak">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Core/Src/Backup/gpio.c.bak">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Core/Src/Backup/main.c.bak">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Core/Src/Backup/rtc.c.bak">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Core/Src/Backup/spi.c.bak">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Core/Src/Backup/stm32f4xx_hal_msp.c.bak">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Core/Src/Backup/stm32f4xx_hal_timebase_tim.c.bak">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Core/Src/Backup/stm32f4xx_it.c.bak">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Core/Src/Backup/syscalls.c.bak">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Core/Src/Backup/sysmem.c.bak">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Core/Src/Backup/system_stm32f4xx.c.bak">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Core/Src/Backup/usart.c.bak">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Core/Src/Backup/usb_otg.c.bak">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Core/Src/eth.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Core/Src/gpio.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Core/Src/main.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Core/Src/spi.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Core/Src/stm32f4xx_hal_msp.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Core/Src/stm32f4xx_it.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Core/Src/syscalls.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Core/Src/sysmem.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Core/Src/system_stm32f4xx.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Core/Src/usart.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Core/Src/usb_otg.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Core/Startup/startup_stm32f429zitx.s">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f429xx.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/Device/ST/STM32F4xx/LICENSE.txt">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/Include/cmsis_armcc.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/Include/cmsis_armclang.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/Include/cmsis_compiler.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/Include/cmsis_gcc.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/Include/cmsis_iccarm.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/Include/cmsis_version.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/Include/core_armv8mbl.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/Include/core_armv8mml.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/Include/core_cm0.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/Include/core_cm0plus.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/Include/core_cm1.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/Include/core_cm23.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/Include/core_cm3.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/Include/core_cm33.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/Include/core_cm4.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/Include/core_cm7.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/Include/core_sc000.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/Include/core_sc300.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/Include/mpu_armv7.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/Include/mpu_armv8.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/Include/tz_context.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/LICENSE.txt">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_eth.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_bus.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_cortex.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_dma.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_exti.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_gpio.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_pwr.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_rcc.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_system.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usart.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_utils.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/LICENSE.txt">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_eth.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/STM32F429ZITX_FLASH.ld">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/blinkySysTick/blinkySysTick.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/blinkySysTick/blinkySysTick.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/blinkySysTick/hook.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/bsp/stm32f4xx_nucleo_144.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/bsp/stm32f4xx_nucleo_144.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/mTime/mTime.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/mTime/mTime.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/mTime/mTimeTbl.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/bsp/assert.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/bsp/bsp-salt.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/bsp/bsp-salt.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/configuration/saltCfg.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/configuration/saltCfg.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/files-to-review/Endianness.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/files-to-review/main-salt-firmware-nxp.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/files-to-review/trace_io.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/analog-inputs/anIn.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/analog-inputs/anIn.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/gps/gps.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/ihm/buzzer.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/ihm/buzzer.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/ihm/onSwitch.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/ihm/onSwitch.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/ledPanel/as1116.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/ledPanel/as1116.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/ledPanel/ledPanel.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/ledPanel/ledPanel.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/module-command/modcmd.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/module-command/modcmdSim900.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/module-power/modpwr.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/module-power/modpwr.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/pulse-counter/pulseCounter.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/pulse-counter/pulseCounter.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/pulse-counter/pulseCounterFromEduCiaaBsp.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/relay-control/relay.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/relay-control/relay.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/relay-control/relayFromEduCiaaBsp.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/serial/serial.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/serial/serial.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/sim808/sim808.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/sim808/sim808.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/teloc/teloc.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/teloc/teloc.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/rkhcfg.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/salt-signals.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/sspcfg.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/connector-manager/conmgr.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/connector-manager/conmgr.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/logic/logic.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/logic/logic.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/module-manager/modmgr.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/module-manager/modmgr.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/mqtt-protocol/mqttProt.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/mqtt-protocol/mqttProt.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/stm32_mqtt_pal.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/aes/aes.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/aes/aes.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/date/date.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/date/date.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/emaFilter/emaFilter.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/emaFilter/emaFilter.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/epoch/epoch.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/epoch/epoch.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/parser/jsmn.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/parser/salt-command/saltCmd.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/parser/salt-command/saltCmd.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/parser/sim900/sim900parser.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/parser/sim900/sim900parser.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/publisher/publisher.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/publisher/publisher.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/rtime/rtime.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/rtime/rtime.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/ssp/ssp.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/ssp/ssp.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/third-party/MQTT-C/source/mqttc.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/third-party/MQTT-C/source/mqttc_pal.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/third-party/jWrite/jWrite/jWrite.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/third-party/jWrite/jWrite/jWrite.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/third-party/jWrite/jWrite/jWrite.vcxproj">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/third-party/jWrite/jWrite/jWrite.vcxproj.filters">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/third-party/jWrite/jWrite/jWrite.vcxproj.user">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/third-party/jWrite/jWrite/main.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/fwk/src/rkhfwk_bittbl.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/fwk/src/rkhfwk_dynevt.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/fwk/src/rkhfwk_evtpool.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/fwk/src/rkhfwk_pubsub.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/fwk/src/rkhfwk_rdygrp.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/fwk/src/rkhfwk_sched.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/fwk/src/rkhfwk_version.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/mempool/src/rkhmempool.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/queue/src/rkhqueue.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/sm/src/rkhsm.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/sma/src/rkhsma.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/sma/src/rkhsma_prio.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/sma/src/rkhsma_sync.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/tmr/src/rkhtmr.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/trc/src/rkhtrc_filter.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/trc/src/rkhtrc_record.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/trc/src/rkhtrc_stream.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/third-party/stm32-sapi/src/sapi_datatypes.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/third-party/stm32-sapi/src/sapi_gpio.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/third-party/stm32-sapi/src/sapi_tick.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/utilities/htons.c">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/utilities/htons.h">
+			<Option target="NUCLEO-F429ZI.elf"/>
+		</Unit>
+		<Unit filename="/home/nando-toshiba/Desktop/salt/firmware/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

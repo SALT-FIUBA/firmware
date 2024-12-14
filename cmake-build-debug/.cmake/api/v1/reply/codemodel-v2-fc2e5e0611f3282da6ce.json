@@ -9,7 +9,7 @@
 					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
 					"minimumCMakeVersion" : 
 					{
-						"string" : "3.29"
+						"string" : "3.28.1"
 					},
 					"projectIndex" : 0,
 					"source" : ".",
@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "NUCLEO-F429ZI.elf::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-NUCLEO-F429ZI.elf-Debug-04725649c989a015613a.json",
+					"jsonFile" : "target-NUCLEO-F429ZI.elf-Debug-239628f5f8b1ae49b000.json",
 					"name" : "NUCLEO-F429ZI.elf",
 					"projectIndex" : 0
 				}
@@ -49,12 +49,12 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/Users/nando/NUCLEO-F429ZI/cmake-build-debug",
-		"source" : "/Users/nando/NUCLEO-F429ZI"
+		"build" : "/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug",
+		"source" : "/home/nando-toshiba/Desktop/salt/firmware"
 	},
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 7
+		"minor" : 6
 	}
 }

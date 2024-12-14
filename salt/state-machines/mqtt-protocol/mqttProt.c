@@ -353,7 +353,7 @@ configMqttClient(MQTTProt *const me, MQTTProtCfg *config)
     }
 
 
-    printf("mqtt prot config client result %d \n", result);
+    //  printf("mqtt prot config client result %d \n", result);
     return result;
 }
 

@@ -1,56 +1,52 @@
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ledPanel/as1116.c.obj: \
- /Users/nando/NUCLEO-F429ZI/salt/peripherals/ledPanel/as1116.c \
- /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/stdio.h \
- /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/_ansi.h \
- /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/newlib.h \
- /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/_newlib_version.h \
- /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/config.h \
- /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/ieeefp.h \
- /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/features.h \
- /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/cdefs.h \
- /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/_default_types.h \
- /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/lib/gcc/arm-none-eabi/13.3.1/include/stddef.h \
- /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/lib/gcc/arm-none-eabi/13.3.1/include/stdarg.h \
- /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/reent.h \
- /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/_ansi.h \
- /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/_types.h \
- /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/_types.h \
- /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/lock.h \
- /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/stdio.h \
- /Users/nando/NUCLEO-F429ZI/salt/peripherals/ledPanel/as1116.h \
- /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
- /Users/nando/NUCLEO-F429ZI/Core/Inc/stm32f4xx_hal_conf.h \
- /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
- /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h \
- /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h \
- /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f429xx.h \
- /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/core_cm4.h \
- /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/lib/gcc/arm-none-eabi/13.3.1/include/stdint.h \
- /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/stdint.h \
- /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/_intsup.h \
- /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/_stdint.h \
- /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/cmsis_version.h \
- /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/cmsis_compiler.h \
- /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/cmsis_gcc.h \
- /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include/mpu_armv7.h \
- /Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h \
- /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h \
- /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h \
- /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h \
- /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h \
- /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h \
- /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h \
- /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h \
- /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h \
- /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_eth.h \
- /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h \
- /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h \
- /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h \
- /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
- /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
- /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h \
- /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
- /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h \
- /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h \
- /Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h \
- /Applications/ArmGNUToolchain/13.3.rel1/arm-none-eabi/lib/gcc/arm-none-eabi/13.3.1/include/stdbool.h
+ /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/ledPanel/as1116.c \
+ /usr/include/newlib/stdio.h /usr/include/newlib/_ansi.h \
+ /usr/include/newlib/newlib.h /usr/include/newlib/_newlib_version.h \
+ /usr/include/newlib/sys/config.h /usr/include/newlib/machine/ieeefp.h \
+ /usr/include/newlib/sys/features.h /usr/include/newlib/sys/cdefs.h \
+ /usr/include/newlib/machine/_default_types.h \
+ /usr/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h \
+ /usr/lib/gcc/arm-none-eabi/10.3.1/include/stdarg.h \
+ /usr/include/newlib/sys/reent.h /usr/include/newlib/_ansi.h \
+ /usr/include/newlib/sys/_types.h /usr/include/newlib/machine/_types.h \
+ /usr/include/newlib/sys/lock.h /usr/include/newlib/sys/types.h \
+ /usr/include/newlib/sys/_stdint.h /usr/include/newlib/machine/endian.h \
+ /usr/include/newlib/machine/_endian.h /usr/include/newlib/sys/select.h \
+ /usr/include/newlib/sys/_sigset.h /usr/include/newlib/sys/_timeval.h \
+ /usr/include/newlib/sys/timespec.h /usr/include/newlib/sys/_timespec.h \
+ /usr/include/newlib/sys/_pthreadtypes.h /usr/include/newlib/sys/sched.h \
+ /usr/include/newlib/machine/types.h /usr/include/newlib/sys/stdio.h \
+ /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/ledPanel/as1116.h \
+ /home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
+ /home/nando-toshiba/Desktop/salt/firmware/Core/Inc/stm32f4xx_hal_conf.h \
+ /home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
+ /home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h \
+ /home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h \
+ /home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f429xx.h \
+ /home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/Include/core_cm4.h \
+ /usr/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h \
+ /home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/Include/cmsis_version.h \
+ /home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/Include/cmsis_compiler.h \
+ /home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/Include/cmsis_gcc.h \
+ /home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/Include/mpu_armv7.h \
+ /home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h \
+ /home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h \
+ /home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h \
+ /home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h \
+ /home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h \
+ /home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h \
+ /home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h \
+ /home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h \
+ /home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h \
+ /home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_eth.h \
+ /home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h \
+ /home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h \
+ /home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h \
+ /home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
+ /home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
+ /home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h \
+ /home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
+ /home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h \
+ /home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h \
+ /home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h \
+ /usr/lib/gcc/arm-none-eabi/10.3.1/include/stdbool.h

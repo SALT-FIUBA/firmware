@@ -159,203 +159,203 @@
 			[
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/Core/Inc"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/Core/Inc"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/Include"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/bsp"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/bsp"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/blinky"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/blinky"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/fwk/inc"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/mempool/inc"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/mempool/inc"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/queue/inc"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/queue/inc"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/sm/inc"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/sm/inc"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/sma/inc"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/sma/inc"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/tmr/inc"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/tmr/inc"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/inc"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/trc/inc"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/mTime"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/mTime"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/third-party/jWrite/jWrite"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/third-party/jWrite/jWrite"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/third-party/MQTT-C/include"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/third-party/MQTT-C/include"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/third-party/stm32-sapi/inc"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/third-party/stm32-sapi/inc"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/utilities/rtime"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/rtime"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/utilities/mTime"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/mTime"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/utilities/date"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/date"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/utilities/epoch"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/epoch"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/configuration"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/configuration"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/bsp"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/bsp"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/state-machines/mqtt-protocol"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/mqtt-protocol"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/state-machines/connector-manager"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/connector-manager"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/state-machines/module-manager"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/module-manager"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/state-machines/logic"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/logic"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/peripherals/module-command"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/module-command"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/peripherals/module-power"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/module-power"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/peripherals/serial"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/serial"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/peripherals/gps"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/gps"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/peripherals/sim808"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/sim808"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/peripherals/ledPanel"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/ledPanel"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/peripherals/ihm"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/ihm"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/peripherals/relay-control"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/relay-control"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/peripherals/analog-inputs"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/analog-inputs"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/peripherals/pulse-counter"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/pulse-counter"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/peripherals/teloc"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/teloc"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/utilities/emaFilter"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/emaFilter"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/utilities/parser"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/parser"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/utilities/parser/sim900"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/parser/sim900"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/utilities/parser/salt-command"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/parser/salt-command"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/utilities/ssp/src"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/ssp/src"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/utilities/aes"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/aes"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/utilities/publisher"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/publisher"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/utilities"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/utilities"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/blinkySysTick"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/blinkySysTick"
 				}
 			],
 			"language" : "C",
@@ -544,203 +544,203 @@
 			[
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/Core/Inc"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/Core/Inc"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Device/ST/STM32F4xx/Include"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/Drivers/CMSIS/Include"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/Include"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/bsp"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/bsp"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/blinky"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/blinky"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/fwk/inc"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/fwk/inc"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/mempool/inc"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/mempool/inc"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/queue/inc"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/queue/inc"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/sm/inc"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/sm/inc"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/sma/inc"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/sma/inc"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/tmr/inc"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/tmr/inc"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/trc/inc"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/trc/inc"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/mTime"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/mTime"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/third-party/jWrite/jWrite"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/third-party/jWrite/jWrite"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/third-party/MQTT-C/include"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/third-party/MQTT-C/include"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/third-party/stm32-sapi/inc"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/third-party/stm32-sapi/inc"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/utilities/rtime"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/rtime"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/utilities/mTime"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/mTime"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/utilities/date"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/date"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/utilities/epoch"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/epoch"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/configuration"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/configuration"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/bsp"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/bsp"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/state-machines/mqtt-protocol"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/mqtt-protocol"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/state-machines/connector-manager"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/connector-manager"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/state-machines/module-manager"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/module-manager"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/state-machines/logic"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/logic"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/peripherals/module-command"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/module-command"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/peripherals/module-power"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/module-power"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/peripherals/serial"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/serial"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/peripherals/gps"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/gps"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/peripherals/sim808"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/sim808"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/peripherals/ledPanel"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/ledPanel"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/peripherals/ihm"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/ihm"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/peripherals/relay-control"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/relay-control"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/peripherals/analog-inputs"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/analog-inputs"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/peripherals/pulse-counter"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/pulse-counter"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/peripherals/teloc"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/teloc"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/utilities/emaFilter"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/emaFilter"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/utilities/parser"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/parser"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/utilities/parser/sim900"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/parser/sim900"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/utilities/parser/salt-command"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/parser/salt-command"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/utilities/ssp/src"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/ssp/src"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/utilities/aes"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/aes"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/salt/utilities/publisher"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/publisher"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/utilities"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/utilities"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/nando/NUCLEO-F429ZI/blinkySysTick"
+					"path" : "/home/nando-toshiba/Desktop/salt/firmware/blinkySysTick"
 				}
 			],
 			"language" : "ASM",
@@ -765,7 +765,7 @@
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "-Wl,-gc-sections,--print-memory-usage,-Map=/Users/nando/NUCLEO-F429ZI/cmake-build-debug/NUCLEO-F429ZI.map",
+				"fragment" : "-Wl,-gc-sections,--print-memory-usage,-Map=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/NUCLEO-F429ZI.map",
 				"role" : "flags"
 			},
 			{
@@ -790,7 +790,7 @@
 			},
 			{
 				"backtrace" : 4,
-				"fragment" : "/Users/nando/NUCLEO-F429ZI/STM32F429ZITX_FLASH.ld",
+				"fragment" : "/home/nando-toshiba/Desktop/salt/firmware/STM32F429ZITX_FLASH.ld",
 				"role" : "flags"
 			}
 		],
