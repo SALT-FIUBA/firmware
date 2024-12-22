@@ -33,7 +33,7 @@
  *	(can be a number in the range [0..256]).
  *	Note that a value of 0 will completely suppress the memory pool services.
  */
-#define RKH_CFG_FWK_MAX_EVT_POOL        3u
+#define RKH_CFG_FWK_MAX_EVT_POOL        4u
 
 /**
  *  Specify the size of the event signal. The valid values [in bits] are
@@ -584,13 +584,13 @@
  *	record a timestamp field. It's configurable by means of
  *	#RKH_CFGPORT_TRC_SIZEOF_TSTAMP.
  */
-#define RKH_CFG_TRC_TSTAMP_EN           RKH_ENABLED
+#define RKH_CFG_TRC_TSTAMP_EN           RKH_DISABLED
 
 /**
  *	Specify the maximum number of trace events in the stream. The smaller
  *	this number, the lower the RAM consumption.
  */
-#define RKH_CFG_TRC_SIZEOF_STREAM       1024u
+#define RKH_CFG_TRC_SIZEOF_STREAM       2048u // 1024u
 
 /* --- Configuration options related to queue (by reference) facility ----- */
 

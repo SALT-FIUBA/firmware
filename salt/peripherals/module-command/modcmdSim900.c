@@ -215,6 +215,20 @@ postFIFOEvtCmd(ModMgrEvt *pe, const ModCmd *pc, unsigned char *data, ruint nData
     pe->args.waitResponseTime = pc->waitResponseTime;
     pe->args.interCmdTime = pc->interCmdTime;
 
+    //
+    // code added
+ //   ((RKH_EVT_T *)pe)->e = evOk;  // Hardcode the event signal to evOk
+    //
+
+    /*
+      Cursor propose to set evCmd instead of evOk because of:
+         * The ModCmd structure initializes with evCmd (see the command table definitions)
+         * This function is used to send commands to the module manager
+         * The evCmd signal is used throughout the command processing flow
+    */
+    /*  RKH_SET_STATIC_EVENT(RKH_UPCAST(RKH_EVT_T, pe), evOk); */
+
+
     RKH_SMA_POST_FIFO(modMgr, RKH_UPCAST(RKH_EVT_T, pe), *pc->aoDest);
 }
 
@@ -223,10 +237,9 @@ sendModCmd_noArgs(const ModCmd *p)
 {
     ModMgrEvt * evtCmd;
 
-    // TODO: check how to enable RKH_ALLOC_EVT
-    //  evtCmd = RKH_ALLOC_EVT(ModMgrEvt, evCmd, *p->aoDest);
+    evtCmd = RKH_ALLOC_EVT(ModMgrEvt, evCmd, *p->aoDest);
 
-    // strncpy(evtCmd->cmd, p->fmt, MODMGR_MAX_SIZEOF_CMDSTR);
+    strncpy(evtCmd->cmd, p->fmt, MODMGR_MAX_SIZEOF_CMDSTR);
 
     postFIFOEvtCmd(evtCmd, p, NULL, 0);
 }
@@ -236,10 +249,9 @@ sendModCmd_rui16(const ModCmd *p, rui16_t arg)
 {
     ModMgrEvt *evtCmd;
 
-    // TODO: check how to enable RKH_ALLOC_EVT
-    //  evtCmd = RKH_ALLOC_EVT(ModMgrEvt, evCmd, *p->aoDest);
+    evtCmd = RKH_ALLOC_EVT(ModMgrEvt, evCmd, *p->aoDest);
 
-    //  snprintf(evtCmd->cmd, MODMGR_MAX_SIZEOF_CMDSTR, p->fmt, arg);
+    snprintf(evtCmd->cmd, MODMGR_MAX_SIZEOF_CMDSTR, p->fmt, arg);
 
     postFIFOEvtCmd(evtCmd, p, NULL, 0);
 }
@@ -249,10 +261,9 @@ sendModCmd_3StrArgs(const ModCmd *p, char *s1, char *s2, char *s3)
 {
     ModMgrEvt *evtCmd;
 
-    // TODO: check how to enable RKH_ALLOC_EVT
-    //  evtCmd = RKH_ALLOC_EVT(ModMgrEvt, evCmd, *p->aoDest);
+    evtCmd = RKH_ALLOC_EVT(ModMgrEvt, evCmd, *p->aoDest);
     
-    //  snprintf(evtCmd->cmd, MODMGR_MAX_SIZEOF_CMDSTR, p->fmt, s1, s2, s3);
+    snprintf(evtCmd->cmd, MODMGR_MAX_SIZEOF_CMDSTR, p->fmt, s1, s2, s3);
 
     postFIFOEvtCmd(evtCmd, p, NULL, 0);
 }
@@ -386,8 +397,7 @@ ModCmd_sendData(unsigned char *buf, ruint size)
 
     p = &cmdTbl.sendData;
 
-    // TODO: check how to enable RKH_ALLOC_EVT
-    //  evtCmd = RKH_ALLOC_EVT(ModMgrEvt, evCmd, *p->aoDest);
+    evtCmd = RKH_ALLOC_EVT(ModMgrEvt, evCmd, *p->aoDest);
 
     evtCmd->data = buf;
     evtCmd->nData = size;

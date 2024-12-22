@@ -162,7 +162,7 @@ RKH_CREATE_COMP_REGION_STATE(ConMgr_initialize, NULL, NULL, &ConMgr_active,
                              RKH_NO_HISTORY, NULL, NULL, NULL, NULL);
 RKH_CREATE_TRANS_TABLE(ConMgr_initialize)
                 RKH_TRCOMPLETION(NULL, NULL, &ConMgr_unregistered),
-                RKH_TRREG(evNoResponse, NULL, NULL, &ConMgr_failure),
+                //  RKH_TRREG(evNoResponse, NULL, NULL, &ConMgr_failure),
 RKH_END_TRANS_TABLE
 
 RKH_CREATE_COND_STATE(ConMgr_checkSyncTry);
@@ -175,7 +175,7 @@ RKH_END_BRANCH_TABLE
 RKH_CREATE_BASIC_STATE(ConMgr_sync, sendSync, NULL, &ConMgr_initialize, NULL);
 RKH_CREATE_TRANS_TABLE(ConMgr_sync)
                 RKH_TRREG(evOk,         NULL, NULL, &ConMgr_waitInit),
-                RKH_TRREG(evNoResponse, NULL, NULL, &ConMgr_checkSyncTry),
+                // RKH_TRREG(evNoResponse, NULL, NULL, &ConMgr_checkSyncTry),
 RKH_END_TRANS_TABLE
 
 
@@ -206,8 +206,8 @@ RKH_END_TRANS_TABLE
 
 RKH_CREATE_BASIC_STATE(ConMgr_pin, checkPin, NULL, &ConMgr_initialize, NULL);
 RKH_CREATE_TRANS_TABLE(ConMgr_pin)
-                RKH_TRREG(evSimPin,     NULL, NULL, &ConMgr_setPin),
-                RKH_TRREG(evSimError,   NULL, NULL, &ConMgr_failure),
+                //  RKH_TRREG(evSimPin,     NULL, NULL, &ConMgr_setPin),
+                //  RKH_TRREG(evSimError,   NULL, NULL, &ConMgr_failure),
                 RKH_TRREG(evSimReady,   NULL, NULL, &ConMgr_enableNetTime),
 RKH_END_TRANS_TABLE
 
@@ -242,15 +242,15 @@ RKH_CREATE_COMP_REGION_STATE(ConMgr_registered, regEntry, regExit, &ConMgr_activ
                              &ConMgr_waitNetClockSync, NULL,
                              RKH_NO_HISTORY, NULL, NULL, NULL, NULL);
 RKH_CREATE_TRANS_TABLE(ConMgr_registered)
-                RKH_TRREG(evNoReg, NULL, NULL,   &ConMgr_unregistered),
+                //  RKH_TRREG(evNoReg, NULL, NULL,   &ConMgr_unregistered),
 RKH_END_TRANS_TABLE
 
 RKH_CREATE_BASIC_STATE(ConMgr_unregistered, unregEntry, unregExit,
                        &ConMgr_active, NULL);
 RKH_CREATE_TRANS_TABLE(ConMgr_unregistered)
-                RKH_TRINT(evTimeout,    NULL,    checkRegStatus),
-                RKH_TRINT(evNoReg,      NULL,    startRegStatus),
-                RKH_TRREG(evRegTimeout,  NULL,    NULL, &ConMgr_failure),
+                //  RKH_TRINT(evTimeout,    NULL,    checkRegStatus),
+                //  RKH_TRINT(evNoReg,      NULL,    startRegStatus),
+                //  RKH_TRREG(evRegTimeout,  NULL,    NULL, &ConMgr_failure),
                 RKH_TRREG(evReg, NULL, NULL,   &ConMgr_registered),
 RKH_END_TRANS_TABLE
 
@@ -280,7 +280,7 @@ RKH_CREATE_COMP_REGION_STATE(ConMgr_configure, NULL, NULL, &ConMgr_registered,
                              RKH_GET_HISTORY_STORAGE(ConMgr_configure));
 RKH_CREATE_TRANS_TABLE(ConMgr_configure)
                 RKH_TRCOMPLETION(NULL, connectInit, &ConMgr_connecting),
-                RKH_TRREG(evNoResponse, NULL, NULL, &ConMgr_checkConfigTry),
+                //  RKH_TRREG(evNoResponse, NULL, NULL, &ConMgr_checkConfigTry),
 RKH_END_TRANS_TABLE
 
 RKH_CREATE_BASIC_STATE(ConMgr_getOper, getOper, NULL, &ConMgr_configure, NULL);
@@ -531,6 +531,9 @@ static void velEvGpsCallback(GpsData *gpsData){
     }
     e_Vel.source = VEL_SOURCE_GPS;
     RKH_SET_STATIC_EVENT(RKH_UPCAST(RKH_EVT_T, &e_Vel), evVelGPS);
+
+
+    // TODO: conMgr SM send e_Sent to logic SM
     RKH_SMA_POST_FIFO(logic, RKH_UPCAST(RKH_EVT_T, &e_Vel), conMgr);
 
 }
@@ -838,6 +841,7 @@ sendOk(ConMgr *const me, RKH_EVT_T *pe)
     (void)me;
 
     me->retryCount = 0;
+    // TODO: conMgr SM send e_Sent to mqttProt SM
     RKH_SMA_POST_FIFO(mqttProt, &e_Sent, conMgr);
 }
 
@@ -848,6 +852,7 @@ recvOk(ConMgr *const me, RKH_EVT_T *pe)
     (void)me;
 
     me->retryCount = 0;
+    // TODO: conMgr SM send e_Sent to mqttProt SM
     RKH_SMA_POST_FIFO(mqttProt, RKH_UPCAST(RKH_EVT_T, &e_Received), conMgr);
 }
 
@@ -857,7 +862,9 @@ sendFail(ConMgr *const me, RKH_EVT_T *pe)
     (void)pe;
     (void)me;
 
+    // TODO: conMgr SM send e_Sent to mqttProt SM
     RKH_SMA_POST_FIFO(mqttProt, &e_SendFail, conMgr);
+
     ModCmd_init();
 }
 
@@ -867,7 +874,9 @@ recvFail(ConMgr *const me, RKH_EVT_T *pe)
     (void)pe;
     (void)me;
 
+    // TODO: conMgr SM send e_Sent to mqttProt SM
     RKH_SMA_POST_FIFO(mqttProt, &e_RecvFail, conMgr);
+
     ModCmd_init();
 }
 
@@ -877,6 +886,7 @@ tryGetStatus(ConMgr *const me, RKH_EVT_T *pe)
     (void)pe;
 
     ++me->retryCount;
+
     ModCmd_init();
 }
 
@@ -1055,7 +1065,9 @@ socketConnected(ConMgr *const me)
     (void)me;
 
     me->retryCount = 0;
+
     RKH_SMA_POST_FIFO(mqttProt, &e_NetConnected, conMgr);
+
     bsp_netStatus(ConnectedSt);
 }
 

@@ -441,7 +441,32 @@ void serialPutByte( serialMap_t uart, uint8_t byte ){
 
 }
  */
+// Add near the top with other includes
+#include "usart.h"
 
+// Add after includes
+extern UART_HandleTypeDef huart3;
+
+// Modify serialPutByte function
+void serialPutByte(serialMap_t uart, uint8_t byte)
+{
+    if(uart == UART_DEBUG) {
+        // Use huart3 with same configuration as __io_putchar
+        HAL_UART_Transmit(&huart3, &byte, 1, HAL_MAX_DELAY);
+        return;
+    }
+
+    // Original code for other UART ports
+   /*
+        UART_HandleTypeDef *huart_ptr = &huart[uart];
+       if(uart == UART_DEBUG && !uartDebugInit) {
+           return;
+       }
+         HAL_UART_Transmit(huart_ptr, &byte, 1, HAL_MAX_DELAY);
+     */
+}
+
+/*
 void serialPutByte(serialMap_t uart, uint8_t byte)
 {
     UART_HandleTypeDef *huart_ptr = &huart[uart];
@@ -450,9 +475,9 @@ void serialPutByte(serialMap_t uart, uint8_t byte)
         return;
     }
 
-    // HAL_UART_Transmit(huart_ptr, &byte, 1, HAL_MAX_DELAY);
-    HAL_UART_Transmit(&huart3, &byte, 1, HAL_MAX_DELAY);
+    HAL_UART_Transmit(huart_ptr, &byte, 1, HAL_MAX_DELAY);
 }
+ */
 
 /*
 void serialPutString( serialMap_t uart,  char *p ){

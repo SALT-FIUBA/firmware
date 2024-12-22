@@ -981,9 +981,7 @@ rbool_t guard_velWrongVel(LogicVel *const me, RKH_EVT_T *pe){
 }
 
 /* ---------------------------- Global functions --------------------------- */
-void logic_ctor(LogicCfg *config){
-
-    //  printf("logic ctor init\n");
+void logic_ctor(LogicCfg *config) {
 
     Logic *me;
 
@@ -997,11 +995,11 @@ void logic_ctor(LogicCfg *config){
                 LogicVel_Hasler, NULL, NULL);
 
     Logic_logicVel = (RKH_SM_T *)&(me->itsLogicVel);
-    //  printf("logic ctor end \n");
 
 }
 
-void logic_getData(LogicData* data){
+void logic_getData(LogicData* data) {
+
     Logic *me = RKH_DOWNCAST(Logic, logic);
     data->cmdTimeout = RKH_TICK_TO_MS(me->cmdTimeout);
     data->blinkPeriod = me->blinkPeriod;
@@ -1016,11 +1014,14 @@ void logic_getData(LogicData* data){
     data->velSource = me->itsLogicVel.velEvt.source;
     data->alMode = me->ledConfig.ledIsolated == GREEN;
     data->publishPeriod = me->publishPeriod;
+
 }
 
-rui16_t logic_getPublishPeriod(){
+rui16_t logic_getPublishPeriod() {
+
     Logic *me = RKH_DOWNCAST(Logic, logic);
     return me->publishPeriod;
+
 }
 
 /* ------------------------------ End of file ------------------------------ */

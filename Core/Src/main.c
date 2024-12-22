@@ -228,11 +228,17 @@ void onMQTTCb(void** state,struct mqttc_response_publish *publish) {
 
     char dump1[255] = {0};
     char dump2[255] = {0};
+
+    int dumpy1 = 123;
+    int dumpy2 = 456;
     sprintf(dump1, "MQTT topic: %.*s", MIN(publish->topic_name_size, 200), publish->topic_name);
     sprintf(dump2, "MQTT data: %.*s", MIN((int) publish->application_message_size, 200), publish->application_message);
     RKH_TRC_USR_BEGIN(USR_TRACE_MQTT)
-    RKH_TUSR_STR(dump1);
-    RKH_TUSR_STR(dump2);
+        RKH_TUSR_STR(dump1);
+        RKH_TUSR_STR(dump2);
+        RKH_TUSR_STR("mqtt dump values");
+        RKH_TUSR_UI8(3, dumpy1);
+        RKH_TUSR_UI8(3, dumpy2);
     RKH_TRC_USR_END();
 
     int result = saltCmdParse((char *) publish->application_message, publish->application_message_size,
@@ -284,27 +290,45 @@ saltConfig(void)
 static void
 setupTraceFilters(void)
 {
-    RKH_FILTER_ON_GROUP(RKH_TRC_ALL_GROUPS);
-    RKH_FILTER_ON_EVENT(RKH_TRC_ALL_EVENTS);
-    //RKH_FILTER_OFF_EVENT(USR_TRACE);
-    //RKH_FILTER_OFF_EVENT(USR_TRACE_OUT);
-    //RKH_FILTER_OFF_EVENT(USR_TRACE_EVT);
-    //RKH_FILTER_OFF_EVENT(USR_TRACE_IN);
-    //RKH_FILTER_OFF_EVENT(USR_TRACE_SSP);
-    RKH_FILTER_OFF_EVENT(USR_TRACE_MQTT);
-    //RKH_FILTER_OFF_GROUP_ALL_EVENTS(RKH_TG_USR);
-    //RKH_FILTER_OFF_EVENT(RKH_TE_TMR_TOUT);
-    RKH_FILTER_OFF_EVENT(RKH_TE_SM_STATE);
-    //RKH_FILTER_OFF_EVENT(RKH_TE_SMA_FIFO);
-    //RKH_FILTER_OFF_EVENT(RKH_TE_SMA_LIFO);
-    //RKH_FILTER_OFF_EVENT(RKH_TE_SM_TS_STATE);
-    //RKH_FILTER_OFF_EVENT(RKH_TE_SM_DCH);
-    //RKH_FILTER_OFF_SMA(modMgr);
-    RKH_FILTER_OFF_SMA(conMgr);
-    //RKH_FILTER_OFF_SMA(mqttProt);
-    RKH_FILTER_OFF_SMA(logic);
+      RKH_FILTER_ON_GROUP(RKH_TRC_ALL_GROUPS);
 
-    RKH_FILTER_OFF_ALL_SIGNALS();
+     // Events
+      RKH_FILTER_ON_EVENT(RKH_TRC_ALL_EVENTS);
+
+      RKH_FILTER_ON_ALL_SMA();
+      RKH_FILTER_ON_ALL_SIGNALS();
+      RKH_FILTER_ON_GROUP_ALL_EVENTS(RKH_TRC_ALL_GROUPS);
+
+      /*
+      RKH_FILTER_OFF_EVENT(USR_TRACE);
+      RKH_FILTER_OFF_EVENT(USR_TRACE_OUT);
+      RKH_FILTER_OFF_EVENT(USR_TRACE_EVT);
+      RKH_FILTER_OFF_EVENT(USR_TRACE_IN);
+      RKH_FILTER_OFF_EVENT(USR_TRACE_SSP);
+      RKH_FILTER_OFF_EVENT(USR_TRACE_MQTT);
+      RKH_FILTER_OFF_GROUP_ALL_EVENTS(RKH_TG_USR);
+
+      RKH_FILTER_OFF_EVENT(RKH_TE_TMR_TOUT);
+      RKH_FILTER_OFF_EVENT(RKH_TE_SM_STATE);
+      RKH_FILTER_OFF_EVENT(RKH_TE_SMA_FIFO);
+      RKH_FILTER_OFF_EVENT(RKH_TE_SMA_LIFO);
+      RKH_FILTER_OFF_EVENT(RKH_TE_SM_TS_STATE);
+      RKH_FILTER_OFF_EVENT(RKH_TE_SM_DCH);
+       */
+
+      // State Machines
+
+        /*
+          RKH_FILTER_OFF_SMA(modMgr);
+          RKH_FILTER_OFF_SMA(conMgr);
+          RKH_FILTER_OFF_SMA(mqttProt);
+          RKH_FILTER_OFF_SMA(logic);
+        */
+
+        // Signals
+      /*
+       RKH_FILTER_OFF_ALL_SIGNALS();
+       */
 }
 
 
@@ -347,19 +371,15 @@ int main(void)
   MX_SPI1_Init();
   /* USER CODE BEGIN 2 */
 
-  //    bsp_init(); // blinky bsp init
-
   saltConfig();
   rkh_fwk_init();
 
 
-  //    setupTraceFilters();
-  // mTime_init();
-
-
+  setupTraceFilters();
+  /* mTime_init(); // invoked in saltConfig function */
 
   RKH_TRC_OPEN();
-  /* salt code snippet */
+
   rkh_dynEvt_init();
   rkh_fwk_registerEvtPool(evPool0Sto, SIZEOF_EP0STO, SIZEOF_EP0_BLOCK);
   rkh_fwk_registerEvtPool(evPool1Sto, SIZEOF_EP1STO, SIZEOF_EP1_BLOCK);
@@ -378,83 +398,23 @@ int main(void)
     logicCfg.publishTime = 8;
     logic_ctor(&logicCfg);
 
-    blinker_ctor();
-
-    SHOW_DEFINE(RKH_CFGPORT_TRC_SIZEOF_TSTAMP);
-    SHOW_DEFINE(RKH_CFGPORT_TRC_SIZEOF_PTR);
-    SHOW_DEFINE(RKH_CFG_FWK_SIZEOF_EVT);
-    SHOW_DEFINE(RKH_CFG_FWK_SIZEOF_EVT_SIZE);
-    SHOW_DEFINE(RKH_CFG_FWK_MAX_EVT_POOL);
-
-
-    printf("\n");
-    //
-    SHOW_DEFINE(RKH_CFG_RQ_GET_LWMARK_EN);
-    SHOW_DEFINE(RKH_CFG_QUE_GET_LWMARK_EN);
-    //
-    printf("\n");
-
-    //
-    SHOW_DEFINE(RKH_CFG_RQ_SIZEOF_NELEM);
-    SHOW_DEFINE(RKH_CFG_QUE_SIZEOF_NELEM);
-    //
-    printf("\n");
-
-    SHOW_DEFINE(RKH_CFG_MP_GET_LWM_EN);
-    SHOW_DEFINE(RKH_CFG_MP_SIZEOF_NBLOCK);
-    SHOW_DEFINE(RKH_CFG_MP_SIZEOF_BSIZE);
-    SHOW_DEFINE(RKH_CFG_SMA_TRC_SNDR_EN);
-    SHOW_DEFINE(RKH_CFG_TMR_SIZEOF_NTIMER);
-    SHOW_DEFINE(RKH_CFG_TRC_RTFIL_EN);
-    SHOW_DEFINE(RKH_CFG_TRC_USER_TRACE_EN);
-    SHOW_DEFINE(RKH_CFG_TRC_ALL_EN);
-    SHOW_DEFINE(RKH_CFG_TRC_MP_EN);
-
-    printf("\n");
-    //
-    SHOW_DEFINE(RKH_CFG_TRC_RQ_EN);
-    SHOW_DEFINE(RKH_CFG_TRC_QUE_EN);
-    //
-    printf("\n");
-
-    SHOW_DEFINE(RKH_CFG_TRC_SMA_EN);
-    SHOW_DEFINE(RKH_CFG_TRC_TMR_EN);
-    SHOW_DEFINE(RKH_CFG_TRC_SM_EN);
-    SHOW_DEFINE(RKH_CFG_TRC_FWK_EN);
-    SHOW_DEFINE(RKH_CFG_TRC_ASSERT_EN);
-
-    SHOW_DEFINE(RKH_CFG_TRC_RTFIL_SMA_EN);
-    SHOW_DEFINE(RKH_CFG_TRC_RTFIL_SIGNAL_EN);
-    SHOW_DEFINE(RKH_CFG_TRC_NSEQ_EN);
-    SHOW_DEFINE(RKH_CFG_TRC_TSTAMP_EN);
-    SHOW_DEFINE(RKH_CFG_TRC_CHK_EN);
+    //  blinker_ctor();
 
     RKH_SMA_ACTIVATE(conMgr, ConMgr_qsto, CONMGR_QSTO_SIZE, 0, 0);
-    //  printf("conmgr sma \n");
-
     RKH_SMA_ACTIVATE(modMgr, ModMgr_qsto, MODMGR_QSTO_SIZE, 0, 0);
-    //  printf("modmgr sma \n");
-
     RKH_SMA_ACTIVATE(mqttProt, MQTTProt_qsto, MQTTPROT_QSTO_SIZE, 0, 0);
-    //  printf("mqtt prot sma \n");
-
     RKH_SMA_ACTIVATE(logic, Logic_qsto, LOGIC_QSTO_SIZE, 0, 0);
-    //  printf("logic sma \n");
+    //   RKH_SMA_ACTIVATE(blinker, qsto, QSTO_SIZE,0,0);
 
     RKH_SMA_POST_FIFO(conMgr, &e_Open, 0);
-    //  printf("rkh sma post fifo \n");
-
-   //   RKH_SMA_ACTIVATE(blinker, qsto, QSTO_SIZE,0,0);
 
     initEnd = true;
-  /* ---------------- */
 
+    rkh_fwk_enter();
 
-  //    rkh_fwk_enter();
+    RKH_TRC_CLOSE();
 
-  RKH_TRC_CLOSE();
-
-  return 0;
+    return 0;
 
 
   /* USER CODE END 2 */
