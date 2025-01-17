@@ -306,7 +306,7 @@
  *	set to 1, the RKH allows deep history pseudostate usage.
  */
 
-#define RKH_CFG_SMA_DEEP_HIST_EN		RKH_DISABLED
+#define RKH_CFG_SMA_DEEP_HIST_EN		RKH_DSABLED
 
 /**
  *	If the #RKH_CFG_SMA_SHALLOW_HIST_EN and #RKH_CFG_SMA_PSEUDOSTATE_EN 

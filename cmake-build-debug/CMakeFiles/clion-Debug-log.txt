@@ -1,13 +1,4 @@
-/home/nando-toshiba/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" -S /home/nando-toshiba/Desktop/salt/firmware -B /home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug
-CMake Deprecation Warning:
-  Support for "Extra Generators" like
-
-    CodeBlocks
-
-  is deprecated and will be removed from a future version of CMake.  IDEs may
-  use the cmake-file-api(7) to view CMake-generated project build trees.
-
-
+/home/nando-toshiba/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "Unix Makefiles" -S /home/nando-toshiba/Desktop/salt/firmware -B /home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug
 -- The C compiler identification is GNU 10.3.1
 -- The CXX compiler identification is GNU 10.3.1
 -- The ASM compiler identification is GNU
@@ -26,6 +17,6 @@ CMake Deprecation Warning:
 -- All compile definitions: DEBUG;USE_HAL_DRIVER;STM32F429xx;RKH_PLATFORM="__STM32__";RKH_CONF_FILE="salt/rkhcfg.h"
 -- Build type: Debug
 -- ...
--- Configuring done (1.2s)
--- Generating done (0.0s)
+-- Configuring done (0.9s)
+-- Generating done (0.1s)
 -- Build files have been written to: /home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug
