@@ -290,45 +290,37 @@ saltConfig(void)
 static void
 setupTraceFilters(void)
 {
-      RKH_FILTER_ON_GROUP(RKH_TRC_ALL_GROUPS);
+    // RKH_FILTER_ON_GROUP(RKH_TRC_ALL_GROUPS);
+    //  RKH_FILTER_ON_EVENT(RKH_TRC_ALL_EVENTS);
 
-     // Events
-      RKH_FILTER_ON_EVENT(RKH_TRC_ALL_EVENTS);
+    //RKH_FILTER_OFF_EVENT(USR_TRACE);
+    //RKH_FILTER_OFF_EVENT(USR_TRACE_OUT);
+    //RKH_FILTER_OFF_EVENT(USR_TRACE_EVT);
+    //RKH_FILTER_OFF_EVENT(USR_TRACE_IN);
+    //RKH_FILTER_OFF_EVENT(USR_TRACE_SSP);
+    //  RKH_FILTER_OFF_EVENT(USR_TRACE_MQTT);
+    //RKH_FILTER_OFF_GROUP_ALL_EVENTS(RKH_TG_USR);
 
-      RKH_FILTER_ON_ALL_SMA();
-      RKH_FILTER_ON_ALL_SIGNALS();
-      RKH_FILTER_ON_GROUP_ALL_EVENTS(RKH_TRC_ALL_GROUPS);
+    RKH_FILTER_OFF_EVENT(RKH_TE_SMA_FIFO); // Send a event to SMA's queue in a FIFO manner
+    RKH_FILTER_OFF_EVENT(RKH_TE_SMA_LIFO); // Send a event to SMA's queue in a LIFO manner
 
-      /*
-      RKH_FILTER_OFF_EVENT(USR_TRACE);
-      RKH_FILTER_OFF_EVENT(USR_TRACE_OUT);
-      RKH_FILTER_OFF_EVENT(USR_TRACE_EVT);
-      RKH_FILTER_OFF_EVENT(USR_TRACE_IN);
-      RKH_FILTER_OFF_EVENT(USR_TRACE_SSP);
-      RKH_FILTER_OFF_EVENT(USR_TRACE_MQTT);
-      RKH_FILTER_OFF_GROUP_ALL_EVENTS(RKH_TG_USR);
+    RKH_FILTER_OFF_EVENT(RKH_TE_TMR_TOUT);  // Timer has expired
+    RKH_FILTER_OFF_EVENT(RKH_TE_SM_STATE); // Legal, stable and final state of transition.
+    RKH_FILTER_OFF_EVENT(RKH_TE_SM_TRN); //  Source and target state of the transition. The target could be either basic state, composite state or pseudostate.
+    RKH_FILTER_OFF_EVENT(RKH_TE_SM_TS_STATE); // Destination state or pseudostate of a transition segment.
+    RKH_FILTER_OFF_EVENT(RKH_TE_SM_DCH); // Dispatch an event to a state machine
+    RKH_FILTER_OFF_EVENT(RKH_TE_SM_EVT_NFOUND); // The arrived event was't founded in the transition table.
+    RKH_FILTER_OFF_EVENT(RKH_TE_SM_GRD_FALSE); // The transition was cancelled by guard function.
 
-      RKH_FILTER_OFF_EVENT(RKH_TE_TMR_TOUT);
-      RKH_FILTER_OFF_EVENT(RKH_TE_SM_STATE);
-      RKH_FILTER_OFF_EVENT(RKH_TE_SMA_FIFO);
-      RKH_FILTER_OFF_EVENT(RKH_TE_SMA_LIFO);
-      RKH_FILTER_OFF_EVENT(RKH_TE_SM_TS_STATE);
-      RKH_FILTER_OFF_EVENT(RKH_TE_SM_DCH);
-       */
+    //  RKH_FILTER_OFF_EVENT();
 
-      // State Machines
 
-        /*
-          RKH_FILTER_OFF_SMA(modMgr);
-          RKH_FILTER_OFF_SMA(conMgr);
-          RKH_FILTER_OFF_SMA(mqttProt);
-          RKH_FILTER_OFF_SMA(logic);
-        */
 
-        // Signals
-      /*
-       RKH_FILTER_OFF_ALL_SIGNALS();
-       */
+    RKH_FILTER_OFF_SMA(conMgr);
+    //  RKH_FILTER_OFF_SMA(modMgr);
+    //  RKH_FILTER_OFF_SMA(mqttProt);
+    //  RKH_FILTER_OFF_SMA(logic);
+    //  RKH_FILTER_OFF_ALL_SIGNALS();
 }
 
 

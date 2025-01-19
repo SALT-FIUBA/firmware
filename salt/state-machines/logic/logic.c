@@ -423,7 +423,7 @@ static void configAlCtFe(Logic *me, rbool_t alActivated, rbool_t ctActivated, rb
 /* ............................ Initial action ............................. */
 static void init(Logic *const me, RKH_EVT_T *pe){
     (void)pe;
-
+/*
     RKH_TR_FWK_AO(me);
     RKH_TR_FWK_AO(Logic_logicVel);
 
@@ -471,7 +471,7 @@ static void init(Logic *const me, RKH_EVT_T *pe){
     RKH_TR_FWK_SIG(evVelHasler);
     RKH_TR_FWK_SIG(evVelExternal);
     RKH_TR_FWK_SIG(evVelGPS);
-
+*/
     RKH_SET_STATIC_EVENT(RKH_UPCAST(RKH_EVT_T, &(me->itsLogicVel.velEvt)), evVel);
     RKH_TMR_INIT(&me->timerStop, &e_tOutStop, NULL);
     RKH_TMR_INIT(&me->timerGpsEnable, &e_tOutGps, NULL);

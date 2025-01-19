@@ -162,7 +162,7 @@ RKH_CREATE_COMP_REGION_STATE(ConMgr_initialize, NULL, NULL, &ConMgr_active,
                              RKH_NO_HISTORY, NULL, NULL, NULL, NULL);
 RKH_CREATE_TRANS_TABLE(ConMgr_initialize)
                 RKH_TRCOMPLETION(NULL, NULL, &ConMgr_unregistered),
-                //  RKH_TRREG(evNoResponse, NULL, NULL, &ConMgr_failure),
+                RKH_TRREG(evNoResponse, NULL, NULL, &ConMgr_failure),
 RKH_END_TRANS_TABLE
 
 RKH_CREATE_COND_STATE(ConMgr_checkSyncTry);
@@ -485,6 +485,16 @@ static RKH_ROM_STATIC_EVENT(e_NetDisconnected, evNetDisconnected);
 static RKH_ROM_STATIC_EVENT(e_Sent,     evSent);
 static RKH_ROM_STATIC_EVENT(e_SendFail, evSendFail);
 static RKH_ROM_STATIC_EVENT(e_RecvFail, evRecvFail);
+
+//
+
+
+
+
+//
+
+
+
 ReceivedEvt e_Received;
 VelEvt e_Vel;
 
@@ -591,8 +601,11 @@ init(ConMgr *const me, RKH_EVT_T *pe)
     RKH_TR_FWK_STATE(me, &ConMgr_waitRetryConnect);
     RKH_TR_FWK_STATE(me, &ConMgr_checkConnectTry);
     RKH_TR_FWK_STATE(me, &ConMgr_disconnecting);
+
     RKH_TR_FWK_TIMER(&me->timer);
     RKH_TR_FWK_TIMER(&me->timerReg);
+
+    /*
     RKH_TR_FWK_SIG(evOpen);
     RKH_TR_FWK_SIG(evClose);
     RKH_TR_FWK_SIG(evCmd);
@@ -627,12 +640,14 @@ init(ConMgr *const me, RKH_EVT_T *pe)
     RKH_TR_FWK_SIG(evRestart);
     RKH_TR_FWK_SIG(evSigLevel);
     RKH_TR_FWK_SIG(evRegTimeout);
+*/
 
     rkh_queue_init(&qDefer, (const void **)qDefer_sto, SIZEOF_QDEFER,
                    CV(0));
 
     RKH_TMR_INIT(&me->timer, &e_tout, NULL);
     RKH_TMR_INIT(&me->timerReg, &e_regTout, NULL);
+
     me->retryCount = 0;
 }
 
@@ -684,6 +699,7 @@ initializeInit(ConMgr *const me, RKH_EVT_T *pe)
     (void)pe;
 
     me->retryCount = 0;
+
 }
 
 static void

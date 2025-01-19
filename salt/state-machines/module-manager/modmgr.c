@@ -185,7 +185,7 @@ static void
 initialization(ModMgr *const me, RKH_EVT_T *pe)
 {
     (void)pe;
-
+/*
     RKH_TR_FWK_AO(me);
     RKH_TR_FWK_QUEUE(&RKH_UPCAST(RKH_SMA_T, me)->equeue);
     RKH_TR_FWK_STATE(me, &ModMgr_inactive);
@@ -205,6 +205,7 @@ initialization(ModMgr *const me, RKH_EVT_T *pe)
     RKH_TR_FWK_TUSR(USR_TRACE_IN);
     RKH_TR_FWK_TUSR(USR_TRACE_SSP);
     RKH_TR_FWK_TUSR(USR_TRACE_MQTT);
+*/
 
     rkh_queue_init(&qDefer, (const void **)qDefer_sto, SIZEOF_QDEFER,
                    CV(0));
