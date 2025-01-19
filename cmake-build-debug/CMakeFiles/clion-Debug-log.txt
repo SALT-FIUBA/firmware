@@ -17,6 +17,6 @@
 -- All compile definitions: DEBUG;USE_HAL_DRIVER;STM32F429xx;RKH_PLATFORM="__STM32__";RKH_CONF_FILE="salt/rkhcfg.h"
 -- Build type: Debug
 -- ...
--- Configuring done (1.9s)
+-- Configuring done (1.2s)
 -- Generating done (0.1s)
 -- Build files have been written to: /home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug

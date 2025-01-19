@@ -162,7 +162,7 @@ RKH_CREATE_COMP_REGION_STATE(ConMgr_initialize, NULL, NULL, &ConMgr_active,
                              RKH_NO_HISTORY, NULL, NULL, NULL, NULL);
 RKH_CREATE_TRANS_TABLE(ConMgr_initialize)
                 RKH_TRCOMPLETION(NULL, NULL, &ConMgr_unregistered),
-                RKH_TRREG(evNoResponse, NULL, NULL, &ConMgr_failure),
+                //  RKH_TRREG(evNoResponse, NULL, NULL, &ConMgr_failure),
 RKH_END_TRANS_TABLE
 
 RKH_CREATE_COND_STATE(ConMgr_checkSyncTry);
@@ -174,23 +174,22 @@ RKH_END_BRANCH_TABLE
 
 RKH_CREATE_BASIC_STATE(ConMgr_sync, sendSync, NULL, &ConMgr_initialize, NULL);
 RKH_CREATE_TRANS_TABLE(ConMgr_sync)
-                RKH_TRREG(evOk,         NULL, NULL, &ConMgr_waitInit),
-                // RKH_TRREG(evNoResponse, NULL, NULL, &ConMgr_checkSyncTry),
+                RKH_TRREG(evOk,         NULL, NULL, &ConMgr_init),
+                //RKH_TRREG(evOk,         NULL, NULL, &ConMgr_waitInit),
+                RKH_TRREG(evNoResponse, NULL, NULL, &ConMgr_checkSyncTry),
 RKH_END_TRANS_TABLE
-
-
-
 
 
 RKH_CREATE_BASIC_STATE(ConMgr_waitInit, setInitTimeOut, NULL, &ConMgr_initialize, NULL);
 RKH_CREATE_TRANS_TABLE(ConMgr_waitInit)
-                //RKH_TRREG(evInitEnd, NULL, NULL, &ConMgr_init),
+                //  RKH_TRREG(evInitEnd, NULL, NULL, &ConMgr_init),
                 RKH_TRREG(evTimeout, NULL, NULL, &ConMgr_init),
 RKH_END_TRANS_TABLE
 
 RKH_CREATE_BASIC_STATE(ConMgr_init, sendInit, NULL, &ConMgr_initialize, NULL);
 RKH_CREATE_TRANS_TABLE(ConMgr_init)
-                RKH_TRREG(evOk,         NULL, NULL, &ConMgr_error),
+                RKH_TRREG(evOk,         NULL, NULL, &ConMgr_gps),
+                //  RKH_TRREG(evOk,         NULL, NULL, &ConMgr_error),
 RKH_END_TRANS_TABLE
 
 RKH_CREATE_BASIC_STATE(ConMgr_error, errorReport, NULL, &ConMgr_initialize, NULL);
@@ -206,8 +205,8 @@ RKH_END_TRANS_TABLE
 
 RKH_CREATE_BASIC_STATE(ConMgr_pin, checkPin, NULL, &ConMgr_initialize, NULL);
 RKH_CREATE_TRANS_TABLE(ConMgr_pin)
-                //  RKH_TRREG(evSimPin,     NULL, NULL, &ConMgr_setPin),
-                //  RKH_TRREG(evSimError,   NULL, NULL, &ConMgr_failure),
+                RKH_TRREG(evSimPin,     NULL, NULL, &ConMgr_setPin),
+                RKH_TRREG(evSimError,   NULL, NULL, &ConMgr_failure),
                 RKH_TRREG(evSimReady,   NULL, NULL, &ConMgr_enableNetTime),
 RKH_END_TRANS_TABLE
 
@@ -487,7 +486,9 @@ static RKH_ROM_STATIC_EVENT(e_SendFail, evSendFail);
 static RKH_ROM_STATIC_EVENT(e_RecvFail, evRecvFail);
 
 //
-
+static RKH_ROM_STATIC_EVENT(e_ok, evOk);
+static RKH_ROM_STATIC_EVENT(e_simReady, evSimReady);
+static RKH_ROM_STATIC_EVENT(e_imei, evImei);
 
 
 
@@ -558,6 +559,7 @@ init(ConMgr *const me, RKH_EVT_T *pe)
 
     RKH_TR_FWK_TIMER(&me->timer);
     RKH_TR_FWK_TIMER(&me->timerReg);
+
     RKH_TR_FWK_STATE(me, &ConMgr_inactive);
     RKH_TR_FWK_STATE(me, &ConMgr_active);
     RKH_TR_FWK_STATE(me, &ConMgr_initialize);
@@ -565,6 +567,7 @@ init(ConMgr *const me, RKH_EVT_T *pe)
     RKH_TR_FWK_STATE(me, &ConMgr_checkSyncTry);
     RKH_TR_FWK_STATE(me, &ConMgr_init);
     RKH_TR_FWK_STATE(me, &ConMgr_waitInit);
+    RKH_TR_FWK_STATE(me, &ConMgr_gps);
     RKH_TR_FWK_STATE(me, &ConMgr_pin);
     RKH_TR_FWK_STATE(me, &ConMgr_setPin);
     RKH_TR_FWK_STATE(me, &ConMgr_enableNetTime);
@@ -644,6 +647,7 @@ init(ConMgr *const me, RKH_EVT_T *pe)
 
     rkh_queue_init(&qDefer, (const void **)qDefer_sto, SIZEOF_QDEFER,
                    CV(0));
+
 
     RKH_TMR_INIT(&me->timer, &e_tout, NULL);
     RKH_TMR_INIT(&me->timerReg, &e_regTout, NULL);
@@ -924,9 +928,10 @@ setGpsData(ConMgr *const me, RKH_EVT_T *pe)
 static void
 sendSync(ConMgr *const me)
 {
-    ++me->retryCount;
+    //  ++me->retryCount;
+    //  ModCmd_sync();
 
-    ModCmd_sync();
+    RKH_SMA_POST_FIFO(conMgr, &e_ok, conMgr);
 }
 
 static void
@@ -934,7 +939,10 @@ sendInit(ConMgr *const me)
 {
     (void)me;
 
-    ModCmd_initStr();
+    //  ModCmd_initStr();
+
+    RKH_SMA_POST_FIFO(conMgr, &e_ok, conMgr);
+
 }
 
 static void
@@ -942,7 +950,8 @@ checkPin(ConMgr *const me)
 {
     (void)me;
 
-    ModCmd_getPinStatus();
+    //  ModCmd_getPinStatus();
+    RKH_SMA_POST_FIFO(conMgr, &e_simReady, conMgr);
 }
 
 static void
@@ -958,7 +967,9 @@ netTimeEnable(ConMgr *const me)
 {
     (void)me;
 
-    ModCmd_enableNetTime();
+    //  ModCmd_enableNetTime();
+
+    RKH_SMA_POST_FIFO(conMgr, &e_ok, conMgr);
 }
 
 static void
@@ -966,7 +977,10 @@ getImei(ConMgr *const me)
 {
     (void)me;
 
-    ModCmd_getImei();
+    //  ModCmd_getImei();
+
+
+    RKH_SMA_POST_FIFO(conMgr, &e_imei, conMgr);
 }
 
 static void
@@ -974,7 +988,9 @@ cipShutdown(ConMgr *const me)
 {
     (void)me;
 
-    ModCmd_cipShutdown();
+    //  ModCmd_cipShutdown();
+
+    RKH_SMA_POST_FIFO(conMgr, &e_ok, conMgr);
 }
 
 static void
@@ -1016,7 +1032,9 @@ setupManualGet(ConMgr *const me)
 {
     (void)me;
 
-    ModCmd_setManualGet();
+    //  ModCmd_setManualGet();
+
+    RKH_SMA_POST_FIFO(conMgr, &e_ok, conMgr);
 }
 
 static void
@@ -1120,18 +1138,26 @@ setInitTimeOut(ConMgr *const me)
 {
     RKH_SET_STATIC_EVENT(&e_tout, evTimeout);
     RKH_TMR_ONESHOT(&me->timer, RKH_UPCAST(RKH_SMA_T, me), INIT_PERIOD);
+
+    //  RKH_SMA_POST_FIFO(conMgr, &e_tout, conMgr);
 }
 
 static void
 errorReport(ConMgr *const me)
 {
-    ModCmd_errorReport();
+    //  ModCmd_errorReport();
+
+
+    RKH_SMA_POST_FIFO(conMgr, &e_ok, conMgr);
 }
 
 static void
 initGps(ConMgr *const me)
 {
-    ModCmd_startGPS();
+    //  ModCmd_startGPS();
+
+
+    RKH_SMA_POST_FIFO(conMgr, &e_ok, conMgr);
 }
 
 static void
