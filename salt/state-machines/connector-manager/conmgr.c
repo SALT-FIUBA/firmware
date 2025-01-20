@@ -238,18 +238,19 @@ RKH_CREATE_TRANS_TABLE(ConMgr_setManualGet)
 RKH_END_TRANS_TABLE
 
 RKH_CREATE_COMP_REGION_STATE(ConMgr_registered, regEntry, regExit, &ConMgr_active,
-                             &ConMgr_waitNetClockSync, NULL,
+                             // TODO: original -> &ConMgr_waitNetClockSync, NULL,
+                             &ConMgr_configure, NULL,
                              RKH_NO_HISTORY, NULL, NULL, NULL, NULL);
 RKH_CREATE_TRANS_TABLE(ConMgr_registered)
-                //  RKH_TRREG(evNoReg, NULL, NULL,   &ConMgr_unregistered),
+                RKH_TRREG(evNoReg, NULL, NULL,   &ConMgr_unregistered),
 RKH_END_TRANS_TABLE
 
 RKH_CREATE_BASIC_STATE(ConMgr_unregistered, unregEntry, unregExit,
                        &ConMgr_active, NULL);
 RKH_CREATE_TRANS_TABLE(ConMgr_unregistered)
-                //  RKH_TRINT(evTimeout,    NULL,    checkRegStatus),
-                //  RKH_TRINT(evNoReg,      NULL,    startRegStatus),
-                //  RKH_TRREG(evRegTimeout,  NULL,    NULL, &ConMgr_failure),
+                RKH_TRINT(evTimeout,    NULL,    checkRegStatus),
+                RKH_TRINT(evNoReg,      NULL,    startRegStatus),
+                RKH_TRREG(evRegTimeout,  NULL,    NULL, &ConMgr_failure),
                 RKH_TRREG(evReg, NULL, NULL,   &ConMgr_registered),
 RKH_END_TRANS_TABLE
 
@@ -489,6 +490,9 @@ static RKH_ROM_STATIC_EVENT(e_RecvFail, evRecvFail);
 static RKH_ROM_STATIC_EVENT(e_ok, evOk);
 static RKH_ROM_STATIC_EVENT(e_simReady, evSimReady);
 static RKH_ROM_STATIC_EVENT(e_imei, evImei);
+static RKH_ROM_STATIC_EVENT(e_reg, evReg);
+static RKH_ROM_STATIC_EVENT(e_oper, evOper);
+static RKH_ROM_STATIC_EVENT(e_ipStatus, evIPStatus);
 
 
 
@@ -723,12 +727,14 @@ storeImei(ConMgr *const me, RKH_EVT_T *pe)
 static void
 storeOper(ConMgr *const me, RKH_EVT_T *pe)
 {
+    /*
     OperEvt *p;
 
     (void)me;
 
     p = RKH_UPCAST(OperEvt, pe);
     strcpy(me->Oper, p->buf);
+    */
 }
 
 static void
@@ -996,6 +1002,7 @@ cipShutdown(ConMgr *const me)
 static void
 unregEntry(ConMgr *const me)
 {
+    /*
     ModCmd_getRegStatus();
 
     RKH_SET_STATIC_EVENT(&e_tout, evTimeout);
@@ -1003,6 +1010,9 @@ unregEntry(ConMgr *const me)
 
     RKH_SET_STATIC_EVENT(&e_regTout, evRegTimeout);
     RKH_TMR_ONESHOT(&me->timerReg, RKH_UPCAST(RKH_SMA_T, me), REGISTRATION_TIME);
+     */
+
+    RKH_SMA_POST_FIFO(conMgr, &e_reg, conMgr);
 }
 
 static void
@@ -1047,35 +1057,51 @@ waitNetClockSyncEntry(ConMgr *const me)
 static void
 getOper(ConMgr *const me)
 {
+    /*
     (void)me;
 
     ModCmd_getOper();
+    */
+
+    RKH_SMA_POST_FIFO(conMgr, &e_oper, conMgr);
 }
 
 static void
 setupAPN(ConMgr *const me)
 {
+    /*
     Apn *apn;
     (void)me;
 
     apn = getAPNbyOper(me->Oper);
     ModCmd_setupAPN(apn->addr, apn->usr, apn->psw);
+     */
+
+    RKH_SMA_POST_FIFO(conMgr, &e_ok, conMgr);
 }
 
 static void
 startGPRS(ConMgr *const me)
 {
+    /*
     (void)me;
 
     ModCmd_startGPRS();
+    */
+
+    RKH_SMA_POST_FIFO(conMgr, &e_ok, conMgr);
 }
 
 static void
 getConnStatus(ConMgr *const me)
 {
+    /*
     (void)me;
 
     ModCmd_getConnStatus();
+     */
+
+    RKH_SMA_POST_FIFO(conMgr, &e_ipStatus, conMgr);
 }
 
 static void
@@ -1171,8 +1197,10 @@ getGps(ConMgr *const me)
 static void
 unregExit(ConMgr *const me)
 {
+    /*
     rkh_tmr_stop(&me->timer);
     rkh_tmr_stop(&me->timerReg);
+     */
 }
 
 static void
