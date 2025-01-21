@@ -391,10 +391,12 @@ static void
 init(MQTTProt *const me, RKH_EVT_T *pe)
 {
     (void)pe;
-/*
+
     RKH_TR_FWK_AO(me);
     RKH_TR_FWK_AO(MQTTProt_syncRegion);
+
     RKH_TR_FWK_QUEUE(&RKH_UPCAST(RKH_SMA_T, me)->equeue);
+
     RKH_TR_FWK_STATE(me, &Client_Idle);
     RKH_TR_FWK_STATE(me, &Sync_Idle);
     RKH_TR_FWK_STATE(me, &Sync_WaitSync);
@@ -419,16 +421,20 @@ init(MQTTProt *const me, RKH_EVT_T *pe)
     RKH_TR_FWK_STATE(me, &Client_C7);
     RKH_TR_FWK_STATE(me, &Client_C15);
     RKH_TR_FWK_STATE(me, &Client_C20);
-    RKH_TR_FWK_SIG(evConnAccepted);
-    RKH_TR_FWK_SIG(evConnRefused);
-    RKH_TR_FWK_SIG(evActivate);
-    RKH_TR_FWK_SIG(evWaitConnectTout);
-    RKH_TR_FWK_SIG(evWaitPublishTout);
-    RKH_TR_FWK_SIG(evWaitSyncTout);
-    RKH_TR_FWK_SIG(evUnlocked);
-    RKH_TR_FWK_SIG(RKH_COMPLETION_EVENT);
-    //RKH_FILTER_OFF_SMA(MQTTProt_syncRegion);
-*/
+
+
+    /*
+        RKH_TR_FWK_SIG(evConnAccepted);
+        RKH_TR_FWK_SIG(evConnRefused);
+        RKH_TR_FWK_SIG(evActivate);
+        RKH_TR_FWK_SIG(evWaitConnectTout);
+        RKH_TR_FWK_SIG(evWaitPublishTout);
+        RKH_TR_FWK_SIG(evWaitSyncTout);
+        RKH_TR_FWK_SIG(evUnlocked);
+        RKH_TR_FWK_SIG(RKH_COMPLETION_EVENT);
+     */
+
+    RKH_FILTER_OFF_SMA(MQTTProt_syncRegion);
 
     RKH_SET_STATIC_EVENT(RKH_UPCAST(RKH_EVT_T, &evSendObj), evSend);
     RKH_SET_STATIC_EVENT(RKH_UPCAST(RKH_EVT_T, &evConnRefusedObj),

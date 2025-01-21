@@ -583,6 +583,7 @@ init(ConMgr *const me, RKH_EVT_T *pe)
     RKH_TR_FWK_STATE(me, &ConMgr_failure);
     RKH_TR_FWK_STATE(me, &ConMgr_waitNetClockSync);
     RKH_TR_FWK_STATE(me, &ConMgr_localTime);
+
     RKH_TR_FWK_STATE(me, &ConMgr_getOper);
     RKH_TR_FWK_STATE(me, &ConMgr_configure);
     RKH_TR_FWK_STATE(me, &ConMgr_configureHist);
