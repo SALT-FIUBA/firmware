@@ -18,21 +18,8 @@
 /* USER CODE END Header */
 
 /* Includes ------------------------------------------------------------------*/
-#include <stdio.h>
 #include "main.h"
 #include "stm32f4xx_it.h"
-#include "rkhtmr.h"
-#include "bsp-salt.h"
-#include "sapi_tick.h"
-
-extern volatile tick_t tickCounter;
-/*
- * This tells the compiler that tickCounter is defined in another source file (sapi_tick.c), and the linker will
- * resolve the reference at link time. The extern keyword is key here - it prevents a new definition while allowing
- * access to the existing variable.
- */
-
-
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 /* USER CODE END Includes */
@@ -206,12 +193,6 @@ void SysTick_Handler(void)
     //  rkh_tmr_tick();
   /* USER CODE END SysTick_IRQn 0 */
   HAL_IncTick();
-  tickCounter++;
-
-
-  RKH_TIM_TICK(NULL);
-  // bsp_timeTick is called by rkh_hook_timetick that calls rkh_tmr_tick
-  //    bsp_timeTick();
   /* USER CODE BEGIN SysTick_IRQn 1 */
   /* USER CODE END SysTick_IRQn 1 */
 }

@@ -18,7 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "eth.h"
+#include "lwip.h"
 #include "spi.h"
 #include "usart.h"
 #include "usb_otg.h"
@@ -134,7 +134,6 @@ PUTCHAR_PROTOTYPE
     return ch;
 }
 /* USER CODE END PFP */
-
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
@@ -327,10 +326,6 @@ setupTraceFilters(void)
 
 
 /* USER CODE END 0 */
-#define STR(x)   #x
-#define SHOW_DEFINE(x) printf("%s=%s\n", #x, STR(x))
-
-
 
 /**
   * @brief  The application entry point.
@@ -358,10 +353,10 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_ETH_Init();
   MX_USART3_UART_Init();
   MX_USB_OTG_FS_PCD_Init();
   MX_SPI1_Init();
+  MX_LWIP_Init();
   /* USER CODE BEGIN 2 */
 
   saltConfig();
