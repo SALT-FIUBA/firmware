@@ -49,6 +49,8 @@
 #include "publisher.h"
 #include "bsp-salt.h"
 #include "blinkySysTick.h"
+#include "tcp.h"
+#include "tcp-echo-server.h"
 
 /* USER CODE END Includes */
 
@@ -334,7 +336,7 @@ setupTraceFilters(void)
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
+    printf("main \n");
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -359,12 +361,29 @@ int main(void)
   MX_LWIP_Init();
   /* USER CODE BEGIN 2 */
 
+
+  /* Initialize TCP echo server */
+  tcp_echoserver_init();
+
+    /* Infinite loop */
+    while (1)
+    {
+        /* LwIP process function - handles timeouts and LwIP periodic tasks */
+        MX_LWIP_Process();
+
+        /* Toggle LED to show activity */
+        HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0);
+        HAL_Delay(1000);
+    }
+
+
+    /*
   saltConfig();
   rkh_fwk_init();
 
 
   setupTraceFilters();
-  /* mTime_init(); // invoked in saltConfig function */
+  mTime_init(); // invoked in saltConfig function
 
   RKH_TRC_OPEN();
 
@@ -403,7 +422,7 @@ int main(void)
     RKH_TRC_CLOSE();
 
     return 0;
-
+    */
 
   /* USER CODE END 2 */
 

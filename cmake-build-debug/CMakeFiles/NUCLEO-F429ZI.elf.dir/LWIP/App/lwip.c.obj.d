@@ -88,11 +88,6 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/LWIP/App/lwip.c.obj: \
  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/prot/etharp.h \
  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/netif/ethernet.h \
  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/dhcp.h \
- /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/udp.h \
- /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/ip.h \
- /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/ip6.h \
- /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/prot/ip.h \
- /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/prot/udp.h \
  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/timeouts.h \
  /home/nando-toshiba/Desktop/salt/firmware/LWIP/Target/ethernetif.h \
  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/init.h

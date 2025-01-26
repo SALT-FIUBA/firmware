@@ -88,11 +88,6 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/main.c.obj: \
  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/prot/etharp.h \
  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/netif/ethernet.h \
  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/dhcp.h \
- /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/udp.h \
- /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/ip.h \
- /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/ip6.h \
- /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/prot/ip.h \
- /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/prot/udp.h \
  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/timeouts.h \
  /home/nando-toshiba/Desktop/salt/firmware/LWIP/Target/ethernetif.h \
  /home/nando-toshiba/Desktop/salt/firmware/Core/Inc/spi.h \
@@ -163,4 +158,13 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/main.c.obj: \
  /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/serial/serial.h \
  /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/publisher/publisher.h \
  /home/nando-toshiba/Desktop/salt/firmware/salt/bsp/bsp-salt.h \
- /home/nando-toshiba/Desktop/salt/firmware/blinkySysTick/blinkySysTick.h
+ /home/nando-toshiba/Desktop/salt/firmware/blinkySysTick/blinkySysTick.h \
+ /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/tcp.h \
+ /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/tcpbase.h \
+ /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/ip.h \
+ /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/ip6.h \
+ /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/prot/ip.h \
+ /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/icmp.h \
+ /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/prot/icmp.h \
+ /home/nando-toshiba/Desktop/salt/firmware/Core/Inc/tcp-echo-server.h \
+ /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/tcp.h

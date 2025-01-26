@@ -15,6 +15,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/sysmem.c.obj.d"
   "CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/system_stm32f4xx.c.obj"
   "CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/system_stm32f4xx.c.obj.d"
+  "CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/tcp-echo-server.c.obj"
+  "CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/tcp-echo-server.c.obj.d"
   "CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/usart.c.obj"
   "CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/usart.c.obj.d"
   "CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/usb_otg.c.obj"

@@ -321,6 +321,30 @@ Core/Src/system_stm32f4xx.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/system_stm32f4xx.c.s
 .PHONY : Core/Src/system_stm32f4xx.c.s
 
+Core/Src/tcp-echo-server.obj: Core/Src/tcp-echo-server.c.obj
+.PHONY : Core/Src/tcp-echo-server.obj
+
+# target to build an object file
+Core/Src/tcp-echo-server.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/tcp-echo-server.c.obj
+.PHONY : Core/Src/tcp-echo-server.c.obj
+
+Core/Src/tcp-echo-server.i: Core/Src/tcp-echo-server.c.i
+.PHONY : Core/Src/tcp-echo-server.i
+
+# target to preprocess a source file
+Core/Src/tcp-echo-server.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/tcp-echo-server.c.i
+.PHONY : Core/Src/tcp-echo-server.c.i
+
+Core/Src/tcp-echo-server.s: Core/Src/tcp-echo-server.c.s
+.PHONY : Core/Src/tcp-echo-server.s
+
+# target to generate assembly for a file
+Core/Src/tcp-echo-server.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/tcp-echo-server.c.s
+.PHONY : Core/Src/tcp-echo-server.c.s
+
 Core/Src/usart.obj: Core/Src/usart.c.obj
 .PHONY : Core/Src/usart.obj
 
@@ -4418,6 +4442,9 @@ help:
 	@echo "... Core/Src/system_stm32f4xx.obj"
 	@echo "... Core/Src/system_stm32f4xx.i"
 	@echo "... Core/Src/system_stm32f4xx.s"
+	@echo "... Core/Src/tcp-echo-server.obj"
+	@echo "... Core/Src/tcp-echo-server.i"
+	@echo "... Core/Src/tcp-echo-server.s"
 	@echo "... Core/Src/usart.obj"
 	@echo "... Core/Src/usart.i"
 	@echo "... Core/Src/usart.s"
