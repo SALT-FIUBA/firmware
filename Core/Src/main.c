@@ -338,15 +338,15 @@ setupTraceFilters(void)
 #define RECONNECT_DELAY         5000 // ms
 #define PUBLISH_INTERVAL         5000 // ms
 
-struct mqttc_client mqtt_client;
 
 uint8_t sendbuf[2048];
 uint8_t recvbuf[1024];
 
+struct mqttc_client mqtt_client;
 static struct tcp_pcb * mqtt_pcb = NULL;
 
-static bool mqtt_connected = false;
 static uint32_t last_connection_attempt = 0;
+static bool mqtt_connected = false;
 static bool link_was_down = false;
 static bool connection_in_progress = false;
 
@@ -541,11 +541,12 @@ static err_t mqtt_tcp_recv_cb(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, e
     }
 
     // Process received data
-    err_t ret = __mqttc_recv(client);
-    if (ret != MQTT_OK) {
-        printf("MQTT receive error: %d\n", ret);
+    enum MQTTErrors mqtt_err = __mqttc_recv(client);
+    if (mqtt_err != MQTT_OK) {
+        printf("MQTT receive error: %s\n", mqttc_error_str(mqtt_err));
     }
 
+    tcp_recved(tpcb, p->len);
     pbuf_free(p);
     return ERR_OK;
 }
@@ -564,6 +565,8 @@ static err_t mqtt_tcp_connect_cb(void *arg, struct tcp_pcb *tpcb, err_t err)
     {
         printf("TCP connected successfully\n");
 
+        mqtt_pcb = tpcb;
+
         // Initialize MQTT-C client
         mqttc_init(
                 &mqtt_client,
@@ -574,17 +577,13 @@ static err_t mqtt_tcp_connect_cb(void *arg, struct tcp_pcb *tpcb, err_t err)
                 sizeof(recvbuf),
                   publish_callback);
 
-        // Connect to broker with MQTT
-        const char* client_id = "stm32_client";
-        uint8_t connect_flags = MQTT_CONNECT_CLEAN_SESSION; // | MQTT_CONNECT_WILL_FLAG;
-
+        // Generate unique client ID
+        char client_id[32];
         snprintf(client_id, sizeof(client_id), "stm32_%08lX", HAL_GetUIDw0());
 
-        // Set up will message for connection status
-        const char* will_topic = "stm32/status";
-        const char* will_message = "offline";
 
-        err_t mqtt_err = mqttc_connect(
+        // Set up will message for connection status
+        enum MQTTErrors mqtt_err = mqttc_connect(
                 &mqtt_client,
                 client_id,
                 NULL, //  will_topic,
@@ -592,7 +591,7 @@ static err_t mqtt_tcp_connect_cb(void *arg, struct tcp_pcb *tpcb, err_t err)
                 MQTT_KEEPALIVE_INTERVAL,
                 NULL,
                 NULL,
-                connect_flags,
+                MQTT_CONNECT_CLEAN_SESSION,
                 400);
 
         if (mqtt_err != MQTT_OK) {
@@ -602,7 +601,7 @@ static err_t mqtt_tcp_connect_cb(void *arg, struct tcp_pcb *tpcb, err_t err)
         }
 
         // Set up callbacks for TCP
-        tcp_arg(tpcb, mqtt_pcb);
+        tcp_arg(tpcb, &mqtt_client);
         tcp_recv(tpcb, mqtt_tcp_recv_cb);
         tcp_err(tpcb, mqtt_tcp_err_cb);
 
@@ -610,11 +609,18 @@ static err_t mqtt_tcp_connect_cb(void *arg, struct tcp_pcb *tpcb, err_t err)
         connection_in_progress = false;
         printf("MQTT connection established with client ID: %s\n", client_id);
 
+        // Wait a bit before first sync
+        HAL_Delay(100);
+
+
         // Initial sync
-        err_t sync_err = mqttc_sync(&mqtt_client);
+        enum MQTTErrors sync_err = mqttc_sync(&mqtt_client);
+
         if (sync_err != ERR_OK) {
+
             printf("Initial MQTT sync failed: %d\n", sync_err);
             mqtt_disconnect();
+
             return ERR_CONN;
         }
     }
@@ -757,6 +763,7 @@ int main(void)
   uint32_t last_link_check = 0;
   uint32_t last_publish = 0;
   uint32_t last_sync = 0;
+  uint32_t reconnect_time = 0;
 
     /* Infinite loop */
     while (1)
@@ -781,28 +788,25 @@ int main(void)
 
         if (now - last_link_check >= LINK_MONITOR_INTERVAL)
         {
-            if (!check_link_status()) {
-                printf("Link check failed\n");
-                if (mqtt_connected) {
-                    mqtt_disconnect();
-                }
-            }
+            check_link_status();
             last_link_check = now;
 
-            if (!mqtt_connected && !connection_in_progress) {
+            if (!mqtt_connected && !connection_in_progress &&
+                (now - reconnect_time >= RECONNECT_DELAY)) {
                 mqtt_server_init();
+                reconnect_time = now;
             }
         }
 
         // Handle MQTT client maintenance if connected
-        if (mqtt_connected && mqtt_client.error == MQTT_OK)
+        if (mqtt_connected)
         {
-            // Perform sync more frequently
-            if (now - last_sync >= 100) // Every 100ms
+            // Perform sync periodically
+            if (now - last_sync >= 500) // Every 500ms
             {
-                err_t err = mqttc_sync(&mqtt_client);
-                if (err != ERR_OK) {
-                    printf("MQTT sync error: %d\n", err);
+                enum MQTTErrors mqtt_err = mqttc_sync(&mqtt_client);
+                if (mqtt_err != MQTT_OK) {
+                    printf("MQTT sync error: %s\n", mqttc_error_str(mqtt_err));
                     mqtt_disconnect();
                     continue;
                 }
@@ -815,13 +819,21 @@ int main(void)
                 char message[64];
                 snprintf(message, sizeof(message), "Hello from STM32! Time: %lu", now);
 
-                if (mqtt_publish_message("stm32/test", message)) {
+                enum MQTTErrors mqtt_err = mqttc_publish(&mqtt_client,
+                                                         "stm32/test",
+                                                         message,
+                                                         strlen(message),
+                                                         MQTT_PUBLISH_QOS_0);
+                if (mqtt_err == MQTT_OK) {
                     last_publish = now;
+                    printf("Published: %s\n", message);
+                } else {
+                    printf("Publish error: %s\n", mqttc_error_str(mqtt_err));
                 }
             }
         }
 
-        HAL_Delay(1);
+        HAL_Delay(10);
     }
 
 
