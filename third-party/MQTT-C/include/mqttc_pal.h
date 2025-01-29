@@ -106,27 +106,61 @@
     #define MQTT_PAL_MUTEX_LOCK(mtx_ptr)
     #define MQTT_PAL_MUTEX_UNLOCK(mtx_ptr)
 
-#elif defined(STM32F429xx)
+//  #elif defined(STM32F429xx)
+/* STM32 + LWIP Platform Support */
+#ifdef STM32F429xx  // Or your specific STM32 target
 
     #include <limits.h>
-    #include <sys/time.h>
-    #include "epoch.h"
-    #include "htons.h"
+    #include <string.h>
+    #include <stdarg.h>
+    #include "lwip/opt.h"
+    #include "lwip/tcp.h"
+    #include "lwip/inet.h"
+    #include "lwip/timeouts.h"
 
-    #define MQTT_PAL_HTONS(s) htons(s)
-    #define MQTT_PAL_NTOHS(s) ntohs(s)
+    /* Endianness conversion using LwIP's built-in functions */
+    #define MQTT_PAL_HTONS(s) lwip_htons(s)
+    #define MQTT_PAL_NTOHS(s) lwip_ntohs(s)
 
-    #define MQTT_PAL_TIME() (time_t)epoch_get()
+    /* Time function using HAL tick */
+    #define MQTT_PAL_TIME() ((time_t)(HAL_GetTick()/1000))
 
-    typedef time_t mqttc_pal_time_t;
-    typedef int mqttc_pal_mutex_t;
-    typedef int ssize_t;
+    /* Type definitions */
+    typedef uint32_t mqtt_pal_time_t;
+    typedef int mqtt_pal_mutex_t;  // Simple mutex for STM32
+    typedef int32_t ssize_t;      // Define ssize_t for STM32
 
+    /* Mutex operations - can be implemented if needed */
     #define MQTT_PAL_MUTEX_INIT(mtx_ptr)
     #define MQTT_PAL_MUTEX_LOCK(mtx_ptr)
     #define MQTT_PAL_MUTEX_UNLOCK(mtx_ptr)
-#else
-#endif
+
+    /* LwIP connection state structure */
+    typedef struct mqtt_lwip_state {
+        struct tcp_pcb * pcb;
+        uint8_t connected;
+        err_t last_err;
+        struct {
+            const uint8_t * buffer;
+            size_t len;
+            size_t sent;
+        } send_state;
+        struct {
+            uint8_t * buffer;
+            size_t len;
+            size_t received;
+        } recv_state;
+    } mqtt_lwip_state_t;
+
+    /* Socket handle type for LwIP */
+    typedef mqtt_lwip_state_t * mqtt_pal_socket_handle;
+
+    /* Function declarations */
+    int mqtt_pal_sockopen(const char* addr, const char* port, int af);
+
+#endif /* STM32F429xx */
+
+#endif /* __MQTT_PAL_H__ */
 
 /**
  * @brief Sends all the bytes in a buffer.
