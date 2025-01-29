@@ -4,6 +4,7 @@
 #include <mqttc_pal.h>
 #include <string.h>
 #include <stdarg.h>
+#include "stm32f4xx.h"
 
 /**
  * @file

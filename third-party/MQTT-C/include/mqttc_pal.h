@@ -39,128 +39,128 @@
  * for sending and receiving data using the platforms socket calls.
  */
 
+#include "stm32f4xx.h"
 
 /* UNIX-like platform support */
-#ifdef __unix__
+#ifdef unix
+
 #include <limits.h>
-    #include <string.h>
-    #include <stdarg.h>
-    #include <time.h>
-    #include <arpa/inet.h>
-    #include <pthread.h>
+#include <string.h>
+#include <stdarg.h>
+#include <time.h>
+#include <arpa/inet.h>
+#include <pthread.h>
 
-    #define MQTT_PAL_HTONS(s) htons(s)
-    #define MQTT_PAL_NTOHS(s) ntohs(s)
+#define MQTT_PAL_HTONS(s) htons(s)
+#define MQTT_PAL_NTOHS(s) ntohs(s)
+#define MQTT_PAL_TIME() time(NULL)
 
-    #define MQTT_PAL_TIME() time(NULL)
+typedef time_t mqtt_pal_time_t;
+typedef pthread_mutex_t mqtt_pal_mutex_t;
 
-    typedef time_t mqtt_pal_time_t;
-    typedef pthread_mutex_t mqtt_pal_mutex_t;
+#define MQTT_PAL_MUTEX_INIT(mtx_ptr) pthread_mutex_init(mtx_ptr, NULL)
+#define MQTT_PAL_MUTEX_LOCK(mtx_ptr) pthread_mutex_lock(mtx_ptr)
+#define MQTT_PAL_MUTEX_UNLOCK(mtx_ptr) pthread_mutex_unlock(mtx_ptr)
 
-    #define MQTT_PAL_MUTEX_INIT(mtx_ptr) pthread_mutex_init(mtx_ptr, NULL)
-    #define MQTT_PAL_MUTEX_LOCK(mtx_ptr) pthread_mutex_lock(mtx_ptr)
-    #define MQTT_PAL_MUTEX_UNLOCK(mtx_ptr) pthread_mutex_unlock(mtx_ptr)
+int mqtt_pal_sockopen(const char* addr, const char* port, int af);
 
-    int mqtt_pal_sockopen(const char* addr, const char* port, int af);
-#elif __CIAA_NXP__
+#elif defined(CIAA_NXP)
+
 #include <limits.h>
-    #include <string.h>
-    #include <stdarg.h>
-    #include <time.h>
-    #include "epoch.h"
-    #include "Endianness.h"
+#include <string.h>
+#include <stdarg.h>
+#include <time.h>
+#include "epoch.h"
+#include "Endianness.h"
 
-    #define MQTT_PAL_HTONS(s) cpu_to_be16(s)
-    #define MQTT_PAL_NTOHS(s) be16_to_cpu(s)
+#define MQTT_PAL_HTONS(s) cpu_to_be16(s)
+#define MQTT_PAL_NTOHS(s) be16_to_cpu(s)
+#define MQTT_PAL_TIME() (time_t)epoch_get()
 
-    #define MQTT_PAL_TIME() (time_t)epoch_get()
+typedef time_t mqtt_pal_time_t;
+typedef int mqtt_pal_mutex_t;
+typedef int ssize_t;
 
-    typedef time_t mqtt_pal_time_t;
-    typedef int mqtt_pal_mutex_t;
-    typedef int ssize_t;
+#define MQTT_PAL_MUTEX_INIT(mtx_ptr)
+#define MQTT_PAL_MUTEX_LOCK(mtx_ptr)
+#define MQTT_PAL_MUTEX_UNLOCK(mtx_ptr)
 
-    #define MQTT_PAL_MUTEX_INIT(mtx_ptr)
-    #define MQTT_PAL_MUTEX_LOCK(mtx_ptr)
-    #define MQTT_PAL_MUTEX_UNLOCK(mtx_ptr)
-#elif __W32STVC__
-#include <limits.h>
-    #include <string.h>
-    #include <stdarg.h>
-    #include <time.h>
-    #include <winsock.h>
-    #include "epoch.h"
+#elif defined(W32STVC)
 
-    #define MQTT_PAL_HTONS(s) htons(s)
-    #define MQTT_PAL_NTOHS(s) ntohs(s)
+ #include <limits.h>
+ #include <string.h>
+ #include <stdarg.h>
+ #include <time.h>
+ #include <winsock.h>
+ #include "epoch.h"
 
-    #define MQTT_PAL_TIME() (time_t)epoch_get()
+#define MQTT_PAL_HTONS(s) htons(s)
+#define MQTT_PAL_NTOHS(s) ntohs(s)
+#define MQTT_PAL_TIME() (time_t)epoch_get()
 
-    typedef time_t mqtt_pal_time_t;
-    typedef int mqtt_pal_mutex_t;
-    typedef int ssize_t;
-    typedef unsigned char uint8_t;
-    typedef unsigned short uint16_t;
-    typedef unsigned long uint32_t;
+typedef time_t mqtt_pal_time_t;
+typedef int mqtt_pal_mutex_t;
+typedef int ssize_t;
+typedef unsigned char uint8_t;
+typedef unsigned short uint16_t;
+typedef unsigned long uint32_t;
 
-    #define MQTT_PAL_MUTEX_INIT(mtx_ptr)
-    #define MQTT_PAL_MUTEX_LOCK(mtx_ptr)
-    #define MQTT_PAL_MUTEX_UNLOCK(mtx_ptr)
+#define MQTT_PAL_MUTEX_INIT(mtx_ptr)
+#define MQTT_PAL_MUTEX_LOCK(mtx_ptr)
+#define MQTT_PAL_MUTEX_UNLOCK(mtx_ptr)
 
-//  #elif defined(STM32F429xx)
 /* STM32 + LWIP Platform Support */
-#ifdef STM32F429xx  // Or your specific STM32 target
+#elif defined(STM32F4)
 
-    #include <limits.h>
-    #include <string.h>
-    #include <stdarg.h>
-    #include "lwip/opt.h"
-    #include "lwip/tcp.h"
-    #include "lwip/inet.h"
-    #include "lwip/timeouts.h"
+#include <limits.h>
+#include <string.h>
+#include <stdarg.h>
+#include "lwip/opt.h"
+#include "lwip/tcp.h"
+#include "lwip/inet.h"
+#include "lwip/timeouts.h"
+#include "stm32f4xx_hal.h"
 
-    /* Endianness conversion using LwIP's built-in functions */
-    #define MQTT_PAL_HTONS(s) lwip_htons(s)
-    #define MQTT_PAL_NTOHS(s) lwip_ntohs(s)
+/* Endianness conversion using LwIP's built-in functions */
+#define MQTT_PAL_HTONS(s) lwip_htons(s)
+#define MQTT_PAL_NTOHS(s) lwip_ntohs(s)
 
-    /* Time function using HAL tick */
-    #define MQTT_PAL_TIME() ((time_t)(HAL_GetTick()/1000))
+/* Time function using HAL tick */
+typedef uint32_t mqttc_pal_time_t;
+#define MQTT_PAL_TIME() ((time_t)(HAL_GetTick()/1000))
 
-    /* Type definitions */
-    typedef uint32_t mqtt_pal_time_t;
-    typedef int mqtt_pal_mutex_t;  // Simple mutex for STM32
-    typedef int32_t ssize_t;      // Define ssize_t for STM32
+/* Type definitions */
+typedef int mqttc_pal_mutex_t;  // Simple mutex for STM32
 
-    /* Mutex operations - can be implemented if needed */
-    #define MQTT_PAL_MUTEX_INIT(mtx_ptr)
-    #define MQTT_PAL_MUTEX_LOCK(mtx_ptr)
-    #define MQTT_PAL_MUTEX_UNLOCK(mtx_ptr)
+/* Mutex operations - can be implemented if needed */
+#define MQTT_PAL_MUTEX_INIT(mtx_ptr)
+#define MQTT_PAL_MUTEX_LOCK(mtx_ptr)
+#define MQTT_PAL_MUTEX_UNLOCK(mtx_ptr)
 
-    /* LwIP connection state structure */
-    typedef struct mqtt_lwip_state {
-        struct tcp_pcb * pcb;
-        uint8_t connected;
-        err_t last_err;
-        struct {
-            const uint8_t * buffer;
-            size_t len;
-            size_t sent;
-        } send_state;
-        struct {
-            uint8_t * buffer;
-            size_t len;
-            size_t received;
-        } recv_state;
-    } mqtt_lwip_state_t;
+/* LwIP connection state structure */
+typedef struct mqttc_lwip_state_t {
 
-    /* Socket handle type for LwIP */
-    typedef mqtt_lwip_state_t * mqtt_pal_socket_handle;
+    struct tcp_pcb * pcb;
+    uint8_t connected;
+    err_t last_err;
+    void * recv_buf;
+    size_t recv_len;
+    size_t bytes_received;
+    size_t bytes_sent;
 
-    /* Function declarations */
-    int mqtt_pal_sockopen(const char* addr, const char* port, int af);
+} mqttc_lwip_state_t;
 
-#endif /* STM32F429xx */
+/* Socket handle type for LwIP */
+typedef mqttc_lwip_state_t * mqttc_pal_socket_handle;
 
-#endif /* __MQTT_PAL_H__ */
+/* Function declarations */
+int mqttc_pal_sockopen(const char* addr, const char* port, int af);
+
+#else
+    #error "No platform defined! Please define a platform."
+
+#endif /* MQTT_PAL_H */
+
 
 /**
  * @brief Sends all the bytes in a buffer.

@@ -153,6 +153,30 @@ Core/Src/gpio.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/gpio.c.s
 .PHONY : Core/Src/gpio.c.s
 
+Core/Src/lwip-mqtt-library-test.obj: Core/Src/lwip-mqtt-library-test.c.obj
+.PHONY : Core/Src/lwip-mqtt-library-test.obj
+
+# target to build an object file
+Core/Src/lwip-mqtt-library-test.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/lwip-mqtt-library-test.c.obj
+.PHONY : Core/Src/lwip-mqtt-library-test.c.obj
+
+Core/Src/lwip-mqtt-library-test.i: Core/Src/lwip-mqtt-library-test.c.i
+.PHONY : Core/Src/lwip-mqtt-library-test.i
+
+# target to preprocess a source file
+Core/Src/lwip-mqtt-library-test.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/lwip-mqtt-library-test.c.i
+.PHONY : Core/Src/lwip-mqtt-library-test.c.i
+
+Core/Src/lwip-mqtt-library-test.s: Core/Src/lwip-mqtt-library-test.c.s
+.PHONY : Core/Src/lwip-mqtt-library-test.s
+
+# target to generate assembly for a file
+Core/Src/lwip-mqtt-library-test.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/lwip-mqtt-library-test.c.s
+.PHONY : Core/Src/lwip-mqtt-library-test.c.s
+
 Core/Src/main.obj: Core/Src/main.c.obj
 .PHONY : Core/Src/main.obj
 
@@ -4421,6 +4445,9 @@ help:
 	@echo "... Core/Src/gpio.obj"
 	@echo "... Core/Src/gpio.i"
 	@echo "... Core/Src/gpio.s"
+	@echo "... Core/Src/lwip-mqtt-library-test.obj"
+	@echo "... Core/Src/lwip-mqtt-library-test.i"
+	@echo "... Core/Src/lwip-mqtt-library-test.s"
 	@echo "... Core/Src/main.obj"
 	@echo "... Core/Src/main.i"
 	@echo "... Core/Src/main.s"

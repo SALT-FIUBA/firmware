@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/gpio.c.obj"
   "CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/gpio.c.obj.d"
+  "CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/lwip-mqtt-library-test.c.obj"
+  "CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/lwip-mqtt-library-test.c.obj.d"
   "CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/main.c.obj"
   "CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/main.c.obj.d"
   "CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/spi.c.obj"

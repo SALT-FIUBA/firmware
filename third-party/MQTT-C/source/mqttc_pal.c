@@ -107,189 +107,128 @@ mqttc_pal_recvall(int fd, void* buf, size_t bufsz, int flags)
     (void)flags;
     return 0;
 }
-#elif defined(STM32F429xx)
 
-ssize_t
-mqttc_pal_sendall(int fd, const void* buf, size_t len, int flags)
-{
-    (void)fd;
-    (void)buf;
-    (void)len;
-    (void)flags;
-    return 0;
+#elif defined(STM32F4)
+
+#include "mqttc_pal.h"
+
+/* Global instance of the MQTT connection state */
+static mqttc_lwip_state_t g_mqtt_state;
+
+/* TCP callbacks */
+static err_t tcp_connected_cb(void *arg, struct tcp_pcb *tpcb, err_t err) {
+    mqttc_lwip_state_t *state = (mqttc_lwip_state_t *)arg;
+    if (err == ERR_OK) {
+        state->connected = 1;
+    }
+    return ERR_OK;
 }
 
-ssize_t
-mqttc_pal_recvall(int fd, void* buf, size_t bufsz, int flags)
-{
-    (void)fd;
-    (void)buf;
-    (void)bufsz;
-    (void)flags;
-    return 0;
-}
+static err_t tcp_recv_cb(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_t err) {
+    mqttc_lwip_state_t *state = (mqttc_lwip_state_t *)arg;
 
-#elif STM32F4
-
-    #include "mqtt_pal.h"
-    #include "lwip/tcp.h"
-    #include "lwip/dns.h"
-
-    /* Static callback functions for TCP events */
-    static err_t tcp_connected_cb(void *arg, struct tcp_pcb *tpcb, err_t err);
-    static err_t tcp_recv_cb(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_t err);
-    static err_t tcp_sent_cb(void *arg, struct tcp_pcb *tpcb, u16_t len);
-    static void tcp_err_cb(void *arg, err_t err);
-
-    /* TCP connection state */
-    static mqtt_lwip_state_t mqtt_lwip_state;
-
-    /* DNS found callback */
-    static void dns_found_cb(const char *hostname, const ip_addr_t *ipaddr, void *arg) {
-        mqtt_lwip_state_t *state = (mqtt_lwip_state_t *)arg;
-
-        if (ipaddr != NULL) {
-            /* Create new TCP PCB */
-            state->pcb = tcp_new();
-            if (state->pcb != NULL) {
-                /* Set callbacks */
-                tcp_arg(state->pcb, state);
-                tcp_recv(state->pcb, tcp_recv_cb);
-                tcp_sent(state->pcb, tcp_sent_cb);
-                tcp_err(state->pcb, tcp_err_cb);
-
-                /* Connect to server */
-                tcp_connect(state->pcb, ipaddr, state->remote_port, tcp_connected_cb);
-            }
-        }
-    }
-
-    int mqtt_pal_sockopen(const char* addr, const char* port, int af) {
-        err_t err;
-        ip_addr_t server_ip;
-        uint16_t server_port = atoi(port);
-
-        /* Initialize state */
-        memset(&mqtt_lwip_state, 0, sizeof(mqtt_lwip_state_t));
-        mqtt_lwip_state.remote_port = server_port;
-
-        /* Try to convert address directly first */
-        if (ipaddr_aton(addr, &server_ip)) {
-            /* Direct IP address, create connection */
-            mqtt_lwip_state.pcb = tcp_new();
-            if (mqtt_lwip_state.pcb != NULL) {
-                tcp_arg(mqtt_lwip_state.pcb, &mqtt_lwip_state);
-                tcp_recv(mqtt_lwip_state.pcb, tcp_recv_cb);
-                tcp_sent(mqtt_lwip_state.pcb, tcp_sent_cb);
-                tcp_err(mqtt_lwip_state.pcb, tcp_err_cb);
-
-                err = tcp_connect(mqtt_lwip_state.pcb, &server_ip, server_port, tcp_connected_cb);
-                if (err != ERR_OK) {
-                    return -1;
-                }
-            }
-        } else {
-            /* Hostname provided, use DNS */
-            err = dns_gethostbyname(addr, &server_ip, dns_found_cb, &mqtt_lwip_state);
-            if (err == ERR_INPROGRESS) {
-                /* Wait for DNS resolution */
-                // Note: You'll need to handle this asynchronously in your main loop
-            } else if (err != ERR_OK) {
-                return -1;
-            }
-        }
-
-        return (int)(&mqtt_lwip_state);
-    }
-
-    ssize_t mqtt_pal_sendall(int fd, const void* buf, size_t len, int flags) {
-        mqtt_lwip_state_t *state = (mqtt_lwip_state_t *)fd;
-        err_t err;
-
-        if (!state->connected || state->pcb == NULL) {
-            return -1;
-        }
-
-        state->send_state.buffer = buf;
-        state->send_state.len = len;
-        state->send_state.sent = 0;
-
-        err = tcp_write(state->pcb, buf, len, TCP_WRITE_FLAG_COPY);
-        if (err != ERR_OK) {
-            return -1;
-        }
-
-        err = tcp_output(state->pcb);
-        if (err != ERR_OK) {
-            return -1;
-        }
-
-        return len;
-    }
-
-    ssize_t mqtt_pal_recvall(int fd, void* buf, size_t bufsz, int flags) {
-        mqtt_lwip_state_t *state = (mqtt_lwip_state_t *)fd;
-
-        if (!state->connected || state->pcb == NULL) {
-            return -1;
-        }
-
-        state->recv_state.buffer = buf;
-        state->recv_state.len = bufsz;
-        state->recv_state.received = 0;
-
-        /* Data will be received in tcp_recv_cb */
-        return state->recv_state.received;
-    }
-
-    /* TCP callbacks */
-    static err_t tcp_connected_cb(void *arg, struct tcp_pcb *tpcb, err_t err) {
-        mqtt_lwip_state_t *state = (mqtt_lwip_state_t *)arg;
-
-        if (err == ERR_OK) {
-            state->connected = 1;
-        }
-
-        return ERR_OK;
-    }
-
-    static err_t tcp_recv_cb(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_t err) {
-        mqtt_lwip_state_t *state = (mqtt_lwip_state_t *)arg;
-
-        if (p == NULL) {
-            /* Connection closed */
-            state->connected = 0;
-            return ERR_OK;
-        }
-
-        if (state->recv_state.buffer != NULL) {
-            /* Copy received data */
-            pbuf_copy_partial(p, state->recv_state.buffer,
-                             p->tot_len > state->recv_state.len ? state->recv_state.len : p->tot_len,
-                             0);
-            state->recv_state.received = p->tot_len;
-        }
-
-        /* Free the pbuf */
-        pbuf_free(p);
-
-        /* Update TCP window */
-        tcp_recved(tpcb, p->tot_len);
-
-        return ERR_OK;
-    }
-
-    static err_t tcp_sent_cb(void *arg, struct tcp_pcb *tpcb, u16_t len) {
-        mqtt_lwip_state_t *state = (mqtt_lwip_state_t *)arg;
-        state->send_state.sent += len;
-        return ERR_OK;
-    }
-
-    static void tcp_err_cb(void *arg, err_t err) {
-        mqtt_lwip_state_t *state = (mqtt_lwip_state_t *)arg;
+    if (p == NULL) {
         state->connected = 0;
-        state->last_err = err;
+        return ERR_OK;
     }
+
+    if (state->recv_buf && p->tot_len > 0) {
+        pbuf_copy_partial(p, state->recv_buf,
+                          p->tot_len > state->recv_len ?
+                          state->recv_len : p->tot_len, 0);
+        state->bytes_received = p->tot_len;
+    }
+
+    tcp_recved(tpcb, p->tot_len);
+    pbuf_free(p);
+    return ERR_OK;
+}
+
+static err_t tcp_sent_cb(void *arg, struct tcp_pcb *tpcb, u16_t len) {
+    mqttc_lwip_state_t *state = (mqttc_lwip_state_t *)arg;
+    state->bytes_sent += len;
+    return ERR_OK;
+}
+
+static void tcp_err_cb(void *arg, err_t err) {
+    mqttc_lwip_state_t *state = (mqttc_lwip_state_t *)arg;
+    state->connected = 0;
+    state->last_err = err;
+    state->pcb = NULL;
+}
+
+/* MQTT-C PAL Implementation */
+int mqttc_pal_sockopen(const char* addr, const char* port, int af) {
+
+    err_t err;
+    ip_addr_t remote_addr;
+
+    /* Reset state */
+    memset(&g_mqtt_state, 0, sizeof(mqttc_lwip_state_t));
+
+    /* Create new TCP PCB */
+    g_mqtt_state.pcb = tcp_new();
+    if (g_mqtt_state.pcb == NULL) {
+        return -1;
+    }
+
+    /* Set callbacks with state as argument */
+    tcp_arg(g_mqtt_state.pcb, &g_mqtt_state);
+    tcp_recv(g_mqtt_state.pcb, tcp_recv_cb);
+    tcp_sent(g_mqtt_state.pcb, tcp_sent_cb);
+    tcp_err(g_mqtt_state.pcb, tcp_err_cb);
+
+    /* Convert IP string to ip_addr_t */
+    if (!ipaddr_aton(addr, &remote_addr)) {
+        tcp_close(g_mqtt_state.pcb);
+        return -1;
+    }
+
+    /* Connect to remote host */
+    err = tcp_connect(g_mqtt_state.pcb, &remote_addr, atoi(port), tcp_connected_cb);
+    if (err != ERR_OK) {
+        tcp_close(g_mqtt_state.pcb);
+        return -1;
+    }
+
+    return (int)&g_mqtt_state;  // Return pointer to state as handle
+}
+
+ssize_t mqttc_pal_sendall(int fd, const void* buf, size_t len, int flags) {
+    err_t err;
+    mqttc_lwip_state_t *state = (mqttc_lwip_state_t *)fd;
+
+    if (!state->connected || state->pcb == NULL) {
+        return -1;
+    }
+
+    state->bytes_sent = 0;
+    err = tcp_write(state->pcb, buf, len, TCP_WRITE_FLAG_COPY);
+    if (err != ERR_OK) {
+        return -1;
+    }
+
+    err = tcp_output(state->pcb);
+    if (err != ERR_OK) {
+        return -1;
+    }
+
+    return len;
+}
+
+ssize_t mqttc_pal_recvall(int fd, void* buf, size_t bufsz, int flags) {
+    mqttc_lwip_state_t *state = (mqttc_lwip_state_t *)fd;
+
+    if (!state->connected || state->pcb == NULL) {
+        return -1;
+    }
+
+    state->recv_buf = buf;
+    state->recv_len = bufsz;
+    state->bytes_received = 0;
+
+    return state->bytes_received;
+}
 
 #endif
 
