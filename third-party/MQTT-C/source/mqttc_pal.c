@@ -165,8 +165,6 @@ int mqttc_pal_sockopen(const char* addr, const char* port, int af) {
 
     err_t err;
     ip_addr_t remote_addr;
-    /* Convert IP */
-    IP4_ADDR(&remote_addr, 192,168,1,81);
 
     int connect_attempts = 0;
 
@@ -187,18 +185,16 @@ int mqttc_pal_sockopen(const char* addr, const char* port, int af) {
     tcp_err(g_mqtt_state.pcb, tcp_err_cb);
 
     /* Convert IP string to ip_addr_t */
-    /*
     if (!ipaddr_aton(addr, &remote_addr)) {
         tcp_close(g_mqtt_state.pcb);
         return -1;
     }
-     */
 
     /* Connect to remote host */
     err = tcp_connect(
             g_mqtt_state.pcb,
             &remote_addr,
-            1883, // atoi(port),
+            atoi(port),
             tcp_connected_cb
     );
 
