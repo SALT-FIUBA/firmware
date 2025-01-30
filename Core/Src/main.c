@@ -370,33 +370,56 @@ void mqttc_callback(void** unused, struct mqttc_response_publish *published)
 }
 
 
+#define MAX_RETRIES 5
+
 /* MQTT Client initialization */
 static int mqttc_client_init(void)
 {
-    /* Open socket connection */
-    int fd = mqttc_pal_sockopen(MQTT_BROKER_IP, MQTT_BROKER_PORT, 0);
-    if(fd < 0) {
-        return -1;
+    int retry_count = 0;
+
+
+    while (retry_count < MAX_RETRIES) {
+        struct netif *netif = netif_default;
+
+        // Wait for link to be up
+        if (!netif_is_link_up(netif)) {
+
+            printf("Waiting for link to come up...\n");
+            HAL_Delay(5000);
+            retry_count++;
+            continue;
+        }
+
+        // Try connection
+        int fd = mqttc_pal_sockopen(MQTT_BROKER_IP, MQTT_BROKER_PORT, 0);
+        if (fd >= 0) {
+
+            /* Initialize MQTT client */
+            mqttc_init(&client,
+                       fd,
+                       tx_buffer, MQTT_TX_BUFFER_SIZE,
+                       rx_buffer, MQTT_RX_BUFFER_SIZE,
+                       mqttc_callback);
+
+            /* Connect to broker */
+            mqttc_connect(&client,
+                          MQTT_CLIENT_ID,
+                          NULL, NULL, 0,
+                          NULL, NULL,
+                          0, 400);
+
+            /* Subscribe to topics if needed */
+            mqttc_subscribe(&client,
+                            MQTT_TOPIC,
+                            0);
+
+            return fd;
+        }
+
+        printf("Connection attempt %d failed\n", retry_count + 1);
+        HAL_Delay(1000);
+        retry_count++;
     }
-
-    /* Initialize MQTT client */
-    mqttc_init(&client,
-              fd,
-              tx_buffer, MQTT_TX_BUFFER_SIZE,
-              rx_buffer, MQTT_RX_BUFFER_SIZE,
-              mqttc_callback);
-
-    /* Connect to broker */
-    mqttc_connect(&client,
-                 MQTT_CLIENT_ID,
-                 NULL, NULL, 0,
-                 NULL, NULL,
-                 0, 400);
-
-    /* Subscribe to topics if needed */
-    mqttc_subscribe(&client,
-                   MQTT_TOPIC,
-                   0);
 
     return 0;
 }
@@ -414,6 +437,11 @@ void print_network_status(void)
     struct netif * netif = netif_default;
 
     printf("\n=== Network Status ===\n");
+
+    if (!netif) {
+        printf("no network interface \n");
+        return;
+    }
 
     if (netif != NULL)
     {
@@ -486,6 +514,36 @@ void print_network_status(void)
 }
 
 
+/* Add this function to test basic TCP connectivity */
+err_t test_tcp_connection(void) {
+
+    struct tcp_pcb *test_pcb;
+    ip_addr_t remote_addr;
+    err_t err;
+
+    /* Create new PCB */
+    test_pcb = tcp_new();
+    if (test_pcb == NULL) {
+        printf("Failed to create PCB\n");
+        return ERR_MEM;
+    }
+
+    /* Convert IP */
+    IP4_ADDR(&remote_addr, 192,168,1,81);
+
+    /* Try connection */
+    err = tcp_connect(test_pcb, &remote_addr, 1883, NULL);
+
+    printf("TCP test connection result: %d\n", err);
+
+    /* Clean up */
+    tcp_close(test_pcb);
+
+    return err;
+}
+
+
+
 /* USER CODE END 0 */
 
 /**
@@ -495,7 +553,6 @@ void print_network_status(void)
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-  //    print_network_status();
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -520,57 +577,32 @@ int main(void)
   MX_LWIP_Init();
   /* USER CODE BEGIN 2 */
 
-  /* Initialize MQTT client
-    if ( mqttc_client_init() != 0 ) {
-        Error_Handler();
-    }
-    */
-
-
-    /* Message buffer */
-    //  char message[32];
-    //  uint32_t last_publish = 0;
 
   /* Initialize TCP echo server */
-    tcp_echoserver_init();
+    //  tcp_echoserver_init();
 
-/* Main loop */
+    print_network_status();
+    //  HAL_Delay(2000);  // Give LWIP stack time to initialize
+
+    test_tcp_connection();
+    struct netif * netif = netif_default;
 
 
-    return 0;
-/*
-    while (1)
-    {
-        // LwIP timeouts handling
-        sys_check_timeouts();
+    int client_result = mqttc_client_init();
+    if (client_result == -1) printf("mqttc client init error \n");
 
-        print_network_status();
-        // MQTT client processing
-        if (client.error == MQTT_OK) {
-            mqttc_sync(&client);
-        }
+    /* Message buffer */
+    char message[32];
+    uint32_t last_publish = 0;
 
-        // Publish temperature every 5 seconds
-        if (HAL_GetTick() - last_publish >= 5000)
-        {
-            float temperature = get_temperature();
-            snprintf(message, sizeof(message), "%.2f", temperature);
 
-            mqttc_publish(&client,
-                         MQTT_TOPIC,
-                         message,
-                         strlen(message),
-                         MQTT_PUBLISH_QOS_0);
+    while (1) {
 
-            last_publish = HAL_GetTick();
-        }
+        MX_LWIP_Process();
+        HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0);
+        HAL_Delay(1000);
 
-        // Add a small delay
-        HAL_Delay(10);
     }
-*/
-
-
 
     /*
   saltConfig();
