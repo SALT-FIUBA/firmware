@@ -177,6 +177,30 @@ Core/Src/lwip-mqtt-library-test.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/lwip-mqtt-library-test.c.s
 .PHONY : Core/Src/lwip-mqtt-library-test.c.s
 
+Core/Src/lwip-mqttc-first-test.obj: Core/Src/lwip-mqttc-first-test.c.obj
+.PHONY : Core/Src/lwip-mqttc-first-test.obj
+
+# target to build an object file
+Core/Src/lwip-mqttc-first-test.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/lwip-mqttc-first-test.c.obj
+.PHONY : Core/Src/lwip-mqttc-first-test.c.obj
+
+Core/Src/lwip-mqttc-first-test.i: Core/Src/lwip-mqttc-first-test.c.i
+.PHONY : Core/Src/lwip-mqttc-first-test.i
+
+# target to preprocess a source file
+Core/Src/lwip-mqttc-first-test.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/lwip-mqttc-first-test.c.i
+.PHONY : Core/Src/lwip-mqttc-first-test.c.i
+
+Core/Src/lwip-mqttc-first-test.s: Core/Src/lwip-mqttc-first-test.c.s
+.PHONY : Core/Src/lwip-mqttc-first-test.s
+
+# target to generate assembly for a file
+Core/Src/lwip-mqttc-first-test.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/lwip-mqttc-first-test.c.s
+.PHONY : Core/Src/lwip-mqttc-first-test.c.s
+
 Core/Src/main.obj: Core/Src/main.c.obj
 .PHONY : Core/Src/main.obj
 
@@ -200,6 +224,30 @@ Core/Src/main.s: Core/Src/main.c.s
 Core/Src/main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/main.c.s
 .PHONY : Core/Src/main.c.s
+
+Core/Src/simple-publisher.obj: Core/Src/simple-publisher.c.obj
+.PHONY : Core/Src/simple-publisher.obj
+
+# target to build an object file
+Core/Src/simple-publisher.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/simple-publisher.c.obj
+.PHONY : Core/Src/simple-publisher.c.obj
+
+Core/Src/simple-publisher.i: Core/Src/simple-publisher.c.i
+.PHONY : Core/Src/simple-publisher.i
+
+# target to preprocess a source file
+Core/Src/simple-publisher.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/simple-publisher.c.i
+.PHONY : Core/Src/simple-publisher.c.i
+
+Core/Src/simple-publisher.s: Core/Src/simple-publisher.c.s
+.PHONY : Core/Src/simple-publisher.s
+
+# target to generate assembly for a file
+Core/Src/simple-publisher.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/simple-publisher.c.s
+.PHONY : Core/Src/simple-publisher.c.s
 
 Core/Src/spi.obj: Core/Src/spi.c.obj
 .PHONY : Core/Src/spi.obj
@@ -4448,9 +4496,15 @@ help:
 	@echo "... Core/Src/lwip-mqtt-library-test.obj"
 	@echo "... Core/Src/lwip-mqtt-library-test.i"
 	@echo "... Core/Src/lwip-mqtt-library-test.s"
+	@echo "... Core/Src/lwip-mqttc-first-test.obj"
+	@echo "... Core/Src/lwip-mqttc-first-test.i"
+	@echo "... Core/Src/lwip-mqttc-first-test.s"
 	@echo "... Core/Src/main.obj"
 	@echo "... Core/Src/main.i"
 	@echo "... Core/Src/main.s"
+	@echo "... Core/Src/simple-publisher.obj"
+	@echo "... Core/Src/simple-publisher.i"
+	@echo "... Core/Src/simple-publisher.s"
 	@echo "... Core/Src/spi.obj"
 	@echo "... Core/Src/spi.i"
 	@echo "... Core/Src/spi.s"

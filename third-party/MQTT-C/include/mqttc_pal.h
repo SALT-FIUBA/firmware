@@ -112,51 +112,40 @@ typedef unsigned long uint32_t;
 /* STM32 + LWIP Platform Support */
 #elif defined(STM32F4)
 
+#include "stm32f4xx.h"
+#include "lwip/opt.h"
+#include "lwip/arch.h"
+#include "lwip/api.h"
+#include "lwip/sys.h"
+#include "lwip/netif.h"
+#include "lwip/tcp.h"
+#include "lwip/timeouts.h"
+
+/* Standard includes */
 #include <limits.h>
 #include <string.h>
 #include <stdarg.h>
-#include "lwip/opt.h"
-#include "lwip/tcp.h"
-#include "lwip/inet.h"
-#include "lwip/timeouts.h"
-#include "stm32f4xx_hal.h"
-
-/* Endianness conversion using LwIP's built-in functions */
-#define MQTT_PAL_HTONS(s) lwip_htons(s)
-#define MQTT_PAL_NTOHS(s) lwip_ntohs(s)
-
-/* Time function using HAL tick */
-typedef uint32_t mqttc_pal_time_t;
-#define MQTT_PAL_TIME() ((time_t)(HAL_GetTick()/1000))
 
 /* Type definitions */
-typedef int mqttc_pal_mutex_t;  // Simple mutex for STM32
+typedef uint32_t mqttc_pal_time_t;
+typedef struct tcp_pcb* mqtt_pal_socket_handle;
+typedef int mqttc_pal_mutex_t;
 
-/* Mutex operations - can be implemented if needed */
-#define MQTT_PAL_MUTEX_INIT(mtx_ptr)
-#define MQTT_PAL_MUTEX_LOCK(mtx_ptr)
-#define MQTT_PAL_MUTEX_UNLOCK(mtx_ptr)
+/* Endianness conversion */
+#define MQTT_PAL_HTONS(s) PP_HTONS(s)
+#define MQTT_PAL_NTOHS(s) PP_NTOHS(s)
 
-/* LwIP connection state structure */
-typedef struct mqttc_lwip_state_t {
+/* Time function using HAL tick */
+#define MQTT_PAL_TIME() HAL_GetTick()
 
-    struct tcp_pcb * pcb;
-    uint8_t connected;
-    err_t last_err;
-    void * recv_buf;
-    size_t recv_len;
-    size_t bytes_received;
-    size_t bytes_sent;
+/* Mutex operations (can be expanded if needed) */
+#define MQTT_PAL_MUTEX_INIT(mtx_ptr)   (*(mtx_ptr) = 0)
+#define MQTT_PAL_MUTEX_LOCK(mtx_ptr)   (*(mtx_ptr) = 1)
+#define MQTT_PAL_MUTEX_UNLOCK(mtx_ptr) (*(mtx_ptr) = 0)
 
-} mqttc_lwip_state_t;
-
-/* Socket handle type for LwIP */
-typedef mqttc_lwip_state_t * mqttc_pal_socket_handle;
-
-/* Function declarations */
-int mqttc_pal_sockopen(const char* addr, const char* port, int af);
 
 #else
+
     #error "No platform defined! Please define a platform."
 
 #endif /* MQTT_PAL_H */
@@ -166,26 +155,26 @@ int mqttc_pal_sockopen(const char* addr, const char* port, int af);
  * @brief Sends all the bytes in a buffer.
  * @ingroup pal
  * 
- * @param[in] fd The file-descriptor (or handle) of the socket.
+ * @param[in] socket (ex-fd) The file-descriptor (or handle) of the socket.
  * @param[in] buf A pointer to the first byte in the buffer to send.
  * @param[in] len The number of bytes to send (starting at \p buf).
  * @param[in] flags Flags which are passed to the underlying socket.
  * 
  * @returns The number of bytes sent if successful, an \ref MQTTErrors otherwise.
  */
-ssize_t mqttc_pal_sendall(int fd, const void* buf, size_t len, int flags);
+ssize_t mqttc_pal_sendall(mqtt_pal_socket_handle socket, const void* buf, size_t len, int flags);
 
 /**
  * @brief Non-blocking receive all the byte available.
  * @ingroup pal
  * 
- * @param[in] fd The file-descriptor (or handle) of the socket.
+ * @param[in] socket (ex-fd) The file-descriptor (or handle) of the socket.
  * @param[in] buf A pointer to the receive buffer.
  * @param[in] bufsz The max number of bytes that can be put into \p buf.
  * @param[in] flags Flags which are passed to the underlying socket.
  * 
  * @returns The number of bytes received if successful, an \ref MQTTErrors otherwise.
  */
-ssize_t mqttc_pal_recvall(int fd, void* buf, size_t bufsz, int flags);
+ssize_t mqttc_pal_recvall(mqtt_pal_socket_handle socket, void* buf, size_t bufsz, int flags);
 
 #endif

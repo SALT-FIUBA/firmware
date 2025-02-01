@@ -51,6 +51,7 @@
 #include "blinkySysTick.h"
 #include "tcp.h"
 #include "tcp-echo-server.h"
+#include "simple-publisher.h"
 
 /* USER CODE END Includes */
 
@@ -234,13 +235,6 @@ void onMQTTCb(void** state,struct mqttc_response_publish *publish) {
     int dumpy2 = 456;
     sprintf(dump1, "MQTT topic: %.*s", MIN(publish->topic_name_size, 200), publish->topic_name);
     sprintf(dump2, "MQTT data: %.*s", MIN((int) publish->application_message_size, 200), publish->application_message);
-    RKH_TRC_USR_BEGIN(USR_TRACE_MQTT)
-        RKH_TUSR_STR(dump1);
-        RKH_TUSR_STR(dump2);
-        RKH_TUSR_STR("mqtt dump values");
-        RKH_TUSR_UI8(3, dumpy1);
-        RKH_TUSR_UI8(3, dumpy2);
-    RKH_TRC_USR_END();
 
     int result = saltCmdParse((char *) publish->application_message, publish->application_message_size,
                               &(e_saltCmd.cmd));
@@ -329,120 +323,235 @@ setupTraceFilters(void)
 
 
 /* USER CODE BEGIN PFP */
-#include "mqttc.h"
-#include "mqttc_pal.h"
-#include "lwip/init.h"
-#include "lwip/timeouts.h"
-#include "lwip/tcp.h"
 
 
-/* MQTT Configuration */
-#define MQTT_BROKER_IP   "192.168.1.81"
-#define MQTT_BROKER_PORT "1883"
-#define MQTT_CLIENT_ID   "STM32F429_CLIENT"
-#define MQTT_TOPIC       "sensors/temperature"
+#define BROKER_PORT 1883
+#define MQTT_TOPIC "stm32/test"
+#define MQTT_CLIENT_ID "stm32-client"
+#define MQTT_KEEP_ALIVE 400
 
 /* MQTT Buffer sizes */
-#define MQTT_TX_BUFFER_SIZE 1024
-#define MQTT_RX_BUFFER_SIZE 1024
+#define TX_BUFFER_SIZE 2048
+#define RX_BUFFER_SIZE 2048
 
-/* MQTT Client state */
-static struct mqttc_client client;
+/* Global variables */
+struct netif gnetif;
+struct mqttc_client mqtt_client;
+struct tcp_pcb * mqtt_pcb;
+uint8_t mqtt_connected = 0;
 
-uint8_t tx_buffer[MQTT_TX_BUFFER_SIZE];
-uint8_t rx_buffer[MQTT_RX_BUFFER_SIZE];
+/* MQTT Buffers */
+static uint8_t tx_buffer[TX_BUFFER_SIZE];
+static uint8_t rx_buffer[RX_BUFFER_SIZE];
+
+/* MQTT message receiving buffer */
+static uint8_t mqtt_recv_buffer[RX_BUFFER_SIZE];
+static size_t mqtt_recv_length = 0;
+
+/* Function prototypes */
+static void mqtt_init_client(void);
+static err_t mqtt_tcp_connect_callback(void *arg, struct tcp_pcb *tpcb, err_t err);
 
 
-/* MQTT Message handling */
-void mqttc_callback(void** unused, struct mqttc_response_publish *published)
+static void publish_callback(void** unused, struct mqttc_response_publish *published);
+static err_t mqtt_connect_to_broker(void);
+
+#include "mqttc_pal.h"
+
+/**
+ * TCP Receive Callback
+ * Called when TCP data is received from the broker
+ */
+static err_t mqtt_tcp_recv_callback(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_t err)
 {
-    /* Handle received messages */
-    char topic[128];
-    char message[128];
+    if (p == NULL) {
+        /* Connection closed by remote host */
+        mqtt_connected = 0;
+        tcp_close(tpcb);
+        return ERR_OK;
+    }
 
+    if (err != ERR_OK) {
+        /* Cleanup pbuf */
+        pbuf_free(p);
+        return err;
+    }
+
+    /* Lock MQTT client */
+    MQTT_PAL_MUTEX_LOCK(&mqtt_client.mutex);
+
+    /* Copy received data to MQTT receive buffer */
+    if (mqtt_client.recv_buffer.curr_sz >= p->tot_len) {
+        /* Copy the TCP data into the MQTT receive buffer */
+        pbuf_copy_partial(p, mqtt_client.recv_buffer.curr, p->tot_len, 0);
+        mqtt_client.recv_buffer.curr += p->tot_len;
+        mqtt_client.recv_buffer.curr_sz -= p->tot_len;
+
+        /* Process received data */
+        enum MQTTErrors mqtt_err = mqttc_sync(&mqtt_client);
+        if (mqtt_err != MQTT_OK) {
+            printf("MQTT Sync Error in recv: %d\n", mqtt_err);
+        }
+    } else {
+        printf("MQTT receive buffer full\n");
+    }
+
+    /* Unlock MQTT client */
+    MQTT_PAL_MUTEX_UNLOCK(&mqtt_client.mutex);
+
+    /* Tell TCP that we've received the data */
+    tcp_recved(tpcb, p->tot_len);
+
+    /* Free the pbuf */
+    pbuf_free(p);
+
+    return ERR_OK;
+}
+
+/**
+ * TCP Sent Callback
+ * Called when TCP data is successfully sent
+ */
+static err_t mqtt_tcp_sent_callback(void *arg, struct tcp_pcb *tpcb, u16_t len)
+{
+    /* Lock MQTT client */
+    MQTT_PAL_MUTEX_LOCK(&mqtt_client.mutex);
+
+    /* Update the time of last send */
+    mqtt_client.time_of_last_send =  MQTT_PAL_TIME();
+
+    /* If there are messages in the queue, try to send them */
+    if (mqtt_client.mq.curr_sz > 0) {
+        enum MQTTErrors mqtt_err = mqttc_sync(&mqtt_client);
+        if (mqtt_err != MQTT_OK) {
+            printf("MQTT Sync Error in sent: %d\n", mqtt_err);
+        }
+    }
+
+    /* Unlock MQTT client */
+    MQTT_PAL_MUTEX_UNLOCK(&mqtt_client.mutex);
+
+    return ERR_OK;
+}
+
+/**
+ * TCP Error Callback
+ * Called when TCP connection encounters an error
+ */
+static void mqtt_tcp_err_callback(void *arg, err_t err)
+{
+    /* Lock MQTT client */
+    MQTT_PAL_MUTEX_LOCK(&mqtt_client.mutex);
+
+    /* Mark connection as closed */
+    mqtt_connected = 0;
+
+    /* Set MQTT client error state */
+    mqtt_client.error = MQTT_ERROR_SOCKET_ERROR;
+
+    /* Clear TCP PCB */
+    mqtt_pcb = NULL;
+
+    /* Unlock MQTT client */
+    MQTT_PAL_MUTEX_UNLOCK(&mqtt_client.mutex);
+
+    printf("TCP Error: %d\n", err);
+}
+
+/**
+ * TCP Connect Callback
+ * Called when TCP connection is established
+ */
+static err_t mqtt_tcp_connect_callback(void *arg, struct tcp_pcb *tpcb, err_t err)
+{
+    if (err != ERR_OK) {
+        return err;
+    }
+
+    /* Set up TCP callbacks */
+    tcp_recv(tpcb, mqtt_tcp_recv_callback);
+    tcp_sent(tpcb, mqtt_tcp_sent_callback);
+    tcp_err(tpcb, mqtt_tcp_err_callback);
+
+    /* Initialize MQTT client */
+    mqtt_init_client();
+
+    /* Set connection flag */
+    mqtt_connected = 1;
+
+    /* Lock MQTT client */
+    MQTT_PAL_MUTEX_LOCK(&mqtt_client.mutex);
+
+    /* Send MQTT CONNECT message */
+    enum MQTTErrors mqtt_err = mqttc_connect(&mqtt_client,
+                                             MQTT_CLIENT_ID,
+                                             NULL, NULL, 0,  // Will topic, will message
+                                             NULL, NULL,     // Username, password
+                                             0,             // Connect flags
+                                             MQTT_KEEP_ALIVE);
+
+    /* Unlock MQTT client */
+    MQTT_PAL_MUTEX_UNLOCK(&mqtt_client.mutex);
+
+    if (mqtt_err != MQTT_OK) {
+        printf("MQTT Connect Error: %d\n", mqtt_err);
+        return ERR_CONN;
+    }
+
+    return ERR_OK;
+}
+
+// initialize mqtt client
+static void mqtt_init_client(void) {
+
+    // for lwip raw api it use tcp_pcb pointer as socket descriptor
+    int socket_fd = (int)mqtt_pcb; // cast tcp_pcb pointer to int for socket descriptor
+
+    enum MQTTErrors error = mqttc_init(&mqtt_client, socket_fd,
+                                       tx_buffer, TX_BUFFER_SIZE,
+                                       rx_buffer, RX_BUFFER_SIZE,
+                                       publish_callback);
+
+    if (error != MQTT_OK) Error_Handler();
+
+}
+
+
+static void publish_callback(void ** state, struct mqttc_response_publish * published) {
+
+    // handle received publish messages
+    char * topic = malloc(published->topic_name_size + 1);
     memcpy(topic, published->topic_name, published->topic_name_size);
     topic[published->topic_name_size] = '\0';
 
-    memcpy(message, published->application_message, published->application_message_size);
-    message[published->application_message_size] = '\0';
+    printf(
+            "Received: topic=%s, data=%.*s \n",
+            topic,
+            published->application_message_size,
+            (char *)published->application_message
+    );
 
-    /* Process the message as needed */
+    free(topic);
+
 }
 
 
-/* MQTT Client initialization */
-static enum MQTTErrors mqttc_client_init(void)
+
+
+/* MQTT Broker Connection */
+static err_t mqtt_connect_to_broker(void)
 {
-    /* Clear client structure first */
-    memset(&client, 0, sizeof(struct mqttc_client));
+    ip_addr_t broker_addr;
 
-    int fd = mqttc_pal_sockopen(MQTT_BROKER_IP, MQTT_BROKER_PORT, 0);
-    printf("fd: %d \n", fd);
+    mqtt_pcb = tcp_new();
+    if (mqtt_pcb == NULL) return ERR_MEM;
 
-    if (fd < 0) {
-        printf("Failed to open MQTT socket\n");
+    IP4_ADDR(&broker_addr, 192, 168, 1, 81); // Broker IP address
 
-        return MQTT_ERROR_SOCKET_ERROR;
-    }
 
-    /* Initialize MQTT client */
-    enum MQTTErrors init_result =  mqttc_init(&client,
-               fd,
-               tx_buffer, MQTT_TX_BUFFER_SIZE,
-               rx_buffer, MQTT_RX_BUFFER_SIZE,
-               mqttc_callback);
-
-    printf(" mqtt client init failed: %d \n", init_result);
-    printf(" init result: %s \n", mqttc_error_str(init_result));
-
-    if (init_result != MQTT_OK) {
-        printf(" mqtt client init failed: %d \n", init_result);
-        printf(" mqtt client init failed: %s \n", mqttc_error_str(init_result));
-
-        return init_result;
-    }
-
-    /* Connect to broker */
-    enum MQTTErrors connect_result = mqttc_connect(&client,
-                  MQTT_CLIENT_ID,
-                  NULL, NULL, 0,
-                  NULL, NULL,
-                  0, 400);
-
-    printf(" mqtt client init failed: %d \n", connect_result);
-    printf(" connect result: %s \n", mqttc_error_str(connect_result));
-
-    if (connect_result != MQTT_OK) {
-        printf(" mqtt client init failed: %d \n", connect_result);
-        printf(" mqtt client init failed: %s \n", mqttc_error_str(connect_result));
-        return connect_result;
-    }
-
-    /* Subscribe to topics if needed */
-    enum MQTTErrors subscribe_result = mqttc_subscribe(&client,
-                    MQTT_TOPIC,
-                    0);
-
-    printf(" mqtt client init failed: %d \n", subscribe_result);
-    printf(" subscribe result: %s \n", mqttc_error_str(subscribe_result));
-
-    if (subscribe_result != MQTT_OK) {
-        printf(" mqtt client init failed: %d \n", subscribe_result);
-        printf(" mqtt client init failed: %s \n", mqttc_error_str(subscribe_result));
-        return subscribe_result;
-    }
-
-    return MQTT_OK;
-
+    return tcp_connect(mqtt_pcb, &broker_addr, BROKER_PORT, mqtt_tcp_connect_callback);
 }
 
-/* Example sensor reading (simulated) */
-float get_temperature(void)
-{
-    static float temp = 25.0f;
-    temp += (float)((rand() % 100) - 50) / 100.0f;
-    return temp;
-}
 
 void print_network_status(void)
 {
@@ -569,8 +678,10 @@ int main(void)
 
   /* MCU Configuration--------------------------------------------------------*/
 
-  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
+
+
+    /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
+    HAL_Init();
 
   /* USER CODE BEGIN Init */
   /* USER CODE END Init */
@@ -589,144 +700,85 @@ int main(void)
   MX_LWIP_Init();
   /* USER CODE BEGIN 2 */
 
+    /* Allow time for network to initialize */
+    HAL_Delay(2000);
 
-  /* Initialize TCP echo server */
-    //  tcp_echoserver_init();
 
     print_network_status();
-    //  HAL_Delay(2000);  // Give LWIP stack time to initialize
 
     test_tcp_connection();
-    struct netif * netif = netif_default;
 
-    /* TODO
-     * link takes a while to turn UP !
-     *
-     * netif_is_link_up
-     *
-     */
+    uint32_t  last_publish = 0;
+    uint32_t  PUBLISH_INTERVAL = 5000;
+    err_t tcp_error = 0;
 
-
-    /* Network initialization variables */
-    bool network_ready = false;
-    bool mqtt_initialized = false;
-    uint32_t last_network_check = 0;
-    uint32_t last_connection_attempt = 0;
-    const uint32_t NETWORK_CHECK_INTERVAL = 1000;  // Check every 1 second
-    const uint32_t CONNECTION_RETRY_INTERVAL = 5000;  // Retry every 5 seconds
-
+    tcp_error = mqtt_connect_to_broker();
+    if (tcp_error != ERR_OK) Error_Handler();
 
 
     while (1) {
 
         MX_LWIP_Process();
 
-        uint32_t  current_time = HAL_GetTick();
+        /* Handle MQTT operations */
+        if (mqtt_connected) {
 
-            /* Periodic network status check */
-            if (current_time - last_network_check >= NETWORK_CHECK_INTERVAL) {
+            uint32_t current_time = HAL_GetTick();
 
-                struct netif * netif = netif_default;
-                last_network_check = current_time;
+            /* Periodic publish */
+            if ((current_time - last_publish) >= PUBLISH_INTERVAL) {
+                /* Check if there's space in the message queue */
+                if (mqtt_client.mq.curr_sz > 0) {
+                    char message[32];
+                    snprintf(message, sizeof(message), "Hello from STM32: %lu", current_time);
 
-                if (netif != NULL && netif_is_up(netif) && netif_is_link_up(netif)) {
-                    if (!network_ready) {
-                        printf("Network interface is now ready!\n");
-                        print_network_status();
-                        network_ready = true;
-                    }
-                } else {
-                    if (network_ready) {
-                        printf("Network interface is down!\n");
-                        print_network_status();
-                        network_ready = false;
-                        mqtt_initialized = false;  // Reset MQTT state when network goes down
-                    }
-                }
+                    enum MQTTErrors mqtt_err = mqttc_publish(
+                            &mqtt_client,
+                            MQTT_TOPIC,
+                            message,
+                            strlen(message),
+                            MQTT_PUBLISH_QOS_0
+                    );
 
-                /* Try to initialize MQTT when network is ready */
-                if (network_ready && !mqtt_initialized &&
-                    (current_time - last_connection_attempt >= CONNECTION_RETRY_INTERVAL)) {
-
-                    last_connection_attempt = current_time;
-
-                    /* First test TCP connection */
-                    printf("Testing TCP connection...\n");
-                    err_t tcp_test_result = test_tcp_connection();
-
-                    if (tcp_test_result == ERR_OK) {
-                        printf("TCP test successful, initializing MQTT client...\n");
-
-                        /* Try to initialize MQTT client */
-                        enum MQTTErrors mqtt_result = mqttc_client_init();
-                        printf("mqtt_result: %d \n", mqtt_result);
-
-                        if (mqtt_result == MQTT_OK) {
-
-                            printf("MQTT client initialized successfully!\n");
-                            mqtt_initialized = true;
-
-                        } else {
-                            printf("MQTT client initialization failed!\n");
-                        }
+                    if (mqtt_err == MQTT_OK) {
+                        last_publish = current_time;
                     } else {
-                        printf("TCP test failed with error: %d\n", tcp_test_result);
+                        printf("MQTT Publish Error: %d\n", mqtt_err);
                     }
                 }
             }
 
-            /* If MQTT is initialized, handle MQTT operations */
-            if (mqtt_initialized) {
+            /* Check connection state and keep-alive */
+            if (mqtt_client.error != MQTT_OK) {
+                mqtt_connected = 0;
+                printf("MQTT Connection Lost: %d\n", mqtt_client.error);
 
-
-                /* Add your MQTT handling code here */
-
-                /* Message buffer */
-                char message[32];
-                uint32_t last_publish = 0;
-
-/* LwIP timeouts handling */
-                sys_check_timeouts();
-
-                /*
-                    enum MQTTErrors {
-                        MQTT_ERROR_UNKNOWN=INT_MIN,
-                        __ALL_MQTT_ERRORS(GENERATE_ENUM)
-                        MQTT_OK = 1
-                    };
-                 */
-                printf("main | mqttc client error: %d \n", client.error);
-                printf("main | mqttc client error: %s \n", mqttc_error_str(client.error));
-
-                /* MQTT client processing */
-                if (client.error == MQTT_OK) {
-                    mqttc_sync(&client);
+                /* Attempt to reconnect */
+                if (mqtt_connect_to_broker() != ERR_OK) {
+                    Error_Handler();
                 }
+            } else {
 
-                /* Publish temperature every 5 seconds */
-                if (HAL_GetTick() - last_publish >= 5000)
-                {
-                    float temperature = get_temperature();
-                    snprintf(message, sizeof(message), "%.2f", temperature);
-
-                    mqttc_publish(&client,
-                                 MQTT_TOPIC,
-                                 message,
-                                 strlen(message),
-                                 MQTT_PUBLISH_QOS_0);
-
-                    last_publish = HAL_GetTick();
+                /* Handle keep-alive if needed */
+                mqttc_pal_time_t current_time = MQTT_PAL_TIME();
+                if (current_time - mqtt_client.time_of_last_send >=
+                    (mqtt_client.keep_alive * 0.75)) {
+                    enum MQTTErrors sync_err = mqttc_sync(&mqtt_client);
+                    if (sync_err != MQTT_OK) {
+                        printf("MQTT Sync Error: %d\n", sync_err);
+                    }
                 }
-
-                /* Add a small delay */
-                HAL_Delay(10);
-
-
             }
+        }
 
-            /* Toggle LED to show system is running */
-            HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0);
-            HAL_Delay(1000);
+        /* Give some time to other tasks */
+        HAL_Delay(10);
+
+
+
+        /* Toggle LED to show system is running */
+        HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0);
+        HAL_Delay(5000);
 
     }
 
@@ -843,10 +895,16 @@ void SystemClock_Config(void)
 void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
+
+    /* Toggle LED to show system is failing */
+    HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_14);
+    HAL_Delay(1000);
+
   /* User can add his own implementation to report the HAL error return state */
   __disable_irq();
   while (1)
   {
+
   }
   /* USER CODE END Error_Handler_Debug */
 }
