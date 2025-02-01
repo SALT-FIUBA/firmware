@@ -335,7 +335,6 @@ setupTraceFilters(void)
 #define RX_BUFFER_SIZE 2048
 
 /* Global variables */
-struct netif gnetif;
 struct mqttc_client mqtt_client;
 struct tcp_pcb * mqtt_pcb;
 uint8_t mqtt_connected = 0;
@@ -665,6 +664,7 @@ err_t test_tcp_connection(void) {
 
 
 
+
 /* USER CODE END 0 */
 
 /**
@@ -700,8 +700,12 @@ int main(void)
   MX_LWIP_Init();
   /* USER CODE BEGIN 2 */
 
-    /* Allow time for network to initialize */
-    HAL_Delay(2000);
+  bool network_ready = 0;
+  uint32_t  last_network_check = 0;
+  uint32_t last_connection_attempt = 0;
+
+  uint32_t NETWORK_CHECK_INTERVAL = 1000;
+  uint32_t CONNECTION_RETRY_INTERVAL = 5000;
 
 
     print_network_status();
@@ -712,18 +716,72 @@ int main(void)
     uint32_t  PUBLISH_INTERVAL = 5000;
     err_t tcp_error = 0;
 
-    tcp_error = mqtt_connect_to_broker();
-    if (tcp_error != ERR_OK) Error_Handler();
+    //  tcp_error = mqtt_connect_to_broker();
+    //  if (tcp_error != ERR_OK) Error_Handler();
 
 
     while (1) {
 
         MX_LWIP_Process();
+        /* Toggle LED to show system is running */
+        HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0);
+        HAL_Delay(1000);
+
+        uint32_t current_time = HAL_GetTick();
+
+        /* Periodic network status check */
+        if (current_time - last_network_check >= NETWORK_CHECK_INTERVAL) {
+
+            struct netif * netif = netif_default;
+            last_network_check = current_time;
+
+            if (netif != NULL && netif_is_up(netif) && netif_is_link_up(netif)) {
+                if (!network_ready) {
+                    printf("Network interface is now ready!\n");
+                    print_network_status();
+                    network_ready = true;
+                }
+            } else {
+                if (network_ready) {
+                    printf("Network interface is down!\n");
+                    print_network_status();
+                    network_ready = false;
+                    mqtt_connected = false;  // Reset MQTT state when network goes down
+                }
+            }
+
+            /* Try to initialize MQTT when network is ready */
+            if (network_ready && !mqtt_connected &&
+                    (current_time - last_connection_attempt >= CONNECTION_RETRY_INTERVAL)
+                ) {
+
+                last_connection_attempt = current_time;
+                /* First test TCP connection */
+                printf("Testing TCP connection...\n");
+                err_t tcp_test_result = test_tcp_connection();
+
+                if (tcp_test_result == ERR_OK) {
+                    printf("TCP test successful, initializing MQTT client...\n");
+                    /* Try to initialize MQTT client */
+                    /*  enum MQTTErrors mqtt_result = mqttc_client_init();
+                      printf("mqtt_result: %d \n", mqtt_result);
+                     if (mqtt_result == MQTT_OK) {
+                        printf("MQTT client initialized successfully!\n");
+                        mqtt_initialized = true;
+                    } else {
+                        printf("MQTT client initialization failed!\n");
+                    }
+                     */
+                } else {
+                    printf("TCP test failed with error: %d\n", tcp_test_result);
+                }
+            }
+        }
+
 
         /* Handle MQTT operations */
         if (mqtt_connected) {
 
-            uint32_t current_time = HAL_GetTick();
 
             /* Periodic publish */
             if ((current_time - last_publish) >= PUBLISH_INTERVAL) {
@@ -776,9 +834,7 @@ int main(void)
 
 
 
-        /* Toggle LED to show system is running */
-        HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0);
-        HAL_Delay(5000);
+
 
     }
 

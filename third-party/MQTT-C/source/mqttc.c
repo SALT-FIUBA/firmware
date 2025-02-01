@@ -717,8 +717,8 @@ mqttc_initRecvAll(void)
 void
 mqttc_recvAll(struct mqttc_client *client, LocalRecvAll *local)
 {
-    local->rv = mqttc_pal_recvall(client->socketfd, client->recv_buffer.curr,
-                                 client->recv_buffer.curr_sz, 0);
+    local->rv = mqttc_pal_recvall((mqtt_pal_socket_handle) client->socketfd, client->recv_buffer.curr,
+                                  client->recv_buffer.curr_sz, 0);
 }
 
 void
