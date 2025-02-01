@@ -10,15 +10,15 @@
 
 enum MQTTErrors mqttc_sync(struct mqttc_client *client) {
 
-    printf("mqtt_sync \n");
+    //  printf("mqtt_sync \n");
 
     enum MQTTErrors err = __mqttc_recv(client);
-    printf("mqttc_sync | __mqttc_recv err: %d \n", err);
+    //  printf("mqttc_sync | __mqttc_recv err: %d \n", err);
 
     if (err != MQTT_OK) return err;
 
     err = __mqttc_send(client);
-    printf("mqttc_sync | __mqtt_send error: %d \n", err);
+    //  printf("mqttc_sync | __mqtt_send error: %d \n", err);
 
     return err;
 }
@@ -181,7 +181,6 @@ enum MQTTErrors mqttc_publish(struct mqttc_client *client,
                              size_t application_message_size,
                              uint8_t publish_flags)
 {
-    printf("mqttc_publish \n");
 
     MQTT_PAL_MUTEX_LOCK(&client->mutex);
     uint16_t packet_id = __mqttc_next_pid(client);

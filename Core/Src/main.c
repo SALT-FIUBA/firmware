@@ -844,18 +844,53 @@ int main(void)
 
 
         // Handle MQTT operations
-        /*
         if (mqtt_connected) {
 
+            // Only publish if enough time has elapsed since last publish
+            if (current_time - last_publish >= PUBLISH_INTERVAL) {
+
+                char application_message[256];
+                snprintf(application_message, sizeof(application_message),
+                         "hello from stm32 at time %lu", current_time);
+
+                printf("Attempting to publish to topic: %s\n", MQTT_TOPIC);
+
+                // Ensure message is properly null-terminated
+                size_t msg_len = strlen(application_message);
+
+                enum MQTTErrors mqtt_publish = mqttc_publish(&mqtt_client,
+                                                             MQTT_TOPIC,
+                                                             application_message,
+                                                             msg_len,
+                                                             MQTT_PUBLISH_QOS_1);
+
+                if (mqtt_publish == MQTT_OK) {
+                    last_publish = current_time;
+                    printf("Published: Topic=%s, Message=%s, Length=%d\n",
+                           MQTT_TOPIC, application_message, msg_len);
+                } else {
+                    printf("Publish failed with error: %s\n",
+                           mqttc_error_str(mqtt_publish));
+                }
+
+                // Process MQTT messages
+                mqttc_sync(&mqtt_client);
+            }
+
+            /*
+
+            printf("main - handle mqtt operations | mqtt_connected value: %d \n", mqtt_connected);
+
+            printf("main - periodic publish | mqtt client messsage query current size: %d \n", mqtt_client.mq.curr_sz);
 
             // Periodic publish
             if ((current_time - last_publish) >= PUBLISH_INTERVAL) {
+
                 // Check if there's space in the message queue
                 if (mqtt_client.mq.curr_sz > 0) {
 
-
-                    char message[32];
-                    snprintf(message, sizeof(message), "Hello from STM32: %lu", current_time);
+                    char message[32] = "Hello from STM32";
+                    //  snprintf(message, sizeof(message), "Hello from STM32: %lu", current_time);
 
                     enum MQTTErrors mqtt_err = mqttc_publish(
                             &mqtt_client,
@@ -864,38 +899,44 @@ int main(void)
                             strlen(message),
                             MQTT_PUBLISH_QOS_0
                     );
+                    printf("main - periodic publish | mqtt error: %s \n", mqttc_error_str(mqtt_err));
 
                     if (mqtt_err == MQTT_OK) {
                         last_publish = current_time;
                     } else {
-                        printf("MQTT Publish Error: %d\n", mqtt_err);
+                        printf("MQTT Publish Error: %d \n", mqtt_err);
                     }
                 }
             }
 
             // Check connection state and keep-alive
             if (mqtt_client.error != MQTT_OK) {
+
                 mqtt_connected = 0;
                 printf("MQTT Connection Lost: %d\n", mqtt_client.error);
 
                 // Attempt to reconnect
-                if (mqtt_connect_to_broker() != ERR_OK) {
-                    Error_Handler();
-                }
+                if (mqtt_connect_to_broker() != ERR_OK) Error_Handler();
+
             } else {
+
+                printf("main - check connection state and keep alive | mqtt error: %s \n", mqttc_error_str(mqtt_client.error));
 
                 // Handle keep-alive if needed
                 mqttc_pal_time_t current_time = MQTT_PAL_TIME();
-                if (current_time - mqtt_client.time_of_last_send >=
-                    (mqtt_client.keep_alive * 0.75)) {
+
+                if (
+                    current_time - mqtt_client.time_of_last_send >= (mqtt_client.keep_alive * 0.75)
+                ) {
+
                     enum MQTTErrors sync_err = mqttc_sync(&mqtt_client);
-                    if (sync_err != MQTT_OK) {
-                        printf("MQTT Sync Error: %d\n", sync_err);
-                    }
+
+                    if (sync_err != MQTT_OK) printf("main | MQTT Sync Error: %d\n", sync_err);
+
                 }
             }
+             */
         }
-         */
 
         // Give some time to other tasks
         HAL_Delay(10);
