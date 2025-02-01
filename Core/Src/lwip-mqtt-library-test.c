@@ -244,7 +244,7 @@ static err_t mqtt_tcp_connect_cb(void *arg, struct tcp_pcb *tpcb, err_t err)
                 sizeof(sendbuf),
                 recvbuf,
                 sizeof(recvbuf),
-                  publish_callback);
+                  publish_response_callback);
 
         // Generate unique client ID
         char client_id[32];

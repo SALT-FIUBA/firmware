@@ -17,7 +17,7 @@ static void mqtt_init_client(void) {
 }
 
 
-static void publish_callback(void ** state, struct mqttc_response_publish * published) {
+static void publish_response_callback(void ** state, struct mqttc_response_publish * published) {
 
     // handle received publish messages
     char * topic = malloc(published->topic_name_size + 1);

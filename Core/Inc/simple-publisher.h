@@ -37,6 +37,6 @@ static err_t mqtt_tcp_connect_callback(void *arg, struct tcp_pcb *tpcb, err_t er
 static err_t mqtt_tcp_recv_callback(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_t err);
 static void mqtt_tcp_err_callback(void *arg, err_t err);
 static err_t mqtt_tcp_sent_callback(void *arg, struct tcp_pcb *tpcb, u16_t len);
-static void publish_callback(void** unused, struct mqttc_response_publish *published);
+static void publish_response_callback(void** unused, struct mqttc_response_publish *published);
 static err_t mqtt_connect_to_broker(void);
 */

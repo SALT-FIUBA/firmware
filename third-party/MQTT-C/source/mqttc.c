@@ -57,6 +57,9 @@ enum MQTTErrors mqttc_init(struct mqttc_client *client,
                           void (*publish_response_callback)(void** state,struct mqttc_response_publish *publish))
 {
     if (client == NULL || sendbuf == NULL || recvbuf == NULL) {
+
+        printf("mqttc_init | MQTT_ERROR_NULLPTR \n");
+
         return MQTT_ERROR_NULLPTR;
     }
 
@@ -82,6 +85,8 @@ enum MQTTErrors mqttc_init(struct mqttc_client *client,
     client->publish_response_callback = publish_response_callback;
 
     MQTT_PAL_MUTEX_UNLOCK(&client->mutex);
+    printf("mqttc_init | MQTT_OK \n");
+
     return MQTT_OK;
 }
 
@@ -2174,21 +2179,24 @@ ssize_t __mqttc_pack_str(uint8_t *buf, const char* str) {
     return length + 2;
 }
 
-static const char *MQTT_ERRORS_STR[] = {
+static const char * MQTT_ERRORS_STR[] = {
         "MQTT_UNKNOWN_ERROR",
         __ALL_MQTT_ERRORS(GENERATE_STRING)
 };
 
 const char* mqttc_error_str(enum MQTTErrors error) {
-    int offset = error - MQTT_ERROR_UNKNOWN;
-    if (offset >= 0) {
-        return MQTT_ERRORS_STR[offset];
+
+    if (error == MQTT_OK) {
+        return "MQTT_OK";
     } else if (error == 0) {
         return "MQTT_ERROR: Buffer too small.";
-    } else if (error > 0) {
-        return "MQTT_OK";
     } else {
-        return MQTT_ERRORS_STR[0];
+        // Calculate offset considering INT_MIN base
+        int offset = error - MQTT_ERROR_UNKNOWN;
+        if (offset >= 0 && offset < sizeof(MQTT_ERRORS_STR)/sizeof(MQTT_ERRORS_STR[0])) {
+            return MQTT_ERRORS_STR[offset];
+        }
+        return "MQTT_ERROR: Unknown error code";
     }
 }
 
