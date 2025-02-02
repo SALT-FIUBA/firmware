@@ -330,26 +330,26 @@ setupTraceFilters(void)
 #define MQTT_CLIENT_ID "stm32-client"
 #define MQTT_KEEP_ALIVE 400
 
-/* SD addresses */
-#define SD_ST32_IP_ADDRESS_1 172
-#define SD_ST32_IP_ADDRESS_2 20
-#define SD_ST32_IP_ADDRESS_3 10
-#define SD_ST32_IP_ADDRESS_4 8
+/* CELLULAR addresses */
+#define CELLULAR_ST32_IP_ADDRESS_1 172
+#define CELLULAR_ST32_IP_ADDRESS_2 20
+#define CELLULAR_ST32_IP_ADDRESS_3 10
+#define CELLULAR_ST32_IP_ADDRESS_4 6
 
-#define SD_GATEWAY_IP_ADDRESS_1 172
-#define SD_GATEWAY_IP_ADDRESS_2 20
-#define SD_GATEWAY_IP_ADDRESS_3 10
-#define SD_GATEWAY_IP_ADDRESS_4 1
+#define CELLULAR_GATEWAY_IP_ADDRESS_1 172
+#define CELLULAR_GATEWAY_IP_ADDRESS_2 20
+#define CELLULAR_GATEWAY_IP_ADDRESS_3 10
+#define CELLULAR_GATEWAY_IP_ADDRESS_4 1
 
-#define SD_BROKER_IP_ADDRESS_1 172
-#define SD_BROKER_IP_ADDRESS_2 20
-#define SD_BROKER_IP_ADDRESS_3 10
-#define SD_BROKER_IP_ADDRESS_4 8
+#define CELLULAR_BROKER_IP_ADDRESS_1 172
+#define CELLULAR_BROKER_IP_ADDRESS_2 20
+#define CELLULAR_BROKER_IP_ADDRESS_3 10
+#define CELLULAR_BROKER_IP_ADDRESS_4 8
 
-#define SD_NETMASK_1 255
-#define SD_NETMASK_2 255
-#define SD_NETMASK_3 255
-#define SD_NETMASK_4 240
+#define CELLULAR_NETMASK_1 255
+#define CELLULAR_NETMASK_2 255
+#define CELLULAR_NETMASK_3 255
+#define CELLULAR_NETMASK_4 240
 
 /* JD addresses */
 #define JD_ST32_IP_ADDRESS_1 192
@@ -367,6 +367,26 @@ setupTraceFilters(void)
 #define JD_NETMASK_3 255
 #define JD_NETMASK_4 0
 
+/* SD addresses */
+#define SD_ST32_IP_ADDRESS_1 192
+#define SD_ST32_IP_ADDRESS_2 168
+#define SD_ST32_IP_ADDRESS_3 0
+#define SD_ST32_IP_ADDRESS_4 11
+
+#define SD_GATEWAY_IP_ADDRESS_1 192
+#define SD_GATEWAY_IP_ADDRESS_2 168
+#define SD_GATEWAY_IP_ADDRESS_3 0
+#define SD_GATEWAY_IP_ADDRESS_4 1
+
+#define SD_BROKER_IP_ADDRESS_1 192
+#define SD_BROKER_IP_ADDRESS_2 168
+#define SD_BROKER_IP_ADDRESS_3 0
+#define SD_BROKER_IP_ADDRESS_4 89
+
+#define SD_NETMASK_1 255
+#define SD_NETMASK_2 255
+#define SD_NETMASK_3 255
+#define SD_NETMASK_4 0
 
 
 /* MQTT Buffer sizes */
@@ -377,6 +397,9 @@ setupTraceFilters(void)
 struct mqttc_client mqtt_client;
 struct tcp_pcb * mqtt_pcb;
 uint8_t mqtt_connected = 0;
+
+
+static mqtt_pal_socket_t mqtt_socket;
 
 /* MQTT Buffers */
 static uint8_t tx_buffer[TX_BUFFER_SIZE];
@@ -403,7 +426,7 @@ static err_t mqtt_connect_to_broker(void);
 static err_t mqtt_tcp_recv_callback(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_t err)
 {
     if (p == NULL) {
-        /* Connection closed by remote host */
+        printf("Connection closed by remote host \n");
         mqtt_connected = 0;
         tcp_close(tpcb);
         return ERR_OK;
@@ -518,54 +541,21 @@ static void publish_response_callback(void ** state, struct mqttc_response_publi
 }
 
 
-err_t tcp_connect_callback(void *arg, struct tcp_pcb *tpcb, err_t err) {
-    if (err != ERR_OK) {
-        printf("tcp_connect_callback | TCP connect callback error: %d\n", err);
-        return err;
-    }
-    printf("tcp_connect_callback | TCP connected successfully\n");
-    return ERR_OK;
-}
+err_t tcp_connect_callback(void *arg, struct tcp_pcb *tpcb, err_t error) {
 
-
-/* MQTT Broker Connection */
-static err_t mqtt_connect_to_broker(void)
-{
-    ip_addr_t broker_addr;
-    err_t tcp_error;
     enum MQTTErrors mqtt_error;
 
-    mqtt_pcb = tcp_new();
-    if (mqtt_pcb == NULL) {
-
-        printf("mqtt_connect_to_broker | Failed to create TCP PCB \n");
-        return ERR_MEM;
+    if (error != ERR_OK) {
+        printf("tcp_connect_callback | TCP connect callback error: %d\n", error);
+        return error;
     }
 
-    IP4_ADDR(&broker_addr,
-             SD_BROKER_IP_ADDRESS_1, SD_BROKER_IP_ADDRESS_2,
-             SD_BROKER_IP_ADDRESS_3, SD_BROKER_IP_ADDRESS_4); // Broker IP address
-
-
-
-    /* Set up TCP callbacks */
-    tcp_recv(mqtt_pcb, mqtt_tcp_recv_callback);
-    tcp_sent(mqtt_pcb, mqtt_tcp_sent_callback);
-    tcp_err(mqtt_pcb, mqtt_tcp_err_callback);
-
-
-    tcp_error = tcp_connect(mqtt_pcb, &broker_addr, BROKER_PORT, tcp_connect_callback);
-    if (tcp_error != ERR_OK) {
-        printf("mqtt_connect_to_broker | Failed to create tcp pcb \n");
-        return ERR_MEM;
-    }
+    printf("TCP connected succesfully \n");
 
 
     /* Initialize MQTT client */
-    // for lwip raw api it use tcp_pcb pointer as socket descriptor
-    int socket_fd = (int)mqtt_pcb; // cast tcp_pcb pointer to int for socket descriptor
 
-    mqtt_error = mqttc_init(&mqtt_client, socket_fd,
+    mqtt_error = mqttc_init(&mqtt_client, mqtt_socket.socket_fd,
                             tx_buffer, TX_BUFFER_SIZE,
                             rx_buffer, RX_BUFFER_SIZE,
                             publish_response_callback);
@@ -583,13 +573,13 @@ static err_t mqtt_connect_to_broker(void)
 
     uint8_t connect_flags = MQTT_CONNECT_CLEAN_SESSION;
 
-    /* Send MQTT CONNECT message */
+    // Send MQTT CONNECT packet
     mqtt_error = mqttc_connect(&mqtt_client,
-                                             MQTT_CLIENT_ID,
-                                             NULL, NULL, 0,
-                                             NULL, NULL,
-                                             connect_flags,
-                                             MQTT_KEEP_ALIVE);
+                               MQTT_CLIENT_ID,
+                               NULL, NULL, 0,
+                               NULL, NULL,
+                               connect_flags,
+                               MQTT_KEEP_ALIVE);
 
     /* Unlock MQTT client */
     MQTT_PAL_MUTEX_UNLOCK(&mqtt_client.mutex);
@@ -602,9 +592,51 @@ static err_t mqtt_connect_to_broker(void)
         return ERR_CONN;
     }
 
+
+
+
+    printf("tcp_connect_callback | TCP connected successfully\n");
     return ERR_OK;
+}
 
 
+
+/* MQTT Broker Connection */
+static err_t mqtt_connect_to_broker(void)
+{
+    ip_addr_t broker_addr;
+    err_t tcp_error;
+    enum MQTTErrors mqtt_error;
+
+    mqtt_pcb = tcp_new();
+    if (mqtt_pcb == NULL) {
+
+        printf("mqtt_connect_to_broker | Failed to create TCP PCB \n");
+        return ERR_MEM;
+    }
+
+    mqtt_socket.pcb = mqtt_pcb;
+    mqtt_socket.socket_fd = 1; // dumy value for compatibility
+
+
+    /* Set up TCP callbacks */
+    tcp_recv(mqtt_pcb, mqtt_tcp_recv_callback);
+    tcp_sent(mqtt_pcb, mqtt_tcp_sent_callback);
+    tcp_err(mqtt_pcb, mqtt_tcp_err_callback);
+
+    IP4_ADDR(&broker_addr,
+             SD_BROKER_IP_ADDRESS_1, SD_BROKER_IP_ADDRESS_2,
+             SD_BROKER_IP_ADDRESS_3, SD_BROKER_IP_ADDRESS_4); // Broker IP address
+
+    tcp_error = tcp_connect(mqtt_pcb, &broker_addr, BROKER_PORT, tcp_connect_callback);
+
+    if (tcp_error != ERR_OK) {
+        printf("mqtt_connect_to_broker | Failed to create tcp pcb \n");
+        return ERR_MEM;
+    }
+
+
+    return ERR_OK;
 }
 
 
@@ -845,6 +877,7 @@ int main(void)
 
         // Handle MQTT operations
         if (mqtt_connected) {
+
 
             // Only publish if enough time has elapsed since last publish
             if (current_time - last_publish >= PUBLISH_INTERVAL) {
