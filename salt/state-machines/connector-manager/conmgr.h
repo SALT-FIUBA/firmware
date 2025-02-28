@@ -25,6 +25,7 @@
 #include "epoch.h"
 #include "modmgr.h"
 #include "gps.h"
+#include "mqttc_pal.h"
 
 /* ---------------------- External C language linkage ---------------------- */
 #ifdef __cplusplus
@@ -233,6 +234,13 @@ struct GpsEvt
 {
     ModMgrResp e;
     GpsData gpsData;
+};
+
+typedef struct NetConnectedEvt NetConnectedEvt;
+struct NetConnectedEvt
+{
+    RKH_EVT_T evt;
+    mqttc_pal_socket_handle sockfd;
 };
 
 /* -------------------------- External variables --------------------------- */

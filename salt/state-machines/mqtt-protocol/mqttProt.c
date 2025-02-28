@@ -17,16 +17,11 @@
 
 /* --------------------------------- Notes --------------------------------- */
 /* ----------------------------- Include files ----------------------------- */
-#include <stdio.h>
-#include <string.h>
-#include "rkh.h"
-#include "salt-signals.h"
+
 #include "mqttProt.h"
-#include "conmgr.h"
-#include "mqttc.h"
-#include "epoch.h"
-#include "date.h"
-#include "bsp-salt.h"
+#include "../../../mqttc-v116-sync/mqttc_v116_sync.h"
+
+
 
 /* ----------------------------- Local macros ------------------------------ */
 /* ......................... Declares active object ........................ */
@@ -67,7 +62,11 @@ static void sendOneMsg(SyncRegion *const me, RKH_EVT_T *pe);
 static void endSendAll(SyncRegion *const me, RKH_EVT_T *pe);
 static void nextSend(SyncRegion *const me, RKH_EVT_T *pe);
 static void handleRecvMsg(SyncRegion *const me, RKH_EVT_T *pe);
+
+
+static void storeSockfdAndActivate(MQTTProt * const me, RKH_EVT_T * pe);
 static void activateSync(MQTTProt *const me, RKH_EVT_T *pe);
+
 static void releaseUse(SyncRegion *const me, RKH_EVT_T *pe);
 static void deactivateSync(MQTTProt *const me, RKH_EVT_T *pe);
 static void reconnect(SyncRegion *const me, RKH_EVT_T *pe);
@@ -138,7 +137,7 @@ RKH_END_TRANS_TABLE
 
 RKH_CREATE_BASIC_STATE(Client_Idle, NULL, NULL, RKH_ROOT, NULL);
 RKH_CREATE_TRANS_TABLE(Client_Idle)
-                RKH_TRREG(evNetConnected, NULL, activateSync, &Client_Connected),
+                RKH_TRREG(evNetConnected, NULL, storeSockfdAndActivate, &Client_Connected),
 RKH_END_TRANS_TABLE
 
 RKH_CREATE_COMP_REGION_STATE(Client_Connected, NULL, NULL, RKH_ROOT,
@@ -246,30 +245,6 @@ RKH_CREATE_BRANCH_TABLE(Sync_C38)
 RKH_END_BRANCH_TABLE
 
 /* ............................. Active object ............................. */
-struct SyncRegion
-{
-    RKH_SM_T sm;            /* Orthogonal region */
-    MQTTProt *itsMQTTProt;
-    RKH_TMR_T syncTmr;
-};
-
-struct MQTTProt
-{
-    RKH_SMA_T ao;               /* Base structure */
-    RKHSmaVtbl vtbl;            /* Virtual table */
-    SyncRegion itsSyncRegion;   /* Sync orthogonal region */
-    RKH_TMR_T publishTmr;
-    RKH_TMR_T tryConnTmr;
-    struct mqttc_client client;
-    uint8_t sendbuf[2048];  /* sendbuf should be large enough to hold */
-    /* multiple whole mqtt messages */
-    uint8_t recvbuf[1024];  /* recvbuf should be large enough any whole */
-    /* mqtt message expected to be received */
-    enum MQTTErrors operRes;
-    MQTTProtCfg *config;
-    MQTTProtPublish publisher;
-    const char *errorStr;
-};
 
 RKH_SMA_CREATE(MQTTProt, mqttProt, 2, HCAL, &Client_Idle, init, NULL);
 RKH_SMA_DEF_PTR(mqttProt);
@@ -304,8 +279,9 @@ static RKH_ROM_STATIC_EVENT(evUnlockedObj, evUnlocked);
 static RKH_ROM_STATIC_EVENT(evRestartObj, evRestart);
 static SendEvt evSendObj;
 static ConnRefusedEvt evConnRefusedObj;
-static LocalSendAll localSend;
-static LocalRecvAll localRecv;
+
+static Mqttc116LocalSendAll localSend;
+static Mqttc116LocalRecvAll localRecv;
 
 /* ----------------------- Local function prototypes ----------------------- */
 /* ---------------------------- Local functions ---------------------------- */
@@ -362,7 +338,7 @@ dispatch(RKH_SMA_T *me, void *arg)
 {
     SyncRegion *region;
 
-    region = &(RKH_DOWNCAST(MQTTProt, me)->itsSyncRegion);
+    region = RKH_DOWNCAST(MQTTProt, me)->itsSyncRegion;
     rkh_sm_dispatch((RKH_SM_T *)me, (RKH_EVT_T *)arg);
     rkh_sm_dispatch(RKH_UPCAST(RKH_SM_T, region), (RKH_EVT_T *)arg);
 }
@@ -395,35 +371,35 @@ init(MQTTProt *const me, RKH_EVT_T *pe)
     RKH_TR_FWK_AO(me);
     RKH_TR_FWK_AO(MQTTProt_syncRegion);
 
-    RKH_TR_FWK_QUEUE(&RKH_UPCAST(RKH_SMA_T, me)->equeue);
-
-    RKH_TR_FWK_STATE(me, &Client_Idle);
-    RKH_TR_FWK_STATE(me, &Sync_Idle);
-    RKH_TR_FWK_STATE(me, &Sync_WaitSync);
-    RKH_TR_FWK_STATE(me, &Sync_Receiving);
-    RKH_TR_FWK_STATE(me, &Sync_EndCycle);
-    RKH_TR_FWK_STATE(me, &Sync_Sending);
-    RKH_TR_FWK_STATE(me, &Client_Idle);
-    RKH_TR_FWK_STATE(me, &Client_TryConnect);
-    RKH_TR_FWK_STATE(me, &Client_AwaitingAck);
-    RKH_TR_FWK_STATE(me, &Client_WaitToPublish);
-    RKH_TR_FWK_STATE(me, &Sync_Active);
-    RKH_TR_FWK_STATE(me, &Client_Connected);
-    RKH_TR_FWK_STATE(me, &Client_WaitToUse0);
-    RKH_TR_FWK_STATE(me, &Client_WaitToUse1);
-    RKH_TR_FWK_STATE(me, &Sync_C10);
-    RKH_TR_FWK_STATE(me, &Sync_C12);
-    RKH_TR_FWK_STATE(me, &Sync_C14);
-    RKH_TR_FWK_STATE(me, &Sync_C25);
-    RKH_TR_FWK_STATE(me, &Sync_C31);
-    RKH_TR_FWK_STATE(me, &Sync_C32);
-    RKH_TR_FWK_STATE(me, &Sync_C38);
-    RKH_TR_FWK_STATE(me, &Client_C7);
-    RKH_TR_FWK_STATE(me, &Client_C15);
-    RKH_TR_FWK_STATE(me, &Client_C20);
-
-
     /*
+
+        RKH_TR_FWK_QUEUE(&RKH_UPCAST(RKH_SMA_T, me)->equeue);
+
+        RKH_TR_FWK_STATE(me, &Client_Idle);
+        RKH_TR_FWK_STATE(me, &Sync_Idle);
+        RKH_TR_FWK_STATE(me, &Sync_WaitSync);
+        RKH_TR_FWK_STATE(me, &Sync_Receiving);
+        RKH_TR_FWK_STATE(me, &Sync_EndCycle);
+        RKH_TR_FWK_STATE(me, &Sync_Sending);
+        RKH_TR_FWK_STATE(me, &Client_Idle);
+        RKH_TR_FWK_STATE(me, &Client_TryConnect);
+        RKH_TR_FWK_STATE(me, &Client_AwaitingAck);
+        RKH_TR_FWK_STATE(me, &Client_WaitToPublish);
+        RKH_TR_FWK_STATE(me, &Sync_Active);
+        RKH_TR_FWK_STATE(me, &Client_Connected);
+        RKH_TR_FWK_STATE(me, &Client_WaitToUse0);
+        RKH_TR_FWK_STATE(me, &Client_WaitToUse1);
+        RKH_TR_FWK_STATE(me, &Sync_C10);
+        RKH_TR_FWK_STATE(me, &Sync_C12);
+        RKH_TR_FWK_STATE(me, &Sync_C14);
+        RKH_TR_FWK_STATE(me, &Sync_C25);
+        RKH_TR_FWK_STATE(me, &Sync_C31);
+        RKH_TR_FWK_STATE(me, &Sync_C32);
+        RKH_TR_FWK_STATE(me, &Sync_C38);
+        RKH_TR_FWK_STATE(me, &Client_C7);
+        RKH_TR_FWK_STATE(me, &Client_C15);
+        RKH_TR_FWK_STATE(me, &Client_C20);
+
         RKH_TR_FWK_SIG(evConnAccepted);
         RKH_TR_FWK_SIG(evConnRefused);
         RKH_TR_FWK_SIG(evActivate);
@@ -440,7 +416,14 @@ init(MQTTProt *const me, RKH_EVT_T *pe)
     RKH_SET_STATIC_EVENT(RKH_UPCAST(RKH_EVT_T, &evConnRefusedObj),
                          evConnRefused);
 
-    me->client.connack_response_callback = connack_response_callback;
+    /* TODO: resolve this issue
+     * Instead of relying on a callback, check the client->error field after calling mqttc_connect and mqttc_sync
+     * Since mqttc_connect is likely asynchronous (you wait for CONNACK in Client_AwaitingAck), use the mqttc_sync
+     * function to process incoming messages and update the client’s state.
+     *
+     * Modify your state machine to periodically check the connection status in the Client_AwaitingAck state.
+     */
+    //  me->client.connack_response_callback = connack_response_callback;
     rkh_sm_init(RKH_UPCAST(RKH_SM_T, &me->itsSyncRegion));
 }
 
@@ -456,10 +439,10 @@ publish(MQTTProt *const me, RKH_EVT_T *pe)
     {
         me->config->publishTime = pubTime;
     }
-    me->operRes = mqttc_publish(&me->client,
-                               me->config->topic,
-                               appMsg.data,
-                               appMsg.size,
+    me->operationResult = mqttc_publish(&me->client,
+                                            me->config->topic,
+                                            appMsg.data,
+                                            appMsg.size,
                                (me->config->qos << 1) & 0x06);
 
     RKH_TRC_USR_BEGIN(USR_TRACE_MQTT)
@@ -613,6 +596,15 @@ activateSync(MQTTProt *const me, RKH_EVT_T *pe)
 }
 
 static void
+storeSockfdAndActivate(MQTTProt * const me, RKH_EVT_T * pe)
+{
+    NetConnectedEvt * evt = RKH_DOWNCAST(NetConnectedEvt, pe);
+    me->sockfd = evt->sockfd;
+    activateSync(me, pe);
+
+}
+
+static void
 releaseUse(SyncRegion *const me, RKH_EVT_T *pe)
 {
     MQTTProt *realMe;
@@ -663,14 +655,21 @@ enAwaitingAck(MQTTProt *const me, RKH_EVT_T *pe)
 static void
 brokerConnect(MQTTProt *const me, RKH_EVT_T *pe)
 {
-    mqttc_init(&me->client, 0, me->sendbuf, sizeof(me->sendbuf),
-              me->recvbuf, sizeof(me->recvbuf), me->config->callback);
-    me->operRes = mqttc_connect(&me->client,
-                               me->config->clientId,
-                               NULL, NULL, 0, NULL, NULL, 0,
-                               me->config->keepAlive);
-    me->errorStr = mqttc_error_str(me->operRes);
+    printf("brokerConnect \n");
+
+    mqttc_init(&me->client, me->sockfd,
+               me->sendbuf,sizeof(me->sendbuf),
+               me->recvbuf,sizeof(me->recvbuf),
+               me->config->callback
+           );
+    me->operationResult = mqttc_connect(&me->client, me->config->clientId,
+                                        NULL, NULL, 0,
+                                        NULL, NULL, 0,
+                                        me->config->keepAlive
+                               );
+    me->errorStr = mqttc_error_str(me->operationResult);
     mqttc_subscribe(&me->client, me->config->subTopic, 2);
+
 }
 
 static void
@@ -736,7 +735,7 @@ exWaitSync(SyncRegion *const me, RKH_EVT_T *pe)
 static rbool_t
 isConnectOk(const RKH_SM_T *me, RKH_EVT_T *pe)
 {
-    return RKH_UPCAST(MQTTProt, me)->operRes == MQTT_OK ? RKH_TRUE: RKH_FALSE;
+    return RKH_UPCAST(MQTTProt, me)->operationResult == MQTT_OK ? RKH_TRUE : RKH_FALSE;
 }
 
 static rbool_t
@@ -757,7 +756,7 @@ isNotError(const RKH_SM_T *me, RKH_EVT_T *pe)
     return mqttc_isNotError(&localRecv);
 }
 
-static rbool_t
+rbool_t
 isRecvBufFull(const RKH_SM_T *me, RKH_EVT_T *pe)
 {
     return mqttc_isRecvBufFull(&localRecv);
@@ -809,12 +808,12 @@ isReconnect(const RKH_SM_T *me, RKH_EVT_T *pe)
     return mqttc_isReconnect(&realMe->itsMQTTProt->client);
 }
 
+
+
 /* ---------------------------- Global functions --------------------------- */
 void
 MQTTProt_ctor(MQTTProtCfg *config, MQTTProtPublish publisher)
 {
-    //  printf("mqttprot ctor init\n");
-
     MQTTProt *me;
 
     me = RKH_DOWNCAST(MQTTProt, mqttProt);
@@ -822,7 +821,7 @@ MQTTProt_ctor(MQTTProtCfg *config, MQTTProtPublish publisher)
     me->vtbl.task = dispatch;
     rkh_sma_ctor(RKH_UPCAST(RKH_SMA_T, me), &me->vtbl);
 
-    me->itsSyncRegion.itsMQTTProt = me;
+    me->itsSyncRegion->itsMQTTProt = me;
     RKH_SM_INIT((RKH_SM_T *)&(me->itsSyncRegion), syncRegion, 0, HCAL,
                 Sync_Idle, NULL, NULL);
 
@@ -830,7 +829,17 @@ MQTTProt_ctor(MQTTProtCfg *config, MQTTProtPublish publisher)
     configMqttClient(me, config);
 
     me->publisher = (publisher != (MQTTProtPublish)0) ? publisher : pubDft;
-    //  printf("mqtt prot ctor end \n");
+}
+
+rbool_t MQTTProt_isConnected(void) {
+
+    MQTTProt *me = RKH_DOWNCAST(MQTTProt, mqttProt);
+
+    rbool_t isConnected = (me->ao.sm.state == (const RKH_ST_T *)&Client_Connected);
+    printf("MQTTProt_isConnected | Current state: %p, Client_Connected: %p, Connected: %d\n",
+           me->ao.sm.state, &Client_Connected, isConnected);
+
+    return isConnected;
 }
 
 /* ------------------------------ End of file ------------------------------ */

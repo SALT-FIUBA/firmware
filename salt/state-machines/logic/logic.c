@@ -427,40 +427,40 @@ static void init(Logic *const me, RKH_EVT_T *pe){
     RKH_TR_FWK_AO(me);
     RKH_TR_FWK_AO(Logic_logicVel);
 
-    RKH_TR_FWK_TIMER(&me->timerStop);
-    RKH_TR_FWK_TIMER(&me->timerGpsEnable);
-    RKH_TR_FWK_TIMER(&me->timerCmdTimeout);
-    RKH_TR_FWK_TIMER(&me->itsLogicVel.timer);
-
-    RKH_TR_FWK_STATE(me, &Logic_Disable);
-    RKH_TR_FWK_STATE(me, &Logic_PreventiveStop);
-    RKH_TR_FWK_STATE(me, &Logic_RemoteStop);
-    RKH_TR_FWK_STATE(me, &Logic_RemoteDrift);
-    RKH_TR_FWK_STATE(me, &Logic_RemoteIsolated);
-    RKH_TR_FWK_STATE(me, &Logic_controlAutomaticEnable);
-    RKH_TR_FWK_STATE(me, &Logic_controlAutomaticDisable);
-    RKH_TR_FWK_STATE(me, &Logic_controlAutomaticBrake);
-    RKH_TR_FWK_STATE(me, &Logic_controlBlinkEnable);
-    RKH_TR_FWK_STATE(me, &Logic_controlBlinkDisable);
-    RKH_TR_FWK_STATE(me, &Logic_controlBlinkBrake);
-    RKH_TR_FWK_STATE(me, &LogicVel_Hasler);
-    RKH_TR_FWK_STATE(me, &LogicVel_External);
-    RKH_TR_FWK_STATE(me, &LogicVel_GPS);
-    RKH_TR_FWK_STATE(me, &LogicVel_Missing);
-
-    RKH_TR_FWK_STATE(me, &Logic_Enable);
-    RKH_TR_FWK_STATE(me, &Logic_remote);
-    RKH_TR_FWK_STATE(me, &Logic_automatic);
-    RKH_TR_FWK_STATE(me, &Logic_controlAutomatic);
-    RKH_TR_FWK_STATE(me, &Logic_controlBlink);
-
-    RKH_TR_FWK_STATE(me, &Logic_C1);
-    RKH_TR_FWK_STATE(me, &Logic_C2);
-    RKH_TR_FWK_STATE(me, &Logic_C3);
-    RKH_TR_FWK_STATE(me, &Logic_C4);
-    RKH_TR_FWK_STATE(me, &Logic_C5);
-
     /*
+        RKH_TR_FWK_TIMER(&me->timerStop);
+        RKH_TR_FWK_TIMER(&me->timerGpsEnable);
+        RKH_TR_FWK_TIMER(&me->timerCmdTimeout);
+        RKH_TR_FWK_TIMER(&me->itsLogicVel.timer);
+
+        RKH_TR_FWK_STATE(me, &Logic_Disable);
+        RKH_TR_FWK_STATE(me, &Logic_PreventiveStop);
+        RKH_TR_FWK_STATE(me, &Logic_RemoteStop);
+        RKH_TR_FWK_STATE(me, &Logic_RemoteDrift);
+        RKH_TR_FWK_STATE(me, &Logic_RemoteIsolated);
+        RKH_TR_FWK_STATE(me, &Logic_controlAutomaticEnable);
+        RKH_TR_FWK_STATE(me, &Logic_controlAutomaticDisable);
+        RKH_TR_FWK_STATE(me, &Logic_controlAutomaticBrake);
+        RKH_TR_FWK_STATE(me, &Logic_controlBlinkEnable);
+        RKH_TR_FWK_STATE(me, &Logic_controlBlinkDisable);
+        RKH_TR_FWK_STATE(me, &Logic_controlBlinkBrake);
+        RKH_TR_FWK_STATE(me, &LogicVel_Hasler);
+        RKH_TR_FWK_STATE(me, &LogicVel_External);
+        RKH_TR_FWK_STATE(me, &LogicVel_GPS);
+        RKH_TR_FWK_STATE(me, &LogicVel_Missing);
+
+        RKH_TR_FWK_STATE(me, &Logic_Enable);
+        RKH_TR_FWK_STATE(me, &Logic_remote);
+        RKH_TR_FWK_STATE(me, &Logic_automatic);
+        RKH_TR_FWK_STATE(me, &Logic_controlAutomatic);
+        RKH_TR_FWK_STATE(me, &Logic_controlBlink);
+
+        RKH_TR_FWK_STATE(me, &Logic_C1);
+        RKH_TR_FWK_STATE(me, &Logic_C2);
+        RKH_TR_FWK_STATE(me, &Logic_C3);
+        RKH_TR_FWK_STATE(me, &Logic_C4);
+        RKH_TR_FWK_STATE(me, &Logic_C5);
+
         RKH_TR_FWK_SIG(evSaltEnable);
         RKH_TR_FWK_SIG(evSaltDisable);
         RKH_TR_FWK_SIG(evSaltTimeoutStop);

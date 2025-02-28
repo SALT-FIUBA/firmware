@@ -106,7 +106,6 @@ rkh_fwk_init(void)
 void 
 rkh_fwk_enter(void)
 {
-    printf("rkh_fwk_enter \n");
 
     rui8_t prio;
     RKH_SMA_T *sma;

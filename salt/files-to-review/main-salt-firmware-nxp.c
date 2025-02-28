@@ -41,6 +41,8 @@
 #include "publisher.h"
 #include "logic.h"
 
+#include "mqttc.h"
+
 //  #include "sapi.h"
 
 /* ----------------------------- Local macros ------------------------------ */

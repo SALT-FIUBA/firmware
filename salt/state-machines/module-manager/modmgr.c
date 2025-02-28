@@ -188,6 +188,8 @@ initialization(ModMgr *const me, RKH_EVT_T *pe)
 
     RKH_TR_FWK_AO(me);
 
+    /*
+
     RKH_TR_FWK_QUEUE(&RKH_UPCAST(RKH_SMA_T, me)->equeue);
 
     RKH_TR_FWK_STATE(me, &ModMgr_inactive);
@@ -198,19 +200,19 @@ initialization(ModMgr *const me, RKH_EVT_T *pe)
     RKH_TR_FWK_STATE(me, &ModMgr_waitInterCmdDelay);
 
 
-        RKH_TR_FWK_TIMER(&me->timer);
+    RKH_TR_FWK_TIMER(&me->timer);
 
-    /*
-        RKH_TR_FWK_SIG(evToutWaitResponse);
-        RKH_TR_FWK_SIG(evTimeout);
-        RKH_TR_FWK_SIG(evResponse);
-        RKH_TR_FWK_SIG(evNoResponse);
-        RKH_TR_FWK_TUSR(USR_TRACE);
-        RKH_TR_FWK_TUSR(USR_TRACE_OUT);
-        RKH_TR_FWK_TUSR(USR_TRACE_EVT);
-        RKH_TR_FWK_TUSR(USR_TRACE_IN);
-        RKH_TR_FWK_TUSR(USR_TRACE_SSP);
-        RKH_TR_FWK_TUSR(USR_TRACE_MQTT);
+    RKH_TR_FWK_SIG(evToutWaitResponse);
+    RKH_TR_FWK_SIG(evTimeout);
+    RKH_TR_FWK_SIG(evResponse);
+    RKH_TR_FWK_SIG(evNoResponse);
+    RKH_TR_FWK_TUSR(USR_TRACE);
+    RKH_TR_FWK_TUSR(USR_TRACE_OUT);
+    RKH_TR_FWK_TUSR(USR_TRACE_EVT);
+    RKH_TR_FWK_TUSR(USR_TRACE_IN);
+    RKH_TR_FWK_TUSR(USR_TRACE_SSP);
+    RKH_TR_FWK_TUSR(USR_TRACE_MQTT);
+
     */
 
 

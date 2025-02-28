@@ -1762,10 +1762,66 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTimeTbl.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTimeTbl.c.s"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/nando-toshiba/Desktop/salt/firmware/mTime/mTimeTbl.c -o CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTimeTbl.c.s
 
+CMakeFiles/NUCLEO-F429ZI.elf.dir/mqttc-v116-sync/mqttc_v116_sync.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
+CMakeFiles/NUCLEO-F429ZI.elf.dir/mqttc-v116-sync/mqttc_v116_sync.c.obj: /home/nando-toshiba/Desktop/salt/firmware/mqttc-v116-sync/mqttc_v116_sync.c
+CMakeFiles/NUCLEO-F429ZI.elf.dir/mqttc-v116-sync/mqttc_v116_sync.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_122) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/mqttc-v116-sync/mqttc_v116_sync.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/mqttc-v116-sync/mqttc_v116_sync.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/mqttc-v116-sync/mqttc_v116_sync.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/mqttc-v116-sync/mqttc_v116_sync.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/mqttc-v116-sync/mqttc_v116_sync.c
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/mqttc-v116-sync/mqttc_v116_sync.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/NUCLEO-F429ZI.elf.dir/mqttc-v116-sync/mqttc_v116_sync.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/nando-toshiba/Desktop/salt/firmware/mqttc-v116-sync/mqttc_v116_sync.c > CMakeFiles/NUCLEO-F429ZI.elf.dir/mqttc-v116-sync/mqttc_v116_sync.c.i
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/mqttc-v116-sync/mqttc_v116_sync.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/NUCLEO-F429ZI.elf.dir/mqttc-v116-sync/mqttc_v116_sync.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/nando-toshiba/Desktop/salt/firmware/mqttc-v116-sync/mqttc_v116_sync.c -o CMakeFiles/NUCLEO-F429ZI.elf.dir/mqttc-v116-sync/mqttc_v116_sync.c.s
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/network/network.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
+CMakeFiles/NUCLEO-F429ZI.elf.dir/network/network.c.obj: /home/nando-toshiba/Desktop/salt/firmware/network/network.c
+CMakeFiles/NUCLEO-F429ZI.elf.dir/network/network.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_123) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/network/network.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/network/network.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/network/network.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/network/network.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/network/network.c
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/network/network.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/NUCLEO-F429ZI.elf.dir/network/network.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/nando-toshiba/Desktop/salt/firmware/network/network.c > CMakeFiles/NUCLEO-F429ZI.elf.dir/network/network.c.i
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/network/network.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/NUCLEO-F429ZI.elf.dir/network/network.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/nando-toshiba/Desktop/salt/firmware/network/network.c -o CMakeFiles/NUCLEO-F429ZI.elf.dir/network/network.c.s
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/rkh-mqttc/src/rkh_mqttc.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
+CMakeFiles/NUCLEO-F429ZI.elf.dir/rkh-mqttc/src/rkh_mqttc.c.obj: /home/nando-toshiba/Desktop/salt/firmware/rkh-mqttc/src/rkh_mqttc.c
+CMakeFiles/NUCLEO-F429ZI.elf.dir/rkh-mqttc/src/rkh_mqttc.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_124) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/rkh-mqttc/src/rkh_mqttc.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/rkh-mqttc/src/rkh_mqttc.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/rkh-mqttc/src/rkh_mqttc.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/rkh-mqttc/src/rkh_mqttc.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/rkh-mqttc/src/rkh_mqttc.c
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/rkh-mqttc/src/rkh_mqttc.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/NUCLEO-F429ZI.elf.dir/rkh-mqttc/src/rkh_mqttc.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/nando-toshiba/Desktop/salt/firmware/rkh-mqttc/src/rkh_mqttc.c > CMakeFiles/NUCLEO-F429ZI.elf.dir/rkh-mqttc/src/rkh_mqttc.c.i
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/rkh-mqttc/src/rkh_mqttc.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/NUCLEO-F429ZI.elf.dir/rkh-mqttc/src/rkh_mqttc.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/nando-toshiba/Desktop/salt/firmware/rkh-mqttc/src/rkh_mqttc.c -o CMakeFiles/NUCLEO-F429ZI.elf.dir/rkh-mqttc/src/rkh_mqttc.c.s
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/rkh-mqttc/src/rkh_mqttc_pal.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
+CMakeFiles/NUCLEO-F429ZI.elf.dir/rkh-mqttc/src/rkh_mqttc_pal.c.obj: /home/nando-toshiba/Desktop/salt/firmware/rkh-mqttc/src/rkh_mqttc_pal.c
+CMakeFiles/NUCLEO-F429ZI.elf.dir/rkh-mqttc/src/rkh_mqttc_pal.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_125) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/rkh-mqttc/src/rkh_mqttc_pal.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/rkh-mqttc/src/rkh_mqttc_pal.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/rkh-mqttc/src/rkh_mqttc_pal.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/rkh-mqttc/src/rkh_mqttc_pal.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/rkh-mqttc/src/rkh_mqttc_pal.c
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/rkh-mqttc/src/rkh_mqttc_pal.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/NUCLEO-F429ZI.elf.dir/rkh-mqttc/src/rkh_mqttc_pal.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/nando-toshiba/Desktop/salt/firmware/rkh-mqttc/src/rkh_mqttc_pal.c > CMakeFiles/NUCLEO-F429ZI.elf.dir/rkh-mqttc/src/rkh_mqttc_pal.c.i
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/rkh-mqttc/src/rkh_mqttc_pal.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/NUCLEO-F429ZI.elf.dir/rkh-mqttc/src/rkh_mqttc_pal.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/nando-toshiba/Desktop/salt/firmware/rkh-mqttc/src/rkh_mqttc_pal.c -o CMakeFiles/NUCLEO-F429ZI.elf.dir/rkh-mqttc/src/rkh_mqttc_pal.c.s
+
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/bsp/assert.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/bsp/assert.c.obj: /home/nando-toshiba/Desktop/salt/firmware/salt/bsp/assert.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/bsp/assert.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_122) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/bsp/assert.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_126) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/bsp/assert.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/bsp/assert.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/bsp/assert.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/bsp/assert.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/salt/bsp/assert.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/bsp/assert.c.i: cmake_force
@@ -1779,7 +1835,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/bsp/assert.c.s: cmake_force
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/bsp/bsp-salt.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/bsp/bsp-salt.c.obj: /home/nando-toshiba/Desktop/salt/firmware/salt/bsp/bsp-salt.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/bsp/bsp-salt.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_123) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/bsp/bsp-salt.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_127) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/bsp/bsp-salt.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/bsp/bsp-salt.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/bsp/bsp-salt.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/bsp/bsp-salt.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/salt/bsp/bsp-salt.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/bsp/bsp-salt.c.i: cmake_force
@@ -1793,7 +1849,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/bsp/bsp-salt.c.s: cmake_force
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/configuration/saltCfg.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/configuration/saltCfg.c.obj: /home/nando-toshiba/Desktop/salt/firmware/salt/configuration/saltCfg.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/configuration/saltCfg.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_124) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/configuration/saltCfg.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_128) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/configuration/saltCfg.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/configuration/saltCfg.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/configuration/saltCfg.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/configuration/saltCfg.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/salt/configuration/saltCfg.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/configuration/saltCfg.c.i: cmake_force
@@ -1807,7 +1863,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/configuration/saltCfg.c.s: cmake_force
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/main-salt-firmware-nxp.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/main-salt-firmware-nxp.c.obj: /home/nando-toshiba/Desktop/salt/firmware/salt/files-to-review/main-salt-firmware-nxp.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/main-salt-firmware-nxp.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_125) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/main-salt-firmware-nxp.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_129) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/main-salt-firmware-nxp.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/main-salt-firmware-nxp.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/main-salt-firmware-nxp.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/main-salt-firmware-nxp.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/salt/files-to-review/main-salt-firmware-nxp.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/main-salt-firmware-nxp.c.i: cmake_force
@@ -1821,7 +1877,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/main-salt-firmware-nxp.c.s
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/trace_io.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/trace_io.c.obj: /home/nando-toshiba/Desktop/salt/firmware/salt/files-to-review/trace_io.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/trace_io.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_126) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/trace_io.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_130) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/trace_io.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/trace_io.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/trace_io.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/trace_io.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/salt/files-to-review/trace_io.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/trace_io.c.i: cmake_force
@@ -1835,7 +1891,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/trace_io.c.s: cmake_force
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/analog-inputs/anIn.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/analog-inputs/anIn.c.obj: /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/analog-inputs/anIn.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/analog-inputs/anIn.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_127) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/analog-inputs/anIn.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_131) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/analog-inputs/anIn.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/analog-inputs/anIn.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/analog-inputs/anIn.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/analog-inputs/anIn.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/analog-inputs/anIn.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/analog-inputs/anIn.c.i: cmake_force
@@ -1849,7 +1905,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/analog-inputs/anIn.c.s: cmake_
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ihm/buzzer.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ihm/buzzer.c.obj: /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/ihm/buzzer.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ihm/buzzer.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_128) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ihm/buzzer.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_132) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ihm/buzzer.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ihm/buzzer.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ihm/buzzer.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ihm/buzzer.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/ihm/buzzer.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ihm/buzzer.c.i: cmake_force
@@ -1863,7 +1919,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ihm/buzzer.c.s: cmake_force
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ihm/onSwitch.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ihm/onSwitch.c.obj: /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/ihm/onSwitch.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ihm/onSwitch.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_129) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ihm/onSwitch.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_133) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ihm/onSwitch.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ihm/onSwitch.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ihm/onSwitch.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ihm/onSwitch.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/ihm/onSwitch.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ihm/onSwitch.c.i: cmake_force
@@ -1877,7 +1933,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ihm/onSwitch.c.s: cmake_force
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ledPanel/as1116.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ledPanel/as1116.c.obj: /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/ledPanel/as1116.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ledPanel/as1116.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_130) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ledPanel/as1116.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_134) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ledPanel/as1116.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ledPanel/as1116.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ledPanel/as1116.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ledPanel/as1116.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/ledPanel/as1116.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ledPanel/as1116.c.i: cmake_force
@@ -1891,7 +1947,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ledPanel/as1116.c.s: cmake_for
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ledPanel/ledPanel.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ledPanel/ledPanel.c.obj: /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/ledPanel/ledPanel.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ledPanel/ledPanel.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_131) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ledPanel/ledPanel.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_135) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ledPanel/ledPanel.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ledPanel/ledPanel.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ledPanel/ledPanel.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ledPanel/ledPanel.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/ledPanel/ledPanel.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ledPanel/ledPanel.c.i: cmake_force
@@ -1905,7 +1961,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/ledPanel/ledPanel.c.s: cmake_f
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/module-command/modcmdSim900.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/module-command/modcmdSim900.c.obj: /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/module-command/modcmdSim900.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/module-command/modcmdSim900.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_132) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/module-command/modcmdSim900.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_136) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/module-command/modcmdSim900.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/module-command/modcmdSim900.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/module-command/modcmdSim900.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/module-command/modcmdSim900.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/module-command/modcmdSim900.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/module-command/modcmdSim900.c.i: cmake_force
@@ -1919,7 +1975,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/module-command/modcmdSim900.c.
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/module-power/modpwr.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/module-power/modpwr.c.obj: /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/module-power/modpwr.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/module-power/modpwr.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_133) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/module-power/modpwr.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_137) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/module-power/modpwr.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/module-power/modpwr.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/module-power/modpwr.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/module-power/modpwr.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/module-power/modpwr.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/module-power/modpwr.c.i: cmake_force
@@ -1933,7 +1989,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/module-power/modpwr.c.s: cmake
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/pulse-counter/pulseCounter.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/pulse-counter/pulseCounter.c.obj: /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/pulse-counter/pulseCounter.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/pulse-counter/pulseCounter.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_134) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/pulse-counter/pulseCounter.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_138) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/pulse-counter/pulseCounter.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/pulse-counter/pulseCounter.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/pulse-counter/pulseCounter.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/pulse-counter/pulseCounter.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/pulse-counter/pulseCounter.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/pulse-counter/pulseCounter.c.i: cmake_force
@@ -1947,7 +2003,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/pulse-counter/pulseCounter.c.s
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/pulse-counter/pulseCounterFromEduCiaaBsp.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/pulse-counter/pulseCounterFromEduCiaaBsp.c.obj: /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/pulse-counter/pulseCounterFromEduCiaaBsp.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/pulse-counter/pulseCounterFromEduCiaaBsp.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_135) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/pulse-counter/pulseCounterFromEduCiaaBsp.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_139) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/pulse-counter/pulseCounterFromEduCiaaBsp.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/pulse-counter/pulseCounterFromEduCiaaBsp.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/pulse-counter/pulseCounterFromEduCiaaBsp.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/pulse-counter/pulseCounterFromEduCiaaBsp.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/pulse-counter/pulseCounterFromEduCiaaBsp.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/pulse-counter/pulseCounterFromEduCiaaBsp.c.i: cmake_force
@@ -1961,7 +2017,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/pulse-counter/pulseCounterFrom
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/relay-control/relay.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/relay-control/relay.c.obj: /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/relay-control/relay.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/relay-control/relay.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_136) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/relay-control/relay.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_140) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/relay-control/relay.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/relay-control/relay.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/relay-control/relay.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/relay-control/relay.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/relay-control/relay.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/relay-control/relay.c.i: cmake_force
@@ -1975,7 +2031,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/relay-control/relay.c.s: cmake
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/relay-control/relayFromEduCiaaBsp.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/relay-control/relayFromEduCiaaBsp.c.obj: /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/relay-control/relayFromEduCiaaBsp.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/relay-control/relayFromEduCiaaBsp.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_137) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/relay-control/relayFromEduCiaaBsp.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_141) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/relay-control/relayFromEduCiaaBsp.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/relay-control/relayFromEduCiaaBsp.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/relay-control/relayFromEduCiaaBsp.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/relay-control/relayFromEduCiaaBsp.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/relay-control/relayFromEduCiaaBsp.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/relay-control/relayFromEduCiaaBsp.c.i: cmake_force
@@ -1989,7 +2045,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/relay-control/relayFromEduCiaa
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/serial/serial.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/serial/serial.c.obj: /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/serial/serial.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/serial/serial.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_138) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/serial/serial.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_142) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/serial/serial.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/serial/serial.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/serial/serial.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/serial/serial.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/serial/serial.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/serial/serial.c.i: cmake_force
@@ -2003,7 +2059,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/serial/serial.c.s: cmake_force
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/sim808/sim808.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/sim808/sim808.c.obj: /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/sim808/sim808.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/sim808/sim808.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_139) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/sim808/sim808.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_143) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/sim808/sim808.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/sim808/sim808.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/sim808/sim808.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/sim808/sim808.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/sim808/sim808.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/sim808/sim808.c.i: cmake_force
@@ -2017,7 +2073,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/sim808/sim808.c.s: cmake_force
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/teloc/teloc.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/teloc/teloc.c.obj: /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/teloc/teloc.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/teloc/teloc.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_140) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/teloc/teloc.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_144) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/teloc/teloc.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/teloc/teloc.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/teloc/teloc.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/teloc/teloc.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/teloc/teloc.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/teloc/teloc.c.i: cmake_force
@@ -2031,7 +2087,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/teloc/teloc.c.s: cmake_force
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/connector-manager/conmgr.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/connector-manager/conmgr.c.obj: /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/connector-manager/conmgr.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/connector-manager/conmgr.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_141) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/connector-manager/conmgr.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_145) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/connector-manager/conmgr.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/connector-manager/conmgr.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/connector-manager/conmgr.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/connector-manager/conmgr.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/connector-manager/conmgr.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/connector-manager/conmgr.c.i: cmake_force
@@ -2045,7 +2101,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/connector-manager/conmgr.c.
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/logic/logic.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/logic/logic.c.obj: /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/logic/logic.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/logic/logic.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_142) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/logic/logic.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_146) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/logic/logic.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/logic/logic.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/logic/logic.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/logic/logic.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/logic/logic.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/logic/logic.c.i: cmake_force
@@ -2059,7 +2115,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/logic/logic.c.s: cmake_forc
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/module-manager/modmgr.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/module-manager/modmgr.c.obj: /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/module-manager/modmgr.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/module-manager/modmgr.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_143) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/module-manager/modmgr.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_147) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/module-manager/modmgr.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/module-manager/modmgr.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/module-manager/modmgr.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/module-manager/modmgr.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/module-manager/modmgr.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/module-manager/modmgr.c.i: cmake_force
@@ -2073,7 +2129,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/module-manager/modmgr.c.s: 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/mqtt-protocol/mqttProt.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/mqtt-protocol/mqttProt.c.obj: /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/mqtt-protocol/mqttProt.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/mqtt-protocol/mqttProt.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_144) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/mqtt-protocol/mqttProt.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_148) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/mqtt-protocol/mqttProt.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/mqtt-protocol/mqttProt.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/mqtt-protocol/mqttProt.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/mqtt-protocol/mqttProt.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/mqtt-protocol/mqttProt.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/mqtt-protocol/mqttProt.c.i: cmake_force
@@ -2087,7 +2143,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/mqtt-protocol/mqttProt.c.s:
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/aes/aes.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/aes/aes.c.obj: /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/aes/aes.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/aes/aes.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_145) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/aes/aes.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_149) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/aes/aes.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/aes/aes.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/aes/aes.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/aes/aes.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/aes/aes.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/aes/aes.c.i: cmake_force
@@ -2101,7 +2157,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/aes/aes.c.s: cmake_force
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/date/date.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/date/date.c.obj: /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/date/date.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/date/date.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_146) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/date/date.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_150) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/date/date.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/date/date.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/date/date.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/date/date.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/date/date.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/date/date.c.i: cmake_force
@@ -2115,7 +2171,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/date/date.c.s: cmake_force
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/emaFilter/emaFilter.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/emaFilter/emaFilter.c.obj: /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/emaFilter/emaFilter.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/emaFilter/emaFilter.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_147) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/emaFilter/emaFilter.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_151) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/emaFilter/emaFilter.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/emaFilter/emaFilter.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/emaFilter/emaFilter.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/emaFilter/emaFilter.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/emaFilter/emaFilter.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/emaFilter/emaFilter.c.i: cmake_force
@@ -2129,7 +2185,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/emaFilter/emaFilter.c.s: cmake_f
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/epoch/epoch.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/epoch/epoch.c.obj: /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/epoch/epoch.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/epoch/epoch.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_148) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/epoch/epoch.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_152) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/epoch/epoch.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/epoch/epoch.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/epoch/epoch.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/epoch/epoch.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/epoch/epoch.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/epoch/epoch.c.i: cmake_force
@@ -2143,7 +2199,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/epoch/epoch.c.s: cmake_force
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/salt-command/saltCmd.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/salt-command/saltCmd.c.obj: /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/parser/salt-command/saltCmd.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/salt-command/saltCmd.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_149) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/salt-command/saltCmd.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_153) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/salt-command/saltCmd.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/salt-command/saltCmd.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/salt-command/saltCmd.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/salt-command/saltCmd.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/parser/salt-command/saltCmd.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/salt-command/saltCmd.c.i: cmake_force
@@ -2157,7 +2213,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/salt-command/saltCmd.c.s:
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/sim900/sim900parser.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/sim900/sim900parser.c.obj: /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/parser/sim900/sim900parser.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/sim900/sim900parser.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_150) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/sim900/sim900parser.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_154) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/sim900/sim900parser.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/sim900/sim900parser.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/sim900/sim900parser.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/sim900/sim900parser.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/parser/sim900/sim900parser.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/sim900/sim900parser.c.i: cmake_force
@@ -2171,7 +2227,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/sim900/sim900parser.c.s: 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/publisher/publisher.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/publisher/publisher.c.obj: /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/publisher/publisher.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/publisher/publisher.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_151) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/publisher/publisher.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_155) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/publisher/publisher.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/publisher/publisher.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/publisher/publisher.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/publisher/publisher.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/publisher/publisher.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/publisher/publisher.c.i: cmake_force
@@ -2185,7 +2241,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/publisher/publisher.c.s: cmake_f
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/rtime/rtime.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/rtime/rtime.c.obj: /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/rtime/rtime.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/rtime/rtime.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_152) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/rtime/rtime.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_156) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/rtime/rtime.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/rtime/rtime.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/rtime/rtime.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/rtime/rtime.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/rtime/rtime.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/rtime/rtime.c.i: cmake_force
@@ -2199,7 +2255,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/rtime/rtime.c.s: cmake_force
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/ssp/ssp.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/ssp/ssp.c.obj: /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/ssp/ssp.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/ssp/ssp.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_153) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/ssp/ssp.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_157) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/ssp/ssp.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/ssp/ssp.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/ssp/ssp.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/ssp/ssp.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/ssp/ssp.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/ssp/ssp.c.i: cmake_force
@@ -2213,7 +2269,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/ssp/ssp.c.s: cmake_force
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc.c.obj: /home/nando-toshiba/Desktop/salt/firmware/third-party/MQTT-C/source/mqttc.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_154) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_158) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/third-party/MQTT-C/source/mqttc.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc.c.i: cmake_force
@@ -2227,7 +2283,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc.c.s: cmake_forc
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc_pal.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc_pal.c.obj: /home/nando-toshiba/Desktop/salt/firmware/third-party/MQTT-C/source/mqttc_pal.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc_pal.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_155) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc_pal.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_159) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc_pal.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc_pal.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc_pal.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc_pal.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/third-party/MQTT-C/source/mqttc_pal.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc_pal.c.i: cmake_force
@@ -2241,7 +2297,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc_pal.c.s: cmake_
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/jWrite.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/jWrite.c.obj: /home/nando-toshiba/Desktop/salt/firmware/third-party/jWrite/jWrite/jWrite.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/jWrite.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_156) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/jWrite.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_160) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/jWrite.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/jWrite.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/jWrite.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/jWrite.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/third-party/jWrite/jWrite/jWrite.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/jWrite.c.i: cmake_force
@@ -2255,7 +2311,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/jWrite.c.s: cmake_for
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/main.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/main.c.obj: /home/nando-toshiba/Desktop/salt/firmware/third-party/jWrite/jWrite/main.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/main.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_157) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/main.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_161) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/main.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/main.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/main.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/main.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/third-party/jWrite/jWrite/main.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/main.c.i: cmake_force
@@ -2269,7 +2325,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/main.c.s: cmake_force
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_bittbl.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_bittbl.c.obj: /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/fwk/src/rkhfwk_bittbl.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_bittbl.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_158) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_bittbl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_162) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_bittbl.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_bittbl.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_bittbl.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_bittbl.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/fwk/src/rkhfwk_bittbl.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_bittbl.c.i: cmake_force
@@ -2283,7 +2339,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_bittbl.c.
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_dynevt.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_dynevt.c.obj: /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/fwk/src/rkhfwk_dynevt.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_dynevt.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_159) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_dynevt.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_163) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_dynevt.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_dynevt.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_dynevt.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_dynevt.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/fwk/src/rkhfwk_dynevt.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_dynevt.c.i: cmake_force
@@ -2297,7 +2353,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_dynevt.c.
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_evtpool.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_evtpool.c.obj: /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/fwk/src/rkhfwk_evtpool.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_evtpool.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_160) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_evtpool.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_164) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_evtpool.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_evtpool.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_evtpool.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_evtpool.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/fwk/src/rkhfwk_evtpool.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_evtpool.c.i: cmake_force
@@ -2311,7 +2367,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_evtpool.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_pubsub.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_pubsub.c.obj: /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/fwk/src/rkhfwk_pubsub.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_pubsub.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_161) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_pubsub.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_165) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_pubsub.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_pubsub.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_pubsub.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_pubsub.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/fwk/src/rkhfwk_pubsub.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_pubsub.c.i: cmake_force
@@ -2325,7 +2381,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_pubsub.c.
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_rdygrp.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_rdygrp.c.obj: /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/fwk/src/rkhfwk_rdygrp.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_rdygrp.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_162) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_rdygrp.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_166) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_rdygrp.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_rdygrp.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_rdygrp.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_rdygrp.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/fwk/src/rkhfwk_rdygrp.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_rdygrp.c.i: cmake_force
@@ -2339,7 +2395,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_rdygrp.c.
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_sched.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_sched.c.obj: /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/fwk/src/rkhfwk_sched.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_sched.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_163) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_sched.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_167) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_sched.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_sched.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_sched.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_sched.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/fwk/src/rkhfwk_sched.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_sched.c.i: cmake_force
@@ -2353,7 +2409,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_sched.c.s
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_version.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_version.c.obj: /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/fwk/src/rkhfwk_version.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_version.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_164) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_version.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_168) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_version.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_version.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_version.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_version.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/fwk/src/rkhfwk_version.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_version.c.i: cmake_force
@@ -2367,7 +2423,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_version.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/mempool/src/rkhmempool.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/mempool/src/rkhmempool.c.obj: /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/mempool/src/rkhmempool.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/mempool/src/rkhmempool.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_165) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/mempool/src/rkhmempool.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_169) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/mempool/src/rkhmempool.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/mempool/src/rkhmempool.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/mempool/src/rkhmempool.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/mempool/src/rkhmempool.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/mempool/src/rkhmempool.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/mempool/src/rkhmempool.c.i: cmake_force
@@ -2381,7 +2437,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/mempool/src/rkhmempool.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c.obj: /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_166) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_170) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c.i: cmake_force
@@ -2395,7 +2451,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/portable/arm-cortex/rkhs
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/queue/src/rkhqueue.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/queue/src/rkhqueue.c.obj: /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/queue/src/rkhqueue.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/queue/src/rkhqueue.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_167) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/queue/src/rkhqueue.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_171) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/queue/src/rkhqueue.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/queue/src/rkhqueue.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/queue/src/rkhqueue.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/queue/src/rkhqueue.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/queue/src/rkhqueue.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/queue/src/rkhqueue.c.i: cmake_force
@@ -2409,7 +2465,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/queue/src/rkhqueue.c.s: 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sm/src/rkhsm.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sm/src/rkhsm.c.obj: /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/sm/src/rkhsm.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sm/src/rkhsm.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_168) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sm/src/rkhsm.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_172) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sm/src/rkhsm.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sm/src/rkhsm.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sm/src/rkhsm.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sm/src/rkhsm.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/sm/src/rkhsm.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sm/src/rkhsm.c.i: cmake_force
@@ -2423,7 +2479,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sm/src/rkhsm.c.s: cmake_
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma.c.obj: /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/sma/src/rkhsma.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_169) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_173) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/sma/src/rkhsma.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma.c.i: cmake_force
@@ -2437,7 +2493,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma.c.s: cmak
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_prio.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_prio.c.obj: /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/sma/src/rkhsma_prio.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_prio.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_170) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_prio.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_174) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_prio.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_prio.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_prio.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_prio.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/sma/src/rkhsma_prio.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_prio.c.i: cmake_force
@@ -2451,7 +2507,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_prio.c.s:
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_sync.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_sync.c.obj: /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/sma/src/rkhsma_sync.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_sync.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_171) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_sync.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_175) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_sync.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_sync.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_sync.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_sync.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/sma/src/rkhsma_sync.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_sync.c.i: cmake_force
@@ -2465,7 +2521,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_sync.c.s:
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/tmr/src/rkhtmr.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/tmr/src/rkhtmr.c.obj: /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/tmr/src/rkhtmr.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/tmr/src/rkhtmr.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_172) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/tmr/src/rkhtmr.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_176) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/tmr/src/rkhtmr.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/tmr/src/rkhtmr.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/tmr/src/rkhtmr.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/tmr/src/rkhtmr.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/tmr/src/rkhtmr.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/tmr/src/rkhtmr.c.i: cmake_force
@@ -2479,7 +2535,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/tmr/src/rkhtmr.c.s: cmak
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_filter.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_filter.c.obj: /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/trc/src/rkhtrc_filter.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_filter.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_173) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_filter.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_177) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_filter.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_filter.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_filter.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_filter.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/trc/src/rkhtrc_filter.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_filter.c.i: cmake_force
@@ -2493,7 +2549,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_filter.c.
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_record.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_record.c.obj: /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/trc/src/rkhtrc_record.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_record.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_174) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_record.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_178) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_record.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_record.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_record.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_record.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/trc/src/rkhtrc_record.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_record.c.i: cmake_force
@@ -2507,7 +2563,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_record.c.
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.obj: /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/trc/src/rkhtrc_stream.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_175) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_179) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/trc/src/rkhtrc_stream.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.i: cmake_force
@@ -2521,7 +2577,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_datatypes.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_datatypes.c.obj: /home/nando-toshiba/Desktop/salt/firmware/third-party/stm32-sapi/src/sapi_datatypes.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_datatypes.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_176) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_datatypes.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_180) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_datatypes.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_datatypes.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_datatypes.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_datatypes.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/third-party/stm32-sapi/src/sapi_datatypes.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_datatypes.c.i: cmake_force
@@ -2535,7 +2591,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_datatypes.c.s: 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_gpio.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_gpio.c.obj: /home/nando-toshiba/Desktop/salt/firmware/third-party/stm32-sapi/src/sapi_gpio.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_gpio.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_177) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_gpio.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_181) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_gpio.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_gpio.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_gpio.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_gpio.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/third-party/stm32-sapi/src/sapi_gpio.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_gpio.c.i: cmake_force
@@ -2549,7 +2605,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_gpio.c.s: cmake
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_tick.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_tick.c.obj: /home/nando-toshiba/Desktop/salt/firmware/third-party/stm32-sapi/src/sapi_tick.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_tick.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_178) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_tick.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_182) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_tick.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_tick.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_tick.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_tick.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/third-party/stm32-sapi/src/sapi_tick.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_tick.c.i: cmake_force
@@ -2563,7 +2619,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_tick.c.s: cmake
 CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj: /home/nando-toshiba/Desktop/salt/firmware/utilities/htons.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_179) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_183) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj -c /home/nando-toshiba/Desktop/salt/firmware/utilities/htons.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.i: cmake_force
@@ -2697,6 +2753,10 @@ NUCLEO__F429ZI_elf_OBJECTS = \
 "CMakeFiles/NUCLEO-F429ZI.elf.dir/bsp/stm32f4xx_nucleo_144.c.obj" \
 "CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTime.c.obj" \
 "CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTimeTbl.c.obj" \
+"CMakeFiles/NUCLEO-F429ZI.elf.dir/mqttc-v116-sync/mqttc_v116_sync.c.obj" \
+"CMakeFiles/NUCLEO-F429ZI.elf.dir/network/network.c.obj" \
+"CMakeFiles/NUCLEO-F429ZI.elf.dir/rkh-mqttc/src/rkh_mqttc.c.obj" \
+"CMakeFiles/NUCLEO-F429ZI.elf.dir/rkh-mqttc/src/rkh_mqttc_pal.c.obj" \
 "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/bsp/assert.c.obj" \
 "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/bsp/bsp-salt.c.obj" \
 "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/configuration/saltCfg.c.obj" \
@@ -2880,6 +2940,10 @@ NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/blinkySysTick/hook.c.obj
 NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/bsp/stm32f4xx_nucleo_144.c.obj
 NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTime.c.obj
 NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTimeTbl.c.obj
+NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/mqttc-v116-sync/mqttc_v116_sync.c.obj
+NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/network/network.c.obj
+NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/rkh-mqttc/src/rkh_mqttc.c.obj
+NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/rkh-mqttc/src/rkh_mqttc_pal.c.obj
 NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/bsp/assert.c.obj
 NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/bsp/bsp-salt.c.obj
 NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/configuration/saltCfg.c.obj
@@ -2940,7 +3004,7 @@ NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/s
 NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj
 NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make
 NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_180) "Linking C executable NUCLEO-F429ZI.elf"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_184) "Linking C executable NUCLEO-F429ZI.elf"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/NUCLEO-F429ZI.elf.dir/link.txt --verbose=$(VERBOSE)
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold "Building /home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/NUCLEO-F429ZI.hex"
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold "Building /home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/NUCLEO-F429ZI.bin"

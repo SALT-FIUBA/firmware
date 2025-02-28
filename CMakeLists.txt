@@ -76,11 +76,9 @@ include_directories(
         Middlewares/Third_Party/LwIP/src/include/compat/stdc
         Middlewares/Third_Party/LwIP/system/arch
 
-
-        ##  blinky example
+        ## RKH
+        mTime
         bsp
-        blinky
-        #   blinky/bsp
 
         third-party/rkh/source/fwk/inc
         third-party/rkh/source/mempool/inc
@@ -92,15 +90,14 @@ include_directories(
 
         third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32
 
-        mTime
-
+        ##  blinky example
+        blinky
 
         ##  salt project
 
         third-party/jWrite/jWrite
         third-party/MQTT-C/include
         third-party/stm32-sapi/inc
-
 
         salt/utilities/rtime
         salt/utilities/mTime
@@ -141,10 +138,23 @@ include_directories(
         # blinky sys tick
         blinkySysTick
 
+        rkh-mqttc/include
+
+        mqttc-v116-sync
+        network
 )
 
 file(
         GLOB_RECURSE SOURCES "Core/*.*" "Drivers/*.*" "Middlewares/*.*" "LWIP/*.*"
+
+        "bsp/stm32f4xx_nucleo_144.c"
+
+        "third-party/MQTT-C/source/mqttc_pal.c"
+        "third-party/MQTT-C/source/mqttc.c"
+
+        "third-party/jWrite/jWrite/*.*"
+        "third-party/MQTT-C/source/*.*"
+        "third-party/stm32-sapi/src/*.*"
 
         "third-party/rkh/source/fwk/src/rkhfwk_bittbl.c"
         "third-party/rkh/source/fwk/src/rkhfwk_dynevt.c"
@@ -166,27 +176,19 @@ file(
 
         "third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c"
 
-        "bsp/stm32f4xx_nucleo_144.c"
-
-        #   "blinky/blinky.c"
-        #   "blinky/bsp/bsp_blinky.c"
-
         "blinky/bsp/assert.c"
-        #   "blinky/bsp/hook.c"
-
-        "mTime/mTime.c"
-        "mTime/mTimeTbl.c"
-
-        # salt
-
-        "third-party/jWrite/jWrite/*.*"
-        "third-party/MQTT-C/source/*.*"
-        "third-party/stm32-sapi/src/*.*"
 
         "salt/*.*"
 
-
         "utilities/*.*"
+
+        "rkh-mqttc/src/*.*"
+
+        "mTime/*.*"
+
+        "mqttc-v116-sync/*.*"
+
+        "network/*.*"
 
         # blinky sys tick
         "blinkySysTick/blinkySysTick.c"
@@ -208,22 +210,12 @@ target_compile_definitions(
         USE_HAL_DRIVER
         STM32F429xx
         RKH_PLATFORM="__STM32__"
-        #   RKH_CONF_FILE="blinky/rkhcfg.h"
         RKH_CONF_FILE="salt/rkhcfg.h"
 )
 get_target_property(COMPILE_DEFS ${PROJECT_NAME}.elf COMPILE_DEFINITIONS)
 message(STATUS "All compile definitions: ${COMPILE_DEFS}")
 message(STATUS "Build type: ${CMAKE_BUILD_TYPE}")
 message(STATUS "...")
-
-#add_definitions(
-#        -DDEBUG
-#        -DUSE_HAL_DRIVER
-#        -DSTM32F429xx -DRKH_PLATFORM="__STM32__"
-#        -DRKH_CONF_FILE="blinky/rkhcfg.h"
-#)
-
-#   -DCMAKE_BUILD_TYPE=Debug -G "Unix Makefiles" -DUSE_HAL_DRIVER -DSTM32F429xx -DRKH_PLATFORM="__STM32__" -DRKH_CONF_FILE="salt/rkhcfg.h"
 
 
 set(HEX_FILE ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.hex)

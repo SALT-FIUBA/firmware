@@ -3017,6 +3017,102 @@ mTime/mTimeTbl.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/mTime/mTimeTbl.c.s
 .PHONY : mTime/mTimeTbl.c.s
 
+mqttc-v116-sync/mqttc_v116_sync.obj: mqttc-v116-sync/mqttc_v116_sync.c.obj
+.PHONY : mqttc-v116-sync/mqttc_v116_sync.obj
+
+# target to build an object file
+mqttc-v116-sync/mqttc_v116_sync.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/mqttc-v116-sync/mqttc_v116_sync.c.obj
+.PHONY : mqttc-v116-sync/mqttc_v116_sync.c.obj
+
+mqttc-v116-sync/mqttc_v116_sync.i: mqttc-v116-sync/mqttc_v116_sync.c.i
+.PHONY : mqttc-v116-sync/mqttc_v116_sync.i
+
+# target to preprocess a source file
+mqttc-v116-sync/mqttc_v116_sync.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/mqttc-v116-sync/mqttc_v116_sync.c.i
+.PHONY : mqttc-v116-sync/mqttc_v116_sync.c.i
+
+mqttc-v116-sync/mqttc_v116_sync.s: mqttc-v116-sync/mqttc_v116_sync.c.s
+.PHONY : mqttc-v116-sync/mqttc_v116_sync.s
+
+# target to generate assembly for a file
+mqttc-v116-sync/mqttc_v116_sync.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/mqttc-v116-sync/mqttc_v116_sync.c.s
+.PHONY : mqttc-v116-sync/mqttc_v116_sync.c.s
+
+network/network.obj: network/network.c.obj
+.PHONY : network/network.obj
+
+# target to build an object file
+network/network.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/network/network.c.obj
+.PHONY : network/network.c.obj
+
+network/network.i: network/network.c.i
+.PHONY : network/network.i
+
+# target to preprocess a source file
+network/network.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/network/network.c.i
+.PHONY : network/network.c.i
+
+network/network.s: network/network.c.s
+.PHONY : network/network.s
+
+# target to generate assembly for a file
+network/network.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/network/network.c.s
+.PHONY : network/network.c.s
+
+rkh-mqttc/src/rkh_mqttc.obj: rkh-mqttc/src/rkh_mqttc.c.obj
+.PHONY : rkh-mqttc/src/rkh_mqttc.obj
+
+# target to build an object file
+rkh-mqttc/src/rkh_mqttc.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/rkh-mqttc/src/rkh_mqttc.c.obj
+.PHONY : rkh-mqttc/src/rkh_mqttc.c.obj
+
+rkh-mqttc/src/rkh_mqttc.i: rkh-mqttc/src/rkh_mqttc.c.i
+.PHONY : rkh-mqttc/src/rkh_mqttc.i
+
+# target to preprocess a source file
+rkh-mqttc/src/rkh_mqttc.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/rkh-mqttc/src/rkh_mqttc.c.i
+.PHONY : rkh-mqttc/src/rkh_mqttc.c.i
+
+rkh-mqttc/src/rkh_mqttc.s: rkh-mqttc/src/rkh_mqttc.c.s
+.PHONY : rkh-mqttc/src/rkh_mqttc.s
+
+# target to generate assembly for a file
+rkh-mqttc/src/rkh_mqttc.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/rkh-mqttc/src/rkh_mqttc.c.s
+.PHONY : rkh-mqttc/src/rkh_mqttc.c.s
+
+rkh-mqttc/src/rkh_mqttc_pal.obj: rkh-mqttc/src/rkh_mqttc_pal.c.obj
+.PHONY : rkh-mqttc/src/rkh_mqttc_pal.obj
+
+# target to build an object file
+rkh-mqttc/src/rkh_mqttc_pal.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/rkh-mqttc/src/rkh_mqttc_pal.c.obj
+.PHONY : rkh-mqttc/src/rkh_mqttc_pal.c.obj
+
+rkh-mqttc/src/rkh_mqttc_pal.i: rkh-mqttc/src/rkh_mqttc_pal.c.i
+.PHONY : rkh-mqttc/src/rkh_mqttc_pal.i
+
+# target to preprocess a source file
+rkh-mqttc/src/rkh_mqttc_pal.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/rkh-mqttc/src/rkh_mqttc_pal.c.i
+.PHONY : rkh-mqttc/src/rkh_mqttc_pal.c.i
+
+rkh-mqttc/src/rkh_mqttc_pal.s: rkh-mqttc/src/rkh_mqttc_pal.c.s
+.PHONY : rkh-mqttc/src/rkh_mqttc_pal.s
+
+# target to generate assembly for a file
+rkh-mqttc/src/rkh_mqttc_pal.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/rkh-mqttc/src/rkh_mqttc_pal.c.s
+.PHONY : rkh-mqttc/src/rkh_mqttc_pal.c.s
+
 salt/bsp/assert.obj: salt/bsp/assert.c.obj
 .PHONY : salt/bsp/assert.obj
 
@@ -4779,6 +4875,18 @@ help:
 	@echo "... mTime/mTimeTbl.obj"
 	@echo "... mTime/mTimeTbl.i"
 	@echo "... mTime/mTimeTbl.s"
+	@echo "... mqttc-v116-sync/mqttc_v116_sync.obj"
+	@echo "... mqttc-v116-sync/mqttc_v116_sync.i"
+	@echo "... mqttc-v116-sync/mqttc_v116_sync.s"
+	@echo "... network/network.obj"
+	@echo "... network/network.i"
+	@echo "... network/network.s"
+	@echo "... rkh-mqttc/src/rkh_mqttc.obj"
+	@echo "... rkh-mqttc/src/rkh_mqttc.i"
+	@echo "... rkh-mqttc/src/rkh_mqttc.s"
+	@echo "... rkh-mqttc/src/rkh_mqttc_pal.obj"
+	@echo "... rkh-mqttc/src/rkh_mqttc_pal.i"
+	@echo "... rkh-mqttc/src/rkh_mqttc_pal.s"
 	@echo "... salt/bsp/assert.obj"
 	@echo "... salt/bsp/assert.i"
 	@echo "... salt/bsp/assert.s"

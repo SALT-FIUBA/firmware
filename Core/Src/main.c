@@ -32,25 +32,38 @@
 #include "mTime.h"
 
 /* SALT includes */
+#include "salt-signals.h"
+#include "bsp-salt.h"
+
 #include "modcmd.h"
 #include "modmgr.h"
-#include "mqttProt.h"
 #include "logic.h"
-#include "salt-signals.h"
+
+#include "teloc.h"
+#include "sim808.h"
+
+#include "serial.h"
 #include "anIn.h"
 #include "onSwitch.h"
 #include "relay.h"
 #include "ledPanel.h"
 #include "buzzer.h"
 #include "pulseCounter.h"
-#include "teloc.h"
-#include "sim808.h"
-#include "serial.h"
-#include "publisher.h"
-#include "bsp-salt.h"
 #include "blinkySysTick.h"
-#include "tcp.h"
-#include "tcp-echo-server.h"
+
+//  #include "mqttProt.h"
+//  #include "publisher.h"
+
+#include "lwip/tcp.h"
+
+#include "mqttc_pal.h"
+#include "mqttc.h"
+#include "conmgr.h"
+#include "mqttProt.h"
+#include "publisher.h"
+#include "../../network/network.h"
+
+
 
 /* USER CODE END Includes */
 
@@ -94,7 +107,6 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-
 /* Blinky Local variables */
 #define QSTO_SIZE           4
 static RKH_EVT_T *qsto[QSTO_SIZE];
@@ -113,11 +125,11 @@ static RKH_ROM_STATIC_EVENT(e_Open, evOpen);
 static RKH_ROM_STATIC_EVENT(e_SaltEnable, evSaltEnable);
 static RKH_ROM_STATIC_EVENT(e_SaltDisable, evSaltDisable);
 static CmdEvt e_saltCmd;
-static MQTTProtCfg mqttProtCfg;
 static LogicCfg logicCfg;
 static ModCmdRcvHandler simACmdParser = NULL;
 static rbool_t initEnd = false;
 static rbool_t pwrCorrect = false;
+static MQTTProtCfg mqttProtCfg;
 
 /* USER CODE END PV */
 
@@ -249,10 +261,10 @@ void onMQTTCb(void** state,struct mqttc_response_publish *publish) {
     }
 }
 
+
 static void
 saltConfig(void)
 {
-    //  printf("salt config \n");
     /* Configuracion especifica SALT */
 
     /* RKH */
@@ -326,6 +338,9 @@ setupTraceFilters(void)
 }
 
 
+extern struct netif gnetif;
+
+
 
 /* USER CODE END 0 */
 
@@ -336,8 +351,16 @@ setupTraceFilters(void)
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-    printf("main \n");
-  /* USER CODE END 1 */
+    struct mqttc_client mqtt_client;
+    uint8_t sendbuf[2048]; // Buffer for outgoing MQTT messages
+    uint8_t recvbuf[2048]; // Buffer for incoming MQTT messages (separate from recv_buffer)
+    volatile int tcp_connected = 0;
+    volatile int mqtt_connected = 0;
+
+    // Define mqtt_pal_socket_handle as a pointer to tcp_pcb
+    mqttc_pal_socket_handle mqtt_tcp_pcb = NULL;
+
+    /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
 
@@ -361,36 +384,19 @@ int main(void)
   MX_LWIP_Init();
   /* USER CODE BEGIN 2 */
 
-
-  /* Initialize TCP echo server */
-  tcp_echoserver_init();
-
-    /* Infinite loop */
-    while (1)
-    {
-        /* LwIP process function - handles timeouts and LwIP periodic tasks */
-        MX_LWIP_Process();
-
-        /* Toggle LED to show activity */
-        HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0);
-        HAL_Delay(1000);
-    }
+    saltConfig();
 
 
-    /*
-  saltConfig();
-  rkh_fwk_init();
+    setupTraceFilters();
+    mTime_init(); // invoked in saltConfig function
 
+    rkh_fwk_init();
+    RKH_TRC_OPEN();
 
-  setupTraceFilters();
-  mTime_init(); // invoked in saltConfig function
-
-  RKH_TRC_OPEN();
-
-  rkh_dynEvt_init();
-  rkh_fwk_registerEvtPool(evPool0Sto, SIZEOF_EP0STO, SIZEOF_EP0_BLOCK);
-  rkh_fwk_registerEvtPool(evPool1Sto, SIZEOF_EP1STO, SIZEOF_EP1_BLOCK);
-  rkh_fwk_registerEvtPool(evPool2Sto, SIZEOF_EP2STO, SIZEOF_EP2_BLOCK);
+    rkh_dynEvt_init();
+    rkh_fwk_registerEvtPool(evPool0Sto, SIZEOF_EP0STO, SIZEOF_EP0_BLOCK);
+    rkh_fwk_registerEvtPool(evPool1Sto, SIZEOF_EP1STO, SIZEOF_EP1_BLOCK);
+    rkh_fwk_registerEvtPool(evPool2Sto, SIZEOF_EP2STO, SIZEOF_EP2_BLOCK);
 
     mqttProtCfg.publishTime = 5;
     mqttProtCfg.syncTime = 4;
@@ -401,38 +407,55 @@ int main(void)
     strcpy(mqttProtCfg.subTopic, "");
     mqttProtCfg.callback = onMQTTCb;
     MQTTProt_ctor(&mqttProtCfg, publishDimba);
-
     logicCfg.publishTime = 8;
     logic_ctor(&logicCfg);
 
-    //  blinker_ctor();
 
     RKH_SMA_ACTIVATE(conMgr, ConMgr_qsto, CONMGR_QSTO_SIZE, 0, 0);
     RKH_SMA_ACTIVATE(modMgr, ModMgr_qsto, MODMGR_QSTO_SIZE, 0, 0);
     RKH_SMA_ACTIVATE(mqttProt, MQTTProt_qsto, MQTTPROT_QSTO_SIZE, 0, 0);
     RKH_SMA_ACTIVATE(logic, Logic_qsto, LOGIC_QSTO_SIZE, 0, 0);
-    //   RKH_SMA_ACTIVATE(blinker, qsto, QSTO_SIZE,0,0);
+
+    struct netif *netif = netif_default;
+    printf("Waiting for network interface...\n");
+    while (netif == NULL || !netif_is_up(netif)) {
+        MX_LWIP_Process();
+        HAL_Delay(100);
+    }
+    printf("Waiting for link...\n");
+    int link_stable_count = 0;
+    while (link_stable_count < 10) {
+        if (!netif_is_link_up(netif)) {
+            printf("Link down\n");
+            link_stable_count = 0;
+        } else {
+            link_stable_count++;
+        }
+        MX_LWIP_Process();
+        HAL_Delay(100);
+    }
+    printf("Link up - IP: %s\n", ip4addr_ntoa(&netif->ip_addr));
+    HAL_Delay(1000);
 
     RKH_SMA_POST_FIFO(conMgr, &e_Open, 0);
-
     initEnd = true;
 
     rkh_fwk_enter();
 
     RKH_TRC_CLOSE();
 
-    return 0;
-    */
 
+    return 0;
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-    /* USER CODE END WHILE */
+  /* USER CODE END WHILE */
 
-    /* USER CODE BEGIN 3 */
+  /* USER CODE BEGIN 3 */
   /* USER CODE END 3 */
 }
+
 
 /**
   * @brief System Clock Configuration

@@ -29,6 +29,8 @@
 #include "rtime.h"
 #include "bsp-salt.h"
 #include "logic.h"
+#include "mqttc_pal.h"
+#include "tcp.h"
 
 /* ----------------------------- Local macros ------------------------------ */
 #define SIZEOF_QDEFER   1
@@ -75,9 +77,15 @@ static void configureInit(ConMgr *const me, RKH_EVT_T *pe);
 static void configTry(ConMgr *const me, RKH_EVT_T *pe);
 static void requestIp(ConMgr *const me, RKH_EVT_T *pe);
 static void connectInit(ConMgr *const me, RKH_EVT_T *pe);
+static void setGpsData(ConMgr *const me, RKH_EVT_T *pe);
+
+// waitRetryConnect -> connecting transition
 static void connectTry(ConMgr *const me, RKH_EVT_T *pe);
+
+// transition functions of ConMgr_connecting sub state machine
 static void socketOpen(ConMgr *const me, RKH_EVT_T *pe);
 static void socketClose(ConMgr *const me, RKH_EVT_T *pe);
+
 static void readData(ConMgr *const me, RKH_EVT_T *pe);
 static void sendRequest(ConMgr *const me, RKH_EVT_T *pe);
 static void flushData(ConMgr *const me, RKH_EVT_T *pe);
@@ -87,9 +95,10 @@ static void sendFail(ConMgr *const me, RKH_EVT_T *pe);
 static void recvFail(ConMgr *const me, RKH_EVT_T *pe);
 static void tryGetStatus(ConMgr *const me, RKH_EVT_T *pe);
 
-static void setGpsData(ConMgr *const me, RKH_EVT_T *pe);
 
 /* ......................... Declares entry actions ........................ */
+
+// ConMgr_initialize sub SM entry actions
 static void sendSync(ConMgr *const me);
 static void sendInit(ConMgr *const me);
 static void checkPin(ConMgr *const me);
@@ -97,38 +106,83 @@ static void setPin(ConMgr *const me);
 static void netTimeEnable(ConMgr *const me);
 static void getImei(ConMgr *const me);
 static void cipShutdown(ConMgr *const me);
+static void setupManualGet(ConMgr *const me);
+
+// ConMgr_unregistered SM
 static void unregEntry(ConMgr *const me);
 static void regEntry(ConMgr *const me);
+
+// ConMgr_failure
 static void failureEntry(ConMgr *const me);
-static void setupManualGet(ConMgr *const me);
+
+
+// ConMgr_registered sub SM entry actions
 static void waitNetClockSyncEntry(ConMgr *const me);
 static void waitRetryConfigEntry(ConMgr *const me);
+
+// ConMgr_configure sub SM entry actions
 static void getOper(ConMgr *const me);
 static void setupAPN(ConMgr *const me);
 static void startGPRS(ConMgr *const me);
+
+// ConMgr_wReopen SM
 static void wReopenEntry(ConMgr *const me);
+
+// ConMgr_waitRetryConnect SM
 static void waitRetryConnEntry(ConMgr *const me);
+
+// ConMgr_checkIP SM
 static void getConnStatus(ConMgr *const me);
+
+// ConMgr_waitingServer SM
 static void isConnected(ConMgr *const me);
+// ConMgr_registered SM
 static void connectingEntry(ConMgr *const me);
+
+// ConMgr_connected SM
 static void socketConnected(ConMgr *const me);
 static void idleEntry(ConMgr *const me);
 
+// ConMgr_waitInit SM
 static void setInitTimeOut(ConMgr *const me);
+
+// ConMgr_error SM
 static void errorReport(ConMgr *const me);
+
+// ConMgr_gps SM
 static void initGps(ConMgr *const me);
 static void getGps(ConMgr *const me);
+
 /* ......................... Declares exit actions ......................... */
+
+
+// ConMgr_unregistered SM
 static void unregExit(ConMgr *const me);
+
+// ConMgr_registered SM
 static void regExit(ConMgr *const me);
+
+// ConMgr_registered sub SM exit actions
 static void waitNetClockSyncExit(ConMgr *const me);
+
+// ConMgr_wReopen SM
 static void wReopenExit(ConMgr *const me);
-static void waitRetryConnExit(ConMgr *const me);
+
+// ConMgr_failure
 static void failureExit(ConMgr *const me);
+
+// ConMgr_getStatus
+static void getStatusExit(ConMgr *const me);
+
+// ConMgr_waitRetryConnect SM
+static void waitRetryConnExit(ConMgr *const me);
+
+// ConMgr_connecting SM
 static void connectingExit(ConMgr *const me);
+
+// ConMgr_connected SM
 static void socketDisconnected(ConMgr *const me);
 static void idleExit(ConMgr *const me);
-static void getStatusExit(ConMgr *const me);
 
 /* ............................ Declares guards ............................ */
 rbool_t checkSyncTry(ConMgr *const me, RKH_EVT_T *pe);
@@ -447,6 +501,8 @@ struct ConMgr
     char Oper[OPER_BUF_SIZE];
 
     GpsDataCallback gpsDataCallback;
+
+    mqttc_pal_socket_handle sockfd;
 };
 
 typedef struct Apn
@@ -495,6 +551,8 @@ static RKH_ROM_STATIC_EVENT(e_oper, evOper);
 static RKH_ROM_STATIC_EVENT(e_ipStatus, evIPStatus);
 
 
+static RKH_ROM_STATIC_EVENT(e_connected, evConnected);
+static RKH_ROM_STATIC_EVENT(e_Error, evError);
 
 //
 
@@ -561,6 +619,8 @@ init(ConMgr *const me, RKH_EVT_T *pe)
 
     RKH_TR_FWK_AO(me);
 
+    /*
+
     RKH_TR_FWK_TIMER(&me->timer);
     RKH_TR_FWK_TIMER(&me->timerReg);
 
@@ -613,7 +673,6 @@ init(ConMgr *const me, RKH_EVT_T *pe)
     RKH_TR_FWK_TIMER(&me->timer);
     RKH_TR_FWK_TIMER(&me->timerReg);
 
-    /*
     RKH_TR_FWK_SIG(evOpen);
     RKH_TR_FWK_SIG(evClose);
     RKH_TR_FWK_SIG(evCmd);
@@ -648,7 +707,8 @@ init(ConMgr *const me, RKH_EVT_T *pe)
     RKH_TR_FWK_SIG(evRestart);
     RKH_TR_FWK_SIG(evSigLevel);
     RKH_TR_FWK_SIG(evRegTimeout);
-*/
+
+     */
 
     rkh_queue_init(&qDefer, (const void **)qDefer_sto, SIZEOF_QDEFER,
                    CV(0));
@@ -815,13 +875,115 @@ connectTry(ConMgr *const me, RKH_EVT_T *pe)
     ++me->retryCount;
 }
 
+
+/*
+ * TCP PCB
+ */
+
+static void tcp_err_callback(void *arg, err_t err) {
+    printf("TCP error: %d\n", err);
+}
+
+static err_t tcp_sent_callback(void *arg, struct tcp_pcb *tpcb, u16_t len) {
+    printf("Sent %d bytes\n", len);
+    return ERR_OK;
+}
+
+static err_t tcp_poll_callback(void *arg, struct tcp_pcb *tpcb) {
+    printf("Polling\n");
+    return ERR_OK;
+}
+
+
+static err_t tcp_recv_callback(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_t err) {
+
+    ConMgr *me = (ConMgr *)arg;
+
+    if (p != NULL) {
+
+        // Allocate event with received data
+        printf("received %u bytes \n", p->tot_len);
+        ReceivedEvt *evt = RKH_ALLOC_EVT(ReceivedEvt, evRecv, me);
+        evt->size = p->tot_len > RECV_BUFF_SIZE ? RECV_BUFF_SIZE : p->tot_len;
+        pbuf_copy_partial(p, evt->buf, evt->size, 0);
+
+        RKH_SMA_POST_FIFO(mqttProt, RKH_UPCAST(RKH_EVT_T, evt), me);
+
+        tcp_recved(tpcb, p->tot_len);
+        pbuf_free(p);
+
+    } else {
+
+        printf("Connection closed \n");
+        tcp_close(tpcb);
+
+        RKH_SMA_POST_FIFO(conMgr, &e_NetDisconnected, me);  // Connection closed
+    }
+
+    return ERR_OK;
+}
+
+static err_t connect_callback(void *arg, struct tcp_pcb *tpcb, err_t err) {
+
+    printf("connect_callback \n");
+    ConMgr *me = (ConMgr *)arg;
+
+    if (err == ERR_OK) {
+
+        printf("connect_callback success \n");
+        RKH_SMA_POST_FIFO(conMgr, RKH_UPCAST(RKH_EVT_T, &e_connected), me);
+    } else {
+
+        printf("connect_callback failed \n");
+        RKH_SMA_POST_FIFO(conMgr, RKH_UPCAST(RKH_EVT_T, &e_Error), me);
+    }
+
+    return ERR_OK;
+}
+
+
 static void
 socketOpen(ConMgr *const me, RKH_EVT_T *pe)
 {
-    (void)me;
-    (void)pe;
+    /*
+     * old code
 
-    ModCmd_connect(CONNECTION_PROT, CONNECTION_DOMAIN, CONNECTION_PORT);
+        (void)me;
+        (void)pe;
+
+        ModCmd_connect(CONNECTION_PROT, CONNECTION_DOMAIN, CONNECTION_PORT);
+     */
+
+    printf("socketOpen \n");
+    ip_addr_t remote_ip;
+    err_t error;
+
+    me->sockfd = tcp_new();
+    if (me->sockfd == NULL) {
+        printf("failed to create TCP PCB \n");
+        return;
+    }
+
+    tcp_arg(me->sockfd, me);
+    tcp_err(me->sockfd, tcp_err_callback);
+    tcp_recv(me->sockfd, tcp_recv_callback);
+
+    IP4_ADDR(&remote_ip, 192, 168, 1, 81);
+    uint16_t remote_port = 1883;
+
+    err_t err = tcp_connect(
+            me->sockfd, &remote_ip,
+            remote_port, connect_callback
+            );
+
+    printf("tcp_connect result: %d \n", err);
+
+    if (err != ERR_OK) {
+        printf("tcp_connect failed: %d\n", err);
+        tcp_close(me->sockfd);
+        me->sockfd = NULL;
+    }
+
 }
 
 static void
@@ -1123,13 +1285,26 @@ connectingEntry(ConMgr *const me)
 static void
 socketConnected(ConMgr *const me)
 {
-    (void)me;
+    /*
+     * old code
 
-    me->retryCount = 0;
+        (void)me;
 
-    RKH_SMA_POST_FIFO(mqttProt, &e_NetConnected, conMgr);
+        me->retryCount = 0;
+
+        RKH_SMA_POST_FIFO(mqttProt, &e_NetConnected, conMgr);
+
+        bsp_netStatus(ConnectedSt);
+     */
+
+    NetConnectedEvt * evt = RKH_ALLOC_EVT(NetConnectedEvt, evNetConnected, me);
+    evt->sockfd = me->sockfd;
+
+    RKH_SMA_POST_FIFO(mqttProt, RKH_UPCAST(RKH_EVT_T , evt), me);
 
     bsp_netStatus(ConnectedSt);
+    me->retryCount = 0;
+
 }
 
 static void
