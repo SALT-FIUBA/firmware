@@ -435,6 +435,7 @@ ssize_t mqtt_pal_recvall(mqtt_pal_socket_handle fd, void* buf, size_t bufsz, int
 
 
 #include "altcp.h"
+#include "state-machines/tcp-conmgr/tcp-conmgr.h"
 //  #include "lwip/tcp.h"
 
 
@@ -573,24 +574,22 @@ ssize_t mqttc_pal_sendall(mqttc_pal_socket_handle pcb, const void* buf, size_t l
 
 ssize_t mqttc_pal_recvall(mqttc_pal_socket_handle pcb, void* buf, size_t bufsz, int flags) {
 
-    if (recv_len > 0) {
+    TcpConMgr *me = RKH_UPCAST(TcpConMgr, tcpConMgr);
 
-        // Copy available data, up to bufsz
-        size_t bytes_to_read = (recv_len < bufsz) ? recv_len : bufsz;
-        memcpy(buf, recv_buffer + recv_index, bytes_to_read);
-        recv_index += bytes_to_read;
-        if (recv_index >= recv_len) {
-            // Buffer fully read, reset
-            recv_len = 0;
-            recv_index = 0;
+    if (me->recv_len > 0) {
+
+        size_t bytes_to_read = (me->recv_len < bufsz) ? me->recv_len : bufsz;
+        memcpy(buf, me->recv_buffer + me->recv_index, bytes_to_read);
+        me->recv_index += bytes_to_read;
+
+        if (me->recv_index >= me->recv_len) {
+            me->recv_len = 0;
+            me->recv_index = 0;
         } else {
-            // More data remains
-            recv_len -= bytes_to_read;
+            me->recv_len -= bytes_to_read;
         }
-
         return bytes_to_read;
     }
-
     return 0; // No data available yet
 }
 

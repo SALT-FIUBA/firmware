@@ -142,6 +142,9 @@ include_directories(
 
         mqttc-v116-sync
         network
+
+        salt/state-machines/tcp-conmgr
+        salt/state-machines/tcp-mqttprot
 )
 
 file(

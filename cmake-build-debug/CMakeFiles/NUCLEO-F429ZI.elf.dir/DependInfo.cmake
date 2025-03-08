@@ -93,6 +93,8 @@ set(CMAKE_ASM_TARGET_INCLUDE_PATH
   "/home/nando-toshiba/Desktop/salt/firmware/rkh-mqttc/include"
   "/home/nando-toshiba/Desktop/salt/firmware/mqttc-v116-sync"
   "/home/nando-toshiba/Desktop/salt/firmware/network"
+  "/home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/tcp-conmgr"
+  "/home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/tcp-mqttprot"
   )
 
 # The set of dependency files which are needed:
@@ -245,6 +247,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/module-manager/modmgr.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/module-manager/modmgr.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/module-manager/modmgr.c.obj.d"
   "/home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/mqtt-protocol/mqttProt.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/mqtt-protocol/mqttProt.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/mqtt-protocol/mqttProt.c.obj.d"
   "/home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/tcp-conmgr/tcp-conmgr.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/tcp-conmgr/tcp-conmgr.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/tcp-conmgr/tcp-conmgr.c.obj.d"
+  "/home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/tcp-mqttprot/tcp-mqttprot.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/tcp-mqttprot/tcp-mqttprot.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/tcp-mqttprot/tcp-mqttprot.c.obj.d"
   "/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/aes/aes.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/aes/aes.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/aes/aes.c.obj.d"
   "/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/date/date.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/date/date.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/date/date.c.obj.d"
   "/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/emaFilter/emaFilter.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/emaFilter/emaFilter.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/emaFilter/emaFilter.c.obj.d"

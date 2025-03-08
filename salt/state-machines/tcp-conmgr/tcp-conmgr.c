@@ -1,21 +1,18 @@
-
-#include "tcp-conmgr.h"
-
-
 /**
  *  \file       tcp-conmgr.c
- *  \brief      Implementation of TCP connection manager for a generic TCP server using lwIP.
+ *  \brief      Implementation of TCP connection manager for MQTT integration using lwIP.
  */
 
 /* ----------------------------- Include files ----------------------------- */
+#include "tcp-conmgr.h"
+#include "mqttProt.h"  // Include mqttProt to post events to it
 #include "salt-signals.h"
 #include "bsp-salt.h"
+#include "logic.h"
 
 /* ----------------------------- Local macros ------------------------------ */
-#define SIZEOF_QDEFER   1
+#define SIZEOF_QDEFER       1
 #define TCP_RECONNECT_DELAY RKH_TIME_MS(5000) /* 5 seconds delay before reconnect */
-
-/* ......................... Declares active object ........................ */
 
 /* ................... Declares states and pseudostates .................... */
 RKH_DCLR_BASIC_STATE TcpConMgr_inactive, TcpConMgr_connecting, TcpConMgr_connected, TcpConMgr_sending, TcpConMgr_receiving;
@@ -33,6 +30,7 @@ static void send_request(TcpConMgr *const me, RKH_EVT_T *pe);
 static void flush_data(TcpConMgr *const me, RKH_EVT_T *pe);
 static void read_data(TcpConMgr *const me, RKH_EVT_T *pe);
 static void tcp_connect_attempt(TcpConMgr *const me, RKH_EVT_T *pe);
+static void notify_connected(TcpConMgr *const me, RKH_EVT_T *pe);
 
 /* ......................... Declares entry actions ........................ */
 static void connecting_entry(TcpConMgr *const me);
@@ -59,9 +57,9 @@ RKH_CREATE_BASIC_STATE(TcpConMgr_connecting, connecting_entry, connecting_exit, 
 RKH_CREATE_TRANS_TABLE(TcpConMgr_connecting)
                 RKH_TRINT(evSend, NULL, defer),
                 RKH_TRINT(evRecv, NULL, defer),
-                RKH_TRREG(evConnected, NULL, NULL, &TcpConMgr_connected),
+                RKH_TRREG(evConnected, NULL, notify_connected, &TcpConMgr_connected),
                 RKH_TRREG(evTimeout, NULL, tcp_connect_attempt, &TcpConMgr_connecting),
-                RKH_TRREG(evError, NULL, NULL, &TcpConMgr_connecting),
+        RKH_TRREG(evError, NULL, NULL, &TcpConMgr_connecting),
 RKH_END_TRANS_TABLE
 
 RKH_CREATE_BASIC_STATE(TcpConMgr_connected, connected_entry, connected_exit, &TcpConMgr_active, NULL);
@@ -71,20 +69,19 @@ RKH_CREATE_TRANS_TABLE(TcpConMgr_connected)
                 RKH_TRREG(evClosed, NULL, NULL, &TcpConMgr_connecting),
 RKH_END_TRANS_TABLE
 
-RKH_CREATE_BASIC_STATE(TcpConMgr_sending, NULL, NULL, &TcpConMgr_connected, NULL);
+RKH_CREATE_BASIC_STATE(TcpConMgr_sending, NULL, NULL, &TcpConMgr_active, NULL);
 RKH_CREATE_TRANS_TABLE(TcpConMgr_sending)
                 RKH_TRREG(evOk, NULL, flush_data, &TcpConMgr_connected),
                 RKH_TRREG(evError, NULL, NULL, &TcpConMgr_connecting),
 RKH_END_TRANS_TABLE
 
-RKH_CREATE_BASIC_STATE(TcpConMgr_receiving, NULL, NULL, &TcpConMgr_connected, NULL);
+RKH_CREATE_BASIC_STATE(TcpConMgr_receiving, NULL, NULL, &TcpConMgr_active, NULL);
 RKH_CREATE_TRANS_TABLE(TcpConMgr_receiving)
                 RKH_TRREG(evOk, NULL, NULL, &TcpConMgr_connected),
                 RKH_TRREG(evError, NULL, NULL, &TcpConMgr_connecting),
 RKH_END_TRANS_TABLE
 
 /* ............................. Active object ............................. */
-
 RKH_SMA_CREATE(TcpConMgr, tcpConMgr, 1, HCAL, &TcpConMgr_inactive, init, NULL);
 RKH_SMA_DEF_PTR(tcpConMgr);
 
@@ -95,6 +92,7 @@ static RKH_ROM_STATIC_EVENT(e_Close, evClose);
 static RKH_ROM_STATIC_EVENT(e_NetConnected, evNetConnected);
 static RKH_ROM_STATIC_EVENT(e_NetDisconnected, evNetDisconnected);
 static RKH_ROM_STATIC_EVENT(e_Sent, evSent);
+static RKH_ROM_STATIC_EVENT(e_Recv, evRecv);
 
 /* ---------------------------- Local variables ---------------------------- */
 static RKH_QUEUE_T qDefer;
@@ -104,20 +102,18 @@ static RKH_EVT_T *qDefer_sto[SIZEOF_QDEFER];
 static void tcp_err_callback(void *arg, err_t err) {
     TcpConMgr *me = (TcpConMgr *)arg;
     printf("TCP error: %d\n", err);
-    RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_NetDisconnected), me);
+    RKH_SMA_POST_FIFO(mqttProt, RKH_UPCAST(RKH_EVT_T, &e_NetDisconnected), me);
 }
 
 static err_t tcp_sent_callback(void *arg, struct tcp_pcb *tpcb, u16_t len) {
     TcpConMgr *me = (TcpConMgr *)arg;
     printf("Sent %d bytes\n", len);
-    RKH_SMA_POST_FIFO(tcpConMgr, &e_Sent, me);
+    RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Sent), me);
     return ERR_OK;
 }
 
 static err_t tcp_recv_callback(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_t err) {
-
-    printf("tcp_recv_callback \n");
-
+    printf("tcp_recv_callback\n");
     TcpConMgr *me = (TcpConMgr *)arg;
 
     if (p != NULL) {
@@ -125,50 +121,49 @@ static err_t tcp_recv_callback(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, 
             memcpy(me->recv_buffer + me->recv_len, p->payload, p->tot_len);
             me->recv_len += p->tot_len;
             printf("Received %d bytes\n", p->tot_len);
-            RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_NetConnected), me);
+            RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Recv), me);
         } else {
             printf("Receive buffer overflow\n");
             tcp_close(tpcb);
             me->tpcb = NULL;
-            RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_NetDisconnected), me);
+            RKH_SMA_POST_FIFO(mqttProt, RKH_UPCAST(RKH_EVT_T, &e_NetDisconnected), me);
         }
         pbuf_free(p);
     } else {
         printf("Connection closed\n");
         tcp_close(tpcb);
         me->tpcb = NULL;
-        RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_NetDisconnected), me);
+        RKH_SMA_POST_FIFO(mqttProt, RKH_UPCAST(RKH_EVT_T, &e_NetDisconnected), me);
     }
     return ERR_OK;
 }
 
 static err_t tcp_connect_callback(void *arg, struct tcp_pcb *tpcb, err_t err) {
-
-    printf("tcp_connect_callback \n");
-
+    printf("tcp_connect_callback\n");
     TcpConMgr *me = (TcpConMgr *)arg;
 
     if (err == ERR_OK) {
         printf("TCP Connected\n");
+        me->tpcb = tpcb;
         tcp_recv(tpcb, tcp_recv_callback);
+        tcp_sent(tpcb, tcp_sent_callback);
         RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_NetConnected), me);
     } else {
         printf("TCP Connection failed: %d\n", err);
         tcp_close(tpcb);
         me->tpcb = NULL;
-        RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_NetDisconnected), me);
+        RKH_SMA_POST_FIFO(mqttProt, RKH_UPCAST(RKH_EVT_T, &e_NetDisconnected), me);
     }
     return ERR_OK;
 }
 
 /* ............................ Initial action ............................. */
 static void init(TcpConMgr *const me, RKH_EVT_T *pe) {
-
-    printf("init \n");
-
+    printf("init\n");
     (void)pe;
     RKH_TMR_INIT(&me->timer, &e_tout, NULL);
     me->tpcb = NULL;
+    me->psend = NULL;
     me->recv_len = 0;
     me->recv_index = 0;
     rkh_queue_init(&qDefer, (const void **)qDefer_sto, SIZEOF_QDEFER, CV(0));
@@ -176,17 +171,13 @@ static void init(TcpConMgr *const me, RKH_EVT_T *pe) {
 
 /* ............................ Effect actions ............................. */
 static void open(TcpConMgr *const me, RKH_EVT_T *pe) {
-
-    printf("open \n");
-
+    printf("open\n");
     (void)pe;
     tcp_connect_attempt(me, pe);
 }
 
 static void close(TcpConMgr *const me, RKH_EVT_T *pe) {
-
-    printf("close \n");
-
+    printf("close\n");
     (void)pe;
     if (me->tpcb != NULL) {
         tcp_close(me->tpcb);
@@ -195,18 +186,14 @@ static void close(TcpConMgr *const me, RKH_EVT_T *pe) {
 }
 
 static void defer(TcpConMgr *const me, RKH_EVT_T *pe) {
-
-    printf("defer \n");
-
+    printf("defer\n");
     if (rkh_queue_is_full(&qDefer) != RKH_TRUE) {
         rkh_sma_defer(&qDefer, pe);
     }
 }
 
 static void send_request(TcpConMgr *const me, RKH_EVT_T *pe) {
-
-    printf("send_request \n");
-
+    printf("send_request\n");
     me->psend = RKH_UPCAST(TcpSendEvt, pe);
 
     if (me->tpcb != NULL) {
@@ -216,23 +203,20 @@ static void send_request(TcpConMgr *const me, RKH_EVT_T *pe) {
             RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Sent), me);
         } else {
             printf("tcp_write failed: %d\n", err);
-            RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_NetDisconnected), me);
+            RKH_SMA_POST_FIFO(mqttProt, RKH_UPCAST(RKH_EVT_T, &e_NetDisconnected), me);
         }
     }
 }
 
 static void flush_data(TcpConMgr *const me, RKH_EVT_T *pe) {
-
-    printf("flush_data \n");
-    /* Already handled in send_request */
+    printf("flush_data\n");
+    RKH_SMA_POST_FIFO(mqttProt, RKH_UPCAST(RKH_EVT_T, &e_Sent), me);
 }
 
 static void read_data(TcpConMgr *const me, RKH_EVT_T *pe) {
-
-    printf("read_data \n");
-
+    printf("read_data\n");
     if (me->recv_len > 0) {
-        TcpReceivedEvt *evt = RKH_ALLOC_EVT(TcpReceivedEvt, evRecv, me);
+        TcpReceivedEvt *evt = RKH_ALLOC_EVT(TcpReceivedEvt, evReceived, me);
         size_t bytes_to_read = (me->recv_len < RECV_BUFF_SIZE) ? me->recv_len : RECV_BUFF_SIZE;
         memcpy(evt->buf, me->recv_buffer + me->recv_index, bytes_to_read);
         evt->size = bytes_to_read;
@@ -243,17 +227,13 @@ static void read_data(TcpConMgr *const me, RKH_EVT_T *pe) {
         } else {
             me->recv_len -= bytes_to_read;
         }
-        /* Forward to another component if needed, e.g., logic */
-        // TODO
-        //  RKH_SMA_POST_FIFO(logic, RKH_UPCAST(RKH_EVT_T, evt), me); /* Replace 'logic' with your target AO */
+        RKH_SMA_POST_FIFO(mqttProt, RKH_UPCAST(RKH_EVT_T, evt), me); // Send to mqttProt
     }
 }
 
 static void tcp_connect_attempt(TcpConMgr *const me, RKH_EVT_T *pe) {
-    printf("tcp_connect_attempt \n");
-
+    printf("tcp_connect_attempt\n");
     if (me->tpcb == NULL) {
-
         me->tpcb = altcp_new();
         if (me->tpcb == NULL) {
             printf("Failed to create TCP PCB\n");
@@ -266,8 +246,8 @@ static void tcp_connect_attempt(TcpConMgr *const me, RKH_EVT_T *pe) {
         tcp_sent(me->tpcb, tcp_sent_callback);
 
         ip_addr_t remote_ip;
-        IP4_ADDR(&remote_ip, 192, 168, 1, 81); /* Replace with your TCP server IP */
-        uint16_t remote_port = 1883; /* Replace with your TCP server port */
+        IP4_ADDR(&remote_ip, 192, 168, 1, 81); /* MQTT broker IP */
+        uint16_t remote_port = 1883; /* MQTT port */
 
         err_t err = tcp_connect(me->tpcb, &remote_ip, remote_port, tcp_connect_callback);
         if (err != ERR_OK) {
@@ -279,29 +259,32 @@ static void tcp_connect_attempt(TcpConMgr *const me, RKH_EVT_T *pe) {
     }
 }
 
+static void notify_connected(TcpConMgr *const me, RKH_EVT_T *pe) {
+    printf("notify_connected\n");
+    TcpNetConnectedEvt *evt = RKH_ALLOC_EVT(TcpNetConnectedEvt, evNetConnected, me);
+    evt->sockfd = (mqttc_pal_socket_handle)me->tpcb; // Pass tcp_pcb to mqttProt
+    RKH_SMA_POST_FIFO(mqttProt, RKH_UPCAST(RKH_EVT_T, evt), me);
+}
+
 /* ............................. Entry actions ............................. */
 static void connecting_entry(TcpConMgr *const me) {
-
-    printf("connecting_entry \n");
-
+    printf("connecting_entry\n");
     tcp_connect_attempt(me, NULL);
 }
 
 static void connected_entry(TcpConMgr *const me) {
-
-    printf("connected_entry \n");
-
+    printf("connected_entry\n");
     bsp_netStatus(ConnectedSt);
     rkh_sma_recall((RKH_SMA_T *)me, &qDefer);
 }
 
 /* ............................. Exit actions ............................. */
 static void connecting_exit(TcpConMgr *const me) {
-    printf("connecting_exit \n");
+    printf("connecting_exit\n");
     rkh_tmr_stop(&me->timer);
 }
 
 static void connected_exit(TcpConMgr *const me) {
-    printf("connected_exit \n");
+    printf("connected_exit\n");
     bsp_netStatus(DisconnectedSt);
 }

@@ -296,6 +296,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/mqtt-protocol/mqttProt.c.obj.d"
   "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/tcp-conmgr/tcp-conmgr.c.obj"
   "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/tcp-conmgr/tcp-conmgr.c.obj.d"
+  "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/tcp-mqttprot/tcp-mqttprot.c.obj"
+  "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/tcp-mqttprot/tcp-mqttprot.c.obj.d"
   "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/aes/aes.c.obj"
   "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/aes/aes.c.obj.d"
   "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/date/date.c.obj"

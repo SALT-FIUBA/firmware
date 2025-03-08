@@ -33,8 +33,8 @@
 
 /* SALT includes */
 #include "salt-signals.h"
-#include "bsp-salt.h"
-#include "state-machines/tcp-conmgr/tcp-conmgr.h"
+#include "tcp-conmgr.h"
+#include "tcp-mqttprot.h"
 
 
 
@@ -97,13 +97,8 @@ static RKH_ROM_STATIC_EVENT(e_Open, evOpen);
   */
 int main(void)
 {
-
   /* USER CODE BEGIN 1 */
-    uint8_t sendbuf[2048]; // Buffer for outgoing MQTT messages
-    uint8_t recvbuf[2048]; // Buffer for incoming MQTT messages (separate from recv_buffer)
-
-    struct tcp_pcb * tcp_pcb = NULL;
-    /* USER CODE END 1 */
+  /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
 
@@ -150,9 +145,28 @@ int main(void)
     printf("Link up - IP: %s\n", ip4addr_ntoa(&netif->ip_addr));
     HAL_Delay(1000);
 
+    /* Configure TCP_MQTTProt */
+    TCP_MQTTProtCfg mqttConfig = {
+            .publishTime = 60,          // Publish every 60 seconds
+            .syncTime = 5,              // Sync every 5 seconds
+            .clientId = "tcpMqttClient", // Unique client ID
+            .keepAlive = 400,           // Keep-alive interval
+            .topic = "date_time",       // Publish topic
+            .qos = 0,                   // QoS level
+            .callback = NULL,           // No callback for now
+            .subTopic = "sub_topic"     // Subscription topic
+    };
+    TCP_MQTTProt_ctor(&mqttConfig, NULL);  // Use default publisher (pubDft)
+
+
     /* Activate the TcpConMgr state machine */
     static RKH_EVT_T *qsto[4]; /* Event queue storage */
     RKH_SMA_ACTIVATE(tcpConMgr, qsto, 4, 0, 0);
+
+    /* Activate the TcpMqttProt state machine */
+    static RKH_EVT_T *tcpMqttProtQsto[16]; /* Event queue storage for tcpMqttProt */
+    RKH_SMA_ACTIVATE(tcpMqttProt, tcpMqttProtQsto, 16, 0, 0);
+
 
     /* Post the initial evOpen event */
     RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Open), NULL);
