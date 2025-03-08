@@ -29,8 +29,7 @@
 #include "rtime.h"
 #include "bsp-salt.h"
 #include "logic.h"
-#include "mqttc_pal.h"
-#include "tcp.h"
+
 
 /* ----------------------------- Local macros ------------------------------ */
 #define SIZEOF_QDEFER   1
@@ -878,7 +877,6 @@ connectTry(ConMgr *const me, RKH_EVT_T *pe)
 
 /*
  * TCP PCB
- */
 
 static void tcp_err_callback(void *arg, err_t err) {
     printf("TCP error: %d\n", err);
@@ -941,48 +939,16 @@ static err_t connect_callback(void *arg, struct tcp_pcb *tpcb, err_t err) {
     return ERR_OK;
 }
 
+ */
 
 static void
 socketOpen(ConMgr *const me, RKH_EVT_T *pe)
 {
-    /*
-     * old code
 
         (void)me;
         (void)pe;
 
         ModCmd_connect(CONNECTION_PROT, CONNECTION_DOMAIN, CONNECTION_PORT);
-     */
-
-    printf("socketOpen \n");
-    ip_addr_t remote_ip;
-    err_t error;
-
-    me->sockfd = tcp_new();
-    if (me->sockfd == NULL) {
-        printf("failed to create TCP PCB \n");
-        return;
-    }
-
-    tcp_arg(me->sockfd, me);
-    tcp_err(me->sockfd, tcp_err_callback);
-    tcp_recv(me->sockfd, tcp_recv_callback);
-
-    IP4_ADDR(&remote_ip, 192, 168, 1, 81);
-    uint16_t remote_port = 1883;
-
-    err_t err = tcp_connect(
-            me->sockfd, &remote_ip,
-            remote_port, connect_callback
-            );
-
-    printf("tcp_connect result: %d \n", err);
-
-    if (err != ERR_OK) {
-        printf("tcp_connect failed: %d\n", err);
-        tcp_close(me->sockfd);
-        me->sockfd = NULL;
-    }
 
 }
 

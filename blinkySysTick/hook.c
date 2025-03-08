@@ -109,32 +109,9 @@ void
 rkh_hook_idle(void)             // called within critical section
 {
 
-    static int last_link_state = -1;
-    static int idle_count = 0;
+    MX_LWIP_Process();
     RKH_ENA_INTERRUPT();
     RKH_TRC_FLUSH();
-
-    MX_LWIP_Process();
-
-    struct netif *netif = netif_default;
-
-    int link_up = netif_is_link_up(netif);
-    if (link_up != last_link_state) {
-        printf("Link %s\n", link_up ? "up" : "down");
-        last_link_state = link_up;
-        if (link_up) {
-            printf("IP: %s\n", ip4addr_ntoa(&netif->ip_addr));
-        }
-    }
-    MQTTProt *mqtt_me = RKH_DOWNCAST(MQTTProt, mqttProt);
-    if (idle_count % 10 == 0) {
-        MQTTProt_isConnected();  // Debug only
-    }
-    if (MQTTProt_isConnected()) {
-        mqttc_sync(&mqtt_me->client);
-    }
-    idle_count++;
-    HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0);
 
 }
 

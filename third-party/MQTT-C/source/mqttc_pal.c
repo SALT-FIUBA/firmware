@@ -495,11 +495,21 @@ static err_t tcp_connect_callback(void *arg, struct tcp_pcb *tpcb, err_t err) {
     if (err == ERR_OK) {
         printf("TCP Connected\n");
         tcp_recv(tpcb, tcp_recv_callback);
+
+        // Send a test message
+        const char *msg = "Hello from STM32\n";
+        err_t write_err = tcp_write(tpcb, msg, strlen(msg), TCP_WRITE_FLAG_COPY);
+        if (write_err == ERR_OK) {
+            tcp_output(tpcb); // Force sending the data
+            printf("Sent: %s", msg);
+        } else {
+            printf("tcp_write failed: %d\n", write_err);
+        }
+
         tcp_connected = 1;
     } else {
         printf("TCP Connection failed: %d\n", err);
         tcp_close(tpcb);
-        tpcb = NULL;
         tcp_connected = 0;
     }
 
@@ -514,12 +524,7 @@ void start_tcp_connection(struct tcp_pcb *tpcb) {
     }
 
     tcp_err(tpcb, tcp_err_callback);
-    //Confirms that data queued by tcp_write has been successfully sent over the network,
-    // allowing the application to free buffers or trigger further actions.
     tcp_sent(tpcb, tcp_sent_callback);
-
-    //Periodically checks the connection state or performs housekeeping,
-    // especially useful in simple loops without an event-driven framework.
     tcp_poll(tpcb, tcp_poll_callback, 4);
 
     ip_addr_t remote_ip;
