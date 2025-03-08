@@ -150,4 +150,5 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/main.c.obj: \
  /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/date/date.h \
  /home/nando-toshiba/Desktop/salt/firmware/salt/bsp/bsp-salt.h \
  /home/nando-toshiba/Desktop/salt/firmware/third-party/MQTT-C/include/mqttc.h \
- /home/nando-toshiba/Desktop/salt/firmware/mqttc-v116-sync/mqttc_v116_sync.h
+ /home/nando-toshiba/Desktop/salt/firmware/mqttc-v116-sync/mqttc_v116_sync.h \
+ /home/nando-toshiba/Desktop/salt/firmware/bsp/stm32f4xx_nucleo_144.h

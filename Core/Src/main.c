@@ -35,6 +35,7 @@
 #include "salt-signals.h"
 #include "tcp-conmgr.h"
 #include "tcp-mqttprot.h"
+#include "stm32f4xx_nucleo_144.h"
 
 
 
@@ -89,6 +90,12 @@ extern struct netif gnetif;
 static RKH_ROM_STATIC_EVENT(e_Open, evOpen);
 
 
+
+// Callback for received MQTT publish messages
+static void mqtt_publish_callback(void **state, struct mqttc_response_publish *publish) {
+    printf("Received message \n");
+}
+
 /* USER CODE END 0 */
 
 /**
@@ -97,8 +104,16 @@ static RKH_ROM_STATIC_EVENT(e_Open, evOpen);
   */
 int main(void)
 {
-  /* USER CODE BEGIN 1 */
-  /* USER CODE END 1 */
+    struct tcp_pcb *mqtt_tcp_pcb = NULL;          // TCP PCB for MQTT
+    struct mqttc_client mqtt_client;       // MQTT-C client instance
+    uint8_t mqtt_sendbuf[512];             // Send buffer for MQTT
+    uint8_t mqtt_recvbuf[512];             // Receive buffer for MQTT
+    uint32_t last_publish_time = 0;        // Track last publish time
+
+    volatile int tcp_connected = 0;
+    volatile int mqtt_connected = 0;
+
+    enum MQTTErrors error;
 
   /* MCU Configuration--------------------------------------------------------*/
 
@@ -120,16 +135,8 @@ int main(void)
   MX_USB_OTG_FS_PCD_Init();
   MX_SPI1_Init();
   MX_LWIP_Init();
-  /* USER CODE BEGIN 2 */
 
-    /* Initialize RKH framework */
-    rkh_fwk_init();
-
-    /* Define event pool storage (simplified for this example) */
-    static rui8_t evPoolSto[512]; /* Adjust size as needed */
-    rkh_fwk_registerEvtPool(evPoolSto, sizeof(evPoolSto), sizeof(RKH_EVT_T));
-
-    /* Wait for network interface to be up */
+    // Wait for network interface to be up
     printf("Waiting for network interface...\n");
     struct netif *netif = netif_default;
     while (netif == NULL || !netif_is_up(netif)) {
@@ -145,49 +152,79 @@ int main(void)
     printf("Link up - IP: %s\n", ip4addr_ntoa(&netif->ip_addr));
     HAL_Delay(1000);
 
-    /* Configure TCP_MQTTProt */
-    TCP_MQTTProtCfg mqttConfig = {
-            .publishTime = 60,          // Publish every 60 seconds
-            .syncTime = 5,              // Sync every 5 seconds
-            .clientId = "tcpMqttClient", // Unique client ID
-            .keepAlive = 400,           // Keep-alive interval
-            .topic = "date_time",       // Publish topic
-            .qos = 0,                   // QoS level
-            .callback = NULL,           // No callback for now
-            .subTopic = "sub_topic"     // Subscription topic
-    };
-    TCP_MQTTProt_ctor(&mqttConfig, NULL);  // Use default publisher (pubDft)
+    /* Step 1: Ensure TCP PCB is allocated */
+
+    if (tcp_connected == 0) {
+
+        mqtt_tcp_pcb = tcp_new();
+
+        if (mqtt_tcp_pcb == NULL) {
+            printf("Failed to allocate TCP PCB\n");
+            return 1;
+
+        } else {
+            start_tcp_connection(mqtt_tcp_pcb);
+            tcp_connected = 1;
+        }
+    }
 
 
-    /* Activate the TcpConMgr state machine */
-    static RKH_EVT_T *qsto[4]; /* Event queue storage */
-    RKH_SMA_ACTIVATE(tcpConMgr, qsto, 4, 0, 0);
+    /* Infinite loop */
+    while (1)
+    {
+        /* Process lwIP stack */
+        MX_LWIP_Process();
 
-    /* Activate the TcpMqttProt state machine */
-    static RKH_EVT_T *tcpMqttProtQsto[16]; /* Event queue storage for tcpMqttProt */
-    RKH_SMA_ACTIVATE(tcpMqttProt, tcpMqttProtQsto, 16, 0, 0);
+        /* Step 2: Initialize MQTT client if not yet done */
+        if (!mqtt_connected) {
+
+            error = mqttc_init(&mqtt_client, mqtt_tcp_pcb, mqtt_sendbuf, sizeof(mqtt_sendbuf),
+                               mqtt_recvbuf, sizeof(mqtt_recvbuf), NULL);
+            if (error != MQTT_OK) {
+                printf("MQTT-C init failed: %d\n", error);
+                HAL_Delay(1000); // Retry after delay
+                continue;
+            }
+
+            error = mqttc_connect(&mqtt_client, "stm32_client", NULL, NULL, 0,
+                                  NULL, NULL, 0, 60 );
+            if (error == MQTT_OK) {
+
+                mqtt_connected = 1;
+
+            } else {
+                mqtt_connected = 0; // Reset on disconnect or error
+                mqtt_tcp_pcb = NULL; // Force reallocation of TCP PCB
+                printf("MQTT disconnected, error: %d\n", mqtt_client.error);
+                HAL_Delay(1000); // Retry after delay
+                return 1;
+            }
+        }
+
+        /* Step 4: Process MQTT client */
+        mqttc_sync(&mqtt_client);
 
 
-    /* Post the initial evOpen event */
-    RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Open), NULL);
+        /* Step 5: Publish message every 5 seconds if connected */
+        if (mqtt_connected) {
+            uint32_t current_time = HAL_GetTick();
+            if ((current_time - last_publish_time) >= 1000) { // 5 seconds elapsed
+                const char *topic = "test/topic";
+                const char *message = "Hello from STM32!";
+                error = mqttc_publish(&mqtt_client, topic, message, strlen(message), 0);
+                if (error != MQTT_OK) {
+                    printf("Publish failed: %d\n", error);
+                } else {
+                    printf("Published: %s to %s\n", message, topic);
+                }
+                last_publish_time = current_time;
+            }
+        }
 
+        BSP_LED_On(LED1);
+        HAL_Delay(100);  // Small delay to prevent tight loop
+    }
 
-    TCP_MQTTProt_isConnected();
-    /* Enter the RKH framework loop */
-    rkh_fwk_enter();
-
-    /* Should never reach here */
-    return 0;
-
-
-  /* USER CODE END 2 */
-
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
-  /* USER CODE END WHILE */
-
-  /* USER CODE BEGIN 3 */
-  /* USER CODE END 3 */
 }
 
 

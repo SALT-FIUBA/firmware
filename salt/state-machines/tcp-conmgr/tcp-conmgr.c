@@ -139,6 +139,7 @@ static err_t tcp_recv_callback(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, 
 }
 
 static err_t tcp_connect_callback(void *arg, struct tcp_pcb *tpcb, err_t err) {
+
     printf("tcp_connect_callback\n");
     TcpConMgr *me = (TcpConMgr *)arg;
 

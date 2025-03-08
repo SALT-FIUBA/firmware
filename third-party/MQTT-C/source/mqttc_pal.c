@@ -434,9 +434,7 @@ ssize_t mqtt_pal_recvall(mqtt_pal_socket_handle fd, void* buf, size_t bufsz, int
 #elif STM32F429xx
 
 
-#include "altcp.h"
-#include "state-machines/tcp-conmgr/tcp-conmgr.h"
-//  #include "lwip/tcp.h"
+#include "tcp.h"
 
 
 static void tcp_err_callback(void *arg, err_t err) {
@@ -469,18 +467,16 @@ static err_t tcp_recv_callback(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, 
             memcpy(recv_buffer + recv_len, p->payload, p->tot_len);
             recv_len += p->tot_len;
 
-            printf("Received %d bytes: %.*s\n", p->tot_len, p->tot_len, (char *)p->payload);
         } else {
 
             printf("Receive buffer overflow \n");
             tcp_close(tpcb);
         }
 
-        pbuf_free(p); // Free the pbuf
+        pbuf_free(p);
     } else {
 
         printf("Connection closed\n");
-        // NULL pbuf means connection closed
         tcp_close(tpcb);
         tpcb = NULL;
     }
@@ -489,29 +485,17 @@ static err_t tcp_recv_callback(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, 
 }
 
 
-static volatile int tcp_connected = 0;
 
 static err_t tcp_connect_callback(void *arg, struct tcp_pcb *tpcb, err_t err) {
 
     if (err == ERR_OK) {
+
         printf("TCP Connected\n");
         tcp_recv(tpcb, tcp_recv_callback);
 
-        // Send a test message
-        const char *msg = "Hello from STM32\n";
-        err_t write_err = tcp_write(tpcb, msg, strlen(msg), TCP_WRITE_FLAG_COPY);
-        if (write_err == ERR_OK) {
-            tcp_output(tpcb); // Force sending the data
-            printf("Sent: %s", msg);
-        } else {
-            printf("tcp_write failed: %d\n", write_err);
-        }
-
-        tcp_connected = 1;
     } else {
         printf("TCP Connection failed: %d\n", err);
         tcp_close(tpcb);
-        tcp_connected = 0;
     }
 
     return ERR_OK;
@@ -526,7 +510,7 @@ void start_tcp_connection(struct tcp_pcb *tpcb) {
 
     tcp_err(tpcb, tcp_err_callback);
     tcp_sent(tpcb, tcp_sent_callback);
-    tcp_poll(tpcb, tcp_poll_callback, 4);
+    tcp_poll(tpcb, tcp_poll_callback, 10);
 
     ip_addr_t remote_ip;
     IP4_ADDR(&remote_ip, 192, 168, 1, 81);
@@ -570,29 +554,28 @@ ssize_t mqttc_pal_sendall(mqttc_pal_socket_handle pcb, const void* buf, size_t l
  We’ll need a buffer to store incoming data, which mqtt_pal_recvall can then read.
  */
 
-
-
 ssize_t mqttc_pal_recvall(mqttc_pal_socket_handle pcb, void* buf, size_t bufsz, int flags) {
 
-    TcpConMgr *me = RKH_UPCAST(TcpConMgr, tcpConMgr);
+    if (recv_len > 0) {
 
-    if (me->recv_len > 0) {
-
-        size_t bytes_to_read = (me->recv_len < bufsz) ? me->recv_len : bufsz;
-        memcpy(buf, me->recv_buffer + me->recv_index, bytes_to_read);
-        me->recv_index += bytes_to_read;
-
-        if (me->recv_index >= me->recv_len) {
-            me->recv_len = 0;
-            me->recv_index = 0;
+        // Copy available data, up to bufsz
+        size_t bytes_to_read = (recv_len < bufsz) ? recv_len : bufsz;
+        memcpy(buf, recv_buffer + recv_index, bytes_to_read);
+        recv_index += bytes_to_read;
+        if (recv_index >= recv_len) {
+            // Buffer fully read, reset
+            recv_len = 0;
+            recv_index = 0;
         } else {
-            me->recv_len -= bytes_to_read;
+            // More data remains
+            recv_len -= bytes_to_read;
         }
+
         return bytes_to_read;
     }
+
     return 0; // No data available yet
 }
-
 
 #else
 
