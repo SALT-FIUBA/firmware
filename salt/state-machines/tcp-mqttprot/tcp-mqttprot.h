@@ -89,7 +89,7 @@ struct ConnRefusedEvt
 
 /* -------------------------- Function prototypes -------------------------- */
 void TCP_MQTTProt_ctor(TCP_MQTTProtCfg *config, TCP_MQTTProtPublish publisher);
-rbool_t TCP_MQTTProt_isConnected(void);
+void TCP_MQTTProt_isConnected(void);
 
 /* -------------------- External C language linkage end -------------------- */
 #ifdef __cplusplus

@@ -171,6 +171,8 @@ int main(void)
     /* Post the initial evOpen event */
     RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Open), NULL);
 
+
+    TCP_MQTTProt_isConnected();
     /* Enter the RKH framework loop */
     rkh_fwk_enter();
 

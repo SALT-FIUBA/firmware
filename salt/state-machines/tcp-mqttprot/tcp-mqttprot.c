@@ -258,6 +258,7 @@ static rui16_t pubDft(AppData *appMsg) {
     return 0;
 }
 
+
 static int configMqttClient(TCP_MQTTProt *const me, TCP_MQTTProtCfg *config) {
     int result = 1;
     if (config->publishTime != 0 || config->syncTime != 0 || config->keepAlive != 0 ||
@@ -520,12 +521,13 @@ void TCP_MQTTProt_ctor(TCP_MQTTProtCfg *config, TCP_MQTTProtPublish publisher) {
     me->publisher = (publisher != NULL) ? publisher : pubDft;
 }
 
-rbool_t TCP_MQTTProt_isConnected(void) {
+void TCP_MQTTProt_isConnected(void) {
     TCP_MQTTProt *me = RKH_DOWNCAST(TCP_MQTTProt, tcpMqttProt);
     rbool_t isConnected = (me->ao.sm.state == (const RKH_ST_T *)&Mqttc_Client_Connected);
+
+
     printf("TCP_MQTTProt_isConnected | Current state: %p, Mqttc_Client_Connected: %p, Connected: %d\n",
            me->ao.sm.state, &Mqttc_Client_Connected, isConnected);
-    return isConnected;
 }
 
 /* ------------------------------ End of file ------------------------------ */
