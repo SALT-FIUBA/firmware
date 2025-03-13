@@ -141,4 +141,6 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc_pal.c.obj: \
  /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/fwk/inc/rkhitl.h \
  /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/fwk/inc/rkhfwk_evtpool.h \
  /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/fwk/inc/rkhfwk_sched.h \
- /usr/include/newlib/memory.h
+ /usr/include/newlib/memory.h \
+ /home/nando-toshiba/Desktop/salt/firmware/salt/salt-signals.h \
+ /home/nando-toshiba/Desktop/salt/firmware/salt/bsp/bsp-salt.h

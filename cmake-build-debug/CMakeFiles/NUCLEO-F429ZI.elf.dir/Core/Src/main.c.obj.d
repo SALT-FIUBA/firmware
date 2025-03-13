@@ -145,9 +145,9 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/main.c.obj: \
  /home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f429xx.h \
  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/compat/posix/arpa/inet.h \
  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/sockets.h \
+ /home/nando-toshiba/Desktop/salt/firmware/salt/bsp/bsp-salt.h \
  /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/tcp-mqttprot/tcp-mqttprot.h \
  /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/epoch/epoch.h \
  /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/date/date.h \
- /home/nando-toshiba/Desktop/salt/firmware/salt/bsp/bsp-salt.h \
  /home/nando-toshiba/Desktop/salt/firmware/third-party/MQTT-C/include/mqttc.h \
  /home/nando-toshiba/Desktop/salt/firmware/mqttc-v116-sync/mqttc_v116_sync.h

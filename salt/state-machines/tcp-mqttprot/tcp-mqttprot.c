@@ -272,24 +272,45 @@ static int configMqttClient(TCP_MQTTProt *const me, TCP_MQTTProtCfg *config) {
 }
 
 static void dispatch(RKH_SMA_T *me, void *arg) {
+
     SyncRegion *region = RKH_DOWNCAST(TCP_MQTTProt, me)->itsSyncRegion;
+    printf("tcp-mqttprot | Dispatching event %d to state %p\n",
+           ((RKH_EVT_T *)arg)->e, me->sm
+           );
+
     rkh_sm_dispatch((RKH_SM_T *)me, (RKH_EVT_T *)arg);
+    printf("tcp-mqttprot | State after dispatch: %p\n", me->sm);
+
     rkh_sm_dispatch(RKH_UPCAST(RKH_SM_T, region), (RKH_EVT_T *)arg);
+
 }
 
 /* ............................ Initial action ............................. */
 static void init(TCP_MQTTProt *const me, RKH_EVT_T *pe) {
+
+    printf("tcp-mqttprot | init \n");
+
     (void)pe;
+
     RKH_TR_FWK_AO(me);
     RKH_TR_FWK_AO(TCP_MQTTProt_syncRegion);
     RKH_FILTER_OFF_SMA(TCP_MQTTProt_syncRegion);
     RKH_SET_STATIC_EVENT(RKH_UPCAST(RKH_EVT_T, &evSendObj), evSend);
     RKH_SET_STATIC_EVENT(RKH_UPCAST(RKH_EVT_T, &evConnRefusedObj), evConnRefused);
+
     rkh_sm_init(RKH_UPCAST(RKH_SM_T, &me->itsSyncRegion));
+
+    printf("tcp-mqttprot | Initial state: %p, Mqttc_Client_Idle: %p\n",
+           me->ao.sm.state, &Mqttc_Client_Idle
+    );
+
 }
 
 /* ............................ Effect actions ............................. */
 static void publish(TCP_MQTTProt *const me, RKH_EVT_T *pe) {
+
+    printf("tcp-mqttprot | publish \n");
+
     AppData appMsg;
     rui16_t pubTime = (*me->publisher)(&appMsg);
     if (pubTime != 0) {
@@ -300,17 +321,26 @@ static void publish(TCP_MQTTProt *const me, RKH_EVT_T *pe) {
 }
 
 static void initRecvAll(SyncRegion *const me, RKH_EVT_T *pe) {
+
+    printf("tcp-mqttprot | initRecvAll \n");
+
     TCP_MQTTProt *realMe = me->itsMQTTProt;
     mqttc_initRecvAll();
 }
 
 static void recvFail(SyncRegion *const me, RKH_EVT_T *pe) {
+
+    printf("tcp-mqttprot | recvFail \n");
+
     TCP_MQTTProt *realMe = me->itsMQTTProt;
     localRecv.rv = MQTT_ERROR_SOCKET_ERROR;
     mqttc_recvFail(&realMe->client, &localRecv);
 }
 
 static void parseRecv(SyncRegion *const me, RKH_EVT_T *pe) {
+
+    printf("tcp-mqttprot | parseRecv \n");
+
     TCP_MQTTProt *realMe = me->itsMQTTProt;
     TcpReceivedEvt *evt = RKH_DOWNCAST(TcpReceivedEvt, pe);
     memcpy(realMe->client.recv_buffer.curr, evt->buf, evt->size);
@@ -319,120 +349,204 @@ static void parseRecv(SyncRegion *const me, RKH_EVT_T *pe) {
 }
 
 static void sendMsgFail(SyncRegion *const me, RKH_EVT_T *pe) {
+
+    printf("tcp-mqttprot | sendMsgFail \n");
+
     TCP_MQTTProt *realMe = me->itsMQTTProt;
     localSend.tmp = MQTT_ERROR_SOCKET_ERROR;
     mqttc_sendMsgFail(&realMe->client, &localSend);
 }
 
 static void setMsgState(SyncRegion *const me, RKH_EVT_T *pe) {
+
+    printf("tcp-mqttprot | setMsgState \n");
+
     TCP_MQTTProt *realMe = me->itsMQTTProt;
     mqttc_setMsgState(&realMe->client, &localSend);
 }
 
 static void parseError(SyncRegion *const me, RKH_EVT_T *pe) {
+
+    printf("tcp-mqttprot | parseError \n");
+
     TCP_MQTTProt *realMe = me->itsMQTTProt;
     mqttc_parseError(&realMe->client, &localRecv);
 }
 
 static void noConsumed(SyncRegion *const me, RKH_EVT_T *pe) {
+
+    printf("tcp-mqttprot | noConsumed \n");
+
     TCP_MQTTProt *realMe = me->itsMQTTProt;
     mqttc_noConsumed(&realMe->client, &localRecv);
 }
 
 static void cleanBuf(SyncRegion *const me, RKH_EVT_T *pe) {
+
+    printf("tcp-mqttprot | cleanBuf \n");
+
     TCP_MQTTProt *realMe = me->itsMQTTProt;
     mqttc_cleanBuf(&realMe->client, &localRecv);
 }
 
 static void recvMsgError(SyncRegion *const me, RKH_EVT_T *pe) {
+
+    printf("tcp-mqttprot | recvMsgError \n");
+
     TCP_MQTTProt *realMe = me->itsMQTTProt;
     mqttc_recvMsgError(&realMe->client, &localRecv);
 }
 
 static void initSendAll(SyncRegion *const me, RKH_EVT_T *pe) {
+
+    printf("tcp-mqttprot | initSendAll \n");
+
     TCP_MQTTProt *realMe = me->itsMQTTProt;
     mqttc_initSendAll(&realMe->client, &localSend);
 }
 
 static void initSendOk(SyncRegion *const me, RKH_EVT_T *pe) {
+
+    printf("tcp-mqttprot | initSendOk \n");
+
     (void)me;
     (void)pe;
 }
 
 static void sendOneMsg(SyncRegion *const me, RKH_EVT_T *pe) {
+
+    printf("tcp-mqttprot | sendOneMsg \n");
+
     TCP_MQTTProt *realMe = me->itsMQTTProt;
     mqttc_sendOneMsg(&realMe->client, &localSend);
 }
 
 static void endSendAll(SyncRegion *const me, RKH_EVT_T *pe) {
+
+    printf("tcp-mqttprot | endSendAll \n");
+
     TCP_MQTTProt *realMe = me->itsMQTTProt;
     mqttc_endSendAll(&realMe->client);
 }
 
 static void nextSend(SyncRegion *const me, RKH_EVT_T *pe) {
+
+    printf("tcp-mqttprot | nextSend \n");
+
     mqttc_nextSend(&localSend);
 }
 
 static void handleRecvMsg(SyncRegion *const me, RKH_EVT_T *pe) {
+
+    printf("tcp-mqttprot | handleRecvMsg \n");
+
     TCP_MQTTProt *realMe = me->itsMQTTProt;
     mqttc_handleRecvMsg(&realMe->client, &localRecv);
 }
 
 static void storeSockfdAndActivate(TCP_MQTTProt *const me, RKH_EVT_T *pe) {
+
+
     TcpNetConnectedEvt *evt = RKH_DOWNCAST(TcpNetConnectedEvt, pe);
+    printf("tcp-mqttprot | storeSockfdAndActivate, sockfd: %p\n", evt->sockfd);
+
     me->sockfd = evt->sockfd;
     activateSync(me, pe);
 }
 
 static void activateSync(TCP_MQTTProt *const me, RKH_EVT_T *pe) {
+
+    printf("tcp-mqttprot | activateSync \n");
+
     RKH_SMA_POST_FIFO(RKH_UPCAST(RKH_SMA_T, me), RKH_UPCAST(RKH_EVT_T, &evActivateObj), me);
 }
 
 static void releaseUse(SyncRegion *const me, RKH_EVT_T *pe) {
+
+    printf("tcp-mqttprot | releaseUse \n");
+
     TCP_MQTTProt *realMe = me->itsMQTTProt;
     RKH_SMA_POST_FIFO(RKH_UPCAST(RKH_SMA_T, realMe), RKH_UPCAST(RKH_EVT_T, &evUnlockedObj), me);
 }
 
 static void deactivateSync(TCP_MQTTProt *const me, RKH_EVT_T *pe) {
+
+    printf("tcp-mqttprot | deactivateSync \n");
+
     RKH_SMA_POST_FIFO(RKH_UPCAST(RKH_SMA_T, me), RKH_UPCAST(RKH_EVT_T, &evDeactivateObj), me);
 }
 
 static void reconnect(TCP_MQTTProt *const me, RKH_EVT_T *pe) {
+
+    printf("tcp-mqttprot | reconnect \n");
+
     RKH_SMA_POST_FIFO(tcpConMgr, &evRestartObj, me);
 }
 
 static void reconnectSync(SyncRegion *const me, RKH_EVT_T *pe) {
+
+    printf("tcp-mqttprot | reconnectSync \n");
+
     TCP_MQTTProt *realMe = me->itsMQTTProt;
     RKH_SMA_POST_LIFO(RKH_UPCAST(RKH_SMA_T, realMe), RKH_UPCAST(RKH_EVT_T, &evDeactivateObj), realMe);
 }
 
 /* ............................. Entry actions ............................. */
 static void enAwaitingAck(TCP_MQTTProt *const me, RKH_EVT_T *pe) {
+
+    printf("tcp-mqttprot | enAwaitingAck \n");
+
+    enum MQTTErrors error;
+
     RKH_TMR_INIT(&me->tryConnTmr, &evWaitConnectToutObj, NULL);
     RKH_TMR_ONESHOT(&me->tryConnTmr, RKH_UPCAST(RKH_SMA_T, me), RKH_TIME_SEC(120));
-    mqttc_sync(&me->client);
+    error = mqttc_sync(&me->client);
+    printf("error: %d %s \n", error, mqttc_error_str(error));
 }
 
 static void brokerConnect(TCP_MQTTProt *const me, RKH_EVT_T *pe) {
-    printf("brokerConnect\n");
-    mqttc_init(&me->client, me->sockfd, me->sendbuf, sizeof(me->sendbuf), me->recvbuf, sizeof(me->recvbuf), me->config->callback);
+
+    printf("tcp-mqttprot | brokerConnect\n");
+
+    me->operationResult = mqttc_init(&me->client, me->sockfd,
+                       me->sendbuf, sizeof(me->sendbuf),
+                       me->recvbuf, sizeof(me->recvbuf),
+                       me->config->callback
+               );
+    printf("tcp-mqttprot | mqttc_init result: %d (%s)\n", me->operationResult, mqttc_error_str(me->operationResult));
+    if (me->operationResult != MQTT_OK) {
+        printf("tcp-mqttprot | mqttc_init error: %d %s \n", me->operationResult, mqttc_error_str(me->operationResult));
+    }
+
     me->operationResult = mqttc_connect(&me->client, me->config->clientId, NULL, NULL, 0, NULL, NULL, 0, me->config->keepAlive);
+    printf("tcp-mqttprot | mqttc_connect result: %d (%s)\n", me->operationResult, mqttc_error_str(me->operationResult));
+
     me->errorStr = mqttc_error_str(me->operationResult);
     mqttc_subscribe(&me->client, me->config->subTopic, 2);
 }
 
 static void enWaitSync(SyncRegion *const me, RKH_EVT_T *pe) {
+
+    printf("tcp-mqttprot | enWaitSync \n");
+
+
     TCP_MQTTProt *realMe = me->itsMQTTProt;
     RKH_TMR_INIT(&me->syncTmr, &evWaitSyncToutObj, NULL);
     RKH_TMR_ONESHOT(&me->syncTmr, RKH_UPCAST(RKH_SMA_T, realMe), RKH_TIME_SEC(realMe->config->syncTime));
 }
 
 static void recvAll(SyncRegion *const me, RKH_EVT_T *pe) {
+
+    printf("tcp-mqttprot | recvAll \n");
+
     TCP_MQTTProt *realMe = me->itsMQTTProt;
     RKH_SMA_POST_FIFO(tcpConMgr, &evRecvObj, realMe);
 }
 
 static void sendAll(SyncRegion *const me, RKH_EVT_T *pe) {
+
+    printf("tcp-mqttprot | sendAll \n");
+
     TCP_MQTTProt *realMe = me->itsMQTTProt;
     evSendObj.size = localSend.msg->size;
     memcpy(evSendObj.buf, localSend.msg->start, localSend.msg->size);
@@ -440,62 +554,106 @@ static void sendAll(SyncRegion *const me, RKH_EVT_T *pe) {
 }
 
 static void enWaitToPublish(TCP_MQTTProt *const me, RKH_EVT_T *pe) {
+
+    printf("tcp-mqttprot | enWaitToPublish \n");
+
     RKH_TMR_INIT(&me->publishTmr, &evWaitPublishToutObj, NULL);
     RKH_TMR_ONESHOT(&me->publishTmr, RKH_UPCAST(RKH_SMA_T, me), RKH_TIME_SEC(me->config->publishTime));
 }
 
 /* ............................. Exit actions .............................. */
 static void exAwaitingAck(TCP_MQTTProt *const me, RKH_EVT_T *pe) {
+
+    printf("tcp-mqttprot | exAwaitingAck \n");
+
     rkh_tmr_stop(&me->tryConnTmr);
 }
 
 static void exWaitToPublish(TCP_MQTTProt *const me, RKH_EVT_T *pe) {
+
+    printf("tcp-mqttprot | exWaitToPublish \n");
+
     rkh_tmr_stop(&me->publishTmr);
 }
 
 static void exWaitSync(SyncRegion *const me, RKH_EVT_T *pe) {
+
+    printf("tcp-mqttprot | exWaitSync \n");
+
     rkh_tmr_stop(&me->syncTmr);
 }
 
 /* ................................ Guards ................................. */
 static rbool_t isConnectOk(const RKH_SM_T *me, RKH_EVT_T *pe) {
+
+    printf("tcp-mqttprot | isConnectOk \n");
+
     TCP_MQTTProt *realMe = RKH_DOWNCAST(TCP_MQTTProt, me);
+
+
     return (realMe->operationResult == MQTT_OK && realMe->client.error == MQTT_OK) ? RKH_TRUE : RKH_FALSE;
 }
 
 static rbool_t isUnpackError(const RKH_SM_T *me, RKH_EVT_T *pe) {
+
+    printf("tcp-mqttprot | isUnpackError \n");
+
     return mqttc_isUnpackError(&localRecv);
 }
 
 static rbool_t isConsumed(const RKH_SM_T *me, RKH_EVT_T *pe) {
+
+    printf("tcp-mqttprot | isConsumed \n");
+
     return mqttc_isConsumed(&localRecv);
 }
 
 static rbool_t isNotError(const RKH_SM_T *me, RKH_EVT_T *pe) {
+
+    printf("tcp-mqttprot | isNotError \n");
+
     return mqttc_isNotError(&localRecv);
 }
 
 static rbool_t isRecvBufFull(const RKH_SM_T *me, RKH_EVT_T *pe) {
+
+    printf("tcp-mqttprot | isRecvBufFull \n");
+
     return mqttc_isRecvBufFull(&localRecv);
 }
 
 static rbool_t isInitOk(const RKH_SM_T *me, RKH_EVT_T *pe) {
+
+    printf("tcp-mqttprot | isInitOk \n");
+
     return mqttc_isInitOk(&localSend);
 }
 
 static rbool_t isThereMsg(const RKH_SM_T *me, RKH_EVT_T *pe) {
+
+    printf("tcp-mqttprot | isThereMsg \n");
+
     return mqttc_isThereMsg(&localSend);
 }
 
 static rbool_t isNotResend(const RKH_SM_T *me, RKH_EVT_T *pe) {
+
+    printf("tcp-mqttprot | isNotResend \n");
+
     return localSend.resend == 0;
 }
 
 static rbool_t isSetMsgStateOk(const RKH_SM_T *me, RKH_EVT_T *pe) {
+
+    printf("tcp-mqttprot | isSetMsgStateOk \n");
+
     return mqttc_isSetMsgStateResult(&localSend);
 }
 
 static rbool_t isLocked(const RKH_SM_T *me, RKH_EVT_T *pe) {
+
+    printf("tcp-mqttprot | isLocked \n");
+
     TCP_MQTTProt *realMe = RKH_DOWNCAST(TCP_MQTTProt, me);
     const RKH_ST_T *inState = ((RKH_SM_T *)&(realMe->itsSyncRegion))->state;
     return (inState == (const RKH_ST_T *)&Mqttc_Sync_Receiving || inState == (const RKH_ST_T *)&Mqttc_Sync_Sending ||
@@ -503,12 +661,19 @@ static rbool_t isLocked(const RKH_SM_T *me, RKH_EVT_T *pe) {
 }
 
 static rbool_t isReconnect(const RKH_SM_T *me, RKH_EVT_T *pe) {
+
+    printf("tcp-mqttprot | isReconnect \n");
+
     SyncRegion *realMe = RKH_DOWNCAST(SyncRegion, me);
     return mqttc_isReconnect(&realMe->itsMQTTProt->client);
 }
 
 /* ---------------------------- Global functions --------------------------- */
-void TCP_MQTTProt_ctor(TCP_MQTTProtCfg *config, TCP_MQTTProtPublish publisher) {
+void TCP_MQTTProt_ctor(TCP_MQTTProtCfg * config, TCP_MQTTProtPublish publisher) {
+
+    printf("tcp-mqttprot |  TCP_MQTTProt_ctor \n");
+
+
     TCP_MQTTProt *me = RKH_DOWNCAST(TCP_MQTTProt, tcpMqttProt);
     me->vtbl = rkhSmaVtbl;
     me->vtbl.task = dispatch;
@@ -526,7 +691,7 @@ void TCP_MQTTProt_isConnected(void) {
     rbool_t isConnected = (me->ao.sm.state == (const RKH_ST_T *)&Mqttc_Client_Connected);
 
 
-    printf("TCP_MQTTProt_isConnected | Current state: %p, Mqttc_Client_Connected: %p, Connected: %d\n",
+    printf("tcp-mqttprot | TCP_MQTTProt_isConnected | Current state: %p, Mqttc_Client_Connected: %p, Connected: %d\n",
            me->ao.sm.state, &Mqttc_Client_Connected, isConnected);
 }
 

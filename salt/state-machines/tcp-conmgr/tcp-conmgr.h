@@ -2,6 +2,9 @@
 #include "altcp.h"
 #include "memory.h"
 #include "mqttc_pal.h"
+#include "salt-signals.h"
+#include "bsp-salt.h"
+
 
 #define SEND_BUFF_SIZE      1024
 #define RECV_BUFF_SIZE      1024

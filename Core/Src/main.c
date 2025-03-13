@@ -86,6 +86,32 @@ PUTCHAR_PROTOTYPE
 
 extern struct netif gnetif;
 
+
+static void mqtt_callback(void **state, struct mqttc_response_publish *publish) {
+    printf("Received publish: topic=%s, message=%.*s\n",
+           publish->topic_name,
+           (int)publish->application_message_size,
+           (char*)publish->application_message);
+}
+
+
+#define MQTTPROT_QSTO_SIZE  16
+#define CONMGR_QSTO_SIZE    8
+
+#define SIZEOF_EP0STO       16
+#define SIZEOF_EP0_BLOCK    sizeof(RKH_EVT_T)
+
+static RKH_EVT_T * MQTTProt_qsto[MQTTPROT_QSTO_SIZE];
+static RKH_EVT_T * ConMgr_qsto[CONMGR_QSTO_SIZE];
+
+static rui8_t evPool0Sto[SIZEOF_EP0STO];
+
+
+#define SIZEOF_EP1STO 128  // Total size in bytes (e.g., 16 events of 8 bytes each)
+#define SIZEOF_EP1_BLOCK sizeof(TcpNetConnectedEvt)  // Block size matches the event
+static rui8_t evPool1Sto[SIZEOF_EP1STO];
+
+
 static RKH_ROM_STATIC_EVENT(e_Open, evOpen);
 
 
@@ -124,10 +150,11 @@ int main(void)
 
     /* Initialize RKH framework */
     rkh_fwk_init();
+    rkh_dynEvt_init();
 
     /* Define event pool storage (simplified for this example) */
-    static rui8_t evPoolSto[512]; /* Adjust size as needed */
-    rkh_fwk_registerEvtPool(evPoolSto, sizeof(evPoolSto), sizeof(RKH_EVT_T));
+    rkh_fwk_registerEvtPool(evPool0Sto, SIZEOF_EP0STO, SIZEOF_EP0_BLOCK);
+    rkh_fwk_registerEvtPool(evPool1Sto, SIZEOF_EP1STO, SIZEOF_EP1_BLOCK);
 
     /* Wait for network interface to be up */
     printf("Waiting for network interface...\n");
@@ -149,30 +176,27 @@ int main(void)
     TCP_MQTTProtCfg mqttConfig = {
             .publishTime = 60,          // Publish every 60 seconds
             .syncTime = 5,              // Sync every 5 seconds
-            .clientId = "tcpMqttClient", // Unique client ID
+            .clientId = "stm32_client", // Unique client ID
             .keepAlive = 400,           // Keep-alive interval
-            .topic = "date_time",       // Publish topic
+            .topic = "stm32/data",       // Publish topic
             .qos = 0,                   // QoS level
-            .callback = NULL,           // No callback for now
+            .callback = mqtt_callback,           // No callback for now
             .subTopic = "sub_topic"     // Subscription topic
     };
     TCP_MQTTProt_ctor(&mqttConfig, NULL);  // Use default publisher (pubDft)
 
 
     /* Activate the TcpConMgr state machine */
-    static RKH_EVT_T *qsto[4]; /* Event queue storage */
-    RKH_SMA_ACTIVATE(tcpConMgr, qsto, 4, 0, 0);
+    RKH_SMA_ACTIVATE(tcpConMgr, ConMgr_qsto, CONMGR_QSTO_SIZE, 0, 0);
 
     /* Activate the TcpMqttProt state machine */
-    static RKH_EVT_T *tcpMqttProtQsto[16]; /* Event queue storage for tcpMqttProt */
-    RKH_SMA_ACTIVATE(tcpMqttProt, tcpMqttProtQsto, 16, 0, 0);
+    RKH_SMA_ACTIVATE(tcpMqttProt, MQTTProt_qsto, MQTTPROT_QSTO_SIZE, 0, 0);
 
 
     /* Post the initial evOpen event */
-    RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Open), NULL);
+    RKH_SMA_POST_FIFO(tcpConMgr, &e_Open, 0);
 
-
-    TCP_MQTTProt_isConnected();
+    printf("Main | Starting RKH framework\n");
     /* Enter the RKH framework loop */
     rkh_fwk_enter();
 

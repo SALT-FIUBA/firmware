@@ -489,29 +489,17 @@ static err_t tcp_recv_callback(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, 
 }
 
 
-static volatile int tcp_connected = 0;
 
 static err_t tcp_connect_callback(void *arg, struct tcp_pcb *tpcb, err_t err) {
 
     if (err == ERR_OK) {
+
         printf("TCP Connected\n");
         tcp_recv(tpcb, tcp_recv_callback);
 
-        // Send a test message
-        const char *msg = "Hello from STM32\n";
-        err_t write_err = tcp_write(tpcb, msg, strlen(msg), TCP_WRITE_FLAG_COPY);
-        if (write_err == ERR_OK) {
-            tcp_output(tpcb); // Force sending the data
-            printf("Sent: %s", msg);
-        } else {
-            printf("tcp_write failed: %d\n", write_err);
-        }
-
-        tcp_connected = 1;
     } else {
         printf("TCP Connection failed: %d\n", err);
         tcp_close(tpcb);
-        tcp_connected = 0;
     }
 
     return ERR_OK;

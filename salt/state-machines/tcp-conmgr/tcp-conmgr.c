@@ -5,10 +5,9 @@
 
 /* ----------------------------- Include files ----------------------------- */
 #include "tcp-conmgr.h"
-#include "mqttProt.h"  // Include mqttProt to post events to it
-#include "salt-signals.h"
-#include "bsp-salt.h"
-#include "logic.h"
+#include "tcp-mqttprot.h"
+
+
 
 /* ----------------------------- Local macros ------------------------------ */
 #define SIZEOF_QDEFER       1
@@ -100,84 +99,119 @@ static RKH_EVT_T *qDefer_sto[SIZEOF_QDEFER];
 
 /* ---------------------------- Local functions ---------------------------- */
 static void tcp_err_callback(void *arg, err_t err) {
+
+    printf("tcp-conmgr | tcp_err_callback\n");
+
     TcpConMgr *me = (TcpConMgr *)arg;
-    printf("TCP error: %d\n", err);
-    RKH_SMA_POST_FIFO(mqttProt, RKH_UPCAST(RKH_EVT_T, &e_NetDisconnected), me);
+    printf("tcp-conmgr | TCP error: %d\n", err);
+    RKH_SMA_POST_FIFO(tcpMqttProt, RKH_UPCAST(RKH_EVT_T, &e_NetDisconnected), me);
 }
 
 static err_t tcp_sent_callback(void *arg, struct tcp_pcb *tpcb, u16_t len) {
+
+    printf("tcp-conmgr | tcp_sent_callback\n");
+
     TcpConMgr *me = (TcpConMgr *)arg;
-    printf("Sent %d bytes\n", len);
+
+    printf("tcp-conmgr | Sent %d bytes\n", len);
+
     RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Sent), me);
+
     return ERR_OK;
 }
 
 static err_t tcp_recv_callback(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_t err) {
-    printf("tcp_recv_callback\n");
+
+    printf("tcp-conmgr | tcp_recv_callback\n");
+
     TcpConMgr *me = (TcpConMgr *)arg;
 
     if (p != NULL) {
         if (me->recv_len + p->tot_len <= sizeof(me->recv_buffer)) {
             memcpy(me->recv_buffer + me->recv_len, p->payload, p->tot_len);
             me->recv_len += p->tot_len;
-            printf("Received %d bytes\n", p->tot_len);
+            printf("tcp-conmgr | Received %d bytes\n", p->tot_len);
             RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Recv), me);
         } else {
-            printf("Receive buffer overflow\n");
+            printf("tcp-conmgr | Receive buffer overflow\n");
             tcp_close(tpcb);
             me->tpcb = NULL;
-            RKH_SMA_POST_FIFO(mqttProt, RKH_UPCAST(RKH_EVT_T, &e_NetDisconnected), me);
+            RKH_SMA_POST_FIFO(tcpMqttProt, RKH_UPCAST(RKH_EVT_T, &e_NetDisconnected), me);
         }
         pbuf_free(p);
     } else {
-        printf("Connection closed\n");
+        printf("tcp-conmgr | Connection closed\n");
         tcp_close(tpcb);
         me->tpcb = NULL;
-        RKH_SMA_POST_FIFO(mqttProt, RKH_UPCAST(RKH_EVT_T, &e_NetDisconnected), me);
+        RKH_SMA_POST_FIFO(tcpMqttProt, RKH_UPCAST(RKH_EVT_T, &e_NetDisconnected), me);
     }
     return ERR_OK;
 }
 
-static err_t tcp_connect_callback(void *arg, struct tcp_pcb *tpcb, err_t err) {
-    printf("tcp_connect_callback\n");
+static err_t
+tcp_connect_callback(void *arg, struct tcp_pcb *tpcb, err_t err)
+{
+
+
+    printf("tcp-conmgr | tcp_connect_callback\n");
+    printf("error: %d \n", err);
+
     TcpConMgr *me = (TcpConMgr *)arg;
 
     if (err == ERR_OK) {
-        printf("TCP Connected\n");
+        printf("tcp-conmgr | TCP Connected\n");
         me->tpcb = tpcb;
+
         tcp_recv(tpcb, tcp_recv_callback);
         tcp_sent(tpcb, tcp_sent_callback);
-        RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_NetConnected), me);
+
+        printf("tcp-conmgr | Before alloc\n");
+        TcpNetConnectedEvt *evt = RKH_ALLOC_EVT(TcpNetConnectedEvt, evNetConnected, me);
+        if (evt == NULL) {
+            printf("tcp-conmgr | Alloc failed\n");
+            return ERR_OK;
+        }
+        printf("tcp-conmgr | After alloc\n");
+        evt->sockfd = (mqttc_pal_socket_handle)tpcb;
+        printf("tcp-conmgr | Posting evNetConnected with sockfd: %p\n", evt->sockfd);
+        RKH_SMA_POST_FIFO(tcpMqttProt, RKH_UPCAST(RKH_EVT_T, evt), me); // No return value
+        printf("tcp-conmgr | After post\n");
+
     } else {
-        printf("TCP Connection failed: %d\n", err);
+
+        printf("tcp-conmgr | TCP Connection failed: %d\n", err);
         tcp_close(tpcb);
         me->tpcb = NULL;
-        RKH_SMA_POST_FIFO(mqttProt, RKH_UPCAST(RKH_EVT_T, &e_NetDisconnected), me);
+
+        RKH_SMA_POST_FIFO(tcpMqttProt, RKH_UPCAST(RKH_EVT_T, &e_NetDisconnected), me);
     }
+
     return ERR_OK;
 }
 
 /* ............................ Initial action ............................. */
 static void init(TcpConMgr *const me, RKH_EVT_T *pe) {
-    printf("init\n");
+    printf("tcp-conmgr | init\n");
     (void)pe;
     RKH_TMR_INIT(&me->timer, &e_tout, NULL);
     me->tpcb = NULL;
     me->psend = NULL;
     me->recv_len = 0;
     me->recv_index = 0;
+
     rkh_queue_init(&qDefer, (const void **)qDefer_sto, SIZEOF_QDEFER, CV(0));
+
 }
 
 /* ............................ Effect actions ............................. */
 static void open(TcpConMgr *const me, RKH_EVT_T *pe) {
-    printf("open\n");
+    printf("tcp-conmgr | open\n");
     (void)pe;
     tcp_connect_attempt(me, pe);
 }
 
 static void close(TcpConMgr *const me, RKH_EVT_T *pe) {
-    printf("close\n");
+    printf("tcp-conmgr | close\n");
     (void)pe;
     if (me->tpcb != NULL) {
         tcp_close(me->tpcb);
@@ -186,14 +220,14 @@ static void close(TcpConMgr *const me, RKH_EVT_T *pe) {
 }
 
 static void defer(TcpConMgr *const me, RKH_EVT_T *pe) {
-    printf("defer\n");
+    printf("tcp-conmgr | defer\n");
     if (rkh_queue_is_full(&qDefer) != RKH_TRUE) {
         rkh_sma_defer(&qDefer, pe);
     }
 }
 
 static void send_request(TcpConMgr *const me, RKH_EVT_T *pe) {
-    printf("send_request\n");
+    printf("tcp-conmgr | send_request\n");
     me->psend = RKH_UPCAST(TcpSendEvt, pe);
 
     if (me->tpcb != NULL) {
@@ -202,19 +236,21 @@ static void send_request(TcpConMgr *const me, RKH_EVT_T *pe) {
             tcp_output(me->tpcb);
             RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Sent), me);
         } else {
-            printf("tcp_write failed: %d\n", err);
-            RKH_SMA_POST_FIFO(mqttProt, RKH_UPCAST(RKH_EVT_T, &e_NetDisconnected), me);
+            printf("tcp-conmgr | tcp_write failed: %d\n", err);
+            RKH_SMA_POST_FIFO(tcpMqttProt, RKH_UPCAST(RKH_EVT_T, &e_NetDisconnected), me);
         }
     }
 }
 
 static void flush_data(TcpConMgr *const me, RKH_EVT_T *pe) {
-    printf("flush_data\n");
-    RKH_SMA_POST_FIFO(mqttProt, RKH_UPCAST(RKH_EVT_T, &e_Sent), me);
+    printf("tcp-conmgr | flush_data\n");
+    RKH_SMA_POST_FIFO(tcpMqttProt, RKH_UPCAST(RKH_EVT_T, &e_Sent), me);
 }
 
 static void read_data(TcpConMgr *const me, RKH_EVT_T *pe) {
-    printf("read_data\n");
+
+    printf("tcp-conmgr | read_data\n");
+
     if (me->recv_len > 0) {
         TcpReceivedEvt *evt = RKH_ALLOC_EVT(TcpReceivedEvt, evReceived, me);
         size_t bytes_to_read = (me->recv_len < RECV_BUFF_SIZE) ? me->recv_len : RECV_BUFF_SIZE;
@@ -227,16 +263,18 @@ static void read_data(TcpConMgr *const me, RKH_EVT_T *pe) {
         } else {
             me->recv_len -= bytes_to_read;
         }
-        RKH_SMA_POST_FIFO(mqttProt, RKH_UPCAST(RKH_EVT_T, evt), me); // Send to mqttProt
+        RKH_SMA_POST_FIFO(tcpMqttProt, RKH_UPCAST(RKH_EVT_T, evt), me); // Send to mqttProt
     }
 }
 
 static void tcp_connect_attempt(TcpConMgr *const me, RKH_EVT_T *pe) {
-    printf("tcp_connect_attempt\n");
+
+    printf("tcp-conmgr | tcp_connect_attempt\n");
+
     if (me->tpcb == NULL) {
         me->tpcb = altcp_new();
         if (me->tpcb == NULL) {
-            printf("Failed to create TCP PCB\n");
+            printf("tcp-conmgr | Failed to create TCP PCB\n");
             RKH_TMR_ONESHOT(&me->timer, RKH_UPCAST(RKH_SMA_T, me), TCP_RECONNECT_DELAY);
             return;
         }
@@ -251,7 +289,7 @@ static void tcp_connect_attempt(TcpConMgr *const me, RKH_EVT_T *pe) {
 
         err_t err = tcp_connect(me->tpcb, &remote_ip, remote_port, tcp_connect_callback);
         if (err != ERR_OK) {
-            printf("tcp_connect failed: %d\n", err);
+            printf("tcp-conmgr | tcp_connect failed: %d\n", err);
             tcp_close(me->tpcb);
             me->tpcb = NULL;
             RKH_TMR_ONESHOT(&me->timer, RKH_UPCAST(RKH_SMA_T, me), TCP_RECONNECT_DELAY);
@@ -260,31 +298,35 @@ static void tcp_connect_attempt(TcpConMgr *const me, RKH_EVT_T *pe) {
 }
 
 static void notify_connected(TcpConMgr *const me, RKH_EVT_T *pe) {
-    printf("notify_connected\n");
+
+    printf("tcp-conmgr |  notify_connected\n");
+
     TcpNetConnectedEvt *evt = RKH_ALLOC_EVT(TcpNetConnectedEvt, evNetConnected, me);
-    evt->sockfd = (mqttc_pal_socket_handle)me->tpcb; // Pass tcp_pcb to mqttProt
-    RKH_SMA_POST_FIFO(mqttProt, RKH_UPCAST(RKH_EVT_T, evt), me);
+
+    evt->sockfd = (mqttc_pal_socket_handle)me->tpcb; // Pass tcp_pcb to tcpMqttProt
+
+    RKH_SMA_POST_FIFO(tcpMqttProt, RKH_UPCAST(RKH_EVT_T, evt), me);
 }
 
 /* ............................. Entry actions ............................. */
 static void connecting_entry(TcpConMgr *const me) {
-    printf("connecting_entry\n");
+    printf("tcp-conmgr | connecting_entry\n");
     tcp_connect_attempt(me, NULL);
 }
 
 static void connected_entry(TcpConMgr *const me) {
-    printf("connected_entry\n");
+    printf("tcp-conmgr | connected_entry\n");
     bsp_netStatus(ConnectedSt);
     rkh_sma_recall((RKH_SMA_T *)me, &qDefer);
 }
 
 /* ............................. Exit actions ............................. */
 static void connecting_exit(TcpConMgr *const me) {
-    printf("connecting_exit\n");
+    printf("tcp-conmgr | connecting_exit\n");
     rkh_tmr_stop(&me->timer);
 }
 
 static void connected_exit(TcpConMgr *const me) {
-    printf("connected_exit\n");
+    printf("tcp-conmgr | connected_exit\n");
     bsp_netStatus(DisconnectedSt);
 }
