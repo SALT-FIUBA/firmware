@@ -1,5 +1,343 @@
 # firmware
 
+## stm32 lwip tcp ConMgr state machine
+
+
+### test
+
+
+
+#### host side
+
+```json 
+» nc -l 192.168.1.81 1883
+
+hey there
+haloo
+```
+
+### client side
+
+```json
+ » ./STM32_Programmer_CLI -c port=ttyACM0 br=115200 console
+      -------------------------------------------------------------------
+                        STM32CubeProgrammer v2.17.0                  
+      -------------------------------------------------------------------
+
+Waiting for network interface...
+Waiting for link...
+Link up - IP: 192.168.1.78
+init 
+open 
+tcp_connect_attempt 
+socketOpen 
+tcp_connect_attempt 
+tcp_connect_callback 
+TCP Connected
+tcp_recv_callback 
+Received 1 bytes
+
+tcp_recv_callback 
+Received 10 bytes
+tcp_recv_callback 
+Received 6 bytes
+tcp_recv_callback 
+Connection closed
+
+
+
+```
+
+## changes & notes
+
+1. remove defer functions
+
+2. remove tcp_connect_attempt as effect function when evOpen is triggered in TcpConMgr_inactive
+
+```c
+# old
+                RKH_TRREG(evOpen, NULL, open, &TcpConMgr_active),
+
+# new
+                RKH_TRREG(evOpen, NULL, NULL, &TcpConMgr_active),
+```
+
+3. remove tcp_connect_attempt as effecto function when evTimeout is triggered in TcpConMgr_connecting
+
+```c
+# old
+                RKH_TRREG(evTimeout, NULL, tcp_connect_attempt, &TcpConMgr_connecting),
+
+# new
+                RKH_TRREG(evTimeout, NULL, NULL, &TcpConMgr_connecting),
+```
+
+**at this point, conMgr with tcp client and pbuf is working as expected**
+
+4. events posted between conMgr and mqttProt
+
++ e_Sent: from conMgr to mqttProt in sendOk function
+
+```c 
+static RKH_ROM_STATIC_EVENT(e_Sent,     evSent);
+
+RKH_CREATE_BASIC_STATE(ConMgr_waitOk, NULL, NULL, &ConMgr_sending, NULL);
+RKH_CREATE_TRANS_TABLE(ConMgr_waitOk)
+    RKH_TRREG(evOk, NULL,  sendOk, &ConMgr_sendingFinal),    
+RKH_END_TRANS_TABLE
+
+static void
+sendOk(ConMgr *const me, RKH_EVT_T *pe)
+{
+    (void)pe;
+    (void)me;
+
+    me->retryCount = 0;
+    RKH_SMA_POST_FIFO(mqttProt, &e_Sent, conMgr);
+}
+```
+
+
++ e_Sendfail: from conMgr to mqttProt in sendFail function
+
+```c 
+static RKH_ROM_STATIC_EVENT(e_SendFail, evSendFail);
+
+RKH_CREATE_BASIC_STATE(ConMgr_inactive, NULL, NULL, RKH_ROOT, NULL);
+RKH_CREATE_TRANS_TABLE(ConMgr_inactive)
+    RKH_TRINT(evSend, NULL, sendFail),
+    ....
+RKH_END_TRANS_TABLE
+
+RKH_CREATE_COMP_REGION_STATE(ConMgr_active, NULL, NULL, RKH_ROOT, 
+                             &ConMgr_initialize, NULL,
+                             RKH_NO_HISTORY, NULL, NULL, NULL, NULL);
+RKH_CREATE_TRANS_TABLE(ConMgr_active)
+    RKH_TRINT(evSend, NULL, sendFail),
+    ....
+RKH_END_TRANS_TABLE
+
+RKH_CREATE_COMP_REGION_STATE(ConMgr_sending, NULL, NULL, 
+                             &ConMgr_connected, &ConMgr_waitPrompt, NULL,
+                             RKH_NO_HISTORY, NULL, NULL, NULL, NULL);
+RKH_CREATE_TRANS_TABLE(ConMgr_sending)
+	RKH_TRREG(evError, NULL, sendFail, &ConMgr_idle),
+    RKH_TRREG(evNoResponse, NULL, sendFail, &ConMgr_idle),
+    ....
+RKH_END_TRANS_TABLE
+
+
+
+static void
+sendFail(ConMgr *const me, RKH_EVT_T *pe)
+{
+    (void)pe;
+    (void)me;
+
+    RKH_SMA_POST_FIFO(mqttProt, &e_SendFail, conMgr);
+	ModCmd_init();
+}
+```
+
++ e_NetConnected: from conMgr to mqttProt in socketConnected entry function of ConMgr_connected 
+
+```c 
+static RKH_ROM_STATIC_EVENT(e_NetConnected, evNetConnected);
+
+RKH_CREATE_COMP_REGION_STATE(ConMgr_connected, 
+                             socketConnected, socketDisconnected, 
+                             &ConMgr_connecting, &ConMgr_idle, NULL,
+                             RKH_NO_HISTORY, NULL, NULL, NULL, NULL);
+
+static void
+socketConnected(ConMgr *const me)
+{
+    (void)me;
+
+    me->retryCount = 0;
+    RKH_SMA_POST_FIFO(mqttProt, &e_NetConnected, conMgr);
+    bsp_netStatus(ConnectedSt);
+}
+```
+
+
++ e_NetDisconnected: from conMgr to mqttProt in socketConnected exit function of ConMgr_connected
+
+```c 
+
+static RKH_ROM_STATIC_EVENT(e_NetDisconnected, evNetDisconnected);
+
+RKH_CREATE_COMP_REGION_STATE(ConMgr_connected, 
+                             socketConnected, socketDisconnected, 
+                             &ConMgr_connecting, &ConMgr_idle, NULL,
+                             RKH_NO_HISTORY, NULL, NULL, NULL, NULL);
+
+static void
+socketDisconnected(ConMgr *const me)
+{
+    (void)me;
+
+    RKH_SMA_POST_FIFO(mqttProt, &e_NetDisconnected, conMgr);
+    bsp_netStatus(DisconnectedSt);
+}
+```
+
+
++ e_Received: 
+
+```c 
+typedef struct ReceivedEvt ReceivedEvt;
+struct ReceivedEvt
+{
+    RKH_EVT_T evt;
+    unsigned char buf[RECV_BUFF_SIZE];
+    ruint size;
+};
+
+
+ReceivedEvt e_Received;
+
+static void 
+readData(ConMgr *const me, RKH_EVT_T *pe)
+{
+    (void)pe;
+    (void)me;
+
+    RKH_SET_STATIC_EVENT(RKH_UPCAST(RKH_EVT_T, &e_Received), evReceived);
+    ModCmd_readData();
+}
+
+static void
+recvOk(ConMgr *const me, RKH_EVT_T *pe)
+{
+    (void)pe;
+    (void)me;
+
+    me->retryCount = 0;
+    RKH_SMA_POST_FIFO(mqttProt, RKH_UPCAST(RKH_EVT_T, &e_Received), conMgr);
+}
+
+RKH_CREATE_BASIC_STATE(ConMgr_receiving, NULL, NULL, &ConMgr_connected, NULL);
+RKH_CREATE_TRANS_TABLE(ConMgr_receiving)
+    RKH_TRREG(evOk, NULL,  recvOk, &ConMgr_idle),
+	....
+RKH_END_TRANS_TABLE
+```
+
+
++ e_RecvFail: 
+
+```c 
+RKH_TRREG(evOk, NULL,  recvOk, &ConMgr_idle),
+
+
+static void
+recvFail(ConMgr *const me, RKH_EVT_T *pe)
+{
+    (void)pe;
+    (void)me;
+
+    RKH_SMA_POST_FIFO(mqttProt, &e_RecvFail, conMgr);
+	ModCmd_init();
+}
+
+
+RKH_CREATE_BASIC_STATE(ConMgr_inactive, NULL, NULL, RKH_ROOT, NULL);
+RKH_CREATE_TRANS_TABLE(ConMgr_inactive)
+    RKH_TRINT(evRecv, NULL, recvFail),
+    ....
+RKH_END_TRANS_TABLE
+
+RKH_CREATE_COMP_REGION_STATE(ConMgr_active, NULL, NULL, RKH_ROOT, 
+                             &ConMgr_initialize, NULL,
+                             RKH_NO_HISTORY, NULL, NULL, NULL, NULL);
+RKH_CREATE_TRANS_TABLE(ConMgr_active)
+    RKH_TRINT(evRecv, NULL, recvFail),
+    ...
+RKH_END_TRANS_TABLE
+
+RKH_CREATE_BASIC_STATE(ConMgr_receiving, NULL, NULL, &ConMgr_connected, NULL);
+RKH_CREATE_TRANS_TABLE(ConMgr_receiving)
+	RKH_TRREG(evError, NULL, recvFail, &ConMgr_idle),
+	RKH_TRREG(evNoResponse, NULL, recvFail, &ConMgr_idle),
+	...
+RKH_END_TRANS_TABLE
+```
+
+
+5. based on the original conMgr state machine, I changed the events posted internally and externally
+
+```c 
+
+// Internal Usage
+
+static RKH_STATIC_EVENT(e_tout, evTimeout);
+static RKH_ROM_STATIC_EVENT(e_Open, evOpen);
+static RKH_ROM_STATIC_EVENT(e_Close, evClose);
+
+static RKH_ROM_STATIC_EVENT(e_Connected, evConnected);
+static RKH_ROM_STATIC_EVENT(e_Disconnected, evDisconnected);
+
+
+// External Usage. events used to post to mqttProt state machine
+
+static RKH_ROM_STATIC_EVENT(e_NetConnected, evNetConnected);
+static RKH_ROM_STATIC_EVENT(e_NetDisconnected, evNetDisconnected);
+
+static RKH_ROM_STATIC_EVENT(e_Sent, evSent);
+static RKH_ROM_STATIC_EVENT(e_Received, evReceived);
+
+static RKH_ROM_STATIC_EVENT(e_SendFail, evSendFail);
+static RKH_ROM_STATIC_EVENT(e_RecvFail, evRecvFail);
+```
+
+6. based on the original conMgr state machine, the use of RKH_SMA_POST_FIFO is
+used to communicate with another state machine
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## simple publisher
 
@@ -316,7 +654,6 @@ Linux cooked capture v1
 Internet Protocol Version 4, Src: 192.168.1.81, Dst: 192.168.1.78
 Transmission Control Protocol, Src Port: 1883, Dst Port: 52432, Seq: 5, Ack: 171, Len: 0
 ```
-
 
 
 ## simple publisher & subscriber

@@ -28,24 +28,23 @@ static void init(TcpConMgr *const me, RKH_EVT_T *pe);
 /* ........................ Declares effect actions ........................ */
 static void open(TcpConMgr *const me, RKH_EVT_T *pe);
 static void close(TcpConMgr *const me, RKH_EVT_T *pe);
-static void defer(TcpConMgr *const me, RKH_EVT_T *pe);
 static void send_request(TcpConMgr *const me, RKH_EVT_T *pe);
 static void flush_data(TcpConMgr *const me, RKH_EVT_T *pe);
 static void read_data(TcpConMgr *const me, RKH_EVT_T *pe);
 static void tcp_connect_attempt(TcpConMgr *const me, RKH_EVT_T *pe);
 
 /* ......................... Declares entry actions ........................ */
-static void connecting_entry(TcpConMgr *const me);
-static void connected_entry(TcpConMgr *const me);
+static void socketOpen(TcpConMgr *const me);
+static void socketConnected(TcpConMgr *const me);
 
 /* ......................... Declares exit actions ......................... */
-static void connecting_exit(TcpConMgr *const me);
-static void connected_exit(TcpConMgr *const me);
+static void socketClose(TcpConMgr *const me);
+static void socketClosed(TcpConMgr *const me);
 
 /* ........................ States and pseudostates ........................ */
 RKH_CREATE_BASIC_STATE(TcpConMgr_inactive, NULL, NULL, RKH_ROOT, NULL);
 RKH_CREATE_TRANS_TABLE(TcpConMgr_inactive)
-                RKH_TRREG(evOpen, NULL, open, &TcpConMgr_active),
+                RKH_TRREG(evOpen, NULL, NULL, &TcpConMgr_active),
 RKH_END_TRANS_TABLE
 
 RKH_CREATE_COMP_REGION_STATE(TcpConMgr_active, NULL, NULL, RKH_ROOT,
@@ -55,16 +54,14 @@ RKH_CREATE_TRANS_TABLE(TcpConMgr_active)
                 RKH_TRREG(evClose, NULL, close, &TcpConMgr_inactive),
 RKH_END_TRANS_TABLE
 
-RKH_CREATE_BASIC_STATE(TcpConMgr_connecting, connecting_entry, connecting_exit, &TcpConMgr_active, NULL);
+RKH_CREATE_BASIC_STATE(TcpConMgr_connecting, socketOpen, socketClose, &TcpConMgr_active, NULL);
 RKH_CREATE_TRANS_TABLE(TcpConMgr_connecting)
-                RKH_TRINT(evSend, NULL, defer),
-                RKH_TRINT(evRecv, NULL, defer),
                 RKH_TRREG(evConnected, NULL, NULL, &TcpConMgr_connected),
-                RKH_TRREG(evTimeout, NULL, tcp_connect_attempt, &TcpConMgr_connecting),
+                RKH_TRREG(evTimeout, NULL, NULL, &TcpConMgr_connecting),
                 RKH_TRREG(evError, NULL, NULL, &TcpConMgr_connecting),
 RKH_END_TRANS_TABLE
 
-RKH_CREATE_BASIC_STATE(TcpConMgr_connected, connected_entry, connected_exit, &TcpConMgr_active, NULL);
+RKH_CREATE_BASIC_STATE(TcpConMgr_connected, socketConnected, socketClosed, &TcpConMgr_active, NULL);
 RKH_CREATE_TRANS_TABLE(TcpConMgr_connected)
                 RKH_TRREG(evSend, NULL, send_request, &TcpConMgr_sending),
                 RKH_TRREG(evRecv, NULL, read_data, &TcpConMgr_receiving),
@@ -89,12 +86,29 @@ RKH_SMA_CREATE(TcpConMgr, tcpConMgr, 1, HCAL, &TcpConMgr_inactive, init, NULL);
 RKH_SMA_DEF_PTR(tcpConMgr);
 
 /* ------------------------------- Constants ------------------------------- */
+
+// internal usage
+
 static RKH_STATIC_EVENT(e_tout, evTimeout);
 static RKH_ROM_STATIC_EVENT(e_Open, evOpen);
 static RKH_ROM_STATIC_EVENT(e_Close, evClose);
+
+static RKH_ROM_STATIC_EVENT(e_Connected, evConnected);
+static RKH_ROM_STATIC_EVENT(e_Disconnected, evDisconnected);
+
+
+// external usage. events used to post to mqttProt state machine
+
 static RKH_ROM_STATIC_EVENT(e_NetConnected, evNetConnected);
 static RKH_ROM_STATIC_EVENT(e_NetDisconnected, evNetDisconnected);
+
 static RKH_ROM_STATIC_EVENT(e_Sent, evSent);
+static RKH_ROM_STATIC_EVENT(e_Received, evReceived);
+
+static RKH_ROM_STATIC_EVENT(e_SendFail, evSendFail);
+static RKH_ROM_STATIC_EVENT(e_RecvFail, evRecvFail);
+
+
 
 /* ---------------------------- Local variables ---------------------------- */
 static RKH_QUEUE_T qDefer;
@@ -104,7 +118,7 @@ static RKH_EVT_T *qDefer_sto[SIZEOF_QDEFER];
 static void tcp_err_callback(void *arg, err_t err) {
     TcpConMgr *me = (TcpConMgr *)arg;
     printf("TCP error: %d\n", err);
-    RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_NetDisconnected), me);
+    RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Disconnected), me);
 }
 
 static err_t tcp_sent_callback(void *arg, struct tcp_pcb *tpcb, u16_t len) {
@@ -125,19 +139,19 @@ static err_t tcp_recv_callback(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, 
             memcpy(me->recv_buffer + me->recv_len, p->payload, p->tot_len);
             me->recv_len += p->tot_len;
             printf("Received %d bytes\n", p->tot_len);
-            RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_NetConnected), me);
+            RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Connected), me);
         } else {
             printf("Receive buffer overflow\n");
             tcp_close(tpcb);
             me->tpcb = NULL;
-            RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_NetDisconnected), me);
+            RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Disconnected), me);
         }
         pbuf_free(p);
     } else {
         printf("Connection closed\n");
         tcp_close(tpcb);
         me->tpcb = NULL;
-        RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_NetDisconnected), me);
+        RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Disconnected), me);
     }
     return ERR_OK;
 }
@@ -151,12 +165,12 @@ static err_t tcp_connect_callback(void *arg, struct tcp_pcb *tpcb, err_t err) {
     if (err == ERR_OK) {
         printf("TCP Connected\n");
         tcp_recv(tpcb, tcp_recv_callback);
-        RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_NetConnected), me);
+        RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Connected), me);
     } else {
         printf("TCP Connection failed: %d\n", err);
         tcp_close(tpcb);
         me->tpcb = NULL;
-        RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_NetDisconnected), me);
+        RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Disconnected), me);
     }
     return ERR_OK;
 }
@@ -194,14 +208,7 @@ static void close(TcpConMgr *const me, RKH_EVT_T *pe) {
     }
 }
 
-static void defer(TcpConMgr *const me, RKH_EVT_T *pe) {
 
-    printf("defer \n");
-
-    if (rkh_queue_is_full(&qDefer) != RKH_TRUE) {
-        rkh_sma_defer(&qDefer, pe);
-    }
-}
 
 static void send_request(TcpConMgr *const me, RKH_EVT_T *pe) {
 
@@ -216,7 +223,7 @@ static void send_request(TcpConMgr *const me, RKH_EVT_T *pe) {
             RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Sent), me);
         } else {
             printf("tcp_write failed: %d\n", err);
-            RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_NetDisconnected), me);
+            RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Disconnected), me);
         }
     }
 }
@@ -232,6 +239,7 @@ static void read_data(TcpConMgr *const me, RKH_EVT_T *pe) {
     printf("read_data \n");
 
     if (me->recv_len > 0) {
+
         TcpReceivedEvt *evt = RKH_ALLOC_EVT(TcpReceivedEvt, evRecv, me);
         size_t bytes_to_read = (me->recv_len < RECV_BUFF_SIZE) ? me->recv_len : RECV_BUFF_SIZE;
         memcpy(evt->buf, me->recv_buffer + me->recv_index, bytes_to_read);
@@ -280,28 +288,28 @@ static void tcp_connect_attempt(TcpConMgr *const me, RKH_EVT_T *pe) {
 }
 
 /* ............................. Entry actions ............................. */
-static void connecting_entry(TcpConMgr *const me) {
+static void socketOpen(TcpConMgr *const me) {
 
-    printf("connecting_entry \n");
+    printf("socketOpen \n");
 
     tcp_connect_attempt(me, NULL);
 }
 
-static void connected_entry(TcpConMgr *const me) {
+static void socketConnected(TcpConMgr *const me) {
 
-    printf("connected_entry \n");
+    printf("socketConnected \n");
 
     bsp_netStatus(ConnectedSt);
     rkh_sma_recall((RKH_SMA_T *)me, &qDefer);
 }
 
 /* ............................. Exit actions ............................. */
-static void connecting_exit(TcpConMgr *const me) {
-    printf("connecting_exit \n");
+static void socketClose(TcpConMgr *const me) {
+    printf("socketClose \n");
     rkh_tmr_stop(&me->timer);
 }
 
-static void connected_exit(TcpConMgr *const me) {
-    printf("connected_exit \n");
+static void socketClosed(TcpConMgr *const me) {
+    printf("socketClosed \n");
     bsp_netStatus(DisconnectedSt);
 }
