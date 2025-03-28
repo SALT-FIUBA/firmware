@@ -88,6 +88,29 @@ extern struct netif gnetif;
 
 static RKH_ROM_STATIC_EVENT(e_Open, evOpen);
 
+#define MQTTPROT_QSTO_SIZE  16
+#define CONMGR_QSTO_SIZE    16
+
+static RKH_EVT_T * MQTTProt_qsto[MQTTPROT_QSTO_SIZE];
+static RKH_EVT_T * ConMgr_qsto[CONMGR_QSTO_SIZE];
+
+
+#define SIZEOF_EP0STO       16
+#define SIZEOF_EP0_BLOCK    sizeof(RKH_EVT_T)
+static rui8_t evPool0Sto[SIZEOF_EP0STO];
+
+#define SIZEOF_EP1STO 128  // Total size in bytes (e.g., 16 events of 8 bytes each)
+#define SIZEOF_EP1_BLOCK sizeof(TcpNetConnectedEvt)  // Block size matches the event
+static rui8_t evPool1Sto[SIZEOF_EP1STO];
+
+#define SIZEOF_EP2STO 128  // Total size in bytes (e.g., 16 events of 8 bytes each)
+#define SIZEOF_EP2_BLOCK sizeof(TcpReceivedEvt)  // Block size matches the event
+static rui8_t evPool2Sto[SIZEOF_EP2STO];
+
+#define SIZEOF_EP3STO 128  // Total size in bytes (e.g., 16 events of 8 bytes each)
+#define SIZEOF_EP3_BLOCK sizeof(TcpSendEvt)  // Block size matches the event
+static rui8_t evPool3Sto[SIZEOF_EP3STO];
+
 
 /* USER CODE END 0 */
 
@@ -129,10 +152,13 @@ int main(void)
 
     /* Initialize RKH framework */
     rkh_fwk_init();
+    rkh_dynEvt_init();
 
     /* Define event pool storage (simplified for this example) */
-    static rui8_t evPoolSto[512]; /* Adjust size as needed */
-    rkh_fwk_registerEvtPool(evPoolSto, sizeof(evPoolSto), sizeof(RKH_EVT_T));
+    rkh_fwk_registerEvtPool(evPool0Sto, SIZEOF_EP0STO, SIZEOF_EP0_BLOCK);
+    //  rkh_fwk_registerEvtPool(evPool1Sto, SIZEOF_EP1STO, SIZEOF_EP1_BLOCK);
+    //  rkh_fwk_registerEvtPool(evPool2Sto, SIZEOF_EP2STO, SIZEOF_EP2_BLOCK);
+    rkh_fwk_registerEvtPool(evPool3Sto, SIZEOF_EP3STO, SIZEOF_EP3_BLOCK);
 
     /* Wait for network interface to be up */
     printf("Waiting for network interface...\n");
@@ -151,8 +177,7 @@ int main(void)
     HAL_Delay(1000);
 
     /* Activate the TcpConMgr state machine */
-    static RKH_EVT_T *qsto[4]; /* Event queue storage */
-    RKH_SMA_ACTIVATE(tcpConMgr, qsto, 4, 0, 0);
+    RKH_SMA_ACTIVATE(tcpConMgr, ConMgr_qsto, CONMGR_QSTO_SIZE, 0, 0);
 
     /* Post the initial evOpen event */
     RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Open), NULL);

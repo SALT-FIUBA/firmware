@@ -24,6 +24,13 @@ struct TcpReceivedEvt
     ruint size;
 };
 
+typedef struct TcpNetConnectedEvt TcpNetConnectedEvt;
+struct TcpNetConnectedEvt
+{
+    RKH_EVT_T evt;
+    struct tcp_pcb * tpcb;
+};
+
 
 /* ............................. Active object ............................. */
 
