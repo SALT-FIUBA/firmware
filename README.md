@@ -3,13 +3,200 @@
 
 ## stm32 lwip tcp ConMgr state machine
 
-### latest test
+### TcpConMgr_connected <-> TcpConMgr_receiving interaction
+
+```c 
+static err_t tcp_recv_callback(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_t err) {
+
+    printf("tcp_recv_callback \n");
+    TcpConMgr *me = (TcpConMgr *)arg;
+
+    if (p != NULL) {
+
+        if (me->recv_len + p->tot_len <= sizeof(me->recv_buffer)) {
+
+            memcpy(me->recv_buffer + me->recv_len, p->payload, p->tot_len);
+            me->recv_len += p->tot_len;
+            
+            TcpReceiveEvt * evt = RKH_ALLOC_EVT(TcpReceiveEvt, evRecv, me);
+            if (evt == NULL) {
+                return ERR_OK;
+            }
+
+            size_t bytes_to_read = (me->recv_len < RECV_BUFF_SIZE) ? me->recv_len : RECV_BUFF_SIZE;
+            memcpy(evt->buf, me->recv_buffer + me->recv_index, bytes_to_read);
+            evt->size = bytes_to_read;
+            me->recv_index += bytes_to_read;
+
+            if (me->recv_index >= me->recv_len) {
+                me->recv_len = 0;
+                me->recv_index = 0;
+            } else {
+                me->recv_len -= bytes_to_read;
+            }
+
+            RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, evt), me);
+
+        } else {
+            ... 
+        }
+    } else {
+        ...
+    }
+
+    return ERR_OK;
+}
+
+static void read_data(TcpConMgr *const me, RKH_EVT_T *pe) {
+    
+    TcpReceiveEvt * evt = RKH_DOWNCAST(TcpReceiveEvt, pe);
+
+    me->recv_len = evt->size;
+
+    if (me->recv_len > 0) {
+        
+        RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Ok), me);
+    }
+}
+```
+
+#### tcp-conmgr.h
+```c 
+typedef struct TcpReceiveEvt TcpReceiveEvt;
+struct TcpReceiveEvt
+{
+    RKH_EVT_T evt;
+    unsigned char buf[RECV_BUFF_SIZE];
+    ruint size;
+};
+```
+
+#### main.c
+
+```c 
+#define SIZEOF_EP2STO 1024  // Total size in bytes (e.g., 16 events of 8 bytes each)
+#define SIZEOF_EP2_BLOCK sizeof(TcpReceiveEvt)  // Block size matches the event
+static rui8_t evPool2Sto[SIZEOF_EP2STO];
+```
+
+#### host side 
+
+```json
+» nc -l 192.168.1.81 1883
+
+hey there
+Hello, TCP !
+hey hey
+Hello, TCP !
+Hello, TCP !
+```
+
+### client side - stm32
+
+```json 
+» ./STM32_Programmer_CLI -c port=ttyACM0 br=115200 console
+      -------------------------------------------------------------------
+                        STM32CubeProgrammer v2.17.0                  
+      -------------------------------------------------------------------
+
+Serial Port ttyACM0 is successfully opened.
+ Port configuration: parity = even, baudrate = 115200, data-bit = 8,
+                     stop-bit = 1,0, flow-control = off
+
+                     main | SIZEOF_EP3STO: 1024
+main | SIZEOF_EP3_BLOCK: 72
+Waiting for network interface...
+Waiting for link...
+Link up - IP: 192.168.1.78
+Dispatching event 65533 to SMA 0x8016d40
+tcp-conmgr | init
+Dispatching event 0 to SMA 0x8016d40
+socketOpen
+tcp_connect_attempt
+connect_callback
+TCP Connected
+Dispatching event 24 to SMA 0x8016cc8
+socketConnected
+tcp_recv_callback
+Received 1 bytes
+tcp-conmgr | pre malloc failed TcpReceivedEvt
+tcp-conmgr | post malloc failed TcpReceivedEvt
+tcp-conmgr | Posting TcpReceivedEvt
+tcp-conmgr | After post TcpReceivedEvt
+Dispatching event 28 to SMA 0x8016c70
+read_data
+Current state: connected
+evt->buf:
+
+evt size: 1
+evet e: 28
+socketConnected
+Dispatching event 9 to SMA 0x8016d78
+tcp_recv_callback
+Received 10 bytes
+tcp-conmgr | pre malloc failed TcpReceivedEvt
+tcp-conmgr | post malloc failed TcpReceivedEvt
+tcp-conmgr | Posting TcpReceivedEvt
+tcp-conmgr | After post TcpReceivedEvt
+Dispatching event 28 to SMA 0x8016c70
+read_data
+Current state: connected
+evt->buf:
+hey there
+
+evt size: 11
+evet e: 28
+socketConnected
+Dispatching event 9 to SMA 0x8016d78
+
+
+Polling
+Current state: connected
+tcp-conmgr | pre alloc TcpSendEvt
+tcp-conmgr | post alloc TcpSendEvt
+test data: Hello, TCP !
+
+data size: 15
+evt->buf: Hello, TCP !
+
+evt->size: 15
+evt->evt.e: 25
+tcp-conmgr | Posting TcpSendEvt
+tcp-conmgr | After post TcpSendEvt
+Dispatching event 25 to SMA 0x8016c70
+send_request
+Current state: connected
+evt->buf: Hello, TCP !
+
+evt size: 15
+evet e: 25
+tpcb != NULL: yes
+socketConnected
+Dispatching event 9 to SMA 0x8016dc0
+flush_data
+Sent 15 bytes
+Dispatching event 27 to SMA 0x8016c70
+tcp_recv_callback
+Received 8 bytes
+tcp-conmgr | pre malloc failed TcpReceivedEvt
+tcp-conmgr | post malloc failed TcpReceivedEvt
+tcp-conmgr | Posting TcpReceivedEvt
+tcp-conmgr | After post TcpReceivedEvt
+Dispatching event 28 to SMA 0x8016c70
+read_data
+Current state: connected
+evt->buf:
+hey there
+hey hey
+```
+
+
+### TcpConMgr_connected <-> TcpConMgr_sending interaction 
 
 based on framework parameters defined in rkhcfg.h, altered SEND_BUFF_SIZE, RECV_BUFF_SIZE and pool object-like macros 
 in main.c to achieve the post a TcpSendEvt from tcp_poll_callback to send_request 
 
 ```c 
-
 static err_t tcp_poll_callback(void *arg, struct tcp_pcb *tpcb) {
 
     ....
@@ -18,7 +205,6 @@ static err_t tcp_poll_callback(void *arg, struct tcp_pcb *tpcb) {
 
     return ERR_OK;
 }
-
 
 static void send_request(TcpConMgr *const me, RKH_EVT_T *pe) {
     
@@ -37,7 +223,6 @@ static void send_request(TcpConMgr *const me, RKH_EVT_T *pe) {
         }
     }
 }
-
 ```
 
 
@@ -76,8 +261,8 @@ struct TcpSendEvt
     ruint size;
 };
 
-typedef struct TcpReceivedEvt TcpReceivedEvt;
-struct TcpReceivedEvt
+typedef struct TcpReceiveEvt TcpReceiveEvt;
+struct TcpReceiveEvt
 {
     RKH_EVT_T evt;
     unsigned char buf[RECV_BUFF_SIZE];
@@ -88,15 +273,9 @@ struct TcpReceivedEvt
 #### main.c
 
 ```c 
-
-#define SIZEOF_EP2STO 1024  // Total size in bytes (e.g., 16 events of 8 bytes each)
-#define SIZEOF_EP2_BLOCK sizeof(TcpReceivedEvt)  // Block size matches the event
-static rui8_t evPool2Sto[SIZEOF_EP2STO];
-
 #define SIZEOF_EP3STO 1024  // Total size in bytes (e.g., 16 events of 8 bytes each)
 #define SIZEOF_EP3_BLOCK sizeof(TcpSendEvt)  // Block size matches the event
 static rui8_t evPool3Sto[SIZEOF_EP3STO];
-
 ```
 
 

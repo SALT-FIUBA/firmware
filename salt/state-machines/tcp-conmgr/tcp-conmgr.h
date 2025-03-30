@@ -16,8 +16,8 @@ struct TcpSendEvt
     ruint size;
 };
 
-typedef struct TcpReceivedEvt TcpReceivedEvt;
-struct TcpReceivedEvt
+typedef struct TcpReceiveEvt TcpReceiveEvt;
+struct TcpReceiveEvt
 {
     RKH_EVT_T evt;
     unsigned char buf[RECV_BUFF_SIZE];

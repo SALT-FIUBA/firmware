@@ -163,24 +163,57 @@ static err_t tcp_recv_callback(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, 
     TcpConMgr *me = (TcpConMgr *)arg;
 
     if (p != NULL) {
+
         if (me->recv_len + p->tot_len <= sizeof(me->recv_buffer)) {
+
             memcpy(me->recv_buffer + me->recv_len, p->payload, p->tot_len);
             me->recv_len += p->tot_len;
             printf("Received %d bytes\n", p->tot_len);
-            RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Receive), me);
+
+            printf("tcp-conmgr | pre malloc TcpReceiveEvt \n");
+            TcpReceiveEvt * evt = RKH_ALLOC_EVT(TcpReceiveEvt, evRecv, me);
+
+            if (evt == NULL) {
+                printf("tcp-conmgr | malloc failed TcpReceiveEvt \n");
+                return ERR_OK;
+            }
+
+            printf("tcp-conmgr | post malloc TcpReceiveEvt \n");
+            size_t bytes_to_read = (me->recv_len < RECV_BUFF_SIZE) ? me->recv_len : RECV_BUFF_SIZE;
+            memcpy(evt->buf, me->recv_buffer + me->recv_index, bytes_to_read);
+            evt->size = bytes_to_read;
+            me->recv_index += bytes_to_read;
+
+            if (me->recv_index >= me->recv_len) {
+                me->recv_len = 0;
+                me->recv_index = 0;
+            } else {
+                me->recv_len -= bytes_to_read;
+            }
+
+            printf("tcp-conmgr | Posting TcpReceiveEvt \n");
+            RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, evt), me);
+            printf("tcp-conmgr | After post TcpReceiveEvt \n");
+
         } else {
+
             printf("Receive buffer overflow\n");
             tcp_close(tpcb);
             me->tpcb = NULL;
+
             RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Disconnected), me);
         }
         pbuf_free(p);
+
     } else {
+
         printf("Connection closed\n");
         tcp_close(tpcb);
         me->tpcb = NULL;
+
         RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Disconnected), me);
     }
+
     return ERR_OK;
 }
 
@@ -191,11 +224,16 @@ static err_t tcp_connect_callback(void *arg, struct tcp_pcb *tpcb, err_t err) {
     TcpConMgr *me = (TcpConMgr *)arg;
 
     if (err == ERR_OK) {
+
         printf("TCP Connected\n");
+
         tcp_recv(tpcb, tcp_recv_callback);
         RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Connected), me);
+
     } else {
+
         printf("TCP Connection failed: %d\n", err);
+
         tcp_close(tpcb);
         me->tpcb = NULL;
         RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Disconnected), me);
@@ -244,7 +282,6 @@ static void send_request(TcpConMgr *const me, RKH_EVT_T *pe) {
     printf("send_request \n");
     printf("Current state: %s \n", get_state_name(tcpConMgr->sm.state));
 
-    //  me->psend = RKH_UPCAST(TcpSendEvt, pe);
 
     TcpSendEvt * evt = RKH_DOWNCAST(TcpSendEvt, pe);
 
@@ -254,6 +291,7 @@ static void send_request(TcpConMgr *const me, RKH_EVT_T *pe) {
 
     printf("tpcb != NULL: %s \n", me->tpcb != NULL ? "yes" : "no");
 
+    //  me->psend = RKH_UPCAST(TcpSendEvt, pe);
     me->psend = evt;
 
     if (me->tpcb != NULL) {
@@ -279,22 +317,18 @@ static void flush_data(TcpConMgr *const me, RKH_EVT_T *pe) {
 static void read_data(TcpConMgr *const me, RKH_EVT_T *pe) {
 
     printf("read_data \n");
+    printf("Current state: %s \n", get_state_name(tcpConMgr->sm.state));
+
+    TcpReceiveEvt * evt = RKH_DOWNCAST(TcpReceiveEvt, pe);
+
+    me->recv_len = evt->size;
+
 
     if (me->recv_len > 0) {
 
-/*
-        TcpReceivedEvt *evt = RKH_ALLOC_EVT(TcpReceivedEvt, evReceived, me);
-        size_t bytes_to_read = (me->recv_len < RECV_BUFF_SIZE) ? me->recv_len : RECV_BUFF_SIZE;
-        memcpy(evt->buf, me->recv_buffer + me->recv_index, bytes_to_read);
-        evt->size = bytes_to_read;
-        me->recv_index += bytes_to_read;
-        if (me->recv_index >= me->recv_len) {
-            me->recv_len = 0;
-            me->recv_index = 0;
-        } else {
-            me->recv_len -= bytes_to_read;
-        }
-*/
+        printf("evt->buf: %s \n", evt->buf);
+        printf("evt size: %d \n", evt->size);
+        printf("evet e: %d \n", evt->evt.e);
 
         RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Ok), me);
 
@@ -361,7 +395,7 @@ static void tcp_connect_attempt(TcpConMgr *const me, RKH_EVT_T *pe) {
         tcp_arg(me->tpcb, me);
         tcp_err(me->tpcb, tcp_err_callback);
         tcp_sent(me->tpcb, tcp_sent_callback);
-        tcp_poll(me->tpcb, tcp_poll_callback, 5);
+        tcp_poll(me->tpcb, tcp_poll_callback, 30);
 
         ip_addr_t remote_ip;
         IP4_ADDR(&remote_ip, 192, 168, 1, 81); /* Replace with your TCP server IP */

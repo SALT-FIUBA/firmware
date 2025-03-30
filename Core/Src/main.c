@@ -158,7 +158,7 @@ int main(void)
     /* Define event pool storage (simplified for this example) */
     rkh_fwk_registerEvtPool(evPool0Sto, SIZEOF_EP0STO, SIZEOF_EP0_BLOCK);
     //  rkh_fwk_registerEvtPool(evPool1Sto, SIZEOF_EP1STO, SIZEOF_EP1_BLOCK);               //    TcpNetConnectedEvent
-    //  rkh_fwk_registerEvtPool(evPool2Sto, SIZEOF_EP2STO, SIZEOF_EP2_BLOCK); //    TcpReceivedEvt
+    //  rkh_fwk_registerEvtPool(evPool2Sto, SIZEOF_EP2STO, SIZEOF_EP2_BLOCK); //    TcpReceiveEvt
     rkh_fwk_registerEvtPool(evPool3Sto, SIZEOF_EP3STO, SIZEOF_EP3_BLOCK); //    TcpSendEvt
 
     /* Wait for network interface to be up */
