@@ -254,9 +254,11 @@ static void send_request(TcpConMgr *const me, RKH_EVT_T *pe) {
 
     printf("tpcb != NULL: %s \n", me->tpcb != NULL ? "yes" : "no");
 
+    me->psend = evt;
+
     if (me->tpcb != NULL) {
 
-        err_t err = tcp_write(me->tpcb, evt->buf, evt->size, TCP_WRITE_FLAG_COPY);
+        err_t err = tcp_write(me->tpcb, me->psend->buf, me->psend->size, TCP_WRITE_FLAG_COPY);
 
         if (err == ERR_OK) {
             tcp_output(me->tpcb);
@@ -321,7 +323,7 @@ static err_t tcp_poll_callback(void *arg, struct tcp_pcb *tpcb) {
     }
     printf("tcp-conmgr | post alloc TcpSendEvt \n");
 
-    char *testData = "Hello, TCP !";
+    char *testData = "Hello, TCP ! \n";
     ruint dataSize = strlen(testData) + 1;
 
     printf("test data: %s \n", testData);
