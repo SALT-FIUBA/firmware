@@ -3,8 +3,8 @@
 #include "memory.h"
 
 
-#define SEND_BUFF_SIZE      1024
-#define RECV_BUFF_SIZE      1024
+#define SEND_BUFF_SIZE      64
+#define RECV_BUFF_SIZE      64
 
 
 /* .......................... Event definition ............................ */
@@ -42,7 +42,7 @@ struct TcpConMgr {
 
     struct tcp_pcb *tpcb;   /* TCP protocol control block */
 
-    TcpSendEvt *psend;         /* Pointer to send event */
+    TcpSendEvt * psend;         /* Pointer to send event */
 
     uint8_t recv_buffer[1024]; /* Receive buffer */
     uint32_t recv_len;      /* Bytes in buffer */

@@ -1,11 +1,313 @@
 # firmware
 
+
 ## stm32 lwip tcp ConMgr state machine
 
+### latest test
 
-### test
+based on framework parameters defined in rkhcfg.h, altered SEND_BUFF_SIZE, RECV_BUFF_SIZE and pool object-like macros 
+in main.c to achieve the post a TcpSendEvt from tcp_poll_callback to send_request 
+
+```c 
+
+static err_t tcp_poll_callback(void *arg, struct tcp_pcb *tpcb) {
+
+    ....
+    
+    RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, evt), me);
+
+    return ERR_OK;
+}
 
 
+static void send_request(TcpConMgr *const me, RKH_EVT_T *pe) {
+    
+    TcpSendEvt * evt = RKH_DOWNCAST(TcpSendEvt, pe);
+    
+    if (me->tpcb != NULL) {
+
+        err_t err = tcp_write(me->tpcb, evt->buf, evt->size, TCP_WRITE_FLAG_COPY);
+
+        if (err == ERR_OK) {
+            tcp_output(me->tpcb);
+            RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Ok), me);
+        } else {
+            printf("tcp_write failed: %d\n", err);
+            RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Error), me);
+        }
+    }
+}
+
+```
+
+
+#### rkhcfg.h
+
+```c 
+/* --- Configuration options related to framework ------------------------- */
+
+#define RKH_CFG_FWK_MAX_SMA             6u
+
+#define RKH_CFG_FWK_DYN_EVT_EN          RKH_ENABLED
+
+#define RKH_CFG_FWK_MAX_EVT_POOL        3u
+
+#define RKH_CFG_FWK_SIZEOF_EVT          16u
+
+#define RKH_CFG_FWK_MAX_SIGNALS         48u
+
+#define RKH_CFG_FWK_SIZEOF_EVT_SIZE     16u
+```
+
+#### tcp-conmgr.h 
+
+
+```c 
+#define SEND_BUFF_SIZE      64
+#define RECV_BUFF_SIZE      64
+
+
+/* .......................... Event definition ............................ */
+typedef struct TcpSendEvt TcpSendEvt;
+struct TcpSendEvt
+{
+    RKH_EVT_T evt;
+    unsigned char buf[SEND_BUFF_SIZE];
+    ruint size;
+};
+
+typedef struct TcpReceivedEvt TcpReceivedEvt;
+struct TcpReceivedEvt
+{
+    RKH_EVT_T evt;
+    unsigned char buf[RECV_BUFF_SIZE];
+    ruint size;
+};
+```
+
+#### main.c
+
+```c 
+
+#define SIZEOF_EP2STO 1024  // Total size in bytes (e.g., 16 events of 8 bytes each)
+#define SIZEOF_EP2_BLOCK sizeof(TcpReceivedEvt)  // Block size matches the event
+static rui8_t evPool2Sto[SIZEOF_EP2STO];
+
+#define SIZEOF_EP3STO 1024  // Total size in bytes (e.g., 16 events of 8 bytes each)
+#define SIZEOF_EP3_BLOCK sizeof(TcpSendEvt)  // Block size matches the event
+static rui8_t evPool3Sto[SIZEOF_EP3STO];
+
+```
+
+
+
+#### host side 
+```json
+» nc -l 192.168.1.81 1883
+
+
+Hello, TCP !Hello, TCP !Hello, TCP !Hello, TCP !Hello, TCP !Hello, TCP !^C
+```
+
+#### client side
+
+```json
+main | SIZEOF_EP3STO: 1024 
+main | SIZEOF_EP3_BLOCK: 72 
+Waiting for network interface...
+Waiting for link...
+Link up - IP: 192.168.1.78
+Dispatching event 65533 to SMA 0x8016b9c
+tcp-conmgr | init 
+Dispatching event 0 to SMA 0x8016b9c
+socketOpen 
+tcp_connect_attempt 
+_connect_callback 
+TCP Connected
+Dispatching event 24 to SMA 0x8016b24
+socketConnected 
+tcp_recv_callback 
+Received 1 bytes
+Dispatching event 28 to SMA 0x8016acc
+read_data 
+socketConnected 
+Dispatching event 9 to SMA 0x8016bd4
+Polling
+Current state: connected 
+tcp-conmgr | pre alloc TcpSendEvt 
+tcp-conmgr | post alloc TcpSendEvt 
+test data: Hello, TCP ! 
+data size: 13 
+evt->buf: Hello, TCP ! 
+evt->size: 13 
+evt->evt.e: 25 
+tcp-conmgr | Posting TcpSendEvt 
+tcp-conmgr | After post TcpSendEvt 
+main | SIZEOF_EP3STO: 1024 
+main | SIZEOF_EP3_BLOCK: 72 
+Waiting for network interface...
+Waiting for link...
+Link up - IP: 192.168.1.78
+Dispatching event 65533 to SMA 0x8016b9c
+tcp-conmgr | init 
+Dispatching event 0 to SMA 0x8016b9c
+socketOpen 
+tcp_connect_attempt 
+cp_connect_callback 
+TCP Connected
+Dispatching event 24 to SMA 0x8016b24
+socketConnected 
+tcp_recv_callback 
+Received 2 bytes
+Dispatching event 28 to SMA 0x8016acc
+read_data 
+socketConnected 
+Dispatching event 9 to SMA 0x8016bd4
+Polling
+Current state: connected 
+tcp-conmgr | pre alloc TcpSendEvt 
+tcp-conmgr | post alloc TcpSendEvt 
+test data: Hello, TCP ! 
+data size: 13 
+evt->buf: Hello, TCP ! 
+evt->size: 13 
+evt->evt.e: 25 
+tcp-conmgr | Posting TcpSendEvt 
+tcp-conmgr | After post TcpSendEvt 
+Dispatching event 25 to SMA 0x8016acc
+send_request 
+Current state: connected 
+evt->buf: Hello, TCP ! 
+evt size: 13 
+evet e: 25 
+tpcb != NULL: yes 
+socketConnected 
+Dispatching event 9 to SMA 0x8016c1c
+flush_data 
+Sent 13 bytes
+Dispatching event 27 to SMA 0x8016acc
+Polling
+Current state: connected 
+tcp-conmgr | pre alloc TcpSendEvt 
+tcp-conmgr | post alloc TcpSendEvt 
+test data: Hello, TCP ! 
+data size: 13 
+evt->buf: Hello, TCP ! 
+evt->size: 13 
+evt->evt.e: 25 
+tcp-conmgr | Posting TcpSendEvt 
+tcp-conmgr | After post TcpSendEvt 
+Dispatching event 25 to SMA 0x8016acc
+send_request 
+Current state: connected 
+evt->buf: Hello, TCP ! 
+evt size: 13 
+evet e: 25 
+tpcb != NULL: yes 
+socketConnected 
+Dispatching event 9 to SMA 0x8016c1c
+flush_data 
+Sent 13 bytes
+Dispatching event 27 to SMA 0x8016acc
+Polling
+Current state: connected 
+tcp-conmgr | pre alloc TcpSendEvt 
+tcp-conmgr | post alloc TcpSendEvt 
+test data: Hello, TCP ! 
+data size: 13 
+evt->buf: Hello, TCP ! 
+evt->size: 13 
+evt->evt.e: 25 
+tcp-conmgr | Posting TcpSendEvt 
+tcp-conmgr | After post TcpSendEvt 
+Dispatching event 25 to SMA 0x8016acc
+send_request 
+Current state: connected 
+evt->buf: Hello, TCP ! 
+evt size: 13 
+evet e: 25 
+tpcb != NULL: yes 
+socketConnected 
+Dispatching event 9 to SMA 0x8016c1c
+flush_data 
+Sent 13 bytes
+Dispatching event 27 to SMA 0x8016acc
+Polling
+Current state: connected 
+tcp-conmgr | pre alloc TcpSendEvt 
+tcp-conmgr | post alloc TcpSendEvt 
+test data: Hello, TCP ! 
+data size: 13 
+evt->buf: Hello, TCP ! 
+evt->size: 13 
+evt->evt.e: 25 
+tcp-conmgr | Posting TcpSendEvt 
+tcp-conmgr | After post TcpSendEvt 
+Dispatching event 25 to SMA 0x8016acc
+send_request 
+Current state: connected 
+evt->buf: Hello, TCP ! 
+evt size: 13 
+evet e: 25 
+tpcb != NULL: yes 
+socketConnected 
+Dispatching event 9 to SMA 0x8016c1c
+flush_data 
+Sent 13 bytes
+Dispatching event 27 to SMA 0x8016acc
+Polling
+Current state: connected 
+tcp-conmgr | pre alloc TcpSendEvt 
+tcp-conmgr | post alloc TcpSendEvt 
+test data: Hello, TCP ! 
+data size: 13 
+evt->buf: Hello, TCP ! 
+evt->size: 13 
+evt->evt.e: 25 
+tcp-conmgr | Posting TcpSendEvt 
+tcp-conmgr | After post TcpSendEvt 
+Dispatching event 25 to SMA 0x8016acc
+send_request 
+Current state: connected 
+evt->buf: Hello, TCP ! 
+evt size: 13 
+evet e: 25 
+tpcb != NULL: yes 
+socketConnected 
+Dispatching event 9 to SMA 0x8016c1c
+flush_data 
+Sent 13 bytes
+Dispatching event 27 to SMA 0x8016acc
+Polling
+Current state: connected 
+tcp-conmgr | pre alloc TcpSendEvt 
+tcp-conmgr | post alloc TcpSendEvt 
+test data: Hello, TCP ! 
+data size: 13 
+evt->buf: Hello, TCP ! 
+evt->size: 13 
+evt->evt.e: 25 
+tcp-conmgr | Posting TcpSendEvt 
+tcp-conmgr | After post TcpSendEvt 
+Dispatching event 25 to SMA 0x8016acc
+send_request 
+Current state: connected 
+evt->buf: Hello, TCP ! 
+evt size: 13 
+evet e: 25 
+tpcb != NULL: yes 
+socketConnected 
+Dispatching event 9 to SMA 0x8016c1c
+flush_data 
+Sent 13 bytes
+Dispatching event 27 to SMA 0x8016acc
+tcp_recv_callback 
+Connection closed
+Dispatching event 33 to SMA 0x8016acc
+```
+
+
+### test 1
 
 #### host side
 

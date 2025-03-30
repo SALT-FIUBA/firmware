@@ -117,6 +117,7 @@ rkh_fwk_enter(void)
 
     FOREVER
     {
+
         RKH_DIS_INTERRUPT();
         if (rkh_smaPrio_isReady())
         {

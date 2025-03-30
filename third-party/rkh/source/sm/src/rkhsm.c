@@ -50,6 +50,7 @@
 
 /* --------------------------------- Notes --------------------------------- */
 /* ----------------------------- Include files ----------------------------- */
+#include <stdio.h>
 #include "rkhitl.h"
 #include "rkhsm.h"
 #include "rkhassert.h"
@@ -389,6 +390,8 @@ rkh_sm_clear_history(RKHROM RKH_SHIST_T *h)
 ruint
 rkh_sm_dispatch(RKH_SM_T *me, RKH_EVT_T *pe)
 {
+    printf("Dispatching event %d to SMA %p\n", pe->e, me->state);
+
     RKHROM RKH_ST_T *cs, *ts;
     RKHROM void *ets;
     RKHROM RKH_TR_T *tr;

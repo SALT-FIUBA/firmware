@@ -99,15 +99,15 @@ static RKH_EVT_T * ConMgr_qsto[CONMGR_QSTO_SIZE];
 #define SIZEOF_EP0_BLOCK    sizeof(RKH_EVT_T)
 static rui8_t evPool0Sto[SIZEOF_EP0STO];
 
-#define SIZEOF_EP1STO 128  // Total size in bytes (e.g., 16 events of 8 bytes each)
+#define SIZEOF_EP1STO 512  // Total size in bytes (e.g., 16 events of 8 bytes each)
 #define SIZEOF_EP1_BLOCK sizeof(TcpNetConnectedEvt)  // Block size matches the event
 static rui8_t evPool1Sto[SIZEOF_EP1STO];
 
-#define SIZEOF_EP2STO 128  // Total size in bytes (e.g., 16 events of 8 bytes each)
+#define SIZEOF_EP2STO 1024  // Total size in bytes (e.g., 16 events of 8 bytes each)
 #define SIZEOF_EP2_BLOCK sizeof(TcpReceivedEvt)  // Block size matches the event
 static rui8_t evPool2Sto[SIZEOF_EP2STO];
 
-#define SIZEOF_EP3STO 128  // Total size in bytes (e.g., 16 events of 8 bytes each)
+#define SIZEOF_EP3STO 1024  // Total size in bytes (e.g., 16 events of 8 bytes each)
 #define SIZEOF_EP3_BLOCK sizeof(TcpSendEvt)  // Block size matches the event
 static rui8_t evPool3Sto[SIZEOF_EP3STO];
 
@@ -122,8 +122,6 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-    uint8_t sendbuf[2048]; // Buffer for outgoing MQTT messages
-    uint8_t recvbuf[2048]; // Buffer for incoming MQTT messages (separate from recv_buffer)
 
     struct tcp_pcb * tcp_pcb = NULL;
     /* USER CODE END 1 */
@@ -154,15 +152,18 @@ int main(void)
     rkh_fwk_init();
     rkh_dynEvt_init();
 
+    printf("main | SIZEOF_EP3STO: %d \n", SIZEOF_EP3STO);
+    printf("main | SIZEOF_EP3_BLOCK: %d \n", SIZEOF_EP3_BLOCK);
+
     /* Define event pool storage (simplified for this example) */
     rkh_fwk_registerEvtPool(evPool0Sto, SIZEOF_EP0STO, SIZEOF_EP0_BLOCK);
-    //  rkh_fwk_registerEvtPool(evPool1Sto, SIZEOF_EP1STO, SIZEOF_EP1_BLOCK);
-    //  rkh_fwk_registerEvtPool(evPool2Sto, SIZEOF_EP2STO, SIZEOF_EP2_BLOCK);
-    rkh_fwk_registerEvtPool(evPool3Sto, SIZEOF_EP3STO, SIZEOF_EP3_BLOCK);
+    //  rkh_fwk_registerEvtPool(evPool1Sto, SIZEOF_EP1STO, SIZEOF_EP1_BLOCK);               //    TcpNetConnectedEvent
+    //  rkh_fwk_registerEvtPool(evPool2Sto, SIZEOF_EP2STO, SIZEOF_EP2_BLOCK); //    TcpReceivedEvt
+    rkh_fwk_registerEvtPool(evPool3Sto, SIZEOF_EP3STO, SIZEOF_EP3_BLOCK); //    TcpSendEvt
 
     /* Wait for network interface to be up */
     printf("Waiting for network interface...\n");
-    struct netif *netif = netif_default;
+    struct netif * netif = netif_default;
     while (netif == NULL || !netif_is_up(netif)) {
         MX_LWIP_Process();
         HAL_Delay(100);

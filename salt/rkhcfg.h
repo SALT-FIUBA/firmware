@@ -33,7 +33,7 @@
  *	(can be a number in the range [0..256]).
  *	Note that a value of 0 will completely suppress the memory pool services.
  */
-#define RKH_CFG_FWK_MAX_EVT_POOL        4u
+#define RKH_CFG_FWK_MAX_EVT_POOL        3u
 
 /**
  *  Specify the size of the event signal. The valid values [in bits] are
@@ -41,7 +41,7 @@
  *  event structure size and therefore more memory consumption.
  *  See #RKH_SIG_T data type.
  */
-#define RKH_CFG_FWK_SIZEOF_EVT          8u
+#define RKH_CFG_FWK_SIZEOF_EVT          16u
 
 /**
  *	Specify the maximum number of event signals to be used by the
