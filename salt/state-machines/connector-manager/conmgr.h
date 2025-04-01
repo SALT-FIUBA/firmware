@@ -1,24 +1,3 @@
-/**
- *  \file       conmgr.h
- *  \brief      Specification of connection and protocol manager.
- */
-
-/* -------------------------- Development history -------------------------- */
-/*
- *  2018.05.15  DaBa  v1.0.01  Initial version
- *  2018.05.07  LeFr  v1.0.00  Initial version
- */
-
-/* -------------------------------- Authors -------------------------------- */
-/*
- *  DaBa  Dario Bali�a      db@vortexmakes.com
- *  LeFr  Leandro Francucci lf@vortexmakes.com
- */
-
-/* --------------------------------- Notes --------------------------------- */
-/* --------------------------------- Module -------------------------------- */
-#ifndef __CONMGR_H__
-#define __CONMGR_H__
 
 /* ----------------------------- Include files ----------------------------- */
 #include "rkh.h"
@@ -249,13 +228,3 @@ ReceivedEvt * ConMgr_ReceiveDataGetRef(void);
 char * ConMgr_imei(void);
 char * ConMgr_imeiSNR(void);
 int ConMgr_sigLevel(void);
-
-/* -------------------- External C language linkage end -------------------- */
-#ifdef __cplusplus
-}
-#endif
-
-/* ------------------------------ Module end ------------------------------- */
-#endif
-
-/* ------------------------------ End of file ------------------------------ */

@@ -70,12 +70,12 @@ static const CmdTbl cmdTbl =
 {
     {RKH_INIT_STATIC_EVT(evCmd), 
      "AT\r\n", 
-     &conMgr, 
+     &conMgr,
      RKH_TIME_MS(2000), RKH_TIME_MS(100)},
 
     {RKH_INIT_STATIC_EVT(evCmd), 
      "ATE1+CREG=1\r\n",
-     &conMgr, 
+     &conMgr,
      RKH_TIME_MS(5000), RKH_TIME_MS(100)},
 
     {RKH_INIT_STATIC_EVT(evCmd), 

@@ -1,7 +1,8 @@
 #include "rkh.h"
 #include "altcp.h"
 #include "memory.h"
-
+#include "mqttc_pal.h"
+#include "tcp-mqttprot.h"
 
 #define SEND_BUFF_SIZE      64
 #define RECV_BUFF_SIZE      64
@@ -24,11 +25,11 @@ struct TcpReceiveEvt
     ruint size;
 };
 
-typedef struct TcpNetConnectedEvt TcpNetConnectedEvt;
-struct TcpNetConnectedEvt
+typedef struct TcpSocketConnectedEvt TcpSocketConnectedEvt;
+struct TcpSocketConnectedEvt
 {
     RKH_EVT_T evt;
-    struct tcp_pcb * tpcb;
+    mqttc_pal_socket_handle tpcb;
 };
 
 

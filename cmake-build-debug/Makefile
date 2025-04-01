@@ -3689,6 +3689,30 @@ salt/state-machines/tcp-conmgr/tcp-conmgr.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/tcp-conmgr/tcp-conmgr.c.s
 .PHONY : salt/state-machines/tcp-conmgr/tcp-conmgr.c.s
 
+salt/state-machines/tcp-mqttprot/tcp-mqttprot.obj: salt/state-machines/tcp-mqttprot/tcp-mqttprot.c.obj
+.PHONY : salt/state-machines/tcp-mqttprot/tcp-mqttprot.obj
+
+# target to build an object file
+salt/state-machines/tcp-mqttprot/tcp-mqttprot.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/tcp-mqttprot/tcp-mqttprot.c.obj
+.PHONY : salt/state-machines/tcp-mqttprot/tcp-mqttprot.c.obj
+
+salt/state-machines/tcp-mqttprot/tcp-mqttprot.i: salt/state-machines/tcp-mqttprot/tcp-mqttprot.c.i
+.PHONY : salt/state-machines/tcp-mqttprot/tcp-mqttprot.i
+
+# target to preprocess a source file
+salt/state-machines/tcp-mqttprot/tcp-mqttprot.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/tcp-mqttprot/tcp-mqttprot.c.i
+.PHONY : salt/state-machines/tcp-mqttprot/tcp-mqttprot.c.i
+
+salt/state-machines/tcp-mqttprot/tcp-mqttprot.s: salt/state-machines/tcp-mqttprot/tcp-mqttprot.c.s
+.PHONY : salt/state-machines/tcp-mqttprot/tcp-mqttprot.s
+
+# target to generate assembly for a file
+salt/state-machines/tcp-mqttprot/tcp-mqttprot.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/tcp-mqttprot/tcp-mqttprot.c.s
+.PHONY : salt/state-machines/tcp-mqttprot/tcp-mqttprot.c.s
+
 salt/utilities/aes/aes.obj: salt/utilities/aes/aes.c.obj
 .PHONY : salt/utilities/aes/aes.obj
 
@@ -4983,6 +5007,9 @@ help:
 	@echo "... salt/state-machines/tcp-conmgr/tcp-conmgr.obj"
 	@echo "... salt/state-machines/tcp-conmgr/tcp-conmgr.i"
 	@echo "... salt/state-machines/tcp-conmgr/tcp-conmgr.s"
+	@echo "... salt/state-machines/tcp-mqttprot/tcp-mqttprot.obj"
+	@echo "... salt/state-machines/tcp-mqttprot/tcp-mqttprot.i"
+	@echo "... salt/state-machines/tcp-mqttprot/tcp-mqttprot.s"
 	@echo "... salt/utilities/aes/aes.obj"
 	@echo "... salt/utilities/aes/aes.i"
 	@echo "... salt/utilities/aes/aes.s"

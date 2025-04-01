@@ -18,7 +18,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/configuration/saltCfg.c.obj: \
  /usr/include/newlib/machine/types.h /usr/include/newlib/sys/stdio.h \
  /usr/include/newlib/string.h /usr/include/newlib/sys/_locale.h \
  /usr/include/newlib/strings.h /usr/include/newlib/sys/string.h \
- /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/mqtt-protocol/mqttProt.h \
+ /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/tcp-mqttprot/tcp-mqttprot.h \
  /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/fwk/inc/rkh.h \
  /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/trc/inc/rkhtrc.h \
  /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/trc/inc/rkhtrc_record.h \
@@ -84,13 +84,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/configuration/saltCfg.c.obj: \
  /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/fwk/inc/rkhitl.h \
  /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/fwk/inc/rkhfwk_evtpool.h \
  /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/fwk/inc/rkhfwk_sched.h \
- /home/nando-toshiba/Desktop/salt/firmware/salt/salt-signals.h \
- /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/epoch/epoch.h \
- /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/date/date.h \
- /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/connector-manager/conmgr.h \
- /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/module-manager/modmgr.h \
- /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/module-command/modcmd.h \
- /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/gps/gps.h \
+ /home/nando-toshiba/Desktop/salt/firmware/third-party/MQTT-C/include/mqttc.h \
  /home/nando-toshiba/Desktop/salt/firmware/third-party/MQTT-C/include/mqttc_pal.h \
  /home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f429xx.h \
  /home/nando-toshiba/Desktop/salt/firmware/LWIP/App/lwip.h \
@@ -134,7 +128,4 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/configuration/saltCfg.c.obj: \
  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/timeouts.h \
  /home/nando-toshiba/Desktop/salt/firmware/LWIP/Target/ethernetif.h \
  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/compat/posix/arpa/inet.h \
- /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/sockets.h \
- /home/nando-toshiba/Desktop/salt/firmware/salt/bsp/bsp-salt.h \
- /home/nando-toshiba/Desktop/salt/firmware/third-party/MQTT-C/include/mqttc.h \
- /home/nando-toshiba/Desktop/salt/firmware/mqttc-v116-sync/mqttc_v116_sync.h
+ /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/sockets.h

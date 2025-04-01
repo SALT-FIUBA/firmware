@@ -78,6 +78,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/main.c.obj: /home/nando-toshiba/Deskto
   /home/nando-toshiba/Desktop/salt/firmware/LWIP/App/lwip.h \
   /home/nando-toshiba/Desktop/salt/firmware/LWIP/Target/ethernetif.h \
   /home/nando-toshiba/Desktop/salt/firmware/LWIP/Target/lwipopts.h \
+  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/compat/posix/arpa/inet.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/altcp.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/arch.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/debug.h \
@@ -106,6 +107,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/main.c.obj: /home/nando-toshiba/Deskto
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/prot/ieee.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/prot/ip.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/prot/ip4.h \
+  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/sockets.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/stats.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/tcp.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/tcpbase.h \
@@ -119,6 +121,10 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/main.c.obj: /home/nando-toshiba/Deskto
   /home/nando-toshiba/Desktop/salt/firmware/salt/rkhcfg.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/salt-signals.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/tcp-conmgr/tcp-conmgr.h \
+  /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/tcp-mqttprot/tcp-mqttprot.h \
+  /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/publisher/publisher.h \
+  /home/nando-toshiba/Desktop/salt/firmware/third-party/MQTT-C/include/mqttc.h \
+  /home/nando-toshiba/Desktop/salt/firmware/third-party/MQTT-C/include/mqttc_pal.h \
   /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.h \
   /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkht.h \
   /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/fwk/inc/rkh.h \
@@ -8947,17 +8953,9 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/blinkySysTick/hook.c.obj: /home/nando-toshiba/D
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/netif/ethernet.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/system/arch/cc.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/system/arch/cpu.h \
-  /home/nando-toshiba/Desktop/salt/firmware/mqttc-v116-sync/mqttc_v116_sync.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/bsp/bsp-salt.h \
-  /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/gps/gps.h \
-  /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/module-command/modcmd.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/rkhcfg.h \
-  /home/nando-toshiba/Desktop/salt/firmware/salt/salt-signals.h \
-  /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/connector-manager/conmgr.h \
-  /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/module-manager/modmgr.h \
-  /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/mqtt-protocol/mqttProt.h \
-  /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/date/date.h \
-  /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/epoch/epoch.h \
+  /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/tcp-mqttprot/tcp-mqttprot.h \
   /home/nando-toshiba/Desktop/salt/firmware/third-party/MQTT-C/include/mqttc.h \
   /home/nando-toshiba/Desktop/salt/firmware/third-party/MQTT-C/include/mqttc_pal.h \
   /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.h \
@@ -9008,8 +9006,6 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/blinkySysTick/hook.c.obj: /home/nando-toshiba/D
   /usr/include/newlib/newlib.h \
   /usr/include/newlib/stdio.h \
   /usr/include/newlib/stdlib.h \
-  /usr/include/newlib/string.h \
-  /usr/include/newlib/strings.h \
   /usr/include/newlib/sys/_intsup.h \
   /usr/include/newlib/sys/_locale.h \
   /usr/include/newlib/sys/_pthreadtypes.h \
@@ -9026,7 +9022,6 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/blinkySysTick/hook.c.obj: /home/nando-toshiba/D
   /usr/include/newlib/sys/sched.h \
   /usr/include/newlib/sys/select.h \
   /usr/include/newlib/sys/stdio.h \
-  /usr/include/newlib/sys/string.h \
   /usr/include/newlib/sys/time.h \
   /usr/include/newlib/sys/timespec.h \
   /usr/include/newlib/sys/types.h \
@@ -9826,14 +9821,18 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/bsp/bsp-salt.c.obj: /home/nando-toshiba/De
   /home/nando-toshiba/Desktop/salt/firmware/LWIP/Target/ethernetif.h \
   /home/nando-toshiba/Desktop/salt/firmware/LWIP/Target/lwipopts.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/compat/posix/arpa/inet.h \
+  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/altcp.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/arch.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/debug.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/def.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/dhcp.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/err.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/etharp.h \
+  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/icmp.h \
+  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/ip.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/ip4.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/ip4_addr.h \
+  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/ip6.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/ip6_addr.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/ip_addr.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/mem.h \
@@ -9846,10 +9845,14 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/bsp/bsp-salt.c.obj: /home/nando-toshiba/De
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/priv/memp_std.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/prot/etharp.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/prot/ethernet.h \
+  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/prot/icmp.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/prot/ieee.h \
+  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/prot/ip.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/prot/ip4.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/sockets.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/stats.h \
+  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/tcp.h \
+  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/tcpbase.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/timeouts.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/netif/etharp.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/netif/ethernet.h \
@@ -9859,15 +9862,16 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/bsp/bsp-salt.c.obj: /home/nando-toshiba/De
   /home/nando-toshiba/Desktop/salt/firmware/mTime/mTime.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/bsp/bsp-salt.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/analog-inputs/anIn.h \
-  /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/gps/gps.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/module-command/modcmd.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/module-power/modpwr.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/rkhcfg.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/salt-signals.h \
-  /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/connector-manager/conmgr.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/module-manager/modmgr.h \
+  /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/tcp-conmgr/tcp-conmgr.h \
+  /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/tcp-mqttprot/tcp-mqttprot.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/epoch/epoch.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/rtime/rtime.h \
+  /home/nando-toshiba/Desktop/salt/firmware/third-party/MQTT-C/include/mqttc.h \
   /home/nando-toshiba/Desktop/salt/firmware/third-party/MQTT-C/include/mqttc_pal.h \
   /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.h \
   /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkht.h \
@@ -9916,9 +9920,12 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/bsp/bsp-salt.c.obj: /home/nando-toshiba/De
   /usr/include/newlib/machine/stdlib.h \
   /usr/include/newlib/machine/time.h \
   /usr/include/newlib/machine/types.h \
+  /usr/include/newlib/memory.h \
   /usr/include/newlib/newlib.h \
   /usr/include/newlib/stdio.h \
   /usr/include/newlib/stdlib.h \
+  /usr/include/newlib/string.h \
+  /usr/include/newlib/strings.h \
   /usr/include/newlib/sys/_intsup.h \
   /usr/include/newlib/sys/_locale.h \
   /usr/include/newlib/sys/_pthreadtypes.h \
@@ -9935,6 +9942,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/bsp/bsp-salt.c.obj: /home/nando-toshiba/De
   /usr/include/newlib/sys/sched.h \
   /usr/include/newlib/sys/select.h \
   /usr/include/newlib/sys/stdio.h \
+  /usr/include/newlib/sys/string.h \
   /usr/include/newlib/sys/time.h \
   /usr/include/newlib/sys/timespec.h \
   /usr/include/newlib/sys/types.h \
@@ -10011,17 +10019,8 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/configuration/saltCfg.c.obj: /home/nando-t
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/netif/ethernet.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/system/arch/cc.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/system/arch/cpu.h \
-  /home/nando-toshiba/Desktop/salt/firmware/mqttc-v116-sync/mqttc_v116_sync.h \
-  /home/nando-toshiba/Desktop/salt/firmware/salt/bsp/bsp-salt.h \
-  /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/gps/gps.h \
-  /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/module-command/modcmd.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/rkhcfg.h \
-  /home/nando-toshiba/Desktop/salt/firmware/salt/salt-signals.h \
-  /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/connector-manager/conmgr.h \
-  /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/module-manager/modmgr.h \
-  /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/mqtt-protocol/mqttProt.h \
-  /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/date/date.h \
-  /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/epoch/epoch.h \
+  /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/tcp-mqttprot/tcp-mqttprot.h \
   /home/nando-toshiba/Desktop/salt/firmware/third-party/MQTT-C/include/mqttc.h \
   /home/nando-toshiba/Desktop/salt/firmware/third-party/MQTT-C/include/mqttc_pal.h \
   /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.h \
@@ -10136,14 +10135,18 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/main-salt-firmware-nxp.c.o
   /home/nando-toshiba/Desktop/salt/firmware/LWIP/Target/ethernetif.h \
   /home/nando-toshiba/Desktop/salt/firmware/LWIP/Target/lwipopts.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/compat/posix/arpa/inet.h \
+  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/altcp.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/arch.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/debug.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/def.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/dhcp.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/err.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/etharp.h \
+  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/icmp.h \
+  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/ip.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/ip4.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/ip4_addr.h \
+  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/ip6.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/ip6_addr.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/ip_addr.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/mem.h \
@@ -10156,17 +10159,20 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/main-salt-firmware-nxp.c.o
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/priv/memp_std.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/prot/etharp.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/prot/ethernet.h \
+  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/prot/icmp.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/prot/ieee.h \
+  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/prot/ip.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/prot/ip4.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/sockets.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/stats.h \
+  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/tcp.h \
+  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/tcpbase.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/timeouts.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/netif/etharp.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/netif/ethernet.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/system/arch/cc.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/system/arch/cpu.h \
   /home/nando-toshiba/Desktop/salt/firmware/mTime/mTime.h \
-  /home/nando-toshiba/Desktop/salt/firmware/mqttc-v116-sync/mqttc_v116_sync.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/bsp/bsp-salt.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/analog-inputs/anIn.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/gps/gps.h \
@@ -10183,11 +10189,10 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/main-salt-firmware-nxp.c.o
   /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/teloc/teloc.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/rkhcfg.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/salt-signals.h \
-  /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/connector-manager/conmgr.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/logic/logic.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/module-manager/modmgr.h \
-  /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/mqtt-protocol/mqttProt.h \
-  /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/date/date.h \
+  /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/tcp-conmgr/tcp-conmgr.h \
+  /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/tcp-mqttprot/tcp-mqttprot.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/epoch/epoch.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/parser/salt-command/saltCmd.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/publisher/publisher.h \
@@ -10236,6 +10241,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/files-to-review/main-salt-firmware-nxp.c.o
   /usr/include/newlib/machine/stdlib.h \
   /usr/include/newlib/machine/time.h \
   /usr/include/newlib/machine/types.h \
+  /usr/include/newlib/memory.h \
   /usr/include/newlib/newlib.h \
   /usr/include/newlib/stdio.h \
   /usr/include/newlib/stdlib.h \
@@ -11639,23 +11645,13 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/connector-manager/conmgr.c.
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/netif/ethernet.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/system/arch/cc.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/system/arch/cpu.h \
-  /home/nando-toshiba/Desktop/salt/firmware/mqttc-v116-sync/mqttc_v116_sync.h \
-  /home/nando-toshiba/Desktop/salt/firmware/salt/bsp/bsp-salt.h \
-  /home/nando-toshiba/Desktop/salt/firmware/salt/configuration/saltCfg.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/gps/gps.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/module-command/modcmd.h \
-  /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/module-power/modpwr.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/rkhcfg.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/salt-signals.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/connector-manager/conmgr.h \
-  /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/logic/logic.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/module-manager/modmgr.h \
-  /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/mqtt-protocol/mqttProt.h \
-  /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/date/date.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/epoch/epoch.h \
-  /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/parser/salt-command/saltCmd.h \
-  /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/rtime/rtime.h \
-  /home/nando-toshiba/Desktop/salt/firmware/third-party/MQTT-C/include/mqttc.h \
   /home/nando-toshiba/Desktop/salt/firmware/third-party/MQTT-C/include/mqttc_pal.h \
   /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.h \
   /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkht.h \
@@ -11703,8 +11699,6 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/connector-manager/conmgr.c.
   /usr/include/newlib/newlib.h \
   /usr/include/newlib/stdio.h \
   /usr/include/newlib/stdlib.h \
-  /usr/include/newlib/string.h \
-  /usr/include/newlib/strings.h \
   /usr/include/newlib/sys/_intsup.h \
   /usr/include/newlib/sys/_locale.h \
   /usr/include/newlib/sys/_pthreadtypes.h \
@@ -11721,7 +11715,6 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/connector-manager/conmgr.c.
   /usr/include/newlib/sys/sched.h \
   /usr/include/newlib/sys/select.h \
   /usr/include/newlib/sys/stdio.h \
-  /usr/include/newlib/sys/string.h \
   /usr/include/newlib/sys/time.h \
   /usr/include/newlib/sys/timespec.h \
   /usr/include/newlib/sys/types.h \
@@ -11798,7 +11791,6 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/logic/logic.c.obj: /home/na
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/netif/ethernet.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/system/arch/cc.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/system/arch/cpu.h \
-  /home/nando-toshiba/Desktop/salt/firmware/mqttc-v116-sync/mqttc_v116_sync.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/bsp/bsp-salt.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/gps/gps.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/ihm/buzzer.h \
@@ -11812,10 +11804,8 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/logic/logic.c.obj: /home/na
   /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/logic/logic.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/module-manager/modmgr.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/mqtt-protocol/mqttProt.h \
-  /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/date/date.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/epoch/epoch.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/parser/salt-command/saltCmd.h \
-  /home/nando-toshiba/Desktop/salt/firmware/third-party/MQTT-C/include/mqttc.h \
   /home/nando-toshiba/Desktop/salt/firmware/third-party/MQTT-C/include/mqttc_pal.h \
   /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.h \
   /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkht.h \
@@ -12040,7 +12030,9 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/module-manager/modmgr.c.obj
   /usr/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h \
   /usr/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h
 
-CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/mqtt-protocol/mqttProt.c.obj: /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/mqtt-protocol/mqttProt.c \
+CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/mqtt-protocol/mqttProt.c.obj: /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/mqtt-protocol/mqttProt.c
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/tcp-conmgr/tcp-conmgr.c.obj: /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/tcp-conmgr/tcp-conmgr.c \
   /home/nando-toshiba/Desktop/salt/firmware/Core/Inc/main.h \
   /home/nando-toshiba/Desktop/salt/firmware/Core/Inc/stm32f4xx_hal_conf.h \
   /home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f429xx.h \
@@ -12077,14 +12069,18 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/mqtt-protocol/mqttProt.c.ob
   /home/nando-toshiba/Desktop/salt/firmware/LWIP/Target/ethernetif.h \
   /home/nando-toshiba/Desktop/salt/firmware/LWIP/Target/lwipopts.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/compat/posix/arpa/inet.h \
+  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/altcp.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/arch.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/debug.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/def.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/dhcp.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/err.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/etharp.h \
+  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/icmp.h \
+  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/ip.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/ip4.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/ip4_addr.h \
+  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/ip6.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/ip6_addr.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/ip_addr.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/mem.h \
@@ -12097,27 +12093,24 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/mqtt-protocol/mqttProt.c.ob
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/priv/memp_std.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/prot/etharp.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/prot/ethernet.h \
+  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/prot/icmp.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/prot/ieee.h \
+  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/prot/ip.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/prot/ip4.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/sockets.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/stats.h \
+  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/tcp.h \
+  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/tcpbase.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/timeouts.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/netif/etharp.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/netif/ethernet.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/system/arch/cc.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/system/arch/cpu.h \
-  /home/nando-toshiba/Desktop/salt/firmware/mqttc-v116-sync/mqttc_v116_sync.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/bsp/bsp-salt.h \
-  /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/gps/gps.h \
-  /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/module-command/modcmd.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/rkhcfg.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/salt-signals.h \
-  /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/connector-manager/conmgr.h \
-  /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/module-manager/modmgr.h \
-  /home/nando-toshiba/Desktop/salt/firmware/mqttc-v116-sync/mqttc_v116_sync.h \
-  /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/mqtt-protocol/mqttProt.h \
-  /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/date/date.h \
-  /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/epoch/epoch.h \
+  /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/tcp-conmgr/tcp-conmgr.h \
+  /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/tcp-mqttprot/tcp-mqttprot.h \
   /home/nando-toshiba/Desktop/salt/firmware/third-party/MQTT-C/include/mqttc.h \
   /home/nando-toshiba/Desktop/salt/firmware/third-party/MQTT-C/include/mqttc_pal.h \
   /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.h \
@@ -12163,6 +12156,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/mqtt-protocol/mqttProt.c.ob
   /usr/include/newlib/machine/stdlib.h \
   /usr/include/newlib/machine/time.h \
   /usr/include/newlib/machine/types.h \
+  /usr/include/newlib/memory.h \
   /usr/include/newlib/newlib.h \
   /usr/include/newlib/stdio.h \
   /usr/include/newlib/stdlib.h \
@@ -12195,7 +12189,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/mqtt-protocol/mqttProt.c.ob
   /usr/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h \
   /usr/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h
 
-CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/tcp-conmgr/tcp-conmgr.c.obj: /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/tcp-conmgr/tcp-conmgr.c \
+CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/tcp-mqttprot/tcp-mqttprot.c.obj: /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/tcp-mqttprot/tcp-mqttprot.c \
   /home/nando-toshiba/Desktop/salt/firmware/Core/Inc/main.h \
   /home/nando-toshiba/Desktop/salt/firmware/Core/Inc/stm32f4xx_hal_conf.h \
   /home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f429xx.h \
@@ -12228,12 +12222,17 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/tcp-conmgr/tcp-conmgr.c.obj
   /home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h \
   /home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
   /home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h \
+  /home/nando-toshiba/Desktop/salt/firmware/LWIP/App/lwip.h \
+  /home/nando-toshiba/Desktop/salt/firmware/LWIP/Target/ethernetif.h \
   /home/nando-toshiba/Desktop/salt/firmware/LWIP/Target/lwipopts.h \
+  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/compat/posix/arpa/inet.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/altcp.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/arch.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/debug.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/def.h \
+  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/dhcp.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/err.h \
+  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/etharp.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/icmp.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/ip.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/ip4.h \
@@ -12249,18 +12248,30 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/tcp-conmgr/tcp-conmgr.c.obj
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/priv/mem_priv.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/priv/memp_priv.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/priv/memp_std.h \
+  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/prot/etharp.h \
+  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/prot/ethernet.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/prot/icmp.h \
+  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/prot/ieee.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/prot/ip.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/prot/ip4.h \
+  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/sockets.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/stats.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/tcp.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/tcpbase.h \
+  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/timeouts.h \
+  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/netif/etharp.h \
+  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/netif/ethernet.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/system/arch/cc.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/system/arch/cpu.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/bsp/bsp-salt.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/rkhcfg.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/salt-signals.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/tcp-conmgr/tcp-conmgr.h \
+  /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/tcp-mqttprot/tcp-mqttprot.h \
+  /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/date/date.h \
+  /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/epoch/epoch.h \
+  /home/nando-toshiba/Desktop/salt/firmware/third-party/MQTT-C/include/mqttc.h \
+  /home/nando-toshiba/Desktop/salt/firmware/third-party/MQTT-C/include/mqttc_pal.h \
   /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.h \
   /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkht.h \
   /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/fwk/inc/rkh.h \
@@ -12728,17 +12739,13 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/publisher/publisher.c.obj: /home
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/netif/ethernet.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/system/arch/cc.h \
   /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/system/arch/cpu.h \
-  /home/nando-toshiba/Desktop/salt/firmware/mqttc-v116-sync/mqttc_v116_sync.h \
-  /home/nando-toshiba/Desktop/salt/firmware/salt/bsp/bsp-salt.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/gps/gps.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/module-command/modcmd.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/rkhcfg.h \
-  /home/nando-toshiba/Desktop/salt/firmware/salt/salt-signals.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/connector-manager/conmgr.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/logic/logic.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/module-manager/modmgr.h \
-  /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/mqtt-protocol/mqttProt.h \
-  /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/date/date.h \
+  /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/tcp-mqttprot/tcp-mqttprot.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/epoch/epoch.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/parser/salt-command/saltCmd.h \
   /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/publisher/publisher.h \
@@ -14489,6 +14496,8 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj: /home/nando-toshiba/Desk
 
 /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/emaFilter/emaFilter.c:
 
+/home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/tcp-mqttprot/tcp-mqttprot.c:
+
 /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/tcp-conmgr/tcp-conmgr.c:
 
 /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/mqtt-protocol/mqttProt.c:
@@ -14498,8 +14507,6 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj: /home/nando-toshiba/Desk
 /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/fwk/src/rkhfwk_bittbl.c:
 
 /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/logic/logic.c:
-
-/home/nando-toshiba/Desktop/salt/firmware/salt/configuration/saltCfg.h:
 
 /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/connector-manager/conmgr.c:
 
@@ -14523,6 +14530,8 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj: /home/nando-toshiba/Desk
 
 /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/parser/sim900/sim900parser.h:
 
+/home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/connector-manager/conmgr.h:
+
 /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/sma/inc/rkhsma_sync.h:
 
 /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/ledPanel/ledPanel.c:
@@ -14538,8 +14547,6 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj: /home/nando-toshiba/Desk
 /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/analog-inputs/anIn.c:
 
 /home/nando-toshiba/Desktop/salt/firmware/salt/files-to-review/trace_io.c:
-
-/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/publisher/publisher.h:
 
 /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/teloc/teloc.h:
 
@@ -14559,7 +14566,11 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj: /home/nando-toshiba/Desk
 
 /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/rtime/rtime.h:
 
+/home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/module-manager/modmgr.h:
+
 /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/module-power/modpwr.h:
+
+/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/module-command/modcmd.h:
 
 /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/aes/aes.c:
 
@@ -14573,29 +14584,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj: /home/nando-toshiba/Desk
 
 /home/nando-toshiba/Desktop/salt/firmware/network/network.c:
 
-/home/nando-toshiba/Desktop/salt/firmware/bsp/stm32f4xx_nucleo_144.c:
-
-/home/nando-toshiba/Desktop/salt/firmware/third-party/stm32-sapi/inc/sapi_datatypes.h:
-
-/home/nando-toshiba/Desktop/salt/firmware/third-party/MQTT-C/include/mqttc_pal.h:
-
-/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/parser/salt-command/saltCmd.h:
-
-/home/nando-toshiba/Desktop/salt/firmware/third-party/MQTT-C/include/mqttc.h:
-
-/usr/include/newlib/sys/stat.h:
-
-/home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/errno.h:
-
-/home/nando-toshiba/Desktop/salt/firmware/rkh-mqttc/src/rkh_mqttc_pal.c:
-
-/usr/include/newlib/sys/_pthreadtypes.h:
-
-/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/parser/sim900/sim900parser.c:
-
-/home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/raw.c:
-
-/home/nando-toshiba/Desktop/salt/firmware/Core/Src/syscalls.c:
+/home/nando-toshiba/Desktop/salt/firmware/mqttc-v116-sync/mqttc_v116_sync.h:
 
 /home/nando-toshiba/Desktop/salt/firmware/Core/Src/stm32f4xx_it.c:
 
@@ -14623,8 +14612,6 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj: /home/nando-toshiba/Desk
 
 /home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h:
 
-/home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/api/err.c:
-
 /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/trc/src/rkhtrc_filter.c:
 
 /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/api/netdb.c:
@@ -14632,6 +14619,8 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj: /home/nando-toshiba/Desk
 /home/nando-toshiba/Desktop/salt/firmware/blinkySysTick/blinkySysTick.h:
 
 /usr/include/newlib/sys/cdefs.h:
+
+/home/nando-toshiba/Desktop/salt/firmware/third-party/stm32-sapi/inc/sapi_datatypes.h:
 
 /usr/include/newlib/sys/_types.h:
 
@@ -14642,6 +14631,16 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj: /home/nando-toshiba/Desk
 /usr/include/newlib/sys/_stdint.h:
 
 /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/ipv4/igmp.c:
+
+/home/nando-toshiba/Desktop/salt/firmware/rkh-mqttc/src/rkh_mqttc_pal.c:
+
+/usr/include/newlib/sys/_pthreadtypes.h:
+
+/home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/errno.h:
+
+/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/parser/sim900/sim900parser.c:
+
+/home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/raw.c:
 
 /home/nando-toshiba/Desktop/salt/firmware/mTime/mTime.c:
 
@@ -14672,14 +14671,6 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj: /home/nando-toshiba/Desk
 /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/ipv4/ip4.c:
 
 /usr/include/newlib/machine/types.h:
-
-/usr/include/newlib/signal.h:
-
-/usr/include/newlib/machine/stdlib.h:
-
-/home/nando-toshiba/Desktop/salt/firmware/mTime/mTimeTbl.c:
-
-/home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/def.c:
 
 /usr/include/newlib/machine/_time.h:
 
@@ -14715,8 +14706,6 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj: /home/nando-toshiba/Desk
 
 /home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_eth.c:
 
-/home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/module-manager/modmgr.h:
-
 /home/nando-toshiba/Desktop/salt/firmware/Core/Src/stm32f4xx_hal_msp.c:
 
 /home/nando-toshiba/Desktop/salt/firmware/Core/Src/usart.c:
@@ -14739,10 +14728,6 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj: /home/nando-toshiba/Desk
 
 /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/netif/ppp/multilink.c:
 
-/home/nando-toshiba/Desktop/salt/firmware/third-party/stm32-sapi/inc/sapi_tick.h:
-
-/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/fwk/inc/rkhitl.h:
-
 /usr/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h:
 
 /usr/include/newlib/sys/_timeval.h:
@@ -14763,9 +14748,17 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj: /home/nando-toshiba/Desk
 
 /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/fwk/inc/rkhfwk_bittbl.h:
 
-/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/fwk/inc/rkhevt.h:
-
 /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/fwk/inc/rkhassert.h:
+
+/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/parser/salt-command/saltCmd.h:
+
+/home/nando-toshiba/Desktop/salt/firmware/third-party/MQTT-C/include/mqttc.h:
+
+/usr/include/newlib/machine/stdlib.h:
+
+/home/nando-toshiba/Desktop/salt/firmware/mTime/mTimeTbl.c:
+
+/home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/def.c:
 
 /home/nando-toshiba/Desktop/salt/firmware/salt/rkhcfg.h:
 
@@ -14782,6 +14775,14 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj: /home/nando-toshiba/Desk
 /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/system/arch/cpu.h:
 
 /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/apps/mqtt.h:
+
+/home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/netif/ethernet.h:
+
+/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/fwk/inc/rkhtype.h:
+
+/home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/ipv6/dhcp6.c:
+
+/home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/ipv6/icmp6.c:
 
 /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/sm/inc/rkhsm.h:
 
@@ -14801,6 +14802,14 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj: /home/nando-toshiba/Desk
 
 /usr/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h:
 
+/home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/mqtt-protocol/mqttProt.h:
+
+/home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/altcp_tcp.c:
+
+/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/fwk/inc/rkhevt.h:
+
+/home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/sockets.h:
+
 /usr/include/newlib/sys/_sigset.h:
 
 /home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h:
@@ -14814,6 +14823,8 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj: /home/nando-toshiba/Desk
 /home/nando-toshiba/Desktop/salt/firmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h:
 
 /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/fwk/inc/rkhdef.h:
+
+/home/nando-toshiba/Desktop/salt/firmware/third-party/MQTT-C/include/mqttc_pal.h:
 
 /home/nando-toshiba/Desktop/salt/firmware/Core/Inc/stm32f4xx_hal_conf.h:
 
@@ -14832,6 +14843,10 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj: /home/nando-toshiba/Desk
 /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/fwk/inc/rkhplat.h:
 
 /home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h:
+
+/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/fwk/inc/rkhitl.h:
+
+/home/nando-toshiba/Desktop/salt/firmware/third-party/stm32-sapi/inc/sapi_tick.h:
 
 /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/priv/memp_std.h:
 
@@ -14907,15 +14922,11 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj: /home/nando-toshiba/Desk
 
 /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/ethip6.h:
 
+/home/nando-toshiba/Desktop/salt/firmware/salt/utilities/publisher/publisher.h:
+
 /home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c:
 
 /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/prot/ip4.h:
-
-/home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/altcp_alloc.c:
-
-/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/trc/inc/rkhtrc_record.h:
-
-/home/nando-toshiba/Desktop/salt/firmware/LWIP/Target/lwipopts.h:
 
 /home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/sma/src/rkhsma.c:
 
@@ -14925,13 +14936,13 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj: /home/nando-toshiba/Desk
 
 /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/api/netbuf.c:
 
-/home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/netif/ethernet.h:
+/home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/api/err.c:
 
-/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/fwk/inc/rkhtype.h:
+/home/nando-toshiba/Desktop/salt/firmware/salt/bsp/bsp-salt.h:
 
-/home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/ipv6/dhcp6.c:
+/home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/compat/posix/arpa/inet.h:
 
-/home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/ipv6/icmp6.c:
+/home/nando-toshiba/Desktop/salt/firmware/Core/Inc/tcp-echo-server.h:
 
 /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/altcp.h:
 
@@ -14972,6 +14983,8 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj: /home/nando-toshiba/Desk
 /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/netif/ppp/ppp.c:
 
 /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/netif/ppp/pppos.c:
+
+/home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/tcp-mqttprot/tcp-mqttprot.h:
 
 /home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h:
 
@@ -15027,17 +15040,23 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj: /home/nando-toshiba/Desk
 
 /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/timeouts.h:
 
+/home/nando-toshiba/Desktop/salt/firmware/Core/Src/syscalls.c:
+
+/home/nando-toshiba/Desktop/salt/firmware/third-party/rkh/source/trc/inc/rkhtrc_record.h:
+
+/home/nando-toshiba/Desktop/salt/firmware/LWIP/Target/lwipopts.h:
+
+/home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/altcp_alloc.c:
+
+/usr/include/newlib/signal.h:
+
+/usr/include/newlib/sys/stat.h:
+
 /usr/include/newlib/sys/times.h:
 
 /home/nando-toshiba/Desktop/salt/firmware/Core/Src/sysmem.c:
 
 /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/netif/bridgeif.c:
-
-/home/nando-toshiba/Desktop/salt/firmware/Core/Inc/tcp-echo-server.h:
-
-/home/nando-toshiba/Desktop/salt/firmware/salt/bsp/bsp-salt.h:
-
-/home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/compat/posix/arpa/inet.h:
 
 /home/nando-toshiba/Desktop/salt/firmware/salt/bsp/bsp-salt.c:
 
@@ -15091,6 +15110,12 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj: /home/nando-toshiba/Desk
 
 /home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c:
 
+/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/gps/gps.h:
+
+/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c:
+
+/home/nando-toshiba/Desktop/salt/firmware/bsp/stm32f4xx_nucleo_144.c:
+
 /usr/include/newlib/sys/config.h:
 
 /home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c:
@@ -15120,8 +15145,6 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj: /home/nando-toshiba/Desk
 /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/netif/ppp/mppe.c:
 
 /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/api/tcpip.c:
-
-/home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/connector-manager/conmgr.h:
 
 /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/apps/mqtt/mqtt.c:
 
@@ -15156,8 +15179,6 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj: /home/nando-toshiba/Desk
 /home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c:
 
 /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/prot/tcp.h:
-
-/home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/sockets.h:
 
 /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/netif/ppp/ppp_impl.h:
 
@@ -15275,9 +15296,9 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj: /home/nando-toshiba/Desk
 
 /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/netif/ppp/ecp.c:
 
-/usr/include/newlib/sys/signal.h:
-
 /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/opt.h:
+
+/usr/include/newlib/sys/signal.h:
 
 /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/netif/ppp/eui64.c:
 
@@ -15310,15 +15331,3 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/utilities/htons.c.obj: /home/nando-toshiba/Desk
 /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/netif/zepif.c:
 
 /home/nando-toshiba/Desktop/salt/firmware/bsp/stm32f4xx_nucleo_144.h:
-
-/home/nando-toshiba/Desktop/salt/firmware/mqttc-v116-sync/mqttc_v116_sync.h:
-
-/home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/altcp_tcp.c:
-
-/home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/mqtt-protocol/mqttProt.h:
-
-/home/nando-toshiba/Desktop/salt/firmware/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c:
-
-/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/gps/gps.h:
-
-/home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/module-command/modcmd.h:

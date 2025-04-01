@@ -113,6 +113,9 @@ include_directories(
         salt/state-machines/module-manager
         salt/state-machines/logic
 
+        salt/state-machines/tcp-conmgr
+        salt/state-machines/tcp-mqttprot
+
         salt/peripherals/module-command
         salt/peripherals/module-power
         salt/peripherals/serial

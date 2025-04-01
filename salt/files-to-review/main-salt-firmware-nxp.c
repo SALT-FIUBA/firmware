@@ -35,9 +35,9 @@
 #include "saltCmd.h"
 #include "mTime.h"
 
-#include "conmgr.h"
+#include "tcp-conmgr.h"
 #include "modmgr.h"
-#include "mqttProt.h"
+#include "tcp-mqttprot.h"
 #include "publisher.h"
 #include "logic.h"
 
@@ -83,7 +83,7 @@ static RKH_ROM_STATIC_EVENT(e_Open, evOpen);
 static RKH_ROM_STATIC_EVENT(e_SaltEnable, evSaltEnable);
 static RKH_ROM_STATIC_EVENT(e_SaltDisable, evSaltDisable);
 static CmdEvt e_saltCmd;
-static MQTTProtCfg mqttProtCfg;
+static TCP_MQTTProtCfg mqttProtCfg;
 static LogicCfg logicCfg;
 static ModCmdRcvHandler simACmdParser = NULL;
 static rbool_t initEnd = false;
@@ -255,7 +255,7 @@ setupTraceFilters(void)
     //RKH_FILTER_OFF_EVENT(RKH_TE_SM_TS_STATE);
     //RKH_FILTER_OFF_EVENT(RKH_TE_SM_DCH);
     //RKH_FILTER_OFF_SMA(modMgr);
-    RKH_FILTER_OFF_SMA(conMgr);
+    RKH_FILTER_OFF_SMA(tcpConMgr);
     //RKH_FILTER_OFF_SMA(mqttProt);
     RKH_FILTER_OFF_SMA(logic);
     RKH_FILTER_OFF_ALL_SIGNALS();
@@ -302,17 +302,17 @@ int mainSaltFirmwareNxp(int argc, char *argv[]) {
     strcpy(mqttProtCfg.topic, "");
     strcpy(mqttProtCfg.subTopic, "");
     mqttProtCfg.callback = onMQTTCb;
-    MQTTProt_ctor(&mqttProtCfg, publishDimba);
+    TCP_MQTTProt_ctor(&mqttProtCfg, publishDimba);
 
     logicCfg.publishTime = 8;
     logic_ctor(&logicCfg);
 
-    RKH_SMA_ACTIVATE(conMgr, ConMgr_qsto, CONMGR_QSTO_SIZE, 0, 0);
+    RKH_SMA_ACTIVATE(tcpConMgr, ConMgr_qsto, CONMGR_QSTO_SIZE, 0, 0);
     RKH_SMA_ACTIVATE(modMgr, ModMgr_qsto, MODMGR_QSTO_SIZE, 0, 0);
     RKH_SMA_ACTIVATE(mqttProt, MQTTProt_qsto, MQTTPROT_QSTO_SIZE, 0, 0);
     RKH_SMA_ACTIVATE(logic, Logic_qsto, LOGIC_QSTO_SIZE, 0, 0);
 
-    RKH_SMA_POST_FIFO(conMgr, &e_Open, 0);
+    RKH_SMA_POST_FIFO(tcpConMgr, &e_Open, 0);
 
     initEnd = true;
 

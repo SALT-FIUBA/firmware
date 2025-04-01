@@ -34,7 +34,8 @@
 /* SALT includes */
 #include "salt-signals.h"
 #include "bsp-salt.h"
-#include "state-machines/tcp-conmgr/tcp-conmgr.h"
+#include "tcp-conmgr.h"
+#include "publisher.h"
 
 
 
@@ -85,6 +86,8 @@ PUTCHAR_PROTOTYPE
 /* USER CODE BEGIN 0 */
 
 extern struct netif gnetif;
+static TCP_MQTTProtCfg mqttProtCfg;
+
 
 static RKH_ROM_STATIC_EVENT(e_Open, evOpen);
 
@@ -110,6 +113,14 @@ static rui8_t evPool2Sto[SIZEOF_EP2STO];
 #define SIZEOF_EP3STO 1024  // Total size in bytes (e.g., 16 events of 8 bytes each)
 #define SIZEOF_EP3_BLOCK sizeof(TcpSendEvt)  // Block size matches the event
 static rui8_t evPool3Sto[SIZEOF_EP3STO];
+
+
+static void onMQTTCb(void** state,struct mqttc_response_publish *publish){
+
+    printf("onMQTTCb: on mqtt callback \n");
+
+}
+
 
 
 /* USER CODE END 0 */
@@ -177,8 +188,22 @@ int main(void)
     printf("Link up - IP: %s\n", ip4addr_ntoa(&netif->ip_addr));
     HAL_Delay(1000);
 
+
+    mqttProtCfg.publishTime = 5;
+    mqttProtCfg.syncTime = 4;
+    mqttProtCfg.keepAlive = 400;
+    mqttProtCfg.qos = 1;
+    strcpy(mqttProtCfg.clientId, "");
+    strcpy(mqttProtCfg.topic, "");
+    strcpy(mqttProtCfg.subTopic, "");
+    mqttProtCfg.callback = onMQTTCb;
+    TCP_MQTTProt_ctor(&mqttProtCfg, publishDimba);
+
+
     /* Activate the TcpConMgr state machine */
     RKH_SMA_ACTIVATE(tcpConMgr, ConMgr_qsto, CONMGR_QSTO_SIZE, 0, 0);
+    RKH_SMA_ACTIVATE(tcpMqttProt, MQTTProt_qsto, MQTTPROT_QSTO_SIZE, 0, 0);
+
 
     /* Post the initial evOpen event */
     RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Open), NULL);

@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <string.h>
-#include "mqttProt.h"
+#include "tcp-mqttprot.h"
 
 
 // must be static ??
-static MQTTProtCfg mqttProtCfg;
+static TCP_MQTTProtCfg mqttProtCfg;
 
 void
 saltCfg_clientId(char *pid)

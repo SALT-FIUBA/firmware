@@ -53,7 +53,7 @@
 #include "sapi_datatypes.h"
 #include "sapi_tick.h"
 #include "lwip.h"
-#include "mqttProt.h"
+#include "tcp-mqttprot.h"
 
 
 RKH_THIS_MODULE

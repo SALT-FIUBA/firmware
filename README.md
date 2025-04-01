@@ -1,5 +1,77 @@
 # firmware
 
+## stm32 lwip tcp MqttProt Client state machine (without SyncRegion state machine)
+
+### stm32 mqttc client
+```json 
+ » ./STM32_Programmer_CLI -c port=ttyACM0 br=115200 console
+      -------------------------------------------------------------------
+                        STM32CubeProgrammer v2.17.0                  
+      -------------------------------------------------------------------
+
+Serial Port ttyACM0 is successfully opened.
+ Port configuration: parity = even, baudrate = 115200, data-bit = 8,
+                     stop-bit = 1,0, flow-control = off
+
+main | SIZEOF_EP3STO: 1024 
+main | SIZEOF_EP3_BLOCK: 72 
+Waiting for network interface...
+Waiting for link...
+Link up - IP: 192.168.1.78
+Dispatching event 65533 to SMA 0x801c3e8
+tcp-conmgr | init 
+Dispatching event 65533 to SMA 0x801c728
+Dispatching event 0 to SMA 0x801c3e8
+socketOpen 
+tcp_connect_attempt 
+p_connect_callback 
+TCP Connected
+Dispatching event 24 to SMA 0x801c370
+socketConnected 
+Dispatching event 31 to SMA 0x801c728
+Polling
+Current state: connected 
+tcp-conmgr | pre alloc TcpSendEvt 
+tcp-conmgr | post alloc TcpSendEvt 
+test data: Hello, TCP ! 
+ 
+data size: 15 
+evt->buf: Hello, TCP ! 
+ 
+evt->size: 15 
+evt->evt.e: 25 
+tcp-conmgr | Posting TcpSendEvt 
+tcp-conmgr | After post TcpSendEvt 
+Dispatching event 25 to SMA 0x801c318
+send_request 
+Current state: connected 
+evt->buf: Hello, TCP ! 
+ 
+evt size: 15 
+evet e: 25 
+tpcb != NULL: yes 
+socketConnected 
+Dispatching event 9 to SMA 0x801c468
+flush_data 
+Dispatching event 31 to SMA 0x801c728
+Sent 15 bytes
+TCP error: -14
+Dispatching event 27 to SMA 0x801c318
+Dispatching event 33 to SMA 0x801c318
+```
+
+### mosquitto broker
+```json
+» mosquitto -c mosquitto.conf -v
+1743478430: mosquitto version 2.0.11 starting
+1743478430: Config loaded from mosquitto.conf.
+1743478430: Opening ipv4 listen socket on port 1883.
+1743478430: Opening ipv6 listen socket on port 1883.
+1743478430: mosquitto version 2.0.11 running
+
+1743478450: New connection from 192.168.1.78:52432 on port 1883.
+1743478464: Client <unknown> disconnected due to protocol error.
+```
 
 ## stm32 lwip tcp ConMgr state machine
 
@@ -91,7 +163,7 @@ Hello, TCP !
 Hello, TCP !
 ```
 
-### client side - stm32
+#### client side - stm32
 
 ```json 
 » ./STM32_Programmer_CLI -c port=ttyACM0 br=115200 console

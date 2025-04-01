@@ -408,6 +408,8 @@ static void tcp_connect_attempt(TcpConMgr *const me, RKH_EVT_T *pe) {
             me->tpcb = NULL;
             RKH_TMR_ONESHOT(&me->timer, RKH_UPCAST(RKH_SMA_T, me), TCP_RECONNECT_DELAY);
         }
+
+
     }
 }
 
@@ -434,6 +436,12 @@ static void socketConnected(TcpConMgr *const me) {
 
     bsp_netStatus(ConnectedSt);
     rkh_sma_recall((RKH_SMA_T *)me, &qDefer);
+
+    TcpSocketConnectedEvt * evt = RKH_ALLOC_EVT(TcpSocketConnectedEvt, evNetConnected, me);
+    evt->tpcb = me->tpcb;
+
+
+    RKH_SMA_POST_FIFO(tcpMqttProt, RKH_UPCAST(RKH_EVT_T, evt), me);
 }
 
 /* ............................. Exit actions ............................. */
@@ -446,3 +454,26 @@ static void socketClosed(TcpConMgr *const me) {
     printf("socketClosed \n");
     bsp_netStatus(DisconnectedSt);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

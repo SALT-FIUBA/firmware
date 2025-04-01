@@ -10,7 +10,7 @@
 
 /* -------------------------------- Authors -------------------------------- */
 /*
- *  DaBa Darío Baliña  db@vortexmakes.com
+ *  DaBa Darï¿½o Baliï¿½a  db@vortexmakes.com
  */
 
 /* --------------------------------- Notes --------------------------------- */
@@ -19,7 +19,7 @@
 #define __PUBLISHER_H__
 
 /* ----------------------------- Include files ----------------------------- */
-#include "mqttProt.h"
+#include "tcp-mqttprot.h"
 
 /* ---------------------- External C language linkage ---------------------- */
 #ifdef __cplusplus
