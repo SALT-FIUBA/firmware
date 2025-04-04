@@ -47,7 +47,7 @@ Using local RKH configuration
 
 -------- Parsing trace stream from /dev/ttyACM0 at 115200 8N1 --------
 
- [  0] | FWK | TCFG       : Update RKH Configuration from client
+ [  0] | FWK | TCFG       : Update RKH Configuration from mqttc_client
                                       | RKH_VERSION                   = 3.4.00
                                       | TRZ_RKH_CFGPORT_TRC_SIZEOF_TSTAMP= 32
                                       | TRZ_RKH_CFGPORT_TRC_SIZEOF_PTR= 32

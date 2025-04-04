@@ -191,13 +191,14 @@ int main(void)
 
     mqttProtCfg.publishTime = 5;
     mqttProtCfg.syncTime = 4;
-    mqttProtCfg.keepAlive = 400;
+    mqttProtCfg.keepAlive = 9999;
     mqttProtCfg.qos = 1;
-    strcpy(mqttProtCfg.clientId, "");
-    strcpy(mqttProtCfg.topic, "");
-    strcpy(mqttProtCfg.subTopic, "");
+    strcpy(mqttProtCfg.clientId, "stm32_client");
+    strcpy(mqttProtCfg.topic, "/stm32/data");
+    strcpy(mqttProtCfg.subTopic, "/stm32/config");
     mqttProtCfg.callback = onMQTTCb;
     TCP_MQTTProt_ctor(&mqttProtCfg, publishDimba);
+
 
 
     /* Activate the TcpConMgr state machine */

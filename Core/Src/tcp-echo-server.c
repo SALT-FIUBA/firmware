@@ -23,7 +23,7 @@ static err_t tcp_echoserver_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p
     LWIP_ASSERT("arg != NULL", arg != NULL);
     es = (struct tcp_echoserver_struct *)arg;
 
-    /* if we receive an empty tcp frame from client => close connection */
+    /* if we receive an empty tcp frame from mqttc_client => close connection */
     if (p == NULL)
     {
         /* remote host closed connection */
@@ -40,7 +40,7 @@ static err_t tcp_echoserver_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p
         }
         ret_err = ERR_OK;
     }
-        /* else : a non empty frame was received from client */
+        /* else : a non empty frame was received from mqttc_client */
     else if(err != ERR_OK)
     {
         /* free received pbuf */
@@ -195,7 +195,7 @@ static void tcp_echoserver_error(void *arg, err_t err)
 }
 
 /**
-  * @brief  This function is used to close the tcp connection with client
+  * @brief  This function is used to close the tcp connection with mqttc_client
   * @param  tpcb: pointer on the tcp connection
   * @param  es: pointer on echo_state structure
   * @retval None

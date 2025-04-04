@@ -64,7 +64,7 @@ enum lwip_iana_port_number {
   LWIP_IANA_PORT_SMTP        = 25,
   /** DHCP server */
   LWIP_IANA_PORT_DHCP_SERVER = 67,
-  /** DHCP client */
+  /** DHCP mqttc_client */
   LWIP_IANA_PORT_DHCP_CLIENT = 68,
   /** TFTP */
   LWIP_IANA_PORT_TFTP        = 69,

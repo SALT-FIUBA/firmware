@@ -95,13 +95,13 @@ void rkh_pubsub_init(void);
 /**
  *  \brief
  *  Adds an active object to the notification list of an event channel.
- *  Each subscription registers a client's interest in one event channel 
+ *  Each subscription registers a mqttc_client's interest in one event channel
  *  (topic). This module posts published events to the registered clients in 
  *  order to forward events that were published to channel that match this 
  *  subscription.
  *
  *  \param[in] channel  indicates the topic to which the active object 
- *                      (client) wants to subscribe.
+ *                      (mqttc_client) wants to subscribe.
  *  \param[in] ao       pointer to previously created active object to
  *                      subscribe.
  */

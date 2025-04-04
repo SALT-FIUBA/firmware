@@ -2,7 +2,7 @@
 
 ## stm32 lwip tcp MqttProt Client state machine (without SyncRegion state machine)
 
-### stm32 mqttc client
+### stm32 mqttc mqttc_client
 ```json 
  » ./STM32_Programmer_CLI -c port=ttyACM0 br=115200 console
       -------------------------------------------------------------------
@@ -43,7 +43,7 @@ evt->evt.e: 25
 tcp-conmgr | Posting TcpSendEvt 
 tcp-conmgr | After post TcpSendEvt 
 Dispatching event 25 to SMA 0x801c318
-send_request 
+send_data 
 Current state: connected 
 evt->buf: Hello, TCP ! 
  
@@ -163,7 +163,7 @@ Hello, TCP !
 Hello, TCP !
 ```
 
-#### client side - stm32
+#### mqttc_client side - stm32
 
 ```json 
 » ./STM32_Programmer_CLI -c port=ttyACM0 br=115200 console
@@ -236,7 +236,7 @@ evt->evt.e: 25
 tcp-conmgr | Posting TcpSendEvt
 tcp-conmgr | After post TcpSendEvt
 Dispatching event 25 to SMA 0x8016c70
-send_request
+send_data
 Current state: connected
 evt->buf: Hello, TCP !
 
@@ -266,7 +266,7 @@ hey hey
 ### TcpConMgr_connected <-> TcpConMgr_sending interaction 
 
 based on framework parameters defined in rkhcfg.h, altered SEND_BUFF_SIZE, RECV_BUFF_SIZE and pool object-like macros 
-in main.c to achieve the post a TcpSendEvt from tcp_poll_callback to send_request 
+in main.c to achieve the post a TcpSendEvt from tcp_poll_callback to send_data 
 
 ```c 
 static err_t tcp_poll_callback(void *arg, struct tcp_pcb *tpcb) {
@@ -278,7 +278,7 @@ static err_t tcp_poll_callback(void *arg, struct tcp_pcb *tpcb) {
     return ERR_OK;
 }
 
-static void send_request(TcpConMgr *const me, RKH_EVT_T *pe) {
+static void send_data(TcpConMgr *const me, RKH_EVT_T *pe) {
     
     TcpSendEvt * evt = RKH_DOWNCAST(TcpSendEvt, pe);
     
@@ -360,7 +360,7 @@ static rui8_t evPool3Sto[SIZEOF_EP3STO];
 Hello, TCP !Hello, TCP !Hello, TCP !Hello, TCP !Hello, TCP !Hello, TCP !^C
 ```
 
-#### client side
+#### mqttc_client side
 
 ```json
 main | SIZEOF_EP3STO: 1024 
@@ -426,7 +426,7 @@ evt->evt.e: 25
 tcp-conmgr | Posting TcpSendEvt 
 tcp-conmgr | After post TcpSendEvt 
 Dispatching event 25 to SMA 0x8016acc
-send_request 
+send_data 
 Current state: connected 
 evt->buf: Hello, TCP ! 
 evt size: 13 
@@ -449,7 +449,7 @@ evt->evt.e: 25
 tcp-conmgr | Posting TcpSendEvt 
 tcp-conmgr | After post TcpSendEvt 
 Dispatching event 25 to SMA 0x8016acc
-send_request 
+send_data 
 Current state: connected 
 evt->buf: Hello, TCP ! 
 evt size: 13 
@@ -472,7 +472,7 @@ evt->evt.e: 25
 tcp-conmgr | Posting TcpSendEvt 
 tcp-conmgr | After post TcpSendEvt 
 Dispatching event 25 to SMA 0x8016acc
-send_request 
+send_data 
 Current state: connected 
 evt->buf: Hello, TCP ! 
 evt size: 13 
@@ -495,7 +495,7 @@ evt->evt.e: 25
 tcp-conmgr | Posting TcpSendEvt 
 tcp-conmgr | After post TcpSendEvt 
 Dispatching event 25 to SMA 0x8016acc
-send_request 
+send_data 
 Current state: connected 
 evt->buf: Hello, TCP ! 
 evt size: 13 
@@ -518,7 +518,7 @@ evt->evt.e: 25
 tcp-conmgr | Posting TcpSendEvt 
 tcp-conmgr | After post TcpSendEvt 
 Dispatching event 25 to SMA 0x8016acc
-send_request 
+send_data 
 Current state: connected 
 evt->buf: Hello, TCP ! 
 evt size: 13 
@@ -541,7 +541,7 @@ evt->evt.e: 25
 tcp-conmgr | Posting TcpSendEvt 
 tcp-conmgr | After post TcpSendEvt 
 Dispatching event 25 to SMA 0x8016acc
-send_request 
+send_data 
 Current state: connected 
 evt->buf: Hello, TCP ! 
 evt size: 13 
@@ -569,7 +569,7 @@ hey there
 haloo
 ```
 
-### client side
+### mqttc_client side
 
 ```json
  » ./STM32_Programmer_CLI -c port=ttyACM0 br=115200 console
@@ -625,7 +625,7 @@ Connection closed
                 RKH_TRREG(evTimeout, NULL, NULL, &TcpConMgr_connecting),
 ```
 
-**at this point, conMgr with tcp client and pbuf is working as expected**
+**at this point, conMgr with tcp mqttc_client and pbuf is working as expected**
 
 4. events posted between conMgr and mqttProt
 
@@ -904,7 +904,7 @@ used to communicate with another state machine
 1740848426: Opening ipv6 listen socket on port 1883.
 1740848426: mosquitto version 2.0.11 running
 1740848434: New connection from 192.168.1.78:52432 on port 1883.
-1740848434: New client connected from 192.168.1.78:52432 as stm32_client (p2, c0, k30).
+1740848434: New mqttc_client connected from 192.168.1.78:52432 as stm32_client (p2, c0, k30).
 1740848434: No will message specified.
 1740848434: Sending CONNACK to stm32_client (0, 0)
 1740848437: Received PUBLISH from stm32_client (d0, q0, r0, m0, 'topic', ... (7 bytes))
@@ -924,7 +924,7 @@ used to communicate with another state machine
 ```
 
 
-### stm32 client
+### stm32 mqttc_client
 
 ```json 
 » ./STM32_Programmer_CLI -c port=ttyACM0 br=115200 console
@@ -944,7 +944,7 @@ Press W to write mode
 Waiting for network interface...
 Waiting for link...
 TCP connection initiated
-MQTT client initialized
+MQTT mqttc_client initialized
 tcp_connected: 1 
 mqtt_connected: 0 
 MQTT CONNECT sent
@@ -1224,7 +1224,7 @@ Transmission Control Protocol, Src Port: 1883, Dst Port: 52432, Seq: 5, Ack: 171
 
 ```json 
 1740849506: New connection from 192.168.1.78:52432 on port 1883.
-1740849506: New client connected from 192.168.1.78:52432 as stm32_client (p2, c0, k30).
+1740849506: New mqttc_client connected from 192.168.1.78:52432 as stm32_client (p2, c0, k30).
 1740849506: No will message specified.
 1740849506: Sending CONNACK to stm32_client (1, 0)
 
@@ -1254,14 +1254,14 @@ Transmission Control Protocol, Src Port: 1883, Dst Port: 52432, Seq: 5, Ack: 171
 ```
 
 
-### stm32 client
+### stm32 mqttc_client
 
 ```json
 Waiting for network interface...
 Waiting for link...
 
 TCP connection initiated
-MQTT client initialized
+MQTT mqttc_client initialized
 MQTT CONNECT sent
 TCP Connected
 Sent 26 bytes

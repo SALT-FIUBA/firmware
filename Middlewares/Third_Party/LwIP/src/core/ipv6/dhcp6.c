@@ -3,7 +3,7 @@
  *
  * @defgroup dhcp6 DHCPv6
  * @ingroup ip6
- * DHCPv6 client: IPv6 address autoconfiguration as per
+ * DHCPv6 mqttc_client: IPv6 address autoconfiguration as per
  * RFC 3315 (stateful DHCPv6) and
  * RFC 3736 (stateless DHCPv6).
  *
@@ -218,7 +218,7 @@ dhcp6_get_struct(struct netif *netif, const char *dbg_requester)
 {
   struct dhcp6 *dhcp6 = netif_dhcp6_data(netif);
   if (dhcp6 == NULL) {
-    LWIP_DEBUGF(DHCP6_DEBUG | LWIP_DBG_TRACE, ("%s: mallocing new DHCPv6 client\n", dbg_requester));
+    LWIP_DEBUGF(DHCP6_DEBUG | LWIP_DBG_TRACE, ("%s: mallocing new DHCPv6 mqttc_client\n", dbg_requester));
     dhcp6 = (struct dhcp6 *)mem_malloc(sizeof(struct dhcp6));
     if (dhcp6 == NULL) {
       LWIP_DEBUGF(DHCP6_DEBUG | LWIP_DBG_TRACE, ("%s: could not allocate dhcp6\n", dbg_requester));
@@ -227,11 +227,11 @@ dhcp6_get_struct(struct netif *netif, const char *dbg_requester)
 
     /* clear data structure, this implies DHCP6_STATE_OFF */
     memset(dhcp6, 0, sizeof(struct dhcp6));
-    /* store this dhcp6 client in the netif */
+    /* store this dhcp6 mqttc_client in the netif */
     netif_set_client_data(netif, LWIP_NETIF_CLIENT_DATA_INDEX_DHCP6, dhcp6);
   } else {
-    /* already has DHCP6 client attached */
-    LWIP_DEBUGF(DHCP6_DEBUG | LWIP_DBG_TRACE | LWIP_DBG_STATE, ("%s: using existing DHCPv6 client\n", dbg_requester));
+    /* already has DHCP6 mqttc_client attached */
+    LWIP_DEBUGF(DHCP6_DEBUG | LWIP_DBG_TRACE | LWIP_DBG_STATE, ("%s: using existing DHCPv6 mqttc_client\n", dbg_requester));
   }
 
   if (!dhcp6->pcb_allocated) {
@@ -802,7 +802,7 @@ dhcp6_tmr(void)
         dhcp6->request_timeout--;
         /* { dhcp6->request_timeout == 0 } */
         LWIP_DEBUGF(DHCP6_DEBUG | LWIP_DBG_TRACE | LWIP_DBG_STATE, ("dhcp6_tmr(): request timeout\n"));
-        /* this client's request timeout triggered */
+        /* this mqttc_client's request timeout triggered */
         dhcp6_timeout(netif, dhcp6);
       }
     }

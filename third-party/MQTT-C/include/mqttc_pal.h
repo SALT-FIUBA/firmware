@@ -35,7 +35,7 @@ extern "C" {
 
 /**
  * @file
- * @brief Includes/supports the types/calls required by the MQTT-C client.
+ * @brief Includes/supports the types/calls required by the MQTT-C mqttc_client.
  *
  * @note This is the \em only file included in mqtt.h, and mqtt.c. It is therefore
  *       responsible for including/supporting all the required types and calls.

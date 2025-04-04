@@ -364,7 +364,7 @@ struct ppp_pcb_s {
 #endif /* PAP_SUPPORT */
 
 #if CHAP_SUPPORT
-  chap_client_state chap_client;  /* CHAP client data */
+  chap_client_state chap_client;  /* CHAP mqttc_client data */
 #if PPP_SERVER
   chap_server_state chap_server;  /* CHAP server data */
 #endif /* PPP_SERVER */

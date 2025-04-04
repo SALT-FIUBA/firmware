@@ -200,8 +200,8 @@ void mqttc_reinit(struct mqttc_client* client,
 
 /**
  * A macro function that:
- *      1) Checks that the client isn't in an error state.
- *      2) Attempts to pack to client's message queue.
+ *      1) Checks that the mqttc_client isn't in an error state.
+ *      2) Attempts to pack to mqttc_client's message queue.
  *          a) handles errors
  *          b) if mq buffer is too small, cleans it and tries again
  *      3) Upon successful pack, registers the new message.
@@ -247,7 +247,7 @@ enum MQTTErrors mqttc_connect(struct mqttc_client *client,
 
     /* Note: Current thread already has mutex locked. */
 
-    /* update the client's state */
+    /* update the mqttc_client's state */
     client->keep_alive = keep_alive;
     if (client->error == MQTT_ERROR_CONNECT_NOT_CALLED) {
         client->error = MQTT_OK;
@@ -694,7 +694,7 @@ ssize_t __mqttc_recv(struct mqttc_client *client)
         /* response was unpacked successfully */
 
         /*
-        The switch statement below manages how the client responds to messages from the broker.
+        The switch statement below manages how the mqttc_client responds to messages from the broker.
 
         Control Types (that we expect to receive from the broker):
         MQTT_CONTROL_CONNACK:
@@ -1778,15 +1778,18 @@ static const char * const MQTT_ERRORS_STR[] = {
 };
 
 const char* mqttc_error_str(enum MQTTErrors error) {
+
+    if (error == MQTT_OK) {  // Explicitly check MQTT_OK first
+        return "MQTT_OK";
+    }
+
     int offset = error - MQTT_ERROR_UNKNOWN;
-    if (offset >= 0) {
+    if (offset >= 0 && offset < (sizeof(MQTT_ERRORS_STR) / sizeof(MQTT_ERRORS_STR[0]))) {
         return MQTT_ERRORS_STR[offset];
     } else if (error == 0) {
         return "MQTT_ERROR: Buffer too small.";
-    } else if (error > 0) {
-        return "MQTT_OK";
     } else {
-        return MQTT_ERRORS_STR[0];
+        return MQTT_ERRORS_STR[0];  // Default to "MQTT_ERROR_UNKNOWN"
     }
 }
 

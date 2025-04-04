@@ -1,6 +1,6 @@
 /**
  * @file
- * DHCP client API
+ * DHCP mqttc_client API
  */
 
 /*

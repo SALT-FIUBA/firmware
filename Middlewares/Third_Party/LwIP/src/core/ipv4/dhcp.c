@@ -1,11 +1,11 @@
 /**
  * @file
- * Dynamic Host Configuration Protocol client
+ * Dynamic Host Configuration Protocol mqttc_client
  *
  * @defgroup dhcp4 DHCPv4
  * @ingroup ip4
  * DHCP (IPv4) related functions
- * This is a DHCP client for the lwIP TCP/IP stack. It aims to conform
+ * This is a DHCP mqttc_client for the lwIP TCP/IP stack. It aims to conform
  * with RFC 2131 and RFC 2132.
  *
  * @todo:
@@ -15,11 +15,11 @@
  * @ref DHCP_COARSE_TIMER_SECS (recommended 60 which is a minute)
  * @ref DHCP_FINE_TIMER_MSECS (recommended 500 which equals TCP coarse timer)
  *
- * dhcp_start() starts a DHCP client instance which
+ * dhcp_start() starts a DHCP mqttc_client instance which
  * configures the interface by obtaining an IP address lease and maintaining it.
  *
  * Use dhcp_release() to end the lease and use dhcp_stop()
- * to remove the DHCP client.
+ * to remove the DHCP mqttc_client.
  *
  * @see LWIP_HOOK_DHCP_APPEND_OPTIONS
  * @see LWIP_HOOK_DHCP_PARSE_OPTION
@@ -187,7 +187,7 @@ static u8_t xid_initialised;
 static struct udp_pcb *dhcp_pcb;
 static u8_t dhcp_pcb_refcount;
 
-/* DHCP client state machine functions */
+/* DHCP mqttc_client state machine functions */
 static err_t dhcp_discover(struct netif *netif);
 static err_t dhcp_select(struct netif *netif);
 static void dhcp_bind(struct netif *netif);
@@ -262,10 +262,10 @@ dhcp_dec_pcb_refcount(void)
 }
 
 /**
- * Back-off the DHCP client (because of a received NAK response).
+ * Back-off the DHCP mqttc_client (because of a received NAK response).
  *
- * Back-off the DHCP client because of a received NAK. Receiving a
- * NAK means the client asked for something non-sensible, for
+ * Back-off the DHCP mqttc_client because of a received NAK. Receiving a
+ * NAK means the mqttc_client asked for something non-sensible, for
  * example when it tries to renew a lease obtained on another network.
  *
  * We clear any existing set IP address and restart DHCP negotiation
@@ -480,7 +480,7 @@ dhcp_fine_tmr(void)
         dhcp->request_timeout--;
         /* { dhcp->request_timeout == 0 } */
         LWIP_DEBUGF(DHCP_DEBUG | LWIP_DBG_TRACE | LWIP_DBG_STATE, ("dhcp_fine_tmr(): request timeout\n"));
-        /* this client's request timeout triggered */
+        /* this mqttc_client's request timeout triggered */
         dhcp_timeout(netif);
       }
     }
@@ -724,8 +724,8 @@ void dhcp_cleanup(struct netif *netif)
  * @ingroup dhcp4
  * Start DHCP negotiation for a network interface.
  *
- * If no DHCP client instance was attached to this interface,
- * a new client is created first. If a DHCP client instance
+ * If no DHCP mqttc_client instance was attached to this interface,
+ * a new mqttc_client is created first. If a DHCP mqttc_client instance
  * was already present, it restarts negotiation.
  *
  * @param netif The lwIP network interface
@@ -751,19 +751,19 @@ dhcp_start(struct netif *netif)
     return ERR_MEM;
   }
 
-  /* no DHCP client attached yet? */
+  /* no DHCP mqttc_client attached yet? */
   if (dhcp == NULL) {
-    LWIP_DEBUGF(DHCP_DEBUG | LWIP_DBG_TRACE, ("dhcp_start(): mallocing new DHCP client\n"));
+    LWIP_DEBUGF(DHCP_DEBUG | LWIP_DBG_TRACE, ("dhcp_start(): mallocing new DHCP mqttc_client\n"));
     dhcp = (struct dhcp *)mem_malloc(sizeof(struct dhcp));
     if (dhcp == NULL) {
       LWIP_DEBUGF(DHCP_DEBUG | LWIP_DBG_TRACE, ("dhcp_start(): could not allocate dhcp\n"));
       return ERR_MEM;
     }
 
-    /* store this dhcp client in the netif */
+    /* store this dhcp mqttc_client in the netif */
     netif_set_client_data(netif, LWIP_NETIF_CLIENT_DATA_INDEX_DHCP, dhcp);
     LWIP_DEBUGF(DHCP_DEBUG | LWIP_DBG_TRACE, ("dhcp_start(): allocated dhcp"));
-    /* already has DHCP client attached */
+    /* already has DHCP mqttc_client attached */
   } else {
     LWIP_DEBUGF(DHCP_DEBUG | LWIP_DBG_TRACE | LWIP_DBG_STATE, ("dhcp_start(): restarting DHCP configuration\n"));
 
@@ -907,7 +907,7 @@ dhcp_arp_reply(struct netif *netif, const ip4_addr_t *addr)
   LWIP_ERROR("netif != NULL", (netif != NULL), return;);
   dhcp = netif_dhcp_data(netif);
   LWIP_DEBUGF(DHCP_DEBUG | LWIP_DBG_TRACE, ("dhcp_arp_reply()\n"));
-  /* is a DHCP client doing an ARP check? */
+  /* is a DHCP mqttc_client doing an ARP check? */
   if ((dhcp != NULL) && (dhcp->state == DHCP_STATE_CHECKING)) {
     LWIP_DEBUGF(DHCP_DEBUG | LWIP_DBG_TRACE | LWIP_DBG_STATE, ("dhcp_arp_reply(): CHECKING, arp reply for 0x%08"X32_F"\n",
                 ip4_addr_get_u32(addr)));
@@ -1409,7 +1409,7 @@ dhcp_stop(struct netif *netif)
 }
 
 /*
- * Set the DHCP state of a DHCP client.
+ * Set the DHCP state of a DHCP mqttc_client.
  *
  * If the state changed, reset the number of tries.
  */

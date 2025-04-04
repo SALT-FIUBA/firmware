@@ -148,7 +148,7 @@ static void upap_init(ppp_pcb *pcb) {
 
 
 /*
- * upap_authwithpeer - Authenticate us with our peer (start client).
+ * upap_authwithpeer - Authenticate us with our peer (start mqttc_client).
  *
  * Set new state and send authenticate's.
  */

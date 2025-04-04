@@ -316,7 +316,7 @@ pppoe_destroy(ppp_pcb *ppp, void *ctx)
 
 /*
  * Find the interface handling the specified session.
- * Note: O(number of sessions open), this is a client-side only, mean
+ * Note: O(number of sessions open), this is a mqttc_client-side only, mean
  * and lean implementation, so number of open sessions typically should
  * be 1.
  */

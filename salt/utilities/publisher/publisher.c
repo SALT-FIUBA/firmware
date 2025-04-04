@@ -45,7 +45,10 @@ publishDimba(AppData *appMsg)
     logic_getData(&logicData);
 
     jwOpen( dataBuf, sizeof(dataBuf), JW_OBJECT, JW_COMPACT );
-    jwObj_string("imei", ConMgr_imei());
+
+    //  TODO: mockup ConMgr_imei value
+    //      jwObj_string("imei", ConMgr_imei());
+
     jwObj_int(MQTT_PARSE_PARAMETER_CMD_TIMEOUT, logicData.cmdTimeout);
     jwObj_double(MQTT_PARSE_PARAMETER_VEL_CT_ON, logicData.velCtOn);
     jwObj_double(MQTT_PARSE_PARAMETER_VEL_CT_OFF, logicData.velCtOff);

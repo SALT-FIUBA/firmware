@@ -57,7 +57,7 @@ mqttc_sendOneMsg(struct mqttc_client *client, Mqttc116LocalSendAll *local)
     }
     if (local->resend) {
         /* we're sending the message */
-        /*local->tmp = mqttc_pal_sendall(client->socketfd, local->msg->start, local->msg->size, 0);*/
+        /*local->tmp = mqttc_pal_sendall(mqttc_client->socketfd, local->msg->start, local->msg->size, 0);*/
     }
 }
 
@@ -168,32 +168,32 @@ mqttc_endSendAll(struct mqttc_client *client)
 }
 
 /* TODO: resolve if i'll use this one or the default one
-ssize_t __mqttc_send(struct mqttc_client *client)
+ssize_t __mqttc_send(struct mqttc_client *mqttc_client)
 {
-    MQTTC_PAL_MUTEX_LOCK(&client->mutex);
+    MQTTC_PAL_MUTEX_LOCK(&mqttc_client->mutex);
     Mqttc116LocalSendAll local;
 
-    mqttc_initSendAll(client, &local);
+    mqttc_initSendAll(mqttc_client, &local);
     if (mqttc_isInitOk(&local)) {
         // loop through all messages in the queue
         for (; mqttc_isThereMsg(&local); ) {
-            mqttc_sendOneMsg(client, &local);
+            mqttc_sendOneMsg(mqttc_client, &local);
             if (local.resend) { // goto next message if we don't need to send
                 if (local.tmp < 0) { // On receive evSendFail event
-                    mqttc_sendMsgFail(client, &local);
+                    mqttc_sendMsgFail(mqttc_client, &local);
                     return local.tmp;
                 }
-                mqttc_setMsgState(client, &local);
+                mqttc_setMsgState(mqttc_client, &local);
                 if (!mqttc_isSetMsgStateResult(&local)) {
-                    MQTTC_PAL_MUTEX_UNLOCK(&client->mutex);
+                    MQTTC_PAL_MUTEX_UNLOCK(&mqttc_client->mutex);
                     return local.setMsgStateResult;
                 }
             }
             mqttc_nextSend(&local);
         }
-        return mqttc_endSendAll(client);
+        return mqttc_endSendAll(mqttc_client);
     }
-    MQTTC_PAL_MUTEX_UNLOCK(&client->mutex);
+    MQTTC_PAL_MUTEX_UNLOCK(&mqttc_client->mutex);
     return local.initResult;
 }
  */
@@ -304,7 +304,7 @@ mqttc_handleRecvMsg(struct mqttc_client *client, Mqttc116LocalRecvAll *local)
     local->msg = NULL;
 
     /*
-     * The switch statement below manages how the client responds to messages
+     * The switch statement below manages how the mqttc_client responds to messages
      * from the broker.
      *
      * Control Types (that we expect to receive from the broker):
@@ -350,7 +350,7 @@ mqttc_handleRecvMsg(struct mqttc_client *client, Mqttc116LocalRecvAll *local)
 
 
             // TODO: check this issue on init function of mqttProt
-            //  client->connack_response_callback(local->response.decoded.connack.return_code);
+            //  mqttc_client->connack_response_callback(local->response.decoded.connack.return_code);
 
 
 
@@ -549,37 +549,37 @@ mqttc_isReconnect(struct mqttc_client *client)
 
 
 /* TODO: resolve if i'll use this one or the default one
-ssize_t __mqttc_recv(struct mqttc_client *client)
+ssize_t __mqttc_recv(struct mqttc_client *mqttc_client)
 {
-    MQTTC_PAL_MUTEX_LOCK(&client->mutex);
+    MQTTC_PAL_MUTEX_LOCK(&mqttc_client->mutex);
     Mqttc116LocalRecvAll local;
 
     mqttc_initRecvAll();
 
     while(1) { // read until there is nothing left to read
-        mqttc_recvAll(client, &local); // read in as many bytes as possible
+        mqttc_recvAll(mqttc_client, &local); // read in as many bytes as possible
         if (local.rv < 0) { // On receive evRecvFail event
-            mqttc_recvFail(client, &local); // an error occurred
+            mqttc_recvFail(mqttc_client, &local); // an error occurred
             return local.rv;
         }
 
-        mqttc_parseRecv(client, &local);
+        mqttc_parseRecv(mqttc_client, &local);
 
         if (mqttc_isConsumed(&local)) {
-            mqttc_handleRecvMsg(client, &local);
+            mqttc_handleRecvMsg(mqttc_client, &local);
             if (mqttc_isNotError(&local)) {
-                mqttc_cleanBuf(client, &local);
+                mqttc_cleanBuf(mqttc_client, &local);
             }
             else {
-                mqttc_recvMsgError(client, &local);
+                mqttc_recvMsgError(mqttc_client, &local);
                 return local.handleRecvMsgResult;
             }
         }
         else if (mqttc_isUnpackError(&local)) {
-            mqttc_parseError(client, &local);
+            mqttc_parseError(mqttc_client, &local);
             return local.consumed;
         } else {
-            mqttc_noConsumed(client, &local);
+            mqttc_noConsumed(mqttc_client, &local);
             if (mqttc_isRecvBufFull(&local)) {
                 return local.noConsumedResult;
             }
@@ -590,7 +590,7 @@ ssize_t __mqttc_recv(struct mqttc_client *client)
     }
 
     // never hit (always return once there's nothing left.
-    MQTTC_PAL_MUTEX_UNLOCK(&client->mutex);
+    MQTTC_PAL_MUTEX_UNLOCK(&mqttc_client->mutex);
     return MQTT_OK;
 }
 */

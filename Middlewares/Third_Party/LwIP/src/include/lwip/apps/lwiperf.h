@@ -51,7 +51,7 @@ enum lwiperf_report_type
 {
   /** The server side test is done */
   LWIPERF_TCP_DONE_SERVER,
-  /** The client side test is done */
+  /** The mqttc_client side test is done */
   LWIPERF_TCP_DONE_CLIENT,
   /** Local error lead to test abort */
   LWIPERF_TCP_ABORTED_LOCAL,

@@ -156,7 +156,7 @@ enum netconn_state {
  * 
  * Event explanation:
  * 
- * In the netconn implementation, there are three ways to block a client:
+ * In the netconn implementation, there are three ways to block a mqttc_client:
  * 
  * - accept mbox (sys_arch_mbox_fetch(&conn->acceptmbox, &accept_ptr, 0); in netconn_accept())
  * - receive mbox (sys_arch_mbox_fetch(&conn->recvmbox, &buf, 0); in netconn_recv_data())

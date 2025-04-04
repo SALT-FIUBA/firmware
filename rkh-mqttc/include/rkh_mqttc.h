@@ -40,7 +40,7 @@
  * \c port = \c "1883", and \c topic = "datetime".  
  * 
  * @defgroup api API
- * @brief Documentation of everything you need to know to use the MQTT-C client.
+ * @brief Documentation of everything you need to know to use the MQTT-C mqttc_client.
  * 
  * This module contains everything you need to know to use MQTT-C in your application.
  * For usage examples see:
@@ -59,7 +59,7 @@
  *        control packets.
  * 
  * @defgroup details Utilities
- * @brief Developer documentation for the utilities used to implement the MQTT-C client.
+ * @brief Developer documentation for the utilities used to implement the MQTT-C mqttc_client.
  *
  * @note To deserialize a packet from a buffer use \ref rkh_mqttc_unpack_response (it's the only
  *       function you need).
@@ -233,7 +233,7 @@ enum MQTTConnackReturnCode {
  */
 struct rkh_mqttc_response_connack {
     /** 
-     * @brief Allows client and broker to check if they have a consistent view about whether there is
+     * @brief Allows mqttc_client and broker to check if they have a consistent view about whether there is
      * already a stored session state.
     */
     uint8_t session_present_flag;
@@ -250,8 +250,8 @@ struct rkh_mqttc_response_connack {
  * @brief A publish packet received from the broker.
  * @ingroup unpackers
  *
- * A publish packet is received from the broker when a client publishes to a topic that the
- * \em {local client} is subscribed to.
+ * A publish packet is received from the broker when a mqttc_client publishes to a topic that the
+ * \em {local mqttc_client} is subscribed to.
  *
  * @see <a href="http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718037">
  * MQTT v3.1.1: PUBLISH - Publish Message.
@@ -606,13 +606,13 @@ enum MQTTConnectFlags {
  * 
  * @param[out] buf the buffer to pack the connection request packet into.
  * @param[in] bufsz the number of bytes left in \p buf.
- * @param[in] client_id the ID that identifies the local client. \p client_id is a required 
+ * @param[in] client_id the ID that identifies the local mqttc_client. \p client_id is a required
  *                      parameter.
- * @param[in] will_topic the topic under which the local client's will message will be published.
+ * @param[in] will_topic the topic under which the local mqttc_client's will message will be published.
  *                       Set to \c NULL for no will message. If \p will_topic is not \c NULL a
  *                       \p will_message must also be provided.
  * @param[in] will_message the will message to be published upon a unsuccessful disconnection of
- *                         the local client. Set to \c NULL if \p will_topic is \c NULL. 
+ *                         the local mqttc_client. Set to \c NULL if \p will_topic is \c NULL.
  *                         \p will_message must \em not be \c NULL if \p will_topic is not 
  *                         \c NULL.
  * @param[in] will_message_size The size of \p will_message in bytes.
@@ -1001,7 +1001,7 @@ struct rkh_mqttc_queued_message* rkh_mqttc_mq_find(struct rkh_mqttc_message_queu
 /* CLIENT */
 
 /**
- * @brief An MQTT client. 
+ * @brief An MQTT mqttc_client.
  * @ingroup details
  * 
  * @note All members can be manipulated via the related functions.
@@ -1032,7 +1032,7 @@ struct rkh_mqttc_client {
     rkh_mqttc_pal_time_t time_of_last_send;
 
     /** 
-     * @brief The error state of the client. 
+     * @brief The error state of the mqttc_client.
      * 
      * error should be MQTT_OK for the entirety of the connection.
      * 
@@ -1123,27 +1123,27 @@ struct rkh_mqttc_client {
  * 
  * Packet ID's are generated using a max-length LFSR.
  * 
- * @param client The MQTT client.
+ * @param client The MQTT mqttc_client.
  * 
  * @returns The new packet ID that should be used.
  */
 uint16_t __rkh_mqttc_next_pid(struct rkh_mqttc_client *client);
 
 /**
- * @brief Handles egress client traffic.
+ * @brief Handles egress mqttc_client traffic.
  * @ingroup details
  * 
- * @param client The MQTT client.
+ * @param client The MQTT mqttc_client.
  * 
  * @returns MQTT_OK upon success, an \ref MQTTErrors otherwise. 
  */
 ssize_t __rkh_mqttc_send(struct rkh_mqttc_client *client);
 
 /**
- * @brief Handles ingress client traffic.
+ * @brief Handles ingress mqttc_client traffic.
  * @ingroup details
  * 
- * @param client The MQTT client.
+ * @param client The MQTT mqttc_client.
  * 
  * @returns MQTT_OK upon success, an \ref MQTTErrors otherwise. 
  */
@@ -1163,7 +1163,7 @@ ssize_t __rkh_mqttc_recv(struct rkh_mqttc_client *client);
  * 
  * @pre rkh_mqttc_init must have been called.
  * 
- * @param[in,out] client The MQTT client.
+ * @param[in,out] client The MQTT mqttc_client.
  * 
  * @attention It is the responsibility of the application programmer to 
  *            call this function periodically. All functions in the @ref api are
@@ -1179,14 +1179,14 @@ enum MQTTErrors rkh_mqttc_sync(struct rkh_mqttc_client *client);
 
 
 /**
- * @brief Initialize an MQTT client.
+ * @brief Initialize an MQTT mqttc_client.
  * @ingroup api
  * 
  * This function \em must be called before any other API function calls.
  * 
  * @pre None.
  * 
- * @param[out] client The MQTT client.
+ * @param[out] client The MQTT mqttc_client.
  * @param[in] sockfd The socket file descriptor connected to the MQTT broker. 
  * @param[in] sendbuf A buffer that will be used for sending messages to the broker.
  * @param[in] sendbufsz The size of \p sendbuf in bytes.
@@ -1219,12 +1219,12 @@ enum MQTTErrors rkh_mqttc_init(struct rkh_mqttc_client *client,
  * 
  * @pre rkh_mqttc_init must have been called.
  * 
- * @param[in,out] client The MQTT client.
- * @param[in] client_id The unique name identifying the client.
- * @param[in] will_topic The topic name of client's \p will_message. If no will message is 
+ * @param[in,out] client The MQTT mqttc_client.
+ * @param[in] client_id The unique name identifying the mqttc_client.
+ * @param[in] will_topic The topic name of mqttc_client's \p will_message. If no will message is
  *            desired set to \c NULL.
  * @param[in] will_message The application message (data) to be published in the event the 
- *            client ungracefully disconnects. Set to \c NULL if \p will_topic is \c NULL.
+ *            mqttc_client ungracefully disconnects. Set to \c NULL if \p will_topic is \c NULL.
  * @param[in] will_message_size The size of \p will_message in bytes.
  * @param[in] user_name The username to use when establishing the session with the MQTT broker.
  *            Set to \c NULL if a username is not required.
@@ -1261,7 +1261,7 @@ enum MQTTErrors rkh_mqttc_connect(struct rkh_mqttc_client *client,
  * 
  * @pre rkh_mqttc_connect must have been called.
  * 
- * @param[in,out] client The MQTT client.
+ * @param[in,out] client The MQTT mqttc_client.
  * @param[in] topic_name The name of the topic.
  * @param[in] application_message The data to be published.
  * @param[in] application_message_size The size of \p application_message in bytes.
@@ -1281,7 +1281,7 @@ enum MQTTErrors rkh_mqttc_publish(struct rkh_mqttc_client *client,
  * @brief Acknowledge an ingree publish with QOS==1.
  * @ingroup details
  *
- * @param[in,out] client The MQTT client.
+ * @param[in,out] client The MQTT mqttc_client.
  * @param[in] packet_id The packet ID of the ingress publish being acknowledged.
  * 
  * @returns \c MQTT_OK upon success, an \ref MQTTErrors otherwise. 
@@ -1292,7 +1292,7 @@ ssize_t __rkh_mqttc_puback(struct rkh_mqttc_client *client, uint16_t packet_id);
  * @brief Acknowledge an ingree publish with QOS==2.
  * @ingroup details
  *
- * @param[in,out] client The MQTT client.
+ * @param[in,out] client The MQTT mqttc_client.
  * @param[in] packet_id The packet ID of the ingress publish being acknowledged.
  * 
  * @returns \c MQTT_OK upon success, an \ref MQTTErrors otherwise. 
@@ -1303,7 +1303,7 @@ ssize_t __rkh_mqttc_pubrec(struct rkh_mqttc_client *client, uint16_t packet_id);
  * @brief Acknowledge an ingree PUBREC packet.
  * @ingroup details
  *
- * @param[in,out] client The MQTT client.
+ * @param[in,out] client The MQTT mqttc_client.
  * @param[in] packet_id The packet ID of the ingress PUBREC being acknowledged.
  * 
  * @returns \c MQTT_OK upon success, an \ref MQTTErrors otherwise. 
@@ -1314,7 +1314,7 @@ ssize_t __rkh_mqttc_pubrel(struct rkh_mqttc_client *client, uint16_t packet_id);
  * @brief Acknowledge an ingree PUBREL packet.
  * @ingroup details
  *
- * @param[in,out] client The MQTT client.
+ * @param[in,out] client The MQTT mqttc_client.
  * @param[in] packet_id The packet ID of the ingress PUBREL being acknowledged.
  * 
  * @returns \c MQTT_OK upon success, an \ref MQTTErrors otherwise. 
@@ -1328,7 +1328,7 @@ ssize_t __rkh_mqttc_pubcomp(struct rkh_mqttc_client *client, uint16_t packet_id)
  * 
  * @pre rkh_mqttc_connect must have been called.
  * 
- * @param[in,out] client The MQTT client.
+ * @param[in,out] client The MQTT mqttc_client.
  * @param[in] topic_name The name of the topic to subscribe to.
  * @param[in] max_qos_level The maximum QOS level with which the broker can send application
  *            messages for this topic.
@@ -1345,7 +1345,7 @@ enum MQTTErrors rkh_mqttc_subscribe(struct rkh_mqttc_client *client,
  * 
  * @pre rkh_mqttc_connect must have been called.
  * 
- * @param[in,out] client The MQTT client.
+ * @param[in,out] client The MQTT mqttc_client.
  * @param[in] topic_name The name of the topic to unsubscribe from.
  * 
  * @returns \c MQTT_OK upon success, an \ref MQTTErrors otherwise. 
@@ -1359,7 +1359,7 @@ enum MQTTErrors rkh_mqttc_unsubscribe(struct rkh_mqttc_client *client,
  * 
  * @pre rkh_mqttc_connect must have been called.
  * 
- * @param[in,out] client The MQTT client.
+ * @param[in,out] client The MQTT mqttc_client.
  * 
  * @returns \c MQTT_OK upon success, an \ref MQTTErrors otherwise.
  */
@@ -1377,7 +1377,7 @@ enum MQTTErrors __rkh_mqttc_ping(struct rkh_mqttc_client *client);
  * 
  * @pre rkh_mqttc_connect must have been called.
  * 
- * @param[in,out] client The MQTT client.
+ * @param[in,out] client The MQTT mqttc_client.
  * 
  * @note To re-establish the session, rkh_mqttc_connect must be called.
  * 

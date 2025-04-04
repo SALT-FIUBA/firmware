@@ -551,7 +551,9 @@ void start_tcp_connection(struct tcp_pcb *tpcb) {
  */
 ssize_t mqttc_pal_sendall(mqttc_pal_socket_handle pcb, const void* buf, size_t len, int flags) {
 
-    struct tcp_pcb *tpcb = (struct tcp_pcb*)pcb;
+    struct tcp_pcb * tpcb = (struct tcp_pcb*)pcb;
+
+    printf("mqttc_pal_send_all | tpcb state: %d \n", tpcb->state);
 
     err_t err = tcp_write(tpcb, buf, len, TCP_WRITE_FLAG_COPY);
 

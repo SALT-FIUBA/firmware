@@ -1,6 +1,6 @@
 /**
  * @file
- * MQTT client options
+ * MQTT mqttc_client options
  */
 
 /*
