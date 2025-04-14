@@ -163,8 +163,10 @@ int main(void)
     rkh_fwk_init();
     rkh_dynEvt_init();
 
+    /*
     printf("main | SIZEOF_EP3STO: %d \n", SIZEOF_EP3STO);
     printf("main | SIZEOF_EP3_BLOCK: %d \n", SIZEOF_EP3_BLOCK);
+    */
 
     /* Define event pool storage (simplified for this example) */
     rkh_fwk_registerEvtPool(evPool0Sto, SIZEOF_EP0STO, SIZEOF_EP0_BLOCK);
@@ -173,6 +175,7 @@ int main(void)
     rkh_fwk_registerEvtPool(evPool3Sto, SIZEOF_EP3STO, SIZEOF_EP3_BLOCK); //    TcpSendEvt
 
     /* Wait for network interface to be up */
+    printf("\n %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% \n");
     printf("Waiting for network interface...\n");
     struct netif * netif = netif_default;
     while (netif == NULL || !netif_is_up(netif)) {

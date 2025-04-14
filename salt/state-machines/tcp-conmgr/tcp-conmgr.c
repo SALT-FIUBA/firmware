@@ -28,7 +28,7 @@ static void close(TcpConMgr *const me, RKH_EVT_T *pe);
 static void send_data(TcpConMgr *const me, RKH_EVT_T *pe);
 static void flush_data(TcpConMgr *const me, RKH_EVT_T *pe);
 static void read_data(TcpConMgr *const me, RKH_EVT_T *pe);
-static void tcp_connect_attempt(TcpConMgr *const me, RKH_EVT_T *pe);
+static void tcp_conmgr_connect_attempt(TcpConMgr *const me, RKH_EVT_T *pe);
 static void defer(TcpConMgr *const me, RKH_EVT_T *pe);
 
 /* ......................... Declares entry actions ........................ */
@@ -137,13 +137,13 @@ const char * get_state_name_conmgr_sm(const RKH_ST_T * state) {
 
 
 
-static void tcp_err_callback(void *arg, err_t err) {
+static void tcp_conmgr_err_callback(void *arg, err_t err) {
     TcpConMgr *me = (TcpConMgr *)arg;
     printf("tcp-conmgr | TCP error: %d\n", err);
     RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Disconnected), me);
 }
 
-static err_t tcp_sent_callback(void *arg, struct tcp_pcb *tpcb, u16_t len) {
+static err_t tcp_conmgr_sent_callback(void *arg, struct tcp_pcb *tpcb, u16_t len) {
 
     TcpConMgr *me = (TcpConMgr *)arg;
 
@@ -153,7 +153,7 @@ static err_t tcp_sent_callback(void *arg, struct tcp_pcb *tpcb, u16_t len) {
     return ERR_OK;
 }
 
-static err_t tcp_recv_callback(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_t err) {
+static err_t tcp_conmgr_recv_callback(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_t err) {
 
     printf("tcp-conmgr | tcp_recv_callback \n");
 
@@ -165,9 +165,13 @@ static err_t tcp_recv_callback(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, 
 
             memcpy(me->recv_buffer + me->recv_len, p->payload, p->tot_len);
             me->recv_len += p->tot_len;
+
+            /*
             printf("tcp-conmgr | Received %d bytes\n", p->tot_len);
 
             printf("tcp-conmgr | tcp-conmgr | pre malloc TcpReceiveEvt \n");
+             */
+
             TcpReceiveEvt * evt = RKH_ALLOC_EVT(TcpReceiveEvt, evRecv, me);
 
             if (evt == NULL) {
@@ -175,7 +179,7 @@ static err_t tcp_recv_callback(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, 
                 return ERR_OK;
             }
 
-            printf("tcp-conmgr | tcp-conmgr | post malloc TcpReceiveEvt \n");
+            //  printf("tcp-conmgr | tcp-conmgr | post malloc TcpReceiveEvt \n");
             size_t bytes_to_read = (me->recv_len < RECV_BUFF_SIZE) ? me->recv_len : RECV_BUFF_SIZE;
             memcpy(evt->buf, me->recv_buffer + me->recv_index, bytes_to_read);
             evt->size = bytes_to_read;
@@ -188,9 +192,9 @@ static err_t tcp_recv_callback(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, 
                 me->recv_len -= bytes_to_read;
             }
 
-            printf("tcp-conmgr | tcp-conmgr | Posting TcpReceiveEvt \n");
+            //  printf("tcp-conmgr | tcp-conmgr | Posting TcpReceiveEvt \n");
             RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, evt), me);
-            printf("tcp-conmgr | tcp-conmgr | After post TcpReceiveEvt \n");
+            //  printf("tcp-conmgr | tcp-conmgr | After post TcpReceiveEvt \n");
 
         } else {
 
@@ -214,7 +218,7 @@ static err_t tcp_recv_callback(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, 
     return ERR_OK;
 }
 
-static err_t tcp_connect_callback(void *arg, struct tcp_pcb *tpcb, err_t err) {
+static err_t tcp_conmgr_connect_callback(void *arg, struct tcp_pcb *tpcb, err_t err) {
 
     printf("tcp-conmgr | tcp_connect_callback \n");
 
@@ -224,7 +228,7 @@ static err_t tcp_connect_callback(void *arg, struct tcp_pcb *tpcb, err_t err) {
 
         printf("tcp-conmgr | TCP Connected\n");
 
-        tcp_recv(tpcb, tcp_recv_callback);
+        tcp_recv(tpcb, tcp_conmgr_recv_callback);
         RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Connected), me);
 
     } else {
@@ -261,7 +265,7 @@ static void open(TcpConMgr *const me, RKH_EVT_T *pe) {
     printf("tcp-conmgr | Current state: %s \n", get_state_name_conmgr_sm(tcpConMgr->sm.state));
 
     (void)pe;
-    tcp_connect_attempt(me, pe);
+    tcp_conmgr_connect_attempt(me, pe);
 }
 
 static void close(TcpConMgr *const me, RKH_EVT_T *pe) {
@@ -349,7 +353,7 @@ static void read_data(TcpConMgr *const me, RKH_EVT_T *pe) {
 
 
 
-static err_t tcp_poll_callback(void *arg, struct tcp_pcb *tpcb) {
+static err_t tcp_conmgr_poll_callback(void *arg, struct tcp_pcb *tpcb) {
 
     printf("tcp-conmgr | Polling\n");
 
@@ -393,7 +397,7 @@ static err_t tcp_poll_callback(void *arg, struct tcp_pcb *tpcb) {
 
 }
 
-static void tcp_connect_attempt(TcpConMgr *const me, RKH_EVT_T *pe) {
+static void tcp_conmgr_connect_attempt(TcpConMgr *const me, RKH_EVT_T *pe) {
 
     printf("tcp-conmgr | tcp_connect_attempt \n");
     printf("tcp-conmgr | Current state: %s \n", get_state_name_conmgr_sm(tcpConMgr->sm.state));
@@ -408,15 +412,15 @@ static void tcp_connect_attempt(TcpConMgr *const me, RKH_EVT_T *pe) {
         }
 
         tcp_arg(me->tpcb, me);
-        tcp_err(me->tpcb, tcp_err_callback);
-        tcp_sent(me->tpcb, tcp_sent_callback);
-        tcp_poll(me->tpcb, tcp_poll_callback, 120);
+        tcp_err(me->tpcb, tcp_conmgr_err_callback);
+        tcp_sent(me->tpcb, tcp_conmgr_sent_callback);
+        tcp_poll(me->tpcb, tcp_conmgr_poll_callback, 120);
 
         ip_addr_t remote_ip;
-        IP4_ADDR(&remote_ip, 192, 168, 1, 81); /* Replace with your TCP server IP */
+        IP4_ADDR(&remote_ip, 192, 168, 0, 214); /* Replace with your TCP server IP */
         uint16_t remote_port = 1883; /* Replace with your TCP server port */
 
-        err_t err = tcp_connect(me->tpcb, &remote_ip, remote_port, tcp_connect_callback);
+        err_t err = tcp_connect(me->tpcb, &remote_ip, remote_port, tcp_conmgr_connect_callback);
         if (err != ERR_OK) {
             printf("tcp-conmgr | tcp_connect failed: %d\n", err);
             tcp_close(me->tpcb);
@@ -444,7 +448,7 @@ static void socketOpen(TcpConMgr *const me) {
     printf("tcp-conmgr | Current state: %s \n", get_state_name_conmgr_sm(tcpConMgr->sm.state));
 
 
-    tcp_connect_attempt(me, NULL);
+    tcp_conmgr_connect_attempt(me, NULL);
 }
 
 static void socketConnected(TcpConMgr *const me) {

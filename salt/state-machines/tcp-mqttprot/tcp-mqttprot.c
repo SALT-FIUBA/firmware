@@ -103,6 +103,7 @@ RKH_END_TRANS_TABLE
 // TODO: take enWaitToPublish and exWaitToPublish from mqttProt.c
 RKH_CREATE_BASIC_STATE(Client_WaitToPublish, enWaitToPublish, exWaitToPublish,
                        &Client_Connected, NULL);
+
 RKH_CREATE_TRANS_TABLE(Client_WaitToPublish)
                 // TODO: when the timer finish it triggers evWaitPublishTout. check RKH_TMR_INIT arguments in enWaitToPublish
                 RKH_TRREG(evWaitPublishTout, NULL, NULL, &Client_C20),
@@ -293,7 +294,7 @@ init(TCP_MQTTProt * const me, RKH_EVT_T *pe)
 {
     (void)pe;
 
-    printf("tcp-mqttprot | init \n");
+    printf("tcp-mqttprot | init  \n");
     printf("tcp-mqttprot | Current state: %s \n \n", get_state_name_mqtt_sm(tcpMqttProt->sm.state));
 
     RKH_SET_STATIC_EVENT(RKH_UPCAST(RKH_EVT_T, &evSendObj), evSend);
@@ -315,22 +316,38 @@ publish(TCP_MQTTProt *const me, RKH_EVT_T *pe)
     printf("tcp-mqttprot | publish \n");
     printf("tcp-mqttprot | Current state: %s \n", get_state_name_mqtt_sm(tcpMqttProt->sm.state));
 
+    enum MQTTErrors mqtt_error;
+    const char *topic = "stm32/data";
+    const char *message = "Hello from STM32!";
 
-    AppData appMsg;
-    rui16_t pubTime;
 
-    pubTime = (*me->publisher)(&appMsg);
-    if (pubTime != 0)
-    {
-        me->config->publishTime = pubTime;
+    mqtt_error = mqttc_publish(&me->mqttc_client, topic, message, strlen(message), 0);
+    mqttc_sync(&me->mqttc_client);
+    //  HAL_Delay(500);
+
+    if (mqtt_error != MQTT_OK) {
+        printf("Publish failed: %d\n", mqtt_error);
+    } else {
+        printf("Published: %s to %s\n", message, topic);
     }
-    me->operRes = mqttc_publish(&me->mqttc_client,
-                               me->config->topic,
-                               appMsg.data,
-                               appMsg.size,
-                               (me->config->qos << 1) & 0x06);
 
-    printf("tcp-mqttprot | MQTT send \n \n");
+
+    /* TODO
+        AppData appMsg;
+        rui16_t pubTime;
+
+        pubTime = (*me->publisher)(&appMsg);
+        if (pubTime != 0)
+        {
+            me->config->publishTime = pubTime;
+        }
+        me->operRes = mqttc_publish(&me->mqttc_client,
+                                   me->config->topic,
+                                   appMsg.data,
+                                   appMsg.size,
+                                   (me->config->qos << 1) & 0x06);
+    */
+
 }
 
 
@@ -351,32 +368,32 @@ static void downcastNetConnectedEvt(TCP_MQTTProt *const me, RKH_EVT_T *pe)
 static void
 enAwaitingAck(TCP_MQTTProt *const me, RKH_EVT_T *pe)
 {
-    printf("tcp-mqttprot | enAwaitingAck \n");
+    printf("tcp-mqttprot | entry Awaiting Ack \n");
     printf("tcp-mqttprot | Current state: %s \n \n", get_state_name_mqtt_sm(tcpMqttProt->sm.state));
 
-    uint32_t last_publish_time = 0;
-    enum MQTTErrors mqtt_error;
 
+    printf("tcp-mqttprot | mqttc_sync -> _mqttc_send -> mqttc_pal_sendall");
     mqttc_sync(&me->mqttc_client);
 
-    uint32_t current_time = HAL_GetTick();
-    if ((current_time - last_publish_time) >= 1000) { // 5 seconds elapsed
-
-        const char *topic = "test/topic";
-        const char *message = "Hello from STM32!";
-
-        mqtt_error = mqttc_publish(&me->mqttc_client, topic, message, strlen(message), 0);
-        if (mqtt_error != MQTT_OK) {
-            printf("Publish failed: %d\n", mqtt_error);
-        } else {
-            printf("Published: %s to %s\n", message, topic);
-        }
-    }
-
-
+/*
     RKH_TMR_INIT(&me->tryConnTmr, &evWaitConnectToutObj, NULL);
     RKH_TMR_ONESHOT(&me->tryConnTmr, RKH_UPCAST(RKH_SMA_T, me),
                     RKH_TIME_SEC(120));
+*/
+    //  printf(" tcp-mqttprot | entry Awaiting Ack mqttc_client error: %d %s \n", me->mqttc_client.error, mqttc_error_str(me->mqttc_client.error));
+
+    if (me->mqttc_client.error == MQTT_OK) {
+
+        printf("tcp-mqttprot | entry Awaiting Ack MQTT_OK \n");
+        RKH_SMA_POST_FIFO(tcpMqttProt, RKH_UPCAST(RKH_EVT_T , &evConnAcceptedObj), me);
+
+    } else {
+
+        printf("tcp-mqttprot | entry Awaiting Ack not MQTT_OK \n");
+        RKH_SMA_POST_FIFO(tcpMqttProt, RKH_UPCAST(RKH_EVT_T , &evConnRefusedObj), me);
+    }
+
+
 }
 
 static void
@@ -414,25 +431,25 @@ brokerConnect(TCP_MQTTProt *const me, RKH_EVT_T *pe)
     me->operRes = mqtt_error;
     printf("tcp-mqttprop | mqttc_connect error: %d %s \n \n", me->operRes, mqttc_error_str(me->operRes));
 
-
     me->errorStr = mqttc_error_str(me->operRes);
 
-    // it's not a problem about time. tried a HAL_Delay of 10 seconds and it didn't worked.
- /*
-    mqtt_error = mqttc_sync(&me->mqttc_client);
-    printf("tcp-mqttprop | mqttc_sync error: %d %s \n", mqtt_error, mqttc_error_str(mqtt_error));
-
+ /* TODO
     mqtt_error = mqttc_subscribe(&me->mqttc_client, me->config->subTopic, 2);
     printf("tcp-mqttprop | mqttc_subscribe error: %d %s \n", mqtt_error, mqttc_error_str(mqtt_error));
+
+    mqtt_error = mqttc_sync(&me->mqttc_client);
+    printf("tcp-mqttprop | mqttc_sync error: %d %s \n", mqtt_error, mqttc_error_str(mqtt_error));
 */
 }
 
 static void
-enWaitToPublish(TCP_MQTTProt *const me, RKH_EVT_T *pe)
+enWaitToPublish(TCP_MQTTProt * const me, RKH_EVT_T * pe)
 {
-    printf("tcp-mqttprot | enWaitToPublish \n");
+    printf("tcp-mqttprot | entry Wait To Publish \n");
     printf("tcp-mqttprot | Current state: %s \n \n", get_state_name_mqtt_sm(tcpMqttProt->sm.state));
 
+
+ // TODO: test post   RKH_SMA_POST_FIFO(tcpMqttProt, RKH_UPCAST(RKH_EVT_T , &evWaitPublishToutObj), me);
 
     RKH_TMR_INIT(&me->publishTmr, &evWaitPublishToutObj, NULL);
     RKH_TMR_ONESHOT(&me->publishTmr, RKH_UPCAST(RKH_SMA_T, me),
@@ -444,25 +461,16 @@ enWaitToPublish(TCP_MQTTProt *const me, RKH_EVT_T *pe)
 static void
 exAwaitingAck(TCP_MQTTProt *const me, RKH_EVT_T *pe)
 {
-    printf("tcp-mqttprot | exAwaitingAck \n");
+    printf("tcp-mqttprot | exit Awaiting Ack \n");
     printf("tcp-mqttprot | Current state: %s \n \n", get_state_name_mqtt_sm(tcpMqttProt->sm.state));
 
-    rkh_tmr_stop(&me->tryConnTmr);
-
-    if ((enum MQTTConnackReturnCode) me->mqttc_client.error == MQTT_CONNACK_ACCEPTED) {
-
-        RKH_SMA_POST_FIFO(tcpMqttProt, RKH_UPCAST(RKH_EVT_T , &evConnAcceptedObj), me);
-
-    } else {
-
-        RKH_SMA_POST_FIFO(tcpMqttProt, RKH_UPCAST(RKH_EVT_T , &evConnRefusedObj), me);
-    }
+ // TODO   rkh_tmr_stop(&me->tryConnTmr);
 }
 
 static void
 exWaitToPublish(TCP_MQTTProt *const me, RKH_EVT_T *pe)
 {
-    printf("tcp-mqttprot | exWaitToPublish \n");
+    printf("tcp-mqttprot | exit Wait To Publish \n");
     printf("tcp-mqttprot | Current state: %s \n \n", get_state_name_mqtt_sm(tcpMqttProt->sm.state));
 
 
@@ -494,7 +502,7 @@ static rbool_t isConnectOk(const RKH_SM_T *me, RKH_EVT_T *pe)
 void
 TCP_MQTTProt_ctor(TCP_MQTTProtCfg *config, TCP_MQTTProtPublish publisher)
 {
-    TCP_MQTTProt *me;
+    TCP_MQTTProt * me;
 
     me = RKH_DOWNCAST(TCP_MQTTProt, tcpMqttProt);
     me->vtbl = rkhSmaVtbl;

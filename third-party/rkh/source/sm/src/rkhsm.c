@@ -390,7 +390,8 @@ rkh_sm_clear_history(RKHROM RKH_SHIST_T *h)
 ruint
 rkh_sm_dispatch(RKH_SM_T *me, RKH_EVT_T *pe)
 {
-    printf("Dispatching event %d to SMA %p\n", pe->e, me->state);
+
+    // TODO printf("rkh_sm_dispatch | Dispatching event %d from SMA %p to SMA %p \n", pe->e, me->state->base.name, me->state->parent->base.name);
 
     RKHROM RKH_ST_T *cs, *ts;
     RKHROM void *ets;

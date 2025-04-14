@@ -95,7 +95,7 @@ rkh_hook_start(void)
 void
 rkh_hook_exit(void)
 {
-    RKH_TRC_FLUSH();
+    // TODO: RKH_TRC_FLUSH();
 }
 
 void
@@ -111,7 +111,7 @@ rkh_hook_idle(void)             // called within critical section
 
     MX_LWIP_Process();
     RKH_ENA_INTERRUPT();
-    RKH_TRC_FLUSH();
+    // TODO:  RKH_TRC_FLUSH();
 
 }
 
