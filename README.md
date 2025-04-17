@@ -1,5 +1,508 @@
 # firmware
 
+
+## stm32 lwip tcp MqttProt Client SM with PUBLISH working and an undesired CONNECT after 25 seconds (without SyncRegion state machine) 
+
+### stm32 mqttc_client
+
+```json
+ » ./STM32_Programmer_CLI -c port=ttyACM0 br=115200 console
+-------------------------------------------------------------------
+STM32CubeProgrammer v2.17.0
+-------------------------------------------------------------------
+
+Serial Port ttyACM0 is successfully opened.
+Port configuration: parity = even, baudrate = 115200, data-bit = 8,
+stop-bit = 1,0, flow-control = off
+
+Waiting for network interface...
+Waiting for link...
+Link up - IP: 192.168.1.78
+tcp-mqttprot | configClient 
+tcp-mqttprot | Current state: idle 
+ 
+tcp-mqttprot | TCP_MQTTProt_ctor 
+tcp-mqttprot | Current state: idle 
+ 
+tcp-conmgr | tcp-conmgr | init 
+tcp-conmgr | Current state: inactive 
+tcp-mqttprot | init  
+tcp-mqttprot | Current state: idle 
+ 
+tickConfig 
+tcp-conmgr | socketOpen 
+tcp-conmgr | Current state: inactive 
+tcp-conmgr | tcp_connect_attempt 
+tcp-conmgr | Current state: inactive 
+tcp-conmgr | tcp_connect_callback 
+tcp-conmgr | TCP Connected
+tcp-conmgr | socketConnected 
+tcp-conmgr | Current state: connecting 
+tcp-mqttprot | dispatch 
+tcp-mqttprot | Current state: idle 
+ 
+tcp-mqttprot | downcastNetConnectedEvt 
+tcp-mqttprot | Current state: idle 
+ 
+tcp-mqttprot | remote_ip addr: 1359063232 
+tcp-mqttprot | connected 
+tcp-mqttprot | Current state: idle 
+ 
+tcp-mqttprot | isLocked 
+tcp-mqttprot | Current state: idle 
+ 
+tcp-mqttprot | brokerConnect 
+tcp-mqttprot | Current state: idle 
+ tcp-mqttprop | mqttc_init error: 1 MQTT_OK 
+tcp-mqttprop | mqttc_connect error: 1 MQTT_OK 
+ 
+tcp-mqttprot | isConnectOk 1 MQTT_OK 
+tcp-mqttprot | Current state: try connect 
+ 
+tcp-mqttprot | entry Awaiting Ack 
+tcp-mqttprot | Current state: try connect 
+ 
+tcp-mqttprot | mqttc_sync -> _mqttc_send -> mqttc_pal_sendallmqttc_pal_recvall | tpcb state: 4 
+mqttc_pal_send_all | tpcb state: 4 
+ 
+tcp-mqttprot | entry Awaiting Ack MQTT_OK 
+tcp-mqttprot | dispatch 
+tcp-mqttprot | Current state: awaiting ack 
+ 
+tcp-mqttprot | exit Awaiting Ack 
+tcp-mqttprot | Current state: awaiting ack 
+ 
+
+tcp-mqttprot | entry Wait To Publish 
+tcp-mqttprot | Current state: awaiting ack 
+tcp-mqttprot | publishTime: 5 seconds 
+tcp-mqttprot | publishTmr started 
+tcp-conmgr | Sent 26 bytes
+tcp-conmgr | tcp_recv_callback 
+tcp-conmgr | read_data 
+tcp-conmgr | Current state: connected 
+tcp-conmgr | socketConnected 
+tcp-conmgr | Current state: connected 
+tcp-mqttprot | dispatch 
+tcp-mqttprot | Current state: wait to publish 
+ 
+tcp-mqttprot | dispatch 
+tcp-mqttprot | Current state: wait to publish 
+ 
+tcp-mqttprot | isLocked 
+tcp-mqttprot | Current state: wait to publish 
+ 
+tcp-mqttprot | exit Wait To Publish 
+tcp-mqttprot | Current state: wait to publish 
+ 
+tcp-mqttprot | publish 
+tcp-mqttprot | Current state: wait to publish 
+mqttc_pal_recvall | tpcb state: 4 
+mqttc_pal_send_all | tpcb state: 4 
+ 
+Published: Hello from STM32! to stm32/data
+
+ tcp-mqttprot | entry Wait To Publish 
+tcp-mqttprot | Current state: wait to publish 
+tcp-mqttprot | publishTime: 5 seconds 
+tcp-mqttprot | publishTmr started 
+tcp-conmgr | Sent 31 bytes
+tcp-mqttprot | dispatch 
+tcp-mqttprot | Current state: wait to publish 
+ 
+tcp-mqttprot | isLocked 
+tcp-mqttprot | Current state: wait to publish 
+ 
+tcp-mqttprot | exit Wait To Publish 
+tcp-mqttprot | Current state: wait to publish 
+ 
+tcp-mqttprot | publish 
+tcp-mqttprot | Current state: wait to publish 
+mqttc_pal_recvall | tpcb state: 4 
+mqttc_pal_send_all | tpcb state: 4 
+ 
+Published: Hello from STM32! to stm32/data
+
+ tcp-mqttprot | entry Wait To Publish 
+tcp-mqttprot | Current state: wait to publish 
+tcp-mqttprot | publishTime: 5 seconds 
+tcp-mqttprot | publishTmr started 
+tcp-conmgr | Sent 31 bytes
+tcp-mqttprot | dispatch 
+tcp-mqttprot | Current state: wait to publish 
+ 
+tcp-mqttprot | isLocked 
+tcp-mqttprot | Current state: wait to publish 
+ 
+tcp-mqttprot | exit Wait To Publish 
+tcp-mqttprot | Current state: wait to publish 
+ 
+tcp-mqttprot | publish 
+tcp-mqttprot | Current state: wait to publish 
+mqttc_pal_recvall | tpcb state: 4 
+mqttc_pal_send_all | tpcb state: 4 
+ 
+Published: Hello from STM32! to stm32/data
+
+ tcp-mqttprot | entry Wait To Publish 
+tcp-mqttprot | Current state: wait to publish 
+tcp-mqttprot | publishTime: 5 seconds 
+tcp-mqttprot | publishTmr started 
+tcp-conmgr | Sent 31 bytes
+tcp-mqttprot | dispatch 
+tcp-mqttprot | Current state: wait to publish 
+ 
+tcp-mqttprot | isLocked 
+tcp-mqttprot | Current state: wait to publish 
+ 
+tcp-mqttprot | exit Wait To Publish 
+tcp-mqttprot | Current state: wait to publish 
+ 
+tcp-mqttprot | publish 
+tcp-mqttprot | Current state: wait to publish 
+mqttc_pal_recvall | tpcb state: 4 
+mqttc_pal_send_all | tpcb state: 4 
+ 
+Published: Hello from STM32! to stm32/data
+
+ tcp-mqttprot | entry Wait To Publish 
+tcp-mqttprot | Current state: wait to publish 
+tcp-mqttprot | publishTime: 5 seconds 
+tcp-mqttprot | publishTmr started 
+tcp-conmgr | Sent 31 bytes
+tcp-mqttprot | dispatch 
+tcp-mqttprot | Current state: wait to publish 
+ 
+tcp-mqttprot | isLocked 
+tcp-mqttprot | Current state: wait to publish 
+ 
+tcp-mqttprot | exit Wait To Publish 
+tcp-mqttprot | Current state: wait to publish 
+ 
+tcp-mqttprot | publish 
+tcp-mqttprot | Current state: wait to publish 
+mqttc_pal_recvall | tpcb state: 4 
+mqttc_pal_send_all | tpcb state: 4 
+ 
+Published: Hello from STM32! to stm32/data
+
+ tcp-mqttprot | entry Wait To Publish 
+tcp-mqttprot | Current state: wait to publish 
+tcp-mqttprot | publishTime: 5 seconds 
+tcp-mqttprot | publishTmr started 
+tcp-conmgr | Sent 31 bytes
+tcp-mqttprot | dispatch 
+tcp-mqttprot | Current state: wait to publish 
+ 
+tcp-mqttprot | isLocked 
+tcp-mqttprot | Current state: wait to publish 
+ 
+tcp-mqttprot | exit Wait To Publish 
+tcp-mqttprot | Current state: wait to publish 
+ 
+tcp-mqttprot | publish 
+tcp-mqttprot | Current state: wait to publish 
+mqttc_pal_recvall | tpcb state: 4 
+mqttc_pal_send_all | tpcb state: 4 
+ 
+mqttc_pal_send_all | tpcb state: 4 
+ 
+Published: Hello from STM32! to stm32/data
+
+ tcp-mqttprot | entry Wait To Publish 
+tcp-mqttprot | Current state: wait to publish 
+tcp-mqttprot | publishTime: 5 seconds 
+tcp-mqttprot | publishTmr started 
+tcp-conmgr | Sent 26 bytes
+tcp-conmgr | tcp_recv_callback 
+tcp-conmgr | Connection closed
+tcp-mqttprot | dispatch 
+tcp-mqttprot | Current state: wait to publish 
+ 
+tcp-mqttprot | isLocked 
+tcp-mqttprot | Current state: wait to publish 
+ 
+tcp-mqttprot | exit Wait To Publish 
+tcp-mqttprot | Current state: wait to publish 
+ 
+tcp-mqttprot | publish 
+tcp-mqttprot | Current state: wait to publish 
+
+Published: Hello from STM32! to stm32/data
+
+ tcp-mqttprot | entry Wait To Publish 
+tcp-mqttprot | Current state: wait to publish 
+tcp-mqttprot | publishTime: 5 seconds 
+tcp-mqttprot | publishTmr started 
+tcp-mqttprot | dispatch 
+tcp-mqttprot | Current state: wait to publish 
+ 
+tcp-mqttprot | isLocked 
+tcp-mqttprot | Current state: wait to publish 
+ 
+tcp-mqttprot | exit Wait To Publish 
+tcp-mqttprot | Current state: wait to publish 
+ 
+tcp-mqttprot | publish 
+tcp-mqttprot | Current state: wait to publish 
+mqttc_pal_recvall | tpcb state: 0 
+Publish failed: -1
+
+ tcp-mqttprot | entry Wait To Publish 
+tcp-mqttprot | Current state: wait to publish 
+tcp-mqttprot | publishTime: 5 seconds 
+tcp-mqttprot | publishTmr started 
+tcp-mqttprot | dispatch 
+tcp-mqttprot | Current state: wait to publish 
+ 
+tcp-mqttprot | isLocked 
+tcp-mqttprot | Current state: wait to publish 
+ 
+tcp-mqttprot | exit Wait To Publish 
+tcp-mqttprot | Current state: wait to publish 
+ 
+tcp-mqttprot | publish 
+tcp-mqttprot | Current state: wait to publish 
+Publish failed: -1
+```
+
+### mosquitto broker
+
+
+```json
+» mosquitto -c mosquitto.conf -v
+1744847883: mosquitto version 2.0.11 starting
+1744847883: Config loaded from mosquitto.conf.
+1744847883: Opening ipv4 listen socket on port 1883.
+1744847883: Opening ipv6 listen socket on port 1883.
+1744847883: mosquitto version 2.0.11 running
+
+1744874958: New connection from 192.168.1.78:52432 on port 1883.
+1744874958: New client connected from 192.168.1.78:52432 as stm32_client (p2, c0, k9999).
+1744874958: No will message specified.
+1744874958: Sending CONNACK to stm32_client (0, 0)
+1744874963: Received PUBLISH from stm32_client (d0, q0, r0, m0, 'stm32/data', ... (17 bytes))
+1744874968: Received PUBLISH from stm32_client (d0, q0, r0, m0, 'stm32/data', ... (17 bytes))
+1744874973: Received PUBLISH from stm32_client (d0, q0, r0, m0, 'stm32/data', ... (17 bytes))
+1744874978: Received PUBLISH from stm32_client (d0, q0, r0, m0, 'stm32/data', ... (17 bytes))
+1744874983: Received PUBLISH from stm32_client (d0, q0, r0, m0, 'stm32/data', ... (17 bytes))
+1744874988: Bad client stm32_client sending multiple CONNECT messages.
+1744874988: Client stm32_client disconnected due to protocol error.
+```
+
+### wireshark captures
+
+```json
+No.     Time           Source                Destination           Protocol Length Info
+      8 1.167083811    192.168.1.78          192.168.1.81          TCP      60     52432 → 1883 [SYN] Seq=0 Win=2144 Len=0 MSS=536
+
+Frame 8: 60 bytes on wire (480 bits), 60 bytes captured (480 bits) on interface enp8s0, id 0
+Ethernet II, Src: STMicroe_00:00:00 (00:80:e1:00:00:00), Dst: QuantaCo_2e:71:6c (2c:60:0c:2e:71:6c)
+Internet Protocol Version 4, Src: 192.168.1.78, Dst: 192.168.1.81
+Transmission Control Protocol, Src Port: 52432, Dst Port: 1883, Seq: 0, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+      9 1.167120351    192.168.1.81          192.168.1.78          TCP      58     1883 → 52432 [SYN, ACK] Seq=0 Ack=1 Win=64240 Len=0 MSS=1460
+
+Frame 9: 58 bytes on wire (464 bits), 58 bytes captured (464 bits) on interface enp8s0, id 0
+Ethernet II, Src: QuantaCo_2e:71:6c (2c:60:0c:2e:71:6c), Dst: STMicroe_00:00:00 (00:80:e1:00:00:00)
+Internet Protocol Version 4, Src: 192.168.1.81, Dst: 192.168.1.78
+Transmission Control Protocol, Src Port: 1883, Dst Port: 52432, Seq: 0, Ack: 1, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     10 1.173093223    192.168.1.78          192.168.1.81          TCP      60     52432 → 1883 [ACK] Seq=1 Ack=1 Win=2144 Len=0
+
+Frame 10: 60 bytes on wire (480 bits), 60 bytes captured (480 bits) on interface enp8s0, id 0
+Ethernet II, Src: STMicroe_00:00:00 (00:80:e1:00:00:00), Dst: QuantaCo_2e:71:6c (2c:60:0c:2e:71:6c)
+Internet Protocol Version 4, Src: 192.168.1.78, Dst: 192.168.1.81
+Transmission Control Protocol, Src Port: 52432, Dst Port: 1883, Seq: 1, Ack: 1, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     11 1.251629531    192.168.1.78          192.168.1.81          MQTT     80     Connect Command
+
+Frame 11: 80 bytes on wire (640 bits), 80 bytes captured (640 bits) on interface enp8s0, id 0
+Ethernet II, Src: STMicroe_00:00:00 (00:80:e1:00:00:00), Dst: QuantaCo_2e:71:6c (2c:60:0c:2e:71:6c)
+Internet Protocol Version 4, Src: 192.168.1.78, Dst: 192.168.1.81
+Transmission Control Protocol, Src Port: 52432, Dst Port: 1883, Seq: 1, Ack: 1, Len: 26
+MQ Telemetry Transport Protocol, Connect Command
+
+No.     Time           Source                Destination           Protocol Length Info
+     12 1.251662640    192.168.1.81          192.168.1.78          TCP      54     1883 → 52432 [ACK] Seq=1 Ack=27 Win=64214 Len=0
+
+Frame 12: 54 bytes on wire (432 bits), 54 bytes captured (432 bits) on interface enp8s0, id 0
+Ethernet II, Src: QuantaCo_2e:71:6c (2c:60:0c:2e:71:6c), Dst: STMicroe_00:00:00 (00:80:e1:00:00:00)
+Internet Protocol Version 4, Src: 192.168.1.81, Dst: 192.168.1.78
+Transmission Control Protocol, Src Port: 1883, Dst Port: 52432, Seq: 1, Ack: 27, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     13 1.251735712    192.168.1.81          192.168.1.78          MQTT     58     Connect Ack
+
+Frame 13: 58 bytes on wire (464 bits), 58 bytes captured (464 bits) on interface enp8s0, id 0
+Ethernet II, Src: QuantaCo_2e:71:6c (2c:60:0c:2e:71:6c), Dst: STMicroe_00:00:00 (00:80:e1:00:00:00)
+Internet Protocol Version 4, Src: 192.168.1.81, Dst: 192.168.1.78
+Transmission Control Protocol, Src Port: 1883, Dst Port: 52432, Seq: 1, Ack: 27, Len: 4
+MQ Telemetry Transport Protocol, Connect Ack
+
+No.     Time           Source                Destination           Protocol Length Info
+     14 1.426076513    192.168.1.78          192.168.1.81          TCP      60     52432 → 1883 [ACK] Seq=27 Ack=5 Win=2140 Len=0
+
+Frame 14: 60 bytes on wire (480 bits), 60 bytes captured (480 bits) on interface enp8s0, id 0
+Ethernet II, Src: STMicroe_00:00:00 (00:80:e1:00:00:00), Dst: QuantaCo_2e:71:6c (2c:60:0c:2e:71:6c)
+Internet Protocol Version 4, Src: 192.168.1.78, Dst: 192.168.1.81
+Transmission Control Protocol, Src Port: 52432, Dst Port: 1883, Seq: 27, Ack: 5, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     16 6.326615736    192.168.1.78          192.168.1.81          MQTT     85     Publish Message [stm32/data]
+
+Frame 16: 85 bytes on wire (680 bits), 85 bytes captured (680 bits) on interface enp8s0, id 0
+Ethernet II, Src: STMicroe_00:00:00 (00:80:e1:00:00:00), Dst: QuantaCo_2e:71:6c (2c:60:0c:2e:71:6c)
+Internet Protocol Version 4, Src: 192.168.1.78, Dst: 192.168.1.81
+Transmission Control Protocol, Src Port: 52432, Dst Port: 1883, Seq: 27, Ack: 5, Len: 31
+MQ Telemetry Transport Protocol, Publish Message
+
+No.     Time           Source                Destination           Protocol Length Info
+     17 6.366946733    192.168.1.81          192.168.1.78          TCP      54     1883 → 52432 [ACK] Seq=5 Ack=58 Win=64183 Len=0
+
+Frame 17: 54 bytes on wire (432 bits), 54 bytes captured (432 bits) on interface enp8s0, id 0
+Ethernet II, Src: QuantaCo_2e:71:6c (2c:60:0c:2e:71:6c), Dst: STMicroe_00:00:00 (00:80:e1:00:00:00)
+Internet Protocol Version 4, Src: 192.168.1.81, Dst: 192.168.1.78
+Transmission Control Protocol, Src Port: 1883, Dst Port: 52432, Seq: 5, Ack: 58, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     20 11.384619643   192.168.1.78          192.168.1.81          MQTT     85     Publish Message [stm32/data]
+
+Frame 20: 85 bytes on wire (680 bits), 85 bytes captured (680 bits) on interface enp8s0, id 0
+Ethernet II, Src: STMicroe_00:00:00 (00:80:e1:00:00:00), Dst: QuantaCo_2e:71:6c (2c:60:0c:2e:71:6c)
+Internet Protocol Version 4, Src: 192.168.1.78, Dst: 192.168.1.81
+Transmission Control Protocol, Src Port: 52432, Dst Port: 1883, Seq: 58, Ack: 5, Len: 31
+MQ Telemetry Transport Protocol, Publish Message
+
+No.     Time           Source                Destination           Protocol Length Info
+     21 11.384644256   192.168.1.81          192.168.1.78          TCP      54     1883 → 52432 [ACK] Seq=5 Ack=89 Win=64152 Len=0
+
+Frame 21: 54 bytes on wire (432 bits), 54 bytes captured (432 bits) on interface enp8s0, id 0
+Ethernet II, Src: QuantaCo_2e:71:6c (2c:60:0c:2e:71:6c), Dst: STMicroe_00:00:00 (00:80:e1:00:00:00)
+Internet Protocol Version 4, Src: 192.168.1.81, Dst: 192.168.1.78
+Transmission Control Protocol, Src Port: 1883, Dst Port: 52432, Seq: 5, Ack: 89, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     22 16.441608622   192.168.1.78          192.168.1.81          MQTT     85     Publish Message [stm32/data]
+
+Frame 22: 85 bytes on wire (680 bits), 85 bytes captured (680 bits) on interface enp8s0, id 0
+Ethernet II, Src: STMicroe_00:00:00 (00:80:e1:00:00:00), Dst: QuantaCo_2e:71:6c (2c:60:0c:2e:71:6c)
+Internet Protocol Version 4, Src: 192.168.1.78, Dst: 192.168.1.81
+Transmission Control Protocol, Src Port: 52432, Dst Port: 1883, Seq: 89, Ack: 5, Len: 31
+MQ Telemetry Transport Protocol, Publish Message
+
+No.     Time           Source                Destination           Protocol Length Info
+     23 16.441662039   192.168.1.81          192.168.1.78          TCP      54     1883 → 52432 [ACK] Seq=5 Ack=120 Win=64121 Len=0
+
+Frame 23: 54 bytes on wire (432 bits), 54 bytes captured (432 bits) on interface enp8s0, id 0
+Ethernet II, Src: QuantaCo_2e:71:6c (2c:60:0c:2e:71:6c), Dst: STMicroe_00:00:00 (00:80:e1:00:00:00)
+Internet Protocol Version 4, Src: 192.168.1.81, Dst: 192.168.1.78
+Transmission Control Protocol, Src Port: 1883, Dst Port: 52432, Seq: 5, Ack: 120, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     27 21.498626972   192.168.1.78          192.168.1.81          MQTT     85     Publish Message [stm32/data]
+
+Frame 27: 85 bytes on wire (680 bits), 85 bytes captured (680 bits) on interface enp8s0, id 0
+Ethernet II, Src: STMicroe_00:00:00 (00:80:e1:00:00:00), Dst: QuantaCo_2e:71:6c (2c:60:0c:2e:71:6c)
+Internet Protocol Version 4, Src: 192.168.1.78, Dst: 192.168.1.81
+Transmission Control Protocol, Src Port: 52432, Dst Port: 1883, Seq: 120, Ack: 5, Len: 31
+MQ Telemetry Transport Protocol, Publish Message
+
+No.     Time           Source                Destination           Protocol Length Info
+     28 21.498651040   192.168.1.81          192.168.1.78          TCP      54     1883 → 52432 [ACK] Seq=5 Ack=151 Win=64090 Len=0
+
+Frame 28: 54 bytes on wire (432 bits), 54 bytes captured (432 bits) on interface enp8s0, id 0
+Ethernet II, Src: QuantaCo_2e:71:6c (2c:60:0c:2e:71:6c), Dst: STMicroe_00:00:00 (00:80:e1:00:00:00)
+Internet Protocol Version 4, Src: 192.168.1.81, Dst: 192.168.1.78
+Transmission Control Protocol, Src Port: 1883, Dst Port: 52432, Seq: 5, Ack: 151, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     29 26.555635114   192.168.1.78          192.168.1.81          MQTT     85     Publish Message [stm32/data]
+
+Frame 29: 85 bytes on wire (680 bits), 85 bytes captured (680 bits) on interface enp8s0, id 0
+Ethernet II, Src: STMicroe_00:00:00 (00:80:e1:00:00:00), Dst: QuantaCo_2e:71:6c (2c:60:0c:2e:71:6c)
+Internet Protocol Version 4, Src: 192.168.1.78, Dst: 192.168.1.81
+Transmission Control Protocol, Src Port: 52432, Dst Port: 1883, Seq: 151, Ack: 5, Len: 31
+MQ Telemetry Transport Protocol, Publish Message
+
+No.     Time           Source                Destination           Protocol Length Info
+     30 26.555662811   192.168.1.81          192.168.1.78          TCP      54     1883 → 52432 [ACK] Seq=5 Ack=182 Win=64059 Len=0
+
+Frame 30: 54 bytes on wire (432 bits), 54 bytes captured (432 bits) on interface enp8s0, id 0
+Ethernet II, Src: QuantaCo_2e:71:6c (2c:60:0c:2e:71:6c), Dst: STMicroe_00:00:00 (00:80:e1:00:00:00)
+Internet Protocol Version 4, Src: 192.168.1.81, Dst: 192.168.1.78
+Transmission Control Protocol, Src Port: 1883, Dst Port: 52432, Seq: 5, Ack: 182, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     34 31.612632462   192.168.1.78          192.168.1.81          MQTT     80     Connect Command
+
+Frame 34: 80 bytes on wire (640 bits), 80 bytes captured (640 bits) on interface enp8s0, id 0
+Ethernet II, Src: STMicroe_00:00:00 (00:80:e1:00:00:00), Dst: QuantaCo_2e:71:6c (2c:60:0c:2e:71:6c)
+Internet Protocol Version 4, Src: 192.168.1.78, Dst: 192.168.1.81
+Transmission Control Protocol, Src Port: 52432, Dst Port: 1883, Seq: 182, Ack: 5, Len: 26
+MQ Telemetry Transport Protocol, Connect Command
+
+No.     Time           Source                Destination           Protocol Length Info
+     35 31.612658672   192.168.1.81          192.168.1.78          TCP      54     1883 → 52432 [ACK] Seq=5 Ack=208 Win=64059 Len=0
+
+Frame 35: 54 bytes on wire (432 bits), 54 bytes captured (432 bits) on interface enp8s0, id 0
+Ethernet II, Src: QuantaCo_2e:71:6c (2c:60:0c:2e:71:6c), Dst: STMicroe_00:00:00 (00:80:e1:00:00:00)
+Internet Protocol Version 4, Src: 192.168.1.81, Dst: 192.168.1.78
+Transmission Control Protocol, Src Port: 1883, Dst Port: 52432, Seq: 5, Ack: 208, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     36 31.612725587   192.168.1.81          192.168.1.78          TCP      54     1883 → 52432 [FIN, ACK] Seq=5 Ack=208 Win=64059 Len=0
+
+Frame 36: 54 bytes on wire (432 bits), 54 bytes captured (432 bits) on interface enp8s0, id 0
+Ethernet II, Src: QuantaCo_2e:71:6c (2c:60:0c:2e:71:6c), Dst: STMicroe_00:00:00 (00:80:e1:00:00:00)
+Internet Protocol Version 4, Src: 192.168.1.81, Dst: 192.168.1.78
+Transmission Control Protocol, Src Port: 1883, Dst Port: 52432, Seq: 5, Ack: 208, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     37 31.638397331   192.168.1.78          192.168.1.81          MQTT     85     Publish Message [stm32/data]
+
+Frame 37: 85 bytes on wire (680 bits), 85 bytes captured (680 bits) on interface enp8s0, id 0
+Ethernet II, Src: STMicroe_00:00:00 (00:80:e1:00:00:00), Dst: QuantaCo_2e:71:6c (2c:60:0c:2e:71:6c)
+Internet Protocol Version 4, Src: 192.168.1.78, Dst: 192.168.1.81
+Transmission Control Protocol, Src Port: 52432, Dst Port: 1883, Seq: 208, Ack: 5, Len: 31
+MQ Telemetry Transport Protocol, Publish Message
+
+No.     Time           Source                Destination           Protocol Length Info
+     38 31.638436083   192.168.1.81          192.168.1.78          TCP      54     1883 → 52432 [RST] Seq=5 Win=0 Len=0
+
+Frame 38: 54 bytes on wire (432 bits), 54 bytes captured (432 bits) on interface enp8s0, id 0
+Ethernet II, Src: QuantaCo_2e:71:6c (2c:60:0c:2e:71:6c), Dst: STMicroe_00:00:00 (00:80:e1:00:00:00)
+Internet Protocol Version 4, Src: 192.168.1.81, Dst: 192.168.1.78
+Transmission Control Protocol, Src Port: 1883, Dst Port: 52432, Seq: 5, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     39 31.644441675   192.168.1.78          192.168.1.81          TCP      60     52432 → 1883 [RST, ACK] Seq=239 Ack=6 Win=24584 Len=0
+
+Frame 39: 60 bytes on wire (480 bits), 60 bytes captured (480 bits) on interface enp8s0, id 0
+Ethernet II, Src: STMicroe_00:00:00 (00:80:e1:00:00:00), Dst: QuantaCo_2e:71:6c (2c:60:0c:2e:71:6c)
+Internet Protocol Version 4, Src: 192.168.1.78, Dst: 192.168.1.81
+Transmission Control Protocol, Src Port: 52432, Dst Port: 1883, Seq: 239, Ack: 6, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     40 31.644478489   192.168.1.78          192.168.1.81          TCP      60     [TCP Window Update] 52432 → 1883 [ACK] Seq=239 Ack=6 Win=2139 Len=0
+
+Frame 40: 60 bytes on wire (480 bits), 60 bytes captured (480 bits) on interface enp8s0, id 0
+Ethernet II, Src: STMicroe_00:00:00 (00:80:e1:00:00:00), Dst: QuantaCo_2e:71:6c (2c:60:0c:2e:71:6c)
+Internet Protocol Version 4, Src: 192.168.1.78, Dst: 192.168.1.81
+Transmission Control Protocol, Src Port: 52432, Dst Port: 1883, Seq: 239, Ack: 6, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     41 31.644489071   192.168.1.81          192.168.1.78          TCP      54     1883 → 52432 [RST] Seq=6 Win=0 Len=0
+
+Frame 41: 54 bytes on wire (432 bits), 54 bytes captured (432 bits) on interface enp8s0, id 0
+Ethernet II, Src: QuantaCo_2e:71:6c (2c:60:0c:2e:71:6c), Dst: STMicroe_00:00:00 (00:80:e1:00:00:00)
+Internet Protocol Version 4, Src: 192.168.1.81, Dst: 192.168.1.78
+Transmission Control Protocol, Src Port: 1883, Dst Port: 52432, Seq: 6, Len: 0
+```
+
 ## stm32 lwip tcp MqttProt Client state machine (without SyncRegion state machine)
 
 ### stm32 mqttc mqttc_client
