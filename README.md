@@ -3,6 +3,94 @@
 
 ## stm32 lwip tcp MqttProt Client SM with PUBLISH working and an undesired CONNECT after 25 seconds (without SyncRegion state machine) 
 
+1. Invoke RKH tick handler in SysTick_Handler function (stm32f4xx_it.c). based on `feature/rkh-blinky-systick`.
+
+```c 
+/* USER CODE BEGIN PV */
+extern volatile tick_t tickCounter;
+
+/* USER CODE END PV */
+
+void SysTick_Handler(void)
+{
+    /* USER CODE BEGIN SysTick_IRQn 0 */
+    /* USER CODE END SysTick_IRQn 0 */
+
+    /* USER CODE BEGIN SysTick_IRQn 1 */
+    HAL_IncTick();
+    tickCounter++;
+
+        RKH_TIM_TICK(NULL);
+
+        /* USER CODE END SysTick_IRQn 1 */
+}
+```
+
+2. in `rkhcfg.h` modify frequency from `100u` to `1000u`
+
+```c 
+/**
+ *  Specify the frequency of the framework tick interrupt (number of ticks
+ *  in one second). It's the rate at which the rkh_tmr_tick() function is
+ *  invoked. This configuration constant is not used by RKH, it is just a
+ *  value to allow an application to deal with time when using timer
+ *  services, converting ticks to time. See RKH_TICK_RATE_MS constant.
+ */
+#define RKH_CFG_FWK_TICK_RATE_HZ            1000u
+```
+
+Explanation based on STM32CubeMx configuration (check `void SystemClock_Config(void)` in `main.c`)
+
++ Oscillator Configuration
+
+HSE with Bypass: The high-speed external oscillator (HSE) is used in bypass mode (RCC_HSE_BYPASS), meaning an external clock signal is provided instead of a crystal. For the STM32 Nucleo-F429ZI, this is typically an 8 MHz clock from the ST-Link debugger (common for Nucleo boards).
+PLL Configuration:
+PLLM = 4: Divides the HSE input clock by 4. So, 8 MhZ / 4 = 2 MHz
+PLLN = 168: Multiplies the PLL input by 168. So, 2 MHz * 168 = 336 MHz
+PLLP = RCC_PLLP_DIV2: Divides the PLL output by 2 for SYSCLK. So, 336 MHz / 2 = 168 MHz
+PLLQ = 7: Used for USB, SDIO, etc., but not relevant for SYSCLK.
+
+Result: The PLL generates a SYSCLK of 168 MHz.
+
++   Clock Distribution:
+
+SYSCLK: Set to the PLL output, so 168 MHz.
+HCLK (AHB bus): RCC_SYSCLK_DIV1 means HCLK = SYSCLK = 168 MHz.
+PCLK1 (APB1 bus): RCC_HCLK_DIV4 means PCLK1 = 168MHz / 4 = 42 MHz
+PCLK2 (APB2 bus): RCC_HCLK_DIV2 means PCLK2 = 168 MHz / 2 = 84 MHz
+Flash Latency: Set to 5 wait states, which is appropriate for 168 MHz operation at 3.3V (per the STM32F429 datasheet).
+
++ SystemCoreClock:
+
++ After this configuration, the SystemCoreClock variable (defined by CMSIS or STM32 HAL) should be set to 168,000,000 Hz (168 MHz). You can confirm this by checking the value of SystemCoreClock in your code or debugger.
+Recommended Tick Rate
+As discussed previously, a tick rate of 1000 Hz (1 ms per tick) is recommended for the STM32 Nucleo-F429ZI with the RKH framework, especially for your Blinker application, which uses timer intervals like RKH_TIME_MS(1000) or RKH_TIME_MS(20000). This provides sufficient timing resolution and is standard for real-time embedded systems. However, since your provided configuration uses RKH_CFG_FWK_TICK_RATE_HZ = 100u (100 Hz, 10 ms per tick), we’ll calculate for both options and ensure compatibility with your 168 MHz system clock.
+
+```json
+
+    1000 Hz (1 ms per tick)
+
+    Tick Rate: 1000 Hz means one tick every 1 ms.
+ 
+    SysTick Reload Value:
+      
+      Reload Value = System Clock Frequency / Tick Rate - 1 = 168,000,000 / 1000 - 1 = 168,000 -1 = 167,999
+```
+
+**RKH Configuration:**
+
+```c 
+#define RKH_CFG_FWK_TICK_RATE_HZ 1000u
+#define RKH_TICK_RATE_MS (1000u / RKH_CFG_FWK_TICK_RATE_HZ) // 1 ms
+```
+
+**Why 1000 Hz is Preferred**
+  
++ Timing Precision: 1 ms resolution (1000 Hz) allows more precise control for timers, especially for shorter intervals (e.g., 100 ms or 500 ms) that you might add later. Your current Blinker intervals (1 s or 20 s) work with either 100 Hz or 1000 Hz, but 1000 Hz is more flexible.
++ Standard Practice: Most STM32 applications and RTOS frameworks (e.g., FreeRTOS) use 1000 Hz for millisecond granularity.
++ Low Overhead: At 168 MHz, a 1000 Hz interrupt (every 168,000 cycles) is a negligible load on the CPU, especially since rkh_tmr_tick is lightweight.
+  
+
 ### stm32 mqttc_client
 
 ```json
