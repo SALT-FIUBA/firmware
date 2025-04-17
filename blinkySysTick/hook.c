@@ -88,14 +88,14 @@ tickHook(void *p)
 void
 rkh_hook_start(void)
 {
-    //  tickConfig(BSP_TICK_RATE_MS, NULL);  // Using the same interface as before
+    tickConfig(BSP_TICK_RATE_MS, NULL);  // Using the same interface as before
     RKH_TR_FWK_ACTOR(&rkhtick, "rkhtick");
 }
 
 void
 rkh_hook_exit(void)
 {
-    // TODO: RKH_TRC_FLUSH();
+    RKH_TRC_FLUSH();
 }
 
 void
@@ -111,7 +111,7 @@ rkh_hook_idle(void)             // called within critical section
 
     MX_LWIP_Process();
     RKH_ENA_INTERRUPT();
-    // TODO:  RKH_TRC_FLUSH();
+    RKH_TRC_FLUSH();
 
 }
 

@@ -33,7 +33,7 @@ RKH_END_TRANS_TABLE
 /* ------------------------- Active object ------------------------------- */
 
 
-RKH_SMA_CREATE(Blinker, blinker, 0, HCAL, &LedOff, NULL, NULL);
+RKH_SMA_CREATE(Blinker, blinker, 0, HCAL, &LedOn, NULL, NULL);
 RKH_SMA_DEF_PTR(blinker);
 
 /* -------------------------- Global functions --------------------------- */
@@ -47,7 +47,8 @@ blinker_ctor(void)
 
     Blinker *me = RKH_DOWNCAST(Blinker, blinker);
     RKH_TR_FWK_OBJ(&me->sma);
-    RKH_TMR_INIT(&me->tmr, &e_tout, NULL);
+
+
 }
 
 /* ---------------------------- Effect actions --------------------------- */
@@ -59,9 +60,13 @@ led_on(Blinker *const me, RKH_EVT_T *pe)
     BSP_LED_On(LED1); // gpioWrite(LED1, 0);
     BSP_LED_On(LED2); // gpioWrite(LED1, 0);
     BSP_LED_On(LED3); // gpioWrite(LED1, 0);
+
+
+    RKH_TMR_INIT(&me->tmr, &e_tout, NULL);
     rkh_tmr_start(&me->tmr, RKH_UPCAST(RKH_SMA_T, me),
-                  RKH_TIME_MS(1000),    /* initial tick */
-                  RKH_TIME_MS(1000));   /* period */
+                  RKH_TIME_MS(20000),  // initial tick
+                  RKH_TIME_MS(20000)  // period
+    );
 }
 
 static void
@@ -72,7 +77,17 @@ led_off(Blinker *const me, RKH_EVT_T *pe)
     BSP_LED_Off(LED1); // gpioWrite(LED1, 0);
     BSP_LED_Off(LED2); // gpioWrite(LED1, 0);
     BSP_LED_Off(LED3); // gpioWrite(LED1, 0);
+
+
+    /*
     rkh_tmr_start(&me->tmr, RKH_UPCAST(RKH_SMA_T, me),
-                  RKH_TIME_MS(1000),    /* initial tick */
-                  RKH_TIME_MS(1000));   /* period */
+                  RKH_TIME_MS(20000),    // initial tick
+                  RKH_TIME_MS(20000));   // period
+                  */
+    //  rkh_tmr_stop(&me->tmr);
+
 }
+
+
+
+

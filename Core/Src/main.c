@@ -36,6 +36,7 @@
 #include "bsp-salt.h"
 #include "tcp-conmgr.h"
 #include "publisher.h"
+#include "blinkySysTick.h"
 
 
 
@@ -115,6 +116,14 @@ static rui8_t evPool2Sto[SIZEOF_EP2STO];
 static rui8_t evPool3Sto[SIZEOF_EP3STO];
 
 
+
+/* Blinky Local variables */
+#define QSTO_SIZE           4
+static RKH_EVT_T *qsto[QSTO_SIZE];
+
+
+
+
 static void onMQTTCb(void** state,struct mqttc_response_publish *publish){
 
     printf("onMQTTCb: on mqtt callback \n");
@@ -159,6 +168,9 @@ int main(void)
   MX_LWIP_Init();
   /* USER CODE BEGIN 2 */
 
+    //  bsp_init();
+    //TODO: use of mTime_init(); ?
+
     /* Initialize RKH framework */
     rkh_fwk_init();
     rkh_dynEvt_init();
@@ -202,14 +214,16 @@ int main(void)
     mqttProtCfg.callback = onMQTTCb;
     TCP_MQTTProt_ctor(&mqttProtCfg, publishDimba);
 
+    /*
+    blinker_ctor();
+    RKH_SMA_ACTIVATE(blinker, qsto, QSTO_SIZE,0,0);
+    */
 
+    // Activate the TcpConMgr state machine
+   RKH_SMA_ACTIVATE(tcpConMgr, ConMgr_qsto, CONMGR_QSTO_SIZE, 0, 0);
+   RKH_SMA_ACTIVATE(tcpMqttProt, MQTTProt_qsto, MQTTPROT_QSTO_SIZE, 0, 0);
 
-    /* Activate the TcpConMgr state machine */
-    RKH_SMA_ACTIVATE(tcpConMgr, ConMgr_qsto, CONMGR_QSTO_SIZE, 0, 0);
-    RKH_SMA_ACTIVATE(tcpMqttProt, MQTTProt_qsto, MQTTPROT_QSTO_SIZE, 0, 0);
-
-
-    /* Post the initial evOpen event */
+    // Post the initial evOpen event
     RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Open), NULL);
 
     /* Enter the RKH framework loop */

@@ -20,22 +20,19 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "stm32f4xx_it.h"
+#include "rkhtmr.h"
+#include "sapi_tick.h"
+#include "bsp-salt.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN TD */
-
-//  typedef void(* SystickCb)(void);
-
 /* USER CODE END TD */
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
-//  static SystickCb userSysticCb = NULL;
-
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -45,6 +42,7 @@
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN PV */
+extern volatile tick_t tickCounter;
 
 /* USER CODE END PV */
 
@@ -187,14 +185,15 @@ void PendSV_Handler(void)
 void SysTick_Handler(void)
 {
   /* USER CODE BEGIN SysTick_IRQn 0 */
-    //  if(userSysticCb != NULL)
-     //   userSysticCb();
-
-    //  rkh_tmr_tick();
   /* USER CODE END SysTick_IRQn 0 */
-  HAL_IncTick();
+
   /* USER CODE BEGIN SysTick_IRQn 1 */
-  /* USER CODE END SysTick_IRQn 1 */
+    HAL_IncTick();
+    tickCounter++;
+
+    RKH_TIM_TICK(NULL);
+
+    /* USER CODE END SysTick_IRQn 1 */
 }
 
 /******************************************************************************/

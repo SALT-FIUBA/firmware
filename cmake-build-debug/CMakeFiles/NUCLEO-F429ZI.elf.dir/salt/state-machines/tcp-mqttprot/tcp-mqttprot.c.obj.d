@@ -143,4 +143,5 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/tcp-mqttprot/tcp-mqttprot.c
  /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/include/lwip/sockets.h \
  /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/tcp-mqttprot/tcp-mqttprot.h \
  /home/nando-toshiba/Desktop/salt/firmware/third-party/MQTT-C/include/mqttc.h \
- /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/tcp-mqttprot/tcp-mqttprot.h
+ /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/tcp-mqttprot/tcp-mqttprot.h \
+ /home/nando-toshiba/Desktop/salt/firmware/bsp/stm32f4xx_nucleo_144.h
