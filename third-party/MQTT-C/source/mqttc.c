@@ -515,6 +515,7 @@ ssize_t __mqttc_send(struct mqttc_client *client)
 
     MQTTC_PAL_MUTEX_LOCK(&client->mutex);
 
+    printf("__mqttc_send error: %d %s \n", client->error, mqttc_error_str(client->error));
     if (client->error < 0 && client->error != MQTT_ERROR_SEND_BUFFER_IS_FULL) {
         MQTTC_PAL_MUTEX_UNLOCK(&client->mutex);
         return client->error;
@@ -598,6 +599,8 @@ ssize_t __mqttc_send(struct mqttc_client *client)
         MQTT_CONTROL_PINGRESP    -> n/a
         MQTT_CONTROL_DISCONNECT  -> complete
         */
+        printf("__mqttc_send control packet type: %d \n", msg->control_type);
+
         switch (msg->control_type) {
             case MQTT_CONTROL_PUBACK:
             case MQTT_CONTROL_PUBCOMP:

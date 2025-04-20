@@ -553,7 +553,7 @@ ssize_t mqttc_pal_sendall(mqttc_pal_socket_handle pcb, const void* buf, size_t l
 
     struct tcp_pcb * tpcb = (struct tcp_pcb*)pcb;
 
-    printf("mqttc_pal_send_all | tpcb state: %d \n \n", tpcb->state);
+    printf("mqttc_pal_send_all | tpcb state: %d %s \n \n", tpcb->state, tcp_debug_state_str(tpcb->state));
 
     err_t err = tcp_write(tpcb, buf, len, TCP_WRITE_FLAG_COPY);
 
@@ -574,11 +574,6 @@ ssize_t mqttc_pal_sendall(mqttc_pal_socket_handle pcb, const void* buf, size_t l
 
 
 ssize_t mqttc_pal_recvall(mqttc_pal_socket_handle pcb, void * buf, size_t bufsz, int flags) {
-
-    printf("mqttc_pal_recvall | tpcb state: %d \n", pcb->state);
-    printf("mqttc_pal_recvall | %s \n", (char*)buf);
-    printf("mqttc_pal_recvall | %zu \n", bufsz);
-
 
 
     if (recv_len > 0) {

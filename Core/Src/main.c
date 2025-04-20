@@ -119,7 +119,7 @@ static rui8_t evPool3Sto[SIZEOF_EP3STO];
 
 /* Blinky Local variables */
 #define QSTO_SIZE           4
-static RKH_EVT_T *qsto[QSTO_SIZE];
+static RKH_EVT_T * qsto[QSTO_SIZE];
 
 
 
@@ -206,7 +206,7 @@ int main(void)
 
     mqttProtCfg.publishTime = 5;
     mqttProtCfg.syncTime = 4;
-    mqttProtCfg.keepAlive = 9999;
+    mqttProtCfg.keepAlive = 60;
     mqttProtCfg.qos = 1;
     strcpy(mqttProtCfg.clientId, "stm32_client");
     strcpy(mqttProtCfg.topic, "/stm32/data");

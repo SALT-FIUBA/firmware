@@ -1,6 +1,89 @@
 # firmware
 
 
+## stm32 lwip tcp MqttProt Client SM with an undesired CONNECT after 25 seconds (without SyncRegion state machine)
+
+### tcp-conmgr.c
+
+quit evSend and evRecv regarding TcpConMgr_sending and TcpConMgr_receiving sub-state machines interaction 
+```c 
+RKH_CREATE_BASIC_STATE(TcpConMgr_connected, socketConnected, NULL, &TcpConMgr_active, NULL);
+RKH_CREATE_TRANS_TABLE(TcpConMgr_connected)
+                // TODO  RKH_TRREG(evSend, NULL, send_data, &TcpConMgr_sending),
+                // TODO  RKH_TRREG(evRecv, NULL, read_data, &TcpConMgr_receiving),
+                RKH_TRREG(evClosed, NULL, NULL, &TcpConMgr_connecting),
+                RKH_TRREG(evDisconnected, NULL, socketClosed, &TcpConMgr_connecting),
+RKH_END_TRANS_TABLE
+
+static void socketClosed(TcpConMgr *const me) {
+
+    printf("\n tcp-conmgr | socketClosed \n");
+    printf("tcp-conmgr | Current state: %s \n", get_state_name_conmgr_sm(tcpConMgr->sm.state));
+
+    bsp_netStatus(DisconnectedSt);
+
+    RKH_SMA_POST_FIFO(tcpMqttProt, RKH_UPCAST(RKH_EVT_T, &e_NetDisconnected), me);
+}
+```
+
+### tcp-mqttProt.c
+
+quit mqttc_sync invocation in enAwaitingAck and publish one or two more messages than before (5 to 6/7 messages).
+
+```c 
+static void
+enAwaitingAck(TCP_MQTTProt *const me, RKH_EVT_T *pe)
+{
+    printf("\n tcp-mqttprot | entry Awaiting Ack \n");
+    printf("tcp-mqttprot | Current state: %s \n \n", get_state_name_mqtt_sm(tcpMqttProt->sm.state));
+
+    printf("tcp-mqttprot | mqttc_sync -> _mqttc_send -> mqttc_pal_sendall");
+
+    if (me->mqttc_client.error == MQTT_OK) {
+
+        printf("tcp-mqttprot | entry Awaiting Ack MQTT_OK \n");
+        RKH_SMA_POST_FIFO(tcpMqttProt, RKH_UPCAST(RKH_EVT_T , &evConnAcceptedObj), me);
+
+    } else {
+
+        printf("tcp-mqttprot | entry Awaiting Ack not MQTT_OK \n");
+        RKH_SMA_POST_FIFO(tcpMqttProt, RKH_UPCAST(RKH_EVT_T , &evConnRefusedObj), me);
+    }
+}
+```
+
+```json 
+1745154566: New connection from 192.168.1.78:52432 on port 1883.
+1745154571: New client connected from 192.168.1.78:52432 as stm32_client (p2, c0, k60).
+1745154571: No will message specified.
+1745154571: Sending CONNACK to stm32_client (0, 0)
+1745154571: Received PUBLISH from stm32_client (d0, q0, r0, m0, 'stm32/data', ... (17 bytes))
+1745154576: Received PUBLISH from stm32_client (d0, q0, r0, m0, 'stm32/data', ... (17 bytes))
+1745154581: Received PUBLISH from stm32_client (d0, q0, r0, m0, 'stm32/data', ... (17 bytes))
+1745154586: Received PUBLISH from stm32_client (d0, q0, r0, m0, 'stm32/data', ... (17 bytes))
+1745154591: Received PUBLISH from stm32_client (d0, q0, r0, m0, 'stm32/data', ... (17 bytes))
+1745154596: Received PUBLISH from stm32_client (d0, q0, r0, m0, 'stm32/data', ... (17 bytes))
+1745154601: Bad client stm32_client sending multiple CONNECT messages.
+1745154601: Client stm32_client disconnected due to protocol error.
+1745154601: New connection from 192.168.1.78:52433 on port 1883.
+1745154606: New client connected from 192.168.1.78:52433 as stm32_client (p2, c0, k60).
+1745154606: No will message specified.
+1745154606: Sending CONNACK to stm32_client (0, 0)
+1745154606: Received PUBLISH from stm32_client (d0, q0, r0, m0, 'stm32/data', ... (17 bytes))
+1745154611: Received PUBLISH from stm32_client (d0, q0, r0, m0, 'stm32/data', ... (17 bytes))
+1745154616: Received PUBLISH from stm32_client (d0, q0, r0, m0, 'stm32/data', ... (17 bytes))
+1745154622: Received PUBLISH from stm32_client (d0, q0, r0, m0, 'stm32/data', ... (17 bytes))
+1745154627: Received PUBLISH from stm32_client (d0, q0, r0, m0, 'stm32/data', ... (17 bytes))
+1745154632: Received PUBLISH from stm32_client (d0, q0, r0, m0, 'stm32/data', ... (17 bytes))
+1745154637: Received PUBLISH from stm32_client (d0, q0, r0, m0, 'stm32/data', ... (17 bytes))
+1745154642: Bad client stm32_client sending multiple CONNECT messages.
+1745154642: Client stm32_client disconnected due to protocol error.
+```
+
+
+
+
+
 ## stm32 lwip tcp MqttProt Client SM with PUBLISH working and an undesired CONNECT after 25 seconds (without SyncRegion state machine) 
 
 1. Invoke RKH tick handler in SysTick_Handler function (stm32f4xx_it.c). based on `feature/rkh-blinky-systick`.
@@ -26,7 +109,7 @@ void SysTick_Handler(void)
 }
 ```
 
-2. in `rkhcfg.h` modify frequency from `100u` to `1000u`
+2. In `rkhcfg.h` modify frequency from `100u` to `1000u`
 
 ```c 
 /**
