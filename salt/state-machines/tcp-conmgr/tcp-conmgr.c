@@ -39,6 +39,7 @@ static void socketConnected(TcpConMgr *const me);
 static void socketClose(TcpConMgr *const me);
 static void socketClosed(TcpConMgr *const me);
 
+
 /* ........................ States and pseudostates ........................ */
 RKH_CREATE_BASIC_STATE(TcpConMgr_inactive, NULL, NULL, RKH_ROOT, NULL);
 RKH_CREATE_TRANS_TABLE(TcpConMgr_inactive)
@@ -238,6 +239,8 @@ static err_t tcp_conmgr_connect_callback(void *arg, struct tcp_pcb *tpcb, err_t 
     }
     return ERR_OK;
 }
+
+
 
 /* ............................ Initial action ............................. */
 static void init(TcpConMgr *const me, RKH_EVT_T *pe) {

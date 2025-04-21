@@ -48,6 +48,9 @@ static void publish(TCP_MQTTProt *const me, RKH_EVT_T *pe);
  */
 static void downcastNetConnectedEvt(TCP_MQTTProt *const me, RKH_EVT_T *pe);
 
+static void * reconnect_callback(struct mqttc_client *client, void **state);
+
+
 /* ......................... Declares entry actions ........................ */
 static void enAwaitingAck(TCP_MQTTProt *const me, RKH_EVT_T *pe);
 static void brokerConnect(TCP_MQTTProt *const me, RKH_EVT_T *pe);
@@ -292,6 +295,35 @@ dispatch(RKH_SMA_T *me, void *arg)
     rkh_sm_dispatch((RKH_SM_T *)me, (RKH_EVT_T *)arg);
 }
 
+static void * reconnect_callback(struct mqttc_client *client, void **state)
+{
+    printf("\n tcp-mqttprot | downcastNetConnectedEvt \n");
+    printf("tcp-mqttprot | Current state: %s \n \n", get_state_name_mqtt_sm(tcpMqttProt->sm.state));
+
+    TCP_MQTTProt *me = (TCP_MQTTProt *)*state;
+    printf("Reconnecting...\n");
+
+    if (me->sockfd != NULL) {
+        tcp_close(me->sockfd); // Ensure proper socket closure
+        me->sockfd = NULL;
+    }
+
+    me->sockfd = altcp_new(); // Implement this to get a new socket
+    if (me->sockfd == NULL) {
+        printf("Failed to get new socket\n");
+    }
+
+    mqttc_reinit(&me->mqttc_client, me->sockfd, me->sendbuf, sizeof(me->sendbuf), me->recvbuf, sizeof(me->recvbuf));
+
+    enum MQTTErrors error = mqttc_connect(&me->mqttc_client, me->config->clientId, NULL, NULL, 0, NULL, NULL, MQTT_CONNECT_CLEAN_SESSION, me->config->keepAlive);
+    if (error != MQTT_OK) {
+        printf("Reconnection failed: %s\n", mqttc_error_str(error));
+    } else {
+        printf("Reconnection successful\n");
+    }
+}
+
+
 /* ............................ Initial action ............................. */
 static void
 init(TCP_MQTTProt * const me, RKH_EVT_T *pe)
@@ -304,6 +336,9 @@ init(TCP_MQTTProt * const me, RKH_EVT_T *pe)
     RKH_SET_STATIC_EVENT(RKH_UPCAST(RKH_EVT_T, &evSendObj), evSend);
     RKH_SET_STATIC_EVENT(RKH_UPCAST(RKH_EVT_T, &evConnRefusedObj),
                          evConnRefused);
+
+    me->mqttc_client.reconnect_callback = reconnect_callback(&me->mqttc_client, (void *) me);
+    //  me->mqttc_client.reconnect_state =
 
     //TODO: replace by mqttc_sync function were it's needed
     //  me->mqttc_client.connack_response_callback = connack_response_callback;
@@ -318,13 +353,37 @@ init(TCP_MQTTProt * const me, RKH_EVT_T *pe)
 static void
 publish(TCP_MQTTProt *const me, RKH_EVT_T *pe)
 {
+    printf("Buffer usage: %u/%u bytes\n", me->mqttc_client.mq.curr_sz, 2048);
+
     printf("\n tcp-mqttprot | publish \n");
     printf("tcp-mqttprot | Current state: %s \n", get_state_name_mqtt_sm(tcpMqttProt->sm.state));
 
-    enum MQTTErrors mqtt_error;
-    const char *topic = "stm32/data";
-    const char *message = "Hello from STM32!";
+    /*
+    if (me->mqttc_client.error != MQTT_OK) {
+        printf("Client in error state: %s\n", mqttc_error_str(me->mqttc_client.error));
 
+        // Attempt reconnection if a callback is set
+        if (me->mqttc_client.reconnect_callback != NULL) {
+            me->mqttc_client.reconnect_callback(&me->mqttc_client, &me->mqttc_client.reconnect_state);
+        }
+        return;
+    }
+
+    // Check if there is enough space in the send buffer (e.g., leave 100 bytes free)
+    if (me->mqttc_client.mq.curr_sz > (2048 - 100)) {
+        printf("Send buffer is nearly full, delaying publish\n");
+        //  mqttc_mq_clean(&me->mqttc_client.mq);
+        printf("mqttc client mq current size: %d", me->mqttc_client.mq.curr_sz);
+
+        //  return; // Skip this publish attempt and retry later
+    }
+     */
+
+    enum MQTTErrors mqtt_error;
+    enum MQTTErrors sync_error;
+
+    const char * topic = "stm32/data";
+    const char * message = "Hello from STM32!";
 
     mqtt_error = mqttc_publish(&me->mqttc_client, topic, message, strlen(message), 0);
 
@@ -334,6 +393,17 @@ publish(TCP_MQTTProt *const me, RKH_EVT_T *pe)
         printf("Publish failed: %d\n", mqtt_error);
     } else {
         printf("Published: %s to %s\n", message, topic);
+    }
+
+
+    sync_error = mqttc_sync(&me->mqttc_client);
+
+    if (sync_error == MQTT_OK) {
+
+        printf("tcp-mqttprot | publish | sync success  %s \n", mqttc_error_str(sync_error));
+    } else {
+
+        printf("tcp-mqttprot | publish | sync failed \n");
     }
 
 
@@ -352,7 +422,6 @@ publish(TCP_MQTTProt *const me, RKH_EVT_T *pe)
                                    appMsg.size,
                                    (me->config->qos << 1) & 0x06);
     */
-
 }
 
 
@@ -373,7 +442,7 @@ static void
 enAwaitingAck(TCP_MQTTProt * const me, RKH_EVT_T * pe)
 {
     enum MQTTErrors mqtt_error;
-    rui16_t connection_timer = 120;    /* in secs */
+    rui16_t connection_timer = 20;    /* in secs */
 
     printf("\n tcp-mqttprot | entry Awaiting Ack \n");
     printf("tcp-mqttprot | Current state: %s \n \n", get_state_name_mqtt_sm(tcpMqttProt->sm.state));
@@ -429,9 +498,9 @@ brokerConnect(TCP_MQTTProt *const me, RKH_EVT_T *pe)
     mqtt_error = mqttc_connect(&me->mqttc_client,
                                me->config->clientId,
                                NULL, NULL, 0,
-                               NULL, NULL, 0, // MQTT_CONNECT_CLEAN_SESSION,
+                               NULL, NULL, MQTT_CONNECT_CLEAN_SESSION,
                                me->config->keepAlive);
-
+    mqttc_sync(&me->mqttc_client);
 
     me->operRes = mqtt_error;
     me->errorStr = mqttc_error_str(me->operRes);
@@ -446,19 +515,9 @@ enWaitToPublish(TCP_MQTTProt * const me, RKH_EVT_T * pe)
 
     printf("\n tcp-mqttprot | entry Wait To Publish \n");
     printf("tcp-mqttprot | Current state: %s \n", get_state_name_mqtt_sm(tcpMqttProt->sm.state));
+    printf("Setting publish timer for %d seconds\n", me->config->publishTime);
 
- //   RKH_SMA_POST_FIFO(tcpMqttProt, RKH_UPCAST(RKH_EVT_T , &evWaitPublishToutObj), me);
-
-    sync_error = mqttc_sync(&me->mqttc_client);
-
-    if (sync_error == MQTT_OK) {
-
-        printf("tcp-mqttprot | enWaitToPublish | sync success  %s \n", mqttc_error_str(sync_error));
-    } else {
-
-        printf("tcp-mqttprot | enWaitToPublish | sync failed \n");
-    }
-
+    //  RKH_SMA_POST_FIFO(tcpMqttProt, RKH_UPCAST(RKH_EVT_T , &evWaitPublishToutObj), me);
     RKH_TMR_INIT(&me->publishTmr, &evWaitPublishToutObj, NULL);
     RKH_TMR_ONESHOT(&me->publishTmr, RKH_UPCAST(RKH_SMA_T, me), RKH_TIME_SEC(me->config->publishTime));
 }

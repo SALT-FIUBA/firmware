@@ -608,26 +608,33 @@ ssize_t __mqttc_send(struct mqttc_client *client)
                 msg->state = MQTT_QUEUED_COMPLETE;
                 break;
             case MQTT_CONTROL_PUBLISH:
+                printf("MQTT_CONTROL_PUBLISH \n");
                 inspected = ( MQTT_PUBLISH_QOS_MASK & (msg->start[0]) ) >> 1; /* qos */
                 if (inspected == 0) {
+                    printf("MQTT_QUEUED_COMPLETE \n");
                     msg->state = MQTT_QUEUED_COMPLETE;
                 } else if (inspected == 1) {
+                    printf("MQTT_QUEUED_AWAITING_ACK \n");
                     msg->state = MQTT_QUEUED_AWAITING_ACK;
                     /*set DUP flag for subsequent sends [Spec MQTT-3.3.1-1] */
                     msg->start[0] |= MQTT_PUBLISH_DUP;
                 } else {
+                    printf("MQTT_QUEUED_AWAITING_ACK \n");
                     msg->state = MQTT_QUEUED_AWAITING_ACK;
                 }
                 break;
             case MQTT_CONTROL_CONNECT:
+                    printf("MQTT_CONTROL_CONNECT \n");
             case MQTT_CONTROL_PUBREC:
             case MQTT_CONTROL_PUBREL:
             case MQTT_CONTROL_SUBSCRIBE:
             case MQTT_CONTROL_UNSUBSCRIBE:
             case MQTT_CONTROL_PINGREQ:
+                printf("MQTT_CONTROL_PINGREQ \n");
                 msg->state = MQTT_QUEUED_AWAITING_ACK;
                 break;
             default:
+                printf("DEFAULT | MQTT_ERROR_MALFORMED_REQUEST \n");
                 client->error = MQTT_ERROR_MALFORMED_REQUEST;
                 MQTTC_PAL_MUTEX_UNLOCK(&client->mutex);
                 return MQTT_ERROR_MALFORMED_REQUEST;

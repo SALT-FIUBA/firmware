@@ -204,7 +204,7 @@ int main(void)
     HAL_Delay(1000);
 
 
-    mqttProtCfg.publishTime = 5;
+    mqttProtCfg.publishTime = 5; // the base time is not correct. actually, 5 is in miliseconds and not in seconds
     mqttProtCfg.syncTime = 4;
     mqttProtCfg.keepAlive = 60;
     mqttProtCfg.qos = 1;

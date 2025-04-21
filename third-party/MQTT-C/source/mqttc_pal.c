@@ -553,6 +553,9 @@ ssize_t mqttc_pal_sendall(mqttc_pal_socket_handle pcb, const void* buf, size_t l
 
     struct tcp_pcb * tpcb = (struct tcp_pcb*)pcb;
 
+    uint8_t packet_type = ((uint8_t*)buf)[0] >> 4; // Extract MQTT packet type
+
+    printf("mqttc_pal_sendall | Sending packet type: 0x%02X, length: %zu\n", packet_type, len);
     printf("mqttc_pal_send_all | tpcb state: %d %s \n \n", tpcb->state, tcp_debug_state_str(tpcb->state));
 
     err_t err = tcp_write(tpcb, buf, len, TCP_WRITE_FLAG_COPY);
