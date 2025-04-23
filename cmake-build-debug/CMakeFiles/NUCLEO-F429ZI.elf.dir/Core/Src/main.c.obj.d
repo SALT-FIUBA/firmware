@@ -149,4 +149,8 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/main.c.obj: \
  /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/tcp-mqttprot/tcp-mqttprot.h \
  /home/nando-toshiba/Desktop/salt/firmware/third-party/MQTT-C/include/mqttc.h \
  /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/publisher/publisher.h \
- /home/nando-toshiba/Desktop/salt/firmware/blinkySysTick/blinkySysTick.h
+ /home/nando-toshiba/Desktop/salt/firmware/blinkySysTick/blinkySysTick.h \
+ /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/logic/logic.h \
+ /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/gps/gps.h \
+ /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/epoch/epoch.h \
+ /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/parser/salt-command/saltCmd.h

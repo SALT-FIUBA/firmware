@@ -37,6 +37,7 @@
 #include "tcp-conmgr.h"
 #include "publisher.h"
 #include "blinkySysTick.h"
+#include "logic.h"
 
 
 
@@ -94,9 +95,11 @@ static RKH_ROM_STATIC_EVENT(e_Open, evOpen);
 
 #define MQTTPROT_QSTO_SIZE  16
 #define CONMGR_QSTO_SIZE    16
+#define LOGIC_QSTO_SIZE    16
 
 static RKH_EVT_T * MQTTProt_qsto[MQTTPROT_QSTO_SIZE];
 static RKH_EVT_T * ConMgr_qsto[CONMGR_QSTO_SIZE];
+static RKH_EVT_T * Logic_qsto[LOGIC_QSTO_SIZE];
 
 
 #define SIZEOF_EP0STO       16
@@ -122,11 +125,21 @@ static rui8_t evPool3Sto[SIZEOF_EP3STO];
 static RKH_EVT_T * qsto[QSTO_SIZE];
 
 
+static rbool_t initEnd = false;
+
+static CmdEvt e_saltCmd;
 
 
-static void onMQTTCb(void** state,struct mqttc_response_publish *publish){
+void onMQTTCb(void ** state,struct mqttc_response_publish * publish){
 
-    printf("onMQTTCb: on mqtt callback \n");
+    if(!initEnd){
+        return;
+    }
+
+    int result = saltCmdParse((char *) publish->application_message, publish->application_message_size, &(e_saltCmd.cmd));
+    if (result > 0){
+        RKH_SMA_POST_FIFO(logic, RKH_UPCAST(RKH_EVT_T, &e_saltCmd), 0);
+    }
 
 }
 
@@ -206,7 +219,7 @@ int main(void)
 
     mqttProtCfg.publishTime = 5; // the base time is not correct. actually, 5 is in miliseconds and not in seconds
     mqttProtCfg.syncTime = 4;
-    mqttProtCfg.keepAlive = 60;
+    mqttProtCfg.keepAlive = 400;
     mqttProtCfg.qos = 1;
     strcpy(mqttProtCfg.clientId, "stm32_client");
     strcpy(mqttProtCfg.topic, "/stm32/data");
@@ -222,9 +235,12 @@ int main(void)
     // Activate the TcpConMgr state machine
    RKH_SMA_ACTIVATE(tcpConMgr, ConMgr_qsto, CONMGR_QSTO_SIZE, 0, 0);
    RKH_SMA_ACTIVATE(tcpMqttProt, MQTTProt_qsto, MQTTPROT_QSTO_SIZE, 0, 0);
+   RKH_SMA_ACTIVATE(logic, Logic_qsto, LOGIC_QSTO_SIZE, 0,0);
 
     // Post the initial evOpen event
     RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Open), NULL);
+
+    initEnd = true;
 
     /* Enter the RKH framework loop */
     rkh_fwk_enter();

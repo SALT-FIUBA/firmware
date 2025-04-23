@@ -141,7 +141,7 @@ const char * get_state_name_conmgr_sm(const RKH_ST_T * state) {
 
 static void tcp_conmgr_err_callback(void *arg, err_t err) {
     TcpConMgr * me = (TcpConMgr *)arg;
-    printf("\n tcp-conmgr | TCP error: %d\n", err);
+    //  printf("\n tcp-conmgr | TCP error: %d\n", err);
     RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Disconnected), me);
 }
 
@@ -149,7 +149,7 @@ static err_t tcp_conmgr_sent_callback(void *arg, struct tcp_pcb *tpcb, u16_t len
 
     TcpConMgr *me = (TcpConMgr *)arg;
 
-    printf("\n tcp-conmgr | Sent %d bytes\n", len);
+    //  printf("\n tcp-conmgr | Sent %d bytes\n", len);
     RKH_SMA_POST_FIFO(tcpConMgr, &e_Sent, me);
 
     return ERR_OK;
@@ -157,12 +157,12 @@ static err_t tcp_conmgr_sent_callback(void *arg, struct tcp_pcb *tpcb, u16_t len
 
 static err_t tcp_conmgr_recv_callback(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_t err) {
 
-    printf("\n tcp-conmgr | tcp_recv_callback \n");
+    //  printf("\n tcp-conmgr | tcp_recv_callback \n");
 
     TcpConMgr *me = (TcpConMgr *)arg;
 
 
-    printf("p != NULL: %s \n", p != NULL ? "yes" : "no");
+    //  printf("p != NULL: %s \n", p != NULL ? "yes" : "no");
 
     if (p != NULL) {
 
@@ -175,7 +175,7 @@ static err_t tcp_conmgr_recv_callback(void *arg, struct tcp_pcb *tpcb, struct pb
             TcpReceiveEvt * evt = RKH_ALLOC_EVT(TcpReceiveEvt, evRecv, me);
 
             if (evt == NULL) {
-                printf("tcp-conmgr | tcp-conmgr | malloc failed TcpReceiveEvt \n");
+                //  printf("tcp-conmgr | tcp-conmgr | malloc failed TcpReceiveEvt \n");
                 return ERR_OK;
             }
 
@@ -195,7 +195,7 @@ static err_t tcp_conmgr_recv_callback(void *arg, struct tcp_pcb *tpcb, struct pb
 
         } else {
 
-            printf("tcp-conmgr | Receive buffer overflow\n");
+            // printf("tcp-conmgr | Receive buffer overflow\n");
             tcp_close(tpcb);
             me->tpcb = NULL;
 
@@ -218,20 +218,20 @@ static err_t tcp_conmgr_recv_callback(void *arg, struct tcp_pcb *tpcb, struct pb
 
 static err_t tcp_conmgr_connect_callback(void *arg, struct tcp_pcb *tpcb, err_t err) {
 
-    printf("\n tcp-conmgr | tcp_connect_callback \n");
+    //  printf("\n tcp-conmgr | tcp_connect_callback \n");
 
     TcpConMgr *me = (TcpConMgr *)arg;
 
     if (err == ERR_OK) {
 
-        printf("tcp-conmgr | TCP Connected\n");
+        //  printf("tcp-conmgr | TCP Connected\n");
 
         tcp_recv(tpcb, tcp_conmgr_recv_callback);
         RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Connected), me);
 
     } else {
 
-        printf("tcp-conmgr | TCP Connection failed: %d\n", err);
+        //  printf("tcp-conmgr | TCP Connection failed: %d\n", err);
 
         tcp_close(tpcb);
         me->tpcb = NULL;
@@ -245,8 +245,8 @@ static err_t tcp_conmgr_connect_callback(void *arg, struct tcp_pcb *tpcb, err_t 
 /* ............................ Initial action ............................. */
 static void init(TcpConMgr *const me, RKH_EVT_T *pe) {
 
-    printf("\n tcp-conmgr | tcp-conmgr | init \n");
-    printf("tcp-conmgr | Current state: %s \n", get_state_name_conmgr_sm(tcpConMgr->sm.state));
+    //  printf("\n tcp-conmgr | tcp-conmgr | init \n");
+    //  printf("tcp-conmgr | Current state: %s \n", get_state_name_conmgr_sm(tcpConMgr->sm.state));
 
     (void)pe;
     RKH_TMR_INIT(&me->timer, &e_tout, NULL);
@@ -270,8 +270,8 @@ static void open(TcpConMgr *const me, RKH_EVT_T *pe) {
 
 static void close(TcpConMgr *const me, RKH_EVT_T *pe) {
 
-    printf("\n tcp-conmgr | close \n");
-    printf("tcp-conmgr | Current state: %s \n", get_state_name_conmgr_sm(tcpConMgr->sm.state));
+    //  printf("\n tcp-conmgr | close \n");
+    //  printf("tcp-conmgr | Current state: %s \n", get_state_name_conmgr_sm(tcpConMgr->sm.state));
 
     (void)pe;
     if (me->tpcb != NULL) {
@@ -283,8 +283,8 @@ static void close(TcpConMgr *const me, RKH_EVT_T *pe) {
 
 static void send_data(TcpConMgr *const me, RKH_EVT_T *pe) {
 
-    printf("\n tcp-conmgr | send_data \n");
-    printf("tcp-conmgr | Current state: %s \n", get_state_name_conmgr_sm(tcpConMgr->sm.state));
+    // printf("\n tcp-conmgr | send_data \n");
+    //  printf("tcp-conmgr | Current state: %s \n", get_state_name_conmgr_sm(tcpConMgr->sm.state));
 
     /* TODO
     TcpSendEvt * evt = RKH_DOWNCAST(TcpSendEvt, pe);
@@ -323,14 +323,14 @@ static void send_data(TcpConMgr *const me, RKH_EVT_T *pe) {
 
 static void flush_data(TcpConMgr *const me, RKH_EVT_T *pe) {
 
-    printf("\n tcp-conmgr | flush_data \n");
+    //  printf("\n tcp-conmgr | flush_data \n");
     /* Already handled in send_data */
 }
 
 static void read_data(TcpConMgr *const me, RKH_EVT_T *pe) {
 
-    printf("\n tcp-conmgr | read_data \n");
-    printf("tcp-conmgr | Current state: %s \n", get_state_name_conmgr_sm(tcpConMgr->sm.state));
+    //  printf("\n tcp-conmgr | read_data \n");
+    //  printf("tcp-conmgr | Current state: %s \n", get_state_name_conmgr_sm(tcpConMgr->sm.state));
 
     /* TODO
 
@@ -355,11 +355,11 @@ static void read_data(TcpConMgr *const me, RKH_EVT_T *pe) {
 
 static err_t tcp_conmgr_poll_callback(void *arg, struct tcp_pcb *tpcb) {
 
-    printf("\n tcp-conmgr | Polling\n");
+    //  printf("\n tcp-conmgr | Polling\n");
 
     TcpConMgr *me = (TcpConMgr *)arg;
 
-    printf("tcp-conmgr | Current state: %s \n", get_state_name_conmgr_sm(tcpConMgr->sm.state));
+    //  printf("tcp-conmgr | Current state: %s \n", get_state_name_conmgr_sm(tcpConMgr->sm.state));
 
     // minimal event post  ->
     //  RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Send), me);
@@ -399,8 +399,8 @@ static err_t tcp_conmgr_poll_callback(void *arg, struct tcp_pcb *tpcb) {
 
 static void tcp_conmgr_connect_attempt(TcpConMgr *const me, RKH_EVT_T *pe) {
 
-    printf("\n tcp-conmgr | tcp_connect_attempt \n");
-    printf("tcp-conmgr | Current state: %s \n", get_state_name_conmgr_sm(tcpConMgr->sm.state));
+    //  printf("\n tcp-conmgr | tcp_connect_attempt \n");
+    //  printf("tcp-conmgr | Current state: %s \n", get_state_name_conmgr_sm(tcpConMgr->sm.state));
 
     if (me->tpcb == NULL) {
 
@@ -433,7 +433,7 @@ static void tcp_conmgr_connect_attempt(TcpConMgr *const me, RKH_EVT_T *pe) {
 }
 
 static void defer(TcpConMgr *const me, RKH_EVT_T *pe) {
-    printf("\n tcp-conmgr | defer\n");
+    //  printf("\n tcp-conmgr | defer\n");
 
     if (rkh_queue_is_full(&qDefer) != RKH_TRUE) {
         rkh_sma_defer(&qDefer, pe);
@@ -444,8 +444,8 @@ static void defer(TcpConMgr *const me, RKH_EVT_T *pe) {
 /* ............................. Entry actions ............................. */
 static void socketOpen(TcpConMgr *const me) {
 
-    printf("\n tcp-conmgr | socketOpen \n");
-    printf("tcp-conmgr | Current state: %s \n", get_state_name_conmgr_sm(tcpConMgr->sm.state));
+    //  printf("\n tcp-conmgr | socketOpen \n");
+    //  printf("tcp-conmgr | Current state: %s \n", get_state_name_conmgr_sm(tcpConMgr->sm.state));
 
 
     tcp_conmgr_connect_attempt(me, NULL);
@@ -453,8 +453,8 @@ static void socketOpen(TcpConMgr *const me) {
 
 static void socketConnected(TcpConMgr *const me) {
 
-    printf("\n tcp-conmgr | socketConnected \n");
-    printf("tcp-conmgr | Current state: %s \n", get_state_name_conmgr_sm(tcpConMgr->sm.state));
+    //  printf("\n tcp-conmgr | socketConnected \n");
+    //  printf("tcp-conmgr | Current state: %s \n", get_state_name_conmgr_sm(tcpConMgr->sm.state));
 
     bsp_netStatus(ConnectedSt);
     rkh_sma_recall((RKH_SMA_T *)me, &qDefer);
@@ -469,14 +469,14 @@ static void socketConnected(TcpConMgr *const me) {
 /* ............................. Exit actions ............................. */
 static void socketClose(TcpConMgr *const me) {
 
-    printf("\n tcp-conmgr | socketClose \n");
+    //  printf("\n tcp-conmgr | socketClose \n");
     rkh_tmr_stop(&me->timer);
 }
 
 static void socketClosed(TcpConMgr *const me) {
 
-    printf("\n tcp-conmgr | socketClosed \n");
-    printf("tcp-conmgr | Current state: %s \n", get_state_name_conmgr_sm(tcpConMgr->sm.state));
+    //  printf("\n tcp-conmgr | socketClosed \n");
+    // printf("tcp-conmgr | Current state: %s \n", get_state_name_conmgr_sm(tcpConMgr->sm.state));
 
     bsp_netStatus(DisconnectedSt);
 

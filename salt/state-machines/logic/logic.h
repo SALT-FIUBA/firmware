@@ -147,8 +147,8 @@ typedef struct LogicData
 
 /* -------------------------- External variables --------------------------- */
 /* -------------------------- Function prototypes -------------------------- */
-void logic_ctor(LogicCfg *config);
-void logic_getData(LogicData* data);
+void logic_ctor(LogicCfg * config);
+void logic_getData(LogicData * data);
 rui16_t logic_getPublishPeriod();
 
 /* -------------------- External C language linkage end -------------------- */

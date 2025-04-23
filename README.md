@@ -1,6 +1,108 @@
 # firmware
 
 
+## stm32 lwip tcp-conMgr + tcp-mqttProt + logic state machines working
+
+
+### susbcribe to topic "/stm32/data" from stm32_client
+
+#### mosquitto cli
+```json 
+» mosquitto_sub -h 192.168.1.81 -p 1883 -t "/stm32/data"
+
+{"cmd_timeout":60000,"vel_ct_on":30,"vel_ct_off":25,"vel_fe_on":36,"time_fe_hold":3000,"time_blink_enable":500,"time_blink_disable":1000,"period_blink":5,"cmd":"automatic","vel":-1,"vel_source":null,"al_mode":false,"publish_period":5}
+{"cmd_timeout":60000,"vel_ct_on":30,"vel_ct_off":25,"vel_fe_on":36,"time_fe_hold":3000,"time_blink_enable":500,"time_blink_disable":1000,"period_blink":5,"cmd":"automatic","vel":-1,"vel_source":null,"al_mode":false,"publish_period":5}
+{"cmd_timeout":60000,"vel_ct_on":30,"vel_ct_off":25,"vel_fe_on":36,"time_fe_hold":3000,"time_blink_enable":500,"time_blink_disable":1000,"period_blink":5,"cmd":"automatic","vel":-1,"vel_source":null,"al_mode":false,"publish_period":5}
+{"cmd_timeout":60000,"vel_ct_on":30,"vel_ct_off":25,"vel_fe_on":36,"time_fe_hold":3000,"time_blink_enable":500,"time_blink_disable":1000,"period_blink":5,"cmd":"automatic","vel":-1,"vel_source":null,"al_mode":false,"publish_period":5}
+{"cmd_timeout":60000,"vel_ct_on":30,"vel_ct_off":25,"vel_fe_on":36,"time_fe_hold":3000,"time_blink_enable":500,"time_blink_disable":1000,"period_blink":5,"cmd":"automatic","vel":-1,"vel_source":null,"al_mode":false,"publish_period":5}
+{"cmd_timeout":60000,"vel_ct_on":30,"vel_ct_off":25,"vel_fe_on":36,"time_fe_hold":3000,"time_blink_enable":500,"time_blink_disable":1000,"period_blink":5,"cmd":"automatic","vel":-1,"vel_source":null,"al_mode":false,"publish_period":5}
+{"cmd_timeout":60000,"vel_ct_on":30,"vel_ct_off":25,"vel_fe_on":36,"time_fe_hold":3000,"time_blink_enable":500,"time_blink_disable":1000,"period_blink":5,"cmd":"automatic","vel":-1,"vel_source":null,"al_mode":false,"publish_period":5}
+```
+
+### subscribe to topic "/stm32/config" from mosquitto_sub
+
+#### mosquitto pub
+```json 
+» mosquitto_pub -h 192.168.1.81 -p 1883 -t "/stm32/config" -m "test message"
+» mosquitto_pub -h 192.168.1.81 -p 1883 -t "/stm32/config" -m "test message"
+```
+
+#### mosquitto broker 
+
+```json
+» mosquitto -c mosquitto.conf -v
+1745417494: mosquitto version 2.0.11 starting
+1745417494: Config loaded from mosquitto.conf.
+1745417494: Opening ipv4 listen socket on port 1883.
+1745417494: Opening ipv6 listen socket on port 1883.
+1745417494: mosquitto version 2.0.11 running
+
+1745417519: New connection from 192.168.1.78:52432 on port 1883.
+1745417519: New client connected from 192.168.1.78:52432 as stm32_client (p2, c1, k400).
+1745417519: No will message specified.
+1745417519: Sending CONNACK to stm32_client (0, 0)
+1745417519: Received SUBSCRIBE from stm32_client
+1745417519: 	/stm32/config (QoS 2)
+1745417519: stm32_client 2 /stm32/config
+1745417519: Sending SUBACK to stm32_client
+
+1745417531: New connection from 192.168.1.81:43772 on port 1883.
+1745417531: New client connected from 192.168.1.81:43772 as auto-4FFECE7C-6EA8-2D56-BFCF-6F9A93613D8C (p2, c1, k60).
+1745417531: No will message specified.
+1745417531: Sending CONNACK to auto-4FFECE7C-6EA8-2D56-BFCF-6F9A93613D8C (0, 0)
+1745417531: Received PUBLISH from auto-4FFECE7C-6EA8-2D56-BFCF-6F9A93613D8C (d0, q0, r0, m0, '/stm32/config', ... (12 bytes))
+1745417531: Sending PUBLISH to stm32_client (d0, q0, r0, m0, '/stm32/config', ... (12 bytes))
+1745417531: Received DISCONNECT from auto-4FFECE7C-6EA8-2D56-BFCF-6F9A93613D8C
+1745417531: Client auto-4FFECE7C-6EA8-2D56-BFCF-6F9A93613D8C disconnected.
+
+1745417540: New connection from 192.168.1.81:56424 on port 1883.
+1745417540: New client connected from 192.168.1.81:56424 as auto-DF34D743-EAFB-E35F-D11E-94DDA5BD3C3D (p2, c1, k60).
+1745417540: No will message specified.
+1745417540: Sending CONNACK to auto-DF34D743-EAFB-E35F-D11E-94DDA5BD3C3D (0, 0)
+1745417540: Received PUBLISH from auto-DF34D743-EAFB-E35F-D11E-94DDA5BD3C3D (d0, q0, r0, m0, '/stm32/config', ... (12 bytes))
+1745417540: Sending PUBLISH to stm32_client (d0, q0, r0, m0, '/stm32/config', ... (12 bytes))
+1745417540: Received DISCONNECT from auto-DF34D743-EAFB-E35F-D11E-94DDA5BD3C3D
+1745417540: Client auto-DF34D743-EAFB-E35F-D11E-94DDA5BD3C3D disconnected.
+```
+
+### stm32 huart connection
+
+```json 
+» ./STM32_Programmer_CLI -c port=ttyACM0 br=115200 console
+      -------------------------------------------------------------------
+                        STM32CubeProgrammer v2.17.0                  
+      -------------------------------------------------------------------
+
+Serial Port ttyACM0 is successfully opened.
+ Port configuration: parity = even, baudrate = 115200, data-bit = 8,
+                     stop-bit = 1,0, flow-control = off
+
+Entering console mode :
+Press F to send a file
+Press E to exit
+Press W to write mode
+
+
+ %%%%%%%%%%%%%%%%% 
+Waiting for network interface...
+Waiting for link...
+Link up - IP: 192.168.1.78
+logic | entry_disable 
+mqttc_subscribe 1 MQTT_OK 
+__mqttc_send error: 1 MQTT_OK 
+__mqttc_send control packet type: 1 
+MQTT_CONTROL_CONNECT 
+MQTT_CONTROL_PINGREQ 
+__mqttc_send control packet type: 8 
+MQTT_CONTROL_PINGREQ 
+Received 4 bytes 
+Received 5 bytes 
+
+Received 29 bytes 
+Received 29 bytes 
+```
+
+
 ## stm32 lwip tcp MqttProt Client SM with an undesired CONNECT after 25 seconds (without SyncRegion state machine)
 
 ### tcp-conmgr.c
