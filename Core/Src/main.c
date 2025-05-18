@@ -130,8 +130,24 @@ static rbool_t initEnd = false;
 static CmdEvt e_saltCmd;
 
 
-void onMQTTCb(void ** state,struct mqttc_response_publish * publish){
+void onMQTTCb(void **state, struct mqttc_response_publish *publish) {
+    printf("on mqtt callback called\n");
 
+    // Static buffer for topic (adjust size as needed)
+    char topic_name[20];
+    if (publish->topic_name_size < sizeof(topic_name)) {
+        memcpy(topic_name, publish->topic_name, publish->topic_name_size);
+        topic_name[publish->topic_name_size] = '\0';
+    } else {
+        printf("Topic too long\n");
+        return;
+    }
+
+    // Print message with length (not null-terminated)
+    printf("Received publish('%s'): %.*s\n", topic_name,
+           (int)publish->application_message_size, (const char*)publish->application_message);
+
+    /*
     if(!initEnd){
         return;
     }
@@ -140,6 +156,7 @@ void onMQTTCb(void ** state,struct mqttc_response_publish * publish){
     if (result > 0){
         RKH_SMA_POST_FIFO(logic, RKH_UPCAST(RKH_EVT_T, &e_saltCmd), 0);
     }
+     */
 
 }
 

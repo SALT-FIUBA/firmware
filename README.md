@@ -1,8 +1,63 @@
 # firmware
 
+## stm32 subscribe test
+
+### stm32 huart port 
+```json
+» ./STM32_Programmer_CLI -c port=ttyACM0 br=115200 console
+      -------------------------------------------------------------------
+                        STM32CubeProgrammer v2.17.0                  
+      -------------------------------------------------------------------
+
+Serial Port ttyACM0 is successfully opened.
+ Port configuration: parity = even, baudrate = 115200, data-bit = 8,
+                     stop-bit = 1,0, flow-control = off
+
+ %%%%%%%%%%%%%%%%% 
+Waiting for network interface...
+Waiting for link...
+Link up - IP: 172.20.10.10
+logic | entry_disable 
+mqttc_subscribe 1 MQTT_OK 
+__mqttc_send error: 1 MQTT_OK 
+__mqttc_send control packet type: 1 
+MQTT_CONTROL_CONNECT 
+MQTT_CONTROL_PINGREQ 
+__mqttc_send control packet type: 8 
+MQTT_CONTROL_PINGREQ 
+Received 4 bytes 
+Received 5 bytes 
+Received 29 bytes 
+```
+
+### mosquitto pub utility 
+```json
+» mosquitto_pub -h 172.20.10.8 -p 1883 -t "/stm32/config" -m "test message"
+```
+
+### mosquitto broker 
+```json
+1746571818: New connection from 172.20.10.10:52432 on port 1883.
+1746571818: New client connected from 172.20.10.10:52432 as stm32_client (p2, c1, k400).
+1746571818: No will message specified.
+1746571818: Sending CONNACK to stm32_client (0, 0)
+1746571818: Received SUBSCRIBE from stm32_client
+1746571818: 	/stm32/config (QoS 2)
+1746571818: stm32_client 2 /stm32/config
+1746571818: Sending SUBACK to stm32_client
+
+1746571888: New connection from 172.20.10.8:46208 on port 1883.
+1746571888: New client connected from 172.20.10.8:46208 as auto-29E9429D-1E7C-BCBD-DC9F-999E457F7EA4 (p2, c1, k60).
+1746571888: No will message specified.
+1746571888: Sending CONNACK to auto-29E9429D-1E7C-BCBD-DC9F-999E457F7EA4 (0, 0)
+1746571888: Received PUBLISH from auto-29E9429D-1E7C-BCBD-DC9F-999E457F7EA4 (d0, q0, r0, m0, '/stm32/config', ... (12 bytes))
+1746571888: Sending PUBLISH to stm32_client (d0, q0, r0, m0, '/stm32/config', ... (12 bytes))
+1746571888: Received DISCONNECT from auto-29E9429D-1E7C-BCBD-DC9F-999E457F7EA4
+1746571888: Client auto-29E9429D-1E7C-BCBD-DC9F-999E457F7EA4 disconnected.
+```
+
 
 ## stm32 lwip tcp-conMgr + tcp-mqttProt + logic state machines working
-
 
 ### susbcribe to topic "/stm32/data" from stm32_client
 
@@ -181,10 +236,6 @@ enAwaitingAck(TCP_MQTTProt *const me, RKH_EVT_T *pe)
 1745154642: Bad client stm32_client sending multiple CONNECT messages.
 1745154642: Client stm32_client disconnected due to protocol error.
 ```
-
-
-
-
 
 ## stm32 lwip tcp MqttProt Client SM with PUBLISH working and an undesired CONNECT after 25 seconds (without SyncRegion state machine) 
 

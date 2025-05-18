@@ -65,7 +65,7 @@ RKH_END_TRANS_TABLE
 RKH_CREATE_BASIC_STATE(TcpConMgr_connected, socketConnected, NULL, &TcpConMgr_active, NULL);
 RKH_CREATE_TRANS_TABLE(TcpConMgr_connected)
                 // TODO  RKH_TRREG(evSend, NULL, send_data, &TcpConMgr_sending),
-                // TODO  RKH_TRREG(evRecv, NULL, read_data, &TcpConMgr_receiving),
+                RKH_TRREG(evRecv, NULL, read_data, &TcpConMgr_receiving),
                 RKH_TRREG(evClosed, NULL, NULL, &TcpConMgr_connecting),
                 RKH_TRREG(evDisconnected, NULL, socketClosed, &TcpConMgr_connecting),
 RKH_END_TRANS_TABLE
@@ -157,7 +157,7 @@ static err_t tcp_conmgr_sent_callback(void *arg, struct tcp_pcb *tpcb, u16_t len
 
 static err_t tcp_conmgr_recv_callback(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_t err) {
 
-    //  printf("\n tcp-conmgr | tcp_recv_callback \n");
+    printf("\n tcp-conmgr | tcp_recv_callback \n");
 
     TcpConMgr *me = (TcpConMgr *)arg;
 
@@ -170,6 +170,7 @@ static err_t tcp_conmgr_recv_callback(void *arg, struct tcp_pcb *tpcb, struct pb
 
             memcpy(me->recv_buffer + me->recv_len, p->payload, p->tot_len);
             me->recv_len += p->tot_len;
+
             printf("Received %d bytes \n", p->tot_len);
 
             TcpReceiveEvt * evt = RKH_ALLOC_EVT(TcpReceiveEvt, evRecv, me);
@@ -180,8 +181,15 @@ static err_t tcp_conmgr_recv_callback(void *arg, struct tcp_pcb *tpcb, struct pb
             }
 
             size_t bytes_to_read = (me->recv_len < RECV_BUFF_SIZE) ? me->recv_len : RECV_BUFF_SIZE;
+
+            // assigning me fields to event fields
             memcpy(evt->buf, me->recv_buffer + me->recv_index, bytes_to_read);
             evt->size = bytes_to_read;
+
+            printf("TcpReceivedEvt buf: %s \n", evt->buf);
+            printf("TcpReceivedEvt size: %u \n", evt->size);
+
+
             me->recv_index += bytes_to_read;
 
             if (me->recv_index >= me->recv_len) {
@@ -218,20 +226,20 @@ static err_t tcp_conmgr_recv_callback(void *arg, struct tcp_pcb *tpcb, struct pb
 
 static err_t tcp_conmgr_connect_callback(void *arg, struct tcp_pcb *tpcb, err_t err) {
 
-    //  printf("\n tcp-conmgr | tcp_connect_callback \n");
+    printf("\n tcp-conmgr | tcp_connect_callback \n");
 
     TcpConMgr *me = (TcpConMgr *)arg;
 
     if (err == ERR_OK) {
 
-        //  printf("tcp-conmgr | TCP Connected\n");
+        printf("tcp-conmgr | TCP Connected\n");
 
         tcp_recv(tpcb, tcp_conmgr_recv_callback);
         RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Connected), me);
 
     } else {
 
-        //  printf("tcp-conmgr | TCP Connection failed: %d\n", err);
+        printf("tcp-conmgr | TCP Connection failed: %d\n", err);
 
         tcp_close(tpcb);
         me->tpcb = NULL;
@@ -245,8 +253,7 @@ static err_t tcp_conmgr_connect_callback(void *arg, struct tcp_pcb *tpcb, err_t 
 /* ............................ Initial action ............................. */
 static void init(TcpConMgr *const me, RKH_EVT_T *pe) {
 
-    //  printf("\n tcp-conmgr | tcp-conmgr | init \n");
-    //  printf("tcp-conmgr | Current state: %s \n", get_state_name_conmgr_sm(tcpConMgr->sm.state));
+    printf("\n tcp-conmgr | tcp-conmgr | init \n");
 
     (void)pe;
     RKH_TMR_INIT(&me->timer, &e_tout, NULL);
@@ -327,12 +334,26 @@ static void flush_data(TcpConMgr *const me, RKH_EVT_T *pe) {
     /* Already handled in send_data */
 }
 
-static void read_data(TcpConMgr *const me, RKH_EVT_T *pe) {
+/*
+ static void socketConnected(TcpConMgr *const me) {
 
-    //  printf("\n tcp-conmgr | read_data \n");
+    //  printf("\n tcp-conmgr | socketConnected \n");
     //  printf("tcp-conmgr | Current state: %s \n", get_state_name_conmgr_sm(tcpConMgr->sm.state));
 
-    /* TODO
+    bsp_netStatus(ConnectedSt);
+    rkh_sma_recall((RKH_SMA_T *)me, &qDefer);
+
+    TcpSocketConnectedEvt * evt = RKH_ALLOC_EVT(TcpSocketConnectedEvt, evNetConnected, me);
+    evt->tpcb = me->tpcb;
+
+
+    RKH_SMA_POST_FIFO(tcpMqttProt, RKH_UPCAST(RKH_EVT_T, evt), me);
+}
+ */
+static void read_data(TcpConMgr *const me, RKH_EVT_T *pe) {
+
+    printf("\n tcp-conmgr | read_data \n");
+
 
     TcpReceiveEvt * evt = RKH_DOWNCAST(TcpReceiveEvt, pe);
 
@@ -345,10 +366,9 @@ static void read_data(TcpConMgr *const me, RKH_EVT_T *pe) {
         printf("tcp-conmgr | evt size: %d \n", evt->size);
         printf("tcp-conmgr | evet e: %d \n", evt->evt.e);
 
-        RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Ok), me);
+        RKH_SMA_POST_FIFO(tcpMqttProt, RKH_UPCAST(RKH_EVT_T, &e_Received), me);
 
     }
-    */
 }
 
 
@@ -399,8 +419,7 @@ static err_t tcp_conmgr_poll_callback(void *arg, struct tcp_pcb *tpcb) {
 
 static void tcp_conmgr_connect_attempt(TcpConMgr *const me, RKH_EVT_T *pe) {
 
-    //  printf("\n tcp-conmgr | tcp_connect_attempt \n");
-    //  printf("tcp-conmgr | Current state: %s \n", get_state_name_conmgr_sm(tcpConMgr->sm.state));
+    printf("\n tcp-conmgr | tcp_connect_attempt \n");
 
     if (me->tpcb == NULL) {
 
@@ -417,7 +436,9 @@ static void tcp_conmgr_connect_attempt(TcpConMgr *const me, RKH_EVT_T *pe) {
         tcp_poll(me->tpcb, tcp_conmgr_poll_callback, 120);
 
         ip_addr_t remote_ip;
-        IP4_ADDR(&remote_ip, 192, 168, 1, 81); /* Replace with your TCP server IP */
+        //  IP4_ADDR(&remote_ip, 192, 168, 0, 214); /* SD Gateway IP */
+        IP4_ADDR(&remote_ip, 192, 168, 1, 81); /* JD Gateway IP */
+        //  IP4_ADDR(&remote_ip, 172, 20, 10, 8); /* iphone Gateway IP */
         uint16_t remote_port = 1883; /* Replace with your TCP server port */
 
         err_t err = tcp_connect(me->tpcb, &remote_ip, remote_port, tcp_conmgr_connect_callback);

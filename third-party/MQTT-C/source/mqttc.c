@@ -660,23 +660,34 @@ ssize_t __mqttc_send(struct mqttc_client *client)
 
 ssize_t __mqttc_recv(struct mqttc_client *client)
 {
+    printf("__mqttc_recv error: %d %s \n", client->error, mqttc_error_str(client->error));
+
     struct mqttc_response response;
     ssize_t mqttc_recv_ret = MQTT_OK;
     MQTTC_PAL_MUTEX_LOCK(&client->mutex);
 
     /* read until there is nothing left to read, or there was an error */
     while(mqttc_recv_ret == MQTT_OK) {
+
+        printf("mqttc_recv_ret: %d \n", mqttc_recv_ret);
+
         /* read in as many bytes as possible */
         ssize_t rv, consumed;
         struct mqttc_queued_message *msg = NULL;
 
         rv = mqttc_pal_recvall(client->socketfd, client->recv_buffer.curr, client->recv_buffer.curr_sz, 0);
+        printf("rv: %d \n", rv);
+
         if (rv < 0) {
+
+            printf("rv < 0 \n");
             /* an error occurred */
             client->error = (enum MQTTErrors)rv;
             MQTTC_PAL_MUTEX_UNLOCK(&client->mutex);
             return rv;
+
         } else {
+
             client->recv_buffer.curr += rv;
             client->recv_buffer.curr_sz -= (unsigned long)rv;
         }
@@ -731,6 +742,9 @@ ssize_t __mqttc_recv(struct mqttc_client *client)
         MQTT_CONTROL_PINGRESP:
             -> release PINGREQ
         */
+
+        printf("header control type: %d \n", response.fixed_header.control_type);
+
         switch (response.fixed_header.control_type) {
             case MQTT_CONTROL_CONNACK:
                 /* release associated CONNECT */
@@ -756,6 +770,8 @@ ssize_t __mqttc_recv(struct mqttc_client *client)
                 }
                 break;
             case MQTT_CONTROL_PUBLISH:
+                printf("case MQTT CONTROL PUBLISH \n");
+
                 /* stage response, none if qos==0, PUBACK if qos==1, PUBREC if qos==2 */
                 if (response.decoded.publish.qos_level == 1) {
                     rv = __mqttc_puback(client, response.decoded.publish.packet_id);
@@ -778,8 +794,10 @@ ssize_t __mqttc_recv(struct mqttc_client *client)
                     }
                 }
                 /* call publish callback */
+                printf("/* call publish callback */ \n");
                 client->publish_response_callback(&client->publish_response_callback_state, &response.decoded.publish);
                 break;
+
             case MQTT_CONTROL_PUBACK:
                 /* release associated PUBLISH */
                 msg = mqttc_mq_find(&client->mq, MQTT_CONTROL_PUBLISH, &response.decoded.puback.packet_id);

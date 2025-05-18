@@ -38,6 +38,9 @@ static void init(TCP_MQTTProt *const me, RKH_EVT_T *pe);
 /* ........................ Declares effect actions ........................ */
 static void publish(TCP_MQTTProt *const me, RKH_EVT_T *pe);
 
+
+static void processReceivedData(TCP_MQTTProt *const me, RKH_EVT_T *pe);
+
 /*
  * TODO
  *
@@ -79,6 +82,7 @@ RKH_CREATE_COMP_REGION_STATE(Client_Connected, enConnected, NULL, RKH_ROOT,
                              RKH_NO_HISTORY, NULL, NULL, NULL, NULL);
 RKH_CREATE_TRANS_TABLE(Client_Connected)
                 RKH_TRREG(evNetDisconnected, NULL, NULL, &Client_Idle),
+                RKH_TRINT(evReceived, NULL, processReceivedData),
 RKH_END_TRANS_TABLE
 
 RKH_CREATE_BASIC_STATE(Client_TryConnect, brokerConnect, NULL,
@@ -107,7 +111,6 @@ RKH_END_TRANS_TABLE
 // TODO: take enWaitToPublish and exWaitToPublish from mqttProt.c
 RKH_CREATE_BASIC_STATE(Client_WaitToPublish, enWaitToPublish, exWaitToPublish,
                        &Client_Connected, NULL);
-
 RKH_CREATE_TRANS_TABLE(Client_WaitToPublish)
                 // TODO: when the timer finish it triggers evWaitPublishTout. check RKH_TMR_INIT arguments in enWaitToPublish
                 RKH_TRREG(evWaitPublishTout, NULL, NULL, &Client_C20),
@@ -209,6 +212,8 @@ static RKH_ROM_STATIC_EVENT(evConnAcceptedObj, evConnAccepted);
 static RKH_ROM_STATIC_EVENT(evUnlockedObj, evUnlocked);
 static RKH_ROM_STATIC_EVENT(evRestartObj, evRestart);
 
+static RKH_ROM_STATIC_EVENT(e_Ok, evOk);
+
 static TcpSendEvt evSendObj;
 static ConnRefusedEvt evConnRefusedObj;
 
@@ -292,7 +297,6 @@ static void
 dispatch(RKH_SMA_T *me, void *arg)
 {
     //  printf("\n tcp-mqttprot | dispatch \n");
-    //  printf("tcp-mqttprot | Current state: %s \n \n", get_state_name_mqtt_sm(tcpMqttProt->sm.state));
 
     rkh_sm_dispatch((RKH_SM_T *)me, (RKH_EVT_T *)arg);
 }
@@ -300,10 +304,8 @@ dispatch(RKH_SMA_T *me, void *arg)
 static void * reconnect_callback(struct mqttc_client *client, void **state)
 {
     //  printf("\n tcp-mqttprot | downcastNetConnectedEvt \n");
-    //  printf("tcp-mqttprot | Current state: %s \n \n", get_state_name_mqtt_sm(tcpMqttProt->sm.state));
 
     TCP_MQTTProt *me = (TCP_MQTTProt *)*state;
-    // printf("Reconnecting...\n");
 
     if (me->sockfd != NULL) {
         tcp_close(me->sockfd); // Ensure proper socket closure
@@ -465,6 +467,25 @@ publish(TCP_MQTTProt *const me, RKH_EVT_T *pe)
 }
 
 
+
+static void processReceivedData(TCP_MQTTProt *const me, RKH_EVT_T *pe) {
+
+    printf("tcp-mqttprot | Processing received MQTT data\n");
+
+    // Call mqttc_sync to process any received MQTT message
+    enum MQTTErrors sync_error = mqttc_sync(&me->mqttc_client);
+
+    if (sync_error == MQTT_OK) {
+        printf("tcp-mqttprot | MQTT sync successful\n");
+    } else {
+        printf("tcp-mqttprot | MQTT sync failed: %s\n", mqttc_error_str(sync_error));
+    }
+
+    // Send acknowledgment back to the TCP state machine
+    RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Ok), me);
+
+}
+
 static void downcastNetConnectedEvt(TCP_MQTTProt *const me, RKH_EVT_T *pe)
 {
     //  printf("\n tcp-mqttprot | downcastNetConnectedEvt \n");
@@ -519,7 +540,7 @@ enConnected(TCP_MQTTProt  * const me, RKH_EVT_T * pe) {
 static void
 brokerConnect(TCP_MQTTProt *const me, RKH_EVT_T *pe)
 {
-    //  printf("\n tcp-mqttprot | brokerConnect \n");
+    printf("\n tcp-mqttprot | brokerConnect \n");
     //  printf("tcp-mqttprot | Current state: %s \n ", get_state_name_mqtt_sm(tcpMqttProt->sm.state));
 
     enum MQTTErrors mqtt_error;
@@ -540,6 +561,7 @@ brokerConnect(TCP_MQTTProt *const me, RKH_EVT_T *pe)
                                NULL, NULL, 0,
                                NULL, NULL, MQTT_CONNECT_CLEAN_SESSION,
                                me->config->keepAlive);
+    printf("mqttc_connect %d %s \n", mqtt_error, mqttc_error_str(mqtt_error));
 
     mqtt_error = mqttc_subscribe(&me->mqttc_client, me->config->subTopic, 2);
     printf("mqttc_subscribe %d %s \n", mqtt_error, mqttc_error_str(mqtt_error));
@@ -639,5 +661,3 @@ TCP_MQTTProt_ctor(TCP_MQTTProtCfg *config, TCP_MQTTProtPublish publisher)
     //  printf("tcp-mqttprot | Current state: %s \n \n", get_state_name_mqtt_sm(tcpMqttProt->sm.state));
 
 }
-
-/* ------------------------------ End of file ------------------------------ */

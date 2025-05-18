@@ -453,93 +453,6 @@ static err_t tcp_poll_callback(void *arg, struct tcp_pcb *tpcb) {
 }
 
 
-
-static uint8_t recv_buffer[1024]; // Adjust size as needed
-static uint32_t recv_len = 0;     // Bytes in buffer
-static uint32_t recv_index = 0;   // Read position
-
-
-// This callback ensures that all incoming TCP data is stored in recv_buffer for later use by MQTT-C
-static err_t tcp_recv_callback(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_t err) {
-
-    if (p != NULL) {
-        // Append data to buffer if space is available
-        if (recv_len + p->tot_len <= sizeof(recv_buffer)) {
-            memcpy(recv_buffer + recv_len, p->payload, p->tot_len);
-            recv_len += p->tot_len;
-
-            printf("Received %d bytes: %.*s\n", p->tot_len, p->tot_len, (char *)p->payload);
-        } else {
-
-            printf("Receive buffer overflow \n");
-            tcp_close(tpcb);
-        }
-
-        pbuf_free(p); // Free the pbuf
-    } else {
-
-        printf("Connection closed\n");
-        // NULL pbuf means connection closed
-        tcp_close(tpcb);
-        tpcb = NULL;
-    }
-
-    return ERR_OK;
-}
-
-
-static volatile int tcp_connected = 0;
-
-static err_t tcp_connect_callback(void *arg, struct tcp_pcb *tpcb, err_t err) {
-
-    if (err == ERR_OK) {
-        printf("TCP Connected\n");
-        tcp_recv(tpcb, tcp_recv_callback);
-
-        // Send a test message
-        const char *msg = "Hello from STM32\n";
-        err_t write_err = tcp_write(tpcb, msg, strlen(msg), TCP_WRITE_FLAG_COPY);
-        if (write_err == ERR_OK) {
-            tcp_output(tpcb); // Force sending the data
-            printf("Sent: %s", msg);
-        } else {
-            printf("tcp_write failed: %d\n", write_err);
-        }
-
-        tcp_connected = 1;
-    } else {
-        printf("TCP Connection failed: %d\n", err);
-        tcp_close(tpcb);
-        tcp_connected = 0;
-    }
-
-    return ERR_OK;
-}
-
-void start_tcp_connection(struct tcp_pcb *tpcb) {
-
-    if (tpcb == NULL) {
-        printf("Failed to create TCP PCB\n");
-        return;
-    }
-
-    tcp_err(tpcb, tcp_err_callback);
-    tcp_sent(tpcb, tcp_sent_callback);
-    tcp_poll(tpcb, tcp_poll_callback, 4);
-
-    ip_addr_t remote_ip;
-    IP4_ADDR(&remote_ip, 192, 168, 1, 81);
-    uint16_t remote_port = 1883;
-
-    err_t err = tcp_connect(tpcb, &remote_ip, remote_port, tcp_connect_callback);
-    if (err != ERR_OK) {
-        printf("tcp_connect failed: %d\n", err);
-        tcp_close(tpcb);
-        tpcb = NULL;
-    }
-}
-
-
 /**********************************************************************************************************************/
 /*
  This function sends data over the TCP connection
@@ -576,10 +489,22 @@ ssize_t mqttc_pal_sendall(mqttc_pal_socket_handle pcb, const void* buf, size_t l
  We’ll need a buffer to store incoming data, which mqtt_pal_recvall can then read.
  */
 
+static uint8_t recv_buffer[1024]; // Adjust size as needed
+static uint32_t recv_len = 0;     // Bytes in buffer
+static uint32_t recv_index = 0;   // Read position
 
 
 ssize_t mqttc_pal_recvall(mqttc_pal_socket_handle pcb, void * buf, size_t bufsz, int flags) {
 
+    printf("mqttc_pal_recvall \n");
+    printf("bufffer size: %d \n", bufsz);
+
+    printf("recv_len: %lu \n", recv_len);
+
+    // considero que me estoy enquilombando al pedo porque sabiendo que ahora posteo el evento con el mensaje del topico
+    // al que me suscribo, estoy esperando recibir el mensaje tcp cuando quizas ya esta dentro de mqttc_pal_socket_handle
+
+    // es necesario volver a handlear el dato recibido siendo que ya se hizo en tcp_recv_callback que es llamado en tcp-conmgr?
 
     if (recv_len > 0) {
 
@@ -601,6 +526,8 @@ ssize_t mqttc_pal_recvall(mqttc_pal_socket_handle pcb, void * buf, size_t bufsz,
 
     return 0; // No data available yet
 }
+
+
 
 
 #else
