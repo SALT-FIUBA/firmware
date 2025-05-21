@@ -662,6 +662,9 @@ ssize_t __mqttc_recv(struct mqttc_client *client)
 {
     printf("__mqttc_recv error: %d %s \n", client->error, mqttc_error_str(client->error));
 
+    printf("recv_buffer.curr: %hhu \n", *(client->recv_buffer.curr));
+    printf("recv_buffer.curr_sz: %d \n", client->recv_buffer.curr_sz);
+
     struct mqttc_response response;
     ssize_t mqttc_recv_ret = MQTT_OK;
     MQTTC_PAL_MUTEX_LOCK(&client->mutex);

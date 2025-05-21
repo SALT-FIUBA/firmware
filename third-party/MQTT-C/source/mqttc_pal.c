@@ -435,23 +435,8 @@ ssize_t mqtt_pal_recvall(mqtt_pal_socket_handle fd, void* buf, size_t bufsz, int
 
 
 #include "altcp.h"
+#include "tcp-conmgr.h"
 //  #include "lwip/tcp.h"
-
-
-static void tcp_err_callback(void *arg, err_t err) {
-    printf("TCP error: %d\n", err);
-}
-
-static err_t tcp_sent_callback(void *arg, struct tcp_pcb *tpcb, u16_t len) {
-    printf("Sent %d bytes\n", len);
-    return ERR_OK;
-}
-
-static err_t tcp_poll_callback(void *arg, struct tcp_pcb *tpcb) {
-    printf("Polling\n");
-    return ERR_OK;
-}
-
 
 /**********************************************************************************************************************/
 /*
@@ -489,40 +474,45 @@ ssize_t mqttc_pal_sendall(mqttc_pal_socket_handle pcb, const void* buf, size_t l
  We’ll need a buffer to store incoming data, which mqtt_pal_recvall can then read.
  */
 
-static uint8_t recv_buffer[1024]; // Adjust size as needed
-static uint32_t recv_len = 0;     // Bytes in buffer
-static uint32_t recv_index = 0;   // Read position
-
 
 ssize_t mqttc_pal_recvall(mqttc_pal_socket_handle pcb, void * buf, size_t bufsz, int flags) {
 
     printf("mqttc_pal_recvall \n");
-    printf("bufffer size: %d \n", bufsz);
+    if (pcb == NULL) {
+        return MQTT_ERROR_SOCKET_ERROR;
+    }
 
-    printf("recv_len: %lu \n", recv_len);
+
+    TcpConMgr *me = (TcpConMgr *)pcb->callback_arg;
+    if (me == NULL) {
+        return MQTT_ERROR_SOCKET_ERROR;
+    }
+
+    if (me->recv_len > 0) {
+
+        // Copy available data, up to bufsz
+        size_t bytes_to_read = (me->recv_len < bufsz) ? me->recv_len : bufsz;
+
+        memcpy(buf, me->recv_buffer + me->recv_index, bytes_to_read);
+        me->recv_index += bytes_to_read;
+
+        if (me->recv_index >= me->recv_len) {
+            // Buffer fully read, reset
+            me->recv_len = 0;
+            me->recv_index = 0;
+        } else {
+            // More data remains
+            me->recv_len -= bytes_to_read;
+        }
+
+        return bytes_to_read;
+    }
 
     // considero que me estoy enquilombando al pedo porque sabiendo que ahora posteo el evento con el mensaje del topico
     // al que me suscribo, estoy esperando recibir el mensaje tcp cuando quizas ya esta dentro de mqttc_pal_socket_handle
 
     // es necesario volver a handlear el dato recibido siendo que ya se hizo en tcp_recv_callback que es llamado en tcp-conmgr?
 
-    if (recv_len > 0) {
-
-        // Copy available data, up to bufsz
-        size_t bytes_to_read = (recv_len < bufsz) ? recv_len : bufsz;
-        memcpy(buf, recv_buffer + recv_index, bytes_to_read);
-        recv_index += bytes_to_read;
-        if (recv_index >= recv_len) {
-            // Buffer fully read, reset
-            recv_len = 0;
-            recv_index = 0;
-        } else {
-            // More data remains
-            recv_len -= bytes_to_read;
-        }
-
-        return bytes_to_read;
-    }
 
     return 0; // No data available yet
 }

@@ -123,7 +123,7 @@ RKH_END_TRANS_TABLE
 
 RKH_CREATE_BASIC_STATE(Client_WaitToUse1, NULL, NULL, &Client_Connected, NULL);
 RKH_CREATE_TRANS_TABLE(Client_WaitToUse1)
-                // TODO RKH_TRREG(evUnlocked, NULL, publish, &Client_WaitToPublish),
+                RKH_TRREG(evUnlocked, NULL, publish, &Client_WaitToPublish),
                 RKH_TRREG(evUnlocked, NULL, NULL, &Client_WaitToPublish),
 RKH_END_TRANS_TABLE
 
@@ -271,8 +271,7 @@ pubDft(AppData *appMsg)
 static int
 configClient(TCP_MQTTProt * const me, TCP_MQTTProtCfg * config)
 {
-    //  printf("\n tcp-mqttprot | configClient \n");
-    //  printf("tcp-mqttprot | Current state: %s \n \n", get_state_name_mqtt_sm(tcpMqttProt->sm.state));
+    printf("\n tcp-mqttprot | configClient \n");
 
     int result = 1;
 
@@ -359,12 +358,10 @@ init(TCP_MQTTProt * const me, RKH_EVT_T *pe)
 static void
 publish(TCP_MQTTProt *const me, RKH_EVT_T *pe)
 {
-    /*
-    printf("Buffer usage: %u/%u bytes\n", me->mqttc_client.mq.curr_sz, 2048);
     printf("\n tcp-mqttprot | publish \n");
-    printf("tcp-mqttprot | Current state: %s \n", get_state_name_mqtt_sm(tcpMqttProt->sm.state));
-    */
+    printf("Buffer usage: %u/%u bytes\n", me->mqttc_client.mq.curr_sz, 2048);
 
+    mqttc_sync(&me->mqttc_client);
     if (me->mqttc_client.error != MQTT_OK) {
 
         printf("PUBLISH ERROR ------> %d %s \n", me->mqttc_client.error, mqttc_error_str(me->mqttc_client.error));
@@ -404,7 +401,6 @@ publish(TCP_MQTTProt *const me, RKH_EVT_T *pe)
     enum MQTTErrors mqtt_error;
     enum MQTTErrors sync_error;
 
-    /*
     const char * topic = "stm32/data";
     const char * message = "Hello from STM32!";
 
@@ -428,9 +424,8 @@ publish(TCP_MQTTProt *const me, RKH_EVT_T *pe)
 
         printf("tcp-mqttprot | publish | sync failed \n");
     }
-    */
 
-
+    /*
     AppData appMsg;
     rui16_t pubTime;
 
@@ -445,25 +440,12 @@ publish(TCP_MQTTProt *const me, RKH_EVT_T *pe)
                                appMsg.size,
                                (me->config->qos << 1) & 0x06);
 
-    /*
     if (me->operRes != MQTT_OK) {
         printf("Publish failed: %d \n", me->operRes);
     } else {
         printf("Published successful \n");
     }
     */
-
-
-    sync_error = mqttc_sync(&me->mqttc_client);
-    /*
-    if (sync_error == MQTT_OK) {
-
-        printf("tcp-mqttprot | publish | sync success  %s \n", mqttc_error_str(sync_error));
-    } else {
-
-        printf("tcp-mqttprot | publish | sync failed \n");
-    }
-     */
 }
 
 
@@ -471,6 +453,11 @@ publish(TCP_MQTTProt *const me, RKH_EVT_T *pe)
 static void processReceivedData(TCP_MQTTProt *const me, RKH_EVT_T *pe) {
 
     printf("tcp-mqttprot | Processing received MQTT data\n");
+
+    TcpReceiveEvt * evt = RKH_DOWNCAST(TcpReceiveEvt, pe);
+
+    printf("%d \n", evt->size);
+    printf("%s \n", evt->buf);
 
     // Call mqttc_sync to process any received MQTT message
     enum MQTTErrors sync_error = mqttc_sync(&me->mqttc_client);
@@ -488,14 +475,11 @@ static void processReceivedData(TCP_MQTTProt *const me, RKH_EVT_T *pe) {
 
 static void downcastNetConnectedEvt(TCP_MQTTProt *const me, RKH_EVT_T *pe)
 {
-    //  printf("\n tcp-mqttprot | downcastNetConnectedEvt \n");
-    //  printf("tcp-mqttprot | Current state: %s \n \n", get_state_name_mqtt_sm(tcpMqttProt->sm.state));
-
+    printf("\n tcp-mqttprot | downcastNetConnectedEvt \n");
 
     TcpSocketConnectedEvt * evt = RKH_DOWNCAST(TcpSocketConnectedEvt, pe);
 
     me->sockfd = evt->tpcb;
-
 }
 
 /* ............................. Entry actions ............................. */
@@ -505,17 +489,14 @@ enAwaitingAck(TCP_MQTTProt * const me, RKH_EVT_T * pe)
     enum MQTTErrors mqtt_error;
     rui16_t connection_timer = 20;    /* in secs */
 
-    //  printf("\n tcp-mqttprot | entry Awaiting Ack \n");
-    //  printf("tcp-mqttprot | Current state: %s \n \n", get_state_name_mqtt_sm(tcpMqttProt->sm.state));
+    printf("\n tcp-mqttprot | entry Awaiting Ack \n");
 
-    //  printf("tcp-mqttprot | mqttc_sync -> _mqttc_send -> mqttc_pal_sendall \n");
     //  mqtt_error = mqttc_sync(&me->mqttc_client);
 
     RKH_TMR_INIT(&me->tryConnTmr, &evWaitConnectToutObj, NULL);
     RKH_TMR_ONESHOT(&me->tryConnTmr, RKH_UPCAST(RKH_SMA_T, me),
                     RKH_TIME_SEC(connection_timer));
 
-    //  printf(" tcp-mqttprot | entry Awaiting Ack mqttc_client error: %d %s \n", me->mqttc_client.error, mqttc_error_str(me->mqttc_client.error));
 
     if (me->mqttc_client.error == MQTT_OK) {
     //  if (mqtt_error == MQTT_OK) {
@@ -532,30 +513,27 @@ enAwaitingAck(TCP_MQTTProt * const me, RKH_EVT_T * pe)
 
 static void
 enConnected(TCP_MQTTProt  * const me, RKH_EVT_T * pe) {
-    //  printf("\n tcp-mqttprot | connected \n");
-    //  printf("tcp-mqttprot | Current state: %s \n \n", get_state_name_mqtt_sm(tcpMqttProt->sm.state));
+    printf("\n tcp-mqttprot | connected \n");
 
+    mqttc_sync(&me->mqttc_client);
 }
 
 static void
 brokerConnect(TCP_MQTTProt *const me, RKH_EVT_T *pe)
 {
     printf("\n tcp-mqttprot | brokerConnect \n");
-    //  printf("tcp-mqttprot | Current state: %s \n ", get_state_name_mqtt_sm(tcpMqttProt->sm.state));
 
     enum MQTTErrors mqtt_error;
 
     mqtt_error = mqttc_init(&me->mqttc_client, me->sockfd, me->sendbuf, sizeof(me->sendbuf),
                             me->recvbuf, sizeof(me->recvbuf),
                             me->config->callback);
+    printf("mqttc_init %d %s \n", mqtt_error, mqttc_error_str(mqtt_error));
 
-    //  printf("tcp-mqttprop | mqttc_init error: %d %s \n", mqtt_error, mqttc_error_str(mqtt_error));
     if (mqtt_error != MQTT_OK) {
         printf("MQTT-C init failed %d \n", mqtt_error);
     }
 
-
-    //  printf("Attempting MQTT connect at state \n");
     mqtt_error = mqttc_connect(&me->mqttc_client,
                                me->config->clientId,
                                NULL, NULL, 0,
@@ -570,8 +548,6 @@ brokerConnect(TCP_MQTTProt *const me, RKH_EVT_T *pe)
 
     me->operRes = mqtt_error;
     me->errorStr = mqttc_error_str(me->operRes);
-
-    //  printf("tcp-mqttprop | mqttc_connect error: %d %s \n \n", me->operRes, mqttc_error_str(me->operRes));
 }
 
 static void
