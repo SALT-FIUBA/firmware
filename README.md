@@ -1,6 +1,259 @@
 # firmware
 
-## stm32 subscribe test
+
+## stm32 subscribe test 2 
+
+### stm32 huart port
+```json
+ » ./STM32_Programmer_CLI -c port=ttyACM0 br=115200 console
+      -------------------------------------------------------------------
+                        STM32CubeProgrammer v2.17.0                  
+      -------------------------------------------------------------------
+
+Serial Port ttyACM0 is successfully opened.
+ Port configuration: parity = even, baudrate = 115200, data-bit = 8,
+                     stop-bit = 1,0, flow-control = off
+
+Entering console mode :
+Press F to send a file
+Press E to exit
+Press W to write mode
+
+
+ %%%%%%%%%%%%%%%%% 
+Waiting for network interface...
+Waiting for link...
+Link up - IP: 192.168.1.78
+
+ tcp-mqttprot | configClient 
+
+ tcp-conmgr | tcp-conmgr | init 
+logic | entry_disable 
+
+ tcp-conmgr | tcp_connect_attempt 
+
+ tcp-conmgr | tcp_connect_callback 
+tcp-conmgr | TCP Connected
+
+ tcp-mqttprot | downcastNetConnectedEvt 
+
+ tcp-mqttprot | connected 
+__mqttc_recv error: 0 MQTT_ERROR: Buffer too small. 
+recv_buffer.curr: 0 
+recv_buffer.curr_sz: 0 
+mqttc_recv_ret: 1 
+mqttc_pal_recvall 
+rv: -2147483631 
+rv < 0 
+
+ tcp-mqttprot | brokerConnect 
+mqttc_init 1 MQTT_OK 
+mqttc_connect 1 MQTT_OK 
+mqttc_subscribe 1 MQTT_OK 
+__mqttc_recv error: 1 MQTT_OK 
+recv_buffer.curr: 0 
+recv_buffer.curr_sz: 1024 
+mqttc_recv_ret: 1 
+mqttc_pal_recvall 
+rv: 0 
+__mqttc_send error: 1 MQTT_OK 
+__mqttc_send control packet type: 1 
+MQTT_CONTROL_CONNECT 
+MQTT_CONTROL_PINGREQ 
+__mqttc_send control packet type: 8 
+MQTT_CONTROL_PINGREQ 
+
+ tcp-mqttprot | entry Awaiting Ack 
+
+ tcp-conmgr | tcp_recv_callback 
+Received 4 bytes, total in buffer: 4 
+Assertion "pbuf_free: p->ref > 0" failed at line 753 in /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/pbuf.c
+tcp-mqttprot | Processing received MQTT data
+1668554762 
+
+_mqttc_recv error: 1 MQTT_OK 
+recv_buffer.curr: 0 
+recv_buffer.curr_sz: 1024 
+mqttc_recv_ret: 1 
+mqttc_pal_recvall 
+rv: 4 
+header control type: 2 
+mqttc_recv_ret: 1 
+mqttc_pal_recvall 
+rv: 0 
+__mqttc_send error: 1 MQTT_OK 
+tcp-mqttprot | MQTT sync successful
+
+ tcp-conmgr | tcp_recv_callback 
+Received 5 bytes, total in buffer: 5 
+Assertion "pbuf_free: p->ref > 0" failed at line 753 in /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/pbuf.c
+tcp-mqttprot | Processing received MQTT data
+1668554762 
+
+_mqttc_recv error: 1 MQTT_OK 
+recv_buffer.curr: 32 
+recv_buffer.curr_sz: 1024 
+mqttc_recv_ret: 1 
+mqttc_pal_recvall 
+rv: 5 
+header control type: 9 
+mqttc_recv_ret: 1 
+mqttc_pal_recvall 
+rv: 0 
+__mqttc_send error: 1 MQTT_OK 
+tcp-mqttprot | MQTT sync successful
+
+
+
+ tcp-conmgr | tcp_recv_callback 
+Received 30 bytes, total in buffer: 30 
+Assertion "pbuf_free: p->ref > 0" failed at line 753 in /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/pbuf.c
+tcp-mqttprot | Processing received MQTT data
+1668554762 
+
+_mqttc_recv error: 1 MQTT_OK 
+recv_buffer.curr: 144 
+recv_buffer.curr_sz: 1024 
+mqttc_recv_ret: 1 
+mqttc_pal_recvall 
+rv: 30 
+header control type: 3 
+case MQTT CONTROL PUBLISH 
+/* call publish callback */ 
+on mqtt callback called
+Received publish('/stm32/config'): test message2
+mqttc_recv_ret: 1 
+mqttc_pal_recvall 
+rv: 0 
+__mqttc_send error: 1 MQTT_OK 
+tcp-mqttprot | MQTT sync successful
+
+
+
+ tcp-conmgr | tcp_recv_callback 
+tcp-conmgr | Connection closed
+
+ tcp-conmgr | tcp_connect_attempt 
+
+ tcp-conmgr | tcp_connect_callback 
+tcp-conmgr | TCP Connected
+
+ tcp-mqttprot | downcastNetConnectedEvt 
+
+ tcp-mqttprot | connected 
+__mqttc_recv error: 1 MQTT_OK 
+recv_buffer.curr: 48 
+recv_buffer.curr_sz: 1024 
+mqttc_recv_ret: 1 
+mqttc_pal_recvall 
+rv: 0 
+__mqttc_send error: 1 MQTT_OK 
+
+ tcp-mqttprot | brokerConnect 
+mqttc_init 1 MQTT_OK 
+mqttc_connect 1 MQTT_OK 
+mqttc_subscribe 1 MQTT_OK 
+__mqttc_recv error: 1 MQTT_OK 
+recv_buffer.curr: 48 
+recv_buffer.curr_sz: 1024 
+mqttc_recv_ret: 1 
+mqttc_pal_recvall 
+rv: 0 
+__mqttc_send error: 1 MQTT_OK 
+__mqttc_send control packet type: 1 
+MQTT_CONTROL_CONNECT 
+MQTT_CONTROL_PINGREQ 
+__mqttc_send control packet type: 8 
+MQTT_CONTROL_PINGREQ 
+
+ tcp-mqttprot | entry Awaiting Ack 
+
+ tcp-conmgr | tcp_recv_callback 
+Received 4 bytes, total in buffer: 4 
+Assertion "pbuf_free: p->ref > 0" failed at line 753 in /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/pbuf.c
+tcp-mqttprot | Processing received MQTT data
+1668554762 
+
+_mqttc_recv error: 1 MQTT_OK 
+recv_buffer.curr: 48 
+recv_buffer.curr_sz: 1024 
+mqttc_recv_ret: 1 
+mqttc_pal_recvall 
+rv: 4 
+header control type: 2 
+mqttc_recv_ret: 1 
+mqttc_pal_recvall 
+rv: 0 
+__mqttc_send error: 1 MQTT_OK 
+tcp-mqttprot | MQTT sync successful
+
+ tcp-conmgr | tcp_recv_callback 
+Received 5 bytes, total in buffer: 5 
+Assertion "pbuf_free: p->ref > 0" failed at line 753 in /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/pbuf.c
+tcp-mqttprot | Processing received MQTT data
+1668554762 
+
+_mqttc_recv error: 1 MQTT_OK 
+recv_buffer.curr: 32 
+recv_buffer.curr_sz: 1024 
+mqttc_recv_ret: 1 
+mqttc_pal_recvall 
+rv: 5 
+header control type: 9 
+mqttc_recv_ret: 1 
+mqttc_pal_recvall 
+rv: 0 
+__mqttc_send error: 1 MQTT_OK 
+tcp-mqttprot | MQTT sync successful
+
+```
+### mosquitto pub utility
+
+```json
+» mosquitto_pub -h 192.168.1.81 -p 1883 -t "/stm32/config" -m "test message2"
+
+```
+
+### mosquitto broker
+
+```json
+» mosquitto -c mosquitto.conf -v
+1747839856: mosquitto version 2.0.11 starting
+1747839856: Config loaded from mosquitto.conf.
+1747839856: Opening ipv4 listen socket on port 1883.
+1747839856: Opening ipv6 listen socket on port 1883.
+1747839856: mosquitto version 2.0.11 running
+
+
+1747839886: New connection from 192.168.1.78:52432 on port 1883.
+1747839886: New client connected from 192.168.1.78:52432 as stm32_client (p2, c1, k400).
+1747839886: No will message specified.
+1747839886: Sending CONNACK to stm32_client (0, 0)
+1747839886: Received SUBSCRIBE from stm32_client
+1747839886: 	/stm32/config (QoS 2)
+1747839886: stm32_client 2 /stm32/config
+1747839886: Sending SUBACK to stm32_client
+1747839900: New connection from 192.168.1.81:40514 on port 1883.
+1747839900: New client connected from 192.168.1.81:40514 as auto-35EA5844-D5BF-5D4A-8502-13E07C7E9F69 (p2, c1, k60).
+1747839900: No will message specified.
+1747839900: Sending CONNACK to auto-35EA5844-D5BF-5D4A-8502-13E07C7E9F69 (0, 0)
+1747839900: Received PUBLISH from auto-35EA5844-D5BF-5D4A-8502-13E07C7E9F69 (d0, q0, r0, m0, '/stm32/config', ... (13 bytes))
+1747839900: Sending PUBLISH to stm32_client (d0, q0, r0, m0, '/stm32/config', ... (13 bytes))
+1747839900: Received DISCONNECT from auto-35EA5844-D5BF-5D4A-8502-13E07C7E9F69
+1747839900: Client auto-35EA5844-D5BF-5D4A-8502-13E07C7E9F69 disconnected.
+1747840492: Client stm32_client has exceeded timeout, disconnecting.
+1747840492: New connection from 192.168.1.78:52433 on port 1883.
+1747840492: New client connected from 192.168.1.78:52433 as stm32_client (p2, c1, k400).
+1747840492: No will message specified.
+1747840492: Sending CONNACK to stm32_client (0, 0)
+1747840492: Received SUBSCRIBE from stm32_client
+1747840492: 	/stm32/config (QoS 2)
+1747840492: stm32_client 2 /stm32/config
+1747840492: Sending SUBACK to stm32_client
+```
+
+
+## stm32 subscribe test 1 
 
 ### stm32 huart port 
 ```json

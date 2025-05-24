@@ -26,6 +26,59 @@ SOFTWARE.
 #include <stdarg.h>
 #include <string.h>
 
+// Function to print all MQTT control packet types
+void print_mqtt_control_type(enum MQTTControlPacketType type) {
+    switch (type) {
+        case MQTT_CONTROL_CONNECT:
+            printf("Control Packet Type %u: CONNECT\n", type);
+            break;
+        case MQTT_CONTROL_CONNACK:
+            printf("Control Packet Type %u: CONNACK\n", type);
+            break;
+        case MQTT_CONTROL_PUBLISH:
+            printf("Control Packet Type %u: PUBLISH\n", type);
+            break;
+        case MQTT_CONTROL_PUBACK:
+            printf("Control Packet Type %u: PUBACK\n", type);
+            break;
+        case MQTT_CONTROL_PUBREC:
+            printf("Control Packet Type %u: PUBREC\n", type);
+            break;
+        case MQTT_CONTROL_PUBREL:
+            printf("Control Packet Type %u: PUBREL\n", type);
+            break;
+        case MQTT_CONTROL_PUBCOMP:
+            printf("Control Packet Type %u: PUBCOMP\n", type);
+            break;
+        case MQTT_CONTROL_SUBSCRIBE:
+            printf("Control Packet Type %u: SUBSCRIBE\n", type);
+            break;
+        case MQTT_CONTROL_SUBACK:
+            printf("Control Packet Type %u: SUBACK\n", type);
+            break;
+        case MQTT_CONTROL_UNSUBSCRIBE:
+            printf("Control Packet Type %u: UNSUBSCRIBE\n", type);
+            break;
+        case MQTT_CONTROL_UNSUBACK:
+            printf("Control Packet Type %u: UNSUBACK\n", type);
+            break;
+        case MQTT_CONTROL_PINGREQ:
+            printf("Control Packet Type %u: PINGREQ\n", type);
+            break;
+        case MQTT_CONTROL_PINGRESP:
+            printf("Control Packet Type %u: PINGRESP\n", type);
+            break;
+        case MQTT_CONTROL_DISCONNECT:
+            printf("Control Packet Type %u: DISCONNECT\n", type);
+            break;
+        default:
+            printf("Control Packet Type %u: UNKNOWN\n", type);
+            break;
+    }
+}
+
+
+
 /**
  * @file
  * @brief Implements the functionality of MQTT-C.
@@ -669,6 +722,7 @@ ssize_t __mqttc_recv(struct mqttc_client *client)
     ssize_t mqttc_recv_ret = MQTT_OK;
     MQTTC_PAL_MUTEX_LOCK(&client->mutex);
 
+
     /* read until there is nothing left to read, or there was an error */
     while(mqttc_recv_ret == MQTT_OK) {
 
@@ -678,7 +732,8 @@ ssize_t __mqttc_recv(struct mqttc_client *client)
         ssize_t rv, consumed;
         struct mqttc_queued_message *msg = NULL;
 
-        rv = mqttc_pal_recvall(client->socketfd, client->recv_buffer.curr, client->recv_buffer.curr_sz, 0);
+        rv = mqttc_pal_recvall(client->socketfd, client->recv_buffer.curr,
+                               client->recv_buffer.curr_sz, 0);
         printf("rv: %d \n", rv);
 
         if (rv < 0) {
@@ -747,6 +802,7 @@ ssize_t __mqttc_recv(struct mqttc_client *client)
         */
 
         printf("header control type: %d \n", response.fixed_header.control_type);
+        print_mqtt_control_type(response.fixed_header.control_type);
 
         switch (response.fixed_header.control_type) {
             case MQTT_CONTROL_CONNACK:

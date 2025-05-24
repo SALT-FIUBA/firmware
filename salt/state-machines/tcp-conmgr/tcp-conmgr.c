@@ -174,6 +174,7 @@ static err_t tcp_conmgr_recv_callback(void *arg, struct tcp_pcb *tpcb, struct pb
             tcp_recved(tpcb, p->tot_len);
 
             // Free the pbuf as it’s no longer needed
+            printf("pbuf ref count: %d\n", p->ref);
             pbuf_free(p);
 
             // Post a notification event to the state machine
@@ -208,6 +209,7 @@ static err_t tcp_conmgr_recv_callback(void *arg, struct tcp_pcb *tpcb, struct pb
         } else {
 
             printf("tcp-conmgr | Receive buffer overflow\n");
+            pbuf_free(p);
             tcp_close(tpcb);
             me->tpcb = NULL;
 

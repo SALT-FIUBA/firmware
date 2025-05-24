@@ -205,11 +205,6 @@ int main(void)
     rkh_fwk_init();
     rkh_dynEvt_init();
 
-    /*
-    printf("main | SIZEOF_EP3STO: %d \n", SIZEOF_EP3STO);
-    printf("main | SIZEOF_EP3_BLOCK: %d \n", SIZEOF_EP3_BLOCK);
-    */
-
     /* Define event pool storage (simplified for this example) */
     rkh_fwk_registerEvtPool(evPool0Sto, SIZEOF_EP0STO, SIZEOF_EP0_BLOCK);
     //  rkh_fwk_registerEvtPool(evPool1Sto, SIZEOF_EP1STO, SIZEOF_EP1_BLOCK);               //    TcpNetConnectedEvent
@@ -244,15 +239,11 @@ int main(void)
     mqttProtCfg.callback = onMQTTCb;
     TCP_MQTTProt_ctor(&mqttProtCfg, publishDimba);
 
-    /*
-    blinker_ctor();
-    RKH_SMA_ACTIVATE(blinker, qsto, QSTO_SIZE,0,0);
-    */
 
     // Activate the TcpConMgr state machine
-   RKH_SMA_ACTIVATE(tcpConMgr, ConMgr_qsto, CONMGR_QSTO_SIZE, 0, 0);
-   RKH_SMA_ACTIVATE(tcpMqttProt, MQTTProt_qsto, MQTTPROT_QSTO_SIZE, 0, 0);
-   RKH_SMA_ACTIVATE(logic, Logic_qsto, LOGIC_QSTO_SIZE, 0,0);
+    RKH_SMA_ACTIVATE(tcpConMgr, ConMgr_qsto, CONMGR_QSTO_SIZE, 0, 0);
+    RKH_SMA_ACTIVATE(tcpMqttProt, MQTTProt_qsto, MQTTPROT_QSTO_SIZE, 0, 0);
+    RKH_SMA_ACTIVATE(logic, Logic_qsto, LOGIC_QSTO_SIZE, 0,0);
 
     // Post the initial evOpen event
     RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Open), NULL);

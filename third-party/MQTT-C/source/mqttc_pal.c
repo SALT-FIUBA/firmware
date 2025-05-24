@@ -445,18 +445,12 @@ ssize_t mqtt_pal_recvall(mqtt_pal_socket_handle fd, void* buf, size_t bufsz, int
     pcb: Treated as a struct tcp_pcb*.
     tcp_write: Queues data for sending; TCP_WRITE_FLAG_COPY ensures the buffer is copied since MQTT-C may reuse it.
     tcp_output: Forces the data to be sent immediately.
-
  */
 ssize_t mqttc_pal_sendall(mqttc_pal_socket_handle pcb, const void* buf, size_t len, int flags) {
 
     struct tcp_pcb * tpcb = (struct tcp_pcb*)pcb;
 
     uint8_t packet_type = ((uint8_t*)buf)[0] >> 4; // Extract MQTT packet type
-
-    /*
-    printf("mqttc_pal_sendall | Sending packet type: 0x%02X, length: %zu\n", packet_type, len);
-    printf("mqttc_pal_send_all | tpcb state: %d %s \n \n", tpcb->state, tcp_debug_state_str(tpcb->state));
-    */
 
     err_t err = tcp_write(tpcb, buf, len, TCP_WRITE_FLAG_COPY);
 
@@ -508,15 +502,9 @@ ssize_t mqttc_pal_recvall(mqttc_pal_socket_handle pcb, void * buf, size_t bufsz,
         return bytes_to_read;
     }
 
-    // considero que me estoy enquilombando al pedo porque sabiendo que ahora posteo el evento con el mensaje del topico
-    // al que me suscribo, estoy esperando recibir el mensaje tcp cuando quizas ya esta dentro de mqttc_pal_socket_handle
-
-    // es necesario volver a handlear el dato recibido siendo que ya se hizo en tcp_recv_callback que es llamado en tcp-conmgr?
-
 
     return 0; // No data available yet
 }
-
 
 
 
