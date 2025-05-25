@@ -169,7 +169,7 @@
  *  value to allow an application to deal with time when using timer
  *  services, converting ticks to time. See RKH_TICK_RATE_MS constant.
  */
-#define RKH_CFG_FWK_TICK_RATE_HZ            100u
+#define RKH_CFG_FWK_TICK_RATE_HZ            1000u
 
 /**
  *  \brief

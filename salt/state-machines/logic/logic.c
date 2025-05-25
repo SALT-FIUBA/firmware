@@ -421,7 +421,10 @@ static void configAlCtFe(Logic *me, rbool_t alActivated, rbool_t ctActivated, rb
 
 
 /* ............................ Initial action ............................. */
-static void init(Logic *const me, RKH_EVT_T *pe){
+static void init(Logic *const me, RKH_EVT_T *pe) {
+
+    printf("logic | init \n");
+
     (void)pe;
 
     RKH_TR_FWK_AO(me);
@@ -935,21 +938,21 @@ static void exit_hasler(LogicVel *const me){
 
     printf("logic | exit_hasler \n");
 
-    //rkh_tmr_stop(&me->timer);
+    rkh_tmr_stop(&me->timer);
 }
 
 static void exit_external(LogicVel *const me){
 
     printf("logic | exit_external \n");
 
-    //rkh_tmr_stop(&me->timer);
+    rkh_tmr_stop(&me->timer);
 }
 
 static void exit_gps(LogicVel *const me){
 
     printf("logic | exit_gps \n");
 
-    //rkh_tmr_stop(&me->timer);
+    rkh_tmr_stop(&me->timer);
 }
 
 static void exit_missing(LogicVel *const me){
