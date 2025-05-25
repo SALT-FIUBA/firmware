@@ -471,7 +471,7 @@ ssize_t mqttc_pal_sendall(mqttc_pal_socket_handle pcb, const void* buf, size_t l
 
 ssize_t mqttc_pal_recvall(mqttc_pal_socket_handle pcb, void * buf, size_t bufsz, int flags) {
 
-    printf("mqttc_pal_recvall \n");
+    // TODO printf("mqttc_pal_recvall \n");
     if (pcb == NULL) {
         return MQTT_ERROR_SOCKET_ERROR;
     }

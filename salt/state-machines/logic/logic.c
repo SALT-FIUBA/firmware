@@ -664,7 +664,8 @@ entry_disable(Logic *const me)
 {
     printf("logic | entry_disable \n");
 
-    configAlCtFe(me, RKH_FALSE, RKH_FALSE, RKH_FALSE);
+    // TODO ORIGINAL -> configAlCtFe(me, RKH_FALSE, RKH_FALSE, RKH_FALSE);
+    configAlCtFe(me, RKH_TRUE, RKH_TRUE, RKH_TRUE);
     setVelDisplay(me, NULL, false);
     me->ledConfig.ledOn = GREEN;
     me->ledConfig.ledGps = LED_OFF;

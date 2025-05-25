@@ -568,7 +568,8 @@ ssize_t __mqttc_send(struct mqttc_client *client)
 
     MQTTC_PAL_MUTEX_LOCK(&client->mutex);
 
-    printf("__mqttc_send error: %d %s \n", client->error, mqttc_error_str(client->error));
+    // TODO  printf("__mqttc_send error: %d %s \n", client->error, mqttc_error_str(client->error));
+
     if (client->error < 0 && client->error != MQTT_ERROR_SEND_BUFFER_IS_FULL) {
         MQTTC_PAL_MUTEX_UNLOCK(&client->mutex);
         return client->error;
@@ -652,7 +653,7 @@ ssize_t __mqttc_send(struct mqttc_client *client)
         MQTT_CONTROL_PINGRESP    -> n/a
         MQTT_CONTROL_DISCONNECT  -> complete
         */
-        printf("__mqttc_send control packet type: %d \n", msg->control_type);
+        // TODO printf("__mqttc_send control packet type: %d \n", msg->control_type);
 
         switch (msg->control_type) {
             case MQTT_CONTROL_PUBACK:
@@ -661,33 +662,33 @@ ssize_t __mqttc_send(struct mqttc_client *client)
                 msg->state = MQTT_QUEUED_COMPLETE;
                 break;
             case MQTT_CONTROL_PUBLISH:
-                printf("MQTT_CONTROL_PUBLISH \n");
+                // TODO printf("MQTT_CONTROL_PUBLISH \n");
                 inspected = ( MQTT_PUBLISH_QOS_MASK & (msg->start[0]) ) >> 1; /* qos */
                 if (inspected == 0) {
-                    printf("MQTT_QUEUED_COMPLETE \n");
+                    // TODO printf("MQTT_QUEUED_COMPLETE \n");
                     msg->state = MQTT_QUEUED_COMPLETE;
                 } else if (inspected == 1) {
-                    printf("MQTT_QUEUED_AWAITING_ACK \n");
+                    // TODO printf("MQTT_QUEUED_AWAITING_ACK \n");
                     msg->state = MQTT_QUEUED_AWAITING_ACK;
                     /*set DUP flag for subsequent sends [Spec MQTT-3.3.1-1] */
                     msg->start[0] |= MQTT_PUBLISH_DUP;
                 } else {
-                    printf("MQTT_QUEUED_AWAITING_ACK \n");
+                    // TODO printf("MQTT_QUEUED_AWAITING_ACK \n");
                     msg->state = MQTT_QUEUED_AWAITING_ACK;
                 }
                 break;
             case MQTT_CONTROL_CONNECT:
-                    printf("MQTT_CONTROL_CONNECT \n");
+                // TODO printf("MQTT_CONTROL_CONNECT \n");
             case MQTT_CONTROL_PUBREC:
             case MQTT_CONTROL_PUBREL:
             case MQTT_CONTROL_SUBSCRIBE:
             case MQTT_CONTROL_UNSUBSCRIBE:
             case MQTT_CONTROL_PINGREQ:
-                printf("MQTT_CONTROL_PINGREQ \n");
+                // TODO printf("MQTT_CONTROL_PINGREQ \n");
                 msg->state = MQTT_QUEUED_AWAITING_ACK;
                 break;
             default:
-                printf("DEFAULT | MQTT_ERROR_MALFORMED_REQUEST \n");
+                // TODO printf("DEFAULT | MQTT_ERROR_MALFORMED_REQUEST \n");
                 client->error = MQTT_ERROR_MALFORMED_REQUEST;
                 MQTTC_PAL_MUTEX_UNLOCK(&client->mutex);
                 return MQTT_ERROR_MALFORMED_REQUEST;
@@ -713,10 +714,10 @@ ssize_t __mqttc_send(struct mqttc_client *client)
 
 ssize_t __mqttc_recv(struct mqttc_client *client)
 {
-    printf("__mqttc_recv error: %d %s \n", client->error, mqttc_error_str(client->error));
+    // TODO printf("__mqttc_recv error: %d %s \n", client->error, mqttc_error_str(client->error));
 
-    printf("recv_buffer.curr: %hhu \n", *(client->recv_buffer.curr));
-    printf("recv_buffer.curr_sz: %d \n", client->recv_buffer.curr_sz);
+    // TODO printf("recv_buffer.curr: %hhu \n", *(client->recv_buffer.curr));
+    // TODO printf("recv_buffer.curr_sz: %d \n", client->recv_buffer.curr_sz);
 
     struct mqttc_response response;
     ssize_t mqttc_recv_ret = MQTT_OK;
@@ -726,7 +727,7 @@ ssize_t __mqttc_recv(struct mqttc_client *client)
     /* read until there is nothing left to read, or there was an error */
     while(mqttc_recv_ret == MQTT_OK) {
 
-        printf("mqttc_recv_ret: %d \n", mqttc_recv_ret);
+        // TODO printf("mqttc_recv_ret: %d \n", mqttc_recv_ret);
 
         /* read in as many bytes as possible */
         ssize_t rv, consumed;
@@ -734,7 +735,7 @@ ssize_t __mqttc_recv(struct mqttc_client *client)
 
         rv = mqttc_pal_recvall(client->socketfd, client->recv_buffer.curr,
                                client->recv_buffer.curr_sz, 0);
-        printf("rv: %d \n", rv);
+        // TODO printf("rv: %d \n", rv);
 
         if (rv < 0) {
 
@@ -801,8 +802,8 @@ ssize_t __mqttc_recv(struct mqttc_client *client)
             -> release PINGREQ
         */
 
-        printf("header control type: %d \n", response.fixed_header.control_type);
-        print_mqtt_control_type(response.fixed_header.control_type);
+        // TODO printf("header control type: %d \n", response.fixed_header.control_type);
+        // TODO print_mqtt_control_type(response.fixed_header.control_type);
 
         switch (response.fixed_header.control_type) {
             case MQTT_CONTROL_CONNACK:
@@ -829,7 +830,7 @@ ssize_t __mqttc_recv(struct mqttc_client *client)
                 }
                 break;
             case MQTT_CONTROL_PUBLISH:
-                printf("case MQTT CONTROL PUBLISH \n");
+                // TODO printf("case MQTT CONTROL PUBLISH \n");
 
                 /* stage response, none if qos==0, PUBACK if qos==1, PUBREC if qos==2 */
                 if (response.decoded.publish.qos_level == 1) {
@@ -853,7 +854,7 @@ ssize_t __mqttc_recv(struct mqttc_client *client)
                     }
                 }
                 /* call publish callback */
-                printf("/* call publish callback */ \n");
+                // TODO printf("/* call publish callback */ \n");
                 client->publish_response_callback(&client->publish_response_callback_state, &response.decoded.publish);
                 break;
 

@@ -157,7 +157,7 @@ static err_t tcp_conmgr_sent_callback(void *arg, struct tcp_pcb *tpcb, u16_t len
 
 static err_t tcp_conmgr_recv_callback(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_t err) {
 
-    printf("\n tcp-conmgr | tcp_recv_callback \n");
+    //  printf("\n tcp-conmgr | tcp_recv_callback \n");
 
     TcpConMgr *me = (TcpConMgr *)arg;
 
@@ -168,13 +168,13 @@ static err_t tcp_conmgr_recv_callback(void *arg, struct tcp_pcb *tpcb, struct pb
             memcpy(me->recv_buffer + me->recv_len, p->payload, p->tot_len);
             me->recv_len += p->tot_len;
 
-            printf("Received %d bytes, total in buffer: %lu \n", p->tot_len, me->recv_len);
+            //  printf("Received %d bytes, total in buffer: %lu \n", p->tot_len, me->recv_len);
 
             // Acknowledge the received data to the TCP stack
             tcp_recved(tpcb, p->tot_len);
 
             // Free the pbuf as it’s no longer needed
-            printf("pbuf ref count: %d\n", p->ref);
+            //  printf("pbuf ref count: %d\n", p->ref);
             pbuf_free(p);
 
             // Post a notification event to the state machine
@@ -232,7 +232,7 @@ static err_t tcp_conmgr_recv_callback(void *arg, struct tcp_pcb *tpcb, struct pb
 
 static err_t tcp_conmgr_connect_callback(void *arg, struct tcp_pcb *tpcb, err_t err) {
 
-    printf("\n tcp-conmgr | tcp_connect_callback \n");
+    //  printf("\n tcp-conmgr | tcp_connect_callback \n");
 
     TcpConMgr *me = (TcpConMgr *)arg;
 
@@ -260,7 +260,7 @@ static err_t tcp_conmgr_connect_callback(void *arg, struct tcp_pcb *tpcb, err_t 
 /* ............................ Initial action ............................. */
 static void init(TcpConMgr *const me, RKH_EVT_T *pe) {
 
-    printf("\n tcp-conmgr | tcp-conmgr | init \n");
+    //  printf("\n tcp-conmgr | tcp-conmgr | init \n");
 
     (void)pe;
     RKH_TMR_INIT(&me->timer, &e_tout, NULL);
@@ -275,8 +275,7 @@ static void init(TcpConMgr *const me, RKH_EVT_T *pe) {
 /* ............................ Effect actions ............................. */
 static void open(TcpConMgr *const me, RKH_EVT_T *pe) {
 
-    printf("\n tcp-conmgr | open \n");
-    printf("tcp-conmgr | Current state: %s \n", get_state_name_conmgr_sm(tcpConMgr->sm.state));
+    // printf("\n tcp-conmgr | open \n");
 
     (void)pe;
     tcp_conmgr_connect_attempt(me, pe);
@@ -285,7 +284,6 @@ static void open(TcpConMgr *const me, RKH_EVT_T *pe) {
 static void close(TcpConMgr *const me, RKH_EVT_T *pe) {
 
     //  printf("\n tcp-conmgr | close \n");
-    //  printf("tcp-conmgr | Current state: %s \n", get_state_name_conmgr_sm(tcpConMgr->sm.state));
 
     (void)pe;
     if (me->tpcb != NULL) {
@@ -298,7 +296,6 @@ static void close(TcpConMgr *const me, RKH_EVT_T *pe) {
 static void send_data(TcpConMgr *const me, RKH_EVT_T *pe) {
 
     // printf("\n tcp-conmgr | send_data \n");
-    //  printf("tcp-conmgr | Current state: %s \n", get_state_name_conmgr_sm(tcpConMgr->sm.state));
 
     /* TODO
     TcpSendEvt * evt = RKH_DOWNCAST(TcpSendEvt, pe);
@@ -345,7 +342,6 @@ static void flush_data(TcpConMgr *const me, RKH_EVT_T *pe) {
  static void socketConnected(TcpConMgr *const me) {
 
     //  printf("\n tcp-conmgr | socketConnected \n");
-    //  printf("tcp-conmgr | Current state: %s \n", get_state_name_conmgr_sm(tcpConMgr->sm.state));
 
     bsp_netStatus(ConnectedSt);
     rkh_sma_recall((RKH_SMA_T *)me, &qDefer);
@@ -359,16 +355,18 @@ static void flush_data(TcpConMgr *const me, RKH_EVT_T *pe) {
  */
 static void read_data(TcpConMgr *const me, RKH_EVT_T *pe) {
 
-    printf("\n tcp-conmgr | read_data \n");
+    //  printf("\n tcp-conmgr | read_data \n");
 
     TcpReceiveEvt * evt = RKH_DOWNCAST(TcpReceiveEvt, pe);
     me->recv_len = evt->size;
 
     if (me->recv_len > 0) {
 
+        /*
         printf("tcp-conmgr | evt->buf: %s \n", evt->buf);
         printf("tcp-conmgr | evt size: %d \n", evt->size);
         printf("tcp-conmgr | evet e: %d \n", evt->evt.e);
+        */
 
         RKH_SMA_POST_FIFO(tcpMqttProt, RKH_UPCAST(RKH_EVT_T, &e_Received), me);
 
@@ -423,7 +421,7 @@ static err_t tcp_conmgr_poll_callback(void *arg, struct tcp_pcb *tpcb) {
 
 static void tcp_conmgr_connect_attempt(TcpConMgr *const me, RKH_EVT_T *pe) {
 
-    printf("\n tcp-conmgr | tcp_connect_attempt \n");
+    //  printf("\n tcp-conmgr | tcp_connect_attempt \n");
 
     if (me->tpcb == NULL) {
 
