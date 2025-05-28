@@ -154,10 +154,12 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 }
 
 // Interrupt handler - should be placed in stm32f4xx_it.c
+/* TODO
 void EXTI15_10_IRQHandler(void)
 {
     HAL_GPIO_EXTI_IRQHandler(SWITCH_GPIO_PIN);
 }
+ */
 
 
 

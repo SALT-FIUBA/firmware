@@ -511,6 +511,7 @@ static void init(Logic *const me, RKH_EVT_T *pe) {
 static void
 effect_enable(Logic *const me, RKH_EVT_T *pe)
 {
+    printf("logic | effect_enabled \n");
     (void)pe;
     (void)me;
 
@@ -519,6 +520,7 @@ effect_enable(Logic *const me, RKH_EVT_T *pe)
 static void
 effect_disable(Logic *const me, RKH_EVT_T *pe)
 {
+    printf("logic | effect_disable \n");
     (void)pe;
     (void)me;
 
@@ -527,6 +529,8 @@ effect_disable(Logic *const me, RKH_EVT_T *pe)
 static void
 effect_gps(Logic *const me, RKH_EVT_T *pe)
 {
+    printf("logic | effect_gps \n");
+
     VelEvt * p = RKH_UPCAST(VelEvt, pe);
 
     if(p->vel < 0){
@@ -542,14 +546,20 @@ effect_gps(Logic *const me, RKH_EVT_T *pe)
 static void
 effect_gpsTout(Logic *const me, RKH_EVT_T *pe)
 {
+    printf("logic | effect_gpsTout \n");
+
     me->ledConfig.ledGps = RED;
     ledPanelSetCfg(&(me->ledConfig));
 }
 
 static void effect_cmd(Logic *const me, RKH_EVT_T *pe){
+
+    printf("logic | effect_cmd \n");
+
     CmdEvt* p = RKH_UPCAST(CmdEvt, pe);
 
-    switch(p->cmd.type){
+    switch(p->cmd.type) {
+
         case SALT_CMD_TYPE_CMD:
             me->currentCmd = p->cmd.cmd;
             if(p->cmd.cmd != SALT_CMD_ORDER_AUTOMATIC){
@@ -557,8 +567,11 @@ static void effect_cmd(Logic *const me, RKH_EVT_T *pe){
                 RKH_TMR_ONESHOT(&(me->timerCmdTimeout), RKH_UPCAST(RKH_SMA_T, me), me->cmdTimeout);
             }
             break;
+
         case SALT_CMD_TYPE_CONFIG:
+
             switch (p->cmd.parameter){
+
                 case SALT_PARAMETER_CMD_TIMEOUT:
                     me->cmdTimeout = RKH_TIME_MS(p->cmd.parameterValueDouble);
                     break;
@@ -597,11 +610,14 @@ static void effect_cmd(Logic *const me, RKH_EVT_T *pe){
 static void
 effect_cmdTOut(Logic *const me, RKH_EVT_T *pe)
 {
+    printf("logic | effect_cmdTout \n");
+
     me->currentCmd = SALT_CMD_ORDER_AUTOMATIC;
 }
 
 static void effect_vel(Logic *const me, RKH_EVT_T *pe){
 
+    printf("logic | effect_vel \n");
     /* TODO: check original code
 
      VelEvt  * velEvt = RKH_DOWNCAST(VelEvt*, pe);
@@ -615,6 +631,8 @@ static void effect_vel(Logic *const me, RKH_EVT_T *pe){
 }
 
 static void effect_velHasler(LogicVel *const me, RKH_EVT_T *pe){
+
+    printf("logic | effect_velHasler \n");
 
     VelEvt* p = RKH_UPCAST(VelEvt, pe);
     Logic *realMe = me->itsLogic;
@@ -630,6 +648,8 @@ static void effect_velHasler(LogicVel *const me, RKH_EVT_T *pe){
 
 static void effect_velExternal(LogicVel *const me, RKH_EVT_T *pe) {
 
+    printf("logic | effect_velExternal \n");
+
     VelEvt* p = RKH_UPCAST(VelEvt, pe);
     Logic *realMe = me->itsLogic;
 
@@ -644,6 +664,8 @@ static void effect_velExternal(LogicVel *const me, RKH_EVT_T *pe) {
 }
 
 static void effect_velGps(LogicVel *const me, RKH_EVT_T *pe){
+
+    printf("logic | effect_velGps \n");
 
     VelEvt* p = RKH_UPCAST(VelEvt, pe);
     Logic *realMe = me->itsLogic;
@@ -664,8 +686,7 @@ entry_disable(Logic *const me)
 {
     printf("logic | entry_disable \n");
 
-    // TODO ORIGINAL -> configAlCtFe(me, RKH_FALSE, RKH_FALSE, RKH_FALSE);
-    configAlCtFe(me, RKH_TRUE, RKH_TRUE, RKH_TRUE);
+    configAlCtFe(me, RKH_FALSE, RKH_FALSE, RKH_FALSE);
     setVelDisplay(me, NULL, false);
     me->ledConfig.ledOn = GREEN;
     me->ledConfig.ledGps = LED_OFF;
@@ -1129,7 +1150,7 @@ rbool_t guard_velWrongVel(LogicVel *const me, RKH_EVT_T *pe){
 }
 
 /* ---------------------------- Global functions --------------------------- */
-void logic_ctor(LogicCfg *config) {
+void logic_ctor(LogicCfg * config) {
 
     printf("logic | logic_ctor \n");
 

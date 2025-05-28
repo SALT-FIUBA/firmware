@@ -3,16 +3,6 @@
  *  \brief      Implementation JSON messaje formating and MQTT publish.
  */
 
-/* -------------------------- Development history -------------------------- */
-/*
- *  2018.06.22  DaBa  v1.0.00  Initial version
- */
-
-/* -------------------------------- Authors -------------------------------- */
-/*
- *  DaBa Dar�o Bali�a  db@vortexmakes.com
- */
-
 /* --------------------------------- Notes --------------------------------- */
 /* ----------------------------- Include files ----------------------------- */
 #include <string.h>
@@ -48,6 +38,7 @@ publishDimba(AppData *appMsg)
 
     //  TODO: mockup ConMgr_imei value
     //      jwObj_string("imei", ConMgr_imei());
+    jwObj_string("imei", "ConMgr_imei()");
 
     jwObj_int(MQTT_PARSE_PARAMETER_CMD_TIMEOUT, logicData.cmdTimeout);
     jwObj_double(MQTT_PARSE_PARAMETER_VEL_CT_ON, logicData.velCtOn);

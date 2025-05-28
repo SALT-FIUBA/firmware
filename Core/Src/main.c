@@ -38,6 +38,17 @@
 #include "publisher.h"
 #include "blinkySysTick.h"
 #include "logic.h"
+#include "anIn.h"
+#include "sapi_datatypes.h"
+#include "onSwitch.h"
+#include "relay.h"
+#include "ledPanel.h"
+#include "buzzer.h"
+#include "pulseCounter.h"
+#include "teloc.h"
+#include "sim808.h"
+#include "serial.h"
+#include "modcmd.h"
 
 
 
@@ -51,6 +62,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+void UserButton_Init(void);
 
 /* USER CODE END PD */
 
@@ -58,14 +70,46 @@
 /* USER CODE BEGIN PM */
 
 /* Constants ------------------------------- */
+#define PULSE_COUNTER_THR                   5
+#define PULSE_COUNTER_FACTOR                0.904778684 // m/s_km/h(3.6) * pi * d_rueda(0.8m) / pulsos_revolucion(10)
 
+#define PWR_INPUT_SAMPLE_FACTOR             0.01628664 // 10k/(604k+10k) PWR*factor=sample
+#define PWR_INPUT_SAMPLE_MIN                (60*PWR_INPUT_SAMPLE_FACTOR) // 60V*factor=min_sample
+#define PWR_INPUT_SAMPLE_MAX                (120*PWR_INPUT_SAMPLE_FACTOR) // 110V*factor=max_sample
 
+#define MQTTPROT_QSTO_SIZE  16
+#define CONMGR_QSTO_SIZE    16
+#define LOGIC_QSTO_SIZE    16
+
+#define SIZEOF_EP0STO       16
+#define SIZEOF_EP0_BLOCK    sizeof(RKH_EVT_T)
+
+#define SIZEOF_EP3STO 1024  // Total size in bytes (e.g., 16 events of 8 bytes each)
+#define SIZEOF_EP3_BLOCK sizeof(TcpSendEvt)  // Block size matches the event
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
+static rbool_t initEnd = false;
+static rbool_t pwrCorrect = false;
 
+static CmdEvt e_saltCmd;
+
+extern struct netif gnetif;
+static TCP_MQTTProtCfg mqttProtCfg;
+static LogicCfg logicCfg;
+
+static RKH_ROM_STATIC_EVENT(e_Open, evOpen);
+static RKH_ROM_STATIC_EVENT(e_SaltEnable, evSaltEnable);
+static RKH_ROM_STATIC_EVENT(e_SaltDisable, evSaltDisable);
+
+static RKH_EVT_T * MQTTProt_qsto[MQTTPROT_QSTO_SIZE];
+static RKH_EVT_T * ConMgr_qsto[CONMGR_QSTO_SIZE];
+static RKH_EVT_T * Logic_qsto[LOGIC_QSTO_SIZE];
+
+static rui8_t evPool0Sto[SIZEOF_EP0STO];
+static rui8_t evPool3Sto[SIZEOF_EP3STO];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -87,48 +131,62 @@ PUTCHAR_PROTOTYPE
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
-extern struct netif gnetif;
-static TCP_MQTTProtCfg mqttProtCfg;
+static void onAnInCb(){
+    if(!initEnd) {
+        return;
+    }
 
+    sample_t sample = anInGetSample(anIn0);
+    bool_t aux = sample > PWR_INPUT_SAMPLE_MIN && sample < PWR_INPUT_SAMPLE_MAX;
+    if(aux != pwrCorrect){
+        pwrCorrect = aux;
+        if(pwrCorrect && onSwitchGet()){
+            RKH_SMA_POST_FIFO(logic, &e_SaltEnable, 0);
+        } else {
+            RKH_SMA_POST_FIFO(logic, &e_SaltDisable, 0);
+        }
+    }
+}
 
-static RKH_ROM_STATIC_EVENT(e_Open, evOpen);
+static void onRelayErrorCb(Relay_t relay){
+    if(!initEnd){
+        return;
+    }
 
-#define MQTTPROT_QSTO_SIZE  16
-#define CONMGR_QSTO_SIZE    16
-#define LOGIC_QSTO_SIZE    16
+    switch(relay) {
 
-static RKH_EVT_T * MQTTProt_qsto[MQTTPROT_QSTO_SIZE];
-static RKH_EVT_T * ConMgr_qsto[CONMGR_QSTO_SIZE];
-static RKH_EVT_T * Logic_qsto[LOGIC_QSTO_SIZE];
+        case feEn:
+        case feDis:
+        case ctEn:
+        case ctDis:
+            if(onSwitchGet()){ //Esto es un error solo si el switch esta activado (sino es una inconsistencia dada por la posicion del switch)
+                RKH_SMA_POST_FIFO(logic, &e_SaltDisable, 0);
+            }
+            break;
+        case feAct:
+        case ctAct:
+            RKH_SMA_POST_FIFO(logic, &e_SaltDisable, 0);
+            break;
+        default:
+            break;
+    }
+}
 
+static void onSwitchCb(bool_t activated) {
 
-#define SIZEOF_EP0STO       16
-#define SIZEOF_EP0_BLOCK    sizeof(RKH_EVT_T)
-static rui8_t evPool0Sto[SIZEOF_EP0STO];
+    if(!initEnd){
+        return;
+    }
+    if(!pwrCorrect){
+        return;
+    }
 
-#define SIZEOF_EP1STO 512  // Total size in bytes (e.g., 16 events of 8 bytes each)
-#define SIZEOF_EP1_BLOCK sizeof(TcpNetConnectedEvt)  // Block size matches the event
-static rui8_t evPool1Sto[SIZEOF_EP1STO];
-
-#define SIZEOF_EP2STO 1024  // Total size in bytes (e.g., 16 events of 8 bytes each)
-#define SIZEOF_EP2_BLOCK sizeof(TcpReceivedEvt)  // Block size matches the event
-static rui8_t evPool2Sto[SIZEOF_EP2STO];
-
-#define SIZEOF_EP3STO 1024  // Total size in bytes (e.g., 16 events of 8 bytes each)
-#define SIZEOF_EP3_BLOCK sizeof(TcpSendEvt)  // Block size matches the event
-static rui8_t evPool3Sto[SIZEOF_EP3STO];
-
-
-
-/* Blinky Local variables */
-#define QSTO_SIZE           4
-static RKH_EVT_T * qsto[QSTO_SIZE];
-
-
-static rbool_t initEnd = false;
-
-static CmdEvt e_saltCmd;
-
+    if(activated){
+        RKH_SMA_POST_FIFO(logic, &e_SaltEnable, 0);
+    } else {
+        RKH_SMA_POST_FIFO(logic, &e_SaltDisable, 0);
+    }
+}
 
 void onMQTTCb(void **state, struct mqttc_response_publish *publish) {
     printf("on mqtt callback called\n");
@@ -147,19 +205,106 @@ void onMQTTCb(void **state, struct mqttc_response_publish *publish) {
     printf("Received publish('%s'): %.*s\n", topic_name,
            (int)publish->application_message_size, (const char*)publish->application_message);
 
-    /*
+/*
     if(!initEnd){
         return;
     }
+
+    char dump1[255] = {0};
+    char dump2[255] = {0};
+    sprintf(dump1, "MQTT topic: %.*s", MIN(publish->topic_name_size,200), publish->topic_name);
+    sprintf(dump2, "MQTT data: %.*s", MIN((int) publish->application_message_size,200), publish->application_message);
+    RKH_TRC_USR_BEGIN(USR_TRACE_MQTT)
+        RKH_TUSR_STR(dump1);
+        RKH_TUSR_STR(dump2);
+    RKH_TRC_USR_END();
 
     int result = saltCmdParse((char *) publish->application_message, publish->application_message_size, &(e_saltCmd.cmd));
     if (result > 0){
         RKH_SMA_POST_FIFO(logic, RKH_UPCAST(RKH_EVT_T, &e_saltCmd), 0);
     }
-     */
+*/
+}
+
+
+static ModCmdRcvHandler simACmdParser = NULL;
+
+static void simACb(unsigned char c){
+#ifdef DEBUG_SERIAL_PASS
+    serialPutByte(UART_DEBUG,c);
+#endif
+    if(!initEnd){
+        return;
+    }
+
+    simACmdParser(c);
 
 }
 
+static void simBCb(unsigned char c){
+    if(!initEnd){
+        return;
+    }
+}
+
+static void debugCb(unsigned char c){
+
+#ifdef DEBUG_SERIAL_PASS
+    //serialPutByte(UART_DEBUG,c);
+    serialPutByte(UART_SIM_808_A,c);
+#endif
+}
+
+static void
+saltConfig(void)
+{
+    /* Configuracion especifica SALT */
+
+    /* RKH */
+
+    RKH_SET_STATIC_EVENT(RKH_UPCAST(RKH_EVT_T, &e_saltCmd), evSaltCmd);
+
+    /* Inicializacion SALT */
+
+    bsp_init();
+    relayInit(onRelayErrorCb);
+    ledPanelInit();
+    anInInit(onAnInCb);
+    buzzerInit();
+    onSwitchInit((onSwitchCb_t) onSwitchCb);
+    pulseCounterInit(PULSE_COUNTER_THR,PULSE_COUNTER_FACTOR);
+    telocInit();
+    //epoch_init();
+    mTime_init();
+
+    sim808Init(SIM_808_A);
+    serialSetIntCb(UART_SIM_808_A, (serialIsrCb_t) simACb);
+
+#ifdef DEBUG_SERIAL
+    serialInit(UART_DEBUG);
+    serialSetIntCb(UART_DEBUG, debugCb);
+#else
+    sim808Init(SIM_808_B);
+    serialSetIntCb(UART_SIM_808_B, (serialIsrCb_t) simBCb);
+#endif
+
+    /* Conexion de modulos */
+
+    simACmdParser = ModCmd_init();
+}
+
+void
+saltCfg_clientId(char *pid)
+{
+    strcpy(mqttProtCfg.clientId, pid);
+}
+
+void
+saltCfg_topic(char *t)
+{
+    sprintf(mqttProtCfg.topic, "/salt/%s", t);
+    sprintf(mqttProtCfg.subTopic, "/salt/cmd");
+}
 
 
 /* USER CODE END 0 */
@@ -172,9 +317,9 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
+  saltConfig();
 
-    struct tcp_pcb * tcp_pcb = NULL;
-    /* USER CODE END 1 */
+  /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
 
@@ -188,6 +333,7 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
+  UserButton_Init();
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -207,8 +353,6 @@ int main(void)
 
     /* Define event pool storage (simplified for this example) */
     rkh_fwk_registerEvtPool(evPool0Sto, SIZEOF_EP0STO, SIZEOF_EP0_BLOCK);
-    //  rkh_fwk_registerEvtPool(evPool1Sto, SIZEOF_EP1STO, SIZEOF_EP1_BLOCK);               //    TcpNetConnectedEvent
-    //  rkh_fwk_registerEvtPool(evPool2Sto, SIZEOF_EP2STO, SIZEOF_EP2_BLOCK); //    TcpReceiveEvt
     rkh_fwk_registerEvtPool(evPool3Sto, SIZEOF_EP3STO, SIZEOF_EP3_BLOCK); //    TcpSendEvt
 
     /* Wait for network interface to be up */
@@ -229,7 +373,7 @@ int main(void)
     HAL_Delay(1000);
 
 
-    mqttProtCfg.publishTime = 5; // the base time is not correct. actually, 5 is in miliseconds and not in seconds
+    mqttProtCfg.publishTime = 5;
     mqttProtCfg.syncTime = 4;
     mqttProtCfg.keepAlive = 400;
     mqttProtCfg.qos = 1;
@@ -239,34 +383,62 @@ int main(void)
     mqttProtCfg.callback = onMQTTCb;
     TCP_MQTTProt_ctor(&mqttProtCfg, publishDimba);
 
+    logicCfg.publishTime = 8;
+    logic_ctor(&logicCfg);
 
-    // Activate the TcpConMgr state machine
     RKH_SMA_ACTIVATE(tcpConMgr, ConMgr_qsto, CONMGR_QSTO_SIZE, 0, 0);
     RKH_SMA_ACTIVATE(tcpMqttProt, MQTTProt_qsto, MQTTPROT_QSTO_SIZE, 0, 0);
     RKH_SMA_ACTIVATE(logic, Logic_qsto, LOGIC_QSTO_SIZE, 0,0);
 
-    // Post the initial evOpen event
     RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Open), NULL);
 
     initEnd = true;
 
-    /* Enter the RKH framework loop */
     rkh_fwk_enter();
 
-    /* Should never reach here */
+
     return 0;
-
-
-  /* USER CODE END 2 */
-
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
-  /* USER CODE END WHILE */
-
-  /* USER CODE BEGIN 3 */
-  /* USER CODE END 3 */
 }
 
+
+/*
+ * @brief Key push-button
+
+    #define USER_BUTTON_PIN                          GPIO_PIN_13
+    #define USER_BUTTON_GPIO_PORT                    GPIOC
+    #define USER_BUTTON_GPIO_CLK_ENABLE()            __HAL_RCC_GPIOC_CLK_ENABLE()
+    #define USER_BUTTON_GPIO_CLK_DISABLE()           __HAL_RCC_GPIOC_CLK_DISABLE()
+    #define USER_BUTTON_EXTI_LINE                    GPIO_PIN_13
+    #define USER_BUTTON_EXTI_IRQn                    EXTI15_10_IRQn
+
+*/
+void UserButton_Init(void) {
+    // Enable the GPIOC clock
+    __HAL_RCC_GPIOC_CLK_ENABLE();
+
+    // Configure PC13 as an input with pull-up and interrupt on falling edge
+    GPIO_InitTypeDef GPIO_InitStruct = {0};
+    GPIO_InitStruct.Pin = GPIO_PIN_13;
+    GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING; // Interrupt on falling edge
+    GPIO_InitStruct.Pull = GPIO_PULLUP;          // Pull-up resistor
+    HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+    //     Set up the interrupt priority and enable it
+    HAL_NVIC_SetPriority(EXTI15_10_IRQn, 15, 0); // Lowest priority
+    HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);          // Enable interrupt
+}
+
+void EXTI15_10_IRQHandler(void) {
+    // Check if the interrupt was triggered by PC13
+    if (__HAL_GPIO_EXTI_GET_IT(GPIO_PIN_13) != 0x00u) {
+        // Clear the interrupt flag
+        __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_13);
+
+        // Create and post the button press event
+        //  RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Open), NULL);
+        RKH_SMA_POST_FIFO(logic, RKH_UPCAST(RKH_EVT_T , &e_SaltEnable), NULL);
+    }
+}
 
 /**
   * @brief System Clock Configuration

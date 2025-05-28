@@ -1,5 +1,452 @@
 # firmware
 
+## stm32 logic state machine - SALT ENABLED
+
+## stm32 huart port
+```json
+» ./STM32_Programmer_CLI -c port=ttyACM0 br=115200 console
+      -------------------------------------------------------------------
+                        STM32CubeProgrammer v2.17.0                  
+      -------------------------------------------------------------------
+
+Serial Port ttyACM0 is successfully opened.
+ Port configuration: parity = even, baudrate = 115200, data-bit = 8,
+                     stop-bit = 1,0, flow-control = off
+
+Entering console mode :
+Press F to send a file
+Press E to exit
+Press W to write mode
+
+
+ %%%%%%%%%%%%%%%%% 
+Waiting for network interface...
+Waiting for link...
+Link up - IP: 192.168.1.78
+logic | logic_ctor 
+logic | init 
+logic | entry_hasler 
+logic | entry_disable 
+tcp-conmgr | TCP Connected
+rv < 0 
+Assertion "pbuf_free: p->ref > 0" failed at line 753 in /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/pbuf.c
+Assertion "pbuf_free: p->ref > 0" failed at line 753 in /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/pbuf.c
+logic | exit_hasler 
+logic | entry_external 
+
+ tcp-mqttprot | publish 
+logic | logic_getData 
+logic | logic_getPublishPeriod 
+Published successful 
+logic | exit_external 
+logic | entry_gps 
+
+ tcp-mqttprot | publish 
+logic | logic_getData 
+logic | logic_getPublishPeriod 
+Published successful 
+Assertion "pbuf_free: p->ref > 0" failed at line 753 in /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/pbuf.c
+Assertion "pbuf_free: p->ref > 0" failed at line 753 in /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/pbuf.c
+logic | exit_gps 
+logic | entry_missing 
+
+ tcp-mqttprot | publish 
+logic | logic_getData 
+logic | logic_getPublishPeriod 
+Published successful 
+
+ tcp-mqttprot | publish 
+logic | logic_getData 
+logic | logic_getPublishPeriod 
+Published successful 
+Assertion "pbuf_free: p->ref > 0" failed at line 753 in /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/pbuf.c
+Assertion "pbuf_free: p->ref > 0" failed at line 753 in /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/pbuf.c
+
+ tcp-mqttprot | publish 
+logic | logic_getData 
+logic | logic_getPublishPeriod 
+Published successful 
+
+
+logic | exit_disable 
+logic | effect_enabled 
+logic | entry_enable 
+logic | guard_velDisp 
+logic | guard_velRight 
+logic | guard_velRightVel 
+logic | entry_preventiveStop 
+
+ tcp-mqttprot | publish 
+logic | logic_getData 
+logic | logic_getPublishPeriod 
+Published successful 
+Assertion "pbuf_free: p->ref > 0" failed at line 753 in /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/pbuf.c
+Assertion "pbuf_free: p->ref > 0" failed at line 753 in /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/pbuf.c
+logic | guard_cmdEnable 
+logic | exit_preventiveStop 
+logic | guard_velDisp 
+logic | guard_velRight 
+logic | guard_velRightVel 
+logic | entry_controlBlink 
+logic | entry_controlBlinkEnable 
+
+ tcp-mqttprot | publish 
+logic | logic_getData 
+logic | logic_getPublishPeriod 
+Published successful 
+logic | exit_controlBlinkEnable 
+logic | entry_controlBlinkDisable 
+
+ tcp-mqttprot | publish 
+logic | logic_getData 
+logic | logic_getPublishPeriod 
+Published successful 
+Assertion "pbuf_free: p->ref > 0" failed at line 753 in /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/pbuf.c
+Assertion "pbuf_free: p->ref > 0" failed at line 753 in /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/pbuf.c
+
+ tcp-mqttprot | publish 
+logic | logic_getData 
+logic | logic_getPublishPeriod 
+Published successful 
+logic | guard_nextBlinkBrake 
+logic | exit_controlBlinkDisable 
+logic | entry_controlBlinkEnable 
+
+ tcp-mqttprot | publish 
+logic | logic_getData 
+logic | logic_getPublishPeriod 
+Published successful 
+Assertion "pbuf_free: p->ref > 0" failed at line 753 in /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/pbuf.c
+Assertion "pbuf_free: p->ref > 0" failed at line 753 in /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/pbuf.c
+logic | exit_controlBlinkEnable 
+logic | entry_controlBlinkDisable 
+
+ tcp-mqttprot | publish 
+logic | logic_getData 
+logic | logic_getPublishPeriod 
+Published successful 
+
+ tcp-mqttprot | publish 
+logic | logic_getData 
+logic | logic_getPublishPeriod 
+Published successful 
+Assertion "pbuf_free: p->ref > 0" failed at line 753 in /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/pbuf.c
+Assertion "pbuf_free: p->ref > 0" failed at line 753 in /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/pbuf.c
+logic | guard_nextBlinkBrake 
+logic | exit_controlBlinkDisable 
+logic | entry_controlBlinkEnable 
+tcp-conmgr | Connection closed
+```
+
+## mosquitto broker
+```json
+» mosquitto -c mosquitto.conf -v
+1748465450: mosquitto version 2.0.11 starting
+1748465450: Config loaded from mosquitto.conf.
+1748465450: Opening ipv4 listen socket on port 1883.
+1748465450: Opening ipv6 listen socket on port 1883.
+1748465450: mosquitto version 2.0.11 running
+
+
+1748465463: New connection from 192.168.1.78:52432 on port 1883.
+1748465463: New client connected from 192.168.1.78:52432 as stm32_client (p2, c1, k400).
+1748465463: No will message specified.
+1748465463: Sending CONNACK to stm32_client (0, 0)
+1748465463: Received SUBSCRIBE from stm32_client
+1748465463: 	/stm32/config (QoS 2)
+1748465463: stm32_client 2 /stm32/config
+1748465463: Sending SUBACK to stm32_client
+1748465473: Received PUBLISH from stm32_client (d0, q1, r0, m60968, '/stm32/data', ... (260 bytes))
+1748465473: Sending PUBACK to stm32_client (m60968, rc0)
+1748465473: Received PUBLISH from stm32_client (d0, q1, r0, m30484, '/stm32/data', ... (260 bytes))
+1748465473: Sending PUBACK to stm32_client (m30484, rc0)
+1748465478: New connection from 192.168.1.81:59410 on port 1883.
+1748465478: New client connected from 192.168.1.81:59410 as auto-3ED8F7F6-CDB9-3B86-2EDB-04D75CB956E2 (p2, c1, k60).
+1748465478: No will message specified.
+1748465478: Sending CONNACK to auto-3ED8F7F6-CDB9-3B86-2EDB-04D75CB956E2 (0, 0)
+1748465478: Received SUBSCRIBE from auto-3ED8F7F6-CDB9-3B86-2EDB-04D75CB956E2
+1748465478: 	/stm32/data (QoS 0)
+1748465478: auto-3ED8F7F6-CDB9-3B86-2EDB-04D75CB956E2 0 /stm32/data
+1748465478: Sending SUBACK to auto-3ED8F7F6-CDB9-3B86-2EDB-04D75CB956E2
+1748465483: Received PUBLISH from stm32_client (d0, q1, r0, m15242, '/stm32/data', ... (260 bytes))
+1748465483: Sending PUBLISH to auto-3ED8F7F6-CDB9-3B86-2EDB-04D75CB956E2 (d0, q0, r0, m0, '/stm32/data', ... (260 bytes))
+1748465483: Sending PUBACK to stm32_client (m15242, rc0)
+1748465483: Received PUBLISH from stm32_client (d0, q1, r0, m7621, '/stm32/data', ... (260 bytes))
+1748465483: Sending PUBLISH to auto-3ED8F7F6-CDB9-3B86-2EDB-04D75CB956E2 (d0, q0, r0, m0, '/stm32/data', ... (260 bytes))
+1748465483: Sending PUBACK to stm32_client (m7621, rc0)
+1748465493: Received PUBLISH from stm32_client (d0, q1, r0, m47842, '/stm32/data', ... (260 bytes))
+1748465493: Sending PUBLISH to auto-3ED8F7F6-CDB9-3B86-2EDB-04D75CB956E2 (d0, q0, r0, m0, '/stm32/data', ... (260 bytes))
+1748465493: Sending PUBACK to stm32_client (m47842, rc0)
+1748465493: Received PUBLISH from stm32_client (d0, q1, r0, m23921, '/stm32/data', ... (259 bytes))
+1748465493: Sending PUBLISH to auto-3ED8F7F6-CDB9-3B86-2EDB-04D75CB956E2 (d0, q0, r0, m0, '/stm32/data', ... (259 bytes))
+1748465493: Sending PUBACK to stm32_client (m23921, rc0)
+1748465503: Received PUBLISH from stm32_client (d0, q1, r0, m39608, '/stm32/data', ... (259 bytes))
+1748465503: Sending PUBLISH to auto-3ED8F7F6-CDB9-3B86-2EDB-04D75CB956E2 (d0, q0, r0, m0, '/stm32/data', ... (259 bytes))
+1748465503: Sending PUBACK to stm32_client (m39608, rc0)
+1748465503: Received PUBLISH from stm32_client (d0, q1, r0, m19804, '/stm32/data', ... (259 bytes))
+1748465503: Sending PUBLISH to auto-3ED8F7F6-CDB9-3B86-2EDB-04D75CB956E2 (d0, q0, r0, m0, '/stm32/data', ... (259 bytes))
+1748465503: Sending PUBACK to stm32_client (m19804, rc0)
+1748465513: Received PUBLISH from stm32_client (d0, q1, r0, m9902, '/stm32/data', ... (259 bytes))
+1748465513: Sending PUBLISH to auto-3ED8F7F6-CDB9-3B86-2EDB-04D75CB956E2 (d0, q0, r0, m0, '/stm32/data', ... (259 bytes))
+1748465513: Sending PUBACK to stm32_client (m9902, rc0)
+1748465513: Received PUBLISH from stm32_client (d0, q1, r0, m4951, '/stm32/data', ... (259 bytes))
+1748465513: Sending PUBLISH to auto-3ED8F7F6-CDB9-3B86-2EDB-04D75CB956E2 (d0, q0, r0, m0, '/stm32/data', ... (259 bytes))
+1748465513: Sending PUBACK to stm32_client (m4951, rc0)
+1748465523: Received PUBLISH from stm32_client (d0, q1, r0, m48555, '/stm32/data', ... (259 bytes))
+1748465523: Sending PUBLISH to auto-3ED8F7F6-CDB9-3B86-2EDB-04D75CB956E2 (d0, q0, r0, m0, '/stm32/data', ... (259 bytes))
+1748465523: Sending PUBACK to stm32_client (m48555, rc0)
+1748465523: Received PUBLISH from stm32_client (d0, q1, r0, m60117, '/stm32/data', ... (259 bytes))
+1748465523: Sending PUBLISH to auto-3ED8F7F6-CDB9-3B86-2EDB-04D75CB956E2 (d0, q0, r0, m0, '/stm32/data', ... (259 bytes))
+1748465523: Sending PUBACK to stm32_client (m60117, rc0)
+1748465524: Received DISCONNECT from auto-3ED8F7F6-CDB9-3B86-2EDB-04D75CB956E2
+1748465524: Client auto-3ED8F7F6-CDB9-3B86-2EDB-04D75CB956E2 disconnected.
+^C1748465526: mosquitto version 2.0.11 terminating
+```
+
+## mosquitto sub
+```json
+» mosquitto_sub -h 192.168.1.81 -p 1883 -t "/stm32/data"
+{"imei":"ConMgr_imei()","cmd_timeout":60000,"vel_ct_on":30,"vel_ct_off":25,"vel_fe_on":36,"time_fe_hold":30000,"time_blink_enable":5000,"time_blink_disable":10000,"period_blink":5,"cmd":"automatic","vel":-1,"vel_source":null,"al_mode":false,"publish_period":5}
+{"imei":"ConMgr_imei()","cmd_timeout":60000,"vel_ct_on":30,"vel_ct_off":25,"vel_fe_on":36,"time_fe_hold":30000,"time_blink_enable":5000,"time_blink_disable":10000,"period_blink":5,"cmd":"automatic","vel":-1,"vel_source":null,"al_mode":false,"publish_period":5}
+{"imei":"ConMgr_imei()","cmd_timeout":60000,"vel_ct_on":30,"vel_ct_off":25,"vel_fe_on":36,"time_fe_hold":30000,"time_blink_enable":5000,"time_blink_disable":10000,"period_blink":5,"cmd":"automatic","vel":-1,"vel_source":null,"al_mode":false,"publish_period":5}
+{"imei":"ConMgr_imei()","cmd_timeout":60000,"vel_ct_on":30,"vel_ct_off":25,"vel_fe_on":36,"time_fe_hold":30000,"time_blink_enable":5000,"time_blink_disable":10000,"period_blink":5,"cmd":"automatic","vel":-1,"vel_source":null,"al_mode":true,"publish_period":5}
+{"imei":"ConMgr_imei()","cmd_timeout":60000,"vel_ct_on":30,"vel_ct_off":25,"vel_fe_on":36,"time_fe_hold":30000,"time_blink_enable":5000,"time_blink_disable":10000,"period_blink":5,"cmd":"automatic","vel":-1,"vel_source":null,"al_mode":true,"publish_period":5}
+{"imei":"ConMgr_imei()","cmd_timeout":60000,"vel_ct_on":30,"vel_ct_off":25,"vel_fe_on":36,"time_fe_hold":30000,"time_blink_enable":5000,"time_blink_disable":10000,"period_blink":5,"cmd":"automatic","vel":-1,"vel_source":null,"al_mode":true,"publish_period":5}
+{"imei":"ConMgr_imei()","cmd_timeout":60000,"vel_ct_on":30,"vel_ct_off":25,"vel_fe_on":36,"time_fe_hold":30000,"time_blink_enable":5000,"time_blink_disable":10000,"period_blink":5,"cmd":"automatic","vel":-1,"vel_source":null,"al_mode":true,"publish_period":5}
+{"imei":"ConMgr_imei()","cmd_timeout":60000,"vel_ct_on":30,"vel_ct_off":25,"vel_fe_on":36,"time_fe_hold":30000,"time_blink_enable":5000,"time_blink_disable":10000,"period_blink":5,"cmd":"automatic","vel":-1,"vel_source":null,"al_mode":true,"publish_period":5}
+{"imei":"ConMgr_imei()","cmd_timeout":60000,"vel_ct_on":30,"vel_ct_off":25,"vel_fe_on":36,"time_fe_hold":30000,"time_blink_enable":5000,"time_blink_disable":10000,"period_blink":5,"cmd":"automatic","vel":-1,"vel_source":null,"al_mode":true,"publish_period":5}
+{"imei":"ConMgr_imei()","cmd_timeout":60000,"vel_ct_on":30,"vel_ct_off":25,"vel_fe_on":36,"time_fe_hold":30000,"time_blink_enable":5000,"time_blink_disable":10000,"period_blink":5,"cmd":"automatic","vel":-1,"vel_source":null,"al_mode":true,"publish_period":5}
+```
+
+## stm32 logic state machine - SALT DISABLED
+
+## stm32 huart port
+```json
+ %%%%%%%%%%%%%%%%%
+Waiting for network interface...
+Waiting for link...
+Link up - IP: 192.168.1.78
+logic | logic_ctor
+logic | init
+logic | entry_hasler
+logic | entry_disable
+tcp-conmgr | TCP Connected
+rv < 0
+Assertion "pbuf_free: p->ref > 0" failed at line 753 in /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/pbuf.c
+Assertion "pbuf_free: p->ref > 0" failed at line 753 in /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/pbuf.c
+
+logic | exit_hasler
+logic | entry_external
+
+tcp-mqttprot | publish
+logic | logic_getData
+logic | logic_getPublishPeriod
+Published successful
+logic | exit_external
+logic | entry_gps
+
+tcp-mqttprot | publish
+logic | logic_getData
+logic | logic_getPublishPeriod
+Published successful
+Assertion "pbuf_free: p->ref > 0" failed at line 753 in /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/pbuf.c
+Assertion "pbuf_free: p->ref > 0" failed at line 753 in /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/pbuf.c
+logic | exit_gps
+logic | entry_missing
+
+tcp-mqttprot | publish
+logic | logic_getData
+logic | logic_getPublishPeriod
+Published successful
+
+tcp-mqttprot | publish
+logic | logic_getData
+logic | logic_getPublishPeriod
+Published successful
+Assertion "pbuf_free: p->ref > 0" failed at line 753 in /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/pbuf.c
+Assertion "pbuf_free: p->ref > 0" failed at line 753 in /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/pbuf.c
+
+tcp-mqttprot | publish
+logic | logic_getData
+logic | logic_getPublishPeriod
+Published successful
+
+tcp-mqttprot | publish
+logic | logic_getData
+logic | logic_getPublishPeriod
+Published successful
+Assertion "pbuf_free: p->ref > 0" failed at line 753 in /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/pbuf.c
+Assertion "pbuf_free: p->ref > 0" failed at line 753 in /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/pbuf.c
+
+tcp-mqttprot | publish
+logic | logic_getData
+logic | logic_getPublishPeriod
+Published successful
+
+tcp-mqttprot | publish
+logic | logic_getData
+logic | logic_getPublishPeriod
+Published successful
+Assertion "pbuf_free: p->ref > 0" failed at line 753 in /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/pbuf.c
+Assertion "pbuf_free: p->ref > 0" failed at line 753 in /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/pbuf.c
+
+tcp-mqttprot | publish
+logic | logic_getData
+logic | logic_getPublishPeriod
+Published successful
+
+tcp-mqttprot | publish
+logic | logic_getData
+logic | logic_getPublishPeriod
+Published successful
+Assertion "pbuf_free: p->ref > 0" failed at line 753 in /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/pbuf.c
+Assertion "pbuf_free: p->ref > 0" failed at line 753 in /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/pbuf.c
+
+tcp-mqttprot | publish
+logic | logic_getData
+logic | logic_getPublishPeriod
+Published successful
+
+tcp-mqttprot | publish
+logic | logic_getData
+logic | logic_getPublishPeriod
+Published successful
+Assertion "pbuf_free: p->ref > 0" failed at line 753 in /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/pbuf.c
+Assertion "pbuf_free: p->ref > 0" failed at line 753 in /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/pbuf.c
+
+tcp-mqttprot | publish
+logic | logic_getData
+logic | logic_getPublishPeriod
+Published successful
+
+tcp-mqttprot | publish
+logic | logic_getData
+logic | logic_getPublishPeriod
+Published successful
+Assertion "pbuf_free: p->ref > 0" failed at line 753 in /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/pbuf.c
+Assertion "pbuf_free: p->ref > 0" failed at line 753 in /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/pbuf.c
+
+tcp-mqttprot | publish
+logic | logic_getData
+logic | logic_getPublishPeriod
+Published successful
+
+tcp-mqttprot | publish
+logic | logic_getData
+logic | logic_getPublishPeriod
+Published successful
+Assertion "pbuf_free: p->ref > 0" failed at line 753 in /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/pbuf.c
+Assertion "pbuf_free: p->ref > 0" failed at line 753 in /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/pbuf.c
+
+tcp-mqttprot | publish
+logic | logic_getData
+logic | logic_getPublishPeriod
+Published successful
+
+tcp-mqttprot | publish
+logic | logic_getData
+logic | logic_getPublishPeriod
+Published successful
+Assertion "pbuf_free: p->ref > 0" failed at line 753 in /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/pbuf.c
+Assertion "pbuf_free: p->ref > 0" failed at line 753 in /home/nando-toshiba/Desktop/salt/firmware/Middlewares/Third_Party/LwIP/src/core/pbuf.c
+tcp-conmgr | Connection closed
+
+```
+
+## mosquitto broker
+```json
+1748465124: New connection from 192.168.1.78:52432 on port 1883.
+1748465124: New client connected from 192.168.1.78:52432 as stm32_client (p2, c1, k400).
+1748465124: No will message specified.
+1748465124: Sending CONNACK to stm32_client (0, 0)
+1748465124: Received SUBSCRIBE from stm32_client
+1748465124: 	/stm32/config (QoS 2)
+1748465124: stm32_client 2 /stm32/config
+1748465124: Sending SUBACK to stm32_client
+1748465134: Received PUBLISH from stm32_client (d0, q1, r0, m60968, '/stm32/data', ... (260 bytes))
+1748465134: Sending PUBACK to stm32_client (m60968, rc0)
+1748465134: Received PUBLISH from stm32_client (d0, q1, r0, m30484, '/stm32/data', ... (260 bytes))
+1748465134: Sending PUBACK to stm32_client (m30484, rc0)
+1748465144: Received PUBLISH from stm32_client (d0, q1, r0, m15242, '/stm32/data', ... (260 bytes))
+1748465144: Sending PUBACK to stm32_client (m15242, rc0)
+1748465144: Received PUBLISH from stm32_client (d0, q1, r0, m7621, '/stm32/data', ... (260 bytes))
+1748465144: Sending PUBACK to stm32_client (m7621, rc0)
+1748465153: New connection from 192.168.1.81:55864 on port 1883.
+1748465153: New client connected from 192.168.1.81:55864 as auto-49FADEF3-CF4E-A5D7-1805-1415A0C630E2 (p2, c1, k60).
+1748465153: No will message specified.
+1748465153: Sending CONNACK to auto-49FADEF3-CF4E-A5D7-1805-1415A0C630E2 (0, 0)
+1748465153: Received SUBSCRIBE from auto-49FADEF3-CF4E-A5D7-1805-1415A0C630E2
+1748465153: 	/stm32/data (QoS 0)
+1748465153: auto-49FADEF3-CF4E-A5D7-1805-1415A0C630E2 0 /stm32/data
+1748465153: Sending SUBACK to auto-49FADEF3-CF4E-A5D7-1805-1415A0C630E2
+1748465154: Received PUBLISH from stm32_client (d0, q1, r0, m47842, '/stm32/data', ... (260 bytes))
+1748465154: Sending PUBLISH to auto-49FADEF3-CF4E-A5D7-1805-1415A0C630E2 (d0, q0, r0, m0, '/stm32/data', ... (260 bytes))
+1748465154: Sending PUBACK to stm32_client (m47842, rc0)
+1748465154: Received PUBLISH from stm32_client (d0, q1, r0, m23921, '/stm32/data', ... (260 bytes))
+1748465154: Sending PUBLISH to auto-49FADEF3-CF4E-A5D7-1805-1415A0C630E2 (d0, q0, r0, m0, '/stm32/data', ... (260 bytes))
+1748465154: Sending PUBACK to stm32_client (m23921, rc0)
+1748465164: Received PUBLISH from stm32_client (d0, q1, r0, m39608, '/stm32/data', ... (260 bytes))
+1748465164: Sending PUBLISH to auto-49FADEF3-CF4E-A5D7-1805-1415A0C630E2 (d0, q0, r0, m0, '/stm32/data', ... (260 bytes))
+1748465164: Sending PUBACK to stm32_client (m39608, rc0)
+1748465164: Received PUBLISH from stm32_client (d0, q1, r0, m19804, '/stm32/data', ... (260 bytes))
+1748465164: Sending PUBLISH to auto-49FADEF3-CF4E-A5D7-1805-1415A0C630E2 (d0, q0, r0, m0, '/stm32/data', ... (260 bytes))
+1748465164: Sending PUBACK to stm32_client (m19804, rc0)
+1748465174: Received PUBLISH from stm32_client (d0, q1, r0, m9902, '/stm32/data', ... (260 bytes))
+1748465174: Sending PUBLISH to auto-49FADEF3-CF4E-A5D7-1805-1415A0C630E2 (d0, q0, r0, m0, '/stm32/data', ... (260 bytes))
+1748465174: Sending PUBACK to stm32_client (m9902, rc0)
+1748465174: Received PUBLISH from stm32_client (d0, q1, r0, m4951, '/stm32/data', ... (260 bytes))
+1748465174: Sending PUBLISH to auto-49FADEF3-CF4E-A5D7-1805-1415A0C630E2 (d0, q0, r0, m0, '/stm32/data', ... (260 bytes))
+1748465174: Sending PUBACK to stm32_client (m4951, rc0)
+1748465184: Received PUBLISH from stm32_client (d0, q1, r0, m48555, '/stm32/data', ... (260 bytes))
+1748465184: Sending PUBLISH to auto-49FADEF3-CF4E-A5D7-1805-1415A0C630E2 (d0, q0, r0, m0, '/stm32/data', ... (260 bytes))
+1748465184: Sending PUBACK to stm32_client (m48555, rc0)
+1748465184: Received PUBLISH from stm32_client (d0, q1, r0, m60117, '/stm32/data', ... (260 bytes))
+1748465184: Sending PUBLISH to auto-49FADEF3-CF4E-A5D7-1805-1415A0C630E2 (d0, q0, r0, m0, '/stm32/data', ... (260 bytes))
+1748465184: Sending PUBACK to stm32_client (m60117, rc0)
+1748465194: Received PUBLISH from stm32_client (d0, q1, r0, m49514, '/stm32/data', ... (260 bytes))
+1748465194: Sending PUBLISH to auto-49FADEF3-CF4E-A5D7-1805-1415A0C630E2 (d0, q0, r0, m0, '/stm32/data', ... (260 bytes))
+1748465194: Sending PUBACK to stm32_client (m49514, rc0)
+1748465194: Received PUBLISH from stm32_client (d0, q1, r0, m24757, '/stm32/data', ... (260 bytes))
+1748465194: Sending PUBLISH to auto-49FADEF3-CF4E-A5D7-1805-1415A0C630E2 (d0, q0, r0, m0, '/stm32/data', ... (260 bytes))
+1748465194: Sending PUBACK to stm32_client (m24757, rc0)
+1748465204: Received PUBLISH from stm32_client (d0, q1, r0, m33882, '/stm32/data', ... (260 bytes))
+1748465204: Sending PUBLISH to auto-49FADEF3-CF4E-A5D7-1805-1415A0C630E2 (d0, q0, r0, m0, '/stm32/data', ... (260 bytes))
+1748465204: Sending PUBACK to stm32_client (m33882, rc0)
+1748465204: Received PUBLISH from stm32_client (d0, q1, r0, m16941, '/stm32/data', ... (260 bytes))
+1748465204: Sending PUBLISH to auto-49FADEF3-CF4E-A5D7-1805-1415A0C630E2 (d0, q0, r0, m0, '/stm32/data', ... (260 bytes))
+1748465204: Sending PUBACK to stm32_client (m16941, rc0)
+1748465213: Received PINGREQ from auto-49FADEF3-CF4E-A5D7-1805-1415A0C630E2
+1748465213: Sending PINGRESP to auto-49FADEF3-CF4E-A5D7-1805-1415A0C630E2
+1748465214: Received PUBLISH from stm32_client (d0, q1, r0, m38166, '/stm32/data', ... (260 bytes))
+1748465214: Sending PUBLISH to auto-49FADEF3-CF4E-A5D7-1805-1415A0C630E2 (d0, q0, r0, m0, '/stm32/data', ... (260 bytes))
+1748465214: Sending PUBACK to stm32_client (m38166, rc0)
+1748465214: Received PUBLISH from stm32_client (d0, q1, r0, m19083, '/stm32/data', ... (260 bytes))
+1748465214: Sending PUBLISH to auto-49FADEF3-CF4E-A5D7-1805-1415A0C630E2 (d0, q0, r0, m0, '/stm32/data', ... (260 bytes))
+1748465214: Sending PUBACK to stm32_client (m19083, rc0)
+1748465216: Received DISCONNECT from auto-49FADEF3-CF4E-A5D7-1805-1415A0C630E2
+1748465216: Client auto-49FADEF3-CF4E-A5D7-1805-1415A0C630E2 disconnected.
+^C1748465218: mosquitto version 2.0.11 terminating
+```
+
+## mosquitto sub
+```json
+» mosquitto_sub -h 192.168.1.81 -p 1883 -t "/stm32/data"
+{"imei":"ConMgr_imei()","cmd_timeout":60000,"vel_ct_on":30,"vel_ct_off":25,"vel_fe_on":36,"time_fe_hold":30000,"time_blink_enable":5000,"time_blink_disable":10000,"period_blink":5,"cmd":"automatic","vel":-1,"vel_source":null,"al_mode":false,"publish_period":5}
+{"imei":"ConMgr_imei()","cmd_timeout":60000,"vel_ct_on":30,"vel_ct_off":25,"vel_fe_on":36,"time_fe_hold":30000,"time_blink_enable":5000,"time_blink_disable":10000,"period_blink":5,"cmd":"automatic","vel":-1,"vel_source":null,"al_mode":false,"publish_period":5}
+{"imei":"ConMgr_imei()","cmd_timeout":60000,"vel_ct_on":30,"vel_ct_off":25,"vel_fe_on":36,"time_fe_hold":30000,"time_blink_enable":5000,"time_blink_disable":10000,"period_blink":5,"cmd":"automatic","vel":-1,"vel_source":null,"al_mode":false,"publish_period":5}
+{"imei":"ConMgr_imei()","cmd_timeout":60000,"vel_ct_on":30,"vel_ct_off":25,"vel_fe_on":36,"time_fe_hold":30000,"time_blink_enable":5000,"time_blink_disable":10000,"period_blink":5,"cmd":"automatic","vel":-1,"vel_source":null,"al_mode":false,"publish_period":5}
+{"imei":"ConMgr_imei()","cmd_timeout":60000,"vel_ct_on":30,"vel_ct_off":25,"vel_fe_on":36,"time_fe_hold":30000,"time_blink_enable":5000,"time_blink_disable":10000,"period_blink":5,"cmd":"automatic","vel":-1,"vel_source":null,"al_mode":false,"publish_period":5}
+{"imei":"ConMgr_imei()","cmd_timeout":60000,"vel_ct_on":30,"vel_ct_off":25,"vel_fe_on":36,"time_fe_hold":30000,"time_blink_enable":5000,"time_blink_disable":10000,"period_blink":5,"cmd":"automatic","vel":-1,"vel_source":null,"al_mode":false,"publish_period":5}
+{"imei":"ConMgr_imei()","cmd_timeout":60000,"vel_ct_on":30,"vel_ct_off":25,"vel_fe_on":36,"time_fe_hold":30000,"time_blink_enable":5000,"time_blink_disable":10000,"period_blink":5,"cmd":"automatic","vel":-1,"vel_source":null,"al_mode":false,"publish_period":5}
+{"imei":"ConMgr_imei()","cmd_timeout":60000,"vel_ct_on":30,"vel_ct_off":25,"vel_fe_on":36,"time_fe_hold":30000,"time_blink_enable":5000,"time_blink_disable":10000,"period_blink":5,"cmd":"automatic","vel":-1,"vel_source":null,"al_mode":false,"publish_period":5}
+{"imei":"ConMgr_imei()","cmd_timeout":60000,"vel_ct_on":30,"vel_ct_off":25,"vel_fe_on":36,"time_fe_hold":30000,"time_blink_enable":5000,"time_blink_disable":10000,"period_blink":5,"cmd":"automatic","vel":-1,"vel_source":null,"al_mode":false,"publish_period":5}
+{"imei":"ConMgr_imei()","cmd_timeout":60000,"vel_ct_on":30,"vel_ct_off":25,"vel_fe_on":36,"time_fe_hold":30000,"time_blink_enable":5000,"time_blink_disable":10000,"period_blink":5,"cmd":"automatic","vel":-1,"vel_source":null,"al_mode":false,"publish_period":5}
+{"imei":"ConMgr_imei()","cmd_timeout":60000,"vel_ct_on":30,"vel_ct_off":25,"vel_fe_on":36,"time_fe_hold":30000,"time_blink_enable":5000,"time_blink_disable":10000,"period_blink":5,"cmd":"automatic","vel":-1,"vel_source":null,"al_mode":false,"publish_period":5}
+{"imei":"ConMgr_imei()","cmd_timeout":60000,"vel_ct_on":30,"vel_ct_off":25,"vel_fe_on":36,"time_fe_hold":30000,"time_blink_enable":5000,"time_blink_disable":10000,"period_blink":5,"cmd":"automatic","vel":-1,"vel_source":null,"al_mode":false,"publish_period":5}
+{"imei":"ConMgr_imei()","cmd_timeout":60000,"vel_ct_on":30,"vel_ct_off":25,"vel_fe_on":36,"time_fe_hold":30000,"time_blink_enable":5000,"time_blink_disable":10000,"period_blink":5,"cmd":"automatic","vel":-1,"vel_source":null,"al_mode":false,"publish_period":5}
+{"imei":"ConMgr_imei()","cmd_timeout":60000,"vel_ct_on":30,"vel_ct_off":25,"vel_fe_on":36,"time_fe_hold":30000,"time_blink_enable":5000,"time_blink_disable":10000,"period_blink":5,"cmd":"automatic","vel":-1,"vel_source":null,"al_mode":false,"publish_period":5}
+```
+
 
 ## stm32 subscribe test 2 
 

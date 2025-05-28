@@ -148,10 +148,12 @@ forwardModMgrEvt(RKH_SMA_T *ao, RKH_EVT_T *pe)
 
     char dump[5] = {0};
     sprintf(dump, "%d", presp->fwdEvt);
-    RKH_TRC_USR_BEGIN(USR_TRACE_EVT)
-    RKH_TUSR_STR(dump);
-    RKH_TRC_USR_END();
 
+    /* TODO
+        RKH_TRC_USR_BEGIN(USR_TRACE_EVT)
+        RKH_TUSR_STR(dump);
+        RKH_TRC_USR_END();
+    */
     RKH_SMA_POST_FIFO(ao, RKH_UPCAST(RKH_EVT_T, presp), modMgr);
 }
 
@@ -243,7 +245,7 @@ notifyURC(ModMgr *const me, RKH_EVT_T *pe)
 {
     (void)me;
 
-    forwardModMgrEvt(conMgr, pe);
+    // TODO forwardModMgrEvt(conMgr, pe);
 }
 
 static void
@@ -254,10 +256,12 @@ sendCmd(ModMgr *const me, RKH_EVT_T *pe)
 
     me->channelPuts(me->pCmd->cmd);
 
-    RKH_TRC_USR_BEGIN(USR_TRACE_OUT)
-    RKH_TUSR_STR("cmd:");
-    RKH_TUSR_STR(me->pCmd->cmd);
-    RKH_TRC_USR_END();
+    /* TODO
+        RKH_TRC_USR_BEGIN(USR_TRACE_OUT)
+        RKH_TUSR_STR("cmd:");
+        RKH_TUSR_STR(me->pCmd->cmd);
+        RKH_TRC_USR_END();
+     */
 }
 
 static void
@@ -270,10 +274,12 @@ sendData(ModMgr *const me, RKH_EVT_T *pe)
 #ifdef _SEND_WITH_TERMINATOR
     me->channelPuts(ModCmd_endOfXmitStr());
 #endif
-    RKH_TRC_USR_BEGIN(USR_TRACE_OUT)
-    RKH_TUSR_STR("data:");
-    RKH_TUSR_MEM(me->pCmd->data, me->pCmd->nData);
-    RKH_TRC_USR_END();
+    /* TODO
+        RKH_TRC_USR_BEGIN(USR_TRACE_OUT)
+        RKH_TUSR_STR("data:");
+        RKH_TUSR_MEM(me->pCmd->data, me->pCmd->nData);
+        RKH_TRC_USR_END();
+     */
 }
 
 static void

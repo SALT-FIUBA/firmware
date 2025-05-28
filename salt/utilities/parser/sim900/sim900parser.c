@@ -730,7 +730,9 @@ data_init(unsigned char c)
 {
     (void)c;
 
-    precv = ConMgr_ReceiveDataGetRef();
+    struct ReceivedEvt * mockReceivedEvt = NULL;
+
+    precv = mockReceivedEvt; // ConMgr_ReceiveDataGetRef();
     precv->size = 0;
     prx = precv->buf;
 }
@@ -1169,9 +1171,11 @@ void recCmdFlush(){
 
     char * a = recCmdBuf;
 
+    /* TODO
     RKH_TRC_USR_BEGIN(USR_TRACE_IN)
         RKH_TUSR_STR(recCmdBuf);
     RKH_TRC_USR_END();
+    */
 
     recCmdNext = recCmdBuf;
 

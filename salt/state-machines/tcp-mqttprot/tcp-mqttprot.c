@@ -304,79 +304,13 @@ init(TCP_MQTTProt * const me, RKH_EVT_T *pe)
 static void
 publish(TCP_MQTTProt *const me, RKH_EVT_T *pe)
 {
-    //  printf("\n tcp-mqttprot | publish \n");
-    //  printf("Buffer usage: %u/%u bytes\n", me->mqttc_client.mq.curr_sz, 2048);
+    printf("\n tcp-mqttprot | publish \n");
 
     mqttc_sync(&me->mqttc_client);
     if (me->mqttc_client.error != MQTT_OK) {
-
         printf("PUBLISH ERROR ------> %d %s \n", me->mqttc_client.error, mqttc_error_str(me->mqttc_client.error));
     }
 
-    enum MQTTErrors mqtt_error;
-    enum MQTTErrors sync_error;
-
-    const char * topic = "stm32/data";
-    const char * message = "Hello from STM32!";
-
-    mqtt_error = mqttc_publish(&me->mqttc_client, topic, message, strlen(message), 0);
-
-    /*  printf("tcp-mqttprot | publish %d %s \n", mqtt_error, mqttc_error_str(mqtt_error));
-
-    if (mqtt_error != MQTT_OK) {
-        printf("Publish failed: %d\n", mqtt_error);
-    } else {
-        printf("Published: %s to %s\n", message, topic);
-    }
-     */
-
-
-    sync_error = mqttc_sync(&me->mqttc_client);
-
-    /*
-    if (sync_error == MQTT_OK) {
-
-        printf("tcp-mqttprot | publish | sync success  %s \n", mqttc_error_str(sync_error));
-    } else {
-
-        printf("tcp-mqttprot | publish | sync failed \n");
-    }
-     */
-
-
-    /* Rubbish Code
-
-        mqttc_mq_clean(&me->mqttc_client.mq);
-        printf("CLEARED SEND BUFFER \n");
-        mqttc_mq_init(&me->mqttc_client.mq, me->sendbuf, sizeof(me->sendbuf));
-        printf("INITIALIZED SEND BUFFER \n");
-
-        return;
-    }
-     */
-
-    /*
-    if (me->mqttc_client.error != MQTT_OK) {
-        printf("Client in error state: %s\n", mqttc_error_str(me->mqttc_client.error));
-
-        // Attempt reconnection if a callback is set
-        if (me->mqttc_client.reconnect_callback != NULL) {
-            me->mqttc_client.reconnect_callback(&me->mqttc_client, &me->mqttc_client.reconnect_state);
-        }
-        return;
-    }
-
-    // Check if there is enough space in the send buffer (e.g., leave 100 bytes free)
-    if (me->mqttc_client.mq.curr_sz > (2048 - 100)) {
-        printf("Send buffer is nearly full, delaying publish\n");
-        //  mqttc_mq_clean(&me->mqttc_client.mq);
-        printf("mqttc client mq current size: %d", me->mqttc_client.mq.curr_sz);
-
-        //  return; // Skip this publish attempt and retry later
-    }
-     */
-
-    /*
     AppData appMsg;
     rui16_t pubTime;
 
@@ -396,7 +330,6 @@ publish(TCP_MQTTProt *const me, RKH_EVT_T *pe)
     } else {
         printf("Published successful \n");
     }
-    */
 }
 
 
@@ -404,11 +337,7 @@ publish(TCP_MQTTProt *const me, RKH_EVT_T *pe)
 static void processReceivedData(TCP_MQTTProt *const me, RKH_EVT_T *pe) {
 
     //  printf("tcp-mqttprot | Processing received MQTT data\n");
-
     TcpReceiveEvt * evt = RKH_DOWNCAST(TcpReceiveEvt, pe);
-
-    //  printf("%d \n", evt->size);
-    //  printf("%s \n", evt->buf);
 
     // Call mqttc_sync to process any received MQTT message
     enum MQTTErrors sync_error = mqttc_sync(&me->mqttc_client);

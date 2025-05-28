@@ -153,4 +153,16 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/main.c.obj: \
  /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/logic/logic.h \
  /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/gps/gps.h \
  /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/epoch/epoch.h \
- /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/parser/salt-command/saltCmd.h
+ /home/nando-toshiba/Desktop/salt/firmware/salt/utilities/parser/salt-command/saltCmd.h \
+ /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/analog-inputs/anIn.h \
+ /home/nando-toshiba/Desktop/salt/firmware/third-party/stm32-sapi/inc/sapi_datatypes.h \
+ /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/ihm/onSwitch.h \
+ /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/relay-control/relay.h \
+ /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/ledPanel/ledPanel.h \
+ /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/ledPanel/as1116.h \
+ /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/ihm/buzzer.h \
+ /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/pulse-counter/pulseCounter.h \
+ /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/teloc/teloc.h \
+ /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/sim808/sim808.h \
+ /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/serial/serial.h \
+ /home/nando-toshiba/Desktop/salt/firmware/salt/peripherals/module-command/modcmd.h
