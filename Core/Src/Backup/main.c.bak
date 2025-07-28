@@ -19,38 +19,17 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "lwip.h"
+#include "rng.h"
 #include "spi.h"
 #include "usart.h"
 #include "usb_otg.h"
 #include "gpio.h"
+#include "tcp_priv.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
-/* Blinky includes */
-#include "rkh.h"
-#include "mTime.h"
 
-/* SALT includes */
-#include "modcmd.h"
-#include "modmgr.h"
-#include "mqttProt.h"
-#include "logic.h"
-#include "salt-signals.h"
-#include "anIn.h"
-#include "onSwitch.h"
-#include "relay.h"
-#include "ledPanel.h"
-#include "buzzer.h"
-#include "pulseCounter.h"
-#include "teloc.h"
-#include "sim808.h"
-#include "serial.h"
-#include "publisher.h"
-#include "bsp-salt.h"
-#include "blinkySysTick.h"
-#include "tcp.h"
-#include "tcp-echo-server.h"
 
 /* USER CODE END Includes */
 
@@ -66,58 +45,12 @@
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
-#define LOGIC_QSTO_SIZE  16
-#define MQTTPROT_QSTO_SIZE  16
-#define CONMGR_QSTO_SIZE    8
-#define MODMGR_QSTO_SIZE    4
-
-#define SIZEOF_EP0STO       16
-#define SIZEOF_EP0_BLOCK    sizeof(RKH_EVT_T)
-#define SIZEOF_EP1STO       128
-#define SIZEOF_EP1_BLOCK    sizeof(ModCmd)
-#define SIZEOF_EP2STO       512
-#define SIZEOF_EP2_BLOCK    sizeof(ModMgrEvt)
-
-#define MIN(a, b) (((a) < (b)) ? (a) : (b))
-
-/* Constants ------------------------------- */
-
-#define PULSE_COUNTER_THR                   5
-#define PULSE_COUNTER_FACTOR                0.904778684 // m/s_km/h(3.6) * pi * d_rueda(0.8m) / pulsos_revolucion(10)
-
-#define PWR_INPUT_SAMPLE_FACTOR             0.01628664 // 10k/(604k+10k) PWR*factor=sample
-#define PWR_INPUT_SAMPLE_MIN                (60*PWR_INPUT_SAMPLE_FACTOR) // 60V*factor=min_sample
-#define PWR_INPUT_SAMPLE_MAX                (120*PWR_INPUT_SAMPLE_FACTOR) // 110V*factor=max_sample
-
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
 
-/* Blinky Local variables */
-#define QSTO_SIZE           4
-static RKH_EVT_T *qsto[QSTO_SIZE];
-
-
-/* SALT Local variables */
-static RKH_EVT_T *Logic_qsto[LOGIC_QSTO_SIZE];
-static RKH_EVT_T *MQTTProt_qsto[MQTTPROT_QSTO_SIZE];
-static RKH_EVT_T *ConMgr_qsto[CONMGR_QSTO_SIZE];
-static RKH_EVT_T *ModMgr_qsto[MODMGR_QSTO_SIZE];
-static rui8_t evPool0Sto[SIZEOF_EP0STO],
-        evPool1Sto[SIZEOF_EP1STO],
-        evPool2Sto[SIZEOF_EP2STO];
-
-static RKH_ROM_STATIC_EVENT(e_Open, evOpen);
-static RKH_ROM_STATIC_EVENT(e_SaltEnable, evSaltEnable);
-static RKH_ROM_STATIC_EVENT(e_SaltDisable, evSaltDisable);
-static CmdEvt e_saltCmd;
-static MQTTProtCfg mqttProtCfg;
-static LogicCfg logicCfg;
-static ModCmdRcvHandler simACmdParser = NULL;
-static rbool_t initEnd = false;
-static rbool_t pwrCorrect = false;
 
 /* USER CODE END PV */
 
@@ -139,194 +72,205 @@ PUTCHAR_PROTOTYPE
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+#include <wolfssl/ssl.h>
+#include <wolfssl/wolfcrypt/settings.h>
+#include <lwip/tcp.h>
+#include <lwip/dns.h>
 
-static void onAnInCb(){
-    if(!initEnd){
-        return;
-    }
+// Configuration (add to wolfSSL.I-CUBE-wolfSSL_conf.h or user_settings.h)
+#define WOLFSSL_LWIP
+#define SINGLE_THREADED
+#define WOLFSSL_STM32F4 // Adjust for your MCU
 
-    sample_t sample = anInGetSample(anIn0);
-    bool aux = sample > PWR_INPUT_SAMPLE_MIN && sample < PWR_INPUT_SAMPLE_MAX;
-    if(aux != pwrCorrect){
-        pwrCorrect = aux;
-        if(pwrCorrect && onSwitchGet()){
-            RKH_SMA_POST_FIFO(logic, &e_SaltEnable, 0);
-        } else {
-            RKH_SMA_POST_FIFO(logic, &e_SaltDisable, 0);
+// Global variables
+static WOLFSSL_CTX * ctx = NULL;
+static WOLFSSL * ssl = NULL;
+static struct tcp_pcb * pcb = NULL;
+
+extern struct netif gnetif;
+
+static err_t wolf_tcp_recv(void* arg, struct tcp_pcb* tpcb, struct pbuf* p, err_t err);
+static err_t wolf_tcp_connected(void* arg, struct tcp_pcb* tpcb, err_t err);
+static void wolf_dns_found(const char* name, const ip_addr_t* ipaddr, void* arg);
+int wolf_tls_client_init(void);
+void wolf_tls_client_loop(void);
+void wolf_tls_client_cleanup(void);
+
+
+// TCP receive callback
+static err_t wolf_tcp_recv(void* arg, struct tcp_pcb* tpcb, struct pbuf* p, err_t err) {
+    if (p != NULL) {
+        // Read TLS data
+        char buffer[1024];
+        int len = wolfSSL_read(ssl, buffer, sizeof(buffer) - 1);
+        if (len > 0) {
+            buffer[len] = '\0';
+            printf("Received: %s\n", buffer);
         }
+        pbuf_free(p);
+    } else if (err == ERR_OK) {
+        // Connection closed
+        wolfSSL_free(ssl);
+        ssl = NULL;
+        tcp_close(tpcb);
+        pcb = NULL;
     }
+    return ERR_OK;
 }
 
-static void onSwitchCb(bool activated){
-    if(!initEnd){
-        return;
-    }
-    if(!pwrCorrect){
-        return;
-    }
+// TCP connection callback
+static err_t wolf_tcp_connected(void* arg, struct tcp_pcb* tpcb, err_t err) {
+    if (err == ERR_OK) {
+        // Create WolfSSL object
+        ssl = wolfSSL_new(ctx);
+        if (!ssl) {
+            tcp_close(tpcb);
+            return ERR_MEM;
+        }
 
-    if(activated){
-        RKH_SMA_POST_FIFO(logic, &e_SaltEnable, 0);
+        // Associate TCP PCB with WolfSSL (native API)
+        wolfSSL_set_fd(ssl, (int)tpcb);
+
+        // Perform TLS handshake
+        int ret = wolfSSL_connect(ssl);
+        if (ret != WOLFSSL_SUCCESS) {
+            printf("TLS handshake failed: %d\n", wolfSSL_get_error(ssl, ret));
+            wolfSSL_free(ssl);
+            ssl = NULL;
+            tcp_close(tpcb);
+            return ERR_CONN;
+        }
+
+        // Send example HTTP GET request
+        const char* request = "GET / HTTP/1.1\r\nHost: example.com\r\n\r\n";
+        int sent = wolfSSL_write(ssl, request, strlen(request));
+        if (sent < 0) {
+            printf("TLS write failed: %d\n", wolfSSL_get_error(ssl, sent));
+        }
+
+        // Set receive callback
+        tcp_recv(tpcb, wolf_tcp_recv);
+        return ERR_OK;
+    }
+    return err;
+}
+
+// DNS callback
+static void wolf_dns_found(const char* name, const ip_addr_t* ipaddr, void* arg) {
+    if (ipaddr != NULL) {
+
+        // Create TCP PCB
+        pcb = tcp_new();
+        if (!pcb) {
+            printf("Failed to create TCP PCB\n");
+            return;
+        }
+
+
+        // Set up callbacks
+        tcp_arg(pcb, NULL);
+        tcp_err(pcb, NULL); // Optional: Add error callback if needed
+        err_t err = tcp_connect(pcb, ipaddr, 443, wolf_tcp_connected); // Port 443 for HTTPS
+        if (err != ERR_OK) {
+            printf("TCP connect failed: %d\n", err);
+            tcp_close(pcb);
+            pcb = NULL;
+        }
     } else {
-        RKH_SMA_POST_FIFO(logic, &e_SaltDisable, 0);
+        printf("DNS resolution failed for %s\n", name);
     }
 }
 
-static void onRelayErrorCb(Relay_t relay){
-    if(!initEnd){
-        return;
-    }
+#include <lwip/dns.h>
 
-    switch(relay){
-        case feEn:
-        case feDis:
-        case ctEn:
-        case ctDis:
-            if(onSwitchGet()){ //Esto es un error solo si el switch esta activado (sino es una inconsistencia dada por la posicion del switch)
-                RKH_SMA_POST_FIFO(logic, &e_SaltDisable, 0);
-            }
-            break;
-        case feAct:
-        case ctAct:
-            RKH_SMA_POST_FIFO(logic, &e_SaltDisable, 0);
-            break;
-        default:
-            break;
-    }
+void lwip_init_dns(void) {
+    ip_addr_t dns_server;
+    IP4_ADDR(&dns_server, 8, 8, 8, 8); // Google DNS
+    dns_setserver(0, &dns_server);
+    IP4_ADDR(&dns_server, 8, 8, 4, 4); // Secondary DNS
+    dns_setserver(1, &dns_server);
 }
 
-static void simACb(unsigned char c){
-#ifdef DEBUG_SERIAL_PASS
-    serialPutByte(UART_DEBUG,c);
-#endif
-    if(!initEnd){
-        return;
+// Initialize TLS client
+int wolf_tls_client_init(void) {
+    // Initialize WolfSSL
+    if (wolfSSL_Init() != WOLFSSL_SUCCESS) {
+        printf("WolfSSL init failed\n");
+        return -1;
     }
 
-    simACmdParser(c);
-
-}
-
-static void simBCb(unsigned char c){
-    if(!initEnd){
-        return;
-    }
-}
-
-static void debugCb(unsigned char c){
-
-#ifdef DEBUG_SERIAL_PASS
-    //serialPutByte(UART_DEBUG,c);
-    serialPutByte(UART_SIM_808_A,c);
-#endif
-}
-
-
-void onMQTTCb(void** state,struct mqttc_response_publish *publish) {
-    if (!initEnd) {
-        return;
+    // Create WolfSSL context
+    ctx = wolfSSL_CTX_new(wolfSSLv23_client_method());
+    if (!ctx) {
+        printf("WolfSSL context creation failed\n");
+        wolfSSL_Cleanup();
+        return -1;
     }
 
-    char dump1[255] = {0};
-    char dump2[255] = {0};
+    // Optional: Load CA certificate for server verification
+    // if (wolfSSL_CTX_load_verify_locations(ctx, "ca-cert.pem", NULL) != WOLFSSL_SUCCESS) {
+    //     printf("Failed to load CA certificate\n");
+    //     wolfSSL_CTX_free(ctx);
+    //     wolfSSL_Cleanup();
+    //     return -1;
+    // }
 
-    int dumpy1 = 123;
-    int dumpy2 = 456;
-    sprintf(dump1, "MQTT topic: %.*s", MIN(publish->topic_name_size, 200), publish->topic_name);
-    sprintf(dump2, "MQTT data: %.*s", MIN((int) publish->application_message_size, 200), publish->application_message);
-    RKH_TRC_USR_BEGIN(USR_TRACE_MQTT)
-        RKH_TUSR_STR(dump1);
-        RKH_TUSR_STR(dump2);
-        RKH_TUSR_STR("mqtt dump values");
-        RKH_TUSR_UI8(3, dumpy1);
-        RKH_TUSR_UI8(3, dumpy2);
-    RKH_TRC_USR_END();
+    // Initialize DNS
+    lwip_init_dns();
 
-    int result = saltCmdParse((char *) publish->application_message, publish->application_message_size,
-                              &(e_saltCmd.cmd));
-    if (result > 0) {
-        RKH_SMA_POST_FIFO(logic, RKH_UPCAST(RKH_EVT_T, &e_saltCmd), 0);
+    // Check network interface
+    if (!netif_is_up(&gnetif)) {
+        printf("Network interface down\n");
+        wolfSSL_CTX_free(ctx);
+        wolfSSL_Cleanup();
+        return -1;
+    }
+
+    // Resolve domain name (assumes LwIP initialized)
+    ip_addr_t addr;
+    err_t err = dns_gethostbyname("www.example.com", &addr, wolf_dns_found, NULL);
+    if (err == ERR_INPROGRESS) {
+        // DNS resolution in progress
+        return 0;
+    } else if (err == ERR_OK) {
+
+        ip_addr_t addr;
+        IP4_ADDR(&addr, 142, 250, 190, 78); // Static Google IP
+        wolf_dns_found("google.com", &addr, NULL);
+
+        //  wolf_dns_found("example.com", &addr, NULL);
+        return 0;
+    } else {
+        printf("DNS gethostbyname failed: %d\n", err);
+        wolfSSL_CTX_free(ctx);
+        wolfSSL_Cleanup();
+        return -1;
     }
 }
 
-static void
-saltConfig(void)
-{
-    //  printf("salt config \n");
-    /* Configuracion especifica SALT */
-
-    /* RKH */
-
-    RKH_SET_STATIC_EVENT(RKH_UPCAST(RKH_EVT_T, &e_saltCmd), evSaltCmd);
-
-    /* Inicializacion SALT */
-    bsp_init();
-    relayInit(onRelayErrorCb); // don't use rkh
-    ledPanelInit(); // don't use rkh
-    anInInit(onAnInCb); // don't use rkh
-    buzzerInit(); // don't use rkh
-    onSwitchInit(onSwitchCb); // don't use rkh
-    pulseCounterInit(PULSE_COUNTER_THR,PULSE_COUNTER_FACTOR); // use rkh
-    telocInit(); // use rkh
-    //  epoch_init(); // commented on original code
-    mTime_init(); // don't use rkh
-
-    sim808Init(SIM_808_A); // don't use rkh
-    serialSetIntCb(UART_SIM_808_A, (serialIsrCb_t) simACb); // don't use rkh
-
-#ifdef DEBUG_SERIAL
-    serialInit(UART_DEBUG);
-    serialSetIntCb(UART_DEBUG, debugCb);
-#else
-    sim808Init(SIM_808_B); // don't use rkh
-    serialSetIntCb(UART_SIM_808_B, (serialIsrCb_t) simBCb); // don't use rkh
-#endif
-
-    /* Conexion de modulos */
-
-    simACmdParser = ModCmd_init(); // use rkh
-
+// Main loop for single-threaded processing
+void wolf_tls_client_loop(void) {
+    // Process LwIP timers and packets
+    tcp_tmr(); // Call every 250ms for LwIP timeouts
+    // Add other LwIP processing as needed (e.g., ethif_input for your Ethernet driver)
 }
 
-static void
-setupTraceFilters(void)
-{
-    // RKH_FILTER_ON_GROUP(RKH_TRC_ALL_GROUPS);
-    //  RKH_FILTER_ON_EVENT(RKH_TRC_ALL_EVENTS);
-
-    //RKH_FILTER_OFF_EVENT(USR_TRACE);
-    //RKH_FILTER_OFF_EVENT(USR_TRACE_OUT);
-    //RKH_FILTER_OFF_EVENT(USR_TRACE_EVT);
-    //RKH_FILTER_OFF_EVENT(USR_TRACE_IN);
-    //RKH_FILTER_OFF_EVENT(USR_TRACE_SSP);
-    //  RKH_FILTER_OFF_EVENT(USR_TRACE_MQTT);
-    //RKH_FILTER_OFF_GROUP_ALL_EVENTS(RKH_TG_USR);
-
-    RKH_FILTER_OFF_EVENT(RKH_TE_SMA_FIFO); // Send a event to SMA's queue in a FIFO manner
-    //  RKH_FILTER_OFF_EVENT(RKH_TE_SMA_LIFO); // Send a event to SMA's queue in a LIFO manner
-
-    //  RKH_FILTER_OFF_EVENT(RKH_TE_TMR_TOUT);  // Timer has expired
-    RKH_FILTER_OFF_EVENT(RKH_TE_SM_STATE); // Legal, stable and final state of transition.
-    RKH_FILTER_OFF_EVENT(RKH_TE_SM_TRN); //  Source and target state of the transition. The target could be either basic state, composite state or pseudostate.
-    RKH_FILTER_OFF_EVENT(RKH_TE_SM_TS_STATE); // Destination state or pseudostate of a transition segment.
-    RKH_FILTER_OFF_EVENT(RKH_TE_SM_DCH); // Dispatch an event to a state machine
-    //  RKH_FILTER_OFF_EVENT(RKH_TE_SM_EVT_NFOUND); // The arrived event was't founded in the transition table.
-    //  RKH_FILTER_OFF_EVENT(RKH_TE_SM_GRD_FALSE); // The transition was cancelled by guard function.
-
-    //  RKH_FILTER_OFF_EVENT();
-
-
-
-    //  RKH_FILTER_OFF_SMA(conMgr);
-    //  RKH_FILTER_OFF_SMA(modMgr);
-    //  RKH_FILTER_OFF_SMA(mqttProt);
-    //  RKH_FILTER_OFF_SMA(logic);
-
-    //  RKH_FILTER_OFF_ALL_SIGNALS();
+// Cleanup
+void wolf_tls_client_cleanup(void) {
+    if (ssl) {
+        wolfSSL_free(ssl);
+        ssl = NULL;
+    }
+    if (pcb) {
+        tcp_close(pcb);
+        pcb = NULL;
+    }
+    if (ctx) {
+        wolfSSL_CTX_free(ctx);
+        ctx = NULL;
+    }
+    wolfSSL_Cleanup();
 }
-
-
-
 /* USER CODE END 0 */
 
 /**
@@ -336,7 +280,6 @@ setupTraceFilters(void)
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-    printf("main \n");
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -359,78 +302,45 @@ int main(void)
   MX_USB_OTG_FS_PCD_Init();
   MX_SPI1_Init();
   MX_LWIP_Init();
+  MX_RNG_Init();
   /* USER CODE BEGIN 2 */
 
-
-  /* Initialize TCP echo server */
-  tcp_echoserver_init();
-
-    /* Infinite loop */
-    while (1)
-    {
-        /* LwIP process function - handles timeouts and LwIP periodic tasks */
-        MX_LWIP_Process();
-
-        /* Toggle LED to show activity */
-        HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0);
-        HAL_Delay(1000);
-    }
-
-
-    /*
-  saltConfig();
-  rkh_fwk_init();
-
-
-  setupTraceFilters();
-  mTime_init(); // invoked in saltConfig function
-
-  RKH_TRC_OPEN();
-
-  rkh_dynEvt_init();
-  rkh_fwk_registerEvtPool(evPool0Sto, SIZEOF_EP0STO, SIZEOF_EP0_BLOCK);
-  rkh_fwk_registerEvtPool(evPool1Sto, SIZEOF_EP1STO, SIZEOF_EP1_BLOCK);
-  rkh_fwk_registerEvtPool(evPool2Sto, SIZEOF_EP2STO, SIZEOF_EP2_BLOCK);
-
-    mqttProtCfg.publishTime = 5;
-    mqttProtCfg.syncTime = 4;
-    mqttProtCfg.keepAlive = 400;
-    mqttProtCfg.qos = 1;
-    strcpy(mqttProtCfg.clientId, "");
-    strcpy(mqttProtCfg.topic, "");
-    strcpy(mqttProtCfg.subTopic, "");
-    mqttProtCfg.callback = onMQTTCb;
-    MQTTProt_ctor(&mqttProtCfg, publishDimba);
-
-    logicCfg.publishTime = 8;
-    logic_ctor(&logicCfg);
-
-    //  blinker_ctor();
-
-    RKH_SMA_ACTIVATE(conMgr, ConMgr_qsto, CONMGR_QSTO_SIZE, 0, 0);
-    RKH_SMA_ACTIVATE(modMgr, ModMgr_qsto, MODMGR_QSTO_SIZE, 0, 0);
-    RKH_SMA_ACTIVATE(mqttProt, MQTTProt_qsto, MQTTPROT_QSTO_SIZE, 0, 0);
-    RKH_SMA_ACTIVATE(logic, Logic_qsto, LOGIC_QSTO_SIZE, 0, 0);
-    //   RKH_SMA_ACTIVATE(blinker, qsto, QSTO_SIZE,0,0);
-
-    RKH_SMA_POST_FIFO(conMgr, &e_Open, 0);
-
-    initEnd = true;
-
-    rkh_fwk_enter();
-
-    RKH_TRC_CLOSE();
-
-    return 0;
-    */
-
+    // Initialize TLS client
+//    if (wolf_tls_client_init() != 0) {
+//        printf("TLS client init failed\n");
+//        return 1;
+//    }
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  while (1)
+  {
+      /* USER CODE END WHILE */
+      MX_LWIP_Process();
+
+      // Check Ethernet link status
+      if (netif_is_link_up(&gnetif)) {
+          printf("Ethernet is connected\n");
+      } else {
+          printf("Ethernet is disconnected\n");
+      }
+
+      // Add delay to avoid flooding the UART
+      HAL_Delay(1000); // Check every 1 second
+
+
+ //     wolf_tls_client_loop();
+      // Add delay or other application logic
+      /* USER CODE BEGIN 3 */
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+  }
+
+    // Cleanup (unreachable in this example, but for completeness)
+    wolf_tls_client_cleanup();
   /* USER CODE END 3 */
 }
 

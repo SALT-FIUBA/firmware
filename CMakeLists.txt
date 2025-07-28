@@ -1,7 +1,7 @@
 #THIS FILE IS AUTO GENERATED FROM THE TEMPLATE! DO NOT CHANGE!
 set(CMAKE_SYSTEM_NAME Generic)
 set(CMAKE_SYSTEM_VERSION 1)
-cmake_minimum_required(VERSION 3.30)
+cmake_minimum_required(VERSION 3.31)
 
 # specify cross-compilers and tools
 set(CMAKE_C_COMPILER arm-none-eabi-gcc)
@@ -49,149 +49,11 @@ else ()
     add_compile_options(-Og -g)
 endif ()
 
+include_directories(Core/Inc Drivers/STM32F4xx_HAL_Driver/Inc Drivers/STM32F4xx_HAL_Driver/Inc/Legacy Drivers/CMSIS/Device/ST/STM32F4xx/Include Drivers/CMSIS/Include LWIP/App LWIP/Target Middlewares/Third_Party/LwIP/src/include Middlewares/Third_Party/LwIP/system Drivers/BSP/Components/lan8742 Middlewares/Third_Party/LwIP/src/include/netif/ppp Middlewares/Third_Party/LwIP/src/include/lwip Middlewares/Third_Party/LwIP/src/include/lwip/apps Middlewares/Third_Party/LwIP/src/include/lwip/priv Middlewares/Third_Party/LwIP/src/include/lwip/prot Middlewares/Third_Party/LwIP/src/include/netif Middlewares/Third_Party/LwIP/src/include/compat/posix Middlewares/Third_Party/LwIP/src/include/compat/posix/arpa Middlewares/Third_Party/LwIP/src/include/compat/posix/net Middlewares/Third_Party/LwIP/src/include/compat/posix/sys Middlewares/Third_Party/LwIP/src/include/compat/stdc Middlewares/Third_Party/LwIP/system/arch wolfSSL Middlewares/Third_Party/wolfSSL_wolfSSL_wolfSSL/wolfssl/)
 
-include_directories(
-        Core/Inc
-        Drivers/STM32F4xx_HAL_Driver/Inc
-        Drivers/STM32F4xx_HAL_Driver/Inc/Legacy
-        Drivers/CMSIS/Device/ST/STM32F4xx/Include
-        Drivers/CMSIS/Include
+add_definitions(-DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx)
 
-        LWIP/App
-        LWIP/Target
-
-        Middlewares/Third_Party/LwIP/src/include
-        Middlewares/Third_Party/LwIP/system
-        Drivers/BSP/Components/lan8742
-        Middlewares/Third_Party/LwIP/src/include/netif/ppp
-        Middlewares/Third_Party/LwIP/src/include/lwip
-        Middlewares/Third_Party/LwIP/src/include/lwip/apps
-        Middlewares/Third_Party/LwIP/src/include/lwip/priv
-        Middlewares/Third_Party/LwIP/src/include/lwip/prot
-        Middlewares/Third_Party/LwIP/src/include/netif
-        Middlewares/Third_Party/LwIP/src/include/compat/posix
-        Middlewares/Third_Party/LwIP/src/include/compat/posix/arpa
-        Middlewares/Third_Party/LwIP/src/include/compat/posix/net
-        Middlewares/Third_Party/LwIP/src/include/compat/posix/sys
-        Middlewares/Third_Party/LwIP/src/include/compat/stdc
-        Middlewares/Third_Party/LwIP/system/arch
-
-
-        ##  blinky example
-        bsp
-        blinky
-        #   blinky/bsp
-
-        third-party/rkh/source/fwk/inc
-        third-party/rkh/source/mempool/inc
-        third-party/rkh/source/queue/inc
-        third-party/rkh/source/sm/inc
-        third-party/rkh/source/sma/inc
-        third-party/rkh/source/tmr/inc
-        third-party/rkh/source/trc/inc
-
-        third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32
-
-        mTime
-
-
-        ##  salt project
-
-        third-party/jWrite/jWrite
-        third-party/MQTT-C/include
-        third-party/stm32-sapi/inc
-
-
-        salt/utilities/rtime
-        salt/utilities/mTime
-        salt/utilities/date
-        salt/utilities/epoch
-
-        salt
-        salt/configuration
-        salt/bsp
-
-        salt/state-machines/mqtt-protocol
-        salt/state-machines/connector-manager
-        salt/state-machines/module-manager
-        salt/state-machines/logic
-
-        salt/peripherals/module-command
-        salt/peripherals/module-power
-        salt/peripherals/serial
-        salt/peripherals/gps
-        salt/peripherals/sim808
-        salt/peripherals/ledPanel
-        salt/peripherals/ihm
-        salt/peripherals/relay-control
-        salt/peripherals/analog-inputs
-        salt/peripherals/pulse-counter
-        salt/peripherals/teloc
-
-        salt/utilities/emaFilter
-        salt/utilities/parser
-        salt/utilities/parser/sim900
-        salt/utilities/parser/salt-command
-        salt/utilities/ssp/src
-        salt/utilities/aes
-        salt/utilities/publisher
-
-        utilities
-
-        # blinky sys tick
-        blinkySysTick
-
-)
-
-file(
-        GLOB_RECURSE SOURCES "Core/*.*" "Drivers/*.*" "Middlewares/*.*" "LWIP/*.*"
-
-        "third-party/rkh/source/fwk/src/rkhfwk_bittbl.c"
-        "third-party/rkh/source/fwk/src/rkhfwk_dynevt.c"
-        "third-party/rkh/source/fwk/src/rkhfwk_evtpool.c"
-        "third-party/rkh/source/fwk/src/rkhfwk_pubsub.c"
-        "third-party/rkh/source/fwk/src/rkhfwk_rdygrp.c"
-        "third-party/rkh/source/fwk/src/rkhfwk_sched.c"
-        "third-party/rkh/source/fwk/src/rkhfwk_version.c"
-        "third-party/rkh/source/mempool/src/rkhmempool.c"
-        "third-party/rkh/source/queue/src/rkhqueue.c"
-        "third-party/rkh/source/sm/src/rkhsm.c"
-        "third-party/rkh/source/sma/src/rkhsma.c"
-        "third-party/rkh/source/sma/src/rkhsma_prio.c"
-        "third-party/rkh/source/sma/src/rkhsma_sync.c"
-        "third-party/rkh/source/tmr/src/rkhtmr.c"
-        "third-party/rkh/source/trc/src/rkhtrc_filter.c"
-        "third-party/rkh/source/trc/src/rkhtrc_record.c"
-        "third-party/rkh/source/trc/src/rkhtrc_stream.c"
-
-        "third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c"
-
-        "bsp/stm32f4xx_nucleo_144.c"
-
-        #   "blinky/blinky.c"
-        #   "blinky/bsp/bsp_blinky.c"
-
-        "blinky/bsp/assert.c"
-        #   "blinky/bsp/hook.c"
-
-        "mTime/mTime.c"
-        "mTime/mTimeTbl.c"
-
-        # salt
-
-        "third-party/jWrite/jWrite/*.*"
-        "third-party/MQTT-C/source/*.*"
-        "third-party/stm32-sapi/src/*.*"
-
-        "salt/*.*"
-
-
-        "utilities/*.*"
-
-        # blinky sys tick
-        "blinkySysTick/blinkySysTick.c"
-        "blinkySysTick/hook.c"
-)
+file(GLOB_RECURSE SOURCES "Core/*.*" "Middlewares/*.*" "LWIP/*.*" "wolfSSL/*.*" "Drivers/*.*")
 
 set(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/STM32F429ZITX_FLASH.ld)
 
@@ -201,31 +63,6 @@ add_link_options(-T ${LINKER_SCRIPT})
 
 add_executable(${PROJECT_NAME}.elf ${SOURCES} ${LINKER_SCRIPT})
 
-
-target_compile_definitions(
-        ${PROJECT_NAME}.elf PRIVATE
-        DEBUG
-        USE_HAL_DRIVER
-        STM32F429xx
-        RKH_PLATFORM="__STM32__"
-        #   RKH_CONF_FILE="blinky/rkhcfg.h"
-        RKH_CONF_FILE="salt/rkhcfg.h"
-)
-get_target_property(COMPILE_DEFS ${PROJECT_NAME}.elf COMPILE_DEFINITIONS)
-message(STATUS "All compile definitions: ${COMPILE_DEFS}")
-message(STATUS "Build type: ${CMAKE_BUILD_TYPE}")
-message(STATUS "...")
-
-#add_definitions(
-#        -DDEBUG
-#        -DUSE_HAL_DRIVER
-#        -DSTM32F429xx -DRKH_PLATFORM="__STM32__"
-#        -DRKH_CONF_FILE="blinky/rkhcfg.h"
-#)
-
-#   -DCMAKE_BUILD_TYPE=Debug -G "Unix Makefiles" -DUSE_HAL_DRIVER -DSTM32F429xx -DRKH_PLATFORM="__STM32__" -DRKH_CONF_FILE="salt/rkhcfg.h"
-
-
 set(HEX_FILE ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.hex)
 set(BIN_FILE ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.bin)
 
@@ -234,6 +71,3 @@ add_custom_command(TARGET ${PROJECT_NAME}.elf POST_BUILD
         COMMAND ${CMAKE_OBJCOPY} -Obinary $<TARGET_FILE:${PROJECT_NAME}.elf> ${BIN_FILE}
         COMMENT "Building ${HEX_FILE}
 Building ${BIN_FILE}")
-
-
-

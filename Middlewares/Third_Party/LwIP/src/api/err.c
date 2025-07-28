@@ -75,6 +75,7 @@ err_to_errno(err_t err)
 }
 #endif /* !NO_SYS */
 
+
 #ifdef LWIP_DEBUG
 
 static const char *err_strerr[] = {
