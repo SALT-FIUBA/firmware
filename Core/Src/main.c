@@ -358,17 +358,7 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
       MX_LWIP_Process();
-      if (netif_is_link_up(&gnetif)) {
-          printf("Ethernet is connected (IP: %s, MAC: %02x:%02x:%02x:%02x:%02x:%02x)\n",
-                 ip4addr_ntoa(&gnetif.ip_addr),
-                 gnetif.hwaddr[0], gnetif.hwaddr[1], gnetif.hwaddr[2],
-                 gnetif.hwaddr[3], gnetif.hwaddr[4], gnetif.hwaddr[5]);
-      } else {
-          printf("Ethernet is disconnected\n");
-      }
-      /* Toggle LED to show activity */
-      HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0);
-      HAL_Delay(1000);
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
