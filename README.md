@@ -1,6 +1,8 @@
 # firmware
 
 
+
+
 ## 🧩 Bridge en0 and en5 to route packet from Wi-Fi to Nucleo-144
 
 You want to bridge:
@@ -9,6 +11,15 @@ You want to bridge:
 * **Ethernet (`en5`)** — connected to the hub, which connects to the Nucleo board.
 
 So that your Mac (on Wi-Fi) can route packets to `192.168.1.80` over `en5`.
+
+---
+
+## 🚨 Caveats
+
+* This configuration will **not persist after reboot**. You can script it or use a launch daemon to automate.
+* Some versions of macOS are **quirky about bridging Wi-Fi**, especially newer ones (Monterey, Ventura+). If it fails, let me know what macOS version you’re running.
+
+
 
 ---
 
@@ -109,12 +120,3 @@ sudo ifconfig en5 up
 ```
 
 ---
-
-## 🚨 Caveats
-
-* This configuration will **not persist after reboot**. You can script it or use a launch daemon to automate.
-* Some versions of macOS are **quirky about bridging Wi-Fi**, especially newer ones (Monterey, Ventura+). If it fails, let me know what macOS version you’re running.
-
----
-
-Let me know how far you get and if you’d like a script to automate this setup!
