@@ -1,9 +1,13 @@
-# firmware
+# firmware - stm32-lwip-wolf-ssl
+
+# Topics
+
+1. Bridge ethernet - Wi-Fi in darwin
+
+2. Static IP with DNS Server
 
 
-
-
-## 🧩 Bridge en0 and en5 to route packet from Wi-Fi to Nucleo-144
+## 1. Bridge en0 and en5 to route packet from Wi-Fi to Nucleo-144
 
 You want to bridge:
 
@@ -184,4 +188,46 @@ else
   echo "⚠️ $BRIDGE_IF not found."
 fi
 ```
+
+
+## 2. Static IP with DNS Server
+
+
+### Static IP vs. DHCP:
+
+When using **DHCP**, the DHCP server typically provides not only an **IP address, subnet mask, and gateway** but also a **DNS server** address. lwIP automatically uses this DNS server for name resolution.
+
+For **static IPs** , it's necessary to manually configure a DNS server capable of resolve an IP address based on a hostnoma. If no DNS server is set, `dns_gethostbyname` will fail, often with errors like `ERR_RTE (-5, routing error)` or `ERR_MEM (-6, memory allocation failure due to invalid configuration)`.
+
+
+### lwIP DNS Client Behavior:
+
+lwIP’s DNS client relies on a configured DNS server (stored in its internal DNS table) to send UDP queries to resolve domain names.
+The `dns_setserver` function populates this table. The first argument (0) specifies the index of the DNS server (lwIP supports multiple servers, typically 0 or 1), and the second is the IP address of the server.
+Without this, lwIP may attempt to use a default or uninitialized DNS server address (e.g., 0.0.0.0), leading to failed queries or errors like the `ERR_MEM (-6)` you initially encountered.
+
+### Why Google’s DNS (8.8.8.8)?:
+
+Google’s public DNS server (8.8.8.8) is a reliable, globally accessible choice for testing. It’s widely used because it’s stable, fast, and doesn’t require local network configuration.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

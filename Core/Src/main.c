@@ -178,6 +178,7 @@ static void wolf_dns_found(const char* name, const ip_addr_t* ipaddr, void* arg)
             pcb = NULL;
         }
     } else {
+
         printf("DNS resolution failed for %s\n", name);
     }
 }
@@ -185,6 +186,9 @@ static void wolf_dns_found(const char* name, const ip_addr_t* ipaddr, void* arg)
 #include <lwip/dns.h>
 
 void lwip_init_dns(void) {
+
+    dns_init();
+
     ip_addr_t dns_server;
     IP4_ADDR(&dns_server, 8, 8, 8, 8); // Google DNS
     dns_setserver(0, &dns_server);
@@ -194,6 +198,9 @@ void lwip_init_dns(void) {
 
 // Initialize TLS client
 int wolf_tls_client_init(void) {
+
+    printf("wolf_tls_client_init \n");
+
     // Initialize WolfSSL
     if (wolfSSL_Init() != WOLFSSL_SUCCESS) {
         printf("WolfSSL init failed\n");
@@ -229,17 +236,15 @@ int wolf_tls_client_init(void) {
 
     // Resolve domain name (assumes LwIP initialized)
     ip_addr_t addr;
-    err_t err = dns_gethostbyname("www.example.com", &addr, wolf_dns_found, NULL);
+    err_t err = dns_gethostbyname("www.google.com", &addr, wolf_dns_found, NULL);
     if (err == ERR_INPROGRESS) {
         // DNS resolution in progress
         return 0;
     } else if (err == ERR_OK) {
 
-        ip_addr_t addr;
-        IP4_ADDR(&addr, 142, 250, 190, 78); // Static Google IP
-        wolf_dns_found("google.com", &addr, NULL);
 
-        //  wolf_dns_found("example.com", &addr, NULL);
+        wolf_dns_found("www.google.com", &addr, NULL);
+
         return 0;
     } else {
         printf("DNS gethostbyname failed: %d\n", err);
@@ -274,34 +279,23 @@ void wolf_tls_client_cleanup(void) {
 }
 
 
-#define LWIP_DEBUG 1
+void test_dns(void) {
 
-void udp_echo_recv(void *arg, struct udp_pcb *pcb, struct pbuf *p, const ip_addr_t *addr, u16_t port);
+    ip_addr_t addr;
+    err_t err = dns_gethostbyname("www.google.com", &addr, wolf_dns_found, NULL);
 
-void udp_echo_init(void)
-{
-    struct udp_pcb *udp = udp_new();
-    if (udp) {
-        err_t err = udp_bind(udp, IP_ADDR_ANY, 7);
-        if (err == ERR_OK) {
-            printf("UDP bound to port 7\n");
-            udp_recv(udp, udp_echo_recv, NULL);
-        } else {
-            printf("UDP bind failed: %d\n", err);
-        }
-    } else {
-        printf("UDP PCB allocation failed\n");
+    printf("DNS test result: %d\n", err);
+    if (err == ERR_OK) {
+        printf("Resolved IP: %s\n", ip4addr_ntoa(&addr));
     }
 }
 
-void udp_echo_recv(void *arg, struct udp_pcb *pcb, struct pbuf *p, const ip_addr_t *addr, u16_t port)
-{
-    if (p != NULL) {
-        printf("Received UDP packet from %s:%d\n", ip4addr_ntoa(addr), port);
-        udp_sendto(pcb, p, addr, port);
-        pbuf_free(p);
+
+void dns_found(const char *name, const ip_addr_t *ipaddr, void *callback_arg) {
+    if (ipaddr != NULL) {
+        printf("Resolved %s to %s \n", name, ipaddr_ntoa(ipaddr));
     } else {
-        printf("Received null UDP packet\n");
+        printf("Failed to resolve %s \n", name);
     }
 }
 
@@ -314,6 +308,7 @@ void udp_echo_recv(void *arg, struct udp_pcb *pcb, struct pbuf *p, const ip_addr
 int main(void)
 {
   /* USER CODE BEGIN 1 */
+   uint32_t last_time = HAL_GetTick();
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -337,18 +332,55 @@ int main(void)
   MX_SPI1_Init();
   MX_LWIP_Init();
   MX_RNG_Init();
-  /* USER CODE BEGIN 2 */
-    udp_echo_init();
 
-    // Initialize TLS client
-//    if (wolf_tls_client_init() != 0) {
-//        printf("TLS client init failed\n");
-//        return 1;
-//    }
+  /* USER CODE BEGIN 2 */
+
+    /* Wait for network interface to be up
+    printf("Waiting for network interface...\n");
+    struct netif * netif = netif_default;
+    while (netif == NULL || !netif_is_up(netif)) {
+        MX_LWIP_Process();
+        HAL_Delay(100);
+    }
+
+    printf("Waiting for link...\n");
+    while (!netif_is_link_up(netif)) {
+        MX_LWIP_Process();
+        HAL_Delay(100);
+    }
+
+    printf("Link up - IP: %s\n", ip4addr_ntoa(&netif->ip_addr));
+    HAL_Delay(1000);
+
+    if (netif_is_up(&gnetif)) {
+        printf("IP: %s\n", ip4addr_ntoa(&gnetif.ip_addr));
+        printf("Gateway: %s\n", ip4addr_ntoa(&gnetif.gw));
+        printf("Netmask: %s\n", ip4addr_ntoa(&gnetif.netmask));
+    }
+
+    lwip_init_dns();
+    test_dns();
+    */
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+    ip_addr_t dns_server;
+    IP4_ADDR(&dns_server, 8, 8, 8, 8);  // Use Google’s DNS as an example
+    dns_setserver(0, &dns_server);
+
+    ip_addr_t resolved_ip;
+    err_t error = dns_gethostbyname("google.com", &resolved_ip, dns_found, NULL);
+    if (error == ERR_OK)
+    {
+        printf("DNS test result: %d \n", error);
+    } else if (error == ERR_INPROGRESS)
+    {
+            printf("DNS resolution in progress... \n", error);
+    } else
+    {
+            printf("DNS resolution error: %d \n", error);
+    }
 
 
 
@@ -357,15 +389,10 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-      MX_LWIP_Process();
-
+     MX_LWIP_Process();
     /* USER CODE END WHILE */
-
     /* USER CODE BEGIN 3 */
   }
-
-    // Cleanup (unreachable in this example, but for completeness)
-    wolf_tls_client_cleanup();
   /* USER CODE END 3 */
 }
 

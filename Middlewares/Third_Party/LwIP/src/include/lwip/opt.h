@@ -294,7 +294,7 @@
  * a lot of data that needs to be copied, this should be set high.
  */
 #if !defined MEM_SIZE || defined __DOXYGEN__
-#define MEM_SIZE                        1600
+#define MEM_SIZE                        16384
 #endif
 
 /**
@@ -425,7 +425,7 @@
  * (requires the LWIP_UDP option)
  */
 #if !defined MEMP_NUM_UDP_PCB || defined __DOXYGEN__
-#define MEMP_NUM_UDP_PCB                4
+#define MEMP_NUM_UDP_PCB                10
 #endif
 
 /**
@@ -547,7 +547,7 @@
  * (only needed if you use tcpip.c)
  */
 #if !defined MEMP_NUM_TCPIP_MSG_API || defined __DOXYGEN__
-#define MEMP_NUM_TCPIP_MSG_API          8
+#define MEMP_NUM_TCPIP_MSG_API          10
 #endif
 
 /**

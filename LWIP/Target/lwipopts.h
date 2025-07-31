@@ -56,7 +56,7 @@
 /*----- Value in opt.h for MEM_ALIGNMENT: 1 -----*/
 #define MEM_ALIGNMENT 4
 /*----- Default Value for MEM_SIZE: 1600 ---*/
-#define MEM_SIZE 4096
+#define MEM_SIZE 16384
 /*----- Default Value for MEMP_NUM_PBUF: 16 ---*/
 #define MEMP_NUM_PBUF 10
 /*----- Default Value for MEMP_NUM_TCP_PCB_LISTEN: 8 ---*/
