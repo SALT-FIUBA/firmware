@@ -6,6 +6,8 @@
 
 2. Static IP with DNS Server
 
+3. wolfSSL integration
+
 
 ## 1. Bridge en0 and en5 to route packet from Wi-Fi to Nucleo-144
 
@@ -192,6 +194,17 @@ fi
 
 ## 2. Static IP with DNS Server
 
+## configuration parameters 
+
+```clang
+#define MEM_SIZE            16384  // Increase heap size
+#define MEMP_NUM_UDP_PCB    10     // More UDP PCBs
+#define MEMP_NUM_DNS_API_MSG 10    // More DNS messages
+#define MEMP_NUM_TCP_PCB    10
+
+
+```
+
 
 ### Static IP vs. DHCP:
 
@@ -209,6 +222,66 @@ Without this, lwIP may attempt to use a default or uninitialized DNS server addr
 ### Why Google’s DNS (8.8.8.8)?:
 
 Google’s public DNS server (8.8.8.8) is a reliable, globally accessible choice for testing. It’s widely used because it’s stable, fast, and doesn’t require local network configuration.
+
+
+
+
+
+### wolfSSL integration
+
+1. create `STM32F429Zxx` configuration parameters in `wolf.I-CUBE-wolfSSL_conf.h`
+
+```clang
+#elif  defined(STM32F429xx)
+
+    #define WOLFSSL_STM32F4
+    #define HAL_CONSOLE_UART huart3
+    #define DEBUG_WOLFSSL
+
+    #define WOLFSSL_LWIP          // Enable lwIP compatibility
+    #define NO_FILESYSTEM         // No filesystem on embedded
+    #define WOLFSSL_TLS13         // Enable TLS 1.3
+    #define HAVE_TLS_EXTENSIONS   // Enable TLS extensions
+    #define HAVE_SNI              // Enable Server Name Indication
+    #define NO_MD5                // Disable unused algorithms
+    #define NO_SHA                // Disable SHA1
+    #define NO_DES3               // Disable DES3
+    #define NO_RC4                // Disable ARC4
+    #define SINGLE_THREADED       // No RTOS, single-threaded
+    #define WOLFSSL_NO_PSK        // Disable PSK
+    #define WOLFSSL_NO_CLIENT_AUTH // Disable client authentication
+    #define WOLFSSL_NO_OLD_TLS    // Disable old TLS versions
+    #define WOLFSSL_NO_DH         // Disable Diffie-Hellman
+
+     // TODO this macro value adds the use of a certificate? ->  #define WOLFCRYPT_ONLY        // Disable TLS (optional, remove if full TLS needed)
+    //  TODO #define WOLFSSL_NO_MALLOC     // Optional: Use static memory (if needed)
+#else
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

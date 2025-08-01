@@ -261,7 +261,25 @@
 
     #define WOLFSSL_STM32F4
     #define HAL_CONSOLE_UART huart3
+    #define DEBUG_WOLFSSL
 
+    #define WOLFSSL_LWIP          // Enable lwIP compatibility
+    #define NO_FILESYSTEM         // No filesystem on embedded
+    #define WOLFSSL_TLS13         // Enable TLS 1.3
+    #define HAVE_TLS_EXTENSIONS   // Enable TLS extensions
+    #define HAVE_SNI              // Enable Server Name Indication
+    #define NO_MD5                // Disable unused algorithms
+    #define NO_SHA                // Disable SHA1
+    #define NO_DES3               // Disable DES3
+    #define NO_RC4                // Disable ARC4
+    #define SINGLE_THREADED       // No RTOS, single-threaded
+    #define WOLFSSL_NO_PSK        // Disable PSK
+    #define WOLFSSL_NO_CLIENT_AUTH // Disable client authentication
+    #define WOLFSSL_NO_OLD_TLS    // Disable old TLS versions
+    #define WOLFSSL_NO_DH         // Disable Diffie-Hellman
+
+     // TODO this macro value adds the use of a certificate? ->  #define WOLFCRYPT_ONLY        // Disable TLS (optional, remove if full TLS needed)
+    //  TODO #define WOLFSSL_NO_MALLOC     // Optional: Use static memory (if needed)
 #else
     #warning Please define a hardware platform!
     /* This means there is not a pre-defined platform for your board/CPU */
