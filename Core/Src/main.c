@@ -196,24 +196,28 @@ static err_t wolf_tcp_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_
 }
 
 static err_t tcp_connected(void *arg, struct tcp_pcb *tpcb, err_t err) {
+
     if (err != ERR_OK) {
         printf("TCP connection failed: %d\n", err);
         tcp_close(tpcb);
         return err;
     }
 
-    // Initialize wolfSSL
-    WOLFSSL_CTX *ctx = wolfSSL_CTX_new(wolfTLSv1_3_client_method());
+    printf("Initialize wolfSSL \n");
+    WOLFSSL_CTX * ctx = wolfSSL_CTX_new(wolfTLSv1_3_client_method());
     if (ctx == NULL) {
         printf("Failed to create wolfSSL context\n");
         tcp_close(tpcb);
         return ERR_MEM;
     }
 
-    // Disable certificate verification (INSECURE, for testing only)
+    //  wolfSSL_SetLoggingCb();
+    wolfSSL_Debugging_ON();
+
+    printf("Disable certificate verification (INSECURE, for testing only) \n");
     wolfSSL_CTX_set_verify(ctx, SSL_VERIFY_NONE, NULL);
 
-    // Create wolfSSL session
+    printf("Create wolfSSL session \n");
     ssl = wolfSSL_new(ctx);
     if (ssl == NULL) {
         printf("Failed to create wolfSSL session\n");
@@ -222,14 +226,14 @@ static err_t tcp_connected(void *arg, struct tcp_pcb *tpcb, err_t err) {
         return ERR_MEM;
     }
 
-    // Set I/O callbacks
+    printf("Set I/O callbacks \n");
     wolfSSL_SetIOReadCtx(ssl, tpcb);
     wolfSSL_SetIOWriteCtx(ssl, tpcb);
     wolfSSL_SetIORecv(ctx, wolfssl_recv);
     wolfSSL_SetIOSend(ctx, wolfssl_send);
 
-    // Set SNI
-    if (wolfSSL_UseSNI(ssl, WOLFSSL_SNI_HOST_NAME, "example.com", strlen("example.com")) != WOLFSSL_SUCCESS) {
+    printf("Set SNI \n");
+    if (wolfSSL_UseSNI(ssl, WOLFSSL_SNI_HOST_NAME, "google.com", strlen("google.com")) != WOLFSSL_SUCCESS) {
         printf("Failed to set SNI\n");
         wolfSSL_free(ssl);
         wolfSSL_CTX_free(ctx);
@@ -237,7 +241,7 @@ static err_t tcp_connected(void *arg, struct tcp_pcb *tpcb, err_t err) {
         return ERR_MEM;
     }
 
-    // Perform TLS handshake
+    printf("Perform TLS handshake \n");
     if (wolfSSL_connect(ssl) != SSL_SUCCESS) {
         printf("TLS handshake failed: %d\n", wolfSSL_get_error(ssl, 0));
         wolfSSL_free(ssl);
@@ -248,8 +252,8 @@ static err_t tcp_connected(void *arg, struct tcp_pcb *tpcb, err_t err) {
 
     tls_connected = 1;
 
-    // Send HTTPS GET request
-    const char *request = "GET / HTTP/1.1\r\nHost: example.com\r\nConnection: close\r\n\r\n";
+    printf("Send HTTPS GET request \n");
+    const char *request = "GET / HTTP/1.1\r\nHost: google.com\r\nConnection: close\r\n\r\n";
     int bytes_sent = wolfSSL_write(ssl, request, strlen(request));
     if (bytes_sent <= 0) {
         printf("Failed to send HTTPS request: %d\n", wolfSSL_get_error(ssl, bytes_sent));
@@ -259,6 +263,8 @@ static err_t tcp_connected(void *arg, struct tcp_pcb *tpcb, err_t err) {
     }
 
     wolfSSL_CTX_free(ctx); // Free context after handshake
+
+
     return ERR_OK;
 }
 
@@ -306,8 +312,8 @@ int main(void)
     IP4_ADDR(&dns_server, 8, 8, 8, 8);  // Use Google’s DNS as an example
     dns_setserver(0, &dns_server);
 
-    ip_addr_t resolved_ip;
-    err_t error = dns_gethostbyname("example.com", &resolved_ip, dns_found, NULL);
+    printf("------------------------------------------------------------------------- \n");
+    err_t error = dns_gethostbyname("google.com", &resolved_ip, dns_found, NULL);
     if (error == ERR_OK)
     {
         printf("DNS test result: %d \n", error);
@@ -342,7 +348,9 @@ int main(void)
     tcp_recv(tls_pcb, wolf_tcp_recv);
 
     printf("Connect to server \n");
+    printf("Destination IP address:  %s\n", ipaddr_ntoa(&resolved_ip));
     err_t err = tcp_connect(tls_pcb, &resolved_ip, 443, tcp_connected);
+    printf("error: %d \n", err);
     if (err != ERR_OK) {
         printf("TCP connect failed: %d\n", err);
         tcp_close(tls_pcb);
