@@ -1,0 +1,195 @@
+#include "usart.h"
+#include "lwip/api.h"
+#include "lwip/dns.h"
+#include "main.h" // For UART_HandleTypeDef
+#include "wolfssl/ssl.h"
+#include <string.h>
+
+#include "wolfssl/openssl/ssl.h"
+
+#include "lwip.h"
+
+// Server configuration
+#define SERVER_HOST "www.example.com"
+#define SERVER_PORT 443
+#define HTTP_REQUEST "GET / HTTP/1.1\r\nHost: " SERVER_HOST "\r\n\r\n"
+#define BUFFER_SIZE 1024
+#define DNS_TIMEOUT_MS 5000 // 5-second timeout for DNS
+
+// CA certificate in PEM format (replace with actual CA certificate)
+static const char *ca_cert = "-----BEGIN CERTIFICATE-----\n"
+                            "Your CA certificate here\n"
+                            "-----END CERTIFICATE-----\n";
+
+// Global variables for DNS resolution
+static ip_addr_t server_ip;
+static volatile int dns_resolved = 0;
+
+// Log messages via USART3
+void log_message(const char *msg) {
+  HAL_UART_Transmit(&huart3, (uint8_t *)msg, strlen(msg), HAL_MAX_DELAY);
+  HAL_UART_Transmit(&huart3, (uint8_t *)"\r\n", 2, HAL_MAX_DELAY);
+}
+
+// DNS callback function
+static void dns_callback(const char *name, const ip_addr_t *ipaddr, void *arg) {
+  (void)name;
+  (void)arg;
+  if (ipaddr != NULL) {
+    server_ip = *ipaddr;
+    dns_resolved = 1;
+    log_message("DNS resolved successfully");
+  } else {
+    dns_resolved = -1;
+    log_message("DNS resolution failed");
+  }
+}
+
+// Initialize wolfSSL and create TLS context
+static WOLFSSL_CTX *init_wolfssl(void) {
+  WOLFSSL_CTX *ctx = NULL;
+
+  if (wolfSSL_Init() != WOLFSSL_SUCCESS) {
+    log_message("wolfSSL initialization failed");
+    return NULL;
+  }
+
+  ctx = wolfSSL_CTX_new(wolfTLSv1_3_client_method());
+  if (ctx == NULL) {
+    log_message("Failed to create wolfSSL context");
+    return NULL;
+  }
+
+  if (wolfSSL_CTX_load_verify_locations(ctx, ca_cert, NULL) != WOLFSSL_SUCCESS) {
+    log_message("Failed to load CA certificate");
+    wolfSSL_CTX_free(ctx);
+    return NULL;
+  }
+
+  return ctx;
+}
+
+// Create and connect TCP socket
+static struct tcp_pcb *connect_tcp(const ip_addr_t *ip, uint16_t port) {
+  struct tcp_pcb *pcb = tcp_new();
+  if (pcb == NULL) {
+    log_message("Failed to create TCP PCB");
+    return NULL;
+  }
+
+  err_t err = tcp_connect(pcb, ip, port, NULL);
+  if (err != ERR_OK) {
+    log_message("TCP connection failed");
+    tcp_close(pcb);
+    return NULL;
+  }
+
+  return pcb;
+}
+
+// Perform HTTPS request
+static int perform_https_request(WOLFSSL *ssl, char *buffer, size_t buffer_size) {
+  // Send HTTP request
+  int ret = wolfSSL_write(ssl, HTTP_REQUEST, strlen(HTTP_REQUEST));
+  if (ret <= 0) {
+    log_message("Failed to send HTTP request");
+    return -1;
+  }
+
+  // Read response
+  ret = wolfSSL_read(ssl, buffer, buffer_size - 1);
+  if (ret > 0) {
+    buffer[ret] = '\0';
+    log_message("Received HTTP response");
+    log_message(buffer); // Output response to UART
+    return 0;
+  } else {
+    log_message("Failed to read HTTP response");
+    return -1;
+  }
+}
+
+// HTTPS client function (non-FreeRTOS)
+int https_client(void) {
+  WOLFSSL_CTX *ctx = NULL;
+  WOLFSSL *ssl = NULL;
+  struct tcp_pcb *pcb = NULL;
+  char buffer[BUFFER_SIZE];
+  err_t err;
+  uint32_t start_time;
+
+  // Initialize LWIP and DNS (already done in main.c)
+  log_message("Starting HTTPS client");
+
+  // Resolve DNS
+  dns_resolved = 0;
+  err = dns_gethostbyname(SERVER_HOST, &server_ip, dns_callback, NULL);
+  if (err == ERR_OK) {
+    dns_resolved = 1; // Immediate resolution
+  } else if (err == ERR_INPROGRESS) {
+    start_time = HAL_GetTick();
+    while (dns_resolved == 0 && (HAL_GetTick() - start_time) < DNS_TIMEOUT_MS) {
+      MX_LWIP_Process(); // Process LWIP to handle DNS response
+      HAL_Delay(10);
+    }
+  } else {
+    log_message("DNS request failed");
+    return -1;
+  }
+
+  if (dns_resolved != 1) {
+    log_message("DNS resolution timed out or failed");
+    return -1;
+  }
+
+  // Initialize wolfSSL
+  ctx = init_wolfssl();
+  if (ctx == NULL) {
+    return -1;
+  }
+
+  // Create TCP connection
+  pcb = connect_tcp(&server_ip, SERVER_PORT);
+  if (pcb == NULL) {
+    wolfSSL_CTX_free(ctx);
+    return -1;
+  }
+
+  // Create wolfSSL session
+  ssl = wolfSSL_new(ctx);
+  if (ssl == NULL) {
+    log_message("Failed to create wolfSSL session");
+    tcp_close(pcb);
+    wolfSSL_CTX_free(ctx);
+    return -1;
+  }
+
+  // Associate TCP connection with wolfSSL
+  wolfSSL_set_fd(ssl, (int)pcb);
+
+  // Perform TLS handshake
+  if (wolfSSL_connect(ssl) != WOLFSSL_SUCCESS) {
+    log_message("TLS handshake failed");
+    wolfSSL_free(ssl);
+    tcp_close(pcb);
+    wolfSSL_CTX_free(ctx);
+    return -1;
+  }
+  log_message("TLS handshake successful");
+
+  // Send and receive HTTPS request
+  if (perform_https_request(ssl, buffer, BUFFER_SIZE) != 0) {
+    wolfSSL_free(ssl);
+    tcp_close(pcb);
+    wolfSSL_CTX_free(ctx);
+    return -1;
+  }
+
+  // Cleanup
+  wolfSSL_free(ssl);
+  tcp_close(pcb);
+  wolfSSL_CTX_free(ctx);
+  wolfSSL_Cleanup();
+  log_message("HTTPS client completed");
+  return 0;
+}

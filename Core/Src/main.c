@@ -24,6 +24,7 @@
 #include "usart.h"
 #include "usb_otg.h"
 #include "gpio.h"
+#include "https-client.h"
 #include "tcp_priv.h"
 #include "udp.h"
 
@@ -36,6 +37,57 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
+#include "dns.h"
+#include "lwip.h"
+#include "wolfssl/ssl.h"
+#include "wolfssl/wolfcrypt/settings.h"
+
+// Define the hostname and HTTP request
+const char *hostname = "example.com";
+const char *request = "GET / HTTP/1.1\r\nHost: example.com\r\n\r\n";
+
+// State machine states
+typedef enum {
+  STATE_INIT,
+  STATE_DNS_RESOLVING,
+  STATE_TCP_CONNECTING,
+  STATE_SSL_HANDSHAKING,
+  STATE_SENDING_REQUEST,
+  STATE_RECEIVING_RESPONSE,
+  STATE_DONE,
+  STATE_ERROR
+} app_state_t;
+
+// Custom context for SSL and LWIP integration
+typedef struct {
+  struct tcp_pcb *pcb;
+  struct pbuf *pbuf;
+  u16_t offset;
+  int closed;
+} lwip_ssl_ctx_t;
+
+// Global variables
+app_state_t current_state = STATE_INIT;
+lwip_ssl_ctx_t * ssl_ctx = NULL;
+WOLFSSL_CTX * ctx = NULL;
+WOLFSSL * ssl = NULL;
+ip_addr_t server_ip;
+char response_buffer[1024];
+int response_index = 0;
+
+// Function prototypes
+void start_dns_resolution(void);
+void https_client_dns_found_callback(const char *name, const ip_addr_t *ipaddr, void *callback_arg);
+void start_tcp_connection(void);
+err_t tcp_connected_callback(void *arg, struct tcp_pcb *tpcb, err_t err);
+void handle_ssl_handshake(void);
+void send_http_request(void);
+void receive_http_response(void);
+void cleanup(void);
+
+int lwip_send(WOLFSSL *ssl, char *buf, int sz, void *ctx);
+int lwip_recv(WOLFSSL *ssl, char *buf, int sz, void *ctx);
+static err_t lwip_tcp_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_t err);
 
 /* USER CODE END PTD */
 
@@ -52,7 +104,190 @@
 
 /* USER CODE BEGIN PV */
 
+// Start DNS resolution
+void start_dns_resolution(void) {
 
+    err_t err = dns_gethostbyname(hostname, &server_ip, https_client_dns_found_callback, NULL);
+
+    if (err == ERR_OK) {
+        // Cached, proceed immediately
+        start_tcp_connection();
+    } else if (err == ERR_INPROGRESS) {
+        current_state = STATE_DNS_RESOLVING;
+    } else {
+        current_state = STATE_ERROR;
+    }
+}
+
+// DNS found callback
+void https_client_dns_found_callback(const char *name, const ip_addr_t *ipaddr, void *callback_arg) {
+    if (ipaddr != NULL) {
+        server_ip = *ipaddr;
+        start_tcp_connection();
+    } else {
+        current_state = STATE_ERROR;
+    }
+}
+
+// Start TCP connection
+void start_tcp_connection(void) {
+    struct tcp_pcb *pcb = tcp_new();
+    if (pcb == NULL) {
+        current_state = STATE_ERROR;
+        return;
+    }
+    ssl_ctx = malloc(sizeof(lwip_ssl_ctx_t));
+    if (ssl_ctx == NULL) {
+        tcp_close(pcb);
+        current_state = STATE_ERROR;
+        return;
+    }
+    ssl_ctx->pcb = pcb;
+    ssl_ctx->pbuf = NULL;
+    ssl_ctx->offset = 0;
+    ssl_ctx->closed = 0;
+    tcp_arg(pcb, ssl_ctx);
+    tcp_recv(pcb, lwip_tcp_recv);
+    err_t err = tcp_connect(pcb, &server_ip, 443, tcp_connected_callback);
+    if (err != ERR_OK) {
+        free(ssl_ctx);
+        ssl_ctx = NULL;
+        tcp_close(pcb);
+        current_state = STATE_ERROR;
+    } else {
+        current_state = STATE_TCP_CONNECTING;
+    }
+}
+
+// TCP connected callback
+err_t tcp_connected_callback(void *arg, struct tcp_pcb *tpcb, err_t err) {
+    if (err == ERR_OK) {
+        ssl = wolfSSL_new(ctx);
+        if (ssl == NULL) {
+            current_state = STATE_ERROR;
+            return ERR_OK;
+        }
+        wolfSSL_SetIOReadCtx(ssl, ssl_ctx);
+        wolfSSL_SetIOWriteCtx(ssl, ssl_ctx);
+        wolfSSL_UseSNI(ssl, WOLFSSL_SNI_HOST_NAME, hostname, strlen(hostname));
+        current_state = STATE_SSL_HANDSHAKING;
+    } else {
+        current_state = STATE_ERROR;
+    }
+    return ERR_OK;
+}
+
+// LWIP TCP receive callback
+static err_t lwip_tcp_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_t err) {
+    lwip_ssl_ctx_t *ssl_ctx = (lwip_ssl_ctx_t *)arg;
+    if (p != NULL) {
+        if (ssl_ctx->pbuf == NULL) {
+            ssl_ctx->pbuf = p;
+        } else {
+            pbuf_cat(ssl_ctx->pbuf, p);
+        }
+    } else {
+        ssl_ctx->closed = 1;
+    }
+    return ERR_OK;
+}
+
+// Custom receive callback for WolfSSL
+int lwip_recv(WOLFSSL *ssl, char *buf, int sz, void *ctx) {
+    lwip_ssl_ctx_t *ssl_ctx = (lwip_ssl_ctx_t *)ctx;
+    if (ssl_ctx->pbuf == NULL) {
+        if (ssl_ctx->closed) {
+            return 0; // EOF
+        }
+        return WOLFSSL_CBIO_ERR_WANT_READ;
+    }
+    u16_t copied = pbuf_copy_partial(ssl_ctx->pbuf, buf, sz, ssl_ctx->offset);
+    if (copied > 0) {
+        ssl_ctx->offset += copied;
+        tcp_recved(ssl_ctx->pcb, copied);
+        if (ssl_ctx->offset == ssl_ctx->pbuf->tot_len) {
+            pbuf_free(ssl_ctx->pbuf);
+            ssl_ctx->pbuf = NULL;
+            ssl_ctx->offset = 0;
+        }
+        return copied;
+    }
+    return WOLFSSL_CBIO_ERR_WANT_READ;
+}
+
+// Custom send callback for WolfSSL
+int lwip_send(WOLFSSL *ssl, char *buf, int sz, void *ctx) {
+    lwip_ssl_ctx_t *ssl_ctx = (lwip_ssl_ctx_t *)ctx;
+    err_t err = tcp_write(ssl_ctx->pcb, buf, sz, TCP_WRITE_FLAG_COPY);
+    if (err == ERR_OK) {
+        tcp_output(ssl_ctx->pcb);
+        return sz;
+    } else if (err == ERR_MEM) {
+        return WOLFSSL_CBIO_ERR_WANT_WRITE;
+    }
+    return WOLFSSL_CBIO_ERR_GENERAL;
+}
+
+// Handle SSL handshake
+void handle_ssl_handshake(void) {
+    int ret = wolfSSL_connect(ssl);
+    if (ret == WOLFSSL_SUCCESS) {
+        current_state = STATE_SENDING_REQUEST;
+    } else {
+        int err = wolfSSL_get_error(ssl, ret);
+        if (err != WOLFSSL_ERROR_WANT_READ && err != WOLFSSL_ERROR_WANT_WRITE) {
+            current_state = STATE_ERROR;
+        }
+    }
+}
+
+// Send HTTP request
+void send_http_request(void) {
+    int sent = wolfSSL_write(ssl, request, strlen(request));
+    if (sent == strlen(request)) {
+        current_state = STATE_RECEIVING_RESPONSE;
+    } else {
+        int err = wolfSSL_get_error(ssl, sent);
+        if (err != WOLFSSL_ERROR_WANT_WRITE) {
+            current_state = STATE_ERROR;
+        }
+    }
+}
+
+// Receive HTTP response
+void receive_http_response(void) {
+    int received = wolfSSL_read(ssl, response_buffer + response_index, sizeof(response_buffer) - response_index - 1);
+    if (received > 0) {
+        response_index += received;
+        response_buffer[response_index] = '\0';
+    } else if (received == 0) {
+        current_state = STATE_DONE;
+    } else {
+        int err = wolfSSL_get_error(ssl, received);
+        if (err != WOLFSSL_ERROR_WANT_READ) {
+            current_state = STATE_ERROR;
+        }
+    }
+}
+
+// Cleanup resources
+void cleanup(void) {
+    if (ssl != NULL) {
+        wolfSSL_free(ssl);
+        ssl = NULL;
+    }
+    if (ssl_ctx != NULL) {
+        if (ssl_ctx->pbuf != NULL) {
+            pbuf_free(ssl_ctx->pbuf);
+        }
+        if (ssl_ctx->pcb != NULL) {
+            tcp_close(ssl_ctx->pcb);
+        }
+        free(ssl_ctx);
+        ssl_ctx = NULL;
+    }
+    response_index = 0;
+}
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -84,14 +319,6 @@ extern struct netif gnetif;
 // DNS and TLS state
 static uint8_t dns_found_called = 0;
 static ip_addr_t resolved_ip;
-static struct tcp_pcb *tls_pcb = NULL;
-static WOLFSSL *ssl = NULL;
-static uint8_t tls_connected = 0;
-static uint8_t request_sent = 0;
-
-// Buffer for received data
-static char recv_buffer[512];
-static int recv_buffer_len = 0;
 
 // DNS callback function
 static void dns_found(const char *name, const ip_addr_t *ipaddr, void *callback_arg) {
@@ -102,170 +329,6 @@ static void dns_found(const char *name, const ip_addr_t *ipaddr, void *callback_
     } else {
         printf("Failed to resolve %s\n", name);
     }
-}
-
-// wolfSSL I/O callbacks for lwIP raw API
-static int wolfssl_recv(WOLFSSL *ssl, char *buf, int sz, void *ctx) {
-    struct tcp_pcb *pcb = (struct tcp_pcb *)ctx;
-    if (recv_buffer_len <= 0) {
-        return WOLFSSL_CBIO_ERR_WANT_READ; // No data available
-    }
-
-    // Copy data to wolfSSL's buffer
-    int copy_len = (recv_buffer_len < sz) ? recv_buffer_len : sz;
-    memcpy(buf, recv_buffer, copy_len);
-
-    // Update buffer (shift remaining data)
-    if (copy_len < recv_buffer_len) {
-        memmove(recv_buffer, recv_buffer + copy_len, recv_buffer_len - copy_len);
-    }
-    recv_buffer_len -= copy_len;
-
-    // Acknowledge data to lwIP
-    tcp_recved(pcb, copy_len);
-
-    return copy_len;
-}
-
-static int wolfssl_send(WOLFSSL *ssl, char *buf, int sz, void *ctx) {
-    struct tcp_pcb *pcb = (struct tcp_pcb *)ctx;
-    err_t ret = tcp_write(pcb, buf, sz, TCP_WRITE_FLAG_COPY);
-    if (ret != ERR_OK) {
-        return WOLFSSL_CBIO_ERR_GENERAL;
-    }
-    tcp_output(pcb);
-    return sz;
-}
-
-// TCP callbacks
-static err_t wolf_tcp_sent(void *arg, struct tcp_pcb *tpcb, u16_t len) {
-    return ERR_OK;
-}
-
-static err_t wolf_tcp_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_t err) {
-    if (p == NULL) {
-        // Connection closed
-        printf("TCP connection closed\n");
-        if (ssl) {
-            wolfSSL_free(ssl);
-            ssl = NULL;
-        }
-        tcp_close(tpcb);
-        tls_pcb = NULL;
-        return ERR_OK;
-    }
-    if (err != ERR_OK) {
-        printf("TCP receive error: %d\n", err);
-        pbuf_free(p);
-        return err;
-    }
-
-    // Copy received data to buffer
-    if (recv_buffer_len + p->tot_len > sizeof(recv_buffer)) {
-        printf("Receive buffer overflow\n");
-        pbuf_free(p);
-        return ERR_MEM;
-    }
-    pbuf_copy_partial(p, recv_buffer + recv_buffer_len, p->tot_len, 0);
-    recv_buffer_len += p->tot_len;
-
-    // Acknowledge data
-    tcp_recved(tpcb, p->tot_len);
-    pbuf_free(p);
-
-    // Process data with wolfSSL if request was sent
-    if (request_sent && ssl) {
-        int ret = wolfSSL_read(ssl, recv_buffer, recv_buffer_len);
-        if (ret > 0) {
-            recv_buffer[ret] = '\0';
-            printf("Received %d bytes:\n%s\n", ret, recv_buffer);
-            // Shift remaining data
-            if (ret < recv_buffer_len) {
-                memmove(recv_buffer, recv_buffer + ret, recv_buffer_len - ret);
-            }
-            recv_buffer_len -= ret;
-        } else {
-            int error = wolfSSL_get_error(ssl, ret);
-            if (error != WOLFSSL_ERROR_WANT_READ) {
-                printf("wolfSSL read failed: %d\n", error);
-            }
-        }
-    }
-
-    return ERR_OK;
-}
-
-static err_t tcp_connected(void *arg, struct tcp_pcb *tpcb, err_t err) {
-
-    if (err != ERR_OK) {
-        printf("TCP connection failed: %d\n", err);
-        tcp_close(tpcb);
-        return err;
-    }
-
-    printf("Initialize wolfSSL \n");
-    WOLFSSL_CTX * ctx = wolfSSL_CTX_new(wolfTLSv1_3_client_method());
-    if (ctx == NULL) {
-        printf("Failed to create wolfSSL context\n");
-        tcp_close(tpcb);
-        return ERR_MEM;
-    }
-
-    //  wolfSSL_SetLoggingCb();
-    wolfSSL_Debugging_ON();
-
-    printf("Disable certificate verification (INSECURE, for testing only) \n");
-    wolfSSL_CTX_set_verify(ctx, SSL_VERIFY_NONE, NULL);
-
-    printf("Create wolfSSL session \n");
-    ssl = wolfSSL_new(ctx);
-    if (ssl == NULL) {
-        printf("Failed to create wolfSSL session\n");
-        wolfSSL_CTX_free(ctx);
-        tcp_close(tpcb);
-        return ERR_MEM;
-    }
-
-    printf("Set I/O callbacks \n");
-    wolfSSL_SetIOReadCtx(ssl, tpcb);
-    wolfSSL_SetIOWriteCtx(ssl, tpcb);
-    wolfSSL_SetIORecv(ctx, wolfssl_recv);
-    wolfSSL_SetIOSend(ctx, wolfssl_send);
-
-    printf("Set SNI \n");
-    if (wolfSSL_UseSNI(ssl, WOLFSSL_SNI_HOST_NAME, "google.com", strlen("google.com")) != WOLFSSL_SUCCESS) {
-        printf("Failed to set SNI\n");
-        wolfSSL_free(ssl);
-        wolfSSL_CTX_free(ctx);
-        tcp_close(tpcb);
-        return ERR_MEM;
-    }
-
-    printf("Perform TLS handshake \n");
-    if (wolfSSL_connect(ssl) != SSL_SUCCESS) {
-        printf("TLS handshake failed: %d\n", wolfSSL_get_error(ssl, 0));
-        wolfSSL_free(ssl);
-        wolfSSL_CTX_free(ctx);
-        tcp_close(tpcb);
-        return ERR_CONN;
-    }
-
-    tls_connected = 1;
-
-    printf("Send HTTPS GET request \n");
-    const char *request = "GET / HTTP/1.1\r\nHost: google.com\r\nConnection: close\r\n\r\n";
-    int bytes_sent = wolfSSL_write(ssl, request, strlen(request));
-    if (bytes_sent <= 0) {
-        printf("Failed to send HTTPS request: %d\n", wolfSSL_get_error(ssl, bytes_sent));
-    } else {
-        printf("Sent HTTPS GET request (%d bytes)\n", bytes_sent);
-        request_sent = 1;
-    }
-
-    wolfSSL_CTX_free(ctx); // Free context after handshake
-
-
-    return ERR_OK;
 }
 
 
@@ -308,10 +371,8 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-    ip_addr_t dns_server;
-    IP4_ADDR(&dns_server, 8, 8, 8, 8);  // Use Google’s DNS as an example
-    dns_setserver(0, &dns_server);
 
+  /*
     printf("------------------------------------------------------------------------- \n");
     err_t error = dns_gethostbyname("google.com", &resolved_ip, dns_found, NULL);
     if (error == ERR_OK)
@@ -323,7 +384,7 @@ int main(void)
     } else
     {
             printf("DNS resolution error: %d \n", error);
-    }
+   }
 
     printf("Wait for DNS resolution with timeout \n");
     uint32_t start_time = HAL_GetTick();
@@ -334,40 +395,68 @@ int main(void)
         printf("DNS resolution timed out\n");
         while (1); // Halt for debugging
     }
+  */
 
-    printf("Create TCP PCB \n");
-    tls_pcb = tcp_new();
-    if (tls_pcb == NULL) {
-        printf("Failed to create TCP PCB\n");
-        while (1);
-    }
+  // Create WolfSSL context and set custom I/O callbacks
+  ctx = wolfSSL_CTX_new(wolfTLSv1_2_client_method());
+  if (ctx == NULL) {
+    printf("Failed to create WolfSSL context\n");
+    return -1;
+  }
+  wolfSSL_SetIORecv(ctx, lwip_recv);
+  wolfSSL_SetIOSend(ctx, lwip_send);
 
-    printf("Set TCP callbacks \n");
-    tcp_arg(tls_pcb, NULL);
-    tcp_sent(tls_pcb, wolf_tcp_sent);
-    tcp_recv(tls_pcb, wolf_tcp_recv);
+  // Set DNS server
+  ip_addr_t dns_server;
+  IP4_ADDR(&dns_server, 8, 8, 8, 8);  // Use Google’s DNS as an example
+  dns_setserver(0, &dns_server);
 
-    printf("Connect to server \n");
-    printf("Destination IP address:  %s\n", ipaddr_ntoa(&resolved_ip));
-    err_t err = tcp_connect(tls_pcb, &resolved_ip, 443, tcp_connected);
-    printf("error: %d \n", err);
-    if (err != ERR_OK) {
-        printf("TCP connect failed: %d\n", err);
-        tcp_close(tls_pcb);
-        while (1);
-    }
-
+  // Start DNS resolution
+  start_dns_resolution();
 
   while (1)
   {
-    /* USER CODE END WHILE */
 
-    /* USER CODE BEGIN 3 */
-     MX_LWIP_Process();
-    /* USER CODE END WHILE */
-    /* USER CODE BEGIN 3 */
-  }
-  /* USER CODE END 3 */
+    MX_LWIP_Process();
+
+    // Handle current state
+    switch (current_state) {
+        case STATE_SSL_HANDSHAKING:
+          handle_ssl_handshake();
+          break;
+        case STATE_SENDING_REQUEST:
+          send_http_request();
+          break;
+        case STATE_RECEIVING_RESPONSE:
+          receive_http_response();
+          break;
+        case STATE_DONE:
+          // Print the response
+          printf("Response: %s\n", response_buffer);
+          cleanup();
+          current_state = STATE_INIT;
+          break;
+        case STATE_ERROR:
+          printf("An error occurred.\n");
+          cleanup();
+          current_state = STATE_INIT;
+          break;
+        default:
+          break;
+      }
+    }
+
+
+//  while (1)
+//  {
+//    /* USER CODE END WHILE */
+//
+//    /* USER CODE BEGIN 3 */
+//     MX_LWIP_Process();
+//    /* USER CODE END WHILE */
+//    /* USER CODE BEGIN 3 */
+//  }
+//  /* USER CODE END 3 */
 }
 
 /**
