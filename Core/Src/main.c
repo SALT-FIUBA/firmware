@@ -41,6 +41,7 @@
 #include "lwip.h"
 #include "wolfssl/ssl.h"
 #include "wolfssl/wolfcrypt/settings.h"
+#include "ca-cert.h"
 
 // Define the hostname and HTTP request
 const char *hostname = "google.com";
@@ -416,6 +417,24 @@ int main(void)
     printf("Failed to create WolfSSL context\n");
     return -1;
   }
+
+    // Load the CA certificate
+    const int ca_cert_len = sizeof(ca_cert_pem);
+    if (wolfSSL_CTX_load_verify_buffer(ctx, ca_cert_pem, ca_cert_len, SSL_FILETYPE_PEM) != WOLFSSL_SUCCESS)
+    {
+            printf("Failed to load CA certificate \n");
+            wolfSSL_CTX_free(ctx);
+            return -1;
+    }
+
+    // Enable peer verification
+    wolfSSL_CTX_set_verify(ctx, SSL_VERIFY_PEER, NULL);
+
+
+
+
+
+
   wolfSSL_SetIORecv(ctx, lwip_recv);
   wolfSSL_SetIOSend(ctx, lwip_send);
 
