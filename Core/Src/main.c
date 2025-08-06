@@ -43,8 +43,8 @@
 #include "wolfssl/wolfcrypt/settings.h"
 
 // Define the hostname and HTTP request
-const char *hostname = "example.com";
-const char *request = "GET / HTTP/1.1\r\nHost: example.com\r\n\r\n";
+const char *hostname = "google.com";
+const char *request = "GET / HTTP/1.1\r\nHost: google.com\r\n\r\n";
 
 // State machine states
 typedef enum {
@@ -74,6 +74,12 @@ WOLFSSL * ssl = NULL;
 ip_addr_t server_ip;
 char response_buffer[1024];
 int response_index = 0;
+
+const unsigned char ca_cert[] = {
+    // Replace with actual CA certificate bytes in PEM or DER format
+};
+const int ca_cert_len = sizeof(ca_cert);
+
 
 // Function prototypes
 void start_dns_resolution(void);
@@ -107,14 +113,21 @@ static err_t lwip_tcp_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_
 // Start DNS resolution
 void start_dns_resolution(void) {
 
-    err_t err = dns_gethostbyname(hostname, &server_ip, https_client_dns_found_callback, NULL);
+    err_t error = dns_gethostbyname(hostname, &server_ip, https_client_dns_found_callback, NULL);
 
-    if (err == ERR_OK) {
+    if (error == ERR_OK) {
         // Cached, proceed immediately
+        printf("DNS test result: %d \n", error);
+        printf("Resolved %s to %s\n", hostname, ipaddr_ntoa(&server_ip));
         start_tcp_connection();
-    } else if (err == ERR_INPROGRESS) {
+
+    } else if (error == ERR_INPROGRESS) {
+
+        printf("DNS resolution in progress... \n", error);
         current_state = STATE_DNS_RESOLVING;
     } else {
+
+        printf("DNS resolution error: %d \n", error);
         current_state = STATE_ERROR;
     }
 }
@@ -398,7 +411,7 @@ int main(void)
   */
 
   // Create WolfSSL context and set custom I/O callbacks
-  ctx = wolfSSL_CTX_new(wolfTLSv1_2_client_method());
+  ctx = wolfSSL_CTX_new(wolfSSLv23_client_method());    // TLSv1_2_client_method());
   if (ctx == NULL) {
     printf("Failed to create WolfSSL context\n");
     return -1;
@@ -408,7 +421,7 @@ int main(void)
 
   // Set DNS server
   ip_addr_t dns_server;
-  IP4_ADDR(&dns_server, 8, 8, 8, 8);  // Use Google’s DNS as an example
+  IP4_ADDR(&dns_server, 8, 8, 8, 8);  // Use Google’s DNS as an google
   dns_setserver(0, &dns_server);
 
   // Start DNS resolution
