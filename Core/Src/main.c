@@ -44,8 +44,8 @@
 #include "ca-cert.h"
 
 // Define the hostname and HTTP request
-const char *hostname = "google.com";
-const char *request = "GET / HTTP/1.1\r\nHost: google.com\r\n\r\n";
+const char * hostname = "google.com";
+const char * request = "GET / HTTP/1.1\r\nHost: google.com\r\nConnection: close\r\n\r\n";
 
 // State machine states
 typedef enum {
@@ -73,8 +73,11 @@ lwip_ssl_ctx_t * ssl_ctx = NULL;
 WOLFSSL_CTX * ctx = NULL;
 WOLFSSL * ssl = NULL;
 ip_addr_t server_ip;
-char response_buffer[1024];
+char response_buffer[8192];
 int response_index = 0;
+uint32_t receive_timeout = 0;
+#define RECEIVE_TIMEOUT_MS 5000 // 5 seconds timeout
+
 
 const unsigned char ca_cert[] = {
     // Replace with actual CA certificate bytes in PEM or DER format
@@ -207,25 +210,34 @@ static err_t lwip_tcp_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_
 }
 
 // Custom receive callback for WolfSSL
-int lwip_recv(WOLFSSL *ssl, char *buf, int sz, void *ctx) {
-    lwip_ssl_ctx_t *ssl_ctx = (lwip_ssl_ctx_t *)ctx;
+int lwip_recv(WOLFSSL * ssl, char * buf, int sz, void * ctx) {
+
+    lwip_ssl_ctx_t * ssl_ctx = (lwip_ssl_ctx_t *)ctx;
     if (ssl_ctx->pbuf == NULL) {
         if (ssl_ctx->closed) {
+            printf("lwip_recv: EOF detected\n");
             return 0; // EOF
         }
+        printf("lwip_recv: Want read\n");
         return WOLFSSL_CBIO_ERR_WANT_READ;
     }
+
     u16_t copied = pbuf_copy_partial(ssl_ctx->pbuf, buf, sz, ssl_ctx->offset);
     if (copied > 0) {
         ssl_ctx->offset += copied;
         tcp_recved(ssl_ctx->pcb, copied);
-        if (ssl_ctx->offset == ssl_ctx->pbuf->tot_len) {
+        printf("lwip_recv: Copied %d bytes, offset: %d, pbuf total: %d\n", copied, ssl_ctx->offset, ssl_ctx->pbuf->tot_len);
+        if (ssl_ctx->offset >= ssl_ctx->pbuf->tot_len) {
             pbuf_free(ssl_ctx->pbuf);
             ssl_ctx->pbuf = NULL;
             ssl_ctx->offset = 0;
+            printf("lwip_recv: pbuf freed\n");
         }
+
         return copied;
     }
+
+    printf("lwip_recv: No data to copy\n");
     return WOLFSSL_CBIO_ERR_WANT_READ;
 }
 
@@ -270,26 +282,61 @@ void send_http_request(void) {
 
 // Receive HTTP response
 void receive_http_response(void) {
-    int received = wolfSSL_read(ssl, response_buffer + response_index, sizeof(response_buffer) - response_index - 1);
-    if (received > 0) {
-        response_index += received;
-        response_buffer[response_index] = '\0';
-    } else if (received == 0) {
-        current_state = STATE_DONE;
-    } else {
-        int err = wolfSSL_get_error(ssl, received);
-        if (err != WOLFSSL_ERROR_WANT_READ) {
+    if (receive_timeout == 0) receive_timeout = HAL_GetTick() + RECEIVE_TIMEOUT_MS;
+
+    while (current_state == STATE_RECEIVING_RESPONSE) {
+        if (HAL_GetTick() > receive_timeout) {
+            printf("Receive timeout after %d ms\n", RECEIVE_TIMEOUT_MS);
             current_state = STATE_ERROR;
+            return;
+        }
+
+        int received = wolfSSL_read(ssl, response_buffer + response_index, sizeof(response_buffer) - response_index - 1);
+        if (received > 0) {
+            response_index += received;
+            response_buffer[response_index] = '\0';
+            printf("Received %d bytes, total: %d\n", received, response_index);
+            char debug_buf[101];
+            int len = response_index < 100 ? response_index : 100;
+            strncpy(debug_buf, response_buffer, len);
+            debug_buf[len] = '\0';
+            printf("First %d bytes: %s\n", len, debug_buf);
+            receive_timeout = HAL_GetTick() + RECEIVE_TIMEOUT_MS;
+
+        } else if (received == 0) {
+            printf("Connection closed, total bytes: %d\n", response_index);
+            current_state = STATE_DONE;
+            return;
+
+        } else {
+            int err = wolfSSL_get_error(ssl, received);
+            printf("Receive error: %d\n", err);
+
+            if (err == WOLFSSL_ERROR_ZERO_RETURN) {
+                printf("Connection closed by peer, total bytes: %d\n", response_index);
+                current_state = STATE_DONE;
+                return;
+            } else if (err == WOLFSSL_ERROR_WANT_READ) {
+                printf("Receive: Want read\n");
+                // Continue looping
+            } else {
+                printf("wolfSSL_read error: %d\n", err);
+                current_state = STATE_ERROR;
+                return;
+            }
         }
     }
 }
 
 // Cleanup resources
 void cleanup(void) {
+
     if (ssl != NULL) {
+        wolfSSL_shutdown(ssl);
         wolfSSL_free(ssl);
         ssl = NULL;
     }
+
     if (ssl_ctx != NULL) {
         if (ssl_ctx->pbuf != NULL) {
             pbuf_free(ssl_ctx->pbuf);
@@ -300,6 +347,7 @@ void cleanup(void) {
         free(ssl_ctx);
         ssl_ctx = NULL;
     }
+
     response_index = 0;
 }
 /* USER CODE END PV */
@@ -381,38 +429,14 @@ int main(void)
   MX_RNG_Init();
 
   /* USER CODE BEGIN 2 */
+    printf("------------------------------------------------------------------------- \n");
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 
-  /*
-    printf("------------------------------------------------------------------------- \n");
-    err_t error = dns_gethostbyname("google.com", &resolved_ip, dns_found, NULL);
-    if (error == ERR_OK)
-    {
-        printf("DNS test result: %d \n", error);
-    } else if (error == ERR_INPROGRESS)
-    {
-            printf("DNS resolution in progress... \n", error);
-    } else
-    {
-            printf("DNS resolution error: %d \n", error);
-   }
-
-    printf("Wait for DNS resolution with timeout \n");
-    uint32_t start_time = HAL_GetTick();
-    while (!dns_found_called && (HAL_GetTick() - start_time < 5000)) {
-        MX_LWIP_Process(); // Handle lwIP tasks
-    }
-    if (!dns_found_called) {
-        printf("DNS resolution timed out\n");
-        while (1); // Halt for debugging
-    }
-  */
-
   // Create WolfSSL context and set custom I/O callbacks
-  ctx = wolfSSL_CTX_new(wolfSSLv23_client_method());    // TLSv1_2_client_method());
+  ctx = wolfSSL_CTX_new(wolfSSLv23_client_method());
   if (ctx == NULL) {
     printf("Failed to create WolfSSL context\n");
     return -1;
@@ -428,12 +452,8 @@ int main(void)
     }
 
     // Enable peer verification
-    wolfSSL_CTX_set_verify(ctx, SSL_VERIFY_PEER, NULL);
-
-
-
-
-
+    // TODO wolfSSL_CTX_set_verify(ctx, SSL_VERIFY_PEER, NULL);
+    wolfSSL_CTX_set_verify(ctx, SSL_VERIFY_NONE, NULL);
 
   wolfSSL_SetIORecv(ctx, lwip_recv);
   wolfSSL_SetIOSend(ctx, lwip_send);
@@ -446,6 +466,9 @@ int main(void)
   // Start DNS resolution
   start_dns_resolution();
 
+
+
+
   while (1)
   {
 
@@ -453,26 +476,44 @@ int main(void)
 
     // Handle current state
     switch (current_state) {
+
         case STATE_SSL_HANDSHAKING:
-          handle_ssl_handshake();
+              handle_ssl_handshake();
           break;
+
         case STATE_SENDING_REQUEST:
-          send_http_request();
+              send_http_request();
           break;
+
         case STATE_RECEIVING_RESPONSE:
-          receive_http_response();
+              receive_http_response();
           break;
+
         case STATE_DONE:
-          // Print the response
-          printf("Response: %s\n", response_buffer);
-          cleanup();
-          current_state = STATE_INIT;
+            // Print the response
+            printf("Response received (%d bytes):\n", response_index);
+            // Print response in chunks to avoid UART buffer overflow
+            for (int i = 0; i < response_index; i += 100) {
+                char chunk[101];
+                strncpy(chunk, response_buffer + i, 100);
+                chunk[100] = '\0';
+                printf("%s", chunk);
+            }
+            printf("\n");
+            cleanup();
+            current_state = STATE_INIT;
+            printf("Connection closed, restarting...\n");
+            start_dns_resolution();
           break;
+
         case STATE_ERROR:
-          printf("An error occurred.\n");
-          cleanup();
-          current_state = STATE_INIT;
+            printf("An error occurred.\n");
+            cleanup();
+            current_state = STATE_INIT;
+            printf("Retrying DNS resolution...\n");
+            start_dns_resolution();
           break;
+
         default:
           break;
       }
