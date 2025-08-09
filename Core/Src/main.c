@@ -76,13 +76,7 @@ ip_addr_t server_ip;
 char response_buffer[8192];
 int response_index = 0;
 uint32_t receive_timeout = 0;
-#define RECEIVE_TIMEOUT_MS 5000 // 5 seconds timeout
-
-
-const unsigned char ca_cert[] = {
-    // Replace with actual CA certificate bytes in PEM or DER format
-};
-const int ca_cert_len = sizeof(ca_cert);
+#define RECEIVE_TIMEOUT_MS 10000 // 10 seconds timeout
 
 
 // Function prototypes
@@ -114,57 +108,89 @@ static err_t lwip_tcp_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_
 
 /* USER CODE BEGIN PV */
 
+// Global variable for DNS resolution state
+static uint8_t dns_found_called = 0;
+#define DNS_TIMEOUT_MS 5000 // 5 seconds timeout
+
 // Start DNS resolution
 void start_dns_resolution(void) {
 
-    err_t error = dns_gethostbyname(hostname, &server_ip, https_client_dns_found_callback, NULL);
+    dns_found_called = 0;
 
+    err_t error = dns_gethostbyname(hostname, &server_ip, https_client_dns_found_callback, NULL);
     if (error == ERR_OK) {
         // Cached, proceed immediately
-        printf("DNS test result: %d \n", error);
+        printf("DNS test result: %d\n", error);
         printf("Resolved %s to %s\n", hostname, ipaddr_ntoa(&server_ip));
-        start_tcp_connection();
+        dns_found_called = 1; // Mark as resolved
 
     } else if (error == ERR_INPROGRESS) {
 
-        printf("DNS resolution in progress... \n", error);
+        printf("DNS resolution in progress...\n");
         current_state = STATE_DNS_RESOLVING;
     } else {
 
-        printf("DNS resolution error: %d \n", error);
+        printf("DNS resolution error: %d\n", error);
         current_state = STATE_ERROR;
+    }
+
+    // Wait for DNS resolution with timeout
+    if (current_state == STATE_DNS_RESOLVING) {
+
+        printf("Waiting for DNS resolution with timeout\n");
+        uint32_t start_time = HAL_GetTick();
+        while (!dns_found_called && (HAL_GetTick() - start_time < DNS_TIMEOUT_MS)) {
+            MX_LWIP_Process(); // Handle lwIP tasks
+        }
+        if (!dns_found_called) {
+            printf("DNS resolution timed out\n");
+            current_state = STATE_ERROR;
+        } else if (current_state != STATE_ERROR) {
+            start_tcp_connection(); // Call only once here
+        }
+
+    } else if (dns_found_called) {
+        start_tcp_connection(); // Call for cached case
     }
 }
 
 // DNS found callback
 void https_client_dns_found_callback(const char *name, const ip_addr_t *ipaddr, void *callback_arg) {
+    dns_found_called = 1;
     if (ipaddr != NULL) {
         server_ip = *ipaddr;
-        start_tcp_connection();
+        printf("Resolved %s to %s\n", name, ipaddr_ntoa(ipaddr));
+        // No call to start_tcp_connection here; handled in start_dns_resolution
     } else {
+        printf("DNS resolution failed for %s\n", name);
         current_state = STATE_ERROR;
     }
 }
 
 // Start TCP connection
 void start_tcp_connection(void) {
+
     struct tcp_pcb *pcb = tcp_new();
     if (pcb == NULL) {
         current_state = STATE_ERROR;
         return;
     }
+
     ssl_ctx = malloc(sizeof(lwip_ssl_ctx_t));
     if (ssl_ctx == NULL) {
         tcp_close(pcb);
         current_state = STATE_ERROR;
         return;
     }
+
     ssl_ctx->pcb = pcb;
     ssl_ctx->pbuf = NULL;
     ssl_ctx->offset = 0;
     ssl_ctx->closed = 0;
+
     tcp_arg(pcb, ssl_ctx);
     tcp_recv(pcb, lwip_tcp_recv);
+
     err_t err = tcp_connect(pcb, &server_ip, 443, tcp_connected_callback);
     if (err != ERR_OK) {
         free(ssl_ctx);
@@ -282,9 +308,13 @@ void send_http_request(void) {
 
 // Receive HTTP response
 void receive_http_response(void) {
-    if (receive_timeout == 0) receive_timeout = HAL_GetTick() + RECEIVE_TIMEOUT_MS;
+
+    if (receive_timeout == 0) {
+        receive_timeout = HAL_GetTick() + RECEIVE_TIMEOUT_MS;
+    }
 
     while (current_state == STATE_RECEIVING_RESPONSE) {
+
         if (HAL_GetTick() > receive_timeout) {
             printf("Receive timeout after %d ms\n", RECEIVE_TIMEOUT_MS);
             current_state = STATE_ERROR;
@@ -292,34 +322,49 @@ void receive_http_response(void) {
         }
 
         int received = wolfSSL_read(ssl, response_buffer + response_index, sizeof(response_buffer) - response_index - 1);
+
+        if (response_index + received >= sizeof(response_buffer)) {
+            printf("Buffer overflow detected\n");
+            current_state = STATE_ERROR;
+            return;
+        }
+
         if (received > 0) {
+
             response_index += received;
             response_buffer[response_index] = '\0';
             printf("Received %d bytes, total: %d\n", received, response_index);
+
             char debug_buf[101];
             int len = response_index < 100 ? response_index : 100;
             strncpy(debug_buf, response_buffer, len);
             debug_buf[len] = '\0';
+
             printf("First %d bytes: %s\n", len, debug_buf);
             receive_timeout = HAL_GetTick() + RECEIVE_TIMEOUT_MS;
 
         } else if (received == 0) {
+
             printf("Connection closed, total bytes: %d\n", response_index);
             current_state = STATE_DONE;
             return;
 
-        } else {
+        } else
+        {
             int err = wolfSSL_get_error(ssl, received);
-            printf("Receive error: %d\n", err);
 
-            if (err == WOLFSSL_ERROR_ZERO_RETURN) {
+            if (err == WOLFSSL_ERROR_WANT_READ) {
+                printf("Receive: Want read\n");
+                // Continue looping to wait for more data
+
+            } else if (err == WOLFSSL_ERROR_ZERO_RETURN) {
+
                 printf("Connection closed by peer, total bytes: %d\n", response_index);
                 current_state = STATE_DONE;
                 return;
-            } else if (err == WOLFSSL_ERROR_WANT_READ) {
-                printf("Receive: Want read\n");
-                // Continue looping
+
             } else {
+
                 printf("wolfSSL_read error: %d\n", err);
                 current_state = STATE_ERROR;
                 return;
@@ -349,6 +394,7 @@ void cleanup(void) {
     }
 
     response_index = 0;
+    dns_found_called = 0;
 }
 /* USER CODE END PV */
 
@@ -370,28 +416,6 @@ PUTCHAR_PROTOTYPE
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-#include <wolfssl/ssl.h>
-#include <wolfssl/wolfcrypt/settings.h>
-#include <lwip/tcp.h>
-#include <lwip/dns.h>
-
-// Network interface (generated by STM32CubeMX)
-extern struct netif gnetif;
-
-// DNS and TLS state
-static uint8_t dns_found_called = 0;
-static ip_addr_t resolved_ip;
-
-// DNS callback function
-static void dns_found(const char *name, const ip_addr_t *ipaddr, void *callback_arg) {
-    dns_found_called = 1;
-    if (ipaddr != NULL) {
-        resolved_ip = *ipaddr;
-        printf("Resolved %s to %s\n", name, ipaddr_ntoa(ipaddr));
-    } else {
-        printf("Failed to resolve %s\n", name);
-    }
-}
 
 
 /* USER CODE END 0 */
@@ -452,8 +476,8 @@ int main(void)
     }
 
     // Enable peer verification
-    // TODO wolfSSL_CTX_set_verify(ctx, SSL_VERIFY_PEER, NULL);
-    wolfSSL_CTX_set_verify(ctx, SSL_VERIFY_NONE, NULL);
+    wolfSSL_CTX_set_verify(ctx, SSL_VERIFY_PEER, NULL);
+    // TODO  wolfSSL_CTX_set_verify(ctx, SSL_VERIFY_NONE, NULL);
 
   wolfSSL_SetIORecv(ctx, lwip_recv);
   wolfSSL_SetIOSend(ctx, lwip_send);
