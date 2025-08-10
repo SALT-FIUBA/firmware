@@ -109,27 +109,49 @@ mqttc_pal_recvall(int fd, void* buf, size_t bufsz, int flags)
 }
 #elif defined(STM32F429xx)
 
-ssize_t
-mqttc_pal_sendall(int fd, const void* buf, size_t len, int flags)
-{
-    (void)fd;
-    (void)buf;
-    (void)len;
-    (void)flags;
-    return 0;
+#include <wolfssl/ssl.h>
+
+
+ssize_t mqttc_pal_sendall(mqttc_pal_socket_handle fd, const void* buf, size_t len, int flags) {
+    size_t sent = 0;
+    while (sent < len) {
+        int tmp = wolfSSL_write(fd, buf + sent, (int)(len - sent));
+        if (tmp <= 0) {
+            tmp = wolfSSL_get_error(fd, tmp);
+            if (tmp == WOLFSSL_ERROR_WANT_READ || tmp == WOLFSSL_ERROR_WANT_WRITE) {
+                break;
+            }
+            return MQTT_ERROR_SOCKET_ERROR;
+        }
+        sent += (size_t)tmp;
+    }
+    return (ssize_t)sent;
 }
 
-ssize_t
-mqttc_pal_recvall(int fd, void* buf, size_t bufsz, int flags)
-{
-    (void)fd;
-    (void)buf;
-    (void)bufsz;
-    (void)flags;
-    return 0;
+ssize_t mqttc_pal_recvall(mqttc_pal_socket_handle fd, void* buf, size_t bufsz, int flags) {
+    const void* const start = buf;
+    int tmp;
+    do {
+        tmp = wolfSSL_read(fd, buf, (int)bufsz);
+        if (tmp <= 0) {
+            tmp = wolfSSL_get_error(fd, tmp);
+            if (tmp == WOLFSSL_ERROR_WANT_READ || tmp == WOLFSSL_ERROR_WANT_WRITE) {
+                break;
+            }
+            return MQTT_ERROR_SOCKET_ERROR;
+        }
+        buf = (char*)buf + tmp;
+        bufsz -= tmp;
+    } while (tmp > 0 && bufsz > 0);
+
+    return (ssize_t)(buf - start);
 }
 
 #else
+
+#error No PAL!
+
+
 #endif
 
 /** @endcond */

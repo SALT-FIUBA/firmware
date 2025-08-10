@@ -42,24 +42,53 @@
 #include "wolfssl/ssl.h"
 #include "wolfssl/wolfcrypt/settings.h"
 #include "ca-cert.h"
+#include "mqttc.h"
 
-// Define the hostname and HTTP request
-const char * hostname = "google.com";
-const char * request = "GET / HTTP/1.1\r\nHost: google.com\r\nConnection: close\r\n\r\n";
 
-// State machine states
+/* HiveMQ Public Broker Details */
+const char * broker_hostname = "29763578558a437bb804d48d7e8b4e01.s1.eu.hivemq.cloud";
+const uint16_t broker_port = 8883;
+const char * mqtt_topic = "test/topic";
+const char * mqtt_message = "Hello from Nucleo-144 over TLS!";
+const char *mqtt_client_id = "nucleo144_client";
+const char * username = "nucleo144_client";
+const char * password = "Nucleo144";
+
+
+/* ISRG Root X1 PEM for Let's Encrypt (HiveMQ uses Let's Encrypt) */
+const unsigned char hivemq_ca_cert_pem[] =
+"-----BEGIN CERTIFICATE-----\n"
+"MIIFazCCA1OgAwIBAgIRAIIQz7DSQONZRGPgu2OCiwAwDQYJKoZIhvcNAQELBQAw\n"
+"TzELMAkGA1UEBhMCVVMxKTAnBgNVBAoTIEludGVybmV0IFNlY3VyaXR5IFJlc2Vh\n"
+"cmNoIEdyb3VwMRUwEwYDVQQDEwxJU1JHIFJvb3QgWDEwHhcNMjAwOTAzMDAwMDAw\n"
+"WhcNMjUwOTE1MTYwMDAwWjAvMQswCQYDVQQGEwJVUzEpMCcGA1UEChMgSW50ZXJu\n"
+"ZXQgU2VjdXJpdHkgUmVzZWFyY2ggR3JvdXAxFTATBgNVBAMTDElTUkcgUm9vdCBY\n"
+"MTCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBAK3woXyE43I05S6b7r1C\n"
+"t7FFH5mj6G7lcepybPT2kUZZUyDlluqpQ/FgHHaHqtP3E0k7fKBHlicwSGAdqD7\n"
+"0j6p9/v7/14LA3g3xTE7sYkiQPe4hH6g6vH09T/4QRHppd4Xpe8u3Nvz2c/3V2Y\n"
+"Apl0yucTv3U4bt6TwIDAQABo0IwQDAOBgNVHQ8BAf8EBAMCAQYwDwYDVR0TAQH/\n"
+"BAIwADAdBgNVHQ4EFgQUfH4MRoUtueyG0r5VS888BvcDyCMwDQYJKoZIhvcNAQEL\n"
+"BQADggIBAFi9tPfaMQXD9XvV1A4z1mZbmnTXpRM1gNJH8kHJx3gG3XtWkSQiYUH\n"
+"No9lYk5Yc6vse4rG5N8V3y2/7kP9wHb7lQZmYbHCNyyXBx7o7+7LKeyx/so+cW0\n"
+"s5bmquzb3hHGDx12dT3z7DDseRiP5MKr+/3Z6p6y/9trS8ygsx2ZveagEHHr6ZG\n"
+"tqr3uCGTD8gk9Q16y3u4u7FgkO2q6pwy/dWaXrKpoSF7mNl8A5Zg7f7gqZLyYMO\n"
+"2PIod3cZS2ft5Fd+q9LfiU7uZV3j8f/99zGJyNG4/AT3/gHwjlKfoOOverallj8x\n"
+"-----END CERTIFICATE-----\n";
+const int hivemq_ca_cert_len = sizeof(hivemq_ca_cert_pem) - 1;
+
+
+/* State machine states */
 typedef enum {
   STATE_INIT,
   STATE_DNS_RESOLVING,
   STATE_TCP_CONNECTING,
   STATE_SSL_HANDSHAKING,
-  STATE_SENDING_REQUEST,
-  STATE_RECEIVING_RESPONSE,
-  STATE_DONE,
+  STATE_MQTT_CONNECTING,
+  STATE_MQTT_CONNECTED,
   STATE_ERROR
 } app_state_t;
 
-// Custom context for SSL and LWIP integration
+/* Custom context for SSL and LWIP integration */
 typedef struct {
   struct tcp_pcb *pcb;
   struct pbuf *pbuf;
@@ -67,31 +96,43 @@ typedef struct {
   int closed;
 } lwip_ssl_ctx_t;
 
-// Global variables
+/* Global variables */
 app_state_t current_state = STATE_INIT;
 lwip_ssl_ctx_t * ssl_ctx = NULL;
-WOLFSSL_CTX * ctx = NULL;
+WOLFSSL_CTX * wolf_ctx = NULL;
 WOLFSSL * ssl = NULL;
-ip_addr_t server_ip;
-char response_buffer[8192];
-int response_index = 0;
-uint32_t receive_timeout = 0;
-#define RECEIVE_TIMEOUT_MS 10000 // 10 seconds timeout
+
+ip_addr_t broker_ip;
+
+struct mqttc_client mqtt_client;
+uint8_t mqtt_sendbuf[512];
+uint8_t mqtt_recvbuf[512];
+uint32_t last_publish_time = 0;
+
+volatile uint8_t dns_resolved = 0;
+volatile uint8_t dns_found_called = 0;
+uint32_t dns_start_time = 0;
+#define DNS_TIMEOUT_MS 5000
 
 
-// Function prototypes
+/* Function prototypes */
 void start_dns_resolution(void);
 void https_client_dns_found_callback(const char *name, const ip_addr_t *ipaddr, void *callback_arg);
+
 void start_tcp_connection(void);
 err_t tcp_connected_callback(void *arg, struct tcp_pcb *tpcb, err_t err);
+
 void handle_ssl_handshake(void);
-void send_http_request(void);
-void receive_http_response(void);
-void cleanup(void);
+
+void init_mqtt_client(void);
 
 int lwip_send(WOLFSSL *ssl, char *buf, int sz, void *ctx);
 int lwip_recv(WOLFSSL *ssl, char *buf, int sz, void *ctx);
 static err_t lwip_tcp_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_t err);
+
+void mqtt_publish_callback(void **state, struct mqttc_response_publish *publish);
+
+void cleanup(void);
 
 /* USER CODE END PTD */
 
@@ -108,293 +149,272 @@ static err_t lwip_tcp_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_
 
 /* USER CODE BEGIN PV */
 
-// Global variable for DNS resolution state
-static uint8_t dns_found_called = 0;
-#define DNS_TIMEOUT_MS 5000 // 5 seconds timeout
-
 // Start DNS resolution
 void start_dns_resolution(void) {
 
-    dns_found_called = 0;
+  dns_found_called = 0;
 
-    err_t error = dns_gethostbyname(hostname, &server_ip, https_client_dns_found_callback, NULL);
-    if (error == ERR_OK) {
-        // Cached, proceed immediately
-        printf("DNS test result: %d\n", error);
-        printf("Resolved %s to %s\n", hostname, ipaddr_ntoa(&server_ip));
-        dns_found_called = 1; // Mark as resolved
+  err_t error = dns_gethostbyname(broker_hostname, &broker_ip, https_client_dns_found_callback, NULL);
+  if (error == ERR_OK) {
+    // Cached, proceed immediately
+    printf("DNS test result: %d\n", error);
+    printf("Resolved %s to %s\n", broker_hostname, ipaddr_ntoa(&broker_ip));
+    dns_found_called = 1; // Mark as resolved
 
-    } else if (error == ERR_INPROGRESS) {
+  } else if (error == ERR_INPROGRESS) {
 
-        printf("DNS resolution in progress...\n");
-        current_state = STATE_DNS_RESOLVING;
-    } else {
+    printf("DNS resolution in progress...\n");
+    current_state = STATE_DNS_RESOLVING;
+  } else {
 
-        printf("DNS resolution error: %d\n", error);
-        current_state = STATE_ERROR;
+    printf("DNS resolution error: %d\n", error);
+    current_state = STATE_ERROR;
+  }
+
+  // Wait for DNS resolution with timeout
+  if (current_state == STATE_DNS_RESOLVING) {
+
+    printf("Waiting for DNS resolution with timeout\n");
+    uint32_t start_time = HAL_GetTick();
+    while (!dns_found_called && (HAL_GetTick() - start_time < DNS_TIMEOUT_MS)) {
+      MX_LWIP_Process(); // Handle lwIP tasks
+    }
+    if (!dns_found_called) {
+      printf("DNS resolution timed out\n");
+      current_state = STATE_ERROR;
+    } else if (current_state != STATE_ERROR) {
+      start_tcp_connection(); // Call only once here
     }
 
-    // Wait for DNS resolution with timeout
-    if (current_state == STATE_DNS_RESOLVING) {
-
-        printf("Waiting for DNS resolution with timeout\n");
-        uint32_t start_time = HAL_GetTick();
-        while (!dns_found_called && (HAL_GetTick() - start_time < DNS_TIMEOUT_MS)) {
-            MX_LWIP_Process(); // Handle lwIP tasks
-        }
-        if (!dns_found_called) {
-            printf("DNS resolution timed out\n");
-            current_state = STATE_ERROR;
-        } else if (current_state != STATE_ERROR) {
-            start_tcp_connection(); // Call only once here
-        }
-
-    } else if (dns_found_called) {
-        start_tcp_connection(); // Call for cached case
-    }
+  } else if (dns_found_called) {
+    start_tcp_connection(); // Call for cached case
+  }
 }
 
 // DNS found callback
 void https_client_dns_found_callback(const char *name, const ip_addr_t *ipaddr, void *callback_arg) {
-    dns_found_called = 1;
-    if (ipaddr != NULL) {
-        server_ip = *ipaddr;
-        printf("Resolved %s to %s\n", name, ipaddr_ntoa(ipaddr));
-        // No call to start_tcp_connection here; handled in start_dns_resolution
-    } else {
-        printf("DNS resolution failed for %s\n", name);
-        current_state = STATE_ERROR;
-    }
+  dns_found_called = 1;
+  if (ipaddr != NULL) {
+    broker_ip = *ipaddr;
+    printf("Resolved %s to %s\n", name, ipaddr_ntoa(ipaddr));
+    // No call to start_tcp_connection here; handled in start_dns_resolution
+  } else {
+    printf("DNS resolution failed for %s\n", name);
+    current_state = STATE_ERROR;
+  }
 }
 
-// Start TCP connection
+
+static void tcp_err_callback(void *arg, err_t err) {
+  printf("TCP error: %d\n", err);  // Common errors: -1 (ERR_ABRT aborted), -5 (ERR_RST reset), -11 (ERR_TIMEOUT)
+  current_state = STATE_ERROR;  // Trigger cleanup and retry
+}
+
+static err_t tcp_poll_callback(void *arg, struct tcp_pcb *tpcb) {
+  printf("TCP poll: connection pending\n");
+  return ERR_OK;
+}
+
+
+/* Start TCP connection */
 void start_tcp_connection(void) {
 
-    struct tcp_pcb *pcb = tcp_new();
-    if (pcb == NULL) {
-        current_state = STATE_ERROR;
-        return;
-    }
+  struct tcp_pcb *pcb = tcp_new();
+  if (pcb == NULL) {
+    printf("Failed to create TCP PCB\n");
+    current_state = STATE_ERROR;
+    return;
+  }
 
-    ssl_ctx = malloc(sizeof(lwip_ssl_ctx_t));
-    if (ssl_ctx == NULL) {
-        tcp_close(pcb);
-        current_state = STATE_ERROR;
-        return;
-    }
+  ssl_ctx = (lwip_ssl_ctx_t *)mem_malloc(sizeof(lwip_ssl_ctx_t));
+  if (ssl_ctx == NULL) {
+    tcp_close(pcb);
+    printf("Failed to allocate SSL context\n");
+    current_state = STATE_ERROR;
+    return;
+  }
 
-    ssl_ctx->pcb = pcb;
-    ssl_ctx->pbuf = NULL;
-    ssl_ctx->offset = 0;
-    ssl_ctx->closed = 0;
+  ssl_ctx->pcb = pcb;
+  ssl_ctx->pbuf = NULL;
+  ssl_ctx->offset = 0;
+  ssl_ctx->closed = 0;
 
-    tcp_arg(pcb, ssl_ctx);
-    tcp_recv(pcb, lwip_tcp_recv);
+  tcp_err(pcb, tcp_err_callback);
+  tcp_poll(pcb, tcp_poll_callback, 10);  // Poll every 5 seconds (10 * 0.5s tick)
 
-    err_t err = tcp_connect(pcb, &server_ip, 443, tcp_connected_callback);
-    if (err != ERR_OK) {
-        free(ssl_ctx);
-        ssl_ctx = NULL;
-        tcp_close(pcb);
-        current_state = STATE_ERROR;
-    } else {
-        current_state = STATE_TCP_CONNECTING;
-    }
+  tcp_arg(pcb, ssl_ctx);
+  tcp_recv(pcb, lwip_tcp_recv);
+
+  err_t err = tcp_connect(pcb, &broker_ip, broker_port, tcp_connected_callback);
+  if (err != ERR_OK) {
+    mem_free(ssl_ctx);
+    ssl_ctx = NULL;
+    tcp_close(pcb);
+    printf("TCP connect failed: %d\n", err);
+    current_state = STATE_ERROR;
+  } else {
+    current_state = STATE_TCP_CONNECTING;
+  }
 }
 
-// TCP connected callback
+/* TCP connected callback */
 err_t tcp_connected_callback(void *arg, struct tcp_pcb *tpcb, err_t err) {
-    if (err == ERR_OK) {
-        ssl = wolfSSL_new(ctx);
-        if (ssl == NULL) {
-            current_state = STATE_ERROR;
-            return ERR_OK;
-        }
-        wolfSSL_SetIOReadCtx(ssl, ssl_ctx);
-        wolfSSL_SetIOWriteCtx(ssl, ssl_ctx);
-        wolfSSL_UseSNI(ssl, WOLFSSL_SNI_HOST_NAME, hostname, strlen(hostname));
-        current_state = STATE_SSL_HANDSHAKING;
-    } else {
-        current_state = STATE_ERROR;
-    }
-    return ERR_OK;
+
+  if (err == ERR_OK) {
+    printf("TCP connected\n");
+    current_state = STATE_SSL_HANDSHAKING;
+  } else {
+    printf("TCP connection error: %d\n", err);
+    current_state = STATE_ERROR;
+  }
+
+  return ERR_OK;
 }
 
-// LWIP TCP receive callback
-static err_t lwip_tcp_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_t err) {
-    lwip_ssl_ctx_t *ssl_ctx = (lwip_ssl_ctx_t *)arg;
-    if (p != NULL) {
-        if (ssl_ctx->pbuf == NULL) {
-            ssl_ctx->pbuf = p;
-        } else {
-            pbuf_cat(ssl_ctx->pbuf, p);
-        }
-    } else {
-        ssl_ctx->closed = 1;
-    }
-    return ERR_OK;
-}
-
-// Custom receive callback for WolfSSL
-int lwip_recv(WOLFSSL * ssl, char * buf, int sz, void * ctx) {
-
-    lwip_ssl_ctx_t * ssl_ctx = (lwip_ssl_ctx_t *)ctx;
-    if (ssl_ctx->pbuf == NULL) {
-        if (ssl_ctx->closed) {
-            printf("lwip_recv: EOF detected\n");
-            return 0; // EOF
-        }
-        printf("lwip_recv: Want read\n");
-        return WOLFSSL_CBIO_ERR_WANT_READ;
-    }
-
-    u16_t copied = pbuf_copy_partial(ssl_ctx->pbuf, buf, sz, ssl_ctx->offset);
-    if (copied > 0) {
-        ssl_ctx->offset += copied;
-        tcp_recved(ssl_ctx->pcb, copied);
-        printf("lwip_recv: Copied %d bytes, offset: %d, pbuf total: %d\n", copied, ssl_ctx->offset, ssl_ctx->pbuf->tot_len);
-        if (ssl_ctx->offset >= ssl_ctx->pbuf->tot_len) {
-            pbuf_free(ssl_ctx->pbuf);
-            ssl_ctx->pbuf = NULL;
-            ssl_ctx->offset = 0;
-            printf("lwip_recv: pbuf freed\n");
-        }
-
-        return copied;
-    }
-
-    printf("lwip_recv: No data to copy\n");
-    return WOLFSSL_CBIO_ERR_WANT_READ;
-}
-
-// Custom send callback for WolfSSL
-int lwip_send(WOLFSSL *ssl, char *buf, int sz, void *ctx) {
-    lwip_ssl_ctx_t *ssl_ctx = (lwip_ssl_ctx_t *)ctx;
-    err_t err = tcp_write(ssl_ctx->pcb, buf, sz, TCP_WRITE_FLAG_COPY);
-    if (err == ERR_OK) {
-        tcp_output(ssl_ctx->pcb);
-        return sz;
-    } else if (err == ERR_MEM) {
-        return WOLFSSL_CBIO_ERR_WANT_WRITE;
-    }
-    return WOLFSSL_CBIO_ERR_GENERAL;
-}
-
-// Handle SSL handshake
+/* Handle SSL handshake */
 void handle_ssl_handshake(void) {
-    int ret = wolfSSL_connect(ssl);
-    if (ret == WOLFSSL_SUCCESS) {
-        current_state = STATE_SENDING_REQUEST;
+
+  if (ssl == NULL) {
+    ssl = wolfSSL_new(wolf_ctx);
+    if (ssl == NULL) {
+      printf("Failed to create WolfSSL session\n");
+      current_state = STATE_ERROR;
+      return;
+    }
+
+    wolfSSL_SetIOReadCtx(ssl, ssl_ctx);
+    wolfSSL_SetIOWriteCtx(ssl, ssl_ctx);
+    wolfSSL_UseSNI(ssl, WOLFSSL_SNI_HOST_NAME, broker_hostname, strlen(broker_hostname));
+    printf("WolfSSL session created, starting handshake with %s\n", broker_hostname);
+  }
+
+  int ret = wolfSSL_connect(ssl);
+  if (ret == WOLFSSL_SUCCESS) {
+    printf("SSL handshake successful\n");
+    current_state = STATE_MQTT_CONNECTING; // Move to MQTT connection state
+    init_mqtt_client();
+
+  } else {
+    int err = wolfSSL_get_error(ssl, ret);
+    if (err == WOLFSSL_ERROR_WANT_READ || err == WOLFSSL_ERROR_WANT_WRITE) {
+      printf("SSL handshake in progress: %s\n",
+             err == WOLFSSL_ERROR_WANT_READ ? "WANT_READ" : "WANT_WRITE");
+      // Remain in STATE_SSL_HANDSHAKING to retry in the next loop iteration
+
+  } else {
+      printf("SSL handshake failed: %d\n", err);
+      current_state = STATE_ERROR;
+      // Clean up SSL session to avoid resource leaks
+      wolfSSL_free(ssl);
+      ssl = NULL;
+    }
+  }
+}
+
+/* Initialize MQTT client */
+void init_mqtt_client(void) {
+
+  enum MQTTErrors err = mqttc_init(&mqtt_client, ssl, mqtt_sendbuf, sizeof(mqtt_sendbuf),
+                                  mqtt_recvbuf, sizeof(mqtt_recvbuf), mqtt_publish_callback);
+  if (err != MQTT_OK) {
+    printf("MQTT init failed: %d\n", err);
+    current_state = STATE_ERROR;
+    return;
+  }
+
+  err = mqttc_connect(&mqtt_client, mqtt_client_id, NULL, NULL, 0, username, password,
+                      MQTT_CONNECT_CLEAN_SESSION, 60);
+  if (err != MQTT_OK) {
+    printf("MQTT connect failed: %d\n", err);
+    current_state = STATE_ERROR;
+  } else {
+    current_state = STATE_MQTT_CONNECTING;
+  }
+}
+
+/* Custom send callback for WolfSSL */
+int lwip_send(WOLFSSL *ssl, char *buf, int sz, void *ctx) {
+
+  lwip_ssl_ctx_t * ssl_ctx = (lwip_ssl_ctx_t *)ctx;
+
+  err_t err = tcp_write(ssl_ctx->pcb, buf, sz, TCP_WRITE_FLAG_COPY);
+  if (err == ERR_OK) {
+    tcp_output(ssl_ctx->pcb);
+    return sz;
+  } else {
+    return WOLFSSL_CBIO_ERR_GENERAL;
+  }
+}
+
+/* Custom receive callback for WolfSSL */
+int lwip_recv(WOLFSSL *ssl, char *buf, int sz, void *ctx) {
+
+  lwip_ssl_ctx_t * ssl_ctx = (lwip_ssl_ctx_t *)ctx;
+  if (ssl_ctx->pbuf == NULL) {
+    if (ssl_ctx->closed) {
+      return 0; // EOF
+    }
+    return WOLFSSL_CBIO_ERR_WANT_READ;
+  }
+
+  u16_t copied = pbuf_copy_partial(ssl_ctx->pbuf, buf, sz, ssl_ctx->offset);
+  if (copied > 0) {
+    ssl_ctx->offset += copied;
+    tcp_recved(ssl_ctx->pcb, copied);
+    if (ssl_ctx->offset >= ssl_ctx->pbuf->tot_len) {
+      pbuf_free(ssl_ctx->pbuf);
+      ssl_ctx->pbuf = NULL;
+      ssl_ctx->offset = 0;
+    }
+    return copied;
+  }
+
+
+  return WOLFSSL_CBIO_ERR_WANT_READ;
+}
+
+/* LWIP TCP receive callback */
+static err_t lwip_tcp_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_t err) {
+  lwip_ssl_ctx_t *ssl_ctx = (lwip_ssl_ctx_t *)arg;
+  if (p != NULL) {
+    if (ssl_ctx->pbuf == NULL) {
+      ssl_ctx->pbuf = p;
     } else {
-        int err = wolfSSL_get_error(ssl, ret);
-        if (err != WOLFSSL_ERROR_WANT_READ && err != WOLFSSL_ERROR_WANT_WRITE) {
-            current_state = STATE_ERROR;
-        }
+      pbuf_cat(ssl_ctx->pbuf, p);
     }
+  } else {
+    ssl_ctx->closed = 1;
+  }
+  return ERR_OK;
 }
 
-// Send HTTP request
-void send_http_request(void) {
-    int sent = wolfSSL_write(ssl, request, strlen(request));
-    if (sent == strlen(request)) {
-        current_state = STATE_RECEIVING_RESPONSE;
-    } else {
-        int err = wolfSSL_get_error(ssl, sent);
-        if (err != WOLFSSL_ERROR_WANT_WRITE) {
-            current_state = STATE_ERROR;
-        }
-    }
+/* MQTT publish response callback (for subscribed messages if any) */
+void mqtt_publish_callback(void **state, struct mqttc_response_publish *publish) {
+  printf("Received MQTT publish: topic=%.*s, message=%.*s\n",
+         publish->topic_name_size, publish->topic_name,
+         publish->application_message_size, publish->application_message);
 }
 
-// Receive HTTP response
-void receive_http_response(void) {
-
-    if (receive_timeout == 0) {
-        receive_timeout = HAL_GetTick() + RECEIVE_TIMEOUT_MS;
-    }
-
-    while (current_state == STATE_RECEIVING_RESPONSE) {
-
-        if (HAL_GetTick() > receive_timeout) {
-            printf("Receive timeout after %d ms\n", RECEIVE_TIMEOUT_MS);
-            current_state = STATE_ERROR;
-            return;
-        }
-
-        int received = wolfSSL_read(ssl, response_buffer + response_index, sizeof(response_buffer) - response_index - 1);
-
-        if (response_index + received >= sizeof(response_buffer)) {
-            printf("Buffer overflow detected\n");
-            current_state = STATE_ERROR;
-            return;
-        }
-
-        if (received > 0) {
-
-            response_index += received;
-            response_buffer[response_index] = '\0';
-            printf("Received %d bytes, total: %d\n", received, response_index);
-
-            char debug_buf[101];
-            int len = response_index < 100 ? response_index : 100;
-            strncpy(debug_buf, response_buffer, len);
-            debug_buf[len] = '\0';
-
-            printf("First %d bytes: %s\n", len, debug_buf);
-            receive_timeout = HAL_GetTick() + RECEIVE_TIMEOUT_MS;
-
-        } else if (received == 0) {
-
-            printf("Connection closed, total bytes: %d\n", response_index);
-            current_state = STATE_DONE;
-            return;
-
-        } else
-        {
-            int err = wolfSSL_get_error(ssl, received);
-
-            if (err == WOLFSSL_ERROR_WANT_READ) {
-                printf("Receive: Want read\n");
-                // Continue looping to wait for more data
-
-            } else if (err == WOLFSSL_ERROR_ZERO_RETURN) {
-
-                printf("Connection closed by peer, total bytes: %d\n", response_index);
-                current_state = STATE_DONE;
-                return;
-
-            } else {
-
-                printf("wolfSSL_read error: %d\n", err);
-                current_state = STATE_ERROR;
-                return;
-            }
-        }
-    }
-}
-
-// Cleanup resources
+/* Cleanup resources */
 void cleanup(void) {
-
-    if (ssl != NULL) {
-        wolfSSL_shutdown(ssl);
-        wolfSSL_free(ssl);
-        ssl = NULL;
+  if (ssl != NULL) {
+    wolfSSL_shutdown(ssl);
+    wolfSSL_free(ssl);
+    ssl = NULL;
+  }
+  if (ssl_ctx != NULL) {
+    if (ssl_ctx->pbuf != NULL) {
+      pbuf_free(ssl_ctx->pbuf);
     }
-
-    if (ssl_ctx != NULL) {
-        if (ssl_ctx->pbuf != NULL) {
-            pbuf_free(ssl_ctx->pbuf);
-        }
-        if (ssl_ctx->pcb != NULL) {
-            tcp_close(ssl_ctx->pcb);
-        }
-        free(ssl_ctx);
-        ssl_ctx = NULL;
+    if (ssl_ctx->pcb != NULL) {
+      tcp_close(ssl_ctx->pcb);
     }
-
-    response_index = 0;
-    dns_found_called = 0;
+    mem_free(ssl_ctx);
+    ssl_ctx = NULL;
+  }
+  dns_resolved = 0;
+  current_state = STATE_INIT;
+  printf("Cleaned up, restarting...\n");
 }
 /* USER CODE END PV */
 
@@ -453,34 +473,38 @@ int main(void)
   MX_RNG_Init();
 
   /* USER CODE BEGIN 2 */
-    printf("------------------------------------------------------------------------- \n");
+  printf("------------------------------------------------------------------------- \n");
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 
   // Create WolfSSL context and set custom I/O callbacks
-  ctx = wolfSSL_CTX_new(wolfSSLv23_client_method());
-  if (ctx == NULL) {
+  wolf_ctx = wolfSSL_CTX_new(wolfSSLv23_client_method());
+  if (wolf_ctx == NULL) {
     printf("Failed to create WolfSSL context\n");
     return -1;
   }
 
     // Load the CA certificate
+    /*
     const int ca_cert_len = sizeof(ca_cert_pem);
-    if (wolfSSL_CTX_load_verify_buffer(ctx, ca_cert_pem, ca_cert_len, SSL_FILETYPE_PEM) != WOLFSSL_SUCCESS)
+    if (wolfSSL_CTX_load_verify_buffer(wolf_ctx, ca_cert_pem, ca_cert_len, SSL_FILETYPE_PEM) != WOLFSSL_SUCCESS)
     {
             printf("Failed to load CA certificate \n");
-            wolfSSL_CTX_free(ctx);
+            wolfSSL_CTX_free(wolf_ctx);
             return -1;
     }
 
     // Enable peer verification
-    wolfSSL_CTX_set_verify(ctx, SSL_VERIFY_PEER, NULL);
-    // TODO  wolfSSL_CTX_set_verify(ctx, SSL_VERIFY_NONE, NULL);
+    wolfSSL_CTX_set_verify(wolf_ctx, SSL_VERIFY_PEER, NULL);
+    */
 
-  wolfSSL_SetIORecv(ctx, lwip_recv);
-  wolfSSL_SetIOSend(ctx, lwip_send);
+    // Non peer verification
+    wolfSSL_CTX_set_verify(wolf_ctx, SSL_VERIFY_NONE, NULL);
+
+  wolfSSL_SetIORecv(wolf_ctx, lwip_recv);
+  wolfSSL_SetIOSend(wolf_ctx, lwip_send);
 
   // Set DNS server
   ip_addr_t dns_server;
@@ -491,69 +515,57 @@ int main(void)
   start_dns_resolution();
 
 
-
-
   while (1)
   {
-
     MX_LWIP_Process();
 
     // Handle current state
+
     switch (current_state) {
 
-        case STATE_SSL_HANDSHAKING:
-              handle_ssl_handshake();
-          break;
+      case STATE_SSL_HANDSHAKING:
+                handle_ssl_handshake();
+            break;
 
-        case STATE_SENDING_REQUEST:
-              send_http_request();
-          break;
-
-        case STATE_RECEIVING_RESPONSE:
-              receive_http_response();
-          break;
-
-        case STATE_DONE:
-            // Print the response
-            printf("Response received (%d bytes):\n", response_index);
-            // Print response in chunks to avoid UART buffer overflow
-            for (int i = 0; i < response_index; i += 100) {
-                char chunk[101];
-                strncpy(chunk, response_buffer + i, 100);
-                chunk[100] = '\0';
-                printf("%s", chunk);
+      case STATE_MQTT_CONNECTING:
+      case STATE_MQTT_CONNECTED:
+        {
+          enum MQTTErrors err = mqttc_sync(&mqtt_client);
+          if (err != MQTT_OK) {
+            printf("MQTT sync error: %d\n", err);
+            if (err == MQTT_ERROR_CONNECTION_CLOSED || err == MQTT_ERROR_SOCKET_ERROR) {
+              current_state = STATE_ERROR;
             }
-            printf("\n");
-            cleanup();
-            current_state = STATE_INIT;
-            printf("Connection closed, restarting...\n");
-            start_dns_resolution();
-          break;
+          } else if (current_state == STATE_MQTT_CONNECTING && mqtt_client.error == MQTT_OK) {
+            current_state = STATE_MQTT_CONNECTED;
+            printf("MQTT connected\n");
+          }
 
-        case STATE_ERROR:
-            printf("An error occurred.\n");
-            cleanup();
-            current_state = STATE_INIT;
-            printf("Retrying DNS resolution...\n");
-            start_dns_resolution();
-          break;
+          if (current_state == STATE_MQTT_CONNECTED) {
+            uint32_t now = HAL_GetTick();
+            if (now - last_publish_time >= 5000) {  // Publish every 5 seconds
+              err = mqttc_publish(&mqtt_client, mqtt_topic, mqtt_message, strlen(mqtt_message), MQTT_PUBLISH_QOS_0);
+              if (err != MQTT_OK) {
+                printf("MQTT publish failed: %d\n", err);
+              } else {
+                printf("Published: %s to %s\n", mqtt_message, mqtt_topic);
+              }
+              last_publish_time = now;
+            }
+          }
+        }
+        break;
 
-        default:
-          break;
+      case STATE_ERROR:
+        printf("Error occurred, cleaning up and restarting...\n");
+        cleanup();
+        start_dns_resolution();
+        break;
+
+      default:
+        break;
       }
     }
-
-
-//  while (1)
-//  {
-//    /* USER CODE END WHILE */
-//
-//    /* USER CODE BEGIN 3 */
-//     MX_LWIP_Process();
-//    /* USER CODE END WHILE */
-//    /* USER CODE BEGIN 3 */
-//  }
-//  /* USER CODE END 3 */
 }
 
 /**

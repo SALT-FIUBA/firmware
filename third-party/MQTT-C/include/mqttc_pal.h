@@ -1,6 +1,7 @@
 #ifndef __MQTT_PAL_H__
 #define __MQTT_PAL_H__
 
+
 /**
  * @file
  * @brief Includes/supports the types/calls required by the MQTT-C client.
@@ -110,21 +111,26 @@
 
     #include <limits.h>
     #include <sys/time.h>
-    #include "epoch.h"
-    #include "htons.h"
+    #include <wolfssl/ssl.h>
 
-    #define MQTT_PAL_HTONS(s) htons(s)
-    #define MQTT_PAL_NTOHS(s) ntohs(s)
+    // for network byte order
+    #define MQTTC_PAL_HTONS(s) PP_HTONS(s)
+    #define MQTTC_PAL_NTOHS(s) PP_NTOHS(s)
 
-    #define MQTT_PAL_TIME() (time_t)epoch_get()
+    // with no OS, it's needed to use STM32 HAL tick counter
+    #define MQTTC_PAL_TIME() (HAL_GetTick() / 1000) // miliseconds
+    typedef uint32_t mqttc_pal_time_t;
 
-    typedef time_t mqttc_pal_time_t;
+    // wit no OS, mutexes aren't needed for thread safety. so i provide dummy implementations
     typedef int mqttc_pal_mutex_t;
-    typedef int ssize_t;
 
-    #define MQTT_PAL_MUTEX_INIT(mtx_ptr)
-    #define MQTT_PAL_MUTEX_LOCK(mtx_ptr)
-    #define MQTT_PAL_MUTEX_UNLOCK(mtx_ptr)
+    // MQTT-C expects the symbols to exist even if they do nothing
+    #define MQTTC_PAL_MUTEX_INIT(mtx_ptr) ((void)0)
+    #define MQTTC_PAL_MUTEX_LOCK(mtx_ptr) ((void)0)
+    #define MQTTC_PAL_MUTEX_UNLOCK(mtx_ptr) ((void)0)
+
+    typedef WOLFSSL * mqttc_pal_socket_handle;
+
 #else
 #endif
 
@@ -139,7 +145,7 @@
  * 
  * @returns The number of bytes sent if successful, an \ref MQTTErrors otherwise.
  */
-ssize_t mqttc_pal_sendall(int fd, const void* buf, size_t len, int flags);
+ssize_t mqttc_pal_sendall(mqttc_pal_socket_handle fd, const void* buf, size_t len, int flags);
 
 /**
  * @brief Non-blocking receive all the byte available.
@@ -152,6 +158,6 @@ ssize_t mqttc_pal_sendall(int fd, const void* buf, size_t len, int flags);
  * 
  * @returns The number of bytes received if successful, an \ref MQTTErrors otherwise.
  */
-ssize_t mqttc_pal_recvall(int fd, void* buf, size_t bufsz, int flags);
+ssize_t mqttc_pal_recvall(mqttc_pal_socket_handle fd, void* buf, size_t bufsz, int flags);
 
 #endif
