@@ -38,10 +38,8 @@
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
 #include "dns.h"
-#include "lwip.h"
 #include "wolfssl/ssl.h"
 #include "wolfssl/wolfcrypt/settings.h"
-#include "ca-cert.h"
 #include "mqttc.h"
 
 
@@ -55,27 +53,10 @@ const char * username = "nucleo144_client";
 const char * password = "Nucleo144";
 
 
-/* ISRG Root X1 PEM for Let's Encrypt (HiveMQ uses Let's Encrypt) */
-const unsigned char hivemq_ca_cert_pem[] =
-"-----BEGIN CERTIFICATE-----\n"
-"MIIFazCCA1OgAwIBAgIRAIIQz7DSQONZRGPgu2OCiwAwDQYJKoZIhvcNAQELBQAw\n"
-"TzELMAkGA1UEBhMCVVMxKTAnBgNVBAoTIEludGVybmV0IFNlY3VyaXR5IFJlc2Vh\n"
-"cmNoIEdyb3VwMRUwEwYDVQQDEwxJU1JHIFJvb3QgWDEwHhcNMjAwOTAzMDAwMDAw\n"
-"WhcNMjUwOTE1MTYwMDAwWjAvMQswCQYDVQQGEwJVUzEpMCcGA1UEChMgSW50ZXJu\n"
-"ZXQgU2VjdXJpdHkgUmVzZWFyY2ggR3JvdXAxFTATBgNVBAMTDElTUkcgUm9vdCBY\n"
-"MTCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBAK3woXyE43I05S6b7r1C\n"
-"t7FFH5mj6G7lcepybPT2kUZZUyDlluqpQ/FgHHaHqtP3E0k7fKBHlicwSGAdqD7\n"
-"0j6p9/v7/14LA3g3xTE7sYkiQPe4hH6g6vH09T/4QRHppd4Xpe8u3Nvz2c/3V2Y\n"
-"Apl0yucTv3U4bt6TwIDAQABo0IwQDAOBgNVHQ8BAf8EBAMCAQYwDwYDVR0TAQH/\n"
-"BAIwADAdBgNVHQ4EFgQUfH4MRoUtueyG0r5VS888BvcDyCMwDQYJKoZIhvcNAQEL\n"
-"BQADggIBAFi9tPfaMQXD9XvV1A4z1mZbmnTXpRM1gNJH8kHJx3gG3XtWkSQiYUH\n"
-"No9lYk5Yc6vse4rG5N8V3y2/7kP9wHb7lQZmYbHCNyyXBx7o7+7LKeyx/so+cW0\n"
-"s5bmquzb3hHGDx12dT3z7DDseRiP5MKr+/3Z6p6y/9trS8ygsx2ZveagEHHr6ZG\n"
-"tqr3uCGTD8gk9Q16y3u4u7FgkO2q6pwy/dWaXrKpoSF7mNl8A5Zg7f7gqZLyYMO\n"
-"2PIod3cZS2ft5Fd+q9LfiU7uZV3j8f/99zGJyNG4/AT3/gHwjlKfoOOverallj8x\n"
-"-----END CERTIFICATE-----\n";
-const int hivemq_ca_cert_len = sizeof(hivemq_ca_cert_pem) - 1;
-
+#define MAX_HANDSHAKE_RETRIES 3
+static uint8_t handshake_retries = 0;
+static uint32_t handshake_start_time = 0;
+#define HANDSHAKE_TIMEOUT_MS 10000 // 10 seconds
 
 /* State machine states */
 typedef enum {
@@ -261,10 +242,10 @@ void start_tcp_connection(void) {
 err_t tcp_connected_callback(void *arg, struct tcp_pcb *tpcb, err_t err) {
 
   if (err == ERR_OK) {
-    printf("TCP connected\n");
+    printf("TCP connected to %s:%u\n", ipaddr_ntoa(&broker_ip), broker_port);
     current_state = STATE_SSL_HANDSHAKING;
   } else {
-    printf("TCP connection error: %d\n", err);
+    printf("TCP connection error: %d to %s:%u\n", err, ipaddr_ntoa(&broker_ip), broker_port);
     current_state = STATE_ERROR;
   }
 
@@ -325,10 +306,24 @@ void init_mqtt_client(void) {
   err = mqttc_connect(&mqtt_client, mqtt_client_id, NULL, NULL, 0, username, password,
                       MQTT_CONNECT_CLEAN_SESSION, 60);
   if (err != MQTT_OK) {
+
     printf("MQTT connect failed: %d\n", err);
     current_state = STATE_ERROR;
   } else {
+
     current_state = STATE_MQTT_CONNECTING;
+
+    // Subscribe to a topic after connecting
+    const char *subscribe_topic = "stm32/control"; // Change this to your desired topic
+    err = mqttc_subscribe(&mqtt_client, subscribe_topic, MQTT_PUBLISH_QOS_0);
+    if (err != MQTT_OK)
+    {
+      printf("MQTT subscribe failed: %d\n", err);
+      current_state = STATE_ERROR;
+    } else
+    {
+        printf("subscribed to topic %s\n", subscribe_topic);
+    }
   }
 }
 
@@ -375,7 +370,15 @@ int lwip_recv(WOLFSSL *ssl, char *buf, int sz, void *ctx) {
 
 /* LWIP TCP receive callback */
 static err_t lwip_tcp_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_t err) {
-  lwip_ssl_ctx_t *ssl_ctx = (lwip_ssl_ctx_t *)arg;
+
+  lwip_ssl_ctx_t * ssl_ctx = (lwip_ssl_ctx_t *)arg;
+
+  if (err != ERR_OK) {
+    printf("TCP receive error: %d\n", err);
+    if (p != NULL) pbuf_free(p);
+    return err;
+  }
+
   if (p != NULL) {
     if (ssl_ctx->pbuf == NULL) {
       ssl_ctx->pbuf = p;
@@ -385,6 +388,9 @@ static err_t lwip_tcp_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_
   } else {
     ssl_ctx->closed = 1;
   }
+
+  if (p != NULL) printf("Received %u bytes from hive mq broker\n", p->tot_len);
+
   return ERR_OK;
 }
 
@@ -397,6 +403,8 @@ void mqtt_publish_callback(void **state, struct mqttc_response_publish *publish)
 
 /* Cleanup resources */
 void cleanup(void) {
+  printf("cleanup called \n");
+
   if (ssl != NULL) {
     wolfSSL_shutdown(ssl);
     wolfSSL_free(ssl);
@@ -488,8 +496,7 @@ int main(void)
 
     // Load the CA certificate
     /*
-    const int ca_cert_len = sizeof(ca_cert_pem);
-    if (wolfSSL_CTX_load_verify_buffer(wolf_ctx, ca_cert_pem, ca_cert_len, SSL_FILETYPE_PEM) != WOLFSSL_SUCCESS)
+    if (wolfSSL_CTX_load_verify_buffer(wolf_ctx, hivemq_ca_cert_pem, hivemq_ca_cert_len, SSL_FILETYPE_PEM) != WOLFSSL_SUCCESS)
     {
             printf("Failed to load CA certificate \n");
             wolfSSL_CTX_free(wolf_ctx);
@@ -524,7 +531,23 @@ int main(void)
     switch (current_state) {
 
       case STATE_SSL_HANDSHAKING:
-                handle_ssl_handshake();
+
+      if (handshake_start_time == 0) handshake_start_time = HAL_GetTick();
+      handle_ssl_handshake();
+      if (HAL_GetTick() - handshake_start_time >= HANDSHAKE_TIMEOUT_MS) {
+        printf("SSL handshake timed out, retrying...\n");
+        if (handshake_retries < MAX_HANDSHAKE_RETRIES) {
+          handshake_retries++;
+          cleanup(); // Clean up current connection
+          start_dns_resolution(); // Restart the process
+          handshake_start_time = 0; // Reset timer
+        } else {
+          printf("Max retries reached, entering ERROR state\n");
+          current_state = STATE_ERROR;
+          handshake_retries = 0; // Reset for next cycle
+          handshake_start_time = 0;
+        }
+      }
             break;
 
       case STATE_MQTT_CONNECTING:
@@ -540,6 +563,7 @@ int main(void)
             current_state = STATE_MQTT_CONNECTED;
             printf("MQTT connected\n");
           }
+
 
           if (current_state == STATE_MQTT_CONNECTED) {
             uint32_t now = HAL_GetTick();
