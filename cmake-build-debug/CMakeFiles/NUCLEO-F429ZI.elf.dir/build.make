@@ -3935,10 +3935,24 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/tcp-mqttprot/tcp-mqttprot.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/tcp-mqttprot/tcp-mqttprot.c.s"
 	/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/salt/state-machines/tcp-mqttprot/tcp-mqttprot.c -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/tcp-mqttprot/tcp-mqttprot.c.s
 
+CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/wolfssl-tcp-conmgr/wolfssl-tcp-conmgr.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
+CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/wolfssl-tcp-conmgr/wolfssl-tcp-conmgr.c.obj: /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/salt/state-machines/wolfssl-tcp-conmgr/wolfssl-tcp-conmgr.c
+CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/wolfssl-tcp-conmgr/wolfssl-tcp-conmgr.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_277) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/wolfssl-tcp-conmgr/wolfssl-tcp-conmgr.c.obj"
+	/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/wolfssl-tcp-conmgr/wolfssl-tcp-conmgr.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/wolfssl-tcp-conmgr/wolfssl-tcp-conmgr.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/wolfssl-tcp-conmgr/wolfssl-tcp-conmgr.c.obj -c /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/salt/state-machines/wolfssl-tcp-conmgr/wolfssl-tcp-conmgr.c
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/wolfssl-tcp-conmgr/wolfssl-tcp-conmgr.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/wolfssl-tcp-conmgr/wolfssl-tcp-conmgr.c.i"
+	/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/salt/state-machines/wolfssl-tcp-conmgr/wolfssl-tcp-conmgr.c > CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/wolfssl-tcp-conmgr/wolfssl-tcp-conmgr.c.i
+
+CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/wolfssl-tcp-conmgr/wolfssl-tcp-conmgr.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/wolfssl-tcp-conmgr/wolfssl-tcp-conmgr.c.s"
+	/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/salt/state-machines/wolfssl-tcp-conmgr/wolfssl-tcp-conmgr.c -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/wolfssl-tcp-conmgr/wolfssl-tcp-conmgr.c.s
+
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/aes/aes.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/aes/aes.c.obj: /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/salt/utilities/aes/aes.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/aes/aes.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_277) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/aes/aes.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_278) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/aes/aes.c.obj"
 	/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/aes/aes.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/aes/aes.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/aes/aes.c.obj -c /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/salt/utilities/aes/aes.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/aes/aes.c.i: cmake_force
@@ -3952,7 +3966,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/aes/aes.c.s: cmake_force
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/date/date.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/date/date.c.obj: /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/salt/utilities/date/date.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/date/date.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_278) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/date/date.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_279) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/date/date.c.obj"
 	/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/date/date.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/date/date.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/date/date.c.obj -c /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/salt/utilities/date/date.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/date/date.c.i: cmake_force
@@ -3966,7 +3980,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/date/date.c.s: cmake_force
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/emaFilter/emaFilter.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/emaFilter/emaFilter.c.obj: /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/salt/utilities/emaFilter/emaFilter.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/emaFilter/emaFilter.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_279) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/emaFilter/emaFilter.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_280) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/emaFilter/emaFilter.c.obj"
 	/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/emaFilter/emaFilter.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/emaFilter/emaFilter.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/emaFilter/emaFilter.c.obj -c /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/salt/utilities/emaFilter/emaFilter.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/emaFilter/emaFilter.c.i: cmake_force
@@ -3980,7 +3994,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/emaFilter/emaFilter.c.s: cmake_f
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/epoch/epoch.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/epoch/epoch.c.obj: /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/salt/utilities/epoch/epoch.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/epoch/epoch.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_280) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/epoch/epoch.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_281) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/epoch/epoch.c.obj"
 	/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/epoch/epoch.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/epoch/epoch.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/epoch/epoch.c.obj -c /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/salt/utilities/epoch/epoch.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/epoch/epoch.c.i: cmake_force
@@ -3994,7 +4008,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/epoch/epoch.c.s: cmake_force
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/salt-command/saltCmd.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/salt-command/saltCmd.c.obj: /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/salt/utilities/parser/salt-command/saltCmd.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/salt-command/saltCmd.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_281) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/salt-command/saltCmd.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_282) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/salt-command/saltCmd.c.obj"
 	/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/salt-command/saltCmd.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/salt-command/saltCmd.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/salt-command/saltCmd.c.obj -c /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/salt/utilities/parser/salt-command/saltCmd.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/salt-command/saltCmd.c.i: cmake_force
@@ -4008,7 +4022,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/salt-command/saltCmd.c.s:
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/sim900/sim900parser.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/sim900/sim900parser.c.obj: /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/salt/utilities/parser/sim900/sim900parser.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/sim900/sim900parser.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_282) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/sim900/sim900parser.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_283) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/sim900/sim900parser.c.obj"
 	/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/sim900/sim900parser.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/sim900/sim900parser.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/sim900/sim900parser.c.obj -c /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/salt/utilities/parser/sim900/sim900parser.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/sim900/sim900parser.c.i: cmake_force
@@ -4022,7 +4036,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/parser/sim900/sim900parser.c.s: 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/publisher/publisher.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/publisher/publisher.c.obj: /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/salt/utilities/publisher/publisher.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/publisher/publisher.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_283) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/publisher/publisher.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_284) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/publisher/publisher.c.obj"
 	/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/publisher/publisher.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/publisher/publisher.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/publisher/publisher.c.obj -c /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/salt/utilities/publisher/publisher.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/publisher/publisher.c.i: cmake_force
@@ -4036,7 +4050,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/publisher/publisher.c.s: cmake_f
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/rtime/rtime.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/rtime/rtime.c.obj: /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/salt/utilities/rtime/rtime.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/rtime/rtime.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_284) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/rtime/rtime.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_285) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/rtime/rtime.c.obj"
 	/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/rtime/rtime.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/rtime/rtime.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/rtime/rtime.c.obj -c /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/salt/utilities/rtime/rtime.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/rtime/rtime.c.i: cmake_force
@@ -4050,7 +4064,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/rtime/rtime.c.s: cmake_force
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/ssp/ssp.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/ssp/ssp.c.obj: /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/salt/utilities/ssp/ssp.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/ssp/ssp.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_285) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/ssp/ssp.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_286) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/ssp/ssp.c.obj"
 	/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/ssp/ssp.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/ssp/ssp.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/ssp/ssp.c.obj -c /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/salt/utilities/ssp/ssp.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/ssp/ssp.c.i: cmake_force
@@ -4064,7 +4078,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/ssp/ssp.c.s: cmake_force
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc.c.obj: /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/MQTT-C/source/mqttc.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_286) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_287) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc.c.obj"
 	/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc.c.obj -c /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/MQTT-C/source/mqttc.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc.c.i: cmake_force
@@ -4078,7 +4092,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc.c.s: cmake_forc
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc_pal.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc_pal.c.obj: /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/MQTT-C/source/mqttc_pal.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc_pal.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_287) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc_pal.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_288) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc_pal.c.obj"
 	/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc_pal.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc_pal.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc_pal.c.obj -c /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/MQTT-C/source/mqttc_pal.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc_pal.c.i: cmake_force
@@ -4092,7 +4106,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/MQTT-C/source/mqttc_pal.c.s: cmake_
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/jWrite.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/jWrite.c.obj: /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/jWrite/jWrite/jWrite.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/jWrite.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_288) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/jWrite.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_289) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/jWrite.c.obj"
 	/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/jWrite.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/jWrite.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/jWrite.c.obj -c /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/jWrite/jWrite/jWrite.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/jWrite.c.i: cmake_force
@@ -4106,7 +4120,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/jWrite.c.s: cmake_for
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/main.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/main.c.obj: /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/jWrite/jWrite/main.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/main.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_289) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/main.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_290) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/main.c.obj"
 	/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/main.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/main.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/main.c.obj -c /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/jWrite/jWrite/main.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/main.c.i: cmake_force
@@ -4120,7 +4134,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/jWrite/jWrite/main.c.s: cmake_force
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_bittbl.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_bittbl.c.obj: /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/fwk/src/rkhfwk_bittbl.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_bittbl.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_290) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_bittbl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_291) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_bittbl.c.obj"
 	/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_bittbl.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_bittbl.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_bittbl.c.obj -c /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/fwk/src/rkhfwk_bittbl.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_bittbl.c.i: cmake_force
@@ -4134,7 +4148,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_bittbl.c.
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_dynevt.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_dynevt.c.obj: /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/fwk/src/rkhfwk_dynevt.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_dynevt.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_291) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_dynevt.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_292) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_dynevt.c.obj"
 	/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_dynevt.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_dynevt.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_dynevt.c.obj -c /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/fwk/src/rkhfwk_dynevt.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_dynevt.c.i: cmake_force
@@ -4148,7 +4162,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_dynevt.c.
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_evtpool.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_evtpool.c.obj: /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/fwk/src/rkhfwk_evtpool.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_evtpool.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_292) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_evtpool.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_293) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_evtpool.c.obj"
 	/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_evtpool.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_evtpool.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_evtpool.c.obj -c /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/fwk/src/rkhfwk_evtpool.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_evtpool.c.i: cmake_force
@@ -4162,7 +4176,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_evtpool.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_pubsub.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_pubsub.c.obj: /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/fwk/src/rkhfwk_pubsub.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_pubsub.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_293) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_pubsub.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_294) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_pubsub.c.obj"
 	/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_pubsub.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_pubsub.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_pubsub.c.obj -c /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/fwk/src/rkhfwk_pubsub.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_pubsub.c.i: cmake_force
@@ -4176,7 +4190,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_pubsub.c.
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_rdygrp.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_rdygrp.c.obj: /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/fwk/src/rkhfwk_rdygrp.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_rdygrp.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_294) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_rdygrp.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_295) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_rdygrp.c.obj"
 	/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_rdygrp.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_rdygrp.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_rdygrp.c.obj -c /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/fwk/src/rkhfwk_rdygrp.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_rdygrp.c.i: cmake_force
@@ -4190,7 +4204,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_rdygrp.c.
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_sched.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_sched.c.obj: /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/fwk/src/rkhfwk_sched.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_sched.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_295) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_sched.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_296) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_sched.c.obj"
 	/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_sched.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_sched.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_sched.c.obj -c /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/fwk/src/rkhfwk_sched.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_sched.c.i: cmake_force
@@ -4204,7 +4218,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_sched.c.s
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_version.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_version.c.obj: /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/fwk/src/rkhfwk_version.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_version.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_296) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_version.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_297) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_version.c.obj"
 	/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_version.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_version.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_version.c.obj -c /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/fwk/src/rkhfwk_version.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_version.c.i: cmake_force
@@ -4218,7 +4232,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/fwk/src/rkhfwk_version.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/mempool/src/rkhmempool.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/mempool/src/rkhmempool.c.obj: /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/mempool/src/rkhmempool.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/mempool/src/rkhmempool.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_297) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/mempool/src/rkhmempool.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_298) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/mempool/src/rkhmempool.c.obj"
 	/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/mempool/src/rkhmempool.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/mempool/src/rkhmempool.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/mempool/src/rkhmempool.c.obj -c /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/mempool/src/rkhmempool.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/mempool/src/rkhmempool.c.i: cmake_force
@@ -4232,7 +4246,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/mempool/src/rkhmempool.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c.obj: /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_298) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_299) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c.obj"
 	/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c.obj -c /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c.i: cmake_force
@@ -4246,7 +4260,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/portable/arm-cortex/rkhs
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/queue/src/rkhqueue.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/queue/src/rkhqueue.c.obj: /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/queue/src/rkhqueue.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/queue/src/rkhqueue.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_299) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/queue/src/rkhqueue.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_300) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/queue/src/rkhqueue.c.obj"
 	/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/queue/src/rkhqueue.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/queue/src/rkhqueue.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/queue/src/rkhqueue.c.obj -c /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/queue/src/rkhqueue.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/queue/src/rkhqueue.c.i: cmake_force
@@ -4260,7 +4274,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/queue/src/rkhqueue.c.s: 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sm/src/rkhsm.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sm/src/rkhsm.c.obj: /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/sm/src/rkhsm.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sm/src/rkhsm.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_300) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sm/src/rkhsm.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_301) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sm/src/rkhsm.c.obj"
 	/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sm/src/rkhsm.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sm/src/rkhsm.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sm/src/rkhsm.c.obj -c /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/sm/src/rkhsm.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sm/src/rkhsm.c.i: cmake_force
@@ -4274,7 +4288,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sm/src/rkhsm.c.s: cmake_
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma.c.obj: /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/sma/src/rkhsma.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_301) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_302) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma.c.obj"
 	/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma.c.obj -c /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/sma/src/rkhsma.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma.c.i: cmake_force
@@ -4288,7 +4302,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma.c.s: cmak
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_prio.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_prio.c.obj: /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/sma/src/rkhsma_prio.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_prio.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_302) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_prio.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_303) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_prio.c.obj"
 	/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_prio.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_prio.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_prio.c.obj -c /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/sma/src/rkhsma_prio.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_prio.c.i: cmake_force
@@ -4302,7 +4316,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_prio.c.s:
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_sync.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_sync.c.obj: /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/sma/src/rkhsma_sync.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_sync.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_303) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_sync.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_304) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_sync.c.obj"
 	/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_sync.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_sync.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_sync.c.obj -c /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/sma/src/rkhsma_sync.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_sync.c.i: cmake_force
@@ -4316,7 +4330,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/sma/src/rkhsma_sync.c.s:
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/tmr/src/rkhtmr.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/tmr/src/rkhtmr.c.obj: /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/tmr/src/rkhtmr.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/tmr/src/rkhtmr.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_304) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/tmr/src/rkhtmr.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_305) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/tmr/src/rkhtmr.c.obj"
 	/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/tmr/src/rkhtmr.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/tmr/src/rkhtmr.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/tmr/src/rkhtmr.c.obj -c /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/tmr/src/rkhtmr.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/tmr/src/rkhtmr.c.i: cmake_force
@@ -4330,7 +4344,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/tmr/src/rkhtmr.c.s: cmak
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_filter.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_filter.c.obj: /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/trc/src/rkhtrc_filter.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_filter.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_305) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_filter.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_306) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_filter.c.obj"
 	/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_filter.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_filter.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_filter.c.obj -c /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/trc/src/rkhtrc_filter.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_filter.c.i: cmake_force
@@ -4344,7 +4358,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_filter.c.
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_record.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_record.c.obj: /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/trc/src/rkhtrc_record.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_record.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_306) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_record.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_307) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_record.c.obj"
 	/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_record.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_record.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_record.c.obj -c /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/trc/src/rkhtrc_record.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_record.c.i: cmake_force
@@ -4358,7 +4372,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_record.c.
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.obj: /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/trc/src/rkhtrc_stream.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_307) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_308) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.obj"
 	/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.obj -c /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/trc/src/rkhtrc_stream.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.i: cmake_force
@@ -4372,7 +4386,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/rkh/source/trc/src/rkhtrc_stream.c.
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_datatypes.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_datatypes.c.obj: /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/stm32-sapi/src/sapi_datatypes.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_datatypes.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_308) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_datatypes.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_309) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_datatypes.c.obj"
 	/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_datatypes.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_datatypes.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_datatypes.c.obj -c /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/stm32-sapi/src/sapi_datatypes.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_datatypes.c.i: cmake_force
@@ -4386,7 +4400,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_datatypes.c.s: 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_gpio.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_gpio.c.obj: /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/stm32-sapi/src/sapi_gpio.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_gpio.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_309) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_gpio.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_310) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_gpio.c.obj"
 	/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_gpio.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_gpio.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_gpio.c.obj -c /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/stm32-sapi/src/sapi_gpio.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_gpio.c.i: cmake_force
@@ -4400,7 +4414,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_gpio.c.s: cmake
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_tick.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/flags.make
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_tick.c.obj: /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/stm32-sapi/src/sapi_tick.c
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_tick.c.obj: CMakeFiles/NUCLEO-F429ZI.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_310) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_tick.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_311) "Building C object CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_tick.c.obj"
 	/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_tick.c.obj -MF CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_tick.c.obj.d -o CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_tick.c.obj -c /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/stm32-sapi/src/sapi_tick.c
 
 CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_tick.c.i: cmake_force
@@ -4689,6 +4703,7 @@ NUCLEO__F429ZI_elf_OBJECTS = \
 "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/mqtt-protocol/mqttProt.c.obj" \
 "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/tcp-conmgr/tcp-conmgr.c.obj" \
 "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/tcp-mqttprot/tcp-mqttprot.c.obj" \
+"CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/wolfssl-tcp-conmgr/wolfssl-tcp-conmgr.c.obj" \
 "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/aes/aes.c.obj" \
 "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/date/date.c.obj" \
 "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/emaFilter/emaFilter.c.obj" \
@@ -5003,6 +5018,7 @@ NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/module-m
 NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/mqtt-protocol/mqttProt.c.obj
 NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/tcp-conmgr/tcp-conmgr.c.obj
 NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/tcp-mqttprot/tcp-mqttprot.c.obj
+NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/wolfssl-tcp-conmgr/wolfssl-tcp-conmgr.c.obj
 NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/aes/aes.c.obj
 NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/date/date.c.obj
 NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/emaFilter/emaFilter.c.obj
@@ -5039,7 +5055,7 @@ NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/s
 NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/third-party/stm32-sapi/src/sapi_tick.c.obj
 NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make
 NUCLEO-F429ZI.elf: CMakeFiles/NUCLEO-F429ZI.elf.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_311) "Linking C executable NUCLEO-F429ZI.elf"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_312) "Linking C executable NUCLEO-F429ZI.elf"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/NUCLEO-F429ZI.elf.dir/link.txt --verbose=$(VERBOSE)
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold "Building /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/NUCLEO-F429ZI.hex"
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold "Building /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/NUCLEO-F429ZI.bin"

@@ -6744,6 +6744,30 @@ salt/state-machines/tcp-mqttprot/tcp-mqttprot.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/tcp-mqttprot/tcp-mqttprot.c.s
 .PHONY : salt/state-machines/tcp-mqttprot/tcp-mqttprot.c.s
 
+salt/state-machines/wolfssl-tcp-conmgr/wolfssl-tcp-conmgr.obj: salt/state-machines/wolfssl-tcp-conmgr/wolfssl-tcp-conmgr.c.obj
+.PHONY : salt/state-machines/wolfssl-tcp-conmgr/wolfssl-tcp-conmgr.obj
+
+# target to build an object file
+salt/state-machines/wolfssl-tcp-conmgr/wolfssl-tcp-conmgr.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/wolfssl-tcp-conmgr/wolfssl-tcp-conmgr.c.obj
+.PHONY : salt/state-machines/wolfssl-tcp-conmgr/wolfssl-tcp-conmgr.c.obj
+
+salt/state-machines/wolfssl-tcp-conmgr/wolfssl-tcp-conmgr.i: salt/state-machines/wolfssl-tcp-conmgr/wolfssl-tcp-conmgr.c.i
+.PHONY : salt/state-machines/wolfssl-tcp-conmgr/wolfssl-tcp-conmgr.i
+
+# target to preprocess a source file
+salt/state-machines/wolfssl-tcp-conmgr/wolfssl-tcp-conmgr.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/wolfssl-tcp-conmgr/wolfssl-tcp-conmgr.c.i
+.PHONY : salt/state-machines/wolfssl-tcp-conmgr/wolfssl-tcp-conmgr.c.i
+
+salt/state-machines/wolfssl-tcp-conmgr/wolfssl-tcp-conmgr.s: salt/state-machines/wolfssl-tcp-conmgr/wolfssl-tcp-conmgr.c.s
+.PHONY : salt/state-machines/wolfssl-tcp-conmgr/wolfssl-tcp-conmgr.s
+
+# target to generate assembly for a file
+salt/state-machines/wolfssl-tcp-conmgr/wolfssl-tcp-conmgr.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NUCLEO-F429ZI.elf.dir/build.make CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/wolfssl-tcp-conmgr/wolfssl-tcp-conmgr.c.s
+.PHONY : salt/state-machines/wolfssl-tcp-conmgr/wolfssl-tcp-conmgr.c.s
+
 salt/utilities/aes/aes.obj: salt/utilities/aes/aes.c.obj
 .PHONY : salt/utilities/aes/aes.obj
 
@@ -8396,6 +8420,9 @@ help:
 	@echo "... salt/state-machines/tcp-mqttprot/tcp-mqttprot.obj"
 	@echo "... salt/state-machines/tcp-mqttprot/tcp-mqttprot.i"
 	@echo "... salt/state-machines/tcp-mqttprot/tcp-mqttprot.s"
+	@echo "... salt/state-machines/wolfssl-tcp-conmgr/wolfssl-tcp-conmgr.obj"
+	@echo "... salt/state-machines/wolfssl-tcp-conmgr/wolfssl-tcp-conmgr.i"
+	@echo "... salt/state-machines/wolfssl-tcp-conmgr/wolfssl-tcp-conmgr.s"
 	@echo "... salt/utilities/aes/aes.obj"
 	@echo "... salt/utilities/aes/aes.i"
 	@echo "... salt/utilities/aes/aes.s"

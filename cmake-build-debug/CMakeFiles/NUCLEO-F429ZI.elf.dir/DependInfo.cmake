@@ -15,6 +15,7 @@ set(CMAKE_ASM_COMPILER_ID "GNU")
 # Preprocessor definitions for this target.
 set(CMAKE_TARGET_DEFINITIONS_ASM
   "DEBUG"
+  "MQTT_USE_WOLFSSL"
   "STM32F429xx"
   "USE_HAL_DRIVER"
   )
@@ -374,6 +375,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/salt/state-machines/mqtt-protocol/mqttProt.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/mqtt-protocol/mqttProt.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/mqtt-protocol/mqttProt.c.obj.d"
   "/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/salt/state-machines/tcp-conmgr/tcp-conmgr.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/tcp-conmgr/tcp-conmgr.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/tcp-conmgr/tcp-conmgr.c.obj.d"
   "/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/salt/state-machines/tcp-mqttprot/tcp-mqttprot.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/tcp-mqttprot/tcp-mqttprot.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/tcp-mqttprot/tcp-mqttprot.c.obj.d"
+  "/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/salt/state-machines/wolfssl-tcp-conmgr/wolfssl-tcp-conmgr.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/wolfssl-tcp-conmgr/wolfssl-tcp-conmgr.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/wolfssl-tcp-conmgr/wolfssl-tcp-conmgr.c.obj.d"
   "/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/salt/utilities/aes/aes.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/aes/aes.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/aes/aes.c.obj.d"
   "/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/salt/utilities/date/date.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/date/date.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/date/date.c.obj.d"
   "/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/salt/utilities/emaFilter/emaFilter.c" "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/emaFilter/emaFilter.c.obj" "gcc" "CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/utilities/emaFilter/emaFilter.c.obj.d"

@@ -122,7 +122,7 @@ include_directories(Core/Inc Drivers/STM32F4xx_HAL_Driver/Inc Drivers/STM32F4xx_
         network
 )
 
-add_definitions(-DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx)
+add_definitions(-DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -DMQTT_USE_WOLFSSL)
 
 file(GLOB_RECURSE SOURCES "Core/*.*" "Middlewares/*.*" "LWIP/*.*" "wolfSSL/*.*" "Drivers/*.*"
 

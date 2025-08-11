@@ -172,10 +172,14 @@ extern "C" {
     #define MQTTC_PAL_MUTEX_LOCK(mtx_ptr) ((void)0)
     #define MQTTC_PAL_MUTEX_UNLOCK(mtx_ptr) ((void)0)
 
-    typedef struct tcp_pcb * mqttc_pal_socket_handle;
+    #if defined(MQTT_USE_WOLFSSL)
+        #include "wolfssl/ssl.h"
+        typedef WOLFSSL * mqttc_pal_socket_handle;
+    #else
+        typedef struct tcp_pcb * mqttc_pal_socket_handle;
+    #endif
 
-    void start_tcp_connection(struct tcp_pcb *tpcb);
-
+        void start_tcp_connection(struct tcp_pcb *tpcb);
 #endif
 
 /**
