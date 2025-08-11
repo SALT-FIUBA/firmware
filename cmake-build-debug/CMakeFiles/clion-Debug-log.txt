@@ -1,5 +1,0 @@
-/Users/nandoig/Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "Unix Makefiles" -S /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware -B /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug
--- Minimal optimization, debug info included
--- Configuring done (0.0s)
--- Generating done (0.1s)
--- Build files have been written to: /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug

@@ -88,7 +88,8 @@ include_directories(Core/Inc Drivers/STM32F4xx_HAL_Driver/Inc Drivers/STM32F4xx_
         salt/state-machines/module-manager
         salt/state-machines/logic
 
-        salt/state-machines/tcp-conmgr
+        #   salt/state-machines/tcp-conmgr
+        salt/state-machines/wolfssl-tcp-conmgr
         salt/state-machines/tcp-mqttprot
 
         salt/peripherals/module-command
@@ -157,7 +158,14 @@ file(GLOB_RECURSE SOURCES "Core/*.*" "Middlewares/*.*" "LWIP/*.*" "wolfSSL/*.*" 
 
         "blinky/bsp/assert.c"
 
-        "salt/*.*"
+        "salt/bsp/*.*"
+        "salt/configuration/*.*"
+        "salt/peripherals/*.*"
+        "salt/utilities/*.*"
+        "salt/state-machines/logic/*.*"
+        "salt/state-machines/tcp-mqttprot/*.*"
+
+        "salt/state-machines/wolfssl-tcp-conmgr/*.*"
 
         "utilities/*.*"
 

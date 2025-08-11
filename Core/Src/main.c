@@ -35,7 +35,6 @@
 /* SALT includes */
 #include "salt-signals.h"
 #include "bsp-salt.h"
-#include "tcp-conmgr.h"
 #include "publisher.h"
 #include "blinkySysTick.h"
 #include "logic.h"
@@ -51,7 +50,7 @@
 #include "serial.h"
 #include "modcmd.h"
 
-
+#include "wolfssl-tcp-conmgr.h"
 
 
 /* USER CODE END Includes */
@@ -86,7 +85,7 @@ void UserButton_Init(void);
 #define SIZEOF_EP0_BLOCK    sizeof(RKH_EVT_T)
 
 #define SIZEOF_EP3STO 1024  // Total size in bytes (e.g., 16 events of 8 bytes each)
-#define SIZEOF_EP3_BLOCK sizeof(TcpSendEvt)  // Block size matches the event
+#define SIZEOF_EP3_BLOCK sizeof(WolfSslTcpSendEvt)  // Block size matches the event
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
@@ -421,11 +420,14 @@ int main(void)
     logicCfg.publishTime = 8;
     logic_ctor(&logicCfg);
 
-    RKH_SMA_ACTIVATE(tcpConMgr, ConMgr_qsto, CONMGR_QSTO_SIZE, 0, 0);
-    RKH_SMA_ACTIVATE(tcpMqttProt, MQTTProt_qsto, MQTTPROT_QSTO_SIZE, 0, 0);
+ //   RKH_SMA_ACTIVATE(tcpConMgr, ConMgr_qsto, CONMGR_QSTO_SIZE, 0, 0);
+ /*
+     RKH_SMA_ACTIVATE(tcpMqttProt, MQTTProt_qsto, MQTTPROT_QSTO_SIZE, 0, 0);
     RKH_SMA_ACTIVATE(logic, Logic_qsto, LOGIC_QSTO_SIZE, 0,0);
+*/
 
-    RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Open), NULL);
+
+    //   RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Open), NULL);
 
     initEnd = true;
 

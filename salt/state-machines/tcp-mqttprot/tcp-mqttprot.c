@@ -14,7 +14,7 @@
 #include "bsp-salt.h"
 
 #include "salt-signals.h"
-#include "tcp-conmgr.h"
+#include "wolfssl-tcp-conmgr.h"
 #include "mqttc.h"
 
 #include "tcp-mqttprot.h"
@@ -212,7 +212,7 @@ static RKH_ROM_STATIC_EVENT(evRestartObj, evRestart);
 
 static RKH_ROM_STATIC_EVENT(e_Ok, evOk);
 
-static TcpSendEvt evSendObj;
+static WolfSslTcpSendEvt evSendObj;
 static ConnRefusedEvt evConnRefusedObj;
 
 /* ----------------------- Local function prototypes ----------------------- */
@@ -337,7 +337,7 @@ publish(TCP_MQTTProt *const me, RKH_EVT_T *pe)
 static void processReceivedData(TCP_MQTTProt *const me, RKH_EVT_T *pe) {
 
     //  printf("tcp-mqttprot | Processing received MQTT data\n");
-    TcpReceiveEvt * evt = RKH_DOWNCAST(TcpReceiveEvt, pe);
+    WolfSslTcpReceiveEvt * evt = RKH_DOWNCAST(WolfSslTcpReceiveEvt, pe);
 
     // Call mqttc_sync to process any received MQTT message
     enum MQTTErrors sync_error = mqttc_sync(&me->mqttc_client);
@@ -351,7 +351,7 @@ static void processReceivedData(TCP_MQTTProt *const me, RKH_EVT_T *pe) {
      */
 
     // Send acknowledgment back to the TCP state machine
-    RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Ok), me);
+    RKH_SMA_POST_FIFO(wolfSslTcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Ok), me);
 
 }
 
@@ -359,7 +359,7 @@ static void downcastNetConnectedEvt(TCP_MQTTProt *const me, RKH_EVT_T *pe)
 {
     //  printf("\n tcp-mqttprot | downcastNetConnectedEvt \n");
 
-    TcpSocketConnectedEvt * evt = RKH_DOWNCAST(TcpSocketConnectedEvt, pe);
+    WolfSslTcpSocketConnectedEvt * evt = RKH_DOWNCAST(WolfSslTcpSocketConnectedEvt, pe);
 
     me->sockfd = evt->tpcb;
 }

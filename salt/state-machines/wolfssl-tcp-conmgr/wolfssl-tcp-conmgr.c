@@ -15,77 +15,77 @@
 /* ......................... Declares active object ........................ */
 
 /* ................... Declares states and pseudostates .................... */
-RKH_DCLR_BASIC_STATE TcpConMgr_inactive, TcpConMgr_connecting, TcpConMgr_connected, TcpConMgr_sending, TcpConMgr_receiving;
-RKH_DCLR_COMP_STATE TcpConMgr_active;
-RKH_DCLR_FINAL_STATE TcpConMgr_activeFinal;
+RKH_DCLR_BASIC_STATE WolfSslTcpConMgr_inactive, WolfSslTcpConMgr_connecting, WolfSslTcpConMgr_connected, WolfSslTcpConMgr_sending, WolfSslTcpConMgr_receiving;
+RKH_DCLR_COMP_STATE WolfSslTcpConMgr_active;
+RKH_DCLR_FINAL_STATE WolfSslTcpConMgr_activeFinal;
 
 /* ........................ Declares initial action ........................ */
-static void init(TcpConMgr *const me, RKH_EVT_T *pe);
+static void init(WolfSslTcpConMgr *const me, RKH_EVT_T *pe);
 
 /* ........................ Declares effect actions ........................ */
-static void open(TcpConMgr *const me, RKH_EVT_T *pe);
-static void close(TcpConMgr *const me, RKH_EVT_T *pe);
-static void send_data(TcpConMgr *const me, RKH_EVT_T *pe);
-static void flush_data(TcpConMgr *const me, RKH_EVT_T *pe);
-static void read_data(TcpConMgr *const me, RKH_EVT_T *pe);
-static void tcp_conmgr_connect_attempt(TcpConMgr *const me, RKH_EVT_T *pe);
-static void defer(TcpConMgr *const me, RKH_EVT_T *pe);
+static void open(WolfSslTcpConMgr *const me, RKH_EVT_T *pe);
+static void close(WolfSslTcpConMgr *const me, RKH_EVT_T *pe);
+static void send_data(WolfSslTcpConMgr *const me, RKH_EVT_T *pe);
+static void flush_data(WolfSslTcpConMgr *const me, RKH_EVT_T *pe);
+static void read_data(WolfSslTcpConMgr *const me, RKH_EVT_T *pe);
+static void tcp_conmgr_connect_attempt(WolfSslTcpConMgr *const me, RKH_EVT_T *pe);
+static void defer(WolfSslTcpConMgr *const me, RKH_EVT_T *pe);
 
 /* ......................... Declares entry actions ........................ */
-static void socketOpen(TcpConMgr *const me);
-static void socketConnected(TcpConMgr *const me);
+static void socketOpen(WolfSslTcpConMgr *const me);
+static void socketConnected(WolfSslTcpConMgr *const me);
 
 /* ......................... Declares exit actions ......................... */
-static void socketClose(TcpConMgr *const me);
-static void socketClosed(TcpConMgr *const me);
+static void socketClose(WolfSslTcpConMgr *const me);
+static void socketClosed(WolfSslTcpConMgr *const me);
 
 
 /* ........................ States and pseudostates ........................ */
-RKH_CREATE_BASIC_STATE(TcpConMgr_inactive, NULL, NULL, RKH_ROOT, NULL);
-RKH_CREATE_TRANS_TABLE(TcpConMgr_inactive)
-                RKH_TRREG(evOpen, NULL, NULL, &TcpConMgr_active),
+RKH_CREATE_BASIC_STATE(WolfSslTcpConMgr_inactive, NULL, NULL, RKH_ROOT, NULL);
+RKH_CREATE_TRANS_TABLE(WolfSslTcpConMgr_inactive)
+                RKH_TRREG(evOpen, NULL, NULL, &WolfSslTcpConMgr_active),
 RKH_END_TRANS_TABLE
 
-RKH_CREATE_COMP_REGION_STATE(TcpConMgr_active, NULL, NULL, RKH_ROOT,
-                             &TcpConMgr_connecting, NULL,
+RKH_CREATE_COMP_REGION_STATE(WolfSslTcpConMgr_active, NULL, NULL, RKH_ROOT,
+                             &WolfSslTcpConMgr_connecting, NULL,
                              RKH_NO_HISTORY, NULL, NULL, NULL, NULL);
-RKH_CREATE_TRANS_TABLE(TcpConMgr_active)
-                RKH_TRREG(evClose, NULL, close, &TcpConMgr_inactive),
+RKH_CREATE_TRANS_TABLE(WolfSslTcpConMgr_active)
+                RKH_TRREG(evClose, NULL, close, &WolfSslTcpConMgr_inactive),
 RKH_END_TRANS_TABLE
 
-RKH_CREATE_BASIC_STATE(TcpConMgr_connecting, socketOpen, NULL, &TcpConMgr_active, NULL);
-RKH_CREATE_TRANS_TABLE(TcpConMgr_connecting)
+RKH_CREATE_BASIC_STATE(WolfSslTcpConMgr_connecting, socketOpen, NULL, &WolfSslTcpConMgr_active, NULL);
+RKH_CREATE_TRANS_TABLE(WolfSslTcpConMgr_connecting)
                 RKH_TRINT(evSend, NULL, defer), // defer function in connecting state is employed as a safeguard.
                 RKH_TRINT(evRecv, NULL, defer), // defer function in connecting state is employed as a safeguard.
-                RKH_TRREG(evConnected, NULL, NULL, &TcpConMgr_connected),
-                RKH_TRREG(evTimeout, NULL, NULL, &TcpConMgr_connecting),
-                RKH_TRREG(evError, NULL, NULL, &TcpConMgr_connecting),
+                RKH_TRREG(evConnected, NULL, NULL, &WolfSslTcpConMgr_connected),
+                RKH_TRREG(evTimeout, NULL, NULL, &WolfSslTcpConMgr_connecting),
+                RKH_TRREG(evError, NULL, NULL, &WolfSslTcpConMgr_connecting),
 RKH_END_TRANS_TABLE
 
-RKH_CREATE_BASIC_STATE(TcpConMgr_connected, socketConnected, NULL, &TcpConMgr_active, NULL);
-RKH_CREATE_TRANS_TABLE(TcpConMgr_connected)
-                // TODO  RKH_TRREG(evSend, NULL, send_data, &TcpConMgr_sending),
-                // TODO  RKH_TRREG(evRecv, NULL, read_data, &TcpConMgr_receiving),
-                RKH_TRREG(evClosed, NULL, NULL, &TcpConMgr_connecting),
-                RKH_TRREG(evDisconnected, NULL, socketClosed, &TcpConMgr_connecting),
+RKH_CREATE_BASIC_STATE(WolfSslTcpConMgr_connected, socketConnected, NULL, &WolfSslTcpConMgr_active, NULL);
+RKH_CREATE_TRANS_TABLE(WolfSslTcpConMgr_connected)
+                // TODO  RKH_TRREG(evSend, NULL, send_data, &WolfSslTcpConMgr_sending),
+                // TODO  RKH_TRREG(evRecv, NULL, read_data, &WolfSslTcpConMgr_receiving),
+                RKH_TRREG(evClosed, NULL, NULL, &WolfSslTcpConMgr_connecting),
+                RKH_TRREG(evDisconnected, NULL, socketClosed, &WolfSslTcpConMgr_connecting),
 RKH_END_TRANS_TABLE
 
-RKH_CREATE_BASIC_STATE(TcpConMgr_sending, NULL, NULL, &TcpConMgr_connected, NULL);
-RKH_CREATE_TRANS_TABLE(TcpConMgr_sending)
-                RKH_TRREG(evOk, NULL, flush_data, &TcpConMgr_connected),
-                RKH_TRREG(evError, NULL, NULL, &TcpConMgr_connecting),
+RKH_CREATE_BASIC_STATE(WolfSslTcpConMgr_sending, NULL, NULL, &WolfSslTcpConMgr_connected, NULL);
+RKH_CREATE_TRANS_TABLE(WolfSslTcpConMgr_sending)
+                RKH_TRREG(evOk, NULL, flush_data, &WolfSslTcpConMgr_connected),
+                RKH_TRREG(evError, NULL, NULL, &WolfSslTcpConMgr_connecting),
 RKH_END_TRANS_TABLE
 
-RKH_CREATE_BASIC_STATE(TcpConMgr_receiving, NULL, NULL, &TcpConMgr_connected, NULL);
-RKH_CREATE_TRANS_TABLE(TcpConMgr_receiving)
-                RKH_TRREG(evOk, NULL, NULL, &TcpConMgr_connected),
-                RKH_TRREG(evError, NULL, NULL, &TcpConMgr_connecting),
+RKH_CREATE_BASIC_STATE(WolfSslTcpConMgr_receiving, NULL, NULL, &WolfSslTcpConMgr_connected, NULL);
+RKH_CREATE_TRANS_TABLE(WolfSslTcpConMgr_receiving)
+                RKH_TRREG(evOk, NULL, NULL, &WolfSslTcpConMgr_connected),
+                RKH_TRREG(evError, NULL, NULL, &WolfSslTcpConMgr_connecting),
 RKH_END_TRANS_TABLE
 
 /* ............................. Active object ............................. */
 
-RKH_SMA_CREATE(TcpConMgr, tcpConMgr, 1, HCAL, &TcpConMgr_inactive, init, NULL);
-RKH_SMA_DEF_PTR(tcpConMgr);
+RKH_SMA_CREATE(WolfSslTcpConMgr, tcpConMgr, 1, HCAL, &WolfSslTcpConMgr_inactive, init, NULL);
+RKH_SMA_DEF_PTR(wolfSslTcpConMgr);
 
 /* ------------------------------- Constants ------------------------------- */
 
@@ -127,12 +127,12 @@ static RKH_EVT_T * qDefer_sto[SIZEOF_QDEFER];
 /* Function to map state pointers to their names */
 const char * get_state_name_conmgr_sm(const RKH_ST_T * state) {
 
-    if (state == &TcpConMgr_inactive.st) return "inactive";
-    if (state == &TcpConMgr_connecting.st) return "connecting";
-    if (state == &TcpConMgr_connected.st) return "connected";
-    if (state == &TcpConMgr_sending.st) return "sending";
-    if (state == &TcpConMgr_receiving.st) return "receiving";
-    if (state == &TcpConMgr_active.st) return "active";
+    if (state == &WolfSslTcpConMgr_inactive.st) return "inactive";
+    if (state == &WolfSslTcpConMgr_connecting.st) return "connecting";
+    if (state == &WolfSslTcpConMgr_connected.st) return "connected";
+    if (state == &WolfSslTcpConMgr_sending.st) return "sending";
+    if (state == &WolfSslTcpConMgr_receiving.st) return "receiving";
+    if (state == &WolfSslTcpConMgr_active.st) return "active";
 
     return "unknown";
 }
@@ -140,17 +140,17 @@ const char * get_state_name_conmgr_sm(const RKH_ST_T * state) {
 
 
 static void tcp_conmgr_err_callback(void *arg, err_t err) {
-    TcpConMgr * me = (TcpConMgr *)arg;
+    WolfSslTcpConMgr * me = (WolfSslTcpConMgr *)arg;
     //  printf("\n tcp-conmgr | TCP error: %d\n", err);
-    RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Disconnected), me);
+    RKH_SMA_POST_FIFO(wolfSslTcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Disconnected), me);
 }
 
 static err_t tcp_conmgr_sent_callback(void *arg, struct tcp_pcb *tpcb, u16_t len) {
 
-    TcpConMgr *me = (TcpConMgr *)arg;
+    WolfSslTcpConMgr *me = (WolfSslTcpConMgr *)arg;
 
     //  printf("\n tcp-conmgr | Sent %d bytes\n", len);
-    RKH_SMA_POST_FIFO(tcpConMgr, &e_Sent, me);
+    RKH_SMA_POST_FIFO(wolfSslTcpConMgr, &e_Sent, me);
 
     return ERR_OK;
 }
@@ -159,7 +159,7 @@ static err_t tcp_conmgr_recv_callback(void *arg, struct tcp_pcb *tpcb, struct pb
 
     //  printf("\n tcp-conmgr | tcp_recv_callback \n");
 
-    TcpConMgr *me = (TcpConMgr *)arg;
+    WolfSslTcpConMgr *me = (WolfSslTcpConMgr *)arg;
 
     if (p != NULL) {
 
@@ -213,7 +213,7 @@ static err_t tcp_conmgr_recv_callback(void *arg, struct tcp_pcb *tpcb, struct pb
             tcp_close(tpcb);
             me->tpcb = NULL;
 
-            RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Disconnected), me);
+            RKH_SMA_POST_FIFO(wolfSslTcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Disconnected), me);
         }
         pbuf_free(p);
 
@@ -224,7 +224,7 @@ static err_t tcp_conmgr_recv_callback(void *arg, struct tcp_pcb *tpcb, struct pb
         tcp_close(tpcb);
         me->tpcb = NULL;
 
-        RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Disconnected), me);
+        RKH_SMA_POST_FIFO(wolfSslTcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Disconnected), me);
     }
 
     return ERR_OK;
@@ -234,14 +234,14 @@ static err_t tcp_conmgr_connect_callback(void *arg, struct tcp_pcb *tpcb, err_t 
 
     //  printf("\n tcp-conmgr | tcp_connect_callback \n");
 
-    TcpConMgr *me = (TcpConMgr *)arg;
+    WolfSslTcpConMgr *me = (WolfSslTcpConMgr *)arg;
 
     if (err == ERR_OK) {
 
         printf("tcp-conmgr | TCP Connected\n");
 
         tcp_recv(tpcb, tcp_conmgr_recv_callback);
-        RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Connected), me);
+        RKH_SMA_POST_FIFO(wolfSslTcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Connected), me);
 
     } else {
 
@@ -249,7 +249,7 @@ static err_t tcp_conmgr_connect_callback(void *arg, struct tcp_pcb *tpcb, err_t 
 
         tcp_close(tpcb);
         me->tpcb = NULL;
-        RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Disconnected), me);
+        RKH_SMA_POST_FIFO(wolfSslTcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Disconnected), me);
     }
 
     return ERR_OK;
@@ -258,7 +258,7 @@ static err_t tcp_conmgr_connect_callback(void *arg, struct tcp_pcb *tpcb, err_t 
 
 
 /* ............................ Initial action ............................. */
-static void init(TcpConMgr *const me, RKH_EVT_T *pe) {
+static void init(WolfSslTcpConMgr *const me, RKH_EVT_T *pe) {
 
     //  printf("\n tcp-conmgr | tcp-conmgr | init \n");
 
@@ -273,7 +273,7 @@ static void init(TcpConMgr *const me, RKH_EVT_T *pe) {
 }
 
 /* ............................ Effect actions ............................. */
-static void open(TcpConMgr *const me, RKH_EVT_T *pe) {
+static void open(WolfSslTcpConMgr *const me, RKH_EVT_T *pe) {
 
     // printf("\n tcp-conmgr | open \n");
 
@@ -281,7 +281,7 @@ static void open(TcpConMgr *const me, RKH_EVT_T *pe) {
     tcp_conmgr_connect_attempt(me, pe);
 }
 
-static void close(TcpConMgr *const me, RKH_EVT_T *pe) {
+static void close(WolfSslTcpConMgr *const me, RKH_EVT_T *pe) {
 
     //  printf("\n tcp-conmgr | close \n");
 
@@ -293,7 +293,7 @@ static void close(TcpConMgr *const me, RKH_EVT_T *pe) {
 }
 
 
-static void send_data(TcpConMgr *const me, RKH_EVT_T *pe) {
+static void send_data(WolfSslTcpConMgr *const me, RKH_EVT_T *pe) {
 
     // printf("\n tcp-conmgr | send_data \n");
 
@@ -324,15 +324,15 @@ static void send_data(TcpConMgr *const me, RKH_EVT_T *pe) {
 
         if (err == ERR_OK) {
             tcp_output(me->tpcb);
-            RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Ok), me);
+            RKH_SMA_POST_FIFO(wolfSslTcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Ok), me);
         } else {
             printf("tcp-conmgr | tcp_write failed: %d\n", err);
-            RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Error), me);
+            RKH_SMA_POST_FIFO(wolfSslTcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Error), me);
         }
     }
 }
 
-static void flush_data(TcpConMgr *const me, RKH_EVT_T *pe) {
+static void flush_data(WolfSslTcpConMgr *const me, RKH_EVT_T *pe) {
 
     //  printf("\n tcp-conmgr | flush_data \n");
     /* Already handled in send_data */
@@ -353,11 +353,11 @@ static void flush_data(TcpConMgr *const me, RKH_EVT_T *pe) {
     RKH_SMA_POST_FIFO(tcpMqttProt, RKH_UPCAST(RKH_EVT_T, evt), me);
 }
  */
-static void read_data(TcpConMgr *const me, RKH_EVT_T *pe) {
+static void read_data(WolfSslTcpConMgr *const me, RKH_EVT_T *pe) {
 
     //  printf("\n tcp-conmgr | read_data \n");
 
-    TcpReceiveEvt * evt = RKH_DOWNCAST(TcpReceiveEvt, pe);
+    WolfSslTcpReceiveEvt * evt = RKH_DOWNCAST(WolfSslTcpReceiveEvt, pe);
     me->recv_len = evt->size;
 
     if (me->recv_len > 0) {
@@ -379,7 +379,7 @@ static err_t tcp_conmgr_poll_callback(void *arg, struct tcp_pcb *tpcb) {
 
     //  printf("\n tcp-conmgr | Polling\n");
 
-    TcpConMgr *me = (TcpConMgr *)arg;
+    WolfSslTcpConMgr *me = (WolfSslTcpConMgr *)arg;
 
     //  printf("tcp-conmgr | Current state: %s \n", get_state_name_conmgr_sm(tcpConMgr->sm.state));
 
@@ -419,7 +419,7 @@ static err_t tcp_conmgr_poll_callback(void *arg, struct tcp_pcb *tpcb) {
 
 }
 
-static void tcp_conmgr_connect_attempt(TcpConMgr *const me, RKH_EVT_T *pe) {
+static void tcp_conmgr_connect_attempt(WolfSslTcpConMgr *const me, RKH_EVT_T *pe) {
 
     //  printf("\n tcp-conmgr | tcp_connect_attempt \n");
 
@@ -454,7 +454,7 @@ static void tcp_conmgr_connect_attempt(TcpConMgr *const me, RKH_EVT_T *pe) {
     }
 }
 
-static void defer(TcpConMgr *const me, RKH_EVT_T *pe) {
+static void defer(WolfSslTcpConMgr *const me, RKH_EVT_T *pe) {
     //  printf("\n tcp-conmgr | defer\n");
 
     if (rkh_queue_is_full(&qDefer) != RKH_TRUE) {
@@ -464,7 +464,7 @@ static void defer(TcpConMgr *const me, RKH_EVT_T *pe) {
 
 
 /* ............................. Entry actions ............................. */
-static void socketOpen(TcpConMgr *const me) {
+static void socketOpen(WolfSslTcpConMgr *const me) {
 
     //  printf("\n tcp-conmgr | socketOpen \n");
     //  printf("tcp-conmgr | Current state: %s \n", get_state_name_conmgr_sm(tcpConMgr->sm.state));
@@ -473,7 +473,7 @@ static void socketOpen(TcpConMgr *const me) {
     tcp_conmgr_connect_attempt(me, NULL);
 }
 
-static void socketConnected(TcpConMgr *const me) {
+static void socketConnected(WolfSslTcpConMgr *const me) {
 
     //  printf("\n tcp-conmgr | socketConnected \n");
     //  printf("tcp-conmgr | Current state: %s \n", get_state_name_conmgr_sm(tcpConMgr->sm.state));
@@ -481,7 +481,7 @@ static void socketConnected(TcpConMgr *const me) {
     bsp_netStatus(ConnectedSt);
     rkh_sma_recall((RKH_SMA_T *)me, &qDefer);
 
-    TcpSocketConnectedEvt * evt = RKH_ALLOC_EVT(TcpSocketConnectedEvt, evNetConnected, me);
+    WolfSslTcpSocketConnectedEvt * evt = RKH_ALLOC_EVT(WolfSslTcpSocketConnectedEvt, evNetConnected, me);
     evt->tpcb = me->tpcb;
 
 
@@ -489,13 +489,13 @@ static void socketConnected(TcpConMgr *const me) {
 }
 
 /* ............................. Exit actions ............................. */
-static void socketClose(TcpConMgr *const me) {
+static void socketClose(WolfSslTcpConMgr *const me) {
 
     //  printf("\n tcp-conmgr | socketClose \n");
     rkh_tmr_stop(&me->timer);
 }
 
-static void socketClosed(TcpConMgr *const me) {
+static void socketClosed(WolfSslTcpConMgr *const me) {
 
     //  printf("\n tcp-conmgr | socketClosed \n");
     // printf("tcp-conmgr | Current state: %s \n", get_state_name_conmgr_sm(tcpConMgr->sm.state));

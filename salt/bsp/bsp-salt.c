@@ -26,7 +26,7 @@
 #include "modpwr.h"
 #include "modmgr.h"
 #include "modcmd.h"
-#include "tcp-conmgr.h"
+#include "wolfssl-tcp-conmgr.h"
 #include "mTime.h"
 #include "anIn.h"
 #include "epoch.h"

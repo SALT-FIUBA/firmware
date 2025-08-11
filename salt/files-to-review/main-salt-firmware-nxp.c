@@ -307,12 +307,12 @@ int mainSaltFirmwareNxp(int argc, char *argv[]) {
     logicCfg.publishTime = 8;
     logic_ctor(&logicCfg);
 
-    RKH_SMA_ACTIVATE(tcpConMgr, ConMgr_qsto, CONMGR_QSTO_SIZE, 0, 0);
+    RKH_SMA_ACTIVATE(wolfSslTcpConMgr, ConMgr_qsto, CONMGR_QSTO_SIZE, 0, 0);
     RKH_SMA_ACTIVATE(modMgr, ModMgr_qsto, MODMGR_QSTO_SIZE, 0, 0);
     RKH_SMA_ACTIVATE(mqttProt, MQTTProt_qsto, MQTTPROT_QSTO_SIZE, 0, 0);
     RKH_SMA_ACTIVATE(logic, Logic_qsto, LOGIC_QSTO_SIZE, 0, 0);
 
-    RKH_SMA_POST_FIFO(tcpConMgr, &e_Open, 0);
+    RKH_SMA_POST_FIFO(wolfSslTcpConMgr, &e_Open, 0);
 
     initEnd = true;
 
