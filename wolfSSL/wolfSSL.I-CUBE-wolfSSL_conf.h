@@ -257,11 +257,9 @@
     #undef NO_STM32_CRYPTO
     #define WOLFSSL_STM32_PKA
     #define WOLFSSL_STM32_PKA_V2
-
 #elif defined(STM32F429xx)
     #define WOLFSSL_STM32F4
     #define HAL_CONSOLE_UART huart3
-
 #else
     #warning Please define a hardware platform!
     /* This means there is not a pre-defined platform for your board/CPU */

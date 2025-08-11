@@ -5,6 +5,9 @@
 #include "dns.h"
 #include "wolfssl/ssl.h"
 #include "tcp-mqttprot.h"
+#include "salt-signals.h"
+#include "bsp-salt.h"
+
 
 #define SEND_BUFF_SIZE      64
 #define RECV_BUFF_SIZE      64
@@ -53,8 +56,8 @@ struct WolfSslTcpConMgr {
 
     WolfSslTcpSendEvt * psend;     /* Pointer to send event */
 
-    lwip_ssl_ctx_t *ssl_ctx; /* SSL context for TLS */
-    WOLFSSL *ssl;           /* WolfSSL session */
+    lwip_ssl_ctx_t * ssl_ctx; /* SSL context for TLS */
+    WOLFSSL * ssl;           /* WolfSSL session */
 
     // Removed recv_buffer; use ssl_ctx->pbuf for TLS
 };

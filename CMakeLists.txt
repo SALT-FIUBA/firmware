@@ -49,7 +49,9 @@ else ()
     add_compile_options(-Og -g)
 endif ()
 
-include_directories(Core/Inc Drivers/STM32F4xx_HAL_Driver/Inc Drivers/STM32F4xx_HAL_Driver/Inc/Legacy Drivers/CMSIS/Device/ST/STM32F4xx/Include Drivers/CMSIS/Include LWIP/App LWIP/Target Middlewares/Third_Party/LwIP/src/include Middlewares/Third_Party/LwIP/system Drivers/BSP/Components/lan8742 Middlewares/Third_Party/LwIP/src/include/netif/ppp Middlewares/Third_Party/LwIP/src/include/lwip Middlewares/Third_Party/LwIP/src/include/lwip/apps Middlewares/Third_Party/LwIP/src/include/lwip/priv Middlewares/Third_Party/LwIP/src/include/lwip/prot Middlewares/Third_Party/LwIP/src/include/netif Middlewares/Third_Party/LwIP/src/include/compat/posix Middlewares/Third_Party/LwIP/src/include/compat/posix/arpa Middlewares/Third_Party/LwIP/src/include/compat/posix/net Middlewares/Third_Party/LwIP/src/include/compat/posix/sys Middlewares/Third_Party/LwIP/src/include/compat/stdc Middlewares/Third_Party/LwIP/system/arch wolfSSL Middlewares/Third_Party/wolfSSL_wolfSSL_wolfSSL/wolfssl/
+include_directories(
+        Core/Inc Drivers/STM32F4xx_HAL_Driver/Inc Drivers/STM32F4xx_HAL_Driver/Inc/Legacy Drivers/CMSIS/Device/ST/STM32F4xx/Include Drivers/CMSIS/Include LWIP/App LWIP/Target Middlewares/Third_Party/LwIP/src/include Middlewares/Third_Party/LwIP/system Drivers/BSP/Components/lan8742 Middlewares/Third_Party/LwIP/src/include/netif/ppp Middlewares/Third_Party/LwIP/src/include/lwip Middlewares/Third_Party/LwIP/src/include/lwip/apps Middlewares/Third_Party/LwIP/src/include/lwip/priv Middlewares/Third_Party/LwIP/src/include/lwip/prot Middlewares/Third_Party/LwIP/src/include/netif Middlewares/Third_Party/LwIP/src/include/compat/posix Middlewares/Third_Party/LwIP/src/include/compat/posix/arpa Middlewares/Third_Party/LwIP/src/include/compat/posix/net Middlewares/Third_Party/LwIP/src/include/compat/posix/sys Middlewares/Third_Party/LwIP/src/include/compat/stdc Middlewares/Third_Party/LwIP/system/arch wolfSSL Middlewares/Third_Party/wolfSSL_wolfSSL_wolfSSL/wolfssl/
+
 
         ## RKH
         mTime
@@ -125,7 +127,8 @@ include_directories(Core/Inc Drivers/STM32F4xx_HAL_Driver/Inc Drivers/STM32F4xx_
 
 add_definitions(-DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -DMQTT_USE_WOLFSSL)
 
-file(GLOB_RECURSE SOURCES "Core/*.*" "Middlewares/*.*" "LWIP/*.*" "wolfSSL/*.*" "Drivers/*.*"
+file(
+        GLOB_RECURSE SOURCES "Core/*.*" "Middlewares/*.*" "LWIP/*.*" "wolfSSL/*.*" "Drivers/*.*"
 
         "bsp/stm32f4xx_nucleo_144.c"
 
@@ -162,6 +165,7 @@ file(GLOB_RECURSE SOURCES "Core/*.*" "Middlewares/*.*" "LWIP/*.*" "wolfSSL/*.*" 
         "salt/configuration/*.*"
         "salt/peripherals/*.*"
         "salt/utilities/*.*"
+        "salt/state-machines/module-manager/*.*"
         "salt/state-machines/logic/*.*"
         "salt/state-machines/tcp-mqttprot/*.*"
 
@@ -180,6 +184,8 @@ file(GLOB_RECURSE SOURCES "Core/*.*" "Middlewares/*.*" "LWIP/*.*" "wolfSSL/*.*" 
         # blinky sys tick
         "blinkySysTick/blinkySysTick.c"
         "blinkySysTick/hook.c"
+
+
 )
 
 set(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/STM32F429ZITX_FLASH.ld)

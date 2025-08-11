@@ -99,6 +99,10 @@ enum SaltSignals
     evVelHasler,
     evVelExternal,
     evVelGPS,
+
+	evDnsResolved,
+	evSslSuccess,
+	evDataReceived
 };
 typedef enum SaltSignals SaltSignals;
 
