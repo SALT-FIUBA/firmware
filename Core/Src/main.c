@@ -343,10 +343,6 @@ int main(void)
   MX_SPI1_Init();
   MX_LWIP_Init();
   /* USER CODE BEGIN 2 */
-
-    //  bsp_init();
-    //TODO: use of mTime_init(); ?
-
     /* Initialize RKH framework */
     rkh_fwk_init();
     rkh_dynEvt_init();
@@ -396,8 +392,11 @@ int main(void)
 
     rkh_fwk_enter();
 
-
     return 0;
+  /* USER CODE END 2 */
+
+  /* USER CODE BEGIN 3 */
+  /* USER CODE END 3 */
 }
 
 

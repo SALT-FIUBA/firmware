@@ -1,2 +1,2 @@
 CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/state-machines/connector-manager/conmgr.c.obj: \
- /home/nando-toshiba/Desktop/salt/firmware/salt/state-machines/connector-manager/conmgr.c
+ /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/salt/state-machines/connector-manager/conmgr.c

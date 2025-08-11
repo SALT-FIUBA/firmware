@@ -15,7 +15,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/bin/arm-none-eabi-addr2line"
+			"value" : "/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-addr2line"
 		},
 		{
 			"name" : "CMAKE_ASM_COMPILER_AR",
@@ -31,7 +31,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/bin/arm-none-eabi-gcc-ar"
+			"value" : "/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-gcc-ar"
 		},
 		{
 			"name" : "CMAKE_ASM_COMPILER_RANLIB",
@@ -47,7 +47,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/bin/arm-none-eabi-gcc-ranlib"
+			"value" : "/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-gcc-ranlib"
 		},
 		{
 			"name" : "CMAKE_ASM_COMPILER_WORKS",
@@ -163,7 +163,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug"
+			"value" : "/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -187,7 +187,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "30"
+			"value" : "31"
 		},
 		{
 			"name" : "CMAKE_CACHE_PATCH_VERSION",
@@ -199,7 +199,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "5"
+			"value" : "6"
 		},
 		{
 			"name" : "CMAKE_COLOR_DIAGNOSTICS",
@@ -223,7 +223,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/nando-toshiba/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/bin/cmake"
+			"value" : "/Users/nandoig/Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake"
 		},
 		{
 			"name" : "CMAKE_CPACK_COMMAND",
@@ -235,7 +235,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/nando-toshiba/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/bin/cpack"
+			"value" : "/Users/nandoig/Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cpack"
 		},
 		{
 			"name" : "CMAKE_CTEST_COMMAND",
@@ -247,7 +247,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/nando-toshiba/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/bin/ctest"
+			"value" : "/Users/nandoig/Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/ctest"
 		},
 		{
 			"name" : "CMAKE_CXX_COMPILER_AR",
@@ -263,7 +263,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/bin/arm-none-eabi-gcc-ar"
+			"value" : "/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-gcc-ar"
 		},
 		{
 			"name" : "CMAKE_CXX_COMPILER_RANLIB",
@@ -279,7 +279,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/bin/arm-none-eabi-gcc-ranlib"
+			"value" : "/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-gcc-ranlib"
 		},
 		{
 			"name" : "CMAKE_CXX_FLAGS",
@@ -375,7 +375,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/bin/arm-none-eabi-gcc-ar"
+			"value" : "/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-gcc-ar"
 		},
 		{
 			"name" : "CMAKE_C_COMPILER_RANLIB",
@@ -391,7 +391,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/bin/arm-none-eabi-gcc-ranlib"
+			"value" : "/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-gcc-ranlib"
 		},
 		{
 			"name" : "CMAKE_C_FLAGS",
@@ -619,7 +619,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -679,7 +679,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/nando-toshiba/Desktop/salt/firmware"
+			"value" : "/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -707,7 +707,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/bin/arm-none-eabi-ld"
+			"value" : "/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-ld"
 		},
 		{
 			"name" : "CMAKE_MAKE_PROGRAM",
@@ -723,7 +723,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/bin/gmake"
+			"value" : "/usr/bin/make"
 		},
 		{
 			"name" : "CMAKE_MODULE_LINKER_FLAGS",
@@ -819,7 +819,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/bin/arm-none-eabi-nm"
+			"value" : "/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-nm"
 		},
 		{
 			"name" : "CMAKE_NUMBER_OF_MAKEFILES",
@@ -895,7 +895,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/bin/arm-none-eabi-ranlib"
+			"value" : "/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-ranlib"
 		},
 		{
 			"name" : "CMAKE_READELF",
@@ -911,7 +911,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/bin/arm-none-eabi-readelf"
+			"value" : "/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-readelf"
 		},
 		{
 			"name" : "CMAKE_ROOT",
@@ -923,7 +923,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/nando-toshiba/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30"
+			"value" : "/Users/nandoig/Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.31"
 		},
 		{
 			"name" : "CMAKE_SHARED_LINKER_FLAGS",
@@ -1131,7 +1131,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/bin/arm-none-eabi-strip"
+			"value" : "/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi-strip"
 		},
 		{
 			"name" : "CMAKE_TAPI",
@@ -1187,7 +1187,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/nando-toshiba/Desktop/salt/firmware/cmake-build-debug"
+			"value" : "/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/cmake-build-debug"
 		},
 		{
 			"name" : "NUCLEO-F429ZI_IS_TOP_LEVEL",
@@ -1211,7 +1211,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/nando-toshiba/Desktop/salt/firmware"
+			"value" : "/Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware"
 		}
 	],
 	"kind" : "cache",
