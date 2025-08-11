@@ -56,6 +56,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/salt/peripherals/relay-control/relay.c.obj: \
  /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h \
  /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
  /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
+ /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rng.h \
  /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h \
  /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
  /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h \

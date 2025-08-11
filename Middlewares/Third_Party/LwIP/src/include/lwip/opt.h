@@ -181,7 +181,7 @@
 /**
  * LWIP_TCPIP_CORE_LOCKING
  * Creates a global mutex that is held during TCPIP thread operations.
- * Can be locked by mqttc_client code to perform lwIP operations without changing
+ * Can be locked by client code to perform lwIP operations without changing
  * into TCPIP thread using callbacks. See LOCK_TCPIP_CORE() and
  * UNLOCK_TCPIP_CORE().
  * Your system should provide mutexes supporting priority inversion to use this.
@@ -997,7 +997,7 @@
 
 /**
  * LWIP_DHCP_AUTOIP_COOP_TRIES: Set to the number of DHCP DISCOVER probes
- * that should be sent before falling back on AUTOIP (the DHCP mqttc_client keeps
+ * that should be sent before falling back on AUTOIP (the DHCP client keeps
  * running in this case). This can be set as low as 1 to get an AutoIP address
  * very  quickly, but you should be prepared to handle a changing IP address
  * when DHCP overrides AutoIP.

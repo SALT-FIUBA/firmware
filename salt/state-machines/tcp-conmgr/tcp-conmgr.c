@@ -438,9 +438,7 @@ static void tcp_conmgr_connect_attempt(TcpConMgr *const me, RKH_EVT_T *pe) {
         tcp_poll(me->tpcb, tcp_conmgr_poll_callback, 120);
 
         ip_addr_t remote_ip;
-        //  IP4_ADDR(&remote_ip, 192, 168, 0, 214); /* SD Gateway IP */
         IP4_ADDR(&remote_ip, 192, 168, 1, 6); /* JD Gateway IP */
-        //  IP4_ADDR(&remote_ip, 172, 20, 10, 8); /* iphone Gateway IP */
         uint16_t remote_port = 1883; /* Replace with your TCP server port */
 
         err_t err = tcp_connect(me->tpcb, &remote_ip,

@@ -69,7 +69,7 @@
  *
  * struct altcp_tls_config
  * -----------------------
- * The struct altcp_tls_config holds state that is needed to create new TLS mqttc_client
+ * The struct altcp_tls_config holds state that is needed to create new TLS client
  * or server connections (e.g. certificates and private keys).
  *
  * It is not defined by lwIP itself but by the TLS port (e.g. altcp_tls to mbedTLS

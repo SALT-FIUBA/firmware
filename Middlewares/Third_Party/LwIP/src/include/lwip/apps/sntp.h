@@ -1,6 +1,6 @@
 /**
  * @file
- * SNTP mqttc_client API
+ * SNTP client API
  */
 
 /*

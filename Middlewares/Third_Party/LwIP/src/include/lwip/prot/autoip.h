@@ -63,7 +63,7 @@ extern "C" {
 #define RATE_LIMIT_INTERVAL     60  /* seconds  (delay between successive attempts)    */
 #define DEFEND_INTERVAL         10  /* seconds  (min. wait between defensive ARPs)     */
 
-/* AutoIP mqttc_client states */
+/* AutoIP client states */
 typedef enum {
   AUTOIP_STATE_OFF        = 0,
   AUTOIP_STATE_PROBING    = 1,

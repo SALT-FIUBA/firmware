@@ -248,7 +248,7 @@ static int  null_login (int);
 /* static int  get_pap_passwd (char *); */
 static int  have_pap_secret (int *);
 static int  have_chap_secret (char *, char *, int, int *);
-static int  have_srp_secret (char *mqttc_client, char *server, int need_ip,
+static int  have_srp_secret (char *client, char *server, int need_ip,
     int *lacks_ipp);
 static int  ip_addr_check (u32_t, struct permitted_ip *);
 static int  scan_authfile (FILE *, char *, char *, char *,
@@ -1807,13 +1807,13 @@ have_pap_secret(lacks_ipp)
 
 /*
  * have_chap_secret - check whether we have a CHAP file with a
- * secret that we could possibly use for authenticating `mqttc_client'
+ * secret that we could possibly use for authenticating `client'
  * on `server'.  Either can be the null string, meaning we don't
  * know the identity yet.
  */
 static int
-have_chap_secret(mqttc_client, server, need_ip, lacks_ipp)
-    char *mqttc_client;
+have_chap_secret(client, server, need_ip, lacks_ipp)
+    char *client;
     char *server;
     int need_ip;
     int *lacks_ipp;
@@ -1835,12 +1835,12 @@ have_chap_secret(mqttc_client, server, need_ip, lacks_ipp)
     if (f == NULL)
 	return 0;
 
-    if (mqttc_client != NULL && mqttc_client[0] == 0)
-	mqttc_client = NULL;
+    if (client != NULL && client[0] == 0)
+	client = NULL;
     else if (server != NULL && server[0] == 0)
 	server = NULL;
 
-    ret = scan_authfile(f, mqttc_client, server, NULL, &addrs, NULL, filename, 0);
+    ret = scan_authfile(f, client, server, NULL, &addrs, NULL, filename, 0);
     fclose(f);
     if (ret >= 0 && need_ip && !some_ip_ok(addrs)) {
 	if (lacks_ipp != 0)
@@ -1855,13 +1855,13 @@ have_chap_secret(mqttc_client, server, need_ip, lacks_ipp)
 
 /*
  * have_srp_secret - check whether we have a SRP file with a
- * secret that we could possibly use for authenticating `mqttc_client'
+ * secret that we could possibly use for authenticating `client'
  * on `server'.  Either can be the null string, meaning we don't
  * know the identity yet.
  */
 static int
-have_srp_secret(mqttc_client, server, need_ip, lacks_ipp)
-    char *mqttc_client;
+have_srp_secret(client, server, need_ip, lacks_ipp)
+    char *client;
     char *server;
     int need_ip;
     int *lacks_ipp;
@@ -1876,12 +1876,12 @@ have_srp_secret(mqttc_client, server, need_ip, lacks_ipp)
     if (f == NULL)
 	return 0;
 
-    if (mqttc_client != NULL && mqttc_client[0] == 0)
-	mqttc_client = NULL;
+    if (client != NULL && client[0] == 0)
+	client = NULL;
     else if (server != NULL && server[0] == 0)
 	server = NULL;
 
-    ret = scan_authfile(f, mqttc_client, server, NULL, &addrs, NULL, filename, 0);
+    ret = scan_authfile(f, client, server, NULL, &addrs, NULL, filename, 0);
     fclose(f);
     if (ret >= 0 && need_ip && !some_ip_ok(addrs)) {
 	if (lacks_ipp != 0)
@@ -1898,21 +1898,21 @@ have_srp_secret(mqttc_client, server, need_ip, lacks_ipp)
 #if PPP_AUTH_SUPPORT
 /*
  * get_secret - open the CHAP secret file and return the secret
- * for authenticating the given mqttc_client on the given server.
- * (We could be either mqttc_client or server).
+ * for authenticating the given client on the given server.
+ * (We could be either client or server).
  */
-int get_secret(ppp_pcb *pcb, const char *mqttc_client, const char *server, char *secret, int *secret_len, int am_server) {
+int get_secret(ppp_pcb *pcb, const char *client, const char *server, char *secret, int *secret_len, int am_server) {
   int len;
   LWIP_UNUSED_ARG(server);
   LWIP_UNUSED_ARG(am_server);
 
-  if (!mqttc_client || !mqttc_client[0] || !pcb->settings.user || !pcb->settings.passwd || strcmp(mqttc_client, pcb->settings.user)) {
+  if (!client || !client[0] || !pcb->settings.user || !pcb->settings.passwd || strcmp(client, pcb->settings.user)) {
     return 0;
   }
 
   len = (int)strlen(pcb->settings.passwd);
   if (len > MAXSECRETLEN) {
-    ppp_error("Secret for %s on %s is too long", mqttc_client, server);
+    ppp_error("Secret for %s on %s is too long", client, server);
     len = MAXSECRETLEN;
   }
 
@@ -1932,9 +1932,9 @@ int get_secret(ppp_pcb *pcb, const char *mqttc_client, const char *server, char 
     if (!am_server && ppp_settings.passwd[0] != 0) {
 	strlcpy(secbuf, ppp_settings.passwd, sizeof(secbuf));
     } else if (!am_server && chap_passwd_hook) {
-	if ( (*chap_passwd_hook)(mqttc_client, secbuf) < 0) {
+	if ( (*chap_passwd_hook)(client, secbuf) < 0) {
 	    ppp_error("Unable to obtain CHAP password for %s on %s from plugin",
-		  mqttc_client, server);
+		  client, server);
 	    return 0;
 	}
     } else {
@@ -1949,7 +1949,7 @@ int get_secret(ppp_pcb *pcb, const char *mqttc_client, const char *server, char 
 	}
 	check_access(f, filename);
 
-	ret = scan_authfile(f, mqttc_client, server, secbuf, &addrs, &opts, filename, 0);
+	ret = scan_authfile(f, client, server, secbuf, &addrs, &opts, filename, 0);
 	fclose(f);
 	if (ret < 0)
 	    return 0;
@@ -1964,7 +1964,7 @@ int get_secret(ppp_pcb *pcb, const char *mqttc_client, const char *server, char 
 
     len = strlen(secbuf);
     if (len > MAXSECRETLEN) {
-	ppp_error("Secret for %s on %s is too long", mqttc_client, server);
+	ppp_error("Secret for %s on %s is too long", client, server);
 	len = MAXSECRETLEN;
     }
     MEMCPY(secret, secbuf, len);
@@ -1980,13 +1980,13 @@ int get_secret(ppp_pcb *pcb, const char *mqttc_client, const char *server, char 
 #if 0 /* UNUSED */
 /*
  * get_srp_secret - open the SRP secret file and return the secret
- * for authenticating the given mqttc_client on the given server.
- * (We could be either mqttc_client or server).
+ * for authenticating the given client on the given server.
+ * (We could be either client or server).
  */
 int
-get_srp_secret(unit, mqttc_client, server, secret, am_server)
+get_srp_secret(unit, client, server, secret, am_server)
     int unit;
-    char *mqttc_client;
+    char *client;
     char *server;
     char *secret;
     int am_server;
@@ -2010,7 +2010,7 @@ get_srp_secret(unit, mqttc_client, server, secret, am_server)
 	check_access(fp, filename);
 
 	secret[0] = '\0';
-	ret = scan_authfile(fp, mqttc_client, server, secret, &addrs, &opts,
+	ret = scan_authfile(fp, client, server, secret, &addrs, &opts,
 	    filename, am_server);
 	fclose(fp);
 	if (ret < 0)
@@ -2304,9 +2304,9 @@ check_access(f, filename)
 
 /*
  * scan_authfile - Scan an authorization file for a secret suitable
- * for authenticating `mqttc_client' on `server'.  The return value is -1
+ * for authenticating `client' on `server'.  The return value is -1
  * if no secret is found, otherwise >= 0.  The return value has
- * NONWILD_CLIENT set if the secret didn't have "*" for the mqttc_client, and
+ * NONWILD_CLIENT set if the secret didn't have "*" for the client, and
  * NONWILD_SERVER set if the secret didn't have "*" for the server.
  * Any following words on the line up to a "--" (i.e. address authorization
  * info) are placed in a wordlist and returned in *addrs.  Any
@@ -2317,9 +2317,9 @@ check_access(f, filename)
  * match.
  */
 static int
-scan_authfile(f, mqttc_client, server, secret, addrs, opts, filename, flags)
+scan_authfile(f, client, server, secret, addrs, opts, filename, flags)
     FILE *f;
-    char *mqttc_client;
+    char *client;
     char *server;
     char *secret;
     struct wordlist **addrs;
@@ -2355,10 +2355,10 @@ scan_authfile(f, mqttc_client, server, secret, addrs, opts, filename, flags)
 	    break;		/* got to end of file */
 
 	/*
-	 * Got a mqttc_client - check if it's a match or a wildcard.
+	 * Got a client - check if it's a match or a wildcard.
 	 */
 	got_flag = 0;
-	if (mqttc_client != NULL && strcmp(word, mqttc_client) != 0 && !ISWILD(word)) {
+	if (client != NULL && strcmp(word, client) != 0 && !ISWILD(word)) {
 	    newline = 0;
 	    continue;
 	}

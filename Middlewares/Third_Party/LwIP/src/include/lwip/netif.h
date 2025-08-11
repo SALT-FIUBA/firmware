@@ -228,11 +228,11 @@ typedef err_t (*netif_mld_mac_filter_fn)(struct netif *netif,
 u8_t netif_alloc_client_data_id(void);
 #endif
 /** @ingroup netif_cd
- * Set mqttc_client data. Obtain ID from netif_alloc_client_data_id().
+ * Set client data. Obtain ID from netif_alloc_client_data_id().
  */
 #define netif_set_client_data(netif, id, data) netif_get_client_data(netif, id) = (data)
 /** @ingroup netif_cd
- * Get mqttc_client data. Obtain ID from netif_alloc_client_data_id().
+ * Get client data. Obtain ID from netif_alloc_client_data_id().
  */
 #define netif_get_client_data(netif, id)       (netif)->client_data[(id)]
 #endif

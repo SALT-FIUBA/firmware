@@ -35,6 +35,7 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/stm32f4xx_it.c.obj: \
  /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h \
  /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
  /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
+ /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rng.h \
  /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h \
  /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
  /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h \
@@ -55,25 +56,4 @@ CMakeFiles/NUCLEO-F429ZI.elf.dir/Core/Src/stm32f4xx_it.c.obj: \
  /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/sma/inc/rkhsma_prio.h \
  /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/fwk/inc/rkhevt.h \
  /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/fwk/inc/rkhtype.h \
- /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/stm32-sapi/inc/sapi_tick.h \
- /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/stm32-sapi/inc/sapi_datatypes.h \
- /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/salt/bsp/bsp-salt.h \
- /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/fwk/inc/rkh.h \
- /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/trc/inc/rkhtrc.h \
- /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/trc/inc/rkhtrc_record.h \
- /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/trc/inc/rkhtrc_stream.h \
- /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/trc/inc/rkhtrc_out.h \
- /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/trc/inc/rkhtrc_define.h \
- /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/trc/inc/rkhtrc_filter.h \
- /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/sma/inc/rkhsma.h \
- /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/sm/inc/rkhsm.h \
- /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/fwk/inc/rkhassert.h \
- /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/fwk/inc/rkhfwk_module.h \
- /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/fwk/inc/rkhfwk_hook.h \
- /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/fwk/inc/rkhfwk_bittbl.h \
- /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/fwk/inc/rkhfwk_cast.h \
- /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/fwk/inc/rkhfwk_version.h \
- /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/fwk/inc/rkhfwk_dynevt.h \
- /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/fwk/inc/rkhitl.h \
- /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/fwk/inc/rkhfwk_evtpool.h \
- /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/rkh/source/fwk/inc/rkhfwk_sched.h
+ /Users/nandoig/Desktop/salt/repositories/SALT-FIUBA/firmware/third-party/stm32-sapi/inc/sapi_datatypes.h

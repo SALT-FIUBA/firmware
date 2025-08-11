@@ -1263,7 +1263,7 @@ netconn_join_leave_group_netif(struct netconn *conn,
  * @param dns_addrtype IP address type (IPv4 / IPv6)
  * @return ERR_OK: resolving succeeded
  *         ERR_MEM: memory error, try again later
- *         ERR_ARG: dns mqttc_client not initialized or invalid hostname
+ *         ERR_ARG: dns client not initialized or invalid hostname
  *         ERR_VAL: dns server response was invalid
  */
 #if LWIP_IPV4 && LWIP_IPV6

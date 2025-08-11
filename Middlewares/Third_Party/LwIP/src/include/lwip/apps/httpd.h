@@ -132,7 +132,7 @@ extern void httpd_cgi_handler(struct fs_file *file, const char* uri, int iNumPar
  * array (currently .shtml, .shtm, .ssi, .xml, .json) where "name" appears as
  * one of the tags supplied to http_set_ssi_handler in the tags array.  The
  * returned insert string, which will be appended after the the string
- * "<!--#name-->" in file sent back to the mqttc_client, should be written to pointer
+ * "<!--#name-->" in file sent back to the client, should be written to pointer
  * pcInsert. iInsertLen contains the size of the buffer pointed to by
  * pcInsert. The iIndex parameter provides the zero-based index of the tag as
  * found in the tags array and identifies the tag that is to be processed.

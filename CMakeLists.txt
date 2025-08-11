@@ -1,7 +1,7 @@
 #THIS FILE IS AUTO GENERATED FROM THE TEMPLATE! DO NOT CHANGE!
 set(CMAKE_SYSTEM_NAME Generic)
 set(CMAKE_SYSTEM_VERSION 1)
-cmake_minimum_required(VERSION 3.30)
+cmake_minimum_required(VERSION 3.31)
 
 # specify cross-compilers and tools
 set(CMAKE_C_COMPILER arm-none-eabi-gcc)
@@ -49,32 +49,7 @@ else ()
     add_compile_options(-Og -g)
 endif ()
 
-
-include_directories(
-        Core/Inc
-        Drivers/STM32F4xx_HAL_Driver/Inc
-        Drivers/STM32F4xx_HAL_Driver/Inc/Legacy
-        Drivers/CMSIS/Device/ST/STM32F4xx/Include
-        Drivers/CMSIS/Include
-
-        LWIP/App
-        LWIP/Target
-
-        Middlewares/Third_Party/LwIP/src/include
-        Middlewares/Third_Party/LwIP/system
-        Drivers/BSP/Components/lan8742
-        Middlewares/Third_Party/LwIP/src/include/netif/ppp
-        Middlewares/Third_Party/LwIP/src/include/lwip
-        Middlewares/Third_Party/LwIP/src/include/lwip/apps
-        Middlewares/Third_Party/LwIP/src/include/lwip/priv
-        Middlewares/Third_Party/LwIP/src/include/lwip/prot
-        Middlewares/Third_Party/LwIP/src/include/netif
-        Middlewares/Third_Party/LwIP/src/include/compat/posix
-        Middlewares/Third_Party/LwIP/src/include/compat/posix/arpa
-        Middlewares/Third_Party/LwIP/src/include/compat/posix/net
-        Middlewares/Third_Party/LwIP/src/include/compat/posix/sys
-        Middlewares/Third_Party/LwIP/src/include/compat/stdc
-        Middlewares/Third_Party/LwIP/system/arch
+include_directories(Core/Inc Drivers/STM32F4xx_HAL_Driver/Inc Drivers/STM32F4xx_HAL_Driver/Inc/Legacy Drivers/CMSIS/Device/ST/STM32F4xx/Include Drivers/CMSIS/Include LWIP/App LWIP/Target Middlewares/Third_Party/LwIP/src/include Middlewares/Third_Party/LwIP/system Drivers/BSP/Components/lan8742 Middlewares/Third_Party/LwIP/src/include/netif/ppp Middlewares/Third_Party/LwIP/src/include/lwip Middlewares/Third_Party/LwIP/src/include/lwip/apps Middlewares/Third_Party/LwIP/src/include/lwip/priv Middlewares/Third_Party/LwIP/src/include/lwip/prot Middlewares/Third_Party/LwIP/src/include/netif Middlewares/Third_Party/LwIP/src/include/compat/posix Middlewares/Third_Party/LwIP/src/include/compat/posix/arpa Middlewares/Third_Party/LwIP/src/include/compat/posix/net Middlewares/Third_Party/LwIP/src/include/compat/posix/sys Middlewares/Third_Party/LwIP/src/include/compat/stdc Middlewares/Third_Party/LwIP/system/arch wolfSSL Middlewares/Third_Party/wolfSSL_wolfSSL_wolfSSL/wolfssl/
 
         ## RKH
         mTime
@@ -147,8 +122,9 @@ include_directories(
         network
 )
 
-file(
-        GLOB_RECURSE SOURCES "Core/*.*" "Drivers/*.*" "Middlewares/*.*" "LWIP/*.*"
+add_definitions(-DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx)
+
+file(GLOB_RECURSE SOURCES "Core/*.*" "Middlewares/*.*" "LWIP/*.*" "wolfSSL/*.*" "Drivers/*.*"
 
         "bsp/stm32f4xx_nucleo_144.c"
 
@@ -206,21 +182,6 @@ add_link_options(-T ${LINKER_SCRIPT})
 
 add_executable(${PROJECT_NAME}.elf ${SOURCES} ${LINKER_SCRIPT})
 
-
-target_compile_definitions(
-        ${PROJECT_NAME}.elf PRIVATE
-        DEBUG
-        USE_HAL_DRIVER
-        STM32F429xx
-        RKH_PLATFORM="__STM32__"
-        RKH_CONF_FILE="salt/rkhcfg.h"
-)
-get_target_property(COMPILE_DEFS ${PROJECT_NAME}.elf COMPILE_DEFINITIONS)
-message(STATUS "All compile definitions: ${COMPILE_DEFS}")
-message(STATUS "Build type: ${CMAKE_BUILD_TYPE}")
-message(STATUS "...")
-
-
 set(HEX_FILE ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.hex)
 set(BIN_FILE ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.bin)
 
@@ -229,6 +190,3 @@ add_custom_command(TARGET ${PROJECT_NAME}.elf POST_BUILD
         COMMAND ${CMAKE_OBJCOPY} -Obinary $<TARGET_FILE:${PROJECT_NAME}.elf> ${BIN_FILE}
         COMMENT "Building ${HEX_FILE}
 Building ${BIN_FILE}")
-
-
-

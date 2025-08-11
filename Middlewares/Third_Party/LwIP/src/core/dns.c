@@ -18,7 +18,7 @@
  * gethostbyname() then does a dns_lookup() to see if the name is
  * already in the table. If so, the IP is returned. If not, a query is
  * issued and the function returns with a ERR_INPROGRESS status. The app
- * using the dns mqttc_client must then go into a waiting state.
+ * using the dns client must then go into a waiting state.
  *
  * Once a hostname has been resolved (or found to be non-existent),
  * the resolver code calls a specified callback function (which
@@ -328,7 +328,7 @@ dns_init(void)
 
   LWIP_DEBUGF(DNS_DEBUG, ("dns_init: initializing\n"));
 
-  /* if dns mqttc_client not yet initialized... */
+  /* if dns client not yet initialized... */
 #if ((LWIP_DNS_SECURE & LWIP_DNS_SECURE_RAND_SRC_PORT) == 0)
   if (dns_pcbs[0] == NULL) {
     dns_pcbs[0] = udp_new_ip_type(IPADDR_TYPE_ANY);
@@ -339,7 +339,7 @@ dns_init(void)
     LWIP_ASSERT("For implicit initialization to work, DNS_STATE_UNUSED needs to be 0",
                 DNS_STATE_UNUSED == 0);
 
-    /* initialize DNS mqttc_client */
+    /* initialize DNS client */
     udp_bind(dns_pcbs[0], IP_ANY_TYPE, 0);
     udp_recv(dns_pcbs[0], dns_recv, NULL);
   }
@@ -388,7 +388,7 @@ dns_getserver(u8_t numdns)
 }
 
 /**
- * The DNS resolver mqttc_client timer - handle retries and timeouts and should
+ * The DNS resolver client timer - handle retries and timeouts and should
  * be called every DNS_TMR_INTERVAL milliseconds (every second by default).
  */
 void
@@ -1512,7 +1512,7 @@ dns_enqueue(const char *name, size_t hostnamelen, dns_found_callback found,
  *   name is already in the local names table.
  * - ERR_INPROGRESS enqueue a request to be sent to the DNS server
  *   for resolution if no errors are present.
- * - ERR_ARG: dns mqttc_client not initialized or invalid hostname
+ * - ERR_ARG: dns client not initialized or invalid hostname
  *
  * @param hostname the hostname that is to be queried
  * @param addr pointer to a ip_addr_t where to store the address if it is already

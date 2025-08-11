@@ -1,8 +1,8 @@
 /**
  * @file
- * MQTT mqttc_client
+ * MQTT client
  *
- * @defgroup mqtt MQTT mqttc_client
+ * @defgroup mqtt MQTT client
  * @ingroup apps
  * @verbinclude mqtt_client.txt
  */
@@ -77,7 +77,7 @@
 
 
 /**
- * MQTT mqttc_client connection states
+ * MQTT client connection states
  */
 enum {
   TCP_DISCONNECTED,
@@ -163,7 +163,7 @@ mqtt_msg_type_to_str(u8_t msg_type)
 
 /**
  * Generate MQTT packet identifier
- * @param client MQTT mqttc_client
+ * @param client MQTT client
  * @return New packet identifier, range 1 to 65535
  */
 static u16_t
@@ -530,13 +530,13 @@ mqtt_output_check_space(struct mqtt_ringbuf_t *rb, u16_t r_length)
 
 /**
  * Close connection to server
- * @param client MQTT mqttc_client
+ * @param client MQTT client
  * @param reason Reason for disconnection
  */
 static void
 mqtt_close(mqtt_client_t *client, mqtt_connection_status_t reason)
 {
-  LWIP_ASSERT("mqtt_close: mqttc_client != NULL", client != NULL);
+  LWIP_ASSERT("mqtt_close: client != NULL", client != NULL);
 
   /* Bring down TCP connection if not already done */
   if (client->conn != NULL) {
@@ -570,14 +570,14 @@ mqtt_close(mqtt_client_t *client, mqtt_connection_status_t reason)
 
 /**
  * Interval timer, called every MQTT_CYCLIC_TIMER_INTERVAL seconds in MQTT_CONNECTING and MQTT_CONNECTED states
- * @param arg MQTT mqttc_client
+ * @param arg MQTT client
  */
 static void
 mqtt_cyclic_timer(void *arg)
 {
   u8_t restart_timer = 1;
   mqtt_client_t *client = (mqtt_client_t *)arg;
-  LWIP_ASSERT("mqtt_cyclic_timer: mqttc_client != NULL", client != NULL);
+  LWIP_ASSERT("mqtt_cyclic_timer: client != NULL", client != NULL);
 
   if (client->conn_state == MQTT_CONNECTING) {
     client->cyclic_tick++;
@@ -625,7 +625,7 @@ mqtt_cyclic_timer(void *arg)
 
 /**
  * Send PUBACK, PUBREC or PUBREL response message
- * @param client MQTT mqttc_client
+ * @param client MQTT client
  * @param msg PUBACK, PUBREC or PUBREL
  * @param pkt_id Packet identifier
  * @param qos QoS value
@@ -663,7 +663,7 @@ mqtt_incomming_suback(struct mqtt_request_t *r, u8_t result)
 
 /**
  * Complete MQTT message received or buffer full
- * @param client MQTT mqttc_client
+ * @param client MQTT client
  * @param fixed_hdr_idx header index
  * @param length length received part
  * @param remaining_length Remaining length of complete message
@@ -680,8 +680,8 @@ mqtt_message_received(mqtt_client_t *client, u8_t fixed_hdr_idx, u16_t length, u
   u8_t pkt_type = MQTT_CTL_PACKET_TYPE(client->rx_buffer[0]);
   u16_t pkt_id = 0;
 
-  LWIP_ASSERT("mqttc_client->msg_idx < MQTT_VAR_HEADER_BUFFER_LEN", client->msg_idx < MQTT_VAR_HEADER_BUFFER_LEN);
-  LWIP_ASSERT("fixed_hdr_idx <= mqttc_client->msg_idx", fixed_hdr_idx <= client->msg_idx);
+  LWIP_ASSERT("client->msg_idx < MQTT_VAR_HEADER_BUFFER_LEN", client->msg_idx < MQTT_VAR_HEADER_BUFFER_LEN);
+  LWIP_ASSERT("fixed_hdr_idx <= client->msg_idx", fixed_hdr_idx <= client->msg_idx);
   LWIP_ERROR("buffer length mismatch", fixed_hdr_idx + length <= MQTT_VAR_HEADER_BUFFER_LEN,
              return MQTT_CONNECT_DISCONNECTED);
 
@@ -831,7 +831,7 @@ out_disconnect:
 
 /**
  * MQTT incoming message parser
- * @param client MQTT mqttc_client
+ * @param client MQTT client
  * @param p PBUF chain of received data
  * @return Connection status
  */
@@ -846,14 +846,14 @@ mqtt_parse_incoming(mqtt_client_t *client, struct pbuf *p)
   while (p->tot_len > in_offset) {
     /* We ALWAYS parse the header here first. Even if the header was not
        included in this segment, we re-parse it here by buffering it in
-       mqttc_client->rx_buffer. mqttc_client->msg_idx keeps track of this. */
+       client->rx_buffer. client->msg_idx keeps track of this. */
     if ((fixed_hdr_idx < 2) || ((b & 0x80) != 0)) {
 
       if (fixed_hdr_idx < client->msg_idx) {
-        /* parse header from old pbuf (buffered in mqttc_client->rx_buffer) */
+        /* parse header from old pbuf (buffered in client->rx_buffer) */
         b = client->rx_buffer[fixed_hdr_idx];
       } else {
-        /* parse header from this pbuf and save it in mqttc_client->rx_buffer in case
+        /* parse header from this pbuf and save it in client->rx_buffer in case
            it comes in segmented */
         b = pbuf_get_at(p, in_offset++);
         client->rx_buffer[client->msg_idx++] = b;
@@ -923,7 +923,7 @@ mqtt_parse_incoming(mqtt_client_t *client, struct pbuf *p)
 
 /**
  * TCP received callback function. @see tcp_recv_fn
- * @param arg MQTT mqttc_client
+ * @param arg MQTT client
  * @param p PBUF chain of received data
  * @param err Passed as return value if not ERR_OK
  * @return ERR_OK or err passed into callback
@@ -932,8 +932,8 @@ static err_t
 mqtt_tcp_recv_cb(void *arg, struct altcp_pcb *pcb, struct pbuf *p, err_t err)
 {
   mqtt_client_t *client = (mqtt_client_t *)arg;
-  LWIP_ASSERT("mqtt_tcp_recv_cb: mqttc_client != NULL", client != NULL);
-  LWIP_ASSERT("mqtt_tcp_recv_cb: mqttc_client->conn == pcb", client->conn == pcb);
+  LWIP_ASSERT("mqtt_tcp_recv_cb: client != NULL", client != NULL);
+  LWIP_ASSERT("mqtt_tcp_recv_cb: client->conn == pcb", client->conn == pcb);
 
   if (p == NULL) {
     LWIP_DEBUGF(MQTT_DEBUG_TRACE, ("mqtt_tcp_recv_cb: Recv pbuf=NULL, remote has closed connection\n"));
@@ -967,7 +967,7 @@ mqtt_tcp_recv_cb(void *arg, struct altcp_pcb *pcb, struct pbuf *p, err_t err)
 
 /**
  * TCP data sent callback function. @see tcp_sent_fn
- * @param arg MQTT mqttc_client
+ * @param arg MQTT client
  * @param tpcb TCP connection handle
  * @param len Number of bytes sent
  * @return ERR_OK
@@ -1002,7 +1002,7 @@ mqtt_tcp_sent_cb(void *arg, struct altcp_pcb *tpcb, u16_t len)
 
 /**
  * TCP error callback function. @see tcp_err_fn
- * @param arg MQTT mqttc_client
+ * @param arg MQTT client
  * @param err Error encountered
  */
 static void
@@ -1011,7 +1011,7 @@ mqtt_tcp_err_cb(void *arg, err_t err)
   mqtt_client_t *client = (mqtt_client_t *)arg;
   LWIP_UNUSED_ARG(err); /* only used for debug output */
   LWIP_DEBUGF(MQTT_DEBUG_TRACE, ("mqtt_tcp_err_cb: TCP error callback: error %d, arg: %p\n", err, arg));
-  LWIP_ASSERT("mqtt_tcp_err_cb: mqttc_client != NULL", client != NULL);
+  LWIP_ASSERT("mqtt_tcp_err_cb: client != NULL", client != NULL);
   /* Set conn to null before calling close as pcb is already deallocated*/
   client->conn = 0;
   mqtt_close(client, MQTT_CONNECT_DISCONNECTED);
@@ -1019,7 +1019,7 @@ mqtt_tcp_err_cb(void *arg, err_t err)
 
 /**
  * TCP poll callback function. @see tcp_poll_fn
- * @param arg MQTT mqttc_client
+ * @param arg MQTT client
  * @param tpcb TCP connection handle
  * @return err ERR_OK
  */
@@ -1036,7 +1036,7 @@ mqtt_tcp_poll_cb(void *arg, struct altcp_pcb *tpcb)
 
 /**
  * TCP connect callback function. @see tcp_connected_fn
- * @param arg MQTT mqttc_client
+ * @param arg MQTT client
  * @param err Always ERR_OK, mqtt_tcp_err_cb is called in case of error
  * @return ERR_OK
  */
@@ -1081,7 +1081,7 @@ mqtt_tcp_connect_cb(void *arg, struct altcp_pcb *tpcb, err_t err)
 /**
  * @ingroup mqtt
  * MQTT publish function.
- * @param client MQTT mqttc_client
+ * @param client MQTT client
  * @param topic Publish topic string
  * @param payload Data to publish (NULL is allowed)
  * @param payload_length Length of payload (0 is allowed)
@@ -1090,7 +1090,7 @@ mqtt_tcp_connect_cb(void *arg, struct altcp_pcb *tpcb, err_t err)
  * @param cb Callback to call when publish is complete or has timed out
  * @param arg User supplied argument to publish callback
  * @return ERR_OK if successful
- *         ERR_CONN if mqttc_client is disconnected
+ *         ERR_CONN if client is disconnected
  *         ERR_MEM if short on memory
  */
 err_t
@@ -1105,7 +1105,7 @@ mqtt_publish(mqtt_client_t *client, const char *topic, const void *payload, u16_
   u16_t remaining_length;
 
   LWIP_ASSERT_CORE_LOCKED();
-  LWIP_ASSERT("mqtt_publish: mqttc_client != NULL", client);
+  LWIP_ASSERT("mqtt_publish: client != NULL", client);
   LWIP_ASSERT("mqtt_publish: topic != NULL", topic);
   LWIP_ERROR("mqtt_publish: TCP disconnected", (client->conn_state != TCP_DISCONNECTED), return ERR_CONN);
 
@@ -1161,7 +1161,7 @@ mqtt_publish(mqtt_client_t *client, const char *topic, const void *payload, u16_
 /**
  * @ingroup mqtt
  * MQTT subscribe/unsubscribe function.
- * @param client MQTT mqttc_client
+ * @param client MQTT client
  * @param topic topic to subscribe to
  * @param qos Quality of service, 0 1 or 2 (only used for subscribe)
  * @param cb Callback to call when subscribe/unsubscribe reponse is received
@@ -1180,7 +1180,7 @@ mqtt_sub_unsub(mqtt_client_t *client, const char *topic, u8_t qos, mqtt_request_
   struct mqtt_request_t *r;
 
   LWIP_ASSERT_CORE_LOCKED();
-  LWIP_ASSERT("mqtt_sub_unsub: mqttc_client != NULL", client);
+  LWIP_ASSERT("mqtt_sub_unsub: client != NULL", client);
   LWIP_ASSERT("mqtt_sub_unsub: topic != NULL", topic);
 
   topic_strlen = strlen(topic);
@@ -1229,7 +1229,7 @@ mqtt_sub_unsub(mqtt_client_t *client, const char *topic, u8_t qos, mqtt_request_
 /**
  * @ingroup mqtt
  * Set callback to handle incoming publish requests from server
- * @param client MQTT mqttc_client
+ * @param client MQTT client
  * @param pub_cb Callback invoked when publish starts, contain topic and total length of payload
  * @param data_cb Callback for each fragment of payload that arrives
  * @param arg User supplied argument to both callbacks
@@ -1239,7 +1239,7 @@ mqtt_set_inpub_callback(mqtt_client_t *client, mqtt_incoming_publish_cb_t pub_cb
                         mqtt_incoming_data_cb_t data_cb, void *arg)
 {
   LWIP_ASSERT_CORE_LOCKED();
-  LWIP_ASSERT("mqtt_set_inpub_callback: mqttc_client != NULL", client != NULL);
+  LWIP_ASSERT("mqtt_set_inpub_callback: client != NULL", client != NULL);
   client->data_cb = data_cb;
   client->pub_cb = pub_cb;
   client->inpub_arg = arg;
@@ -1247,7 +1247,7 @@ mqtt_set_inpub_callback(mqtt_client_t *client, mqtt_incoming_publish_cb_t pub_cb
 
 /**
  * @ingroup mqtt
- * Create a new MQTT mqttc_client instance
+ * Create a new MQTT client instance
  * @return Pointer to instance on success, NULL otherwise
  */
 mqtt_client_t *
@@ -1259,7 +1259,7 @@ mqtt_client_new(void)
 
 /**
  * @ingroup mqtt
- * Free MQTT mqttc_client instance
+ * Free MQTT client instance
  * @param client Pointer to instance to be freed
  */
 void
@@ -1271,7 +1271,7 @@ mqtt_client_free(mqtt_client_t *client)
 /**
  * @ingroup mqtt
  * Connect to MQTT server
- * @param client MQTT mqttc_client
+ * @param client MQTT client
  * @param ip_addr Server IP
  * @param port Server port
  * @param cb Connection state change callback
@@ -1292,7 +1292,7 @@ mqtt_client_connect(mqtt_client_t *client, const ip_addr_t *ip_addr, u16_t port,
   u16_t client_user_len = 0, client_pass_len = 0;
 
   LWIP_ASSERT_CORE_LOCKED();
-  LWIP_ASSERT("mqtt_client_connect: mqttc_client != NULL", client != NULL);
+  LWIP_ASSERT("mqtt_client_connect: client != NULL", client != NULL);
   LWIP_ASSERT("mqtt_client_connect: ip_addr != NULL", ip_addr != NULL);
   LWIP_ASSERT("mqtt_client_connect: client_info != NULL", client_info != NULL);
   LWIP_ASSERT("mqtt_client_connect: client_info->client_id != NULL", client_info->client_id != NULL);
@@ -1364,7 +1364,7 @@ mqtt_client_connect(mqtt_client_t *client, const ip_addr_t *ip_addr, u16_t port,
 
 #if LWIP_ALTCP && LWIP_ALTCP_TLS
   if (client_info->tls_config) {
-    mqttc_client->conn = altcp_tls_new(client_info->tls_config, IP_GET_TYPE(ip_addr));
+    client->conn = altcp_tls_new(client_info->tls_config, IP_GET_TYPE(ip_addr));
   } else
 #endif
   {
@@ -1404,7 +1404,7 @@ mqtt_client_connect(mqtt_client_t *client, const ip_addr_t *ip_addr, u16_t port,
   mqtt_output_append_u8(&client->output, flags);
   /* Append keep-alive */
   mqtt_output_append_u16(&client->output, client_info->keep_alive);
-  /* Append mqttc_client id */
+  /* Append client id */
   mqtt_output_append_string(&client->output, client_info->client_id, client_id_length);
   /* Append will message if used */
   if ((flags & MQTT_CONNECT_FLAG_WILL) != 0) {
@@ -1431,13 +1431,13 @@ tcp_fail:
 /**
  * @ingroup mqtt
  * Disconnect from MQTT server
- * @param client MQTT mqttc_client
+ * @param client MQTT client
  */
 void
 mqtt_disconnect(mqtt_client_t *client)
 {
   LWIP_ASSERT_CORE_LOCKED();
-  LWIP_ASSERT("mqtt_disconnect: mqttc_client != NULL", client);
+  LWIP_ASSERT("mqtt_disconnect: client != NULL", client);
   /* If connection in not already closed */
   if (client->conn_state != TCP_DISCONNECTED) {
     /* Set conn_state before calling mqtt_close to prevent callback from being called */
@@ -1449,14 +1449,14 @@ mqtt_disconnect(mqtt_client_t *client)
 /**
  * @ingroup mqtt
  * Check connection with server
- * @param client MQTT mqttc_client
+ * @param client MQTT client
  * @return 1 if connected to server, 0 otherwise
  */
 u8_t
 mqtt_client_is_connected(mqtt_client_t *client)
 {
   LWIP_ASSERT_CORE_LOCKED();
-  LWIP_ASSERT("mqtt_client_is_connected: mqttc_client != NULL", client);
+  LWIP_ASSERT("mqtt_client_is_connected: client != NULL", client);
   return client->conn_state == MQTT_CONNECTED;
 }
 

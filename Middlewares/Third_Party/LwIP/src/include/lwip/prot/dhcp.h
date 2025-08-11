@@ -95,7 +95,7 @@ PACK_STRUCT_END
 #endif
 
 
-/* DHCP mqttc_client states */
+/* DHCP client states */
 typedef enum {
   DHCP_STATE_OFF             = 0,
   DHCP_STATE_REQUESTING      = 1,

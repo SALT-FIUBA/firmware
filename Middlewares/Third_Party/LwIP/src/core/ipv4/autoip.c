@@ -117,7 +117,7 @@ autoip_set_struct(struct netif *netif, struct autoip *autoip)
   netif_set_client_data(netif, LWIP_NETIF_CLIENT_DATA_INDEX_AUTOIP, autoip);
 }
 
-/** Restart AutoIP mqttc_client and check the next address (conflict detected)
+/** Restart AutoIP client and check the next address (conflict detected)
  *
  * @param netif The netif under AutoIP control
  */
@@ -247,9 +247,9 @@ autoip_bind(struct netif *netif)
 
 /**
  * @ingroup autoip
- * Start AutoIP mqttc_client
+ * Start AutoIP client
  *
- * @param netif network interface on which start the AutoIP mqttc_client
+ * @param netif network interface on which start the AutoIP client
  */
 err_t
 autoip_start(struct netif *netif)
@@ -269,16 +269,16 @@ autoip_start(struct netif *netif)
               ("autoip_start(netif=%p) %c%c%"U16_F"\n", (void *)netif, netif->name[0],
                netif->name[1], (u16_t)netif->num));
   if (autoip == NULL) {
-    /* no AutoIP mqttc_client attached yet? */
+    /* no AutoIP client attached yet? */
     LWIP_DEBUGF(AUTOIP_DEBUG | LWIP_DBG_TRACE,
-                ("autoip_start(): starting new AUTOIP mqttc_client\n"));
+                ("autoip_start(): starting new AUTOIP client\n"));
     autoip = (struct autoip *)mem_calloc(1, sizeof(struct autoip));
     if (autoip == NULL) {
       LWIP_DEBUGF(AUTOIP_DEBUG | LWIP_DBG_TRACE,
                   ("autoip_start(): could not allocate autoip\n"));
       return ERR_MEM;
     }
-    /* store this AutoIP mqttc_client in the netif */
+    /* store this AutoIP client in the netif */
     netif_set_client_data(netif, LWIP_NETIF_CLIENT_DATA_INDEX_AUTOIP, autoip);
     LWIP_DEBUGF(AUTOIP_DEBUG | LWIP_DBG_TRACE, ("autoip_start(): allocated autoip"));
   } else {
@@ -341,9 +341,9 @@ autoip_network_changed(struct netif *netif)
 
 /**
  * @ingroup autoip
- * Stop AutoIP mqttc_client
+ * Stop AutoIP client
  *
- * @param netif network interface on which stop the AutoIP mqttc_client
+ * @param netif network interface on which stop the AutoIP client
  */
 err_t
 autoip_stop(struct netif *netif)

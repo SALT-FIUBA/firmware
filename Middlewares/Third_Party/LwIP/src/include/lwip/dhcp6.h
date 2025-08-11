@@ -1,7 +1,7 @@
 /**
  * @file
  *
- * DHCPv6 mqttc_client: IPv6 address autoconfiguration as per
+ * DHCPv6 client: IPv6 address autoconfiguration as per
  * RFC 3315 (stateful DHCPv6) and
  * RFC 3736 (stateless DHCPv6).
  */

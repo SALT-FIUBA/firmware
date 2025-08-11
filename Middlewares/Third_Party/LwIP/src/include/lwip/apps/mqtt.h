@@ -1,6 +1,6 @@
 /**
  * @file
- * MQTT mqttc_client
+ * MQTT client
  */
 
 /*
@@ -115,10 +115,10 @@ typedef enum
 /**
  * @ingroup mqtt
  * Function prototype for mqtt connection status callback. Called when
- * mqttc_client has connected to the server after initiating a mqtt connection attempt by
+ * client has connected to the server after initiating a mqtt connection attempt by
  * calling mqtt_client_connect() or when connection is closed by server or an error
  *
- * @param client MQTT mqttc_client itself
+ * @param client MQTT client itself
  * @param arg Additional argument to pass to the callback function
  * @param status Connect result code or disconnection notification @see mqtt_connection_status_t
  *

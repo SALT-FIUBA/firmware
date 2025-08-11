@@ -19,6 +19,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "lwip.h"
+#include "rng.h"
 #include "spi.h"
 #include "usart.h"
 #include "usb_otg.h"
@@ -306,6 +307,44 @@ saltCfg_topic(char *t)
     sprintf(mqttProtCfg.subTopic, "/salt/cmd");
 }
 
+/*
+ * @brief Key push-button
+
+    #define USER_BUTTON_PIN                          GPIO_PIN_13
+    #define USER_BUTTON_GPIO_PORT                    GPIOC
+    #define USER_BUTTON_GPIO_CLK_ENABLE()            __HAL_RCC_GPIOC_CLK_ENABLE()
+    #define USER_BUTTON_GPIO_CLK_DISABLE()           __HAL_RCC_GPIOC_CLK_DISABLE()
+    #define USER_BUTTON_EXTI_LINE                    GPIO_PIN_13
+    #define USER_BUTTON_EXTI_IRQn                    EXTI15_10_IRQn
+
+*/
+void UserButton_Init(void) {
+    // Enable the GPIOC clock
+    __HAL_RCC_GPIOC_CLK_ENABLE();
+
+    // Configure PC13 as an input with pull-up and interrupt on falling edge
+    GPIO_InitTypeDef GPIO_InitStruct = {0};
+    GPIO_InitStruct.Pin = GPIO_PIN_13;
+    GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING; // Interrupt on falling edge
+    GPIO_InitStruct.Pull = GPIO_PULLUP;          // Pull-up resistor
+    HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+    //     Set up the interrupt priority and enable it
+    HAL_NVIC_SetPriority(EXTI15_10_IRQn, 15, 0); // Lowest priority
+    HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);          // Enable interrupt
+}
+
+void EXTI15_10_IRQHandler(void) {
+    // Check if the interrupt was triggered by PC13
+    if (__HAL_GPIO_EXTI_GET_IT(GPIO_PIN_13) != 0x00u) {
+        // Clear the interrupt flag
+        __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_13);
+
+        // Create and post the button press event
+        //  RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Open), NULL);
+        RKH_SMA_POST_FIFO(logic, RKH_UPCAST(RKH_EVT_T , &e_SaltEnable), NULL);
+    }
+}
 
 /* USER CODE END 0 */
 
@@ -315,7 +354,6 @@ saltCfg_topic(char *t)
   */
 int main(void)
 {
-
   /* USER CODE BEGIN 1 */
   saltConfig();
 
@@ -342,6 +380,7 @@ int main(void)
   MX_USB_OTG_FS_PCD_Init();
   MX_SPI1_Init();
   MX_LWIP_Init();
+  MX_RNG_Init();
   /* USER CODE BEGIN 2 */
     /* Initialize RKH framework */
     rkh_fwk_init();
@@ -395,48 +434,9 @@ int main(void)
     return 0;
   /* USER CODE END 2 */
 
-  /* USER CODE BEGIN 3 */
+
+    /* USER CODE BEGIN 3 */
   /* USER CODE END 3 */
-}
-
-
-/*
- * @brief Key push-button
-
-    #define USER_BUTTON_PIN                          GPIO_PIN_13
-    #define USER_BUTTON_GPIO_PORT                    GPIOC
-    #define USER_BUTTON_GPIO_CLK_ENABLE()            __HAL_RCC_GPIOC_CLK_ENABLE()
-    #define USER_BUTTON_GPIO_CLK_DISABLE()           __HAL_RCC_GPIOC_CLK_DISABLE()
-    #define USER_BUTTON_EXTI_LINE                    GPIO_PIN_13
-    #define USER_BUTTON_EXTI_IRQn                    EXTI15_10_IRQn
-
-*/
-void UserButton_Init(void) {
-    // Enable the GPIOC clock
-    __HAL_RCC_GPIOC_CLK_ENABLE();
-
-    // Configure PC13 as an input with pull-up and interrupt on falling edge
-    GPIO_InitTypeDef GPIO_InitStruct = {0};
-    GPIO_InitStruct.Pin = GPIO_PIN_13;
-    GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING; // Interrupt on falling edge
-    GPIO_InitStruct.Pull = GPIO_PULLUP;          // Pull-up resistor
-    HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
-
-    //     Set up the interrupt priority and enable it
-    HAL_NVIC_SetPriority(EXTI15_10_IRQn, 15, 0); // Lowest priority
-    HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);          // Enable interrupt
-}
-
-void EXTI15_10_IRQHandler(void) {
-    // Check if the interrupt was triggered by PC13
-    if (__HAL_GPIO_EXTI_GET_IT(GPIO_PIN_13) != 0x00u) {
-        // Clear the interrupt flag
-        __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_13);
-
-        // Create and post the button press event
-        //  RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Open), NULL);
-        RKH_SMA_POST_FIFO(logic, RKH_UPCAST(RKH_EVT_T , &e_SaltEnable), NULL);
-    }
 }
 
 /**

@@ -59,23 +59,7 @@ uint8_t GATEWAY_ADDRESS[4];
   */
 void MX_LWIP_Init(void)
 {
-  /* iphone - IP addresses initialization
-  IP_ADDRESS[0] = 172;
-  IP_ADDRESS[1] = 20;
-  IP_ADDRESS[2] = 10;
-  IP_ADDRESS[3] = 10;
-  NETMASK_ADDRESS[0] = 255;
-  NETMASK_ADDRESS[1] = 255;
-  NETMASK_ADDRESS[2] = 255;
-  NETMASK_ADDRESS[3] = 240;
-  GATEWAY_ADDRESS[0] = 172;
-  GATEWAY_ADDRESS[1] = 20;
-  GATEWAY_ADDRESS[2] = 10;
-  GATEWAY_ADDRESS[3] = 8;
- */
-
-
-  /* JD Flat - IP addresses initialization */
+  /* IP addresses initialization */
   IP_ADDRESS[0] = 192;
   IP_ADDRESS[1] = 168;
   IP_ADDRESS[2] = 1;
@@ -88,23 +72,6 @@ void MX_LWIP_Init(void)
   GATEWAY_ADDRESS[1] = 168;
   GATEWAY_ADDRESS[2] = 1;
   GATEWAY_ADDRESS[3] = 1;
-
-/* SD Haus - IP addresses initialization
-
-    IP_ADDRESS[0] = 192;
-    IP_ADDRESS[1] = 168;
-    IP_ADDRESS[2] = 0;
-    IP_ADDRESS[3] = 78;
-    NETMASK_ADDRESS[0] = 255;
-    NETMASK_ADDRESS[1] = 255;
-    NETMASK_ADDRESS[2] = 255;
-    NETMASK_ADDRESS[3] = 0;
-    GATEWAY_ADDRESS[0] = 192;
-    GATEWAY_ADDRESS[1] = 168;
-    GATEWAY_ADDRESS[2] = 0;
-    GATEWAY_ADDRESS[3] = 214;
-     */
-
 
 /* USER CODE BEGIN IP_ADDRESSES */
 /* USER CODE END IP_ADDRESSES */

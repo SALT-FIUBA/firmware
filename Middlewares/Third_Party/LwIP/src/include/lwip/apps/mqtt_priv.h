@@ -1,6 +1,6 @@
 /**
  * @file
- * MQTT mqttc_client (private interface)
+ * MQTT client (private interface)
  */
 
 /*
@@ -66,7 +66,7 @@ struct mqtt_ringbuf_t {
   u8_t buf[MQTT_OUTPUT_RINGBUF_SIZE];
 };
 
-/** MQTT mqttc_client */
+/** MQTT client */
 struct mqtt_client_s
 {
   /** Timers and timeouts */

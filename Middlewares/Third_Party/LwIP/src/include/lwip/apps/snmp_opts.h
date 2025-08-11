@@ -255,7 +255,7 @@
  * This value is used to limit the repetitions processed in GetBulk requests (value == 0 means no limitation).
  * This may be useful to limit the load for a single request.
  * According to SNMP RFC 1905 it is allowed to not return all requested variables from a GetBulk request if system load would be too high.
- * so the effect is that the mqttc_client will do more requests to gather all data.
+ * so the effect is that the client will do more requests to gather all data.
  * For the stack this could be useful in case that SNMP processing is done in TCP/IP thread. In this situation a request with many
  * repetitions could block the thread for a longer time. Setting limit here will keep the stack more responsive.
  */

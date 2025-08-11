@@ -1,6 +1,6 @@
 /**
  * @file
- * HTTP mqttc_client
+ * HTTP client
  */
 
 /*
@@ -69,7 +69,7 @@ extern "C" {
 
 /**
  * @ingroup httpc 
- * HTTP mqttc_client result codes
+ * HTTP client result codes
  */
 typedef enum ehttpc_result {
   /** File successfully received */
@@ -98,7 +98,7 @@ typedef struct _httpc_state httpc_state_t;
 
 /**
  * @ingroup httpc 
- * Prototype of a http mqttc_client callback function
+ * Prototype of a http client callback function
  *
  * @param arg argument specified when initiating the request
  * @param httpc_result result of the http transfer (see enum httpc_result_t)
@@ -111,9 +111,9 @@ typedef void (*httpc_result_fn)(void *arg, httpc_result_t httpc_result, u32_t rx
 
 /**
  * @ingroup httpc 
- * Prototype of http mqttc_client callback: called when the headers are received
+ * Prototype of http client callback: called when the headers are received
  *
- * @param connection http mqttc_client connection
+ * @param connection http client connection
  * @param arg argument specified when initiating the request
  * @param hdr header pbuf(s) (may contain data also)
  * @param hdr_len length of the heders in 'hdr'

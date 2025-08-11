@@ -67,7 +67,7 @@ PACK_STRUCT_END
 #endif
 
 
-/* DHCP6 mqttc_client states */
+/* DHCP6 client states */
 typedef enum {
   DHCP6_STATE_OFF               = 0,
   DHCP6_STATE_STATELESS_IDLE    = 1,
@@ -92,11 +92,11 @@ typedef enum {
 
 /** DHCPv6 status codes */
 #define DHCP6_STATUS_SUCCESS        0 /* Success. */
-#define DHCP6_STATUS_UNSPECFAIL     1 /* Failure, reason unspecified; this status code is sent by either a mqttc_client or a server to indicate a failure not explicitly specified in this document. */
+#define DHCP6_STATUS_UNSPECFAIL     1 /* Failure, reason unspecified; this status code is sent by either a client or a server to indicate a failure not explicitly specified in this document. */
 #define DHCP6_STATUS_NOADDRSAVAIL   2 /* Server has no addresses available to assign to the IA(s). */
 #define DHCP6_STATUS_NOBINDING      3 /* Client record (binding) unavailable. */
-#define DHCP6_STATUS_NOTONLINK      4 /* The prefix for the address is not appropriate for the link to which the mqttc_client is attached. */
-#define DHCP6_STATUS_USEMULTICAST   5 /* Sent by a server to a mqttc_client to force the mqttc_client to send messages to the server using the All_DHCP_Relay_Agents_and_Servers address. */
+#define DHCP6_STATUS_NOTONLINK      4 /* The prefix for the address is not appropriate for the link to which the client is attached. */
+#define DHCP6_STATUS_USEMULTICAST   5 /* Sent by a server to a client to force the client to send messages to the server using the All_DHCP_Relay_Agents_and_Servers address. */
 /* More status codes see https://www.iana.org/assignments/dhcpv6-parameters/dhcpv6-parameters.xhtml */
 
 /** DHCPv6 DUID types */
