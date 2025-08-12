@@ -56,6 +56,8 @@ struct WolfSslTcpConMgr {
 
     WolfSslTcpSendEvt * psend;     /* Pointer to send event */
 
+    WOLFSSL_CTX *wolf_ctx;  // Per-instance WolfSSL context
+
     lwip_ssl_ctx_t * ssl_ctx; /* SSL context for TLS */
     WOLFSSL * ssl;           /* WolfSSL session */
 

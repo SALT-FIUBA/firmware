@@ -399,9 +399,8 @@ ssize_t mqtt_pal_recvall(mqtt_pal_socket_handle fd, void* buf, size_t bufsz, int
 
 #include "altcp.h"
 #include "tcp-conmgr.h"
-//  #include "lwip/tcp.h"
+#include "lwip/tcp.h"
 
-/**********************************************************************************************************************/
 /*
  This function sends data over the TCP connection
 
@@ -465,44 +464,44 @@ ssize_t mqttc_pal_recvall(mqttc_pal_socket_handle pcb, void * buf, size_t bufsz,
 }
 
 #elif defined(STM32F429xx) && defined(MQTT_USE_WOLFSSL)
-#include <wolfssl/ssl.h>
 
-#include "mqttc.h"
+    #include <wolfssl/ssl.h>
+    #include "mqttc.h"
 
-ssize_t mqtt_pal_sendall(mqttc_pal_socket_handle fd, const void* buf, size_t len, int flags) {
-    size_t sent = 0;
-    while (sent < len) {
-        int tmp = wolfSSL_write(fd, buf + sent, (int)(len - sent));
-        if (tmp <= 0) {
-            tmp = wolfSSL_get_error(fd, tmp);
-            if (tmp == WOLFSSL_ERROR_WANT_READ || tmp == WOLFSSL_ERROR_WANT_WRITE) {
-                break;
+    ssize_t mqttc_pal_sendall(mqttc_pal_socket_handle fd, const void* buf, size_t len, int flags) {
+        size_t sent = 0;
+        while (sent < len) {
+            int tmp = wolfSSL_write(fd, buf + sent, (int)(len - sent));
+            if (tmp <= 0) {
+                tmp = wolfSSL_get_error(fd, tmp);
+                if (tmp == WOLFSSL_ERROR_WANT_READ || tmp == WOLFSSL_ERROR_WANT_WRITE) {
+                    break;
+                }
+                return MQTT_ERROR_SOCKET_ERROR;
             }
-            return MQTT_ERROR_SOCKET_ERROR;
+            sent += (size_t)tmp;
         }
-        sent += (size_t)tmp;
+        return (ssize_t)sent;
     }
-    return (ssize_t)sent;
-}
 
-ssize_t mqtt_pal_recvall(mqttc_pal_socket_handle fd, void* buf, size_t bufsz, int flags) {
-    const void* const start = buf;
-    int tmp;
-    do {
-        tmp = wolfSSL_read(fd, buf, (int)bufsz);
-        if (tmp <= 0) {
-            tmp = wolfSSL_get_error(fd, tmp);
-            if (tmp == WOLFSSL_ERROR_WANT_READ || tmp == WOLFSSL_ERROR_WANT_WRITE) {
-                break;
+    ssize_t mqttc_pal_recvall(mqttc_pal_socket_handle fd, void* buf, size_t bufsz, int flags) {
+        const void* const start = buf;
+        int tmp;
+        do {
+            tmp = wolfSSL_read(fd, buf, (int)bufsz);
+            if (tmp <= 0) {
+                tmp = wolfSSL_get_error(fd, tmp);
+                if (tmp == WOLFSSL_ERROR_WANT_READ || tmp == WOLFSSL_ERROR_WANT_WRITE) {
+                    break;
+                }
+                return MQTT_ERROR_SOCKET_ERROR;
             }
-            return MQTT_ERROR_SOCKET_ERROR;
-        }
-        buf = (char*)buf + tmp;
-        bufsz -= tmp;
-    } while (tmp > 0 && bufsz > 0);
+            buf = (char*)buf + tmp;
+            bufsz -= tmp;
+        } while (tmp > 0 && bufsz > 0);
 
-    return (ssize_t)(buf - start);
-}
+        return (ssize_t)(buf - start);
+    }
 
 #else
 

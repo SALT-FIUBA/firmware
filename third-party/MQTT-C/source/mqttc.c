@@ -26,6 +26,7 @@ SOFTWARE.
 #include <stdarg.h>
 #include <string.h>
 
+
 // Function to print all MQTT control packet types
 void print_mqtt_control_type(enum MQTTControlPacketType type) {
     switch (type) {

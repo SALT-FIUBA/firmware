@@ -349,49 +349,6 @@ void EXTI15_10_IRQHandler(void) {
     }
 }
 
-
-#if defined(MQTT_USE_WOLFSSL)
-/* WolfSSL LwIP native functions */
-static int lwip_send(WOLFSSL *ssl, char *buf, int sz, void *ctx) {
-
-    lwip_ssl_ctx_t *ssl_ctx = (lwip_ssl_ctx_t *)ctx;
-
-    err_t err = tcp_write(ssl_ctx->pcb, buf, sz, TCP_WRITE_FLAG_COPY);
-    if (err == ERR_OK) {
-        tcp_output(ssl_ctx->pcb);
-        return sz;
-    }
-
-    return WOLFSSL_CBIO_ERR_GENERAL;
-}
-
-static int lwip_recv(WOLFSSL *ssl, char *buf, int sz, void *ctx) {
-
-    lwip_ssl_ctx_t *ssl_ctx = (lwip_ssl_ctx_t *)ctx;
-    if (ssl_ctx->pbuf == NULL) {
-        if (ssl_ctx->closed) return 0;
-        return WOLFSSL_CBIO_ERR_WANT_READ;
-    }
-
-    u16_t copied = pbuf_copy_partial(ssl_ctx->pbuf, buf, sz, ssl_ctx->offset);
-    if (copied > 0) {
-        ssl_ctx->offset += copied;
-        tcp_recved(ssl_ctx->pcb, copied);
-        if (ssl_ctx->offset >= ssl_ctx->pbuf->tot_len) {
-            pbuf_free(ssl_ctx->pbuf);
-            ssl_ctx->pbuf = NULL;
-            ssl_ctx->offset = 0;
-        }
-        return copied;
-    }
-
-    return WOLFSSL_CBIO_ERR_WANT_READ;
-}
-#endif
-
-
-
-
 /* USER CODE END 0 */
 
 /**
@@ -452,11 +409,6 @@ int main(void)
     }
     printf("Link up - IP: %s\n", ip4addr_ntoa(&netif->ip_addr));
     HAL_Delay(1000);
-
-    wolf_ctx = wolfSSL_CTX_new(wolfSSLv23_client_method());
-    wolfSSL_CTX_set_verify(wolf_ctx, SSL_VERIFY_NONE, NULL);
-    wolfSSL_SetIORecv(wolf_ctx, lwip_recv);
-    wolfSSL_SetIOSend(wolf_ctx, lwip_send);
 
     // Set DNS server
     ip_addr_t dns_server;

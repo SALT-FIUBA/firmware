@@ -34,6 +34,9 @@ static void defer(WolfSslTcpConMgr *const me, RKH_EVT_T *pe);
 static void startHandshake(WolfSslTcpConMgr *const me, RKH_EVT_T *pe);
 static void processHandshake(WolfSslTcpConMgr *const me, RKH_EVT_T *pe);
 
+static int lwip_send(WOLFSSL *ssl, char *buf, int sz, void *ctx);
+static int lwip_recv(WOLFSSL *ssl, char *buf, int sz, void *ctx);
+
 /* ......................... Declares entry actions ........................ */
 static void socketOpen(WolfSslTcpConMgr *const me);
 static void socketConnected(WolfSslTcpConMgr *const me);
@@ -135,9 +138,6 @@ static RKH_ROM_STATIC_EVENT(e_RecvFail, evRecvFail);
 /* ---------------------------- Local variables ---------------------------- */
 static RKH_QUEUE_T qDefer;
 static RKH_EVT_T * qDefer_sto[SIZEOF_QDEFER];
-
-/* Global for WolfSSL */
-WOLFSSL_CTX *wolf_ctx;
 
 // Broker details (adjust as needed)
 const char * broker_hostname = "29763578558a437bb804d48d7e8b4e01.s1.eu.hivemq.cloud";
@@ -346,6 +346,18 @@ static void init(WolfSslTcpConMgr *const me, RKH_EVT_T *pe) {
 
     //  printf("\n tcp-conmgr | tcp-conmgr | init \n");
 
+    me->wolf_ctx = wolfSSL_CTX_new(wolfSSLv23_client_method());
+    if (me->wolf_ctx == NULL) {
+        printf("Failed to create WolfSSL context\n");
+        RKH_SMA_POST_FIFO(wolfSslTcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Error), me);
+        return;
+    }
+
+    wolfSSL_CTX_set_verify(me->wolf_ctx, SSL_VERIFY_NONE, NULL);
+    wolfSSL_SetIORecv(me->wolf_ctx, lwip_recv);
+    wolfSSL_SetIOSend(me->wolf_ctx, lwip_send);
+
+
     (void)pe;
     RKH_TMR_INIT(&me->timer, &e_tout, NULL);
     me->tpcb = NULL;
@@ -535,7 +547,6 @@ static void tcp_conmgr_connect_attempt(WolfSslTcpConMgr *const me, RKH_EVT_T *pe
 /* ............................. Entry actions ............................. */
 static void socketOpen(WolfSslTcpConMgr *const me) {
 
-
     #if defined(MQTT_USE_WOLFSSL)
 
         err_t err = dns_gethostbyname(broker_hostname, &broker_ip, dns_callback, me);
@@ -565,7 +576,7 @@ static void enHandshaking(WolfSslTcpConMgr *const me) {
     me->ssl_ctx->offset = 0;
     me->ssl_ctx->closed = 0;
 
-    me->ssl = wolfSSL_new(wolf_ctx);
+    me->ssl = wolfSSL_new(me->wolf_ctx);
     if (me->ssl == NULL) {
         RKH_SMA_POST_FIFO(wolfSslTcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Error), me);
         return;
@@ -618,7 +629,10 @@ static void socketClose(WolfSslTcpConMgr *const me) {
         mem_free(me->ssl_ctx);
         me->ssl_ctx = NULL;
     }
-
+    if (me->wolf_ctx) {
+        wolfSSL_CTX_free(me->wolf_ctx);
+        me->wolf_ctx = NULL;
+    }
 }
 
 static void socketClosed(WolfSslTcpConMgr *const me) {
@@ -657,6 +671,44 @@ static void processHandshake(WolfSslTcpConMgr *const me, RKH_EVT_T *pe) {
 }
 
 
+#if defined(MQTT_USE_WOLFSSL)
+/* WolfSSL LwIP native functions */
+static int lwip_send(WOLFSSL *ssl, char *buf, int sz, void *ctx) {
+
+    lwip_ssl_ctx_t *ssl_ctx = (lwip_ssl_ctx_t *)ctx;
+
+    err_t err = tcp_write(ssl_ctx->pcb, buf, sz, TCP_WRITE_FLAG_COPY);
+    if (err == ERR_OK) {
+        tcp_output(ssl_ctx->pcb);
+        return sz;
+    }
+
+    return WOLFSSL_CBIO_ERR_GENERAL;
+}
+
+static int lwip_recv(WOLFSSL *ssl, char *buf, int sz, void *ctx) {
+
+    lwip_ssl_ctx_t *ssl_ctx = (lwip_ssl_ctx_t *)ctx;
+    if (ssl_ctx->pbuf == NULL) {
+        if (ssl_ctx->closed) return 0;
+        return WOLFSSL_CBIO_ERR_WANT_READ;
+    }
+
+    u16_t copied = pbuf_copy_partial(ssl_ctx->pbuf, buf, sz, ssl_ctx->offset);
+    if (copied > 0) {
+        ssl_ctx->offset += copied;
+        tcp_recved(ssl_ctx->pcb, copied);
+        if (ssl_ctx->offset >= ssl_ctx->pbuf->tot_len) {
+            pbuf_free(ssl_ctx->pbuf);
+            ssl_ctx->pbuf = NULL;
+            ssl_ctx->offset = 0;
+        }
+        return copied;
+    }
+
+    return WOLFSSL_CBIO_ERR_WANT_READ;
+}
+#endif
 
 
 
