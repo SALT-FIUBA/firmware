@@ -412,10 +412,10 @@ brokerConnect(TCP_MQTTProt *const me, RKH_EVT_T *pe)
         printf("MQTT-C init failed %d \n", mqtt_error);
     }
 
-    mqtt_error = mqttc_connect(&me->mqttc_client,
+    mqttc_connect(&me->mqttc_client,
                                me->config->clientId,
                                NULL, NULL, 0,
-                               NULL, NULL, MQTT_CONNECT_CLEAN_SESSION,
+                               "nucleo144_client", "Nucleo144", MQTT_CONNECT_CLEAN_SESSION,
                                me->config->keepAlive);
  //   printf("mqttc_connect %d %s \n", mqtt_error, mqttc_error_str(mqtt_error));
 

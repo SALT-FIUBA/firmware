@@ -394,7 +394,7 @@ int main(void)
     rkh_fwk_registerEvtPool(evPool3Sto, SIZEOF_EP3STO, SIZEOF_EP3_BLOCK); //    TcpSendEvt
 
     /* Wait for network interface to be up */
-    printf("\n %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% \n");
+    printf("\n --------------------------------------------------------- \n");
     printf("Waiting for network interface...\n");
     struct netif * netif = netif_default;
     while (netif == NULL || !netif_is_up(netif)) {
@@ -410,15 +410,7 @@ int main(void)
     printf("Link up - IP: %s\n", ip4addr_ntoa(&netif->ip_addr));
     HAL_Delay(1000);
 
-    // Set DNS server
-    ip_addr_t dns_server;
-    IP4_ADDR(&dns_server, 8, 8, 8, 8);
-    dns_setserver(0, &dns_server);
 
-    RKH_SMA_ACTIVATE(wolfSslTcpConMgr, ConMgr_qsto, CONMGR_QSTO_SIZE, 0, 0);
-    RKH_SMA_POST_FIFO(wolfSslTcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Open), NULL);
-
- /*
     mqttProtCfg.publishTime = 5;
     mqttProtCfg.syncTime = 4;
     mqttProtCfg.keepAlive = 400;
@@ -431,19 +423,18 @@ int main(void)
 
     logicCfg.publishTime = 8;
     logic_ctor(&logicCfg);
-
-     RKH_SMA_ACTIVATE(tcpMqttProt, MQTTProt_qsto, MQTTPROT_QSTO_SIZE, 0, 0);
+    RKH_SMA_ACTIVATE(wolfSslTcpConMgr, ConMgr_qsto, CONMGR_QSTO_SIZE, 0, 0);
+    RKH_SMA_ACTIVATE(tcpMqttProt, MQTTProt_qsto, MQTTPROT_QSTO_SIZE, 0, 0);
     RKH_SMA_ACTIVATE(logic, Logic_qsto, LOGIC_QSTO_SIZE, 0,0);
-*/
 
-
+    RKH_SMA_POST_FIFO(wolfSslTcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Open), NULL);
 
     initEnd = true;
 
     rkh_fwk_enter();
 
     return 0;
-  /* USER CODE END 2 */
+    /* USER CODE END 2 */
 
 }
 

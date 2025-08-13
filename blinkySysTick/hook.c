@@ -108,7 +108,7 @@ rkh_hook_timetick(void)
 void
 rkh_hook_idle(void)             // called within critical section
 {
-
+    MX_LWIP_Process();
     MX_LWIP_Process();
     RKH_ENA_INTERRUPT();
     RKH_TRC_FLUSH();
