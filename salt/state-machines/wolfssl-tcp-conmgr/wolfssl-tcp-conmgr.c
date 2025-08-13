@@ -140,7 +140,13 @@ static RKH_QUEUE_T qDefer;
 static RKH_EVT_T * qDefer_sto[SIZEOF_QDEFER];
 
 // Broker details (adjust as needed)
-const char * broker_hostname = "29763578558a437bb804d48d7e8b4e01.s1.eu.hivemq.cloud";
+// Nando's hivemq broker -> 29763578558a437bb804d48d7e8b4e01.s1.eu.hivemq.cloud
+// Mati's hivemq broker -> 007f5e0286aa4c36ba410312d36d42f0.s1.eu.hivemq.cloud
+
+const char * broker_hostname = "007f5e0286aa4c36ba410312d36d42f0.s1.eu.hivemq.cloud";
+
+
+
 const uint16_t broker_port = 8883;
 ip_addr_t broker_ip;
 
