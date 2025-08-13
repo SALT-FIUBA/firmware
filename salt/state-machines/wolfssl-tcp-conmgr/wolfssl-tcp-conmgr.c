@@ -46,6 +46,8 @@ static void enHandshaking(WolfSslTcpConMgr *const me);
 static void socketClose(WolfSslTcpConMgr *const me);
 static void socketClosed(WolfSslTcpConMgr *const me);
 
+static void handleHandshakeTimeout(WolfSslTcpConMgr *const me, RKH_EVT_T *pe);
+
 
 /* ........................ States and pseudostates ........................ */
 RKH_CREATE_BASIC_STATE(WolfSslTcpConMgr_inactive, NULL, NULL, RKH_ROOT, NULL);
@@ -71,7 +73,7 @@ RKH_CREATE_BASIC_STATE(WolfSslTcpConMgr_handshaking, enHandshaking, NULL, &WolfS
 RKH_CREATE_TRANS_TABLE(WolfSslTcpConMgr_handshaking)
     RKH_TRINT(evDataReceived, NULL, processHandshake),
     RKH_TRREG(evSslSuccess, NULL, NULL, &WolfSslTcpConMgr_connected),
-    RKH_TRREG(evTimeout, NULL, NULL, &WolfSslTcpConMgr_inactive),
+    RKH_TRINT(evTimeout, NULL, handleHandshakeTimeout),
 RKH_END_TRANS_TABLE
 
 RKH_CREATE_BASIC_STATE(WolfSslTcpConMgr_connected, socketConnected, NULL, &WolfSslTcpConMgr_active, NULL);
@@ -471,38 +473,24 @@ static err_t tcp_connected_callback(void *arg, struct tcp_pcb *tpcb, err_t err) 
 }
 
 static err_t lwip_tcp_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_t err) {
-
-    printf("tcp_tcp_recv \n");
-
     lwip_ssl_ctx_t *ssl_ctx = (lwip_ssl_ctx_t *)arg;
-    WolfSslTcpConMgr *me = (WolfSslTcpConMgr *)tpcb->callback_arg;  // Assuming callback_arg is me
     if (err != ERR_OK) {
         printf("TCP receive error: %d\n", err);
         if (p != NULL) pbuf_free(p);
-        RKH_SMA_POST_FIFO(wolfSslTcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Error), me);
-
         return err;
     }
-
-    if (p == NULL) {
-        printf("TCP connection closed by peer\n");
-        ssl_ctx->closed = 1;
-        RKH_SMA_POST_FIFO(wolfSslTcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Error), me);
-
-        return ERR_OK;
-    }
-
-    // Append pbuf
-    if (ssl_ctx->pbuf == NULL) {
-        ssl_ctx->pbuf = p;
+    if (p != NULL) {
+        printf("Received %u bytes from broker\n", p->tot_len);
+        if (ssl_ctx->pbuf == NULL) {
+            ssl_ctx->pbuf = p;
+        } else {
+            pbuf_cat(ssl_ctx->pbuf, p);
+        }
+        RKH_SMA_POST_FIFO(wolfSslTcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_DataReceived), NULL);  // Post for processHandshake
     } else {
-        pbuf_cat(ssl_ctx->pbuf, p);
+        ssl_ctx->closed = 1;
+        printf("TCP connection closed by peer\n");
     }
-
-    if (p != NULL) printf("Received %u bytes\n", p->tot_len);
-
-    // Post event to process data (e.g., for handshake)
-    RKH_SMA_POST_FIFO(wolfSslTcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_DataReceived), me);
 
     return ERR_OK;
 }
@@ -511,14 +499,11 @@ static err_t lwip_tcp_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_
 static void tcp_conmgr_connect_attempt(WolfSslTcpConMgr *const me, RKH_EVT_T *pe) {
     printf("tcp_conmgr_connect_attempt\n");
 
-    int counter = 0;
-
     // Allocate TCP PCB
     me->tpcb = tcp_new();
     if (me->tpcb == NULL) {
-        printf("Failed to create TCP PCB | counter: %d \n", counter);
+        printf("Failed to create TCP PCB \n");
         RKH_SMA_POST_FIFO(wolfSslTcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Error), me);
-        counter++;
         return;
     }
 
@@ -555,6 +540,7 @@ static void tcp_conmgr_connect_attempt(WolfSslTcpConMgr *const me, RKH_EVT_T *pe
         RKH_SMA_POST_FIFO(wolfSslTcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Error), me);
     } else {
         // Start connection timeout timer
+        // TODO check if this timer is necessary
         RKH_TMR_ONESHOT(&me->timer, RKH_UPCAST(RKH_SMA_T, me), RKH_TIME_MS(10000));  // 10s timeout for connect
     }
 }
@@ -591,37 +577,37 @@ static void enHandshaking(WolfSslTcpConMgr *const me) {
 
     printf("enHandshaking \n");
 
-    me->ssl_ctx = mem_malloc(sizeof(lwip_ssl_ctx_t));
-    if (me->ssl_ctx == NULL) {
-        RKH_SMA_POST_FIFO(wolfSslTcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Error), me);
-        return;
-    }
-    me->ssl_ctx->pcb = me->tpcb;
-    me->ssl_ctx->pbuf = NULL;
-    me->ssl_ctx->offset = 0;
-    me->ssl_ctx->closed = 0;
+    if (me->ssl == NULL)
+    {
+        me->ssl = wolfSSL_new(me->wolf_ctx);
+        if (me->ssl == NULL) {
+            RKH_SMA_POST_FIFO(wolfSslTcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Error), me);
+            return;
+        }
 
-    me->ssl = wolfSSL_new(me->wolf_ctx);
-    if (me->ssl == NULL) {
-        RKH_SMA_POST_FIFO(wolfSslTcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Error), me);
-        return;
+        wolfSSL_SetIOReadCtx(me->ssl, me->ssl_ctx);
+        wolfSSL_SetIOWriteCtx(me->ssl, me->ssl_ctx);
+        wolfSSL_UseSNI(me->ssl, WOLFSSL_SNI_HOST_NAME, broker_hostname, strlen(broker_hostname));
+        printf("WolfSSL session created, starting handshake with %s\n", broker_hostname);
     }
-
-    wolfSSL_SetIOReadCtx(me->ssl, me->ssl_ctx);
-    wolfSSL_SetIOWriteCtx(me->ssl, me->ssl_ctx);
-    wolfSSL_UseSNI(me->ssl, WOLFSSL_SNI_HOST_NAME, broker_hostname, strlen(broker_hostname));
 
     int ret = wolfSSL_connect(me->ssl);
     if (ret == WOLFSSL_SUCCESS) {
+        printf("SSL handshake successful on entry\n");
+        me->handshake_retries = 0;
         RKH_SMA_POST_FIFO(wolfSslTcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_SslSuccess), me);
+
     } else {
         int err = wolfSSL_get_error(me->ssl, ret);
+        printf("Initial wolfSSL_connect ret: %d, err: %d\n", ret, err);
+
         if (err == WOLFSSL_ERROR_WANT_READ || err == WOLFSSL_ERROR_WANT_WRITE) {
             printf("Initial handshake needs %s\n", (err == WOLFSSL_ERROR_WANT_READ) ? "READ" : "WRITE");
             // Wait for data or write opportunity, start timeout timer
-            RKH_TMR_ONESHOT(&me->timer, RKH_UPCAST(RKH_SMA_T, me), RKH_TIME_MS(30000));
+            RKH_TMR_ONESHOT(&me->timer, RKH_UPCAST(RKH_SMA_T, me), RKH_TIME_MS(10000));
         } else {
             printf("Initial handshake failed with error: %d\n", err);
+            wolfSSL_free(me->ssl);
             RKH_SMA_POST_FIFO(wolfSslTcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Error), me);
         }
     }
@@ -683,33 +669,37 @@ static void startHandshake(WolfSslTcpConMgr *const me, RKH_EVT_T *pe) {
 
 
 static void processHandshake(WolfSslTcpConMgr *const me, RKH_EVT_T *pe) {
-
     printf("processHandshake\n");
 
     int ret = wolfSSL_connect(me->ssl);
 
     if (ret == WOLFSSL_SUCCESS) {
-
         printf("SSL handshake successful\n");
-        me->handshake_retries = 0;  // Reset
+        me->handshake_retries = 0;
         RKH_SMA_POST_FIFO(wolfSslTcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_SslSuccess), me);
-
     } else {
 
         int err = wolfSSL_get_error(me->ssl, ret);
-        printf("wolfSSL_connect err: %d\n", err);  // NEW: Log exact err (-323 for WANT_READ)
+        printf("wolfSSL_connect ret: %d, err: %d\n", ret, err);  // Better debug (ret often -1 for WANT_*)
 
         if (err == WOLFSSL_ERROR_WANT_READ || err == WOLFSSL_ERROR_WANT_WRITE) {
 
             printf("SSL handshake in progress: %s\n", err == WOLFSSL_ERROR_WANT_READ ? "WANT_READ" : "WANT_WRITE");
-            me->handshake_retries++;  // NEW: Increment on WANT_*
-            if (me->handshake_retries >= 10) {  // NEW: Higher threshold (match bare-metal ~7)
-                printf("Max WANT_READ retries reached, error\n");
+            me->handshake_retries++;
+            if (me->handshake_retries >= 20) {  // Higher limit
+                printf("Max WANT_READ/WRITE retries reached (%d), error\n", me->handshake_retries);
                 me->handshake_retries = 0;
                 RKH_SMA_POST_FIFO(wolfSslTcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Error), me);
             } else {
-                rkh_tmr_stop(&me->timer);
-                RKH_TMR_ONESHOT(&me->timer, RKH_UPCAST(RKH_SMA_T, me), RKH_TIME_MS(10000));  // Restart timer
+                if (me->ssl_ctx->pbuf != NULL && me->ssl_ctx->pbuf->tot_len > 0)
+                {
+                    printf("Pending data in pbuf, reposting evDataReceived\n");
+                    RKH_SMA_POST_FIFO(wolfSslTcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_DataReceived), me);
+                } else
+                {
+                    rkh_tmr_stop(&me->timer);
+                    RKH_TMR_ONESHOT(&me->timer, RKH_UPCAST(RKH_SMA_T, me), RKH_TIME_MS(10000));
+                }
             }
         } else {
 
@@ -754,23 +744,21 @@ static int lwip_recv(WOLFSSL *ssl, char *buf, int sz, void *ctx) {
         ssl_ctx->offset = 0;
         printf("lwip_recv: pbuf fully consumed\n");
     }
+
     return copied ? copied : WOLFSSL_CBIO_ERR_WANT_READ;
 }
 
 #endif
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+static void handleHandshakeTimeout(WolfSslTcpConMgr *const me, RKH_EVT_T *pe) {
+    if (me->handshake_retries < 20 && me->ssl_ctx->pbuf != NULL) {
+        printf("Timeout but data pending, reposting evDataReceived\n");
+        RKH_SMA_POST_FIFO(wolfSslTcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_DataReceived), me);
+        RKH_TMR_ONESHOT(&me->timer, RKH_UPCAST(RKH_SMA_T, me), RKH_TIME_MS(10000));  // Restart
+    } else {
+        printf("Handshake timeout, error\n");
+        RKH_SMA_POST_FIFO(wolfSslTcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Error), me);
+    }
+}
 

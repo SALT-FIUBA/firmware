@@ -1236,7 +1236,7 @@
  * will be TCP_WND >> TCP_RCV_SCALE
  */
 #if !defined TCP_WND || defined __DOXYGEN__
-#define TCP_WND                         (4 * TCP_MSS)
+#define TCP_WND                         (8 * TCP_MSS)
 #endif
 
 /**
@@ -1311,7 +1311,7 @@
  * To achieve good performance, this should be at least 2 * TCP_MSS.
  */
 #if !defined TCP_SND_BUF || defined __DOXYGEN__
-#define TCP_SND_BUF                     (2 * TCP_MSS)
+#define TCP_SND_BUF                     (4 * TCP_MSS)
 #endif
 
 /**
