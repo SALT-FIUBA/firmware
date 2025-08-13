@@ -2,6 +2,13 @@
 
 ## stm32 wolfssl-tcp-conmgr + mqtt-prot + logic state machines working - SALT DISABLED
 
++ Add `DMQTT_USE_WOLFSSL` to enable mqttc wolfssl support and wolfssl-tcp-conmgr state machine functions.
+
+    ```json 
+    add_definitions(-DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -DMQTT_USE_WOLFSSL)
+    ```
+
+
 ### stm32 huart port
 
 ```json

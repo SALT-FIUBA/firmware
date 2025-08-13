@@ -61,12 +61,8 @@ struct WolfSslTcpConMgr {
     lwip_ssl_ctx_t * ssl_ctx; /* SSL context for TLS */
     WOLFSSL * ssl;           /* WolfSSL session */
 
-    uint8_t handshake_retries;  // Limit handshake retries
+    uint8_t handshake_retries;  /* Limit handshake retries */
 
-    // Removed recv_buffer; use ssl_ctx->pbuf for TLS
 };
-
-
-
 /* ......................... Declares active object ........................ */
 RKH_SMA_DCLR(wolfSslTcpConMgr);

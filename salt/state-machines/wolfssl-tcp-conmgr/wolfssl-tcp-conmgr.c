@@ -1,6 +1,6 @@
 /**
- *  \file       tcp-conmgr.c
- *  \brief      Implementation of TCP connection manager for a generic TCP server using lwIP.
+ *  \file       wolf-ssl-tcp-conmgr.c
+ *  \brief      Implementation of TCP/TLS connection manager for a generic TCP/TLS server using lwIP.
  */
 
 /* ----------------------------- Include files ----------------------------- */
@@ -14,7 +14,8 @@
 /* ......................... Declares active object ........................ */
 
 /* ................... Declares states and pseudostates .................... */
-RKH_DCLR_BASIC_STATE WolfSslTcpConMgr_inactive, WolfSslTcpConMgr_connecting, WolfSslTcpConMgr_connected, WolfSslTcpConMgr_sending, WolfSslTcpConMgr_receiving, WolfSslTcpConMgr_handshaking;
+RKH_DCLR_BASIC_STATE WolfSslTcpConMgr_inactive, WolfSslTcpConMgr_connecting, WolfSslTcpConMgr_connected,
+                     WolfSslTcpConMgr_sending, WolfSslTcpConMgr_receiving, WolfSslTcpConMgr_handshaking;
 RKH_DCLR_COMP_STATE WolfSslTcpConMgr_active;
 RKH_DCLR_FINAL_STATE WolfSslTcpConMgr_activeFinal;
 
@@ -24,11 +25,7 @@ static void init(WolfSslTcpConMgr *const me, RKH_EVT_T *pe);
 /* ........................ Declares effect actions ........................ */
 static void open(WolfSslTcpConMgr *const me, RKH_EVT_T *pe);
 static void close(WolfSslTcpConMgr *const me, RKH_EVT_T *pe);
-static void send_data(WolfSslTcpConMgr *const me, RKH_EVT_T *pe);
-static void flush_data(WolfSslTcpConMgr *const me, RKH_EVT_T *pe);
-static void read_data(WolfSslTcpConMgr *const me, RKH_EVT_T *pe);
 static void tcp_conmgr_connect_attempt(WolfSslTcpConMgr *const me, RKH_EVT_T *pe);
-static void defer(WolfSslTcpConMgr *const me, RKH_EVT_T *pe);
 
 // handshake prototypes
 static void startHandshake(WolfSslTcpConMgr *const me, RKH_EVT_T *pe);
@@ -102,7 +99,6 @@ RKH_SMA_DEF_PTR(wolfSslTcpConMgr);
 /* ------------------------------- Constants ------------------------------- */
 
 // internal usage
-
 static RKH_STATIC_EVENT(e_tout, evTimeout);
 static RKH_ROM_STATIC_EVENT(e_Open, evOpen);
 static RKH_ROM_STATIC_EVENT(e_Close, evClose);
@@ -119,9 +115,7 @@ static RKH_ROM_STATIC_EVENT(e_DataReceived, evDataReceived);
 static RKH_ROM_STATIC_EVENT(e_DnsResolved, evDnsResolved);
 static RKH_ROM_STATIC_EVENT(e_SslSuccess, evSslSuccess);
 
-
 // external usage. events used to post to mqttProt state machine
-
 static RKH_ROM_STATIC_EVENT(e_NetConnected, evNetConnected);
 static RKH_ROM_STATIC_EVENT(e_NetDisconnected, evNetDisconnected);
 
@@ -139,13 +133,10 @@ static RKH_ROM_STATIC_EVENT(e_RecvFail, evRecvFail);
 static RKH_QUEUE_T qDefer;
 static RKH_EVT_T * qDefer_sto[SIZEOF_QDEFER];
 
-// Broker details (adjust as needed)
+// Broker details
 // Nando's hivemq broker -> 29763578558a437bb804d48d7e8b4e01.s1.eu.hivemq.cloud
 // Mati's hivemq broker -> 007f5e0286aa4c36ba410312d36d42f0.s1.eu.hivemq.cloud
-
 const char * broker_hostname = "007f5e0286aa4c36ba410312d36d42f0.s1.eu.hivemq.cloud";
-
-
 
 const uint16_t broker_port = 8883;
 ip_addr_t broker_ip;
@@ -153,28 +144,6 @@ ip_addr_t broker_ip;
 /* ---------------------------- Local functions ---------------------------- */
 
 #if defined(MQTT_USE_WOLFSSL)
-
-/* LwIP TCP recv callback for TLS */
-/* TODO REDEFINITION,   FIRST ONE IN LINE 189
-static err_t lwip_tcp_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_t err) {
-
-    WolfSslTcpConMgr * me = (WolfSslTcpConMgr *)arg;
-    if (p != NULL) {
-        if (me->ssl_ctx->pbuf == NULL) {
-            me->ssl_ctx->pbuf = p;
-        } else {
-            pbuf_cat(me->ssl_ctx->pbuf, p);
-        }
-        // Post evDataReceived
-        RKH_SMA_POST_FIFO(wolfSslTcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_DataReceived), me);
-    } else {
-        me->ssl_ctx->closed = 1;
-        RKH_SMA_POST_FIFO(wolfSslTcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Error), me);
-    }
-
-    return ERR_OK;
-}
-*/
 
 // DNS callback
 static void dns_callback(const char *name, const ip_addr_t *ipaddr, void *callback_arg) {
@@ -352,7 +321,7 @@ static err_t tcp_conmgr_connect_callback(void *arg, struct tcp_pcb *tpcb, err_t 
 /* ............................ Initial action ............................. */
 static void init(WolfSslTcpConMgr *const me, RKH_EVT_T *pe) {
 
-    printf("init \n");
+    //  printf("init \n");
 
     //  wolfSSL_Debugging_ON();
     me->wolf_ctx = wolfSSL_CTX_new(wolfSSLv23_client_method());
@@ -398,60 +367,20 @@ static void close(WolfSslTcpConMgr *const me, RKH_EVT_T *pe) {
     }
 }
 
-
-static err_t tcp_conmgr_poll_callback(void *arg, struct tcp_pcb *tpcb) {
-    printf("tcp_conmgr_poll_callback \n");
-
-    WolfSslTcpConMgr *me = (WolfSslTcpConMgr *)arg;
-
-    /* TODO:
-        printf("tcp-conmgr | tcp-conmgr | pre alloc TcpSendEvt \n");
-        TcpSendEvt *evt = RKH_ALLOC_EVT(TcpSendEvt, evSend, me);
-        if (evt == NULL) {
-            printf("tcp-conmgr | tcp-conmgr | alloc failed \n");
-            return ERR_OK;
-        }
-        printf("tcp-conmgr | tcp-conmgr | post alloc TcpSendEvt \n");
-
-        char *testData = "Hello, TCP ! \n";
-        ruint dataSize = strlen(testData) + 1;
-
-        printf("tcp-conmgr | test data: %s \n", testData);
-        printf("tcp-conmgr | data size: %u \n", dataSize);
-
-        memcpy(evt->buf, testData, dataSize);
-        evt->size = dataSize;
-
-        printf("tcp-conmgr | evt->buf: %s \n", evt->buf);
-        printf("tcp-conmgr | evt->size: %d \n", evt->size);
-        printf("tcp-conmgr | evt->evt.e: %d \n", evt->evt.e);
-
-
-        printf("tcp-conmgr | tcp-conmgr | Posting TcpSendEvt \n");
-        RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, evt), me);
-        printf("tcp-conmgr | tcp-conmgr | After post TcpSendEvt \n");
-    */
-
-    return ERR_OK;
-
-}
-
-
 static void tcp_err_callback(void *arg, err_t err) {
-    printf("tcp_err_callback \n");
+    //  printf("tcp_err_callback \n");
 
     WolfSslTcpConMgr *me = (WolfSslTcpConMgr *)arg;
-    printf("TCP error: %d\n", err);  // Common errors: -1 (ERR_ABRT aborted), -5 (ERR_RST reset), -11 (ERR_TIMEOUT)
+    //  printf("TCP error: %d\n", err);  // Common errors: -1 (ERR_ABRT aborted), -5 (ERR_RST reset), -11 (ERR_TIMEOUT)
     socketClose(me);  // Cleanup resources
 
     RKH_SMA_POST_FIFO(wolfSslTcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Error), me);  // Post error event to trigger state transition
 }
 
 static err_t tcp_poll_callback(void *arg, struct tcp_pcb *tpcb) {
-    //TODO printf("tcp_poll_callback \n");
+    // printf("tcp_poll_callback \n");
 
     WolfSslTcpConMgr *me = (WolfSslTcpConMgr *)arg;
-    //TODO  printf("TCP poll: connection pending\n");
     if (tpcb->state == CLOSED || tpcb->state == TIME_WAIT) {
         socketClose(me);
         RKH_SMA_POST_FIFO(wolfSslTcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Error), me);
@@ -462,7 +391,7 @@ static err_t tcp_poll_callback(void *arg, struct tcp_pcb *tpcb) {
 
 static err_t tcp_connected_callback(void *arg, struct tcp_pcb *tpcb, err_t err) {
 
-    printf("tcp_connected_callback \n");
+    //  printf("tcp_connected_callback \n");
 
     WolfSslTcpConMgr * me = (WolfSslTcpConMgr *)arg;
     if (err == ERR_OK) {
@@ -479,6 +408,7 @@ static err_t tcp_connected_callback(void *arg, struct tcp_pcb *tpcb, err_t err) 
 }
 
 static err_t lwip_tcp_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_t err) {
+
     lwip_ssl_ctx_t *ssl_ctx = (lwip_ssl_ctx_t *)arg;
     if (err != ERR_OK) {
         printf("TCP receive error: %d\n", err);
@@ -498,14 +428,15 @@ static err_t lwip_tcp_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_
         printf("TCP connection closed by peer\n");
     }
 
+
     return ERR_OK;
 }
 
 
 static void tcp_conmgr_connect_attempt(WolfSslTcpConMgr *const me, RKH_EVT_T *pe) {
-    printf("tcp_conmgr_connect_attempt\n");
+    //  printf("tcp_conmgr_connect_attempt\n");
 
-    // Allocate TCP PCB
+    // allocate TCP PCB
     me->tpcb = tcp_new();
     if (me->tpcb == NULL) {
         printf("Failed to create TCP PCB \n");
@@ -513,7 +444,7 @@ static void tcp_conmgr_connect_attempt(WolfSslTcpConMgr *const me, RKH_EVT_T *pe
         return;
     }
 
-    // Allocate SSL context
+    // allocate SSL context
     me->ssl_ctx = mem_malloc(sizeof(lwip_ssl_ctx_t));
     if (me->ssl_ctx == NULL) {
         tcp_close(me->tpcb);
@@ -523,19 +454,19 @@ static void tcp_conmgr_connect_attempt(WolfSslTcpConMgr *const me, RKH_EVT_T *pe
         return;
     }
 
-    // Initialize SSL context
+    // initialize SSL context
     me->ssl_ctx->pcb = me->tpcb;
     me->ssl_ctx->pbuf = NULL;
     me->ssl_ctx->offset = 0;
     me->ssl_ctx->closed = 0;
 
-    // Set callbacks
+    // set callbacks
     tcp_arg(me->tpcb, me->ssl_ctx);  // Pass ssl_ctx as arg for callbacks
     tcp_err(me->tpcb, tcp_err_callback);
     tcp_poll(me->tpcb, tcp_poll_callback, 10);  // Poll every 5 seconds (10 * 0.5s tick)
     tcp_recv(me->tpcb, lwip_tcp_recv);
 
-    // Initiate connect
+    // initiate connect
     err_t err = tcp_connect(me->tpcb, &broker_ip, broker_port, tcp_connected_callback);
     if (err != ERR_OK) {
         mem_free(me->ssl_ctx);
@@ -546,7 +477,6 @@ static void tcp_conmgr_connect_attempt(WolfSslTcpConMgr *const me, RKH_EVT_T *pe
         RKH_SMA_POST_FIFO(wolfSslTcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Error), me);
     } else {
         // Start connection timeout timer
-        // TODO check if this timer is necessary
         RKH_TMR_ONESHOT(&me->timer, RKH_UPCAST(RKH_SMA_T, me), RKH_TIME_MS(10000));  // 10s timeout for connect
     }
 }
@@ -554,15 +484,14 @@ static void tcp_conmgr_connect_attempt(WolfSslTcpConMgr *const me, RKH_EVT_T *pe
 
 /* ............................. Entry actions ............................. */
 static void socketOpen(WolfSslTcpConMgr *const me) {
-    printf("socketOpen \n");
+    //  printf("socketOpen \n");
 
     #if defined(MQTT_USE_WOLFSSL)
 
-        // Set DNS server
+        // set DNS server
         ip_addr_t dns_server;
         IP4_ADDR(&dns_server, 8, 8, 8, 8);
         dns_setserver(0, &dns_server);
-
 
         err_t err = dns_gethostbyname(broker_hostname, &broker_ip, dns_callback, me);
         if (err == ERR_OK) {
@@ -581,7 +510,7 @@ static void socketOpen(WolfSslTcpConMgr *const me) {
 
 static void enHandshaking(WolfSslTcpConMgr *const me) {
 
-    printf("enHandshaking \n");
+    //  printf("enHandshaking \n");
 
     if (me->ssl == NULL)
     {
@@ -621,7 +550,7 @@ static void enHandshaking(WolfSslTcpConMgr *const me) {
 
 static void socketConnected(WolfSslTcpConMgr *const me) {
 
-    printf("socketConnected \n");
+    //  printf("socketConnected \n");
 
     bsp_netStatus(ConnectedSt);
     rkh_sma_recall((RKH_SMA_T *)me, &qDefer);
@@ -636,7 +565,7 @@ static void socketConnected(WolfSslTcpConMgr *const me) {
 /* ............................. Exit actions ............................. */
 static void socketClose(WolfSslTcpConMgr *const me) {
 
-    printf("socketClose \n");
+    // printf("socketClose \n");
 
     rkh_tmr_stop(&me->timer);
 
@@ -659,7 +588,7 @@ static void socketClose(WolfSslTcpConMgr *const me) {
 
 static void socketClosed(WolfSslTcpConMgr *const me) {
 
-    printf("socketClosed \n");
+    //  printf("socketClosed \n");
 
     bsp_netStatus(DisconnectedSt);
 
@@ -668,14 +597,14 @@ static void socketClosed(WolfSslTcpConMgr *const me) {
 
 /* ........................ Effect actions ........................ */
 static void startHandshake(WolfSslTcpConMgr *const me, RKH_EVT_T *pe) {
-    printf("startHandshake\n");
+    //  printf("startHandshake\n");
 
     tcp_recv(me->tpcb, lwip_tcp_recv);  // Set TLS recv callback
 }
 
 
 static void processHandshake(WolfSslTcpConMgr *const me, RKH_EVT_T *pe) {
-    printf("processHandshake\n");
+    //  printf("processHandshake\n");
 
     int ret = wolfSSL_connect(me->ssl);
 
@@ -686,7 +615,7 @@ static void processHandshake(WolfSslTcpConMgr *const me, RKH_EVT_T *pe) {
     } else {
 
         int err = wolfSSL_get_error(me->ssl, ret);
-        printf("wolfSSL_connect ret: %d, err: %d\n", ret, err);  // Better debug (ret often -1 for WANT_*)
+        //  printf("wolfSSL_connect ret: %d, err: %d\n", ret, err);  // Better debug (ret often -1 for WANT_*)
 
         if (err == WOLFSSL_ERROR_WANT_READ || err == WOLFSSL_ERROR_WANT_WRITE) {
 
@@ -721,7 +650,7 @@ static void processHandshake(WolfSslTcpConMgr *const me, RKH_EVT_T *pe) {
 /* WolfSSL LwIP native functions */
 static int lwip_send(WOLFSSL *ssl, char *buf, int sz, void *ctx) {
 
-    printf("lwip_send\n");
+    //  printf("lwip_send\n");
 
     lwip_ssl_ctx_t *ssl_ctx = (lwip_ssl_ctx_t *)ctx;
 
@@ -735,13 +664,15 @@ static int lwip_send(WOLFSSL *ssl, char *buf, int sz, void *ctx) {
 }
 
 static int lwip_recv(WOLFSSL *ssl, char *buf, int sz, void *ctx) {
+
     lwip_ssl_ctx_t *ssl_ctx = (lwip_ssl_ctx_t *)ctx;
     if (ssl_ctx->pbuf == NULL) {
         if (ssl_ctx->closed) return 0;
         return WOLFSSL_CBIO_ERR_WANT_READ;
     }
+
     u16_t copied = pbuf_copy_partial(ssl_ctx->pbuf, buf, sz, ssl_ctx->offset);
-    printf("lwip_recv: copied %u bytes, requested %d, pbuf tot_len %u, offset %u\n", copied, sz, ssl_ctx->pbuf->tot_len, ssl_ctx->offset);
+    //  printf("lwip_recv: copied %u bytes, requested %d, pbuf tot_len %u, offset %u\n", copied, sz, ssl_ctx->pbuf->tot_len, ssl_ctx->offset);
     ssl_ctx->offset += copied;
     tcp_recved(ssl_ctx->pcb, copied);
     if (ssl_ctx->offset >= ssl_ctx->pbuf->tot_len) {
