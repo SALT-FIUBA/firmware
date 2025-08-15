@@ -44,7 +44,10 @@ static jsmntok_t mqttParserTokens[MQTT_PARSER_MAX_TOKENS];
 
 int saltCmdParse(char* json, size_t jsonSize, SaltCmd* result){
 
+    printf("saltCmdParse\n");
+
     jsmn_init(&mqttParser);
+
     int tokens = jsmn_parse(&mqttParser, json, jsonSize, mqttParserTokens, MQTT_PARSER_MAX_TOKENS);
     if(tokens < 0){
         return tokens;
@@ -72,7 +75,7 @@ int saltCmdParse(char* json, size_t jsonSize, SaltCmd* result){
                 RKH_TUSR_STR(dump1);
             RKH_TRC_USR_END();
 #endif
-            if(strncmp(MQTT_PARSE_TYPE_KEY, &(json[tok->start]), tok->end - tok->start) == 0){
+            if(strncmp(MQTT_PARSE_TYPE_KEY, &(json[tok->start]), tok->end - tok->start) == 0) {
                 if(tok->size != 1){
                     return JSMN_ERROR_INVAL;
                 }
@@ -84,9 +87,11 @@ int saltCmdParse(char* json, size_t jsonSize, SaltCmd* result){
                     RKH_TUSR_STR(dump1);
                 RKH_TRC_USR_END();
 #endif
-                if(strncmp(MQTT_PARSE_TYPE_CMD, &(json[typeTok->start]), typeTok->end - typeTok->start) == 0){
+                if(strncmp(MQTT_PARSE_TYPE_CMD, &(json[typeTok->start]), typeTok->end - typeTok->start) == 0) {
+                    printf("result->type = SALT_CMD_TYPE_CMD \n");
                     result->type = SALT_CMD_TYPE_CMD;
                 } else if (strncmp(MQTT_PARSE_TYPE_CONFIG, &(json[typeTok->start]), typeTok->end - typeTok->start) == 0){
+                    printf("result->type = SALT_CMD_TYPE_CONFIG");
                     result->type = SALT_CMD_TYPE_CONFIG;
 #ifdef LOG_PARSE
                     RKH_TRC_USR_BEGIN(USR_TRACE_MQTT)
@@ -109,14 +114,19 @@ int saltCmdParse(char* json, size_t jsonSize, SaltCmd* result){
                 RKH_TRC_USR_END();
 #endif
                 if(strncmp(MQTT_PARSE_CMD_STOP, &(json[cmdTok->start]), cmdTok->end - cmdTok->start) == 0){
+                    printf("result->cmd = SALT_CMD_ORDER_STOP \n");
                     result->cmd = SALT_CMD_ORDER_STOP;
                 } else if (strncmp(MQTT_PARSE_CMD_DRIFT, &(json[cmdTok->start]), cmdTok->end - cmdTok->start) == 0){
+                    printf("result->cmd = SALT_CMD_ORDER_DRIFT \n");
                     result->cmd = SALT_CMD_ORDER_DRIFT;
                 } else if (strncmp(MQTT_PARSE_CMD_ISOLATED, &(json[cmdTok->start]), cmdTok->end - cmdTok->start) == 0){
+                    printf("result->cmd = SALT_CMD_ORDER_ISOLATED \n");
                     result->cmd = SALT_CMD_ORDER_ISOLATED;
                 } else if (strncmp(MQTT_PARSE_CMD_AUTOMATIC, &(json[cmdTok->start]), cmdTok->end - cmdTok->start) == 0){
+                    printf("result->cmd = SALT_CMD_ORDER_AUTOMATIC \n");
                     result->cmd = SALT_CMD_ORDER_AUTOMATIC;
                 } else {
+                    printf("JSMN_ERROR_INVAL \n");
                     return JSMN_ERROR_INVAL;
                 }
             } else if (strncmp(MQTT_PARSE_PARAMETER_KEY, &(json[tok->start]), tok->end - tok->start) == 0){
@@ -155,11 +165,17 @@ int saltCmdParse(char* json, size_t jsonSize, SaltCmd* result){
 
 
             } else if (strncmp(MQTT_PARSE_VALUE_KEY, &(json[tok->start]), tok->end - tok->start) == 0){
-                if(tok->size != 1){
+
+                if (tok->size != 1){
                     return JSMN_ERROR_INVAL;
                 }
+
                 jsmntok_t * valueTok = &(mqttParserTokens[i+1]);
-                char* data = &(json[valueTok->start]);
+                char * data = &(json[valueTok->start]);
+
+                printf("%s \n", data);
+
+
                 switch (valueTok->type){
                     case JSMN_STRING:
                         result->parameterValueString = data;
@@ -194,10 +210,13 @@ int saltCmdParse(char* json, size_t jsonSize, SaltCmd* result){
                         return JSMN_ERROR_INVAL;
                 }
             }
+
             i+=tok->size;
         }
-
     }
+
+    printf("tokens: %d \n", tokens);
+
     return tokens;
 }
 

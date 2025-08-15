@@ -102,13 +102,13 @@ struct LogicCfg
     rui16_t publishTime;    /* in secs */
 };
 
-typedef enum VEL_SOURCE{
+typedef enum VEL_SOURCE {
     VEL_SOURCE_TELOC,
     VEL_SOURCE_EXTERNAL,
     VEL_SOURCE_GPS,
     VEL_SOURCE_COUNT,
     VEL_SOURCE_NULL,
-}VEL_SOURCE;
+} VEL_SOURCE;
 
 typedef struct VelEvt VelEvt;
 struct VelEvt

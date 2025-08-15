@@ -196,6 +196,7 @@ void onMQTTCb(void **state, struct mqttc_response_publish *publish) {
     printf("on mqtt callback called\n");
 
     // Static buffer for topic (adjust size as needed)
+    /*
     char topic_name[20];
     if (publish->topic_name_size < sizeof(topic_name)) {
         memcpy(topic_name, publish->topic_name, publish->topic_name_size);
@@ -208,26 +209,32 @@ void onMQTTCb(void **state, struct mqttc_response_publish *publish) {
     // Print message with length (not null-terminated)
     printf("Received publish('%s'): %.*s\n", topic_name,
            (int)publish->application_message_size, (const char*)publish->application_message);
+    */
 
-/*
     if(!initEnd){
         return;
     }
 
     char dump1[255] = {0};
     char dump2[255] = {0};
-    sprintf(dump1, "MQTT topic: %.*s", MIN(publish->topic_name_size,200), publish->topic_name);
-    sprintf(dump2, "MQTT data: %.*s", MIN((int) publish->application_message_size,200), publish->application_message);
+    sprintf(dump1, "MQTT topic: %.*p", MIN(publish->topic_name_size,200), &publish->topic_name);
+    sprintf(dump2, "MQTT data: %.*p", MIN((int) publish->application_message_size,200), &publish->application_message);
+    /*
     RKH_TRC_USR_BEGIN(USR_TRACE_MQTT)
         RKH_TUSR_STR(dump1);
         RKH_TUSR_STR(dump2);
     RKH_TRC_USR_END();
+    */
+    int result = saltCmdParse(
+        (char *) publish->application_message,
+        publish->application_message_size,
+        &(e_saltCmd.cmd)
+    );
 
-    int result = saltCmdParse((char *) publish->application_message, publish->application_message_size, &(e_saltCmd.cmd));
     if (result > 0){
+        printf("result > 0 \n");
         RKH_SMA_POST_FIFO(logic, RKH_UPCAST(RKH_EVT_T, &e_saltCmd), 0);
     }
-*/
 }
 
 
@@ -307,7 +314,7 @@ void
 saltCfg_topic(char *t)
 {
     sprintf(mqttProtCfg.topic, "/salt/%s", t);
-    sprintf(mqttProtCfg.subTopic, "/salt/cmd");
+    sprintf(mqttProtCfg.subTopic, "/salt/command");
 }
 
 /*
@@ -416,8 +423,8 @@ int main(void)
     mqttProtCfg.keepAlive = 400;
     mqttProtCfg.qos = 1;
     strcpy(mqttProtCfg.clientId, "stm32_client");
-    strcpy(mqttProtCfg.topic, "/stm32/data");
-    strcpy(mqttProtCfg.subTopic, "/stm32/config");
+    strcpy(mqttProtCfg.topic, "/stm32/state");
+    strcpy(mqttProtCfg.subTopic, "/stm32/command");
     mqttProtCfg.callback = onMQTTCb;
     TCP_MQTTProt_ctor(&mqttProtCfg, publishDimba);
 

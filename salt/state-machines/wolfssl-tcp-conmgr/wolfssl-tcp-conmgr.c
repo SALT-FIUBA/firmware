@@ -136,7 +136,7 @@ static RKH_EVT_T * qDefer_sto[SIZEOF_QDEFER];
 // Broker details
 // Nando's hivemq broker -> 29763578558a437bb804d48d7e8b4e01.s1.eu.hivemq.cloud
 // Mati's hivemq broker -> 007f5e0286aa4c36ba410312d36d42f0.s1.eu.hivemq.cloud
-const char * broker_hostname = "007f5e0286aa4c36ba410312d36d42f0.s1.eu.hivemq.cloud";
+const char * broker_hostname = "29763578558a437bb804d48d7e8b4e01.s1.eu.hivemq.cloud";
 
 const uint16_t broker_port = 8883;
 ip_addr_t broker_ip;
@@ -416,7 +416,7 @@ static err_t lwip_tcp_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_
         return err;
     }
     if (p != NULL) {
-        printf("Received %u bytes from broker\n", p->tot_len);
+        //  printf("Received %u bytes from broker\n", p->tot_len);
         if (ssl_ctx->pbuf == NULL) {
             ssl_ctx->pbuf = p;
         } else {
@@ -533,8 +533,9 @@ static void enHandshaking(WolfSslTcpConMgr *const me) {
         RKH_SMA_POST_FIFO(wolfSslTcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_SslSuccess), me);
 
     } else {
+
         int err = wolfSSL_get_error(me->ssl, ret);
-        printf("Initial wolfSSL_connect ret: %d, err: %d\n", ret, err);
+        printf("Initial wolfSSL_connect"); // ret: %d, err: %d\n", ret, err);
 
         if (err == WOLFSSL_ERROR_WANT_READ || err == WOLFSSL_ERROR_WANT_WRITE) {
             printf("Initial handshake needs %s\n", (err == WOLFSSL_ERROR_WANT_READ) ? "READ" : "WRITE");
@@ -679,7 +680,7 @@ static int lwip_recv(WOLFSSL *ssl, char *buf, int sz, void *ctx) {
         pbuf_free(ssl_ctx->pbuf);
         ssl_ctx->pbuf = NULL;
         ssl_ctx->offset = 0;
-        printf("lwip_recv: pbuf fully consumed\n");
+        //  printf("lwip_recv: pbuf fully consumed\n");
     }
 
     return copied ? copied : WOLFSSL_CBIO_ERR_WANT_READ;

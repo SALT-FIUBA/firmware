@@ -304,7 +304,7 @@ init(TCP_MQTTProt * const me, RKH_EVT_T *pe)
 static void
 publish(TCP_MQTTProt *const me, RKH_EVT_T *pe)
 {
-    printf("\n tcp-mqttprot | publish \n");
+    //  printf("\n tcp-mqttprot | publish \n");
 
     mqttc_sync(&me->mqttc_client);
     if (me->mqttc_client.error != MQTT_OK) {
@@ -325,11 +325,13 @@ publish(TCP_MQTTProt *const me, RKH_EVT_T *pe)
                                appMsg.size,
                                (me->config->qos << 1) & 0x06);
 
+    /*
     if (me->operRes != MQTT_OK) {
         printf("Publish failed: %d \n", me->operRes);
     } else {
         printf("Published successful \n");
     }
+    */
 }
 
 
@@ -422,7 +424,7 @@ brokerConnect(TCP_MQTTProt *const me, RKH_EVT_T *pe)
     mqttc_connect(&me->mqttc_client,
                                me->config->clientId,
                                NULL, NULL, 0,
-                               "tasmota", "Password123", MQTT_CONNECT_CLEAN_SESSION,
+                               "nucleo144_client", "Nucleo144", MQTT_CONNECT_CLEAN_SESSION,
                                me->config->keepAlive);
  //   printf("mqttc_connect %d %s \n", mqtt_error, mqttc_error_str(mqtt_error));
 

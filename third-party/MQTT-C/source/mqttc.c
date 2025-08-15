@@ -740,7 +740,7 @@ ssize_t __mqttc_recv(struct mqttc_client *client)
 
         if (rv < 0) {
 
-            printf("rv < 0 \n");
+            //  printf("rv < 0 \n");
             /* an error occurred */
             client->error = (enum MQTTErrors)rv;
             MQTTC_PAL_MUTEX_UNLOCK(&client->mutex);
