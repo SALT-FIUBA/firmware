@@ -25,6 +25,7 @@
 #include "ledPanel.h"
 #include "buzzer.h"
 #include "relay.h"
+#include "velocity_sim.h"
 
 /* ----------------------------- Local macros ------------------------------ */
 
@@ -110,6 +111,7 @@ static void exit_missing(LogicVel *const me);
 rbool_t guard_velRight(Logic *const me, RKH_EVT_T *pe);
 rbool_t guard_velWrong(Logic *const me, RKH_EVT_T *pe);
 rbool_t guard_velDisp(Logic *const me, RKH_EVT_T *pe);
+
 rbool_t guard_cmdEnable(Logic *const me, RKH_EVT_T *pe);
 rbool_t guard_cmdAutomatic(Logic *const me, RKH_EVT_T *pe);
 rbool_t guard_cmdAutomaticNot(Logic *const me, RKH_EVT_T *pe);
@@ -119,6 +121,7 @@ rbool_t guard_currentCmdIsolated(Logic *const me, RKH_EVT_T *pe);
 rbool_t guard_cmdStopNot(Logic *const me, RKH_EVT_T *pe);
 rbool_t guard_cmdDriftNot(Logic *const me, RKH_EVT_T *pe);
 rbool_t guard_cmdIsolatedNot(Logic *const me, RKH_EVT_T *pe);
+
 rbool_t guard_VelAboveCTon(Logic *const me, RKH_EVT_T *pe);
 rbool_t guard_currentVelAboveCTon(Logic *const me, RKH_EVT_T *pe);
 rbool_t guard_VelBelowCToff(Logic *const me, RKH_EVT_T *pe);
@@ -304,7 +307,7 @@ RKH_END_TRANS_TABLE
 struct LogicVel
 {
     RKH_SMA_T ao;       /* base structure */
-    Logic *itsLogic;
+    Logic * itsLogic;
 
     RKH_TMR_T timer;
 
@@ -463,7 +466,7 @@ static void init(Logic *const me, RKH_EVT_T *pe) {
 static void
 effect_enable(Logic *const me, RKH_EVT_T *pe)
 {
-    //  printf("logic | effect_enabled \n");
+    printf("logic | effect_enabled \n");
     (void)pe;
     (void)me;
 
@@ -472,7 +475,7 @@ effect_enable(Logic *const me, RKH_EVT_T *pe)
 static void
 effect_disable(Logic *const me, RKH_EVT_T *pe)
 {
-    //  printf("logic | effect_disable \n");
+    printf("logic | effect_disable \n");
     (void)pe;
     (void)me;
 
@@ -481,24 +484,25 @@ effect_disable(Logic *const me, RKH_EVT_T *pe)
 static void
 effect_gps(Logic *const me, RKH_EVT_T *pe)
 {
-    //  printf("logic | effect_gps \n");
+    printf("logic | effect_gps \n");
 
     VelEvt * p = RKH_UPCAST(VelEvt, pe);
 
-    if(p->vel < 0){
+    if (p->vel < 0) {
         me->ledConfig.ledGps = RED;
     } else {
         me->ledConfig.ledGps = GREEN;
         rkh_tmr_stop(&(me->timerGpsEnable));
         RKH_TMR_ONESHOT(&(me->timerGpsEnable), RKH_UPCAST(RKH_SMA_T, me), GPS_ACTIVE_PERIOD);
     }
+
     ledPanelSetCfg(&(me->ledConfig));
 }
 
 static void
 effect_gpsTout(Logic *const me, RKH_EVT_T *pe)
 {
-    //  printf("logic | effect_gpsTout \n");
+    printf("logic | effect_gpsTout \n");
 
     me->ledConfig.ledGps = RED;
     ledPanelSetCfg(&(me->ledConfig));
@@ -506,7 +510,7 @@ effect_gpsTout(Logic *const me, RKH_EVT_T *pe)
 
 static void effect_cmd(Logic *const me, RKH_EVT_T *pe){
 
-    //  printf("logic | effect_cmd \n");
+    printf("logic | effect_cmd \n");
 
     CmdEvt * p = RKH_UPCAST(CmdEvt, pe);
 
@@ -562,19 +566,17 @@ static void effect_cmd(Logic *const me, RKH_EVT_T *pe){
 static void
 effect_cmdTOut(Logic *const me, RKH_EVT_T *pe)
 {
-    //  printf("logic | effect_cmdTout \n");
+    printf("logic | effect_cmdTout \n");
 
     me->currentCmd = SALT_CMD_ORDER_AUTOMATIC;
 }
 
 static void effect_vel(Logic *const me, RKH_EVT_T *pe){
 
-    //  printf("logic | effect_vel \n");
-    /* TODO: check original code
-
-     VelEvt  * velEvt = RKH_DOWNCAST(VelEvt*, pe);
-     setVelDisplay(me, velEvt, true);
-
+    printf("logic | effect_vel \n");
+    /* TODO: original code
+         VelEvt  * velEvt = RKH_DOWNCAST(VelEvt*, pe);
+         setVelDisplay(me, velEvt, true);
     */
 
     VelEvt  ** velEvt = RKH_DOWNCAST(VelEvt*, pe);
@@ -584,9 +586,9 @@ static void effect_vel(Logic *const me, RKH_EVT_T *pe){
 
 static void effect_velHasler(LogicVel *const me, RKH_EVT_T *pe){
 
-    //  printf("logic | effect_velHasler \n");
+    printf("logic | effect_velHasler \n");
 
-    VelEvt* p = RKH_UPCAST(VelEvt, pe);
+    VelEvt * p = RKH_UPCAST(VelEvt, pe);
     Logic *realMe = me->itsLogic;
 
     rkh_tmr_stop(&me->timer);
@@ -600,10 +602,10 @@ static void effect_velHasler(LogicVel *const me, RKH_EVT_T *pe){
 
 static void effect_velExternal(LogicVel *const me, RKH_EVT_T *pe) {
 
-    //  printf("logic | effect_velExternal \n");
+    printf("logic | effect_velExternal \n");
 
-    VelEvt* p = RKH_UPCAST(VelEvt, pe);
-    Logic *realMe = me->itsLogic;
+    VelEvt * p = RKH_UPCAST(VelEvt, pe);
+    Logic * realMe = me->itsLogic;
 
     rkh_tmr_stop(&me->timer);
     RKH_TMR_ONESHOT(&me->timer, RKH_UPCAST(RKH_SMA_T, realMe), WAIT_SOURCE_VEL_PERIOD);
@@ -617,10 +619,10 @@ static void effect_velExternal(LogicVel *const me, RKH_EVT_T *pe) {
 
 static void effect_velGps(LogicVel *const me, RKH_EVT_T *pe){
 
-    //  printf("logic | effect_velGps \n");
+    printf("logic | effect_velGps \n");
 
-    VelEvt* p = RKH_UPCAST(VelEvt, pe);
-    Logic *realMe = me->itsLogic;
+    VelEvt * p = RKH_UPCAST(VelEvt, pe);
+    Logic * realMe = me->itsLogic;
 
     rkh_tmr_stop(&me->timer);
     RKH_TMR_ONESHOT(&me->timer, RKH_UPCAST(RKH_SMA_T, realMe), WAIT_SOURCE_VEL_PERIOD);
@@ -706,13 +708,13 @@ static void entry_controlAutomatic(Logic *const me){
 
     printf("logic | entry_controlAutomatic \n");
 
-    VelEvt* velEvt = &(me->itsLogicVel.velEvt);
+    VelEvt * velEvt = &(me->itsLogicVel.velEvt);
     setVelDisplay(me, velEvt, true);
 }
 
 static void entry_controlBlink(Logic *const me){
 
-    //  printf("logic | entry_controlBlink \n");
+    printf("logic | entry_controlBlink \n");
 
     setVelDisplay(me, NULL, true);
     me->blinkCount = 0;
@@ -745,7 +747,7 @@ static void entry_controlAutomaticBrake(Logic *const me){
 
 static void entry_controlBlinkEnable(Logic *const me){
 
-    //  printf("logic | entry_controlBlinkEnable \n");
+    printf("logic | entry_controlBlinkEnable \n");
 
     configAlCtFe(me, RKH_TRUE, RKH_FALSE, RKH_FALSE);
     rkh_tmr_stop(&me->timerStop);
@@ -754,7 +756,7 @@ static void entry_controlBlinkEnable(Logic *const me){
 
 static void entry_controlBlinkDisable(Logic *const me){
 
-    //  printf("logic | entry_controlBlinkDisable \n");
+    printf("logic | entry_controlBlinkDisable \n");
 
     configAlCtFe(me, RKH_TRUE, RKH_TRUE, RKH_FALSE);
     rkh_tmr_stop(&me->timerStop);
@@ -763,7 +765,7 @@ static void entry_controlBlinkDisable(Logic *const me){
 
 static void entry_controlBlinkBrake(Logic *const me){
 
-    //  printf("logic | entry_controlBlinkBrake \n");
+    printf("logic | entry_controlBlinkBrake \n");
 
     configAlCtFe(me, RKH_TRUE, RKH_TRUE, RKH_TRUE);
     rkh_tmr_stop(&me->timerStop);
@@ -772,7 +774,7 @@ static void entry_controlBlinkBrake(Logic *const me){
 
 static void entry_hasler(LogicVel *const me){
 
-    //  printf("logic | entry_hasler \n");
+    printf("logic | entry_hasler \n");
 
     Logic *realMe = me->itsLogic;
     rkh_tmr_stop(&me->timer);
@@ -781,7 +783,7 @@ static void entry_hasler(LogicVel *const me){
 
 static void entry_external(LogicVel *const me){
 
-    //  printf("logic | entry_external \n");
+    printf("logic | entry_external \n");
 
     Logic *realMe = me->itsLogic;
     rkh_tmr_stop(&me->timer);
@@ -790,7 +792,7 @@ static void entry_external(LogicVel *const me){
 
 static void entry_gps(LogicVel *const me){
 
-    //  printf("logic | entry_gps \n");
+    printf("logic | entry_gps \n");
 
     Logic *realMe = me->itsLogic;
     rkh_tmr_stop(&me->timer);
@@ -799,7 +801,7 @@ static void entry_gps(LogicVel *const me){
 
 static void entry_missing(LogicVel *const me){
 
-    //  printf("logic | entry_missing \n");
+    printf("logic | entry_missing \n");
 
     Logic *realMe = me->itsLogic;
     me->velEvt.vel = -1;
@@ -869,7 +871,7 @@ static void exit_controlAutomatic(Logic *const me){
 
 static void exit_controlBlink(Logic *const me){
 
-    // printf("logic | exit_controlBlink \n");
+    printf("logic | exit_controlBlink \n");
 }
 
 static void exit_controlAutomaticEnable(Logic *const me){
@@ -893,58 +895,58 @@ static void exit_controlAutomaticBrake(Logic *const me){
 
 static void exit_controlBlinkEnable(Logic *const me){
 
-    // printf("logic | exit_controlBlinkEnable \n");
+    printf("logic | exit_controlBlinkEnable \n");
 }
 
 static void exit_controlBlinkDisable(Logic *const me){
 
-    //  printf("logic | exit_controlBlinkDisable \n");
+    printf("logic | exit_controlBlinkDisable \n");
 }
 
 static void exit_controlBlinkBrake(Logic *const me){
 
-    //  printf("logic | exit_controlBlinkBrake \n");
+    printf("logic | exit_controlBlinkBrake \n");
 }
 
 
 static void exit_hasler(LogicVel *const me){
 
-    // printf("logic | exit_hasler \n");
+    printf("logic | exit_hasler \n");
 
     rkh_tmr_stop(&me->timer);
 }
 
 static void exit_external(LogicVel *const me){
 
-    //  printf("logic | exit_external \n");
+    printf("logic | exit_external \n");
 
     rkh_tmr_stop(&me->timer);
 }
 
 static void exit_gps(LogicVel *const me){
 
-    //  printf("logic | exit_gps \n");
+    printf("logic | exit_gps \n");
 
     rkh_tmr_stop(&me->timer);
 }
 
 static void exit_missing(LogicVel *const me){
 
-    //  printf("logic | exit_missing \n");
+    printf("logic | exit_missing \n");
 }
 
 /* ................................ Guards ................................. */
 
 rbool_t guard_velRight(Logic *const me, RKH_EVT_T *pe){
 
-    //  printf("logic | guard_velRight \n");
+    printf("logic | guard_velRight \n");
 
     return guard_velRightVel(&(me->itsLogicVel), RKH_UPCAST(RKH_EVT_T,pe));
 }
 
 rbool_t guard_velWrong(Logic *const me, RKH_EVT_T *pe){
 
-    //  printf("logic | guard_velWrong \n");
+    printf("logic | guard_velWrong \n");
 
     return guard_velWrongVel(&(me->itsLogicVel), RKH_UPCAST(RKH_EVT_T,pe));
 }
@@ -952,7 +954,7 @@ rbool_t guard_velWrong(Logic *const me, RKH_EVT_T *pe){
 rbool_t
 guard_velDisp(Logic *const me, RKH_EVT_T *pe)
 {
-    //  printf("logic | guard_velDisp \n");
+    printf("logic | guard_velDisp \n");
     (void)pe;
 
     return guard_velRight(me, RKH_UPCAST(RKH_EVT_T,&(me->itsLogicVel.velEvt)));
@@ -960,7 +962,7 @@ guard_velDisp(Logic *const me, RKH_EVT_T *pe)
 
 rbool_t guard_cmdEnable(Logic *const me, RKH_EVT_T *pe){
 
-    //  printf("logic | guard_cmdEnable \n");
+    printf("logic | guard_cmdEnable \n");
 
     switch (me->currentCmd){
         case SALT_CMD_ORDER_STOP:
@@ -975,15 +977,15 @@ rbool_t guard_cmdEnable(Logic *const me, RKH_EVT_T *pe){
 
 rbool_t guard_cmdAutomatic(Logic *const me, RKH_EVT_T *pe){
 
-    //  printf("logic | guard_cmdAutomatic \n");
+    printf("logic | guard_cmdAutomatic \n");
 
-    CmdEvt* p = RKH_UPCAST(CmdEvt, pe);
+    CmdEvt * p = RKH_UPCAST(CmdEvt, pe);
     return p->cmd.type == SALT_CMD_TYPE_CMD && p->cmd.cmd == SALT_CMD_ORDER_AUTOMATIC;
 }
 
 rbool_t guard_cmdAutomaticNot(Logic *const me, RKH_EVT_T *pe){
 
-    //  printf("logic | guard_cmdAutomaticNot \n");
+    printf("logic | guard_cmdAutomaticNot \n");
 
     CmdEvt* p = RKH_UPCAST(CmdEvt, pe);
     return p->cmd.type == SALT_CMD_TYPE_CMD && p->cmd.cmd != SALT_CMD_ORDER_AUTOMATIC;
@@ -991,36 +993,36 @@ rbool_t guard_cmdAutomaticNot(Logic *const me, RKH_EVT_T *pe){
 
 rbool_t guard_currentCmdStop(Logic *const me, RKH_EVT_T *pe){
 
-    //  printf("logic | guard_currentCmdStop \n");
+    printf("logic | guard_currentCmdStop \n");
 
     return me->currentCmd == SALT_CMD_ORDER_STOP;
 }
 
 rbool_t guard_currentCmdDrift(Logic *const me, RKH_EVT_T *pe){
 
-    //  printf("logic | guard_currentCmdDrift \n");
+    printf("logic | guard_currentCmdDrift \n");
 
     return me->currentCmd == SALT_CMD_ORDER_DRIFT;
 }
 
 rbool_t guard_currentCmdIsolated(Logic *const me, RKH_EVT_T *pe){
 
-    //  printf("logic | guard_currentCmdIsolated \n");
+    printf("logic | guard_currentCmdIsolated \n");
 
     return me->currentCmd == SALT_CMD_ORDER_ISOLATED;
 }
 
 rbool_t guard_cmdStopNot(Logic *const me, RKH_EVT_T *pe){
 
-    //  printf("logic | guard_cmdStopNot \n");
+    printf("logic | guard_cmdStopNot \n");
 
-    CmdEvt* p = RKH_UPCAST(CmdEvt, pe);
+    CmdEvt * p = RKH_UPCAST(CmdEvt, pe);
     return p->cmd.type == SALT_CMD_TYPE_CMD && p->cmd.cmd != SALT_CMD_ORDER_STOP;
 }
 
 rbool_t guard_cmdDriftNot(Logic *const me, RKH_EVT_T *pe){
 
-    //  printf("logic | guard_cmdDriftNot \n");
+    printf("logic | guard_cmdDriftNot \n");
 
     CmdEvt* p = RKH_UPCAST(CmdEvt, pe);
     return p->cmd.type == SALT_CMD_TYPE_CMD && p->cmd.cmd != SALT_CMD_ORDER_DRIFT;
@@ -1028,7 +1030,7 @@ rbool_t guard_cmdDriftNot(Logic *const me, RKH_EVT_T *pe){
 
 rbool_t guard_cmdIsolatedNot(Logic *const me, RKH_EVT_T *pe){
 
-    //  printf("logic | guard_cmdIsolatedNot \n");
+    printf("logic | guard_cmdIsolatedNot \n");
 
     CmdEvt* p = RKH_UPCAST(CmdEvt, pe);
     return p->cmd.type == SALT_CMD_TYPE_CMD && p->cmd.cmd != SALT_CMD_ORDER_ISOLATED;
@@ -1036,30 +1038,30 @@ rbool_t guard_cmdIsolatedNot(Logic *const me, RKH_EVT_T *pe){
 
 rbool_t guard_VelAboveCTon(Logic *const me, RKH_EVT_T *pe){
 
-    //  printf("logic | guard_VelAboveCTon \n");
+    printf("logic | guard_VelAboveCTon \n");
 
-    VelEvt* p = RKH_UPCAST(VelEvt, pe);
+    VelEvt * p = RKH_UPCAST(VelEvt, pe);
     return p->vel > me->velCtOn;
 }
 
 rbool_t guard_currentVelAboveCTon(Logic *const me, RKH_EVT_T *pe){
 
-    //  printf("logic | guard_currentVelAboveCTon \n");
+    printf("logic | guard_currentVelAboveCTon \n");
 
     return guard_VelAboveCTon(me, RKH_UPCAST(RKH_EVT_T,&(me->itsLogicVel.velEvt)));
 }
 
 rbool_t guard_VelBelowCToff(Logic *const me, RKH_EVT_T *pe){
 
-    //  printf("logic | guard_VelBelowCToff \n");
+    printf("logic | guard_VelBelowCToff \n");
 
-    VelEvt* p = RKH_UPCAST(VelEvt, pe);
+    VelEvt * p = RKH_UPCAST(VelEvt, pe);
     return p->vel < me->velCtOff;
 }
 
 rbool_t guard_VelAboveFEon(Logic *const me, RKH_EVT_T *pe){
 
-    //  printf("logic | guard_VelAboveFEon \n");
+    printf("logic | guard_VelAboveFEon \n");
 
     VelEvt* p = RKH_UPCAST(VelEvt, pe);
     return p->vel > me->velFeOn;
@@ -1067,14 +1069,14 @@ rbool_t guard_VelAboveFEon(Logic *const me, RKH_EVT_T *pe){
 
 rbool_t guard_currentVelAboveFEon(Logic *const me, RKH_EVT_T *pe){
 
-    //  printf("logic | guard_currentVelAboveFEon \n");
+    printf("logic | guard_currentVelAboveFEon \n");
 
     return guard_VelAboveFEon(me, RKH_UPCAST(RKH_EVT_T,&(me->itsLogicVel.velEvt)));
 }
 
 rbool_t guard_nextBlinkBrake(Logic *const me, RKH_EVT_T *pe){
 
-    //  printf("logic | guard_nextBlinkBrake \n");
+    printf("logic | guard_nextBlinkBrake \n");
 
     me->blinkCount += 1;
     if(me->blinkCount >= me->blinkPeriod){
@@ -1086,7 +1088,7 @@ rbool_t guard_nextBlinkBrake(Logic *const me, RKH_EVT_T *pe){
 
 rbool_t guard_velRightVel(LogicVel *const me, RKH_EVT_T *pe){
 
-    //  printf("logic | guard_velRightVel \n");
+    printf("logic | guard_velRightVel \n");
 
     VelEvt* p = RKH_UPCAST(VelEvt, pe);
 
@@ -1095,7 +1097,7 @@ rbool_t guard_velRightVel(LogicVel *const me, RKH_EVT_T *pe){
 
 rbool_t guard_velWrongVel(LogicVel *const me, RKH_EVT_T *pe){
 
-    //  printf("logic | guard_velWrongVel \n");
+    printf("logic | guard_velWrongVel \n");
 
     return !guard_velRightVel(me,pe);
 }
@@ -1103,7 +1105,7 @@ rbool_t guard_velWrongVel(LogicVel *const me, RKH_EVT_T *pe){
 /* ---------------------------- Global functions --------------------------- */
 void logic_ctor(LogicCfg * config) {
 
-    //  printf("logic | logic_ctor \n");
+    printf("logic | logic_ctor \n");
 
     Logic * me;
 
@@ -1150,5 +1152,51 @@ rui16_t logic_getPublishPeriod() {
 
     return me->publishPeriod;
 }
+
+
+
+
+void simulate_velocity(void) {
+
+    RKH_SM_T *vel_sm = Logic_logicVel;  // Global submachine
+    const RKH_ST_T *current_state = vel_sm->state;  // Direct access to current state pointer
+
+    const RKH_ST_T * LogicVel_Hasler_Ptr = RKH_UPCAST(const RKH_ST_T, &LogicVel_Hasler);
+    const RKH_ST_T * LogicVel_External_Ptr = RKH_UPCAST(const RKH_ST_T, &LogicVel_External);
+    const RKH_ST_T * LogicVel_GPS_Ptr = RKH_UPCAST(const RKH_ST_T, &LogicVel_GPS);
+    const RKH_ST_T * LogicVel_Missing_Ptr = RKH_UPCAST(const RKH_ST_T, &LogicVel_Missing);
+
+
+    if (current_state == LogicVel_Hasler_Ptr) {
+        simulate_velHasler();  // Ask Hasler/TELOC
+    } else if (current_state == LogicVel_External_Ptr) {
+        simulate_velExternal();  // Ask External
+    } else if (current_state == LogicVel_GPS_Ptr) {
+        simulate_velGps();  // Ask GPS
+    } else {  // LogicVel_Missing: Try random recovery
+        int rand_source = rand() % 3;
+        switch (rand_source) {
+        case 0: simulate_velHasler(); break;
+        case 1: simulate_velExternal(); break;
+        case 2: simulate_velGps(); break;
+        }
+        printf("In Missing: Trying random source %d\n", rand_source);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* ------------------------------ End of file ------------------------------ */

@@ -72,6 +72,7 @@ void telocInit() {
 }
 
 void telocParse(unsigned char c){
+
     if(nextTelocFrameByte >= telocFrame + TELOC_FRAME_LENGTH){
         nextTelocFrameByte = telocFrame; //Proteccion contra overflow del buffer de trama
     }

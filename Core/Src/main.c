@@ -193,7 +193,7 @@ static void onSwitchCb(bool_t activated) {
 }
 
 void onMQTTCb(void **state, struct mqttc_response_publish *publish) {
-    printf("on mqtt callback called\n");
+    //  printf("on mqtt callback called\n");
 
     // Static buffer for topic (adjust size as needed)
     /*
@@ -219,12 +219,7 @@ void onMQTTCb(void **state, struct mqttc_response_publish *publish) {
     char dump2[255] = {0};
     sprintf(dump1, "MQTT topic: %.*p", MIN(publish->topic_name_size,200), &publish->topic_name);
     sprintf(dump2, "MQTT data: %.*p", MIN((int) publish->application_message_size,200), &publish->application_message);
-    /*
-    RKH_TRC_USR_BEGIN(USR_TRACE_MQTT)
-        RKH_TUSR_STR(dump1);
-        RKH_TUSR_STR(dump2);
-    RKH_TRC_USR_END();
-    */
+
     int result = saltCmdParse(
         (char *) publish->application_message,
         publish->application_message_size,
@@ -232,7 +227,6 @@ void onMQTTCb(void **state, struct mqttc_response_publish *publish) {
     );
 
     if (result > 0){
-        printf("result > 0 \n");
         RKH_SMA_POST_FIFO(logic, RKH_UPCAST(RKH_EVT_T, &e_saltCmd), 0);
     }
 }

@@ -81,6 +81,8 @@ include_directories(
         salt/utilities/date
         salt/utilities/epoch
 
+        salt/simulation
+
         salt
         salt/configuration
         salt/bsp
@@ -160,6 +162,8 @@ file(
         "third-party/rkh/source/portable/arm-cortex/rkhs/arm_cm4f/stm32/rkhport.c"
 
         "blinky/bsp/assert.c"
+
+        "salt/simulation/*.*"
 
         "salt/bsp/*.*"
         "salt/configuration/*.*"

@@ -44,8 +44,6 @@ static jsmntok_t mqttParserTokens[MQTT_PARSER_MAX_TOKENS];
 
 int saltCmdParse(char* json, size_t jsonSize, SaltCmd* result){
 
-    printf("saltCmdParse\n");
-
     jsmn_init(&mqttParser);
 
     int tokens = jsmn_parse(&mqttParser, json, jsonSize, mqttParserTokens, MQTT_PARSER_MAX_TOKENS);
@@ -114,19 +112,14 @@ int saltCmdParse(char* json, size_t jsonSize, SaltCmd* result){
                 RKH_TRC_USR_END();
 #endif
                 if(strncmp(MQTT_PARSE_CMD_STOP, &(json[cmdTok->start]), cmdTok->end - cmdTok->start) == 0){
-                    printf("result->cmd = SALT_CMD_ORDER_STOP \n");
                     result->cmd = SALT_CMD_ORDER_STOP;
                 } else if (strncmp(MQTT_PARSE_CMD_DRIFT, &(json[cmdTok->start]), cmdTok->end - cmdTok->start) == 0){
-                    printf("result->cmd = SALT_CMD_ORDER_DRIFT \n");
                     result->cmd = SALT_CMD_ORDER_DRIFT;
                 } else if (strncmp(MQTT_PARSE_CMD_ISOLATED, &(json[cmdTok->start]), cmdTok->end - cmdTok->start) == 0){
-                    printf("result->cmd = SALT_CMD_ORDER_ISOLATED \n");
                     result->cmd = SALT_CMD_ORDER_ISOLATED;
                 } else if (strncmp(MQTT_PARSE_CMD_AUTOMATIC, &(json[cmdTok->start]), cmdTok->end - cmdTok->start) == 0){
-                    printf("result->cmd = SALT_CMD_ORDER_AUTOMATIC \n");
                     result->cmd = SALT_CMD_ORDER_AUTOMATIC;
                 } else {
-                    printf("JSMN_ERROR_INVAL \n");
                     return JSMN_ERROR_INVAL;
                 }
             } else if (strncmp(MQTT_PARSE_PARAMETER_KEY, &(json[tok->start]), tok->end - tok->start) == 0){
@@ -173,8 +166,6 @@ int saltCmdParse(char* json, size_t jsonSize, SaltCmd* result){
                 jsmntok_t * valueTok = &(mqttParserTokens[i+1]);
                 char * data = &(json[valueTok->start]);
 
-                printf("%s \n", data);
-
 
                 switch (valueTok->type){
                     case JSMN_STRING:
@@ -214,8 +205,6 @@ int saltCmdParse(char* json, size_t jsonSize, SaltCmd* result){
             i+=tok->size;
         }
     }
-
-    printf("tokens: %d \n", tokens);
 
     return tokens;
 }

@@ -1,4 +1,3 @@
-/*
 // --------------------------------- Notes ---------------------------------
 // ----------------------------- Include files -----------------------------
 #include "rkh.h"
@@ -1239,4 +1238,3 @@ ConMgr_sigLevel(void)
     me = RKH_UPCAST(ConMgr, conMgr);
     return me->sigLevel;
 }
-*/

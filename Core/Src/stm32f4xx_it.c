@@ -23,6 +23,7 @@
 
 #include "rkhtmr.h"
 #include "sapi_datatypes.h"
+#include "velocity_sim.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 /* USER CODE END Includes */
@@ -190,6 +191,12 @@ void SysTick_Handler(void)
   /* USER CODE BEGIN SysTick_IRQn 1 */
     HAL_IncTick();
     tickCounter++;
+
+    static uint32_t tick_count = 0;
+    tick_count++;
+    if (tick_count % 5000 == 0) {  // Every ~5s
+        simulate_velocity();
+    }
 
     RKH_TIM_TICK(NULL);
 
