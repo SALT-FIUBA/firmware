@@ -62,7 +62,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-void UserButton_Init(void);
+void SaltEnableButton(void);
 
 /* USER CODE END PD */
 
@@ -328,7 +328,7 @@ saltCfg_topic(char *t)
     #define USER_BUTTON_EXTI_IRQn                    EXTI15_10_IRQn
 
 */
-void UserButton_Init(void) {
+void SaltEnableButton(void) {
     // Enable the GPIOC clock
     __HAL_RCC_GPIOC_CLK_ENABLE();
 
@@ -381,7 +381,7 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-  UserButton_Init();
+  SaltEnableButton();
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */

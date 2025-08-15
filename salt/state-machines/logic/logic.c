@@ -636,7 +636,7 @@ static void effect_velGps(LogicVel *const me, RKH_EVT_T *pe){
 static void
 entry_disable(Logic *const me)
 {
-    //  printf("logic | entry_disable \n");
+    printf("logic | entry_disable \n");
 
     configAlCtFe(me, RKH_FALSE, RKH_FALSE, RKH_FALSE);
     setVelDisplay(me, NULL, false);
@@ -652,7 +652,7 @@ entry_disable(Logic *const me)
 static void
 entry_enable(Logic *const me)
 {
-    //  printf("logic | entry_enable \n");
+    printf("logic | entry_enable \n");
     (void)me;
 
     configAlCtFe(me, RKH_TRUE, RKH_FALSE, RKH_FALSE);
@@ -666,7 +666,7 @@ entry_enable(Logic *const me)
 static void
 entry_preventiveStop(Logic *const me)
 {
-    //  printf("logic | entry_preventiveStop \n");
+    printf("logic | entry_preventiveStop \n");
     (void)me;
 
     configAlCtFe(me, RKH_TRUE,RKH_TRUE,RKH_TRUE);
@@ -677,7 +677,7 @@ entry_preventiveStop(Logic *const me)
 
 static void entry_remote(Logic *const me){
 
-    //  printf("logic | entry_remote \n");
+    printf("logic | entry_remote \n");
     relaySetRemoteMode(RKH_TRUE);
 
     me->ledConfig.ledRemoteOp = GREEN;
@@ -686,25 +686,25 @@ static void entry_remote(Logic *const me){
 
 static void entry_remoteStop(Logic *const me){
 
-    //  printf("logic | entry_remoteStop \n");
+    printf("logic | entry_remoteStop \n");
     configAlCtFe(me, RKH_TRUE,RKH_TRUE,RKH_TRUE);
 }
 
 static void entry_remoteDrift(Logic *const me){
 
-    //  printf("logic | entry_remoteDrift \n");
+    printf("logic | entry_remoteDrift \n");
     configAlCtFe(me, RKH_TRUE,RKH_TRUE,RKH_FALSE);
 }
 
 static void entry_remoteIsolated(Logic *const me){
 
-    //  printf("logic | entry_remoteIsolated \n");
+    printf("logic | entry_remoteIsolated \n");
     configAlCtFe(me, RKH_TRUE,RKH_FALSE,RKH_FALSE);
 }
 
 static void entry_controlAutomatic(Logic *const me){
 
-    //  printf("logic | entry_controlAutomatic \n");
+    printf("logic | entry_controlAutomatic \n");
 
     VelEvt* velEvt = &(me->itsLogicVel.velEvt);
     setVelDisplay(me, velEvt, true);
@@ -720,14 +720,14 @@ static void entry_controlBlink(Logic *const me){
 
 static void entry_controlAutomaticEnable(Logic *const me){
 
-    //  printf("logic | entry_controlAutomaticEnable \n");
+    printf("logic | entry_controlAutomaticEnable \n");
 
     configAlCtFe(me, RKH_TRUE, RKH_FALSE, RKH_FALSE);
 }
 
 static void entry_controlAutomaticDisable(Logic *const me){
 
-    //  printf("logic | entry_controlAutomaticDisable \n");
+    printf("logic | entry_controlAutomaticDisable \n");
 
     configAlCtFe(me, RKH_TRUE, RKH_TRUE, RKH_FALSE);
     buzzerSetMode(BUZZER_MODE_BLINK);
@@ -735,7 +735,7 @@ static void entry_controlAutomaticDisable(Logic *const me){
 
 static void entry_controlAutomaticBrake(Logic *const me){
 
-    //  printf("logic | entry_controlAutomaticBrake \n");
+    printf("logic | entry_controlAutomaticBrake \n");
 
     configAlCtFe(me, RKH_TRUE, RKH_TRUE, RKH_TRUE);
     buzzerSetMode(BUZZER_MODE_CONSTANT);
@@ -811,7 +811,7 @@ static void
 exit_enable(Logic *const me)
 {
 
-    //  printf("logic | exit_enable \n");
+    printf("logic | exit_enable \n");
     (void)me;
 
     rkh_tmr_stop(&me->timerGpsEnable);
@@ -821,19 +821,19 @@ exit_enable(Logic *const me)
 static void
 exit_disable(Logic *const me)
 {
-    //  printf("logic | exit_disable \n");
+    printf("logic | exit_disable \n");
 }
 static void
 exit_preventiveStop(Logic *const me)
 {
-    //  printf("logic | exit_preventiveStop \n");
+    printf("logic | exit_preventiveStop \n");
     (void)me;
     configAlCtFe(me, RKH_TRUE,RKH_FALSE,RKH_FALSE);
 }
 
 static void exit_remote(Logic *const me){
 
-    //  printf("logic | exit_remote \n");
+    printf("logic | exit_remote \n");
 
     relaySetRemoteMode(RKH_FALSE);
 
@@ -843,29 +843,28 @@ static void exit_remote(Logic *const me){
 
 static void exit_remoteStop(Logic *const me){
 
-    // printf("logic | exit_remoteStop \n");
+    printf("logic | exit_remoteStop \n");
 
     configAlCtFe(me, RKH_TRUE,RKH_FALSE,RKH_FALSE);
 }
 
 static void exit_remoteDrift(Logic *const me){
 
-    //  printf("logic | exit_remoteDrift \n");
-
+    printf("logic | exit_remoteDrift \n");
 
     configAlCtFe(me, RKH_TRUE,RKH_FALSE,RKH_FALSE);
 }
 
 static void exit_remoteIsolated(Logic *const me){
 
-    //  printf("logic | exit_remoteIsolated \n");
+    printf("logic | exit_remoteIsolated \n");
 
     configAlCtFe(me, RKH_TRUE,RKH_FALSE,RKH_FALSE);
 }
 
 static void exit_controlAutomatic(Logic *const me){
 
-    // printf("logic | exit_controlAutomatic \n");
+    printf("logic | exit_controlAutomatic \n");
 }
 
 static void exit_controlBlink(Logic *const me){
@@ -875,19 +874,19 @@ static void exit_controlBlink(Logic *const me){
 
 static void exit_controlAutomaticEnable(Logic *const me){
 
-    //  printf("logic | exit_controlAutomaticEnable \n");
+    printf("logic | exit_controlAutomaticEnable \n");
 }
 
 static void exit_controlAutomaticDisable(Logic *const me){
 
-    //  printf("logic | exit_controlAutomaticDisable \n");
+    printf("logic | exit_controlAutomaticDisable \n");
 
     buzzerSetMode(BUZZER_MODE_DISABLE);
 }
 
 static void exit_controlAutomaticBrake(Logic *const me){
 
-    //  printf("logic | exit_controlAutomaticBrake \n");
+    printf("logic | exit_controlAutomaticBrake \n");
 
     buzzerSetMode(BUZZER_MODE_DISABLE);
 }
