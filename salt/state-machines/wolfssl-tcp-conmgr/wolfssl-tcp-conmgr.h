@@ -45,6 +45,15 @@ struct WolfSslTcpSocketConnectedEvt
 };
 
 
+#define HIVE_MQ_CLUSTER_URL "007f5e0286aa4c36ba410312d36d42f0.s1.eu.hivemq.cloud"
+#define HIVE_MQ_CLUSTER_PORT "8883"
+#define HIVE_MQ_USERNAME "tasmota"
+#define HIVE_MQ_PASSWORD "Password123"
+
+#define MQTT_COMMAND_TOPIC "/stm32/command"
+#define MQTT_STATE_TOPIC "/stm32/state"
+#define MQTT_STATUS_TOPIC "/stm32/status"
+
 /* ............................. Active object ............................. */
 
 typedef struct WolfSslTcpConMgr WolfSslTcpConMgr;

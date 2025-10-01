@@ -325,20 +325,19 @@ publish(TCP_MQTTProt *const me, RKH_EVT_T *pe)
                                appMsg.size,
                                (me->config->qos << 1) & 0x06);
 
-    /*
+
     if (me->operRes != MQTT_OK) {
         printf("Publish failed: %d \n", me->operRes);
     } else {
         printf("Published successful \n");
     }
-    */
 }
 
 
 
 static void processReceivedData(TCP_MQTTProt *const me, RKH_EVT_T *pe) {
 
-    //  printf("tcp-mqttprot | Processing received MQTT data\n");
+    // printf("tcp-mqttprot | Processing received MQTT data\n");
     WolfSslTcpReceiveEvt * evt = RKH_DOWNCAST(WolfSslTcpReceiveEvt, pe);
 
     // Call mqttc_sync to process any received MQTT message
@@ -424,7 +423,7 @@ brokerConnect(TCP_MQTTProt *const me, RKH_EVT_T *pe)
     mqttc_connect(&me->mqttc_client,
                                me->config->clientId,
                                NULL, NULL, 0,
-                               "nucleo144_client", "Nucleo144", MQTT_CONNECT_CLEAN_SESSION,
+                               "tasmota", "Password123", MQTT_CONNECT_CLEAN_SESSION,
                                me->config->keepAlive);
  //   printf("mqttc_connect %d %s \n", mqtt_error, mqttc_error_str(mqtt_error));
 

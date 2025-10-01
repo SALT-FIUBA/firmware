@@ -49,6 +49,7 @@
 #include "sim808.h"
 #include "serial.h"
 #include "modcmd.h"
+#include "stm32f4xx_nucleo_144.h"
 
 #include "wolfssl-tcp-conmgr.h"
 
@@ -193,7 +194,8 @@ static void onSwitchCb(bool_t activated) {
 }
 
 void onMQTTCb(void **state, struct mqttc_response_publish *publish) {
-    //  printf("on mqtt callback called\n");
+
+    printf("on mqtt callback called\n");
 
     // Static buffer for topic (adjust size as needed)
     /*
@@ -214,6 +216,11 @@ void onMQTTCb(void **state, struct mqttc_response_publish *publish) {
     if(!initEnd){
         return;
     }
+
+    BSP_LED_On(LED_BLUE);
+    HAL_Delay(5000);
+    BSP_LED_Off(LED_BLUE);
+
 
     char dump1[255] = {0};
     char dump2[255] = {0};
@@ -385,6 +392,8 @@ int main(void)
   MX_SPI1_Init();
   MX_LWIP_Init();
   MX_RNG_Init();
+
+    BSP_LED_Init(LED_BLUE);
   /* USER CODE BEGIN 2 */
     /* Initialize RKH framework */
     rkh_fwk_init();
