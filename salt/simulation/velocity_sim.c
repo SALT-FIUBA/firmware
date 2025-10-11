@@ -15,7 +15,7 @@ static float rand_float(float min, float max) {
 // Simulate evVelHasler with realistic random vel (Teloc 1500/Hasler: 0.2-200 km/h, 1% invalid)
 void simulate_velHasler(void) {
 
-    float vel = rand_float(40.2f, 60.0f);
+    float vel = rand_float(32.0f, 34.0f);
     if (rand() % 100 < 1) vel = -vel;  // Rare invalid (<0)
 
     // Optional: Add Gaussian noise (mean=0, std=0.5 km/h for accuracy)
@@ -26,7 +26,7 @@ void simulate_velHasler(void) {
     evt->source = VEL_SOURCE_TELOC;
 
     RKH_SMA_POST_FIFO(logic, RKH_UPCAST(RKH_EVT_T, evt), NULL);
-    printf("Simulated evVelHasler: vel=%.2f, source=TELOC\n", vel);
+    printf("evVelHasler: vel=%.2f, source=TELOC\n", vel);
 }
 
 // Simulate evVelExternal with realistic random vel (Tachometer: 0-150 km/h, 5% invalid)

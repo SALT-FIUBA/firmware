@@ -6,6 +6,8 @@
 /* ----------------------------- Include files ----------------------------- */
 #include "wolfssl-tcp-conmgr.h"
 
+#include "mqtt-configuration.h"
+
 
 /* ----------------------------- Local macros ------------------------------ */
 #define SIZEOF_QDEFER   1
@@ -136,9 +138,9 @@ static RKH_EVT_T * qDefer_sto[SIZEOF_QDEFER];
 // Broker details
 // Nando's hivemq broker -> 29763578558a437bb804d48d7e8b4e01.s1.eu.hivemq.cloud
 // Mati's hivemq broker -> 007f5e0286aa4c36ba410312d36d42f0.s1.eu.hivemq.cloud
-const char * broker_hostname = "007f5e0286aa4c36ba410312d36d42f0.s1.eu.hivemq.cloud";
+const char * broker_hostname = HIVE_MQ_CLUSTER_URL; // "007f5e0286aa4c36ba410312d36d42f0.s1.eu.hivemq.cloud";
 
-const uint16_t broker_port = ;
+const uint16_t broker_port = HIVE_MQ_CLUSTER_PORT; // 8883;
 ip_addr_t broker_ip;
 
 /* ---------------------------- Local functions ---------------------------- */

@@ -59,15 +59,17 @@ typedef enum
     LED2 = 1,
     LED_BLUE = LED2,
     LED3 = 2,
-    LED_RED = LED3
-}Led_TypeDef;
+    LED_RED = LED3,
+
+} Led_TypeDef;
 
 typedef enum
 {
     BUTTON_USER = 0,
     /* Alias */
     BUTTON_KEY = BUTTON_USER
-}Button_TypeDef;
+
+} Button_TypeDef;
 
 typedef enum
 {

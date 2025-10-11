@@ -102,7 +102,9 @@ enum SaltSignals
 
 	evDnsResolved,
 	evSslSuccess,
-	evDataReceived
+	evDataReceived,
+
+	evBlinkTimeout
 };
 typedef enum SaltSignals SaltSignals;
 

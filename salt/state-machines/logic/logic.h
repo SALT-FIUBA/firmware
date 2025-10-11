@@ -151,6 +151,18 @@ void logic_ctor(LogicCfg * config);
 void logic_getData(LogicData * data);
 rui16_t logic_getPublishPeriod();
 
+/**
+ * Specifies blink period for LEDs.
+ */
+#define BLINK_PERIOD   RKH_TIME_MS(500)
+
+/* Add enum for blink control */
+typedef enum {
+    BLINK_NONE,
+    BLINK_GREEN,
+    BLINK_BLUE
+} BlinkLed;
+
 /* -------------------- External C language linkage end -------------------- */
 #ifdef __cplusplus
 }

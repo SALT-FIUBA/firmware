@@ -45,17 +45,17 @@ RKH_THIS_MODULE
 
 /* ----------------------------- Local macros ------------------------------ */
 #define ModStatus_init()    gpioConfig(LED1, GPIO_OUTPUT)
-#define ModStatus(b)        BSP_LED_On(LED1) // original code: gpioWrite(LED1, b)
+#define ModStatus(b)        BSP_LED_Off(LED1) // original code: gpioWrite(LED1, b)
 //  #define ModStatus_toggle()  gpioToggle(LED1)
-#define ModStatus_toggle()  BSP_LED_On(LED1)
+#define ModStatus_toggle()  BSP_LED_Off(LED1)
 
 #define RegStatus_init()    gpioConfig(LED2, GPIO_OUTPUT)
 //  #define RegStatus(b)        gpioWrite(LED2, b)
-#define RegStatus(b)        BSP_LED_On(LED2)
+#define RegStatus(b)        BSP_LED_Off(LED2)
 
 #define NetStatus_init()    gpioConfig(LED3, GPIO_OUTPUT)
 //  #define NetStatus(b)        gpioWrite(LED3, b)
-#define NetStatus(b)        BSP_LED_On(LED3)
+#define NetStatus(b)        BSP_LED_Off(LED3)
 
 /* ------------------------------- Constants ------------------------------- */
 /* ---------------------------- Local data types --------------------------- */
@@ -86,21 +86,18 @@ bsp_init()
     gpioConfig(USER_BUTTON, GPIO_INPUT );
 
     /* Configuración de pines de salida para Leds de la EDU-CIAA-NXP */
-     gpioConfig( LED_GREEN, GPIO_OUTPUT );
-     gpioConfig( LED_BLUE, GPIO_OUTPUT );
-     gpioConfig( LED_RED, GPIO_OUTPUT );
-     gpioConfig( LED1, GPIO_OUTPUT );
-     gpioConfig( LED2, GPIO_OUTPUT );
-     gpioConfig( LED3, GPIO_OUTPUT );
+    gpioConfig( LED1, GPIO_OUTPUT );
+    gpioConfig( LED2, GPIO_OUTPUT );
+    gpioConfig( LED3, GPIO_OUTPUT );
 
-    ModStatus_init();
-    ModStatus(0);
+  ModStatus_init();
+  ModStatus(0);
 
-    RegStatus_init();
-    RegStatus(UnregisteredSt); // turn on LED2
+   RegStatus_init();
+   RegStatus(UnregisteredSt); // turn on LED2
 
-    NetStatus_init();
-    NetStatus(DisconnectedSt); // turn on LED3
+   NetStatus_init();
+   NetStatus(DisconnectedSt); // turn on LED3
    /***************************************************/
 
 

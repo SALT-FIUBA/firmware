@@ -115,6 +115,7 @@ include_directories(
         salt/utilities/ssp/src
         salt/utilities/aes
         salt/utilities/publisher
+        salt/utilities/heartbeats
 
         utilities
 

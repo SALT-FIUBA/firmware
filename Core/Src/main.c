@@ -18,8 +18,10 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "adc.h"
 #include "lwip.h"
 #include "rng.h"
+#include "rtc.h"
 #include "spi.h"
 #include "usart.h"
 #include "usb_otg.h"
@@ -52,6 +54,10 @@
 #include "stm32f4xx_nucleo_144.h"
 
 #include "wolfssl-tcp-conmgr.h"
+
+#include "heartbeats.h"
+#include "heartbeats_codec.h"
+#include "mqtt-configuration.h"
 
 
 /* USER CODE END Includes */
@@ -195,31 +201,11 @@ static void onSwitchCb(bool_t activated) {
 
 void onMQTTCb(void **state, struct mqttc_response_publish *publish) {
 
-    printf("on mqtt callback called\n");
-
-    // Static buffer for topic (adjust size as needed)
-    /*
-    char topic_name[20];
-    if (publish->topic_name_size < sizeof(topic_name)) {
-        memcpy(topic_name, publish->topic_name, publish->topic_name_size);
-        topic_name[publish->topic_name_size] = '\0';
-    } else {
-        printf("Topic too long\n");
-        return;
-    }
-
-    // Print message with length (not null-terminated)
-    printf("Received publish('%s'): %.*s\n", topic_name,
-           (int)publish->application_message_size, (const char*)publish->application_message);
-    */
+    printf("MQTT callback executed.\n");
 
     if(!initEnd){
         return;
     }
-
-    BSP_LED_On(LED_BLUE);
-    HAL_Delay(5000);
-    BSP_LED_Off(LED_BLUE);
 
 
     char dump1[255] = {0};
@@ -314,8 +300,8 @@ saltCfg_clientId(char *pid)
 void
 saltCfg_topic(char *t)
 {
-    sprintf(mqttProtCfg.topic, "/salt/%s", t);
-    sprintf(mqttProtCfg.subTopic, "/salt/command");
+    sprintf(mqttProtCfg.stateTopic, "/salt/%s", t);
+    sprintf(mqttProtCfg.commandTopic, "/salt/command");
 }
 
 /*
@@ -351,11 +337,12 @@ void EXTI15_10_IRQHandler(void) {
         // Clear the interrupt flag
         __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_13);
 
-        // Create and post the button press event
-        //  RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Open), NULL);
-        RKH_SMA_POST_FIFO(logic, RKH_UPCAST(RKH_EVT_T , &e_SaltEnable), NULL);
+        RKH_SMA_POST_FIFO(logic, RKH_UPCAST(RKH_EVT_T, &e_SaltEnable), NULL);
+
     }
 }
+
+
 
 /* USER CODE END 0 */
 
@@ -366,6 +353,7 @@ void EXTI15_10_IRQHandler(void) {
 int main(void)
 {
   /* USER CODE BEGIN 1 */
+  bool is_initializing = true;
   saltConfig();
 
   /* USER CODE END 1 */
@@ -382,7 +370,10 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-  SaltEnableButton();
+    BSP_LED_Init(LED_BLUE);
+    BSP_LED_Init(LED_GREEN);
+    BSP_LED_Init(LED_RED);
+    SaltEnableButton();
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -392,9 +383,11 @@ int main(void)
   MX_SPI1_Init();
   MX_LWIP_Init();
   MX_RNG_Init();
-
-    BSP_LED_Init(LED_BLUE);
+  MX_ADC1_Init();
+  MX_RTC_Init();
   /* USER CODE BEGIN 2 */
+
+
     /* Initialize RKH framework */
     rkh_fwk_init();
     rkh_dynEvt_init();
@@ -425,14 +418,16 @@ int main(void)
     mqttProtCfg.syncTime = 4;
     mqttProtCfg.keepAlive = 400;
     mqttProtCfg.qos = 1;
-    strcpy(mqttProtCfg.clientId, "stm32_client");
-    strcpy(mqttProtCfg.topic, "/stm32/state");
-    strcpy(mqttProtCfg.subTopic, "/stm32/command");
+    strcpy(mqttProtCfg.clientId, MQTT_CLIENT_ID);
+    strcpy(mqttProtCfg.stateTopic, MQTT_STATE_TOPIC);
+    strcpy(mqttProtCfg.statusTopic, MQTT_STATUS_TOPIC);
+    strcpy(mqttProtCfg.commandTopic, MQTT_COMMAND_TOPIC);
     mqttProtCfg.callback = onMQTTCb;
     TCP_MQTTProt_ctor(&mqttProtCfg, publishDimba);
 
-    logicCfg.publishTime = 8;
+    logicCfg.publishTime = 20;
     logic_ctor(&logicCfg);
+
     RKH_SMA_ACTIVATE(wolfSslTcpConMgr, ConMgr_qsto, CONMGR_QSTO_SIZE, 0, 0);
     RKH_SMA_ACTIVATE(tcpMqttProt, MQTTProt_qsto, MQTTPROT_QSTO_SIZE, 0, 0);
     RKH_SMA_ACTIVATE(logic, Logic_qsto, LOGIC_QSTO_SIZE, 0,0);
@@ -442,10 +437,12 @@ int main(void)
     initEnd = true;
 
     rkh_fwk_enter();
-
     return 0;
-    /* USER CODE END 2 */
+  /* USER CODE END 2 */
 
+  /* Infinite loop */
+  /* USER CODE BEGIN WHILE */
+  /* USER CODE END 3 */
 }
 
 /**
@@ -465,8 +462,9 @@ void SystemClock_Config(void)
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
   */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_LSI|RCC_OSCILLATORTYPE_HSE;
   RCC_OscInitStruct.HSEState = RCC_HSE_BYPASS;
+  RCC_OscInitStruct.LSIState = RCC_LSI_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
   RCC_OscInitStruct.PLL.PLLM = 4;

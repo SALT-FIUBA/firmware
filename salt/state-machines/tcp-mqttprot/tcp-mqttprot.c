@@ -18,6 +18,10 @@
 #include "mqttc.h"
 
 #include "tcp-mqttprot.h"
+
+#include "heartbeats.h"
+#include "heartbeats_codec.h"
+#include "mqtt-configuration.h"
 #include "stm32f4xx_nucleo_144.h"
 
 /* ----------------------------- Local macros ------------------------------ */
@@ -186,7 +190,12 @@ RKH_SMA_DEF_PTR(tcpMqttProt);
 /* ------------------------------- Constants ------------------------------- */
 static const TCP_MQTTProtCfg configDft =
         {
-                60, 5, "publishing_cLient", 400, "date_time", 0
+                60,
+                5,
+                400,
+                0,
+                "publishing_cLient",
+                "date_time"
         };
 
 /* ---------------------------- Local data types --------------------------- */
@@ -254,7 +263,7 @@ configClient(TCP_MQTTProt * const me, TCP_MQTTProtCfg * config)
     if (config->publishTime != 0 ||
         config->syncTime != 0 ||
         config->keepAlive != 0 ||
-        strlen(config->topic) > 0 ||
+        strlen(config->stateTopic) > 0 ||
         strlen(config->clientId) > 0)
     {
         result = 0;
@@ -311,8 +320,10 @@ publish(TCP_MQTTProt *const me, RKH_EVT_T *pe)
         printf("PUBLISH ERROR ------> %d %s \n", me->mqttc_client.error, mqttc_error_str(me->mqttc_client.error));
     }
 
+
+    //                                   STATE MESSAGE
     AppData appMsg;
-    rui16_t pubTime;
+    rui16_t pubTime = 0;
 
     pubTime = (*me->publisher)(&appMsg);
     if (pubTime != 0)
@@ -320,17 +331,40 @@ publish(TCP_MQTTProt *const me, RKH_EVT_T *pe)
         me->config->publishTime = pubTime;
     }
     me->operRes = mqttc_publish(&me->mqttc_client,
-                               me->config->topic,
+                               me->config->stateTopic,
                                appMsg.data,
                                appMsg.size,
                                (me->config->qos << 1) & 0x06);
 
 
     if (me->operRes != MQTT_OK) {
-        printf("Publish failed: %d \n", me->operRes);
+        printf("STATE publish failed: %d \n", me->operRes);
     } else {
-        printf("Published successful \n");
+        printf("STATE published successful \n");
     }
+
+    //                                   STATUS MESSAGE
+    AppData statusAppMsg;
+    rui16_t pubStatusTime = 0;
+
+    pubStatusTime = serialize_device_status(&statusAppMsg);
+    if (pubStatusTime != 0)
+    {
+            me->config->publishTime = pubTime;
+    }
+
+    me->operRes = mqttc_publish(&me->mqttc_client,
+                                me->config->statusTopic,  // Use new config field
+                                statusAppMsg.data,
+                                statusAppMsg.size,
+                                (me->config->qos << 1) & 0x06);
+
+    if (me->operRes != MQTT_OK) {
+        printf("STATUS publish failed: %d\n", me->operRes);
+    } else {
+        printf("STATUS published successfully\n");
+    }
+
 }
 
 
@@ -423,11 +457,11 @@ brokerConnect(TCP_MQTTProt *const me, RKH_EVT_T *pe)
     mqttc_connect(&me->mqttc_client,
                                me->config->clientId,
                                NULL, NULL, 0,
-                               "tasmota", "Password123", MQTT_CONNECT_CLEAN_SESSION,
+                               HIVE_MQ_USERNAME, HIVE_MQ_PASSWORD, MQTT_CONNECT_CLEAN_SESSION,
                                me->config->keepAlive);
  //   printf("mqttc_connect %d %s \n", mqtt_error, mqttc_error_str(mqtt_error));
 
-    mqtt_error = mqttc_subscribe(&me->mqttc_client, me->config->subTopic, 2);
+    mqtt_error = mqttc_subscribe(&me->mqttc_client, me->config->commandTopic, 2);
  //   printf("mqttc_subscribe %d %s \n", mqtt_error, mqttc_error_str(mqtt_error));
 
     mqttc_sync(&me->mqttc_client);
@@ -487,7 +521,7 @@ static rbool_t isConnectOk(const RKH_SM_T *me, RKH_EVT_T *pe)
 
 /* ---------------------------- Global functions --------------------------- */
 void
-TCP_MQTTProt_ctor(TCP_MQTTProtCfg *config, TCP_MQTTProtPublish publisher)
+TCP_MQTTProt_ctor(TCP_MQTTProtCfg * config, TCP_MQTTProtPublish publisher)
 {
     //  printf("\n tcp-mqttprot | TCP_MQTTProt_ctor \n");
     TCP_MQTTProt * me;

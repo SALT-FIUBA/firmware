@@ -1,5 +1,7 @@
 #include "network.h"
 
+#include "tcp_priv.h"
+
 
 void print_network_status(void)
 {
@@ -72,11 +74,30 @@ void print_network_status(void)
     }
 
     // Print TCP/IP stack status
+    // Print TCP/IP stack status
 #if LWIP_STATS
     printf("\nTCP/IP Statistics:\n");
-    printf("TCP Connections: %lu\n", tcp_active_pcbs ? tcp_active_pcbs->count : 0);
-    printf("TCP Listen: %lu\n", tcp_listen_pcbs ? tcp_listen_pcbs->count : 0);
-    printf("TCP Time-Wait: %lu\n", tcp_tw_pcbs ? tcp_tw_pcbs->count : 0);
+
+    // Count active TCP connections
+    u32_t active_count = 0;
+    for (struct tcp_pcb *pcb = tcp_active_pcbs; pcb != NULL; pcb = pcb->next) {
+        active_count++;
+    }
+    printf("TCP Connections: %lu\n", active_count);
+
+    // Count listening TCP sockets
+    u32_t listen_count = 0;
+    for (struct tcp_pcb_listen *lpcb = tcp_listen_pcbs.listen_pcbs; lpcb != NULL; lpcb = lpcb->next) {
+        listen_count++;
+    }
+    printf("TCP Listen: %lu\n", listen_count);
+
+    // Count time-wait TCP connections
+    u32_t tw_count = 0;
+    for (struct tcp_pcb *pcb = tcp_tw_pcbs; pcb != NULL; pcb = pcb->next) {
+        tw_count++;
+    }
+    printf("TCP Time-Wait: %lu\n", tw_count);
 #endif
 
     printf("===================\n\n");

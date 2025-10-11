@@ -194,6 +194,7 @@ void SysTick_Handler(void)
 
     static uint32_t tick_count = 0;
     tick_count++;
+
     if (tick_count % 5000 == 0) {  // Every ~5s
         simulate_velocity();
     }

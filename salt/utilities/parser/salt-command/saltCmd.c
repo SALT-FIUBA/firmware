@@ -86,10 +86,13 @@ int saltCmdParse(char* json, size_t jsonSize, SaltCmd* result){
                 RKH_TRC_USR_END();
 #endif
                 if(strncmp(MQTT_PARSE_TYPE_CMD, &(json[typeTok->start]), typeTok->end - typeTok->start) == 0) {
-                    printf("result->type = SALT_CMD_TYPE_CMD \n");
+
+                    printf("saltCmdParse | Remote command received. \n");
                     result->type = SALT_CMD_TYPE_CMD;
+
                 } else if (strncmp(MQTT_PARSE_TYPE_CONFIG, &(json[typeTok->start]), typeTok->end - typeTok->start) == 0){
-                    printf("result->type = SALT_CMD_TYPE_CONFIG");
+
+                    printf("saltCmdParse | Remote configuration parameter received. \n");
                     result->type = SALT_CMD_TYPE_CONFIG;
 #ifdef LOG_PARSE
                     RKH_TRC_USR_BEGIN(USR_TRACE_MQTT)

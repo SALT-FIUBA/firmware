@@ -30,7 +30,7 @@ getNextPublishTime()
 
 /* ---------------------------- Global functions --------------------------- */
 rui16_t
-publishDimba(AppData *appMsg)
+publishDimba(AppData * appMsg)
 {
     logic_getData(&logicData);
 
@@ -38,7 +38,7 @@ publishDimba(AppData *appMsg)
 
     //  TODO: mockup ConMgr_imei value
     //      jwObj_string("imei", ConMgr_imei());
-    jwObj_string("imei", "ConMgr_imei()");
+    jwObj_string("imei", "352812190048092");
 
     jwObj_int(MQTT_PARSE_PARAMETER_CMD_TIMEOUT, logicData.cmdTimeout);
     jwObj_double(MQTT_PARSE_PARAMETER_VEL_CT_ON, logicData.velCtOn);

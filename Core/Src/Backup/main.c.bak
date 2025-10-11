@@ -18,6 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "adc.h"
 #include "lwip.h"
 #include "rng.h"
 #include "spi.h"
@@ -49,8 +50,11 @@
 #include "sim808.h"
 #include "serial.h"
 #include "modcmd.h"
+#include "stm32f4xx_nucleo_144.h"
 
 #include "wolfssl-tcp-conmgr.h"
+
+#include "heartbeats.h"
 
 
 /* USER CODE END Includes */
@@ -62,7 +66,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-void UserButton_Init(void);
+void SaltEnableButton(void);
 
 /* USER CODE END PD */
 
@@ -110,6 +114,10 @@ static RKH_EVT_T * Logic_qsto[LOGIC_QSTO_SIZE];
 
 static rui8_t evPool0Sto[SIZEOF_EP0STO];
 static rui8_t evPool3Sto[SIZEOF_EP3STO];
+
+
+lwip_ssl_ctx_t * ssl_ctx = NULL;
+WOLFSSL_CTX * wolf_ctx = NULL;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -189,41 +197,28 @@ static void onSwitchCb(bool_t activated) {
 }
 
 void onMQTTCb(void **state, struct mqttc_response_publish *publish) {
-    printf("on mqtt callback called\n");
 
-    // Static buffer for topic (adjust size as needed)
-    char topic_name[20];
-    if (publish->topic_name_size < sizeof(topic_name)) {
-        memcpy(topic_name, publish->topic_name, publish->topic_name_size);
-        topic_name[publish->topic_name_size] = '\0';
-    } else {
-        printf("Topic too long\n");
-        return;
-    }
+    printf("MQTT callback executed.\n");
 
-    // Print message with length (not null-terminated)
-    printf("Received publish('%s'): %.*s\n", topic_name,
-           (int)publish->application_message_size, (const char*)publish->application_message);
-
-/*
     if(!initEnd){
         return;
     }
 
+
     char dump1[255] = {0};
     char dump2[255] = {0};
-    sprintf(dump1, "MQTT topic: %.*s", MIN(publish->topic_name_size,200), publish->topic_name);
-    sprintf(dump2, "MQTT data: %.*s", MIN((int) publish->application_message_size,200), publish->application_message);
-    RKH_TRC_USR_BEGIN(USR_TRACE_MQTT)
-        RKH_TUSR_STR(dump1);
-        RKH_TUSR_STR(dump2);
-    RKH_TRC_USR_END();
+    sprintf(dump1, "MQTT topic: %.*p", MIN(publish->topic_name_size,200), &publish->topic_name);
+    sprintf(dump2, "MQTT data: %.*p", MIN((int) publish->application_message_size,200), &publish->application_message);
 
-    int result = saltCmdParse((char *) publish->application_message, publish->application_message_size, &(e_saltCmd.cmd));
+    int result = saltCmdParse(
+        (char *) publish->application_message,
+        publish->application_message_size,
+        &(e_saltCmd.cmd)
+    );
+
     if (result > 0){
         RKH_SMA_POST_FIFO(logic, RKH_UPCAST(RKH_EVT_T, &e_saltCmd), 0);
     }
-*/
 }
 
 
@@ -303,7 +298,7 @@ void
 saltCfg_topic(char *t)
 {
     sprintf(mqttProtCfg.topic, "/salt/%s", t);
-    sprintf(mqttProtCfg.subTopic, "/salt/cmd");
+    sprintf(mqttProtCfg.subTopic, "/salt/command");
 }
 
 /*
@@ -317,7 +312,7 @@ saltCfg_topic(char *t)
     #define USER_BUTTON_EXTI_IRQn                    EXTI15_10_IRQn
 
 */
-void UserButton_Init(void) {
+void SaltEnableButton(void) {
     // Enable the GPIOC clock
     __HAL_RCC_GPIOC_CLK_ENABLE();
 
@@ -339,11 +334,12 @@ void EXTI15_10_IRQHandler(void) {
         // Clear the interrupt flag
         __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_13);
 
-        // Create and post the button press event
-        //  RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Open), NULL);
-        RKH_SMA_POST_FIFO(logic, RKH_UPCAST(RKH_EVT_T , &e_SaltEnable), NULL);
+        RKH_SMA_POST_FIFO(logic, RKH_UPCAST(RKH_EVT_T, &e_SaltEnable), NULL);
+
     }
 }
+
+
 
 /* USER CODE END 0 */
 
@@ -370,7 +366,10 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-  UserButton_Init();
+    BSP_LED_Init(LED_BLUE);
+    BSP_LED_Init(LED_GREEN);
+    BSP_LED_Init(LED_RED);
+    SaltEnableButton();
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -380,7 +379,14 @@ int main(void)
   MX_SPI1_Init();
   MX_LWIP_Init();
   MX_RNG_Init();
+  MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
+
+    DeviceStatus device_status;
+    memset(&device_status, 0, sizeof(DeviceStatus));
+
+
+
     /* Initialize RKH framework */
     rkh_fwk_init();
     rkh_dynEvt_init();
@@ -390,7 +396,7 @@ int main(void)
     rkh_fwk_registerEvtPool(evPool3Sto, SIZEOF_EP3STO, SIZEOF_EP3_BLOCK); //    TcpSendEvt
 
     /* Wait for network interface to be up */
-    printf("\n %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% \n");
+    printf("\n --------------------------------------------------------- \n");
     printf("Waiting for network interface...\n");
     struct netif * netif = netif_default;
     while (netif == NULL || !netif_is_up(netif)) {
@@ -411,23 +417,19 @@ int main(void)
     mqttProtCfg.syncTime = 4;
     mqttProtCfg.keepAlive = 400;
     mqttProtCfg.qos = 1;
-    strcpy(mqttProtCfg.clientId, "stm32_client");
-    strcpy(mqttProtCfg.topic, "/stm32/data");
-    strcpy(mqttProtCfg.subTopic, "/stm32/config");
+    strcpy(mqttProtCfg.clientId, "MIT-ELEC-00127-SALT-4");
+    strcpy(mqttProtCfg.topic, "/000127/state");
+    strcpy(mqttProtCfg.subTopic, "/000127/command");
     mqttProtCfg.callback = onMQTTCb;
     TCP_MQTTProt_ctor(&mqttProtCfg, publishDimba);
 
     logicCfg.publishTime = 8;
     logic_ctor(&logicCfg);
-
- //   RKH_SMA_ACTIVATE(tcpConMgr, ConMgr_qsto, CONMGR_QSTO_SIZE, 0, 0);
- /*
-     RKH_SMA_ACTIVATE(tcpMqttProt, MQTTProt_qsto, MQTTPROT_QSTO_SIZE, 0, 0);
+    RKH_SMA_ACTIVATE(wolfSslTcpConMgr, ConMgr_qsto, CONMGR_QSTO_SIZE, 0, 0);
+    RKH_SMA_ACTIVATE(tcpMqttProt, MQTTProt_qsto, MQTTPROT_QSTO_SIZE, 0, 0);
     RKH_SMA_ACTIVATE(logic, Logic_qsto, LOGIC_QSTO_SIZE, 0,0);
-*/
 
-
-    //   RKH_SMA_POST_FIFO(tcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Open), NULL);
+    RKH_SMA_POST_FIFO(wolfSslTcpConMgr, RKH_UPCAST(RKH_EVT_T, &e_Open), NULL);
 
     initEnd = true;
 
@@ -436,8 +438,14 @@ int main(void)
     return 0;
   /* USER CODE END 2 */
 
+  /* Infinite loop */
+  /* USER CODE BEGIN WHILE */
+  while (1)
+  {
+    /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+  }
   /* USER CODE END 3 */
 }
 

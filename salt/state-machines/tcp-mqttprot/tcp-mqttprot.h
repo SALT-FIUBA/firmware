@@ -40,19 +40,20 @@ struct AppData
     rui16_t size;
 };
 
-typedef rui16_t (* TCP_MQTTProtPublish)(AppData *appMsg);
+typedef rui16_t (* TCP_MQTTProtPublish)(AppData * appMsg);
 
 typedef struct TCP_MQTTProtCfg TCP_MQTTProtCfg;
 struct TCP_MQTTProtCfg
 {
     rui16_t publishTime;    /* in secs */
     rui16_t syncTime;       /* in secs */
-    char clientId[23];
     rui16_t keepAlive;      /* in secs */
-    char topic[16];
     rui8_t qos;             /* 0, 1 or 2 */
+    char clientId[23];
+    char stateTopic[25];
+    char commandTopic[25];
+    char statusTopic[25];
     TCP_MQTTCallback callback;
-    char subTopic[16];
 };
 
 /* -------------------------- External variables --------------------------- */
