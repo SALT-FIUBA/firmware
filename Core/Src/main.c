@@ -422,6 +422,8 @@ int main(void)
     strcpy(mqttProtCfg.stateTopic, MQTT_STATE_TOPIC);
     strcpy(mqttProtCfg.statusTopic, MQTT_STATUS_TOPIC);
     strcpy(mqttProtCfg.commandTopic, MQTT_COMMAND_TOPIC);
+    strcpy(mqttProtCfg.discoveryTopic, MQTT_DISCOVERY_TOPIC);
+    mqttProtCfg.discoveryEstablished = false;
     mqttProtCfg.callback = onMQTTCb;
     TCP_MQTTProt_ctor(&mqttProtCfg, publishDimba);
 

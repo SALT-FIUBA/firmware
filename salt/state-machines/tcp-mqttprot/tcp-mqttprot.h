@@ -53,6 +53,8 @@ struct TCP_MQTTProtCfg
     char stateTopic[25];
     char commandTopic[25];
     char statusTopic[25];
+    char discoveryTopic[40];
+    bool discoveryEstablished;
     TCP_MQTTCallback callback;
 };
 

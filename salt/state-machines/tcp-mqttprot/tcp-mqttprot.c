@@ -21,6 +21,7 @@
 
 #include "heartbeats.h"
 #include "heartbeats_codec.h"
+#include "jWrite.h"
 #include "mqtt-configuration.h"
 #include "stm32f4xx_nucleo_144.h"
 
@@ -306,6 +307,10 @@ init(TCP_MQTTProt * const me, RKH_EVT_T *pe)
     // TODO: uncomment when add syncRegion state machine
     //  rkh_sm_init(RKH_UPCAST(RKH_SM_T, &me->itsSyncRegion));
 
+
+    me->config->discoveryEstablished = false;
+
+
 }
 
 
@@ -447,32 +452,96 @@ brokerConnect(TCP_MQTTProt *const me, RKH_EVT_T *pe)
         printf("MQTT-C init failed %d \n", mqtt_error);
     }
 
-    // Nando's hivemq broker
-    // USERNAME = "nucleo144_client"
-    // PASSWORD = "Nucleo144"
-
-    // Mati's hivemq broker
-    //  USERNAME = "tasmota"
-    // PASSWORD = "Password123"
-    mqttc_connect(&me->mqttc_client,
+    mqtt_error = mqttc_connect(&me->mqttc_client,
                                me->config->clientId,
                                NULL, NULL, 0,
                                HIVE_MQ_USERNAME, HIVE_MQ_PASSWORD, MQTT_CONNECT_CLEAN_SESSION,
                                me->config->keepAlive);
- //   printf("mqttc_connect %d %s \n", mqtt_error, mqttc_error_str(mqtt_error));
+    //   printf("mqttc_connect %d %s \n", mqtt_error, mqttc_error_str(mqtt_error));
 
-    mqtt_error = mqttc_subscribe(&me->mqttc_client, me->config->commandTopic, 2);
- //   printf("mqttc_subscribe %d %s \n", mqtt_error, mqttc_error_str(mqtt_error));
+    if (mqtt_error != MQTT_OK) {
+        printf("MQTT-C connect failed %d \n", mqtt_error);
+    }
 
-    mqttc_sync(&me->mqttc_client);
+    // mqttc_sync: Handles CONNACK first, establishing the connection.
+    mqtt_error = mqttc_sync(&me->mqttc_client);
+    if (mqtt_error != MQTT_OK) {
+        printf("MQTT-C sync failed %d \n", mqtt_error);
+    }
 
+    // If either publish or subscribe fails, operRes is updated, potentially causing isConnectOk
+    // to fail and transition to Client_Idle.
     me->operRes = mqtt_error;
     me->errorStr = mqttc_error_str(me->operRes);
+
+    if (mqtt_error == MQTT_OK) {
+        // NEW: Publish auto-discovery message only if not already done
+        if (!me->config->discoveryEstablished) {
+
+            char discovery_payload[512];  // Buffer for JSON (adjust if needed)
+
+            // Use jWrite to build the payload, replicating style from heartbeats_codec.c and publisher.c
+            jwOpen(discovery_payload, sizeof(discovery_payload), JW_OBJECT, JW_COMPACT);
+
+            jwObj_string("trainId", "00000000-0000");  // Placeholder UUID
+
+            jwObj_array("ports");
+            jwArr_string("");  // Empty string in array
+            jwEnd();
+
+            jwObj_string("seriesNumber", me->config->clientId);
+            jwObj_object("topics");
+            jwObj_string("command", me->config->commandTopic);
+            jwObj_string("state", me->config->stateTopic);
+            jwObj_string("status", me->config->statusTopic);
+            jwEnd();
+
+            int jw_err = jwClose();  // Close and check for errors
+            if (jw_err != JWRITE_OK) {
+                printf("jWrite error in discovery payload: %d\n", jw_err);
+                me->operRes = MQTT_ERROR_UNKNOWN;  // Or appropriate error code
+                return;
+            }
+
+            // Publish to discoveryTopic with QoS=1 and retain=true
+            mqtt_error = mqttc_publish(&me->mqttc_client,
+                                       me->config->discoveryTopic,
+                                       discovery_payload,
+                                       strlen(discovery_payload),
+                                       (1 << 1) | (1 << 0));  // QoS=1 (bit 1), retain=1 (bit 0)
+
+            if (mqtt_error != MQTT_OK) {
+
+                printf("Discovery publish failed: %d %s\n", mqtt_error, mqttc_error_str(mqtt_error));
+                me->operRes = mqtt_error;  // Update for state machine error handling
+            } else {
+                printf("Discovery published successfully to %s\n", me->config->discoveryTopic);
+                me->config->discoveryEstablished = true;
+            }
+
+            if (me->operRes == MQTT_OK) {
+
+                // NEW: Subscribe to commandTopic ONLY if discovery publish succeeded
+                mqtt_error = mqttc_subscribe(&me->mqttc_client, me->config->commandTopic, 2);  // QoS=2 as in original
+                if (mqtt_error != MQTT_OK) {
+                    printf("Subscribe to %s failed: %d %s\n", me->config->commandTopic, mqtt_error, mqttc_error_str(mqtt_error));
+                    me->operRes = mqtt_error;  // Update for error handling
+                } else {
+                    printf("Subscribed successfully to %s\n", me->config->commandTopic);
+                }
+            }
+        }
+    }
 }
 
+/*
+    en0 -> 192.168.1.71
+
+    en5 -> 192.168.1.67
+*/
+
 static void
-enWaitToPublish(TCP_MQTTProt * const me, RKH_EVT_T * pe)
-{
+enWaitToPublish(TCP_MQTTProt * const me, RKH_EVT_T * pe) {
     //  printf("\n tcp-mqttprot | entry Wait To Publish \n");
     //  printf("Setting publish timer for %d seconds\n", me->config->publishTime);
     enum MQTTErrors sync_error;

@@ -35,4 +35,6 @@ uint32_t get_mcu_frequency(void);
 DeviceHealth get_device_health(bool is_initializing);
 DeviceStatus get_device_status(const char * client_id, bool is_initializing);
 
+
+
 #endif //HEARTBEATS_H
