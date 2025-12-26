@@ -483,18 +483,17 @@ brokerConnect(TCP_MQTTProt *const me, RKH_EVT_T *pe)
             // Use jWrite to build the payload, replicating style from heartbeats_codec.c and publisher.c
             jwOpen(discovery_payload, sizeof(discovery_payload), JW_OBJECT, JW_COMPACT);
 
-            jwObj_string("trainId", "00000000-0000");  // Placeholder UUID
-
-            jwObj_array("ports");
-            jwArr_string("");  // Empty string in array
-            jwEnd();
 
             jwObj_string("seriesNumber", me->config->clientId);
             jwObj_object("topics");
-            jwObj_string("command", me->config->commandTopic);
-            jwObj_string("state", me->config->stateTopic);
-            jwObj_string("status", me->config->statusTopic);
+                jwObj_string("state", me->config->stateTopic);
+                jwObj_string("command", me->config->commandTopic);
+                jwObj_string("status", me->config->statusTopic);
             jwEnd();
+            jwObj_array("ports");
+                jwArr_string("");  // Empty string in array
+            jwEnd();
+            jwObj_string( "firmwareVersion", "v2.0.1" );
 
             int jw_err = jwClose();  // Close and check for errors
             if (jw_err != JWRITE_OK) {
