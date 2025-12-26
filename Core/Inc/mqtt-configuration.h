@@ -17,11 +17,11 @@
     PASSWORD = "Password123"
 */
 
-#define MQTT_CLIENT_ID "SALT-2007"
-#define MQTT_STATE_TOPIC "/SALT-2007/state"
-#define MQTT_STATUS_TOPIC "/SALT-2007/status"
-#define MQTT_COMMAND_TOPIC "/SALT-2007/command"
-#define MQTT_DISCOVERY_TOPIC "/discovery/SALT-2007/config"
+#define MQTT_CLIENT_ID "SALT-2009"
+#define MQTT_STATE_TOPIC "/SALT-2009/state"
+#define MQTT_STATUS_TOPIC "/SALT-2009/status"
+#define MQTT_COMMAND_TOPIC "/SALT-2009/command"
+#define MQTT_DISCOVERY_TOPIC "/discovery/SALT-2009/config"
 
 #define FIRMWARE_VERSION "v2.1.0"
 

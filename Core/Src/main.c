@@ -201,7 +201,7 @@ static void onSwitchCb(bool_t activated) {
 
 void onMQTTCb(void **state, struct mqttc_response_publish *publish) {
 
-    printf("MQTT callback executed.\n");
+    printf("\n MQTT callback executed.\n");
 
     if(!initEnd){
         return;
