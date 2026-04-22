@@ -452,10 +452,20 @@ brokerConnect(TCP_MQTTProt *const me, RKH_EVT_T *pe)
         printf("MQTT-C init failed %d \n", mqtt_error);
     }
 
+    /* LWT payload: mismo formato que heartbeat, señala una desconexión no planeada */
+    static char lwt_payload[128];
+    snprintf(lwt_payload, sizeof(lwt_payload),
+             "{\"client_id\":\"%s\",\"health\":\"offline\",\"reason\":\"unexpected_disconnect\"}",
+             me->config->clientId);
+
     mqtt_error = mqttc_connect(&me->mqttc_client,
                                me->config->clientId,
-                               NULL, NULL, 0,
-                               HIVE_MQ_USERNAME, HIVE_MQ_PASSWORD, MQTT_CONNECT_CLEAN_SESSION,
+                               me->config->statusTopic,
+                               lwt_payload,
+                               strlen(lwt_payload),
+                               HIVE_MQ_USERNAME, HIVE_MQ_PASSWORD,
+                               MQTT_CONNECT_CLEAN_SESSION | MQTT_CONNECT_WILL_FLAG |
+                               MQTT_CONNECT_WILL_QOS_1 | MQTT_CONNECT_WILL_RETAIN,
                                me->config->keepAlive);
     //   printf("mqttc_connect %d %s \n", mqtt_error, mqttc_error_str(mqtt_error));
 
