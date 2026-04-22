@@ -533,12 +533,6 @@ brokerConnect(TCP_MQTTProt *const me, RKH_EVT_T *pe)
     }
 }
 
-/*
-    en0 -> 192.168.1.71
-
-    en5 -> 192.168.1.67
-*/
-
 static void
 enWaitToPublish(TCP_MQTTProt * const me, RKH_EVT_T * pe) {
     //  printf("\n tcp-mqttprot | entry Wait To Publish \n");
