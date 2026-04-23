@@ -420,6 +420,7 @@ struct ConMgr
     RKH_TMR_T timer;
     RKH_TMR_T timerReg;
     rui8_t retryCount;
+    rui8_t connectBackoffCount; /* exponent for exponential backoff */
     SendEvt *psend;
     int sigLevel;
     char Imei[IMEI_BUF_SIZE];
@@ -610,6 +611,7 @@ init(ConMgr *const me, RKH_EVT_T *pe)
     RKH_TMR_INIT(&me->timer, &e_tout, NULL);
     RKH_TMR_INIT(&me->timerReg, &e_regTout, NULL);
     me->retryCount = 0;
+    me->connectBackoffCount = 0;
 }
 
 // ............................ Effect actions .............................
@@ -1031,9 +1033,8 @@ connectingEntry(ConMgr *const me)
 static void
 socketConnected(ConMgr *const me)
 {
-    (void)me;
-
     me->retryCount = 0;
+    me->connectBackoffCount = 0;
     RKH_SMA_POST_FIFO(mqttProt, &e_NetConnected, conMgr);
     bsp_netStatus(ConnectedSt);
 }
@@ -1050,10 +1051,20 @@ wReopenEntry(ConMgr *const me)
 static void
 waitRetryConnEntry(ConMgr *const me)
 {
-    (void)me;
+    rui32_t delayMs;
+    rui8_t exp = me->connectBackoffCount;
+
+    /* Cap exponent to prevent uint32 overflow (5000 << 6 = 320 000 < 2^32) */
+    if (exp > 6u)
+        exp = 6u;
+    delayMs = (rui32_t)CONNECT_BACKOFF_BASE_MS << exp;
+    if (delayMs > (rui32_t)CONNECT_BACKOFF_MAX_MS)
+        delayMs = (rui32_t)CONNECT_BACKOFF_MAX_MS;
+    ++me->connectBackoffCount;
 
     RKH_SET_STATIC_EVENT(&e_tout, evTimeout);
-    RKH_TMR_ONESHOT(&me->timer, RKH_UPCAST(RKH_SMA_T, me), CONNECT_TRY_DELAY);
+    RKH_TMR_ONESHOT(&me->timer, RKH_UPCAST(RKH_SMA_T, me),
+                    RKH_TIME_MS(delayMs));
 }
 
 static void

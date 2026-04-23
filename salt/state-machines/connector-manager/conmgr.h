@@ -60,9 +60,16 @@ extern "C" {
 #define MAX_CONNECT_RETRY   3
 
 /**
- * Specifies a time delay between server connection attemps.
+ * Base delay (ms) for exponential backoff between server connection attempts.
+ * Delay sequence: BASE, BASE*2, BASE*4, ..., capped at MAX.
  */
-#define CONNECT_TRY_DELAY   RKH_TIME_MS(5000)
+#define CONNECT_BACKOFF_BASE_MS     5000u
+
+/**
+ * Maximum delay (ms) for exponential backoff between server connection
+ * attempts.
+ */
+#define CONNECT_BACKOFF_MAX_MS      60000u
 
 /**
  * Specifies a time delay between server close and reopen.
